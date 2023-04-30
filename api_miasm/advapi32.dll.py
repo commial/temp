@@ -4361,6 +4361,14 @@ def advapi32_SystemFunction036(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
+def advapi32_RtlGenRandom(jitter):
+    """"
+    [Advapi32.dll] BOOLEAN SystemFunction036(PVOID RandomBuffer, ULONG RandomBufferLength)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["RandomBuffer", "RandomBufferLength"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
 def advapi32_SystemFunction040(jitter):
     """"
     [Advapi32.dll] NTSTATUS SystemFunction040(PVOID Memory, ULONG MemorySize, [RTL_ENCRYPT_OPTION_FLAGS] OptionFlags)
@@ -4369,7 +4377,23 @@ def advapi32_SystemFunction040(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
+def advapi32_RtlEncryptMemory(jitter):
+    """"
+    [Advapi32.dll] NTSTATUS SystemFunction040(PVOID Memory, ULONG MemorySize, [RTL_ENCRYPT_OPTION_FLAGS] OptionFlags)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["Memory", "MemorySize", "OptionFlags"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
 def advapi32_SystemFunction041(jitter):
+    """"
+    [Advapi32.dll] NTSTATUS SystemFunction041(PVOID Memory, ULONG MemorySize, [RTL_ENCRYPT_OPTION_FLAGS] OptionFlags)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["Memory", "MemorySize", "OptionFlags"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def advapi32_RtlDecryptMemory(jitter):
     """"
     [Advapi32.dll] NTSTATUS SystemFunction041(PVOID Memory, ULONG MemorySize, [RTL_ENCRYPT_OPTION_FLAGS] OptionFlags)
     """"
