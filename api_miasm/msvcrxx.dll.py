@@ -1,3 +1,289 @@
+_HFILE = {
+    "_CRTDBG_INVALID_HFILE": -1,
+    "_CRTDBG_HFILE_ERROR": -2,
+    "_CRTDBG_FILE_STDOUT": -4,
+    "_CRTDBG_FILE_STDERR": -5,
+    "_CRTDBG_REPORT_FILE": -6,
+}
+errno_t = {
+    "EPERM": 1,
+    "ENOENT": 2,
+    "ESRCH": 3,
+    "EINTR": 4,
+    "EIO": 5,
+    "ENXIO": 6,
+    "E2BIG": 7,
+    "ENOEXEC": 8,
+    "EBADF": 9,
+    "ECHILD": 10,
+    "EAGAIN": 11,
+    "ENOMEM": 12,
+    "EACCES": 13,
+    "EFAULT": 14,
+    "EBUSY": 16,
+    "EEXIST": 17,
+    "EXDEV": 18,
+    "ENODEV": 19,
+    "ENOTDIR": 20,
+    "EISDIR": 21,
+    "EINVAL": 22,
+    "ENFILE": 23,
+    "EMFILE": 24,
+    "ENOTTY": 25,
+    "EFBIG": 27,
+    "ENOSPC": 28,
+    "ESPIPE": 29,
+    "EROFS": 30,
+    "EMLINK": 31,
+    "EPIPE": 32,
+    "EDOM": 33,
+    "ERANGE": 34,
+    "EDEADLK": 36,
+    "ENAMETOOLONG": 38,
+    "ENOLCK": 39,
+    "ENOSYS": 40,
+    "ENOTEMPTY": 41,
+    "EILSEQ": 42,
+    "STRUNCATE": 80,
+    "EADDRINUSE": 100,
+    "EADDRNOTAVAIL": 101,
+    "EAFNOSUPPORT": 102,
+    "EALREADY": 103,
+    "EBADMSG": 104,
+    "ECANCELED": 105,
+    "ECONNABORTED": 106,
+    "ECONNREFUSED": 107,
+    "ECONNRESET": 108,
+    "EDESTADDRREQ": 109,
+    "EHOSTUNREACH": 110,
+    "EIDRM": 111,
+    "EINPROGRESS": 112,
+    "EISCONN": 113,
+    "ELOOP": 114,
+    "EMSGSIZE": 115,
+    "ENETDOWN": 116,
+    "ENETRESET": 117,
+    "ENETUNREACH": 118,
+    "ENOBUFS": 119,
+    "ENODATA": 120,
+    "ENOLINK": 121,
+    "ENOMSG": 122,
+    "ENOPROTOOPT": 123,
+    "ENOSR": 124,
+    "ENOSTR": 125,
+    "ENOTCONN": 126,
+    "ENOTRECOVERABLE": 127,
+    "ENOTSOCK": 128,
+    "ENOTSUP": 129,
+    "EOPNOTSUPP": 130,
+    "EOTHER": 131,
+    "EOVERFLOW": 132,
+    "EOWNERDEAD": 133,
+    "EPROTO": 134,
+    "EPROTONOSUPPORT": 135,
+    "EPROTOTYPE": 136,
+    "ETIME": 137,
+    "ETIMEDOUT": 138,
+    "ETXTBSY": 139,
+    "EWOULDBLOCK": 140,
+}
+EXCEPTION_DISPOSITION = {
+    "ExceptionContinueExecution": 0,
+    "ExceptionContinueSearch": 1,
+    "ExceptionNestedException": 2,
+    "ExceptionCollidedUnwind": 3,
+}
+_SIGNAL_ = {
+    "SIGINT": 2,
+    "SIGILL": 4,
+    "SIGABRT_COMPAT": 6,
+    "SIGFPE": 8,
+    "SIGSEGV": 11,
+    "SIGTERM": 15,
+    "SIGBREAK": 21,
+    "SIGABRT": 22,
+}
+_SIGNAL_FUNC_ = {
+    "SIG_DFL": 0,
+    "SIG_IGN": 1,
+    "SIG_GET": 2,
+    "SIG_SGE": 3,
+    "SIG_ACK": 4,
+    "SIG_DIE": 5,
+    "SIG_ERR": -1,
+}
+_C_APP_TYPE_ = {
+    "_UNKNOWN_APP": 0,
+    "_CONSOLE_APP": 1,
+    "_GUI_APP": 2,
+}
+_HEAP_RESULT_ = {
+    "_HEAPEMPTY": -1,
+    "_HEAPOK": -2,
+    "_HEAPBADBEGIN": -3,
+    "_HEAPBADNODE": -4,
+    "_HEAPEND": -5,
+    "_HEAPBADPTR": -6,
+}
+_HEAP_USE_FLAG_ = {
+    "_FREEENTRY": 0,
+    "_USEDENTRY": 1,
+}
+_exception_type_ = {
+    "_DOMAIN": 1,
+    "_SING": 2,
+    "_OVERFLOW": 3,
+    "_UNDERFLOW": 4,
+    "_TLOSS": 5,
+    "_PLOSS": 6,
+}
+_lconv_val_ = {
+    "CHAR_MAX": 127,
+}
+_LOCK_NUM_ = {
+    "_SIGNAL_LOCK": 0,
+    "_IOB_SCAN_LOCK": 1,
+    "_TMPNAM_LOCK": 2,
+    "_CONIO_LOCK": 3,
+    "_HEAP_LOCK": 4,
+    "_UNDNAME_LOCK": 5,
+    "_TIME_LOCK": 6,
+    "_ENV_LOCK": 7,
+    "_EXIT_LOCK1": 8,
+    "_POPEN_LOCK": 9,
+    "_LOCKTAB_LOCK": 10,
+    "_OSFHND_LOCK": 11,
+    "_SETLOCALE_LOCK": 12,
+    "_MB_CP_LOCK": 13,
+    "_TYPEINFO_LOCK": 14,
+    "_DEBUG_LOCK": 15,
+    "_STREAM_LOCKS": 16,
+}
+_output_format_ = {
+    "_TWO_DIGIT_EXPONENT": 0x1,
+}
+_byte_type_ = {
+    "_MBC_SINGLE": 0,
+    "_MBC_LEAD": 1,
+    "_MBC_TRAIL": 2,
+    "_MBC_ILLEGAL": -1,
+}
+_CRT_REPORT_TYPE_ = {
+    "_CRT_WARN": 0,
+    "_CRT_ERROR": 1,
+    "_CRT_ASSERT": 2,
+    "_CRT_ERRCNT": 3,
+}
+_CRT_RPTHOOK_MODE_ = {
+    "_CRT_RPTHOOK_INSTALL": 0,
+    "_CRT_RPTHOOK_REMOVE": 1,
+}
+_DBG_BLOCK_TYPE_ = {
+    "_FREE_BLOCK": 0,
+    "_NORMAL_BLOCK": 1,
+    "_CRT_BLOCK": 2,
+    "_IGNORE_BLOCK": 3,
+    "_CLIENT_BLOCK": 4,
+    "_MAX_BLOCKS": 5,
+}
+_set_error_mode_ = {
+    "_OUT_TO_DEFAULT": 0,
+    "_OUT_TO_STDERR": 1,
+    "_OUT_TO_MSGBOX": 2,
+    "_REPORT_ERRMODE": 3,
+}
+_disposition_type_ = {
+    "DISPOSITION_DISMISS": 0,
+    "DISPOSITION_CONTINUE_SEARCH": 1,
+    "DISPOSITION_NESTED_EXCEPTION": 2,
+    "DISPOSITION_COLLIDED_UNWIND": 3,
+}
+_xcpt_num_ = {
+    "STATUS_ACCESS_VIOLATION": 0xC0000005,
+    "STATUS_ILLEGAL_INSTRUCTION": 0xC000001D,
+    "STATUS_PRIVILEGED_INSTRUCTION": 0xC0000096,
+    "STATUS_FLOAT_DENORMAL_OPERAND": 0xC000008D,
+    "STATUS_FLOAT_DIVIDE_BY_ZERO": 0xC000008E,
+    "STATUS_FLOAT_INEXACT_RESULT": 0xC000008F,
+    "STATUS_FLOAT_INVALID_OPERATION": 0xC0000090,
+    "STATUS_FLOAT_OVERFLOW": 0xC0000091,
+    "STATUS_FLOAT_STACK_CHECK": 0xC0000092,
+    "STATUS_FLOAT_UNDERFLOW": 0xC0000093,
+}
+_xcpt_action_ = {
+    "EXCEPTION_EXECUTE_HANDLER": 1,
+    "EXCEPTION_CONTINUE_SEARCH": 0,
+    "EXCEPTION_CONTINUE_EXECUTION": -1,
+}
+__LK_MODE_ = {
+    "_LK_UNLCK": 0,
+    "_LK_LOCK": 1,
+    "_LK_NBLCK": 2,
+    "_LK_RLCK": 3,
+    "_LK_NBRLCK": 4,
+}
+_control_mask_ = {
+    "_MCW_DN": 0x03000000,
+    "_MCW_EM": 0x0008001f,
+    "_MCW_RC": 0x00000300,
+    "_MCW_IC": 0x00040000,
+    "_MCW_PC": 0x00030000,
+}
+_file_translation_mode_ = {
+    "_O_TEXT": 0x4000,
+    "_O_BINARY": 0x8000,
+    "_O_WTEXT": 0x10000,
+    "_O_U16TEXT": 0x20000,
+    "_O_U8TEXT": 0x40000,
+}
+_RET_EOF_ = {
+    "EOF": -1,
+}
+_RET_WEOF_ = {
+    "WEOF": -1,
+}
+_RET_WEOF_INT_ = {
+    "WEOF": -1,
+}
+_buffer_mode_ = {
+    "_IOFBF": 0x0000,
+    "_IOLBF": 0x0040,
+    "_IONBF": 0x0004,
+}
+_locale_category_ = {
+    "LC_ALL": 0,
+    "LC_COLLATE": 1,
+    "LC_CTYPE": 2,
+    "LC_MONETARY": 3,
+    "LC_NUMERIC": 4,
+    "LC_TIME": 5,
+}
+_thread_locale_type_ = {
+    "_ENABLE_PER_THREAD_LOCALE": 0x1,
+    "_DISABLE_PER_THREAD_LOCALE": 0x2,
+}
+__MB_CP_TYPE_ = {
+    "_MB_CP_SBCS": 0,
+    "_MB_CP_OEM": -2,
+    "_MB_CP_ANSI": -3,
+    "_MB_CP_LOCALE": -4,
+}
+_thread_initflag_ = {
+    "CREATE_SUSPENDED": 0x00000004,
+}
+_spawn_mode_ = {
+    "_P_WAIT": 0,
+    "_P_NOWAIT": 1,
+    "_P_OVERLAY": 2,
+    "_P_NOWAITO": 3,
+    "_P_DETACH": 4,
+}
+__NLSCMPERROR_ = {
+    "_NLSCMPERROR": 0x7FFFFFFF,
+}
+_size_t_INT_MAX_ = {
+    "INT_MAX": 0x7FFFFFFF,
+}
 
 def msvcrxx__memccpy(jitter):
     """

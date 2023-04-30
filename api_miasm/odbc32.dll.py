@@ -1,3 +1,33 @@
+_SQL_DRIVER_COMPLETION_ = {
+    "SQL_DRIVER_NOPROMPT": 0,
+    "SQL_DRIVER_COMPLETE": 1,
+    "SQL_DRIVER_PROMPT": 2,
+    "SQL_DRIVER_COMPLETE_REQUIRED": 3,
+}
+_SQL_ENDTRAN_OPTION_ = {
+    "SQL_COMMIT": 0,
+    "SQL_ROLLBACK": 1,
+}
+_SQL_FETCH_TYPE_ = {
+    "SQL_FETCH_NEXT": 1,
+    "SQL_FETCH_FIRST": 2,
+    "SQL_FETCH_LAST": 3,
+    "SQL_FETCH_PRIOR": 4,
+    "SQL_FETCH_ABSOLUTE": 5,
+    "SQL_FETCH_RELATIVE": 6,
+}
+_SQL_HANDLE_TYPE_ = {
+    "SQL_HANDLE_ENV": 1,
+    "SQL_HANDLE_DBC": 2,
+    "SQL_HANDLE_STMT": 3,
+    "SQL_HANDLE_DESC": 4,
+}
+_SQL_FREESTMT_OPTION_ = {
+    "SQL_CLOSE": 0,
+    "SQL_DROP": 1,
+    "SQL_UNBIND": 2,
+    "SQL_RESET_PARAMS": 3,
+}
 
 def odbc32_SQLAllocConnect(jitter):
     """

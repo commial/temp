@@ -1,3 +1,48 @@
+AUDIT_PARAM_TYPE = {
+    "APT_None": 1,
+    "APT_String": 2,
+    "APT_Ulong": 3,
+    "APT_Pointer": 4,
+    "APT_Sid": 5,
+    "APT_LogonId": 6,
+    "APT_ObjectTypeList": 7,
+    "APT_Luid": 8,
+    "APT_Guid": 9,
+    "APT_Time": 10,
+    "APT_Int64": 11,
+    "APT_IpAddress": 12,
+    "APT_LogonIdWithSid": 13,
+}
+_APF_TYPE_ = {
+    "APF_AuditFailure": 0x00000000,
+    "APF_AuditSuccess": 0x00000001,
+}
+AUTHZ_CONTEXT_INFORMATION_CLASS = {
+    "AuthzContextInfoUserSid": 1,
+    "AuthzContextInfoGroupsSids": 2,
+    "AuthzContextInfoRestrictedSids": 3,
+    "AuthzContextInfoPrivileges": 4,
+    "AuthzContextInfoExpirationTime": 5,
+    "AuthzContextInfoServerContext": 6,
+    "AuthzContextInfoIdentifier": 7,
+    "AuthzContextInfoSource": 8,
+    "AuthzContextInfoAll": 9,
+    "AuthzContextInfoAuthenticationId": 0,
+}
+AUTHZ_SECURITY_ATTRIBUTE_OPERATION = {
+    "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_NONE": 0,
+    "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_REPLACE_ALL": 1,
+    "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_ADD": 2,
+    "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_DELETE": 3,
+    "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_REPLACE": 4,
+}
+AUTHZ_SID_OPERATION = {
+    "AUTHZ_SID_OPERATION_NONE": 0,
+    "AUTHZ_SID_OPERATION_REPLACE_ALL": 1,
+    "AUTHZ_SID_OPERATION_ADD": 2,
+    "AUTHZ_SID_OPERATION_DELETE": 3,
+    "AUTHZ_SID_OPERATION_REPLACE": 4,
+}
 
 def authz_AuthzAccessCheck(jitter):
     """

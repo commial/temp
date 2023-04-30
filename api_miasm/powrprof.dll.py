@@ -1,3 +1,18 @@
+POWER_PLATFORM_ROLE = {
+    "PlatformRoleUnspecified": 0,
+    "PlatformRoleDesktop": 1,
+    "PlatformRoleMobile": 2,
+    "PlatformRoleWorkstation": 3,
+    "PlatformRoleEnterpriseServer": 4,
+    "PlatformRoleSOHOServer": 5,
+    "PlatformRoleAppliancePC": 6,
+    "PlatformRolePerformanceServer": 7,
+    "PlatformRoleSlate": 8,
+}
+_POWER_PLATFORM_ROLE_VERSION_ = {
+    "POWER_PLATFORM_ROLE_V1": 0x00000001,
+    "POWER_PLATFORM_ROLE_V2": 0x00000002,
+}
 
 def powrprof_CallNtPowerInformation(jitter):
     """

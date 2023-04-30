@@ -1,3 +1,89 @@
+_InternetService_ = {
+    "INTERNET_SERVICE_FTP": 1,
+    "INTERNET_SERVICE_GOPHER": 2,
+    "INTERNET_SERVICE_HTTP": 3,
+}
+_InternetOpenType_ = {
+    "INTERNET_OPEN_TYPE_PRECONFIG": 0,
+    "INTERNET_OPEN_TYPE_DIRECT": 1,
+    "INTERNET_OPEN_TYPE_PROXY": 3,
+    "INTERNET_OPEN_TYPE_PRECONFIG_WITH_NO_AUTOPROXY": 4,
+}
+InternetCookieState = {
+    "COOKIE_STATE_UNKNOWN": 0x0,
+    "COOKIE_STATE_ACCEPT": 0x1,
+    "COOKIE_STATE_PROMPT": 0x2,
+    "COOKIE_STATE_LEASH": 0x3,
+    "COOKIE_STATE_DOWNGRADE": 0x4,
+    "COOKIE_STATE_REJECT": 0x5,
+}
+FORTCMD = {
+    "FORTCMD_LOGON": 1,
+    "FORTCMD_LOGOFF": 2,
+    "FORTCMD_CHG_PERSONALITY": 3,
+}
+APP_CACHE_STATE = {
+    "AppCacheStateNoUpdateNeeded": 0,
+    "AppCacheStateUpdateNeeded": 1,
+    "AppCacheStateUpdateNeededNew": 2,
+    "AppCacheStateUpdateNeededMasterOnly": 3,
+}
+URL_CACHE_LIMIT_TYPE = {
+    "UrlCacheLimitTypeIE": 0,
+    "UrlCacheLimitTypeIETotal": 1,
+    "UrlCacheLimitTypeAppContainer": 2,
+    "UrlCacheLimitTypeAppContainerTotal": 3,
+    "UrlCacheLimitTypeNum": 4,
+}
+HTTP_PUSH_WAIT_TYPE = {
+    "HttpPushWaitEnableComplete": 0,
+    "HttpPushWaitReceiveComplete": 1,
+    "HttpPushWaitSendComplete": 2,
+}
+APP_CACHE_FINALIZE_STATE = {
+    "AppCacheFinalizeStateIncomplete": 0,
+    "AppCacheFinalizeStateManifestChange": 1,
+    "AppCacheFinalizeStateComplete": 2,
+}
+WPAD_CACHE_DELETE = {
+    "WPAD_CACHE_DELETE_CURRENT": 0x0,
+    "WPAD_CACHE_DELETE_ALL": 0x1,
+}
+P3PStatus = {
+    "P3P_Success": 0x0,
+    "P3P_NoPolicy": 0x2,
+    "P3P_InProgress": 0x3,
+    "P3P_Failed": 0x4,
+    "P3P_NotFound": 0x5,
+    "P3P_FormatErr": 0x6,
+    "P3P_Cancelled": 0x7,
+    "P3P_NotStarted": 0x8,
+    "P3P_XMLError": 0x9,
+    "P3P_Expired": 0xA,
+    "P3P_Error": 0xFF,
+}
+HTTP_WEB_SOCKET_BUFFER_TYPE = {
+    "HTTP_WEB_SOCKET_BINARY_MESSAGE_TYPE": 0,
+    "HTTP_WEB_SOCKET_BINARY_FRAGMENT_TYPE": 1,
+    "HTTP_WEB_SOCKET_UTF8_MESSAGE_TYPE": 2,
+    "HTTP_WEB_SOCKET_UTF8_FRAGMENT_TYPE": 3,
+    "HTTP_WEB_SOCKET_CLOSE_TYPE": 4,
+    "HTTP_WEB_SOCKET_PING_TYPE": 5,
+}
+HTTP_WEB_SOCKET_CLOSE_STATUS = {
+    "HTTP_WEB_SOCKET_SUCCESS_CLOSE_STATUS": 1000,
+    "HTTP_WEB_SOCKET_ENDPOINT_TERMINATED_CLOSE_STATUS": 1001,
+    "HTTP_WEB_SOCKET_PROTOCOL_ERROR_CLOSE_STATUS": 1002,
+    "HTTP_WEB_SOCKET_INVALID_DATA_TYPE_CLOSE_STATUS": 1003,
+    "HTTP_WEB_SOCKET_EMPTY_CLOSE_STATUS": 1005,
+    "HTTP_WEB_SOCKET_ABORTED_CLOSE_STATUS": 1006,
+    "HTTP_WEB_SOCKET_INVALID_PAYLOAD_CLOSE_STATUS": 1007,
+    "HTTP_WEB_SOCKET_POLICY_VIOLATION_CLOSE_STATUS": 1008,
+    "HTTP_WEB_SOCKET_MESSAGE_TOO_BIG_CLOSE_STATUS": 1009,
+    "HTTP_WEB_SOCKET_UNSUPPORTED_EXTENSIONS_CLOSE_STATUS": 1010,
+    "HTTP_WEB_SOCKET_SERVER_ERROR_CLOSE_STATUS": 1011,
+    "HTTP_WEB_SOCKET_SECURE_HANDSHAKE_ERROR_CLOSE_STATUS": 1015,
+}
 
 def wininet_CommitUrlCacheEntry(jitter, get_str, set_str):
     """

@@ -1,3 +1,79 @@
+BP_ANIMATIONSTYLE = {
+    "BPAS_NONE": 0,
+    "BPAS_LINEAR": 1,
+    "BPAS_CUBIC": 2,
+    "BPAS_SINE": 3,
+}
+TEXTSHADOWTYPE = {
+    "TST_NONE": 0,
+    "TST_SINGLE": 1,
+    "TST_CONTINUOUS": 2,
+}
+THEMESIZE = {
+    "TS_MIN": 0,
+    "TS_TRUE": 1,
+    "TS_DRAW": 2,
+}
+PROPERTYORIGIN = {
+    "PO_STATE": 0,
+    "PO_PART": 1,
+    "PO_CLASS": 2,
+    "PO_GLOBAL": 3,
+    "PO_NOTFOUND": 4,
+}
+_HitTestReturnCode_ = {
+    "HTERROR": -2,
+    "HTTRANSPARENT": -1,
+    "HTNOWHERE": 0,
+    "HTCLIENT": 1,
+    "HTCAPTION": 2,
+    "HTSYSMENU": 3,
+    "HTGROWBOX": 4,
+    "HTMENU": 5,
+    "HTHSCROLL": 6,
+    "HTVSCROLL": 7,
+    "HTMINBUTTON": 8,
+    "HTMAXBUTTON": 9,
+    "HTLEFT": 10,
+    "HTRIGHT": 11,
+    "HTTOP": 12,
+    "HTTOPLEFT": 13,
+    "HTTOPRIGHT": 14,
+    "HTBOTTOM": 15,
+    "HTBOTTOMLEFT": 16,
+    "HTBOTTOMRIGHT": 17,
+    "HTBORDER": 18,
+    "HTOBJECT": 19,
+    "HTCLOSE": 20,
+    "HTHELP": 21,
+}
+BP_BUFFERFORMAT = {
+    "BPBF_COMPATIBLEBITMAP": 0,
+    "BPBF_DIB": 1,
+    "BPBF_TOPDOWNDIB": 2,
+    "BPBF_TOPDOWNMONODIB": 3,
+}
+WINDOWTHEMEATTRIBUTETYPE = {
+    "WTA_NONCLIENT": 1,
+}
+TA_TRANSFORM_TYPE = {
+    "TATT_TRANSLATE_2D": 0,
+    "TATT_SCALE_2D": 1,
+    "TATT_OPACITY": 2,
+    "TATT_CLIP": 3,
+}
+TA_PROPERTY = {
+    "TAP_FLAGS": 0,
+    "TAP_TRANSFORMCOUNT": 1,
+    "TAP_STAGGERDELAY": 2,
+    "TAP_STAGGERDELAYCAP": 3,
+    "TAP_STAGGERDELAYFACTOR": 4,
+    "TAP_ZORDER": 5,
+}
+TA_TIMINGFUNCTION_TYPE = {
+    "TTFT_UNDEFINED": 0,
+    "TTFT_CUBIC_BEZIER": 1,
+}
 
 def uxtheme_BeginBufferedAnimation(jitter):
     """

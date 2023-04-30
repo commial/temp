@@ -1,3 +1,68 @@
+HTTP_DATA_CHUNK_TYPE = {
+    "HttpDataChunkFromMemory": 0,
+    "HttpDataChunkFromFileHandle": 1,
+    "HttpDataChunkFromFragmentCache": 2,
+    "HttpDataChunkFromFragmentCacheEx": 3,
+}
+HTTP_CACHE_POLICY_TYPE = {
+    "HttpCachePolicyNocache": 0,
+    "HttpCachePolicyUserInvalidates": 1,
+    "HttpCachePolicyTimeToLive": 2,
+}
+HTTP_LOG_DATA_TYPE = {
+    "HttpLogDataTypeFields": 0,
+}
+HTTP_SERVICE_CONFIG_ID = {
+    "HttpServiceConfigIPListenList": 0,
+    "HttpServiceConfigSSLCertInfo": 1,
+    "HttpServiceConfigUrlAclInfo": 2,
+    "HttpServiceConfigTimeout": 3,
+    "HttpServiceConfigMax": 4,
+}
+HTTP_SERVER_PROPERTY = {
+    "HttpServerAuthenticationProperty": 0,
+    "HttpServerLoggingProperty": 1,
+    "HttpServerQosProperty": 2,
+    "HttpServerTimeoutsProperty": 3,
+    "HttpServerQueueLengthProperty": 4,
+    "HttpServerStateProperty": 5,
+    "HttpServer503VerbosityProperty": 6,
+    "HttpServerBindingProperty": 7,
+    "HttpServerExtendedAuthenticationProperty": 8,
+    "HttpServerListenEndpointProperty": 9,
+}
+HTTP_VERB = {
+    "HttpVerbUnparsed": 0,
+    "HttpVerbUnknown": 1,
+    "HttpVerbInvalid": 2,
+    "HttpVerbOPTIONS": 3,
+    "HttpVerbGET": 4,
+    "HttpVerbHEAD": 5,
+    "HttpVerbPOST": 6,
+    "HttpVerbPUT": 7,
+    "HttpVerbDELETE": 8,
+    "HttpVerbTRACE": 9,
+    "HttpVerbCONNECT": 10,
+    "HttpVerbTRACK": 11,
+    "HttpVerbMOVE": 12,
+    "HttpVerbCOPY": 13,
+    "HttpVerbPROPFIND": 14,
+    "HttpVerbPROPPATCH": 15,
+    "HttpVerbMKCOL": 16,
+    "HttpVerbLOCK": 17,
+    "HttpVerbUNLOCK": 18,
+    "HttpVerbSEARCH": 19,
+}
+HTTP_REQUEST_INFO_TYPE = {
+    "HttpRequestInfoTypeAuth": 0,
+    "HttpRequestInfoTypeChannelBind": 1,
+}
+HTTP_RESPONSE_INFO_TYPE = {
+    "HttpResponseInfoTypeMultipleKnownHeaders": 0,
+    "HttpResponseInfoTypeAuthenticationProperty": 1,
+    "HttpResponseInfoTypeQoSProperty": 2,
+    "HttpResponseInfoTypeChannelBind": 3,
+}
 
 def httpapi_HttpCreateHttpHandle(jitter):
     """

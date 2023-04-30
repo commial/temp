@@ -1,3 +1,9 @@
+_SslContentType_ = {
+    "CT_CHANGE_CIPHER_SPEC": 20,
+    "CT_ALERT": 21,
+    "CT_HANDSHAKE": 22,
+    "CT_APPLICATIONDATA": 23,
+}
 
 def ncrypt_NCryptCreatePersistedKey(jitter):
     """

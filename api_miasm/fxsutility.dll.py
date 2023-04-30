@@ -1,3 +1,6 @@
+SendToMode = {
+    "SEND_TO_FAX_RECIPIENT_ATTACHMENT": 0,
+}
 
 def fxsutility_CanSendToFaxRecipient(jitter):
     """

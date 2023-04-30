@@ -1,3 +1,11 @@
+SI_PAGE_TYPE = {
+    "SI_PAGE_PERM": 0,
+    "SI_PAGE_ADVPERM": 1,
+    "SI_PAGE_AUDIT": 2,
+    "SI_PAGE_OWNER": 3,
+    "SI_PAGE_EFFECTIVE": 4,
+    "SI_PAGE_TAKEOWNERSHIP": 5,
+}
 
 def aclui_CreateSecurityPage(jitter):
     """

@@ -1,3 +1,9 @@
+SL_GENUINE_STATE = {
+    "SL_GEN_STATE_IS_GENUINE": 0,
+    "SL_GEN_STATE_INVALID_LICENSE": 1,
+    "SL_GEN_STATE_TAMPERED": 2,
+    "SL_GEN_STATE_LAST": 3,
+}
 
 def slwga_SLIsGenuineLocal(jitter):
     """

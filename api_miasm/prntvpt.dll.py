@@ -1,3 +1,12 @@
+EDefaultDevmodeType = {
+    "kUserDefaultDevmode": 0,
+    "kPrinterDefaultDevmode": 1,
+}
+EPrintTicketScope = {
+    "kPTPageScope": 0,
+    "kPTDocumentScope": 1,
+    "kPTJobScope": 3,
+}
 
 def prntvpt_PTConvertPrintTicketToDevMode(jitter):
     """

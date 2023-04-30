@@ -1,3 +1,7 @@
+LSA_LOOKUP_DOMAIN_INFO_CLASS = {
+    "AccountDomainInformation": 5,
+    "DnsDomainInformation": 12,
+}
 
 def sechost_LookupAccountNameLocal(jitter, get_str, set_str):
     """

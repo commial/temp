@@ -1,3 +1,52 @@
+WER_DUMP_TYPE = {
+    "WerDumpTypeMicroDump": 1,
+    "WerDumpTypeMiniDump": 2,
+    "WerDumpTypeHeapDump": 3,
+    "WerDumpTypeMax": 4,
+}
+WER_FILE_TYPE = {
+    "WerFileTypeMicrodump": 1,
+    "WerFileTypeMinidump": 2,
+    "WerFileTypeHeapdump": 3,
+    "WerFileTypeUserDocument": 4,
+    "WerFileTypeOther": 5,
+}
+WER_REPORT_TYPE = {
+    "WerReportNonCritical": 0,
+    "WerReportCritical": 1,
+    "WerReportApplicationCrash": 2,
+    "WerReportApplicationHang": 3,
+    "WerReportKernel": 4,
+}
+WER_REPORT_UI = {
+    "WerUIAdditionalDataDlgHeader": 1,
+    "WerUIIconFilePath": 2,
+    "WerUIConsentDlgHeader": 3,
+    "WerUIConsentDlgBody": 4,
+    "WerUIOnlineSolutionCheckText": 5,
+    "WerUIOfflineSolutionCheckText": 6,
+    "WerUICloseText": 7,
+    "WerUICloseDlgHeader": 8,
+    "WerUICloseDlgBody": 9,
+    "WerUICloseDlgButtonText": 10,
+}
+WER_CONSENT = {
+    "WerConsentNotAsked": 1,
+    "WerConsentApproved": 2,
+    "WerConsentDenied": 3,
+}
+WER_SUBMIT_RESULT = {
+    "WerReportQueued": 1,
+    "WerReportUploaded": 2,
+    "WerReportDebug": 3,
+    "WerReportFailed": 4,
+    "WerDisabled": 5,
+    "WerReportCancelled": 6,
+    "WerDisabledQueue": 7,
+    "WerReportAsync": 8,
+    "WerCustomAction": 9,
+    "WerThrottled": 10,
+}
 
 def wer_WerAddExcludedApplication(jitter):
     """

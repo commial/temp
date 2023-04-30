@@ -1,3 +1,17 @@
+GPO_LINK = {
+    "GPLinkUnknown": 0,
+    "GPLinkMachine": 1,
+    "GPLinkSite": 2,
+    "GPLinkDomain": 3,
+    "GPLinkOrganizationalUnit": 4,
+}
+SETTINGSTATUS = {
+    "RSOPUnspecified": 0,
+    "RSOPApplied": 1,
+    "RSOPIgnored": 2,
+    "RSOPFailed": 3,
+    "RSOPSubsettingFailed": 4,
+}
 
 def userenv_EnterCriticalPolicySection(jitter):
     """

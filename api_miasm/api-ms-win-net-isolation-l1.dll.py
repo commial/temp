@@ -1,3 +1,9 @@
+NETISO_ERROR_TYPE = {
+    "NETISO_ERROR_TYPE_NONE": 0x00,
+    "NETISO_ERROR_TYPE_PRIVATE_NETWORK": 0x01,
+    "NETISO_ERROR_TYPE_INTERNET_CLIENT": 0x02,
+    "NETISO_ERROR_TYPE_INTERNET_CLIENT_SERVER": 0x03,
+}
 
 def api-ms-win-net-isolation-l1_NetworkIsolationDiagnoseConnectFailureAndGetInfo(jitter):
     """

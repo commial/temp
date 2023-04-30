@@ -1,3 +1,8 @@
+_RASMDPAGE_ = {
+    "RASMDPAGE_Status": 0,
+    "RASMDPAGE_Summary": 1,
+    "RASMDPAGE_Preferences": 2,
+}
 
 def rasdlg_RasDialDlg(jitter, get_str, set_str):
     """

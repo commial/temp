@@ -1,3 +1,17 @@
+GROUP_POLICY_OBJECT_TYPE = {
+    "GPOTypeLocal": 0,
+    "GPOTypeRemote": 1,
+    "GPOTypeDS": 2,
+    "GPOTypeLocalUser": 3,
+    "GPOTypeLocalGroup": 4,
+}
+GROUP_POLICY_HINT_TYPE = {
+    "GPHintUnknown": 0,
+    "GPHintMachine": 1,
+    "GPHintSite": 2,
+    "GPHintDomain": 3,
+    "GPHintOrganizationalUnit": 4,
+}
 
 def gpedit_BrowseForGPO(jitter):
     """

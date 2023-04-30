@@ -1,3 +1,16 @@
+RIO_CQ = {
+    "RIO_INVALID_CQ": 0,
+}
+RIO_RQ = {
+    "RIO_INVALID_RQ": 0,
+}
+RIO_BUFFERID = {
+    "RIO_INVALID_BUFFERID": 0,
+}
+RIO_NOTIFICATION_COMPLETION_TYPE = {
+    "RIO_EVENT_COMPLETION": 1,
+    "RIO_IOCP_COMPLETION": 2,
+}
 
 def mswsock_EnumProtocols(jitter, get_str, set_str):
     """

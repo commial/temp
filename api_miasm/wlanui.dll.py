@@ -1,3 +1,8 @@
+WL_DISPLAY_PAGES = {
+    "WLConnectionPage": 0,
+    "WLSecurityPage": 1,
+    "WLAdvPage": 2,
+}
 
 def wlanui_WlanUIEditProfile(jitter):
     """

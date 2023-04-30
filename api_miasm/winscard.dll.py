@@ -1,3 +1,12 @@
+_SCardScope_ = {
+    "SCARD_SCOPE_USER": 0,
+    "SCARD_SCOPE_TERMINAL": 1,
+    "SCARD_SCOPE_SYSTEM": 2,
+}
+_SCARD_AUDIT_CHV_ = {
+    "SCARD_AUDIT_CHV_FAILURE": 0x0,
+    "SCARD_AUDIT_CHV_SUCCESS": 0x1,
+}
 
 def winscard_SCardAccessStartedEvent(jitter):
     """

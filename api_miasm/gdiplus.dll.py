@@ -1,3 +1,362 @@
+_PropertyTagType_ = {
+    "PropertyTagTypeByte": 1,
+    "PropertyTagTypeASCII": 2,
+    "PropertyTagTypeShort": 3,
+    "PropertyTagTypeLong": 4,
+    "PropertyTagTypeRational": 5,
+    "PropertyTagTypeUndefined": 7,
+    "PropertyTagTypeSLONG": 9,
+    "PropertyTagTypeSRational": 10,
+}
+MetafileType = {
+    "MetafileTypeInvalid": 0,
+    "MetafileTypeWmf": 1,
+    "MetafileTypeWmfPlaceable": 2,
+    "MetafileTypeEmf": 3,
+    "MetafileTypeEmfPlusOnly": 4,
+    "MetafileTypeEmfPlusDual": 5,
+}
+DitherType = {
+    "DitherTypeNone": 0,
+    "DitherTypeSolid": 1,
+    "DitherTypeOrdered4x4": 2,
+    "DitherTypeOrdered8x8": 3,
+    "DitherTypeOrdered16x16": 4,
+    "DitherTypeSpiral4x4": 5,
+    "DitherTypeSpiral8x8": 6,
+    "DitherTypeDualSpiral4x4": 7,
+    "DitherTypeDualSpiral8x8": 8,
+    "DitherTypeErrorDiffusion": 9,
+    "DitherTypeMax": 10,
+}
+GpFillMode = {
+    "FillModeAlternate": 0,
+    "FillModeWinding": 1,
+}
+GpWrapMode = {
+    "WrapModeTile": 0,
+    "WrapModeTileFlipX": 1,
+    "WrapModeTileFlipY": 2,
+    "WrapModeTileFlipXY": 3,
+    "WrapModeClamp": 4,
+}
+GpPenAlignment = {
+    "PenAlignmentCenter": 0,
+    "PenAlignmentInset": 1,
+}
+PaletteType = {
+    "PaletteTypeCustom": 0,
+    "PaletteTypeOptimal": 1,
+    "PaletteTypeFixedBW": 2,
+    "PaletteTypeFixedHalftone8": 3,
+    "PaletteTypeFixedHalftone27": 4,
+    "PaletteTypeFixedHalftone64": 5,
+    "PaletteTypeFixedHalftone125": 6,
+    "PaletteTypeFixedHalftone216": 7,
+    "PaletteTypeFixedHalftone252": 8,
+    "PaletteTypeFixedHalftone256": 9,
+}
+HistogramFormat = {
+    "HistogramFormatARGB": 0,
+    "HistogramFormatPARGB": 1,
+    "HistogramFormatRGB": 2,
+    "HistogramFormatGray": 3,
+    "HistogramFormatB": 4,
+    "HistogramFormatG": 5,
+    "HistogramFormatR": 6,
+    "HistogramFormatA": 7,
+}
+ColorMatrixFlags = {
+    "ColorMatrixFlagsDefault": 0,
+    "ColorMatrixFlagsSkipGrays": 1,
+    "ColorMatrixFlagsAltGray": 2,
+}
+ColorChannelFlags = {
+    "ColorChannelFlagsC": 0,
+    "ColorChannelFlagsM": 1,
+    "ColorChannelFlagsY": 2,
+    "ColorChannelFlagsK": 3,
+    "ColorChannelFlagsLast": 4,
+}
+SmoothingMode = {
+    "SmoothingModeInvalid": -1,
+    "SmoothingModeDefault": 0,
+    "SmoothingModeHighSpeed": 1,
+    "SmoothingModeHighQuality": 2,
+    "SmoothingModeNone": 3,
+    "SmoothingModeAntiAlias8x4": 4,
+    "SmoothingModeAntiAlias8x8": 5,
+}
+StringAlignment = {
+    "StringAlignmentNear": 0,
+    "StringAlignmentCenter": 1,
+    "StringAlignmentFar": 2,
+}
+WarpMode = {
+    "WarpModePerspective": 0,
+    "WarpModeBilinear": 1,
+}
+GpPenType = {
+    "PenTypeUnknown": -1,
+    "PenTypeSolidColor": 0,
+    "PenTypeHatchFill": 1,
+    "PenTypeTextureFill": 2,
+    "PenTypePathGradient": 3,
+    "PenTypeLinearGradient": 4,
+}
+GpDashStyle = {
+    "DashStyleSolid": 0,
+    "DashStyleDash": 1,
+    "DashStyleDashDot": 2,
+    "DashStyleDashDotDot": 3,
+    "DashStyleCustom": 4,
+}
+CustomLineCapType = {
+    "CustomLineCapTypeDefault": 0,
+    "CustomLineCapTypeAdjustableArrow": 1,
+}
+RotateFlipType = {
+    "RotateNoneFlipNone": 0,
+    "Rotate90FlipNone": 1,
+    "Rotate180FlipNone": 2,
+    "Rotate270FlipNone": 3,
+    "RotateNoneFlipX": 4,
+    "Rotate90FlipX": 5,
+    "Rotate180FlipX": 6,
+    "Rotate270FlipX": 7,
+}
+GpFlushIntention = {
+    "FlushIntentionFlush": 0,
+    "FlushIntentionSync": 1,
+}
+PixelOffsetMode = {
+    "PixelOffsetModeInvalid": -1,
+    "PixelOffsetModeDefault": 0,
+    "PixelOffsetModeHighSpeed": 1,
+    "PixelOffsetModeHighQuality": 2,
+    "PixelOffsetModeNone": 3,
+    "PixelOffsetModeHalf": 4,
+}
+GpCoordinateSpace = {
+    "CoordinateSpaceWorld": 0,
+    "CoordinateSpacePage": 1,
+    "CoordinateSpaceDevice": 2,
+}
+EmfType = {
+    "EmfTypeEmfOnly": 3,
+    "EmfTypeEmfPlusOnly": 4,
+    "EmfTypeEmfPlusDual": 5,
+}
+MetafileFrameUnit = {
+    "MetafileFrameUnitPixel": 2,
+    "MetafileFrameUnitPoint": 3,
+    "MetafileFrameUnitInch": 4,
+    "MetafileFrameUnitDocument": 5,
+    "MetafileFrameUnitMillimeter": 6,
+    "MetafileFrameUnitGdi": 7,
+}
+StringDigitSubstitute = {
+    "StringDigitSubstituteUser": 0,
+    "StringDigitSubstituteNone": 1,
+    "StringDigitSubstituteNational": 2,
+    "StringDigitSubstituteTraditional": 3,
+}
+GpTestControlEnum = {
+    "TestControlForceBilinear": 0,
+    "TestControlNoICM": 1,
+    "TestControlGetBuildNumber": 2,
+}
+CombineMode = {
+    "CombineModeReplace": 0,
+    "CombineModeIntersect": 1,
+    "CombineModeUnion": 2,
+    "CombineModeXor": 3,
+    "CombineModeExclude": 4,
+    "CombineModeComplement": 5,
+}
+GpBrushType = {
+    "BrushTypeSolidColor": 0,
+    "BrushTypeHatchFill": 1,
+    "BrushTypeTextureFill": 2,
+    "BrushTypePathGradient": 3,
+    "BrushTypeLinearGradient": 4,
+}
+GpHatchStyle = {
+    "HatchStyleHorizontal": 0,
+    "HatchStyleVertical": 1,
+    "HatchStyleForwardDiagonal": 2,
+    "HatchStyleBackwardDiagonal": 3,
+    "HatchStyleCross": 4,
+    "HatchStyleDiagonalCross": 5,
+    "HatchStyle05Percent": 6,
+    "HatchStyle10Percent": 7,
+    "HatchStyle20Percent": 8,
+    "HatchStyle25Percent": 9,
+    "HatchStyle30Percent": 10,
+    "HatchStyle40Percent": 11,
+    "HatchStyle50Percent": 12,
+    "HatchStyle60Percent": 13,
+    "HatchStyle70Percent": 14,
+    "HatchStyle75Percent": 15,
+    "HatchStyle80Percent": 16,
+    "HatchStyle90Percent": 17,
+    "HatchStyleLightDownwardDiagonal": 18,
+    "HatchStyleLightUpwardDiagonal": 19,
+    "HatchStyleDarkDownwardDiagonal": 20,
+    "HatchStyleDarkUpwardDiagonal": 21,
+    "HatchStyleWideDownwardDiagonal": 22,
+    "HatchStyleWideUpwardDiagonal": 23,
+    "HatchStyleLightVertical": 24,
+    "HatchStyleLightHorizontal": 25,
+    "HatchStyleNarrowVertical": 26,
+    "HatchStyleNarrowHorizontal": 27,
+    "HatchStyleDarkVertical": 28,
+    "HatchStyleDarkHorizontal": 29,
+    "HatchStyleDashedDownwardDiagonal": 30,
+    "HatchStyleDashedUpwardDiagonal": 31,
+    "HatchStyleDashedHorizontal": 32,
+    "HatchStyleDashedVertical": 33,
+    "HatchStyleSmallConfetti": 34,
+    "HatchStyleLargeConfetti": 35,
+    "HatchStyleZigZag": 36,
+    "HatchStyleWave": 37,
+    "HatchStyleDiagonalBrick": 38,
+    "HatchStyleHorizontalBrick": 39,
+    "HatchStyleWeave": 40,
+    "HatchStylePlaid": 41,
+    "HatchStyleDivot": 42,
+    "HatchStyleDottedGrid": 43,
+    "HatchStyleDottedDiamond": 44,
+    "HatchStyleShingle": 45,
+    "HatchStyleTrellis": 46,
+    "HatchStyleSphere": 47,
+    "HatchStyleSmallGrid": 48,
+    "HatchStyleSmallCheckerBoard": 49,
+    "HatchStyleLargeCheckerBoard": 50,
+    "HatchStyleOutlinedDiamond": 51,
+    "HatchStyleSolidDiamond": 52,
+}
+LinearGradientMode = {
+    "LinearGradientModeHorizontal": 0,
+    "LinearGradientModeVertical": 1,
+    "LinearGradientModeForwardDiagonal": 2,
+    "LinearGradientModeBackwardDiagonal": 3,
+}
+Unit = {
+    "UnitWorld": 0,
+    "UnitDisplay": 1,
+    "UnitPixel": 2,
+    "UnitPoint": 3,
+    "UnitInch": 4,
+    "UnitDocument": 5,
+    "UnitMillimeter": 6,
+}
+GpLineCap = {
+    "LineCapFlat": 0,
+    "LineCapSquare": 1,
+    "LineCapRound": 2,
+    "LineCapTriangle": 3,
+    "LineCapNoAnchor": 0x10,
+    "LineCapSquareAnchor": 0x11,
+    "LineCapRoundAnchor": 0x12,
+    "LineCapDiamondAnchor": 0x13,
+    "LineCapArrowAnchor": 0x14,
+    "LineCapCustom": 0xff,
+}
+GpDashCap = {
+    "DashCapFlat": 0,
+    "DashCapRound": 1,
+    "DashCapTriangle": 2,
+}
+GpLineJoin = {
+    "LineJoinMiter": 0,
+    "LineJoinBevel": 1,
+    "LineJoinRound": 2,
+    "LineJoinMiterClipped": 3,
+}
+GpMatrixOrder = {
+    "MatrixOrderPrepend": 0,
+    "MatrixOrderAppend": 1,
+}
+ImageType = {
+    "ImageTypeUnknown": 0,
+    "ImageTypeBitmap": 1,
+    "ImageTypeMetafile": 2,
+}
+ColorAdjustType = {
+    "ColorAdjustTypeDefault": 0,
+    "ColorAdjustTypeBitmap": 1,
+    "ColorAdjustTypeBrush": 2,
+    "ColorAdjustTypePen": 3,
+    "ColorAdjustTypeText": 4,
+    "ColorAdjustTypeCount": 5,
+    "ColorAdjustTypeAny": 6,
+}
+CompositingMode = {
+    "CompositingModeSourceOver": 0,
+    "CompositingModeSourceCopy": 1,
+}
+CompositingQuality = {
+    "CompositingQualityInvalid": -1,
+    "CompositingQualityDefault": 0,
+    "CompositingQualityHighSpeed": 1,
+    "CompositingQualityHighQuality": 2,
+    "CompositingQualityGammaCorrected": 3,
+    "CompositingQualityAssumeLinear": 4,
+}
+TextRenderingHint = {
+    "TextRenderingHintSystemDefault": 0,
+    "TextRenderingHintSingleBitPerPixelGridFit": 1,
+    "TextRenderingHintSingleBitPerPixel": 2,
+    "TextRenderingHintAntiAliasGridFit": 3,
+    "TextRenderingHintAntiAlias": 4,
+    "TextRenderingHintClearTypeGridFit": 5,
+}
+StringTrimming = {
+    "StringTrimmingNone": 0,
+    "StringTrimmingCharacter": 1,
+    "StringTrimmingWord": 2,
+    "StringTrimmingEllipsisCharacter": 3,
+    "StringTrimmingEllipsisWord": 4,
+    "StringTrimmingEllipsisPath": 5,
+}
+GpStatus = {
+    "Ok": 0,
+    "GenericError": 1,
+    "InvalidParameter": 2,
+    "OutOfMemory": 3,
+    "ObjectBusy": 4,
+    "InsufficientBuffer": 5,
+    "NotImplemented": 6,
+    "Win32Error": 7,
+    "WrongState": 8,
+    "Aborted": 9,
+    "FileNotFound": 10,
+    "ValueOverflow": 11,
+    "AccessDenied": 12,
+    "UnknownImageFormat": 13,
+    "FontFamilyNotFound": 14,
+    "FontStyleNotFound": 15,
+    "NotTrueTypeFont": 16,
+    "UnsupportedGdiplusVersion": 17,
+    "GdiplusNotInitialized": 18,
+    "PropertyNotFound": 19,
+    "PropertyNotSupported": 20,
+    "ProfileNotFound": 21,
+}
+_FontStyle_ = {
+    "FontStyleRegular": 0,
+    "FontStyleBold": 1,
+    "FontStyleItalic": 2,
+    "FontStyleBoldItalic": 3,
+    "FontStyleUnderline": 4,
+    "FontStyleStrikeout": 8,
+}
+_HotkeyPrefix_ = {
+    "HotkeyPrefixNone": 0,
+    "HotkeyPrefixShow": 1,
+    "HotkeyPrefixHide": 2,
+}
 
 def gdiplus_GdiplusStartup(jitter):
     """

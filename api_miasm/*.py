@@ -1,3 +1,26 @@
+_DLLMAIN_REASON_ = {
+    "DLL_PROCESS_ATTACH": 1,
+    "DLL_THREAD_ATTACH": 2,
+    "DLL_THREAD_DETACH": 3,
+    "DLL_PROCESS_DETACH": 0,
+}
+_DLLVER_PLATFORM_ = {
+    "DLLVER_PLATFORM_WINDOWS": 0x00000001,
+    "DLLVER_PLATFORM_NT": 0x00000002,
+}
+_CPL_MSG_ = {
+    "CPL_INIT": 1,
+    "CPL_GETCOUNT": 2,
+    "CPL_INQUIRE": 3,
+    "CPL_SELECT": 4,
+    "CPL_DBLCLK": 5,
+    "CPL_STOP": 6,
+    "CPL_EXIT": 7,
+    "CPL_NEWINQUIRE": 8,
+    "CPL_STARTWPARMSA": 9,
+    "CPL_STARTWPARMSW": 10,
+    "CPL_SETUP": 200,
+}
 
 def *_DllMain(jitter):
     """

@@ -1,3 +1,77 @@
+WTS_CONNECTSTATE_CLASS = {
+    "WTSActive": 0,
+    "WTSConnected": 1,
+    "WTSConnectQuery": 2,
+    "WTSShadow": 3,
+    "WTSDisconnected": 4,
+    "WTSIdle": 5,
+    "WTSListen": 6,
+    "WTSReset": 7,
+    "WTSDown": 8,
+    "WTSInit": 9,
+}
+WTS_INFO_CLASS = {
+    "WTSInitialProgram": 0,
+    "WTSApplicationName": 1,
+    "WTSWorkingDirectory": 2,
+    "WTSOEMId": 3,
+    "WTSSessionId": 4,
+    "WTSUserName": 5,
+    "WTSWinStationName": 6,
+    "WTSDomainName": 7,
+    "WTSConnectState": 8,
+    "WTSClientBuildNumber": 9,
+    "WTSClientName": 10,
+    "WTSClientDirectory": 11,
+    "WTSClientProductId": 12,
+    "WTSClientHardwareId": 13,
+    "WTSClientAddress": 14,
+    "WTSClientDisplay": 15,
+    "WTSClientProtocolType": 16,
+    "WTSIdleTime": 17,
+    "WTSLogonTime": 18,
+    "WTSIncomingBytes": 19,
+    "WTSOutgoingBytes": 20,
+    "WTSIncomingFrames": 21,
+    "WTSOutgoingFrames": 22,
+}
+WTS_CONFIG_CLASS = {
+    "WTSUserConfigInitialProgram": 0,
+    "WTSUserConfigWorkingDirectory": 1,
+    "WTSUserConfigfInheritInitialProgram": 2,
+    "WTSUserConfigfAllowLogonTerminalServer": 3,
+    "WTSUserConfigTimeoutSettingsConnections": 4,
+    "WTSUserConfigTimeoutSettingsDisconnections": 5,
+    "WTSUserConfigTimeoutSettingsIdle": 6,
+    "WTSUserConfigfDeviceClientDrives": 7,
+    "WTSUserConfigfDeviceClientPrinters": 8,
+    "WTSUserConfigfDeviceClientDefaultPrinter": 9,
+    "WTSUserConfigBrokenTimeoutSettings": 10,
+    "WTSUserConfigReconnectSettings": 11,
+    "WTSUserConfigModemCallbackSettings": 12,
+    "WTSUserConfigModemCallbackPhoneNumber": 13,
+    "WTSUserConfigShadowingSettings": 14,
+    "WTSUserConfigTerminalServerProfilePath": 15,
+    "WTSUserConfigTerminalServerHomeDir": 16,
+    "WTSUserConfigTerminalServerHomeDirDrive": 17,
+    "WTSUserConfigfTerminalServerRemoteHomeDir": 18,
+}
+WTS_VIRTUAL_CLASS = {
+    "WTSVirtualClientData": 0,
+    "WTSVirtualFileHandle": 1,
+}
+_ConsoleNotificationFlags_ = {
+    "NOTIFY_FOR_ALL_SESSIONS": 1,
+    "NOTIFY_FOR_THIS_SESSION": 0,
+}
+_WtsServerHandle_ = {
+    "WTS_CURRENT_SERVER_HANDLE": 0,
+}
+WTS_TYPE_CLASS = {
+    "WTSTypeProcessInfoLevel0": 0,
+    "WTSTypeProcessInfoLevel1": 1,
+    "WTSTypeSessionInfoLevel1": 2,
+}
 
 def wtsapi32_WTSCloseServer(jitter):
     """

@@ -1,3 +1,48 @@
+CLFS_RECORD_TYPE = {
+    "ClfsNullRecord": 0x00,
+    "ClfsDataRecord": 0x01,
+    "ClfsRestartRecord": 0x02,
+}
+CLFS_IOSTATS_CLASS = {
+    "ClfsIoStatsDefault": 0x0000,
+}
+CLFS_CONTEXT_MODE = {
+    "ClfsContextNone": 0x00,
+    "ClfsContextUndoNext": 0x01,
+    "ClfsContextPrevious": 0x02,
+    "ClfsContextForward": 0x03,
+}
+CLFS_LOG_ARCHIVE_MODE = {
+    "ClfsLogArchiveEnabled": 0x01,
+    "ClfsLogArchiveDisabled": 0x02,
+}
+CLFS_MGMT_POLICY_TYPE = {
+    "ClfsMgmtPolicyMaximumSize": 0,
+    "ClfsMgmtPolicyMinimumSize": 1,
+    "ClfsMgmtPolicyNewContainerSize": 2,
+    "ClfsMgmtPolicyGrowthRate": 3,
+    "ClfsMgmtPolicyLogTail": 4,
+    "ClfsMgmtPolicyAutoShrink": 5,
+    "ClfsMgmtPolicyAutoGrow": 6,
+    "ClfsMgmtPolicyNewContainerPrefix": 7,
+    "ClfsMgmtPolicyNewContainerSuffix": 8,
+    "ClfsMgmtPolicyNewContainerExtension": 9,
+}
+CLFS_MGMT_NOTIFICATION_TYPE = {
+    "ClfsMgmtAdvanceTailNotification": 0,
+    "ClfsMgmtLogFullHandlerNotification": 1,
+    "ClfsMgmtLogUnpinnedNotification": 2,
+    "ClfsMgmtLogWriteNotification": 3,
+}
+_CREATE_LOG_DISPOSITION_ = {
+    "CREATE_NEW": 1,
+    "OPEN_EXISTING": 3,
+    "OPEN_ALWAYS": 4,
+}
+_CREATE_LOG_FLAGS_ATTRIBUTES_ = {
+    "FILE_ATTRIBUTE_ARCHIVE": 0x00000020,
+    "FILE_FLAG_OVERLAPPED": 0x40000000,
+}
 
 def clfsw32_AlignReservedLog(jitter):
     """

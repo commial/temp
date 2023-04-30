@@ -1,3 +1,7 @@
+_BLUETOOTH_SERVICE_FLAGS_ = {
+    "BLUETOOTH_SERVICE_DISABLE": 0x00,
+    "BLUETOOTH_SERVICE_ENABLE": 0x01,
+}
 
 def bthprops_BluetoothAuthenticateDevice(jitter):
     """

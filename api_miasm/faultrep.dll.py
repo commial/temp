@@ -1,3 +1,14 @@
+EFaultRepRetVal = {
+    "frrvOk": 0,
+    "frrvOkManifest": 1,
+    "frrvOkQueued": 2,
+    "frrvErr": 3,
+    "frrvErrNoDW": 4,
+    "frrvErrTimeout": 5,
+    "frrvLaunchDebugger": 6,
+    "frrvOkHeadless": 7,
+    "frrvErrAnotherInstance": 8,
+}
 
 def faultrep_WerReportHang(jitter):
     """

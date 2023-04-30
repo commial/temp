@@ -1,3 +1,40 @@
+EC_SUBSCRIPTION_PROPERTY_ID = {
+    "EcSubscriptionEnabled": 0,
+    "EcSubscriptionEventSources": 1,
+    "EcSubscriptionEventSourceAddress": 2,
+    "EcSubscriptionEventSourceEnabled": 3,
+    "EcSubscriptionEventSourceUserName": 4,
+    "EcSubscriptionEventSourcePassword": 5,
+    "EcSubscriptionDescription": 6,
+    "EcSubscriptionURI": 7,
+    "EcSubscriptionConfigurationMode": 8,
+    "EcSubscriptionExpires": 9,
+    "EcSubscriptionQuery": 10,
+    "EcSubscriptionTransportName": 11,
+    "EcSubscriptionTransportPort": 12,
+    "EcSubscriptionDeliveryMode": 13,
+    "EcSubscriptionDeliveryMaxItems": 14,
+    "EcSubscriptionDeliveryMaxLatencyTime": 15,
+    "EcSubscriptionHeartbeatInterval": 16,
+    "EcSubscriptionLocale": 17,
+    "EcSubscriptionContentFormat": 18,
+    "EcSubscriptionLogFile": 19,
+    "EcSubscriptionPublisherName": 20,
+    "EcSubscriptionCredentialsType": 21,
+    "EcSubscriptionCommonUserName": 22,
+    "EcSubscriptionCommonPassword": 23,
+    "EcSubscriptionHostName": 24,
+    "EcSubscriptionReadExistingEvents": 25,
+    "EcSubscriptionDialect": 26,
+}
+EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID = {
+    "EcSubscriptionRunTimeStatusActive": 0,
+    "EcSubscriptionRunTimeStatusLastError": 1,
+    "EcSubscriptionRunTimeStatusLastErrorMessage": 2,
+    "EcSubscriptionRunTimeStatusLastErrorTime": 3,
+    "EcSubscriptionRunTimeStatusNextRetryTime": 4,
+    "EcSubscriptionRunTimeStatusInfoIdEND": 5,
+}
 
 def wecapi_EcClose(jitter):
     """

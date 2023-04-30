@@ -1,3 +1,110 @@
+EVT_CHANNEL_CONFIG_PROPERTY_ID = {
+    "EvtChannelConfigEnabled": 0,
+    "EvtChannelConfigIsolation": 1,
+    "EvtChannelConfigType": 2,
+    "EvtChannelConfigOwningPublisher": 3,
+    "EvtChannelConfigClassicEventlog": 4,
+    "EvtChannelConfigAccess": 5,
+    "EvtChannelLoggingConfigRetention": 6,
+    "EvtChannelLoggingConfigAutoBackup": 7,
+    "EvtChannelLoggingConfigMaxSize": 8,
+    "EvtChannelLoggingConfigLogFilePath": 9,
+    "EvtChannelPublishingConfigLevel": 10,
+    "EvtChannelPublishingConfigKeywords": 11,
+    "EvtChannelPublishingConfigControlGuid": 12,
+    "EvtChannelPublishingConfigBufferSize": 13,
+    "EvtChannelPublishingConfigMinBuffers": 14,
+    "EvtChannelPublishingConfigMaxBuffers": 15,
+    "EvtChannelPublishingConfigLatency": 16,
+    "EvtChannelPublishingConfigClockType": 17,
+    "EvtChannelPublishingConfigSidType": 18,
+    "EvtChannelPublisherList": 19,
+    "EvtChannelPublishingConfigFileMax": 20,
+}
+EVT_PUBLISHER_METADATA_PROPERTY_ID = {
+    "EvtPublisherMetadataPublisherGuid": 0,
+    "EvtPublisherMetadataResourceFilePath": 1,
+    "EvtPublisherMetadataParameterFilePath": 2,
+    "EvtPublisherMetadataMessageFilePath": 3,
+    "EvtPublisherMetadataHelpLink": 4,
+    "EvtPublisherMetadataPublisherMessageID": 5,
+    "EvtPublisherMetadataChannelReferences": 6,
+    "EvtPublisherMetadataChannelReferencePath": 7,
+    "EvtPublisherMetadataChannelReferenceIndex": 8,
+    "EvtPublisherMetadataChannelReferenceID": 9,
+    "EvtPublisherMetadataChannelReferenceFlags": 10,
+    "EvtPublisherMetadataChannelReferenceMessageID": 11,
+    "EvtPublisherMetadataLevels": 12,
+    "EvtPublisherMetadataLevelName": 13,
+    "EvtPublisherMetadataLevelValue": 14,
+    "EvtPublisherMetadataLevelMessageID": 15,
+    "EvtPublisherMetadataTasks": 16,
+    "EvtPublisherMetadataTaskName": 17,
+    "EvtPublisherMetadataTaskEventGuid": 18,
+    "EvtPublisherMetadataTaskValue": 19,
+    "EvtPublisherMetadataTaskMessageID": 20,
+    "EvtPublisherMetadataOpcodes": 21,
+    "EvtPublisherMetadataOpcodeName": 22,
+    "EvtPublisherMetadataOpcodeValue": 23,
+    "EvtPublisherMetadataOpcodeMessageID": 24,
+    "EvtPublisherMetadataKeywords": 25,
+    "EvtPublisherMetadataKeywordName": 26,
+    "EvtPublisherMetadataKeywordValue": 27,
+    "EvtPublisherMetadataKeywordMessageID": 28,
+}
+_EvtFormatMessageFlags_ = {
+    "EvtFormatMessageEvent": 1,
+    "EvtFormatMessageLevel": 2,
+    "EvtFormatMessageTask": 3,
+    "EvtFormatMessageOpcode": 4,
+    "EvtFormatMessageKeyword": 5,
+    "EvtFormatMessageChannel": 6,
+    "EvtFormatMessageProvider": 7,
+    "EvtFormatMessageId": 8,
+    "EvtFormatMessageXml": 9,
+}
+EVT_LOG_PROPERTY_ID = {
+    "EvtLogCreationTime": 0,
+    "EvtLogLastAccessTime": 1,
+    "EvtLogLastWriteTime": 2,
+    "EvtLogFileSize": 3,
+    "EvtLogAttributes": 4,
+    "EvtLogNumberOfLogRecords": 5,
+    "EvtLogOldestRecordNumber": 6,
+    "EvtLogFull": 7,
+}
+_EvtRenderFlags_ = {
+    "EvtRenderEventValues": 0,
+    "EvtRenderEventXml": 1,
+    "EvtRenderBookmark": 2,
+}
+_EvtRenderContextFlags_ = {
+    "EvtRenderContextValues": 0,
+    "EvtRenderContextSystem": 1,
+    "EvtRenderContextUser": 2,
+}
+EVT_QUERY_PROPERTY_ID = {
+    "EvtQueryNames": 0,
+    "EvtQueryStatuses": 1,
+}
+EVT_EVENT_PROPERTY_ID = {
+    "EvtEventQueryIDs": 0,
+    "EvtEventPath": 1,
+}
+EVT_LOGIN_CLASS = {
+    "EvtRpcLogin": 1,
+}
+EVT_EVENT_METADATA_PROPERTY_ID = {
+    "EventMetadataEventID": 0,
+    "EventMetadataEventVersion": 1,
+    "EventMetadataEventChannel": 2,
+    "EventMetadataEventLevel": 3,
+    "EventMetadataEventOpcode": 4,
+    "EventMetadataEventTask": 5,
+    "EventMetadataEventKeyword": 6,
+    "EventMetadataEventMessageID": 7,
+    "EventMetadataEventTemplate": 8,
+}
 
 def wevtapi_EvtOpenSession(jitter):
     """

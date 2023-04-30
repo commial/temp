@@ -1,3 +1,131 @@
+WCT_OBJECT_TYPE = {
+    "WctCriticalSectionType": 1,
+    "WctSendMessageType": 2,
+    "WctMutexType": 3,
+    "WctAlpcType": 4,
+    "WctComType": 5,
+    "WctThreadWaitType": 6,
+    "WctProcessWaitType": 7,
+    "WctThreadType": 8,
+    "WctComActivationType": 9,
+    "WctUnknownType": 10,
+    "WctSocketIoType": 11,
+    "WctSmbIoType": 12,
+}
+WCT_OBJECT_STATUS = {
+    "WctStatusNoAccess": 1,
+    "WctStatusRunning": 2,
+    "WctStatusBlocked": 3,
+    "WctStatusPidOnly": 4,
+    "WctStatusPidOnlyRpcss": 5,
+    "WctStatusOwned": 6,
+    "WctStatusNotOwned": 7,
+    "WctStatusAbandoned": 8,
+    "WctStatusUnknown": 9,
+    "WctStatusError": 10,
+}
+SC_ENUM_TYPE = {
+    "SC_ENUM_PROCESS_INFO": 0,
+}
+TRACE_INFO_CLASS = {
+    "TraceGuidQueryList": 0,
+    "TraceGuidQueryInfo": 1,
+    "TraceGuidQueryProcess": 2,
+    "TraceStackTracingInfo": 3,
+    "TraceSystemTraceEnableFlagsInfo": 4,
+    "TraceSampledProfileIntervalInfo": 5,
+    "TraceProfileSourceConfigInfo": 6,
+    "TraceProfileSourceListInfo": 7,
+    "TracePmcEventListInfo": 8,
+    "TracePmcCounterListInfo": 9,
+}
+PROG_INVOKE_SETTING = {
+    "ProgressInvokeNever": 1,
+    "ProgressInvokeEveryObject": 2,
+    "ProgressInvokeOnError": 3,
+    "ProgressCancelOperation": 4,
+    "ProgressRetryOperation": 5,
+    "ProgressInvokePrePostError": 6,
+}
+TRUSTED_INFORMATION_CLASS = {
+    "TrustedDomainNameInformation": 1,
+    "TrustedControllersInformation": 2,
+    "TrustedPosixOffsetInformation": 3,
+    "TrustedPasswordInformation": 4,
+    "TrustedDomainInformationBasic": 5,
+    "TrustedDomainInformationEx": 6,
+    "TrustedDomainAuthInformation": 7,
+    "TrustedDomainFullInformation": 8,
+    "TrustedDomainAuthInformationInternal": 9,
+    "TrustedDomainFullInformationInternal": 10,
+    "TrustedDomainInformationEx2Internal": 11,
+    "TrustedDomainFullInformation2Internal": 12,
+    "TrustedDomainSupportedEncryptionTypes": 13,
+}
+_SaferScopeId_ = {
+    "SAFER_SCOPEID_MACHINE": 1,
+    "SAFER_SCOPEID_USER": 2,
+}
+_LogonType_ = {
+    "LOGON32_LOGON_INTERACTIVE": 2,
+    "LOGON32_LOGON_NETWORK": 3,
+    "LOGON32_LOGON_BATCH": 4,
+    "LOGON32_LOGON_SERVICE": 5,
+    "LOGON32_LOGON_UNLOCK": 7,
+    "LOGON32_LOGON_NETWORK_CLEARTEXT": 8,
+    "LOGON32_LOGON_NEW_CREDENTIALS": 9,
+}
+_LogonProvider_ = {
+    "LOGON32_PROVIDER_DEFAULT": 0,
+    "LOGON32_PROVIDER_WINNT35": 1,
+    "LOGON32_PROVIDER_WINNT40": 2,
+    "LOGON32_PROVIDER_WINNT50": 3,
+    "LOGON32_PROVIDER_VIRTUAL": 4,
+}
+_CredType_ = {
+    "CRED_TYPE_GENERIC": 1,
+    "CRED_TYPE_DOMAIN_PASSWORD": 2,
+    "CRED_TYPE_DOMAIN_CERTIFICATE": 3,
+    "CRED_TYPE_DOMAIN_VISIBLE_PASSWORD": 4,
+    "CRED_TYPE_GENERIC_CERTIFICATE": 5,
+    "CRED_TYPE_DOMAIN_EXTENDED": 6,
+}
+POLICY_INFORMATION_CLASS = {
+    "PolicyAuditLogInformation": 1,
+    "PolicyAuditEventsInformation": 2,
+    "PolicyPrimaryDomainInformation": 3,
+    "PolicyPdAccountInformation": 4,
+    "PolicyAccountDomainInformation": 5,
+    "PolicyLsaServerRoleInformation": 6,
+    "PolicyReplicaSourceInformation": 7,
+    "PolicyDefaultQuotaInformation": 8,
+    "PolicyModificationInformation": 9,
+    "PolicyAuditFullSetInformation": 10,
+    "PolicyAuditFullQueryInformation": 11,
+    "PolicyDnsDomainInformation": 12,
+    "PolicyDnsDomainInformationInt": 13,
+    "PolicyLocalAccountDomainInformation": 14,
+}
+POLICY_DOMAIN_INFORMATION_CLASS = {
+    "PolicyDomainQualityOfServiceInformation": 1,
+    "PolicyDomainEfsInformation": 2,
+    "PolicyDomainKerberosTicketInformation": 3,
+}
+INSTALLSPECTYPE = {
+    "APPNAME": 1,
+    "FILEEXT": 2,
+    "PROGID": 3,
+    "COMCLASS": 4,
+}
+_LsaAuthType_ = {
+    "TRUST_AUTH_TYPE_NONE": 0,
+    "TRUST_AUTH_TYPE_NT4OWF": 1,
+    "TRUST_AUTH_TYPE_CLEAR": 2,
+    "TRUST_AUTH_TYPE_VERSION": 3,
+}
+EVENT_INFO_CLASS = {
+    "EventProviderBinaryTrackInfo": 0,
+}
 
 def advapi32_RegCloseKey(jitter):
     """

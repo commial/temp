@@ -1,3 +1,81 @@
+_DeviceCapability_ = {
+    "DC_FIELDS": 1,
+    "DC_PAPERS": 2,
+    "DC_PAPERSIZE": 3,
+    "DC_MINEXTENT": 4,
+    "DC_MAXEXTENT": 5,
+    "DC_BINS": 6,
+    "DC_DUPLEX": 7,
+    "DC_SIZE": 8,
+    "DC_EXTRA": 9,
+    "DC_VERSION": 10,
+    "DC_DRIVER": 11,
+    "DC_BINNAMES": 12,
+    "DC_ENUMRESOLUTIONS": 13,
+    "DC_FILEDEPENDENCIES": 14,
+    "DC_TRUETYPE": 15,
+    "DC_PAPERNAMES": 16,
+    "DC_ORIENTATION": 17,
+    "DC_COPIES": 18,
+    "DC_BINADJUST": 19,
+    "DC_EMF_COMPLIANT": 20,
+    "DC_DATATYPE_PRODUCED": 21,
+    "DC_COLLATE": 22,
+    "DC_MANUFACTURER": 23,
+    "DC_MODEL": 24,
+    "DC_PERSONALITY": 25,
+    "DC_PRINTRATE": 26,
+    "DC_PRINTRATEUNIT": 27,
+    "DC_PRINTERMEM": 28,
+    "DC_MEDIAREADY": 29,
+    "DC_STAPLE": 30,
+    "DC_PRINTRATEPPM": 31,
+    "DC_COLORDEVICE": 32,
+    "DC_NUP": 33,
+    "DC_MEDIATYPENAMES": 34,
+    "DC_MEDIATYPES": 35,
+}
+_JobControl_ = {
+    "JOB_CONTROL_PAUSE": 1,
+    "JOB_CONTROL_RESUME": 2,
+    "JOB_CONTROL_CANCEL": 3,
+    "JOB_CONTROL_RESTART": 4,
+    "JOB_CONTROL_DELETE": 5,
+    "JOB_CONTROL_SENT_TO_PRINTER": 6,
+    "JOB_CONTROL_LAST_PAGE_EJECTED": 7,
+    "JOB_CONTROL_RETAIN": 8,
+    "JOB_CONTROL_RELEASE": 9,
+}
+_PrinterControl_ = {
+    "PRINTER_CONTROL_PAUSE": 1,
+    "PRINTER_CONTROL_RESUME": 2,
+    "PRINTER_CONTROL_PURGE": 3,
+    "PRINTER_CONTROL_SET_STATUS": 4,
+}
+EPrintXPSJobOperation = {
+    "kJobProduction": 1,
+    "kJobConsumption": 2,
+}
+EPrintXPSJobProgress = {
+    "kAddingDocumentSequence": 0,
+    "kDocumentSequenceAdded": 1,
+    "kAddingFixedDocument": 2,
+    "kFixedDocumentAdded": 3,
+    "kAddingFixedPage": 4,
+    "kFixedPageAdded": 5,
+    "kResourceAdded": 6,
+    "kFontAdded": 7,
+    "kImageAdded": 8,
+    "kXpsDocumentCommitted": 9,
+}
+PrintAsyncNotifyUserFilter = {
+    "kPerUser": 0,
+    "kAllUsers": 1,
+}
+PrintAsyncNotifyConversationStyle = {
+    "kBiDirectional": 0,
+    "kUniDirectional": 1,
+}
 
 def winspool_AddJob(jitter, get_str, set_str):
     """

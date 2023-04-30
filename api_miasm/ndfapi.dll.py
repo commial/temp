@@ -1,3 +1,20 @@
+ATTRIBUTE_TYPE = {
+    "AT_INVALID": 0,
+    "AT_BOOLEAN": 1,
+    "AT_INT8": 2,
+    "AT_UINT8": 3,
+    "AT_INT16": 4,
+    "AT_UINT16": 5,
+    "AT_INT32": 6,
+    "AT_UINT32": 7,
+    "AT_INT64": 8,
+    "AT_UINT64": 9,
+    "AT_STRING": 10,
+    "AT_GUID": 11,
+    "AT_LIFE_TIME": 12,
+    "AT_SOCKADDR": 13,
+    "AT_OCTET_STRING": 14,
+}
 
 def ndfapi_NdfCloseIncident(jitter):
     """

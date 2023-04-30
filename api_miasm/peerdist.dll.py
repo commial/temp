@@ -1,3 +1,11 @@
+PEERDIST_STATUS = {
+    "PEERDIST_STATUS_DISABLED": 0,
+    "PEERDIST_STATUS_UNAVAILABLE": 1,
+    "PEERDIST_STATUS_AVAILABLE": 2,
+}
+PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS = {
+    "PeerDistClientBasicInfo": 0,
+}
 
 def peerdist_PeerDistStartup(jitter):
     """
