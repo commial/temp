@@ -25695,7 +25695,7 @@ APPX_FOOTPRINT_FILE_TYPE_INV = {
 HMODULE = Void()
 HMODULE_PTR = Ptr("<I", HMODULE())
 _HMODULE-PVOID_ = HMODULE
-_HMODULE-PVOID_PTR_ = Ptr("<I", [HMODULE-PVOID]())
+_HMODULE-PVOID_PTR_ = Ptr("<I", _HMODULE-PVOID_())
 void = Void()
 VOID = void
 LPVOID = Ptr("<I", VOID())
@@ -25704,47 +25704,47 @@ LPCVOID_PTR = Ptr("<I", LPCVOID())
 PVOID = LPVOID
 PVOID_PTR = Ptr("<I", PVOID())
 VOID_PTR = LPVOID
-VOID_PTR_PTR = Ptr("<I", VOID*())
+VOID_PTR_PTR = Ptr("<I", VOID_PTR())
 PCVOID = LPVOID
 LPVOID_PTR = Ptr("<I", LPVOID())
-const VOID_PTR = VOID*
-const PVOID = PVOID
-CONST VOID_PTR = VOID*
+const_VOID_PTR = VOID_PTR
+const_PVOID = PVOID
+CONST_VOID_PTR = VOID_PTR
 void_PTR = Ptr("<I", void())
-const void_PTR = void*
-const void_PTR_PTR = Ptr("<I", void*())
-void_PTR_PTR = Ptr("<I", void*())
-CONST void_PTR = void*
-PVOID __ = Ptr("<I", PVOID())
+const_void_PTR = void_PTR
+const_void_PTR_PTR = Ptr("<I", void_PTR())
+void_PTR_PTR = Ptr("<I", void_PTR())
+CONST_void_PTR = void_PTR
+PVOID___ = Ptr("<I", PVOID())
 _LPVOID|char_PTR_ = LPVOID
 PVOID64 = Num("<Q")
 BYTE = Num("<B")
-CONST BYTE_PTR = Ptr("<I", BYTE())
+CONST_BYTE_PTR = Ptr("<I", BYTE())
 LPBYTE = Ptr("<I", BYTE())
 LPBYTE_PTR = Ptr("<I", LPBYTE())
 BYTE_PTR = LPBYTE
-BYTE_PTR_PTR = Ptr("<I", BYTE*())
+BYTE_PTR_PTR = Ptr("<I", BYTE_PTR())
 PBYTE = LPBYTE
-const PBYTE = PBYTE
-CONST PBYTE = PBYTE
+const_PBYTE = PBYTE
+CONST_PBYTE = PBYTE
 PBYTE_PTR = Ptr("<I", PBYTE())
-const BYTE_PTR = BYTE*
-const BYTE_PTR_PTR = Ptr("<I", BYTE*())
-const BYTE_PTR __ = Ptr("<I", BYTE*())
+const_BYTE_PTR = BYTE_PTR
+const_BYTE_PTR_PTR = Ptr("<I", BYTE_PTR())
+const_BYTE_PTR___ = Ptr("<I", BYTE_PTR())
 LPCBYTE = LPBYTE
-const LPBYTE = LPBYTE
+const_LPBYTE = LPBYTE
 byte = BYTE
 byte_PTR = Ptr("<I", byte())
-const byte_PTR = Ptr("<I", byte())
-byte_PTR_PTR = Ptr("<I", byte*())
+const_byte_PTR = Ptr("<I", byte())
+byte_PTR_PTR = Ptr("<I", byte_PTR())
 UCHAR = Num("<B")
 UCHAR_PTR = Ptr("<I", UCHAR())
-UCHAR_PTR_PTR = Ptr("<I", UCHAR*())
+UCHAR_PTR_PTR = Ptr("<I", UCHAR_PTR())
 PUCHAR = Ptr("<I", UCHAR())
 PUCHAR_PTR = Ptr("<I", PUCHAR())
-unsigned char = UCHAR
-unsigned char_PTR = Ptr("<I", unsigned char())
-unsigned char_PTR_PTR = Ptr("<I", unsigned char*())
+unsigned_char = UCHAR
+unsigned_char_PTR = Ptr("<I", unsigned_char())
+unsigned_char_PTR_PTR = Ptr("<I", unsigned_char_PTR())
 UINT8 = Num("<B")
 PUINT8 = Ptr("<I", UINT8())
 INT8 = Num("<b")
@@ -25754,15 +25754,15 @@ UINT16_PTR = Ptr("<I", UINT16())
 WORD = UINT16
 WORD_PTR = Ptr("<I", WORD())
 PWORD = Ptr("<I", WORD())
-const WORD_PTR = WORD*
-LPWORD = WORD*
+const_WORD_PTR = WORD_PTR
+LPWORD = WORD_PTR
 USHORT = UINT16
 PUSHORT = Ptr("<I", USHORT())
 USHORT_PTR = PUSHORT
-const USHORT_PTR = PUSHORT
-unsigned short = USHORT
-unsigned short_PTR = Ptr("<I", unsigned short())
-unsigned short_PTR_PTR = Ptr("<I", unsigned short*())
+const_USHORT_PTR = PUSHORT
+unsigned_short = USHORT
+unsigned_short_PTR = Ptr("<I", unsigned_short())
+unsigned_short_PTR_PTR = Ptr("<I", unsigned_short_PTR())
 u_short = USHORT
 u_short_PTR = PUSHORT
 SHORT = Num("<h")
@@ -25772,11 +25772,11 @@ UINT_PTR_PTR = Ptr("<I", UINT_PTR())
 PUINT_PTR = Ptr("<I", UINT_PTR())
 ULONG_PTR = UINT_PTR
 ULONG_PTR_PTR = Ptr("<I", ULONG_PTR())
-PULONG_PTR = ULONG_PTR*
-const ULONG_PTR_PTR = ULONG_PTR*
+PULONG_PTR = ULONG_PTR_PTR
+const_ULONG_PTR_PTR = ULONG_PTR_PTR
 DWORD_PTR = ULONG_PTR
 DWORD_PTR_PTR = Ptr("<I", DWORD_PTR())
-PDWORD_PTR = DWORD_PTR*
+PDWORD_PTR = DWORD_PTR_PTR
 LONG_PTR = INT_PTR
 LONG_PTR_PTR = Ptr("<I", LONG_PTR())
 BOOL = Num("<i")
@@ -25785,8 +25785,8 @@ LPBOOL = PBOOL
 bool = BOOL
 bool_PTR = Ptr("<I", bool())
 BOOL_PTR = Ptr("<I", BOOL())
-const BOOL = BOOL
-CONST BOOL_PTR = BOOL*
+const_BOOL = BOOL
+CONST_BOOL_PTR = BOOL_PTR
 BOOLAPI = BOOL
 _BOOL_NUMBER_ = Num("<i")
 BOOLEAN = Num("<b")
@@ -25795,23 +25795,23 @@ PBOOLEAN = Ptr("<I", BOOLEAN())
 UINT32 = Num("<I")
 UINT32_PTR = Ptr("<I", UINT32())
 PUINT32 = Ptr("<I", UINT32())
-unsigned long = UINT32
-unsigned long_PTR = Ptr("<I", unsigned long())
-const unsigned long = unsigned long
+unsigned_long = UINT32
+unsigned_long_PTR = Ptr("<I", unsigned_long())
+const_unsigned_long = unsigned_long
 u_long = UINT32
 u_long_PTR = Ptr("<I", u_long())
 ULONG = UINT32
 ULONG_PTR = Ptr("<I", ULONG())
-ULONG_PTR_PTR = Ptr("<I", ULONG*())
+ULONG_PTR_PTR = Ptr("<I", ULONG_PTR())
 PULONG = Ptr("<I", ULONG())
 PULONG_PTR = Ptr("<I", PULONG())
 Ulong = UINT32
 UINT = UINT32
 PUINT = Ptr("<I", UINT())
 UINT_PTR = PUINT
-const UINT_PTR = UINT*
-unsigned int = UINT
-unsigned int_PTR = PUINT
+const_UINT_PTR = UINT_PTR
+unsigned_int = UINT
+unsigned_int_PTR = PUINT
 LPUINT = PUINT
 ULONG32 = ULONG
 INT32 = Num("<i")
@@ -25820,26 +25820,26 @@ long = INT32
 long_PTR = Ptr("<I", long())
 LONG = long
 LONG_PTR = Ptr("<I", LONG())
-PLONG = LONG*
-LPLONG = LONG*
-LONG volatile_PTR = LONG*
+PLONG = LONG_PTR
+LPLONG = LONG_PTR
+LONG_volatile_PTR = LONG_PTR
 int = INT32
 INT = int
 int_PTR = Ptr("<I", int())
-CONST int_PTR = int*
-const int_PTR = int*
+CONST_int_PTR = int_PTR
+const_int_PTR = int_PTR
 INT_PTR = Ptr("<I", INT())
-const INT_PTR = INT*
+const_INT_PTR = INT_PTR
 PINT = Ptr("<I", INT())
 LPINT = PINT
-const LPINT = LPINT
-signed int = int
+const_LPINT = LPINT
+signed_int = int
 __int32 = INT32
 INT64 = Num("<q")
 LONGLONG = INT64
 LONGLONG_PTR = Ptr("<I", LONGLONG())
-LONGLONG_PTR_PTR = Ptr("<I", LONGLONG*())
-LONGLONG volatile_PTR = LONGLONG*
+LONGLONG_PTR_PTR = Ptr("<I", LONGLONG_PTR())
+LONGLONG_volatile_PTR = LONGLONG_PTR
 PLONGLONG = Ptr("<I", LONGLONG())
 LONG64 = INT64
 LONG64_PTR = Ptr("<I", LONG64())
@@ -25860,17 +25860,17 @@ PDWORD64 = Ptr("<I", DWORD64())
 DWORDLONG = ULONGLONG
 DWORDLONG_PTR = Ptr("<I", DWORDLONG())
 PDWORDLONG = Ptr("<I", DWORDLONG())
-unsigned __int64 = UINT64
-unsigned __int64_PTR = Ptr("<I", unsigned __int64())
+unsigned___int64 = UINT64
+unsigned___int64_PTR = Ptr("<I", unsigned___int64())
 DWORD = Num("<I")
 PDWORD = Ptr("<I", DWORD())
 DWORD_PTR = PDWORD
 LPDWORD = PDWORD
-const DWORD_PTR = PDWORD
+const_DWORD_PTR = PDWORD
 LPDWORD_PTR = Ptr("<I", LPDWORD())
-CONST DWORD_PTR = DWORD*
-DWORD const_PTR = DWORD*
-DWORD __ = Ptr("<I", DWORD())
+CONST_DWORD_PTR = DWORD_PTR
+DWORD_const_PTR = DWORD_PTR
+DWORD___ = Ptr("<I", DWORD())
 CHAR = Num("<b")
 LPSTR = Ptr("<I", CHAR())
 LPSTR_PTR = Ptr("<I", LPSTR())
@@ -25881,15 +25881,15 @@ PCSTR_PTR = Ptr("<I", PCSTR())
 PSTR = LPSTR
 PCHAR = LPSTR
 PCHAR_PTR = Ptr("<I", PCHAR())
-PCHAR_PTR_PTR = Ptr("<I", PCHAR*())
+PCHAR_PTR_PTR = Ptr("<I", PCHAR_PTR())
 CHAR_PTR = Ptr("<I", CHAR())
 char = CHAR
 char_PTR = Ptr("<I", char())
-char_PTR_PTR = Ptr("<I", char*())
-CHAR_PTR_PTR = Ptr("<I", CHAR*())
-const char_PTR = char*
-const char_PTR_PTR = Ptr("<I", const char*())
-const PCHAR = PCHAR
+char_PTR_PTR = Ptr("<I", char_PTR())
+CHAR_PTR_PTR = Ptr("<I", CHAR_PTR())
+const_char_PTR = char_PTR
+const_char_PTR_PTR = Ptr("<I", const_char_PTR())
+const_PCHAR = PCHAR
 LPCH = LPSTR
 WCHAR = Num("<h")
 LPWSTR = Ptr("<I", WCHAR())
@@ -25897,36 +25897,36 @@ PWSTR = LPWSTR
 PCWSTR = PWSTR
 LPCWSTR = PWSTR
 LPCWSTR_PTR = Ptr("<I", LPCWSTR())
-LPCWSTR_PTR_PTR = Ptr("<I", LPCWSTR*())
-const LPCWSTR_PTR = Ptr("<I", LPCWSTR())
-const WCHAR_PTR = PWSTR
-CONST WCHAR_PTR = PWSTR
+LPCWSTR_PTR_PTR = Ptr("<I", LPCWSTR_PTR())
+const_LPCWSTR_PTR = Ptr("<I", LPCWSTR())
+const_WCHAR_PTR = PWSTR
+CONST_WCHAR_PTR = PWSTR
 WCHAR_PTR = PWSTR
-const PWSTR = PWSTR
+const_PWSTR = PWSTR
 PWCHAR = PWSTR
 PWCHAR_PTR = Ptr("<I", PWCHAR())
-WCHAR_PTR_PTR = Ptr("<I", WCHAR*())
-PWCHAR_PTR_PTR = Ptr("<I", PWCHAR*())
+WCHAR_PTR_PTR = Ptr("<I", WCHAR_PTR())
+PWCHAR_PTR_PTR = Ptr("<I", PWCHAR_PTR())
 LPWSTR_PTR = Ptr("<I", LPWSTR())
-LPWSTR_PTR_PTR = Ptr("<I", LPWSTR*())
+LPWSTR_PTR_PTR = Ptr("<I", LPWSTR_PTR())
 PWSTR_PTR = Ptr("<I", PWSTR())
-PWSTR_PTR_PTR = Ptr("<I", PWSTR*())
-PCWSTR_PTR = PWSTR*
-WCHAR const_PTR = WCHAR*
+PWSTR_PTR_PTR = Ptr("<I", PWSTR_PTR())
+PCWSTR_PTR = PWSTR_PTR
+WCHAR_const_PTR = WCHAR_PTR
 wchar_t = WCHAR
 wchar_t_PTR = Ptr("<I", wchar_t())
-wchar_t_PTR_PTR = Ptr("<I", wchar_t*())
-const wchar_t_PTR = Ptr("<I", wchar_t())
-const wchar_t_PTR_PTR = Ptr("<I", const wchar_t*())
-WCHAR __ = LPWSTR
-LPCWSTR __ = Ptr("<I", LPCWSTR())
+wchar_t_PTR_PTR = Ptr("<I", wchar_t_PTR())
+const_wchar_t_PTR = Ptr("<I", wchar_t())
+const_wchar_t_PTR_PTR = Ptr("<I", const_wchar_t_PTR())
+WCHAR___ = LPWSTR
+LPCWSTR___ = Ptr("<I", LPCWSTR())
 PZZWSTR = LPWSTR
 PCZZWSTR = PZZWSTR
 TCHAR = Num("<h")
 LPTSTR = Ptr("<I", TCHAR())
 LPCTSTR = LPTSTR
 PTSTR = LPTSTR
-const PCTSTR = LPTSTR
+const_PCTSTR = LPTSTR
 tchar_PTR = LPTSTR
 PCTSTR = LPTSTR
 TCHAR_PTR = LPTSTR
@@ -25934,30 +25934,30 @@ PTCHAR = LPTSTR
 LPTSTR_PTR = Ptr("<I", LPTSTR())
 LPCTSTR_PTR = Ptr("<I", LPCTSTR())
 PTSTR_PTR = Ptr("<I", PTSTR())
-TCHAR_PTR_PTR = Ptr("<I", TCHAR*())
-PTSTR_PTR_PTR = Ptr("<I", PTSTR*())
-LPTSTR_PTR_PTR = Ptr("<I", LPTSTR*())
+TCHAR_PTR_PTR = Ptr("<I", TCHAR_PTR())
+PTSTR_PTR_PTR = Ptr("<I", PTSTR_PTR())
+LPTSTR_PTR_PTR = Ptr("<I", LPTSTR_PTR())
 PCTSTR_PTR = Ptr("<I", PCTSTR())
-PCTSTR_PTR_PTR = Ptr("<I", PCTSTR*())
+PCTSTR_PTR_PTR = Ptr("<I", PCTSTR_PTR())
 LPTCH = LPTSTR
 LPCTCH = LPTSTR
 size_t = INT_PTR
 size_t_PTR = Ptr("<I", size_t())
 SIZE_T = size_t
 SIZE_T_PTR = Ptr("<I", SIZE_T())
-PSIZE_T = SIZE_T*
+PSIZE_T = SIZE_T_PTR
 time_t = INT64
 time_t_PTR = Ptr("<I", time_t())
-const time_t_PTR = Ptr("<I", time_t())
+const_time_t_PTR = Ptr("<I", time_t())
 float = Num("<f")
 float_PTR = Ptr("<I", float())
 FLOAT = float
 FLOAT_PTR = Ptr("<I", FLOAT())
 PFLOAT = Ptr("<I", FLOAT())
-CONST float_PTR = float*
-CONST FLOAT_PTR = Ptr("<I", FLOAT())
-const float = float
-const float_PTR = Ptr("<I", const float())
+CONST_float_PTR = float_PTR
+CONST_FLOAT_PTR = Ptr("<I", FLOAT())
+const_float = float
+const_float_PTR = Ptr("<I", const_float())
 FLOAT32 = FLOAT
 FLOAT32_PTR = Ptr("<I", FLOAT32())
 double = Num("<d")
@@ -25966,52 +25966,52 @@ DOUBLE = double
 DOUBLE_PTR = Ptr("<I", DOUBLE())
 va_list = LPVOID
 va_list_PTR = Ptr("<I", va_list())
-CHAR _1_ = Array(CHAR, 1)
-CHAR _14_ = Array(CHAR, 14)
-CHAR _32_ = Array(CHAR, 32)
-CHAR _256_ = Array(CHAR, 256)
-CHAR _MAX_PATH_ = Array(CHAR, 260)
-WCHAR _1_ = Array(WCHAR, 1)
-WCHAR _14_ = Array(WCHAR, 14)
-WCHAR _128_ = Array(WCHAR, 128)
-WCHAR _256_ = Array(WCHAR, 256)
-WCHAR _260_ = Array(WCHAR, 260)
-WCHAR _MAX_PATH_ = Array(WCHAR, 260)
-TCHAR _ANYSIZE_ARRAY_ = Array(TCHAR, 1)
-TCHAR _14_ = Array(TCHAR, 14)
-TCHAR _32_ = Array(TCHAR, 32)
-TCHAR _64_ = Array(TCHAR, 64)
-TCHAR _128_ = Array(TCHAR, 128)
-TCHAR _256_ = Array(TCHAR, 256)
-TCHAR _MAX_PATH_ = Array(TCHAR, 260)
-TCHAR _MAX_PATH + 1_ = Array(TCHAR, 261)
-UCHAR _1_ = Array(UCHAR, 1)
-UCHAR _2_ = Array(UCHAR, 2)
-UCHAR _3_ = Array(UCHAR, 3)
-UCHAR _16_ = Array(UCHAR, 16)
-UCHAR _24_ = Array(UCHAR, 24)
-DWORD _1_ = Array(DWORD, 1)
-DWORD _2_ = Array(DWORD, 2)
-DWORD _3_ = Array(DWORD, 3)
-DWORD _4_ = Array(DWORD, 4)
-DWORD _5_ = Array(DWORD, 5)
-BYTE _1_ = Array(BYTE, 1)
-BYTE _ANYSIZE_ARRAY_ = Array(BYTE, 1)
-BYTE _2_ = Array(BYTE, 2)
-BYTE _6_ = Array(BYTE, 6)
-BYTE _8_ = Array(BYTE, 8)
-BYTE _16_ = Array(BYTE, 16)
-ULONG _1_ = Array(ULONG, 1)
-ULONG _2_ = Array(ULONG, 2)
-ULONG _4_ = Array(ULONG, 4)
-float _4_ = Array(float, 4)
-FLOAT _4_ = Array(FLOAT, 4)
-const FLOAT _4_ = Array(FLOAT, 4)
-ULONG64 _2_ = Array(ULONG64, 2)
-ULONG64 _4_ = Array(ULONG64, 4)
-USHORT _8_ = Array(USHORT, 8)
-WORD _256_ = Array(WORD, 256)
-char _260_ = Array(char, 260)
+CHAR__1_ = Array(CHAR, 1)
+CHAR__14_ = Array(CHAR, 14)
+CHAR__32_ = Array(CHAR, 32)
+CHAR__256_ = Array(CHAR, 256)
+CHAR__MAX_PATH_ = Array(CHAR, 260)
+WCHAR__1_ = Array(WCHAR, 1)
+WCHAR__14_ = Array(WCHAR, 14)
+WCHAR__128_ = Array(WCHAR, 128)
+WCHAR__256_ = Array(WCHAR, 256)
+WCHAR__260_ = Array(WCHAR, 260)
+WCHAR__MAX_PATH_ = Array(WCHAR, 260)
+TCHAR__ANYSIZE_ARRAY_ = Array(TCHAR, 1)
+TCHAR__14_ = Array(TCHAR, 14)
+TCHAR__32_ = Array(TCHAR, 32)
+TCHAR__64_ = Array(TCHAR, 64)
+TCHAR__128_ = Array(TCHAR, 128)
+TCHAR__256_ = Array(TCHAR, 256)
+TCHAR__MAX_PATH_ = Array(TCHAR, 260)
+TCHAR__MAX_PATH_+_1_ = Array(TCHAR, 261)
+UCHAR__1_ = Array(UCHAR, 1)
+UCHAR__2_ = Array(UCHAR, 2)
+UCHAR__3_ = Array(UCHAR, 3)
+UCHAR__16_ = Array(UCHAR, 16)
+UCHAR__24_ = Array(UCHAR, 24)
+DWORD__1_ = Array(DWORD, 1)
+DWORD__2_ = Array(DWORD, 2)
+DWORD__3_ = Array(DWORD, 3)
+DWORD__4_ = Array(DWORD, 4)
+DWORD__5_ = Array(DWORD, 5)
+BYTE__1_ = Array(BYTE, 1)
+BYTE__ANYSIZE_ARRAY_ = Array(BYTE, 1)
+BYTE__2_ = Array(BYTE, 2)
+BYTE__6_ = Array(BYTE, 6)
+BYTE__8_ = Array(BYTE, 8)
+BYTE__16_ = Array(BYTE, 16)
+ULONG__1_ = Array(ULONG, 1)
+ULONG__2_ = Array(ULONG, 2)
+ULONG__4_ = Array(ULONG, 4)
+float__4_ = Array(float, 4)
+FLOAT__4_ = Array(FLOAT, 4)
+const_FLOAT__4_ = Array(FLOAT, 4)
+ULONG64__2_ = Array(ULONG64, 2)
+ULONG64__4_ = Array(ULONG64, 4)
+USHORT__8_ = Array(USHORT, 8)
+WORD__256_ = Array(WORD, 256)
+char__260_ = Array(char, 260)
 INT_PTR = Num("<i")
 UINT_PTR = Num("<I")
 NTSTATUS = ULONG
@@ -26021,7 +26021,7 @@ HRESULT_PTR = Ptr("<I", HRESULT())
 _ExceptionCode_ = DWORD
 _CommDlgErrorCode_ = DWORD
 _ERROR_CODE_ = DWORD
-_ERROR_CODE_ULONG_ = [ERROR_CODE]
+_ERROR_CODE_ULONG_ = _ERROR_CODE_
 Stack = Union([
     ("uintp", UINT_PTR),
     ("intp", INT_PTR),
@@ -26043,8 +26043,8 @@ LPARAM = LONG_PTR
 LPARAM_PTR = Ptr("<I", LPARAM())
 LRESULT = LONG_PTR
 LRESULT_PTR = Ptr("<I", LRESULT())
-BSTR = WCHAR*
-const BSTR = BSTR
+BSTR = WCHAR_PTR
+const_BSTR = BSTR
 BSTR_PTR = Ptr("<I", BSTR())
 HDEVINFO = PVOID
 PIO_APC_ROUTINE = LPVOID
@@ -26052,7 +26052,7 @@ FARPROC = LPVOID
 SID_PTR = LPVOID
 PSID = PVOID
 PSID_PTR = Ptr("<I", PSID())
-PSID_PTR_PTR = Ptr("<I", PSID*())
+PSID_PTR_PTR = Ptr("<I", PSID_PTR())
 PVECTORED_EXCEPTION_HANDLER = LPVOID
 ATOM = WORD
 PSLIST_ENTRY = LPVOID
@@ -26062,21 +26062,21 @@ LPTHREAD_START_ROUTINE = LPVOID
 STDAPI = HRESULT
 SCODE = HRESULT
 SCODE_PTR = Ptr("<I", SCODE())
-WCHAR _32_ = Array(WCHAR, 32)
-CHAR _OFS_MAXPATHNAME_ = Array(CHAR, 128)
-TCHAR _CCHDEVICENAME_ = Array(TCHAR, 32)
-TCHAR _CCHFORMNAME_ = Array(TCHAR, 32)
-TCHAR _RAS_MaxEntryName + 1_ = Array(TCHAR, 257)
-ULONG_PTR _EXCEPTION_MAXIMUM_PARAMETERS_ = Array(ULONG_PTR, 15)
-LPADRBOOK = IAddrBook*
+WCHAR__32_ = Array(WCHAR, 32)
+CHAR__OFS_MAXPATHNAME_ = Array(CHAR, 128)
+TCHAR__CCHDEVICENAME_ = Array(TCHAR, 32)
+TCHAR__CCHFORMNAME_ = Array(TCHAR, 32)
+TCHAR__RAS_MaxEntryName_+_1_ = Array(TCHAR, 257)
+ULONG_PTR__EXCEPTION_MAXIMUM_PARAMETERS_ = Array(ULONG_PTR, 15)
+LPADRBOOK = IAddrBook_PTR
 LPADRBOOK_PTR = Ptr("<I", LPADRBOOK())
 ALLOCATEBUFFER_PTR = LPVOID
 FREEBUFFER_PTR = LPVOID
 WLAN_REASON_CODE = DWORD
 PWLAN_REASON_CODE = Ptr("<I", WLAN_REASON_CODE())
-LPUNKNOWN = IUnknown*
+LPUNKNOWN = IUnknown_PTR
 LPUNKNOWN_PTR = Ptr("<I", LPUNKNOWN())
-const IUnknown_PTR = IUnknown*
+const_IUnknown_PTR = IUnknown_PTR
 LANGID = WORD
 LANGID_PTR = Ptr("<I", LANGID())
 LCID = DWORD
@@ -26093,7 +26093,7 @@ PLIST_ENTRY = Ptr("<I", LIST_ENTRY())
 PSLIST_HEADER = LPVOID
 PCONTEXT = LPVOID
 PCONTEXT_PTR = Ptr("<I", PCONTEXT())
-const CONTEXT_PTR = PCONTEXT
+const_CONTEXT_PTR = PCONTEXT
 
 class POINT(MemStruct):
     fields = [
@@ -26101,11 +26101,11 @@ class POINT(MemStruct):
         ("y", LONG()),
     ]
 
-const POINT = POINT
+const_POINT = POINT
 POINT_PTR = Ptr("<I", POINT())
-const POINT_PTR = POINT*
-CONST POINT_PTR = POINT*
-LPPOINT = POINT*
+const_POINT_PTR = POINT_PTR
+CONST_POINT_PTR = POINT_PTR
+LPPOINT = POINT_PTR
 POINTL = POINT
 POINTL_PTR = Ptr("<I", POINTL())
 _DMORIENT_ = short
@@ -26157,7 +26157,7 @@ _DMDITHER_ = DWORD
 
 class DEVMODE(MemStruct):
     fields = [
-        ("dmDeviceName", TCHAR _CCHDEVICENAME_()),
+        ("dmDeviceName", TCHAR__CCHDEVICENAME_()),
         ("dmSpecVersion", WORD()),
         ("dmDriverVersion", WORD()),
         ("dmSize", WORD()),
@@ -26169,7 +26169,7 @@ class DEVMODE(MemStruct):
         ("dmYResolution", short()),
         ("dmTTOption", _DMTT_()),
         ("dmCollate", _DMCOLLATE_()),
-        ("dmFormName", TCHAR _CCHFORMNAME_()),
+        ("dmFormName", TCHAR__CCHFORMNAME_()),
         ("dmLogPixels", WORD()),
         ("dmBitsPerPel", DWORD()),
         ("dmPelsWidth", DWORD()),
@@ -26187,7 +26187,7 @@ class DEVMODE(MemStruct):
     ]
 
 DEVMODE_PTR = Ptr("<I", DEVMODE())
-const DEVMODE_PTR = Ptr("<I", DEVMODE())
+const_DEVMODE_PTR = Ptr("<I", DEVMODE())
 LPDEVMODE = Ptr("<I", DEVMODE())
 PDEVMODE = Ptr("<I", DEVMODE())
 PDEVMODE_PTR = Ptr("<I", PDEVMODE())
@@ -26195,13 +26195,13 @@ HANDLE = UINT_PTR
 PHANDLE = Ptr("<I", HANDLE())
 LPHANDLE = Ptr("<I", HANDLE())
 HANDLE_PTR = Ptr("<I", HANDLE())
-const HANDLE_PTR = Ptr("<I", HANDLE())
+const_HANDLE_PTR = Ptr("<I", HANDLE())
 _FILE_HANDLE_ = HANDLE
 HACCEL = HANDLE
 HRSRC = HANDLE
 HWND = HANDLE
 HWND_PTR = Ptr("<I", HWND())
-const HWND_PTR = Ptr("<I", HWND())
+const_HWND_PTR = Ptr("<I", HWND())
 HGLOBAL = HANDLE
 HGLOBAL_PTR = Ptr("<I", HGLOBAL())
 HKL = HANDLE
@@ -26225,7 +26225,7 @@ LARGE_INTEGER = Union([
 ])
 PLARGE_INTEGER = Ptr("<I", LARGE_INTEGER())
 LARGE_INTEGER_PTR = PLARGE_INTEGER
-const LARGE_INTEGER_PTR = LARGE_INTEGER*
+const_LARGE_INTEGER_PTR = LARGE_INTEGER_PTR
 
 class _ULARGE_INTEGER_s_(MemStruct):
     fields = [
@@ -26247,33 +26247,33 @@ class FILETIME(MemStruct):
     ]
 
 FILETIME_PTR = Ptr("<I", FILETIME())
-PFILETIME = FILETIME*
-LPFILETIME = FILETIME*
-const FILETIME_PTR = FILETIME*
-FILETIME const_PTR = FILETIME*
+PFILETIME = FILETIME_PTR
+LPFILETIME = FILETIME_PTR
+const_FILETIME_PTR = FILETIME_PTR
+FILETIME_const_PTR = FILETIME_PTR
 %s = Array(Num('B'), 16)
 GUID_PTR = Ptr("<I", GUID())
-PGUID = GUID*
-GUID_PTR_PTR = Ptr("<I", GUID*())
-const GUID_PTR = GUID*
-LPCGUID = GUID*
+PGUID = GUID_PTR
+GUID_PTR_PTR = Ptr("<I", GUID_PTR())
+const_GUID_PTR = GUID_PTR
+LPCGUID = GUID_PTR
 LPCGUID_PTR = Ptr("<I", LPCGUID())
-CONST GUID_PTR = GUID*
+CONST_GUID_PTR = GUID_PTR
 LPGUID = Ptr("<I", GUID())
-const LPGUID = LPGUID
-REFGUID = GUID*
+const_LPGUID = LPGUID
+REFGUID = GUID_PTR
 CLSID = GUID
 CLSID_PTR = Ptr("<I", CLSID())
-LPCLSID = CLSID*
-const CLSID_PTR = CLSID*
+LPCLSID = CLSID_PTR
+const_CLSID_PTR = CLSID_PTR
 REFCLSID = Ptr("<I", CLSID())
 UUID = GUID
 UUID_PTR = Ptr("<I", UUID())
-const UUID_PTR = UUID*
+const_UUID_PTR = UUID_PTR
 IID = GUID
 IID_PTR = Ptr("<I", IID())
-const IID_PTR = IID*
-IID_PTR_PTR = Ptr("<I", IID*())
+const_IID_PTR = IID_PTR
+IID_PTR_PTR = Ptr("<I", IID_PTR())
 REFIID = Ptr("<I", IID())
 LPIID = Ptr("<I", IID())
 
@@ -26284,18 +26284,18 @@ class LUID(MemStruct):
     ]
 
 LUID_PTR = Ptr("<I", LUID())
-PLUID = LUID*
+PLUID = LUID_PTR
 PLUID_PTR = Ptr("<I", PLUID())
 SLID = GUID
 SLID_PTR = Ptr("<I", SLID())
-SLID_PTR_PTR = Ptr("<I", SLID*())
-const SLID_PTR = Ptr("<I", SLID())
-CONST SLID_PTR = Ptr("<I", SLID())
+SLID_PTR_PTR = Ptr("<I", SLID_PTR())
+const_SLID_PTR = Ptr("<I", SLID())
+CONST_SLID_PTR = Ptr("<I", SLID())
 ACCESS_MASK = DWORD
 ACCESS_MASK_PTR = Ptr("<I", ACCESS_MASK())
 PACCESS_MASK = Ptr("<I", ACCESS_MASK())
 _ACCESS_MASK_DWORD_ = ACCESS_MASK
-_ACCESS_MASK_LPDWORD_ = Ptr("<I", [ACCESS_MASK_DWORD]())
+_ACCESS_MASK_LPDWORD_ = Ptr("<I", _ACCESS_MASK_DWORD_())
 _THREAD_ACCESS_MASK_ = ACCESS_MASK
 _PROCESS_ACCESS_MASK_ = ACCESS_MASK
 _FILE_ACCESS_MASK_ = ACCESS_MASK
@@ -26314,10 +26314,10 @@ class SYSTEMTIME(MemStruct):
         ("wMilliseconds", WORD()),
     ]
 
-const SYSTEMTIME = SYSTEMTIME
+const_SYSTEMTIME = SYSTEMTIME
 SYSTEMTIME_PTR = Ptr("<I", SYSTEMTIME())
-const SYSTEMTIME_PTR = SYSTEMTIME*
-PSYSTEMTIME = SYSTEMTIME*
+const_SYSTEMTIME_PTR = SYSTEMTIME_PTR
+PSYSTEMTIME = SYSTEMTIME_PTR
 LPSYSTEMTIME = PSYSTEMTIME
 PSYSTEMTIME_PTR = Ptr("<I", PSYSTEMTIME())
 JOBOBJECTINFOCLASS = UINT
@@ -26336,7 +26336,7 @@ PUNICODE_STRING = Ptr("<I", UNICODE_STRING())
 PUNICODE_STRING_PTR = Ptr("<I", PUNICODE_STRING())
 PCUNICODE_STRING = Ptr("<I", UNICODE_STRING())
 PCUNICODE_STRING_PTR = Ptr("<I", PCUNICODE_STRING())
-CONST UNICODE_STRING_PTR = Ptr("<I", UNICODE_STRING())
+CONST_UNICODE_STRING_PTR = Ptr("<I", UNICODE_STRING())
 
 class STRING(MemStruct):
     fields = [
@@ -26346,7 +26346,7 @@ class STRING(MemStruct):
     ]
 
 PSTRING = Ptr("<I", STRING())
-const STRING_PTR = Ptr("<I", STRING())
+const_STRING_PTR = Ptr("<I", STRING())
 ANSI_STRING = STRING
 PANSI_STRING = Ptr("<I", ANSI_STRING())
 PCANSI_STRING = Ptr("<I", ANSI_STRING())
@@ -26366,13 +26366,13 @@ class MSG(MemStruct):
     ]
 
 MSG_PTR = Ptr("<I", MSG())
-const MSG_PTR = Ptr("<I", MSG())
+const_MSG_PTR = Ptr("<I", MSG())
 LPMSG = Ptr("<I", MSG())
 _ImageType_ = UINT
 _LRFlags_ = UINT
 _SBType_ = int
 _IsTextUnicodeFlags_ = UINT
-_IsTextUnicodeFlags_PTR_ = Ptr("<I", [IsTextUnicodeFlags]())
+_IsTextUnicodeFlags_PTR_ = Ptr("<I", _IsTextUnicodeFlags_())
 _WaitTimeout_ = DWORD
 _BorderFlag_ = UINT
 _SysColorIndex_ = int
@@ -26388,16 +26388,16 @@ class RECT(MemStruct):
     ]
 
 LPRECT = Ptr("<I", RECT())
-const LPRECT = LPRECT
+const_LPRECT = LPRECT
 RECT_PTR = LPRECT
 LPCRECT = LPRECT
-const RECT_PTR = LPRECT
-CONST RECT_PTR = LPRECT
+const_RECT_PTR = LPRECT
+CONST_RECT_PTR = LPRECT
 RECTL = RECT
 RECTL_PTR = Ptr("<I", RECTL())
 LPCRECTL = Ptr("<I", RECTL())
 _CodePageEnum_ = UINT
-_CODE_PAGE|int_ = [CodePageEnum]
+_CODE_PAGE|int_ = _CodePageEnum_
 _EXCEPTION_FLAGS_ = DWORD
 
 class EXCEPTION_RECORD(MemStruct):
@@ -26407,7 +26407,7 @@ class EXCEPTION_RECORD(MemStruct):
         ("ExceptionRecord", LPVOID()),
         ("ExceptionAddress", PVOID()),
         ("NumberParameters", DWORD()),
-        ("ExceptionInformation", ULONG_PTR _EXCEPTION_MAXIMUM_PARAMETERS_()),
+        ("ExceptionInformation", ULONG_PTR__EXCEPTION_MAXIMUM_PARAMETERS_()),
     ]
 
 PEXCEPTION_RECORD = Ptr("<I", EXCEPTION_RECORD())
@@ -26533,8 +26533,8 @@ class WIN32_FIND_DATA(MemStruct):
         ("nFileSizeLow", DWORD()),
         ("dwReserved0", _ReparsePoint_()),
         ("dwReserved1", DWORD()),
-        ("cFileName", TCHAR _MAX_PATH_()),
-        ("cAlternateFileName", TCHAR _14_()),
+        ("cFileName", TCHAR__MAX_PATH_()),
+        ("cAlternateFileName", TCHAR__14_()),
     ]
 
 LPWIN32_FIND_DATA = Ptr("<I", WIN32_FIND_DATA())
@@ -26549,8 +26549,8 @@ class WIN32_FIND_DATAA(MemStruct):
         ("nFileSizeLow", DWORD()),
         ("dwReserved0", _ReparsePoint_()),
         ("dwReserved1", DWORD()),
-        ("cFileName", CHAR _MAX_PATH_()),
-        ("cAlternateFileName", CHAR _14_()),
+        ("cFileName", CHAR__MAX_PATH_()),
+        ("cAlternateFileName", CHAR__14_()),
     ]
 
 WIN32_FIND_DATAA_PTR = Ptr("<I", WIN32_FIND_DATAA())
@@ -26565,26 +26565,26 @@ class WIN32_FIND_DATAW(MemStruct):
         ("nFileSizeLow", DWORD()),
         ("dwReserved0", _ReparsePoint_()),
         ("dwReserved1", DWORD()),
-        ("cFileName", WCHAR _MAX_PATH_()),
-        ("cAlternateFileName", WCHAR _14_()),
+        ("cFileName", WCHAR__MAX_PATH_()),
+        ("cAlternateFileName", WCHAR__14_()),
     ]
 
 WIN32_FIND_DATAW_PTR = Ptr("<I", WIN32_FIND_DATAW())
-const WIN32_FIND_DATAW_PTR = Ptr("<I", WIN32_FIND_DATAW())
+const_WIN32_FIND_DATAW_PTR = Ptr("<I", WIN32_FIND_DATAW())
 
 class TIME_ZONE_INFORMATION(MemStruct):
     fields = [
         ("Bias", LONG()),
-        ("StandardName", WCHAR _32_()),
+        ("StandardName", WCHAR__32_()),
         ("StandardDate", SYSTEMTIME()),
         ("StandardBias", LONG()),
-        ("DaylightName", WCHAR _32_()),
+        ("DaylightName", WCHAR__32_()),
         ("DaylightDate", SYSTEMTIME()),
         ("DaylightBias", LONG()),
     ]
 
 LPTIME_ZONE_INFORMATION = Ptr("<I", TIME_ZONE_INFORMATION())
-const TIME_ZONE_INFORMATION_PTR = Ptr("<I", TIME_ZONE_INFORMATION())
+const_TIME_ZONE_INFORMATION_PTR = Ptr("<I", TIME_ZONE_INFORMATION())
 
 class OFSTRUCT(MemStruct):
     fields = [
@@ -26593,7 +26593,7 @@ class OFSTRUCT(MemStruct):
         ("nErrCode", WORD()),
         ("Reserved1", WORD()),
         ("Reserved2", WORD()),
-        ("szPathName", CHAR _OFS_MAXPATHNAME_()),
+        ("szPathName", CHAR__OFS_MAXPATHNAME_()),
     ]
 
 LPOFSTRUCT = Ptr("<I", OFSTRUCT())
@@ -26611,7 +26611,7 @@ class OSVERSIONINFO(MemStruct):
         ("dwMinorVersion", DWORD()),
         ("dwBuildNumber", DWORD()),
         ("dwPlatformId", _VER_PLATFORM_()),
-        ("szCSDVersion", TCHAR _128_()),
+        ("szCSDVersion", TCHAR__128_()),
     ]
 
 LPOSVERSIONINFO = Ptr("<I", OSVERSIONINFO())
@@ -26623,7 +26623,7 @@ class RTL_OSVERSIONINFOW(MemStruct):
         ("dwMinorVersion", DWORD()),
         ("dwBuildNumber", DWORD()),
         ("dwPlatformId", _VER_PLATFORM_()),
-        ("szCSDVersion", WCHAR _128_()),
+        ("szCSDVersion", WCHAR__128_()),
     ]
 
 PRTL_OSVERSIONINFOW = Ptr("<I", RTL_OSVERSIONINFOW())
@@ -26637,7 +26637,7 @@ class OSVERSIONINFOEX(MemStruct):
         ("dwMinorVersion", DWORD()),
         ("dwBuildNumber", DWORD()),
         ("dwPlatformId", DWORD()),
-        ("szCSDVersion", TCHAR _128_()),
+        ("szCSDVersion", TCHAR__128_()),
         ("wServicePackMajor", WORD()),
         ("wServicePackMinor", WORD()),
         ("wSuiteMask", _VER_SUITE_()),
@@ -26654,7 +26654,7 @@ class RTL_OSVERSIONINFOEXW(MemStruct):
         ("dwMinorVersion", DWORD()),
         ("dwBuildNumber", DWORD()),
         ("dwPlatformId", DWORD()),
-        ("szCSDVersion", WCHAR _128_()),
+        ("szCSDVersion", WCHAR__128_()),
         ("wServicePackMajor", WORD()),
         ("wServicePackMinor", WORD()),
         ("wSuiteMask", _VER_SUITE_()),
@@ -26672,7 +26672,7 @@ class IMAGE_DATA_DIRECTORY(MemStruct):
         ("Size", DWORD()),
     ]
 
-IMAGE_DATA_DIRECTORY _IMAGE_NUMBEROF_DIRECTORY_ENTRIES_ = Array(IMAGE_DATA_DIRECTORY, 16)
+IMAGE_DATA_DIRECTORY__IMAGE_NUMBEROF_DIRECTORY_ENTRIES_ = Array(IMAGE_DATA_DIRECTORY, 16)
 _IMAGE_OPTIONAL_MAGIC_ = WORD
 _IMAGE_SUBSYSTEM_ = WORD
 _IMAGE_SUBSYSTEM_ULONG_ = ULONG
@@ -26723,7 +26723,7 @@ class IMAGE_OPTIONAL_HEADER64(MemStruct):
         ("SizeOfHeapCommit", ULONGLONG()),
         ("LoaderFlags", DWORD()),
         ("NumberOfRvaAndSizes", DWORD()),
-        ("DataDirectory", IMAGE_DATA_DIRECTORY _IMAGE_NUMBEROF_DIRECTORY_ENTRIES_()),
+        ("DataDirectory", IMAGE_DATA_DIRECTORY__IMAGE_NUMBEROF_DIRECTORY_ENTRIES_()),
     ]
 
 
@@ -26748,7 +26748,7 @@ class NUMBERFMT(MemStruct):
     ]
 
 NUMBERFMT_PTR = Ptr("<I", NUMBERFMT())
-const NUMBERFMT_PTR = Ptr("<I", NUMBERFMT())
+const_NUMBERFMT_PTR = Ptr("<I", NUMBERFMT())
 _DwmWindowAttr_ = DWORD
 _FILE_NOTIFY_CHANGE_FLAGS_ = DWORD
 _SEEK_TYPE_ = int
@@ -26770,9 +26770,9 @@ class ACTCTX(MemStruct):
 
 PACTCTX = Ptr("<I", ACTCTX())
 _HEAP_FLAGS_ = DWORD
-_HEAP_FLAGS_ULONG_ = [HEAP_FLAGS]
+_HEAP_FLAGS_ULONG_ = _HEAP_FLAGS_
 _IMAGE_FILE_CHARACTERISTICS_ULONG_ = ULONG
-_IMAGE_FILE_CHARACTERISTICS_ULONG_PTR_ = Ptr("<I", [IMAGE_FILE_CHARACTERISTICS_ULONG]())
+_IMAGE_FILE_CHARACTERISTICS_ULONG_PTR_ = Ptr("<I", _IMAGE_FILE_CHARACTERISTICS_ULONG_())
 _FIND_ACTCTX_SECTION_FLAGS_ = DWORD
 _ACTIVATION_CONTEXT_SECTION_ = ULONG
 _WAIT_RESULT_ = DWORD
@@ -26791,17 +26791,17 @@ _SHTDN_REASON_ = DWORD
 _EWX_FLAGS_ = UINT
 URLZONE = DWORD
 _THREAD_PRIORITY_ = int
-_THREAD_PRIORITY|LONG_ = [THREAD_PRIORITY]
-_THREAD_PRIORITY_PTR|LONG_PTR_ = Ptr("<I", [THREAD_PRIORITY|LONG]())
+_THREAD_PRIORITY|LONG_ = _THREAD_PRIORITY_
+_THREAD_PRIORITY_PTR|LONG_PTR_ = Ptr("<I", _THREAD_PRIORITY|LONG_())
 _MoveMethodEnum_ = DWORD
 _XSTATE_FEATURE_64_ = DWORD64
 _XSTATE_MASK_ = DWORD64
-_XSTATE_MASK_PTR_ = Ptr("<I", [XSTATE_MASK]())
+_XSTATE_MASK_PTR_ = Ptr("<I", _XSTATE_MASK_())
 LPCPROPSHEETPAGE = LPVOID
 PROPSHEETHEADER_PTR = LPVOID
 LPCPROPSHEETHEADER = LPVOID
 LPPROPSHEETHEADER = LPVOID
-LPDISPATCH = IDispatch*
+LPDISPATCH = IDispatch_PTR
 LPDISPATCH_PTR = Ptr("<I", LPDISPATCH())
 WINOLEAPI = STDAPI
 HPROPSHEETPAGE = LPVOID
@@ -26809,51 +26809,51 @@ HPROPSHEETPAGE_PTR = Ptr("<I", HPROPSHEETPAGE())
 LPCOLESTR = LPCWSTR
 LPOLESTR = LPCWSTR
 LPOLESTR_PTR = Ptr("<I", LPOLESTR())
-LPOLESTR_PTR_PTR = Ptr("<I", LPOLESTR*())
-const LPOLESTR = LPOLESTR
-LPOLESTR __ = Ptr("<I", LPOLESTR())
-const LPOLESTR __ = Ptr("<I", LPOLESTR())
+LPOLESTR_PTR_PTR = Ptr("<I", LPOLESTR_PTR())
+const_LPOLESTR = LPOLESTR
+LPOLESTR___ = Ptr("<I", LPOLESTR())
+const_LPOLESTR___ = Ptr("<I", LPOLESTR())
 OLECHAR = WCHAR
 OLECHAR_PTR = Ptr("<I", OLECHAR())
-const OLECHAR_PTR = OLECHAR*
-OLECHAR_PTR_PTR = Ptr("<I", OLECHAR*())
+const_OLECHAR_PTR = OLECHAR_PTR
+OLECHAR_PTR_PTR = Ptr("<I", OLECHAR_PTR())
 PROPID = ULONG
 PROPID_PTR = Ptr("<I", PROPID())
-const PROPID __ = Ptr("<I", PROPID())
-LPOLEOBJECT = IOleObject*
-LPMALLOC = IMalloc*
+const_PROPID___ = Ptr("<I", PROPID())
+LPOLEOBJECT = IOleObject_PTR
+LPMALLOC = IMalloc_PTR
 LPMALLOC_PTR = Ptr("<I", LPMALLOC())
 FMTID = GUID
 FMTID_PTR = Ptr("<I", FMTID())
-const FMTID_PTR = Ptr("<I", FMTID())
+const_FMTID_PTR = Ptr("<I", FMTID())
 REFFMTID = Ptr("<I", FMTID())
 CLIPFORMAT = WORD
 CLIPFORMAT_PTR = Ptr("<I", CLIPFORMAT())
-LPBC = IBindCtx*
+LPBC = IBindCtx_PTR
 LPBC_PTR = Ptr("<I", LPBC())
-LPBINDCTX = IBindCtx*
-LPCLASSFACTORY = IClassFactory*
+LPBINDCTX = IBindCtx_PTR
+LPCLASSFACTORY = IClassFactory_PTR
 LPCLASSFACTORY_PTR = Ptr("<I", LPCLASSFACTORY())
-LPSTORAGE = IStorage*
-LPOLECLIENTSITE = IOleClientSite*
-LPMONIKER = IMoniker*
+LPSTORAGE = IStorage_PTR
+LPOLECLIENTSITE = IOleClientSite_PTR
+LPMONIKER = IMoniker_PTR
 LPMONIKER_PTR = Ptr("<I", LPMONIKER())
-LPSTREAM = IStream*
+LPSTREAM = IStream_PTR
 LPSTREAM_PTR = Ptr("<I", LPSTREAM())
-LPDATAOBJECT = IDataObject*
+LPDATAOBJECT = IDataObject_PTR
 LPDATAOBJECT_PTR = Ptr("<I", LPDATAOBJECT())
-struct IStorage_PTR = IStorage*
+struct_IStorage_PTR = IStorage_PTR
 CPFLAGS = DWORD
 CPFLAGS_PTR = Ptr("<I", CPFLAGS())
-SNB = LPOLESTR*
+SNB = LPOLESTR_PTR
 ALLOCATEMORE_PTR = LPVOID
 HTASK = HANDLE
 LPCBORDERWIDTHS = LPCRECT
 HOLEMENU = HGLOBAL
-RPCOLEDATAREP = unsigned long
+RPCOLEDATAREP = unsigned_long
 HMETAFILEPICT = HANDLE
-void_PTR _5_ = Array(void_PTR, 5)
-LONG _6_ = Array(LONG, 6)
+void_PTR__5_ = Array(void_PTR, 5)
+LONG__6_ = Array(LONG, 6)
 VARIANT_BOOL = short
 VARIANT_BOOL_PTR = Ptr("<I", VARIANT_BOOL())
 MSHLFLAGS = DWORD
@@ -26865,21 +26865,21 @@ class DVTARGETDEVICE(MemStruct):
         ("tdDeviceNameOffset", WORD()),
         ("tdPortNameOffset", WORD()),
         ("tdExtDevmodeOffset", WORD()),
-        ("tdData", BYTE _1_()),
+        ("tdData", BYTE__1_()),
     ]
 
 DVTARGETDEVICE_PTR = Ptr("<I", DVTARGETDEVICE())
-DVTARGETDEVICE_PTR_PTR = Ptr("<I", DVTARGETDEVICE*())
-const DVTARGETDEVICE_PTR = Ptr("<I", DVTARGETDEVICE())
+DVTARGETDEVICE_PTR_PTR = Ptr("<I", DVTARGETDEVICE_PTR())
+const_DVTARGETDEVICE_PTR = Ptr("<I", DVTARGETDEVICE())
 
 class SERIALIZEDPROPERTYVALUE(MemStruct):
     fields = [
         ("dwType", DWORD()),
-        ("rgb", BYTE _1_()),
+        ("rgb", BYTE__1_()),
     ]
 
 SERIALIZEDPROPERTYVALUE_PTR = Ptr("<I", SERIALIZEDPROPERTYVALUE())
-SERIALIZEDPROPERTYVALUE_PTR_PTR = Ptr("<I", SERIALIZEDPROPERTYVALUE*())
+SERIALIZEDPROPERTYVALUE_PTR_PTR = Ptr("<I", SERIALIZEDPROPERTYVALUE_PTR())
 
 class RPCOLEMESSAGE(MemStruct):
     fields = [
@@ -26889,7 +26889,7 @@ class RPCOLEMESSAGE(MemStruct):
         ("Buffer", void_PTR()),
         ("cbBuffer", ULONG()),
         ("iMethod", ULONG()),
-        ("reserved2", void_PTR _5_()),
+        ("reserved2", void_PTR__5_()),
         ("rpcFlags", ULONG()),
     ]
 
@@ -26897,7 +26897,7 @@ RPCOLEMESSAGE_PTR = Ptr("<I", RPCOLEMESSAGE())
 
 class OLEMENUGROUPWIDTHS(MemStruct):
     fields = [
-        ("width", LONG _6_()),
+        ("width", LONG__6_()),
     ]
 
 LPOLEMENUGROUPWIDTHS = Ptr("<I", OLEMENUGROUPWIDTHS())
@@ -26913,21 +26913,21 @@ class PALETTEENTRY(MemStruct):
 
 PALETTEENTRY_PTR = Ptr("<I", PALETTEENTRY())
 LPPALETTEENTRY = Ptr("<I", PALETTEENTRY())
-CONST PALETTEENTRY_PTR = Ptr("<I", PALETTEENTRY())
-const PALETTEENTRY_PTR = Ptr("<I", PALETTEENTRY())
-PALETTEENTRY _1_ = Array(PALETTEENTRY, 1)
+CONST_PALETTEENTRY_PTR = Ptr("<I", PALETTEENTRY())
+const_PALETTEENTRY_PTR = Ptr("<I", PALETTEENTRY())
+PALETTEENTRY__1_ = Array(PALETTEENTRY, 1)
 
 class LOGPALETTE(MemStruct):
     fields = [
         ("palVersion", WORD()),
         ("palNumEntries", WORD()),
-        ("palPalEntry", PALETTEENTRY _1_()),
+        ("palPalEntry", PALETTEENTRY__1_()),
     ]
 
 LOGPALETTE_PTR = Ptr("<I", LOGPALETTE())
-LOGPALETTE_PTR_PTR = Ptr("<I", LOGPALETTE*())
-const LOGPALETTE_PTR = Ptr("<I", LOGPALETTE*())
-VARTYPE = unsigned short
+LOGPALETTE_PTR_PTR = Ptr("<I", LOGPALETTE_PTR())
+const_LOGPALETTE_PTR = Ptr("<I", LOGPALETTE_PTR())
+VARTYPE = unsigned_short
 VARTYPE_PTR = Ptr("<I", VARTYPE())
 
 class _BRECORD_(MemStruct):
@@ -26955,20 +26955,20 @@ VARIANT = Union([
     ("[Other values are currently unsupported]", ULONGLONG),
 ])
 VARIANT_PTR = Ptr("<I", VARIANT())
-VARIANT_PTR_PTR = Ptr("<I", VARIANT*())
-const VARIANT_PTR = Ptr("<I", VARIANT())
+VARIANT_PTR_PTR = Ptr("<I", VARIANT_PTR())
+const_VARIANT_PTR = Ptr("<I", VARIANT())
 LPVARIANT = Ptr("<I", VARIANT())
 VARIANTARG = VARIANT
 VARIANTARG_PTR = Ptr("<I", VARIANTARG())
-VARIANTARG_PTR_PTR = Ptr("<I", VARIANTARG*())
-const VARIANTARG_PTR = Ptr("<I", VARIANTARG())
+VARIANTARG_PTR_PTR = Ptr("<I", VARIANTARG_PTR())
+const_VARIANTARG_PTR = Ptr("<I", VARIANTARG())
 PROPVARIANT = VARIANT
 PROPVARIANT_PTR = Ptr("<I", PROPVARIANT())
-PROPVARIANT_PTR_PTR = Ptr("<I", PROPVARIANT*())
-const PROPVARIANT_PTR = PROPVARIANT*
-REFPROPVARIANT = PROPVARIANT*
-PROPVARIANT __ = Ptr("<I", PROPVARIANT())
-const PROPVARIANT __ = Ptr("<I", PROPVARIANT())
+PROPVARIANT_PTR_PTR = Ptr("<I", PROPVARIANT_PTR())
+const_PROPVARIANT_PTR = PROPVARIANT_PTR
+REFPROPVARIANT = PROPVARIANT_PTR
+PROPVARIANT___ = Ptr("<I", PROPVARIANT())
+const_PROPVARIANT___ = Ptr("<I", PROPVARIANT())
 TYMED = DWORD
 DVASPECT = DWORD
 
@@ -26983,7 +26983,7 @@ class FORMATETC(MemStruct):
 
 FORMATETC_PTR = Ptr("<I", FORMATETC())
 LPFORMATETC = Ptr("<I", FORMATETC())
-const FORMATETC __ = Ptr("<I", FORMATETC())
+const_FORMATETC___ = Ptr("<I", FORMATETC())
 GETPROPERTYSTOREFLAGS = UINT
 
 class PROPERTYKEY(MemStruct):
@@ -26994,8 +26994,8 @@ class PROPERTYKEY(MemStruct):
 
 PROPERTYKEY_PTR = Ptr("<I", PROPERTYKEY())
 REFPROPERTYKEY = Ptr("<I", PROPERTYKEY())
-const PROPERTYKEY = PROPERTYKEY
-const PROPERTYKEY_PTR = Ptr("<I", const PROPERTYKEY())
+const_PROPERTYKEY = PROPERTYKEY
+const_PROPERTYKEY_PTR = Ptr("<I", const_PROPERTYKEY())
 
 class CSPLATFORM(MemStruct):
     fields = [
@@ -27019,7 +27019,7 @@ QUERYCONTEXT_PTR = Ptr("<I", QUERYCONTEXT())
 
 class MULTI_QI(MemStruct):
     fields = [
-        ("pIID", const IID_PTR()),
+        ("pIID", const_IID_PTR()),
         ("pItf", IUnknown_PTR()),
         ("hr", HRESULT()),
     ]
@@ -27194,7 +27194,7 @@ class STGMEDIUM(MemStruct):
     ]
 
 STGMEDIUM_PTR = Ptr("<I", STGMEDIUM())
-const STGMEDIUM_PTR = Ptr("<I", STGMEDIUM())
+const_STGMEDIUM_PTR = Ptr("<I", STGMEDIUM())
 LPSTGMEDIUM = Ptr("<I", STGMEDIUM())
 _COINIT_FLAG_ = DWORD
 _FADF_FLAGS_ = USHORT
@@ -27206,7 +27206,7 @@ class SAFEARRAYBOUND(MemStruct):
     ]
 
 SAFEARRAYBOUND_PTR = Ptr("<I", SAFEARRAYBOUND())
-SAFEARRAYBOUND _1_ = Array(SAFEARRAYBOUND, 1)
+SAFEARRAYBOUND__1_ = Array(SAFEARRAYBOUND, 1)
 
 class SAFEARRAY(MemStruct):
     fields = [
@@ -27215,11 +27215,11 @@ class SAFEARRAY(MemStruct):
         ("cbElements", ULONG()),
         ("cLocks", ULONG()),
         ("pvData", PVOID()),
-        ("rgsabound", SAFEARRAYBOUND _1_()),
+        ("rgsabound", SAFEARRAYBOUND__1_()),
     ]
 
 SAFEARRAY_PTR = Ptr("<I", SAFEARRAY())
-SAFEARRAY_PTR_PTR = Ptr("<I", SAFEARRAY*())
+SAFEARRAY_PTR_PTR = Ptr("<I", SAFEARRAY_PTR())
 LPSAFEARRAY = Ptr("<I", SAFEARRAY())
 LPSAFEARRAY_PTR = Ptr("<I", LPSAFEARRAY())
 
@@ -27261,8 +27261,8 @@ class DBID(MemStruct):
     ]
 
 DBID_PTR = Ptr("<I", DBID())
-DBID_PTR_PTR = Ptr("<I", DBID*())
-const DBID __ = Ptr("<I", DBID())
+DBID_PTR_PTR = Ptr("<I", DBID_PTR())
+const_DBID___ = Ptr("<I", DBID())
 _PROPSETFLAG_ = DWORD
 
 class STATPROPSETSTG(MemStruct):
@@ -27293,8 +27293,8 @@ HICON_PTR = Ptr("<I", HICON())
 HMENU = HANDLE
 HMENU_PTR = Ptr("<I", HMENU())
 HDC = HANDLE
-CONST HDC = HANDLE
-const HDC = HANDLE
+CONST_HDC = HANDLE
+const_HDC = HANDLE
 HDC_PTR = Ptr("<I", HDC())
 HPALETTE = HANDLE
 HCURSOR = HICON
@@ -27316,18 +27316,18 @@ LPPRINTHOOKPROC = LPVOID
 LPSETUPHOOKPROC = LPVOID
 REFERENCE_TIME = LONGLONG
 REFERENCE_TIME_PTR = Ptr("<I", REFERENCE_TIME())
-const REFERENCE_TIME_PTR = REFERENCE_TIME*
+const_REFERENCE_TIME_PTR = REFERENCE_TIME_PTR
 HPROFILE = HANDLE
 PHPROFILE = Ptr("<I", HPROFILE())
 FXPT2DOT30 = long
 PBMCALLBACKFN = LPVOID
 LPBMCALLBACKFN = PBMCALLBACKFN
 DLGPROC = LPVOID
-TCHAR _LF_FACESIZE_ = Array(TCHAR, 32)
-WCHAR _LF_FACESIZE_ = Array(WCHAR, 32)
+TCHAR__LF_FACESIZE_ = Array(TCHAR, 32)
+WCHAR__LF_FACESIZE_ = Array(WCHAR, 32)
 COLOR_NAME = Array(char, 32)
 PCOLOR_NAME = Ptr("<I", COLOR_NAME())
-BYTE _MAX_COLOR_CHANNELS_ = Array(BYTE, 8)
+BYTE__MAX_COLOR_CHANNELS_ = Array(BYTE, 8)
 
 class RGBQUAD(MemStruct):
     fields = [
@@ -27337,10 +27337,10 @@ class RGBQUAD(MemStruct):
         ("rgbReserved", BYTE()),
     ]
 
-const RGBQUAD_PTR = Ptr("<I", RGBQUAD())
+const_RGBQUAD_PTR = Ptr("<I", RGBQUAD())
 RGBQUAD_PTR = Ptr("<I", RGBQUAD())
-RGBQUAD_PTR_PTR = Ptr("<I", RGBQUAD*())
-RGBQUAD _1_ = Array(RGBQUAD, 1)
+RGBQUAD_PTR_PTR = Ptr("<I", RGBQUAD_PTR())
+RGBQUAD__1_ = Array(RGBQUAD, 1)
 _RegionType_ = DWORD
 
 class RGNDATAHEADER(MemStruct):
@@ -27360,14 +27360,14 @@ class RGNDATA(MemStruct):
     ]
 
 RGNDATA_PTR = Ptr("<I", RGNDATA())
-RGNDATA_PTR_PTR = Ptr("<I", RGNDATA*())
-CONST RGNDATA_PTR = Ptr("<I", RGNDATA())
-const RGNDATA_PTR = Ptr("<I", RGNDATA())
+RGNDATA_PTR_PTR = Ptr("<I", RGNDATA_PTR())
+CONST_RGNDATA_PTR = Ptr("<I", RGNDATA())
+const_RGNDATA_PTR = Ptr("<I", RGNDATA())
 LPRGNDATA = Ptr("<I", RGNDATA())
 COLORREF = DWORD
 COLORREF_PTR = Ptr("<I", COLORREF())
 LPCOLORREF = Ptr("<I", COLORREF())
-const COLORREF_PTR = Ptr("<I", COLORREF())
+const_COLORREF_PTR = Ptr("<I", COLORREF())
 
 class SIZE(MemStruct):
     fields = [
@@ -27376,9 +27376,9 @@ class SIZE(MemStruct):
     ]
 
 SIZE_PTR = Ptr("<I", SIZE())
-LPSIZE = SIZE*
-const SIZE_PTR = SIZE*
-PSIZE = SIZE*
+LPSIZE = SIZE_PTR
+const_SIZE_PTR = SIZE_PTR
+PSIZE = SIZE_PTR
 SIZEL = SIZE
 SIZEL_PTR = Ptr("<I", SIZEL())
 LPSIZEL = Ptr("<I", SIZEL())
@@ -27422,11 +27422,11 @@ class LOGFONT(MemStruct):
         ("lfClipPrecision", _FontClipPrecision_()),
         ("lfQuality", _FontQuality_()),
         ("lfPitchAndFamily", _FontPitchAndFamily_()),
-        ("lfFaceName", TCHAR _LF_FACESIZE_()),
+        ("lfFaceName", TCHAR__LF_FACESIZE_()),
     ]
 
 LPLOGFONT = Ptr("<I", LOGFONT())
-const LOGFONT_PTR = Ptr("<I", LOGFONT())
+const_LOGFONT_PTR = Ptr("<I", LOGFONT())
 
 class LOGFONTW(MemStruct):
     fields = [
@@ -27443,11 +27443,11 @@ class LOGFONTW(MemStruct):
         ("lfClipPrecision", _FontClipPrecision_()),
         ("lfQuality", _FontQuality_()),
         ("lfPitchAndFamily", _FontPitchAndFamily_()),
-        ("lfFaceName", WCHAR _LF_FACESIZE_()),
+        ("lfFaceName", WCHAR__LF_FACESIZE_()),
     ]
 
 LOGFONTW_PTR = Ptr("<I", LOGFONTW())
-const LOGFONTW_PTR = Ptr("<I", LOGFONTW())
+const_LOGFONTW_PTR = Ptr("<I", LOGFONTW())
 
 class CHOOSEFONT(MemStruct):
     fields = [
@@ -27649,7 +27649,7 @@ class MARGINS(MemStruct):
     ]
 
 MARGINS_PTR = Ptr("<I", MARGINS())
-const MARGINS_PTR = Ptr("<I", MARGINS())
+const_MARGINS_PTR = Ptr("<I", MARGINS())
 
 class BLENDFUNCTION(MemStruct):
     fields = [
@@ -27660,7 +27660,7 @@ class BLENDFUNCTION(MemStruct):
     ]
 
 BLENDFUNCTION_PTR = Ptr("<I", BLENDFUNCTION())
-const BLENDFUNCTION_PTR = Ptr("<I", BLENDFUNCTION())
+const_BLENDFUNCTION_PTR = Ptr("<I", BLENDFUNCTION())
 
 class BITMAPINFOHEADER(MemStruct):
     fields = [
@@ -27677,17 +27677,17 @@ class BITMAPINFOHEADER(MemStruct):
         ("biClrImportant", DWORD()),
     ]
 
-const BITMAPINFOHEADER_PTR = Ptr("<I", BITMAPINFOHEADER())
+const_BITMAPINFOHEADER_PTR = Ptr("<I", BITMAPINFOHEADER())
 LPBITMAPINFOHEADER = Ptr("<I", BITMAPINFOHEADER())
 
 class BITMAPINFO(MemStruct):
     fields = [
         ("bmiHeader", BITMAPINFOHEADER()),
-        ("bmiColors", RGBQUAD _1_()),
+        ("bmiColors", RGBQUAD__1_()),
     ]
 
 LPBITMAPINFO = Ptr("<I", BITMAPINFO())
-const BITMAPINFO_PTR = Ptr("<I", BITMAPINFO())
+const_BITMAPINFO_PTR = Ptr("<I", BITMAPINFO())
 _TEXTMETRIC_Pitch_ = BYTE
 
 class TEXTMETRIC(MemStruct):
@@ -27728,7 +27728,7 @@ class VIDEOINFOHEADER(MemStruct):
         ("bmiHeader", BITMAPINFOHEADER()),
     ]
 
-const VIDEOINFOHEADER_PTR = Ptr("<I", VIDEOINFOHEADER())
+const_VIDEOINFOHEADER_PTR = Ptr("<I", VIDEOINFOHEADER())
 _AMINTERLACE_FLAGS_ = DWORD
 _AMCOPYPROTECT_FLAGS_ = DWORD
 _AMCONTROL_FLAGS_ = DWORD
@@ -27749,7 +27749,7 @@ class VIDEOINFOHEADER2(MemStruct):
         ("bmiHeader", BITMAPINFOHEADER()),
     ]
 
-const VIDEOINFOHEADER2_PTR = Ptr("<I", VIDEOINFOHEADER2())
+const_VIDEOINFOHEADER2_PTR = Ptr("<I", VIDEOINFOHEADER2())
 PixelFormat = UINT
 PixelFormat_PTR = Ptr("<I", PixelFormat())
 InterpolationMode = UINT
@@ -27764,16 +27764,16 @@ class EncoderParameter(MemStruct):
         ("Value", VOID_PTR()),
     ]
 
-EncoderParameter _1_ = Array(EncoderParameter, 1)
+EncoderParameter__1_ = Array(EncoderParameter, 1)
 
 class EncoderParameters(MemStruct):
     fields = [
         ("Count", UINT()),
-        ("Parameter", EncoderParameter _1_()),
+        ("Parameter", EncoderParameter__1_()),
     ]
 
 EncoderParameters_PTR = Ptr("<I", EncoderParameters())
-EncoderParameters_PTR_PTR = Ptr("<I", EncoderParameters*())
+EncoderParameters_PTR_PTR = Ptr("<I", EncoderParameters_PTR())
 
 class ABC(MemStruct):
     fields = [
@@ -27815,7 +27815,7 @@ class LOGCOLORSPACE(MemStruct):
         ("lcsGammaRed", DWORD()),
         ("lcsGammaGreen", DWORD()),
         ("lcsGammaBlue", DWORD()),
-        ("lcsFilename", TCHAR _MAX_PATH_()),
+        ("lcsFilename", TCHAR__MAX_PATH_()),
     ]
 
 LPLOGCOLORSPACE = Ptr("<I", LOGCOLORSPACE())
@@ -27895,7 +27895,7 @@ class NAMEDCOLOR(MemStruct):
 
 class HiFiCOLOR(MemStruct):
     fields = [
-        ("channel", BYTE _MAX_COLOR_CHANNELS_()),
+        ("channel", BYTE__MAX_COLOR_CHANNELS_()),
     ]
 
 
@@ -27928,7 +27928,7 @@ _CONNECTION_SPACE_ = DWORD
 _PROFILE_FLAG_ = DWORD
 _PROFILE_ATTRIBUTES_ = DWORD
 _RENDERING_INTENT_ = DWORD
-_RENDERING_INTENT_PTR_ = Ptr("<I", [RENDERING_INTENT]())
+_RENDERING_INTENT_PTR_ = Ptr("<I", _RENDERING_INTENT_())
 
 class ENUMTYPE(MemStruct):
     fields = [
@@ -27938,7 +27938,7 @@ class ENUMTYPE(MemStruct):
         ("pDeviceName", PCTSTR()),
         ("dwMediaType", DWORD()),
         ("dwDitheringMode", DWORD()),
-        ("dwResolution", DWORD _2_()),
+        ("dwResolution", DWORD__2_()),
         ("dwCMMType", DWORD()),
         ("dwClass", _PROFILE_CLASS_()),
         ("dwDataColorSpace", _COLOR_SPACE_()),
@@ -27948,7 +27948,7 @@ class ENUMTYPE(MemStruct):
         ("dwProfileFlags", _PROFILE_FLAG_()),
         ("dwManufacturer", DWORD()),
         ("dwModel", DWORD()),
-        ("dwAttributes", DWORD _2_()),
+        ("dwAttributes", DWORD__2_()),
         ("dwRenderingIntent", _RENDERING_INTENT_()),
         ("dwCreator", DWORD()),
         ("dwDeviceClass", _DEVICE_CLASS_()),
@@ -27964,7 +27964,7 @@ class ENUMTYPEW(MemStruct):
         ("pDeviceName", PCWSTR()),
         ("dwMediaType", DWORD()),
         ("dwDitheringMode", DWORD()),
-        ("dwResolution", DWORD _2_()),
+        ("dwResolution", DWORD__2_()),
         ("dwCMMType", DWORD()),
         ("dwClass", _PROFILE_CLASS_()),
         ("dwDataColorSpace", _COLOR_SPACE_()),
@@ -27974,7 +27974,7 @@ class ENUMTYPEW(MemStruct):
         ("dwProfileFlags", _PROFILE_FLAG_()),
         ("dwManufacturer", DWORD()),
         ("dwModel", DWORD()),
-        ("dwAttributes", DWORD _2_()),
+        ("dwAttributes", DWORD__2_()),
         ("dwRenderingIntent", _RENDERING_INTENT_()),
         ("dwCreator", DWORD()),
         ("dwDeviceClass", _DEVICE_CLASS_()),
@@ -27989,7 +27989,7 @@ HCRYPTHASH = HANDLE
 HCRYPTHASH_PTR = Ptr("<I", HCRYPTHASH())
 HCRYPTKEY = HANDLE
 HCRYPTKEY_PTR = Ptr("<I", HCRYPTKEY())
-HCERTSTORE = void*
+HCERTSTORE = void_PTR
 HCERTSTORE_PTR = Ptr("<I", HCERTSTORE())
 HCATADMIN = HANDLE
 HCATADMIN_PTR = Ptr("<I", HCATADMIN())
@@ -28043,11 +28043,11 @@ pCryptSIPPutSignedDataMsg = LPVOID
 pCryptSIPCreateIndirectData = LPVOID
 pCryptSIPVerifyIndirectData = LPVOID
 pCryptSIPRemoveSignedDataMsg = LPVOID
-ALG_ID = unsigned int
+ALG_ID = unsigned_int
 ALG_ID_PTR = Ptr("<I", ALG_ID())
 _CryptAcquireContextFlags_ = DWORD
 _CryptProv_ = DWORD
-_CryptProv_PTR_ = Ptr("<I", [CryptProv]())
+_CryptProv_PTR_ = Ptr("<I", _CryptProv_())
 _CryptCreateHashFlags_ = DWORD
 _CryptHashDataFlags_ = DWORD
 _CryptBlobType_ = DWORD
@@ -28080,7 +28080,7 @@ PCRYPT_ATTR_BLOB = Ptr("<I", DATA_BLOB())
 CERT_RDN_VALUE_BLOB = DATA_BLOB
 PCERT_RDN_VALUE_BLOB = Ptr("<I", CERT_RDN_VALUE_BLOB())
 CRYPT_HASH_BLOB = DATA_BLOB
-const CRYPT_HASH_BLOB_PTR = Ptr("<I", CRYPT_HASH_BLOB())
+const_CRYPT_HASH_BLOB_PTR = Ptr("<I", CRYPT_HASH_BLOB())
 CRYPT_DATA_BLOB = DATA_BLOB
 PCRYPT_DATA_BLOB = Ptr("<I", CRYPT_DATA_BLOB())
 CRYPT_DATA_BLOB_PTR = Ptr("<I", PCRYPT_DATA_BLOB())
@@ -28185,7 +28185,7 @@ class CERT_INFO(MemStruct):
 CERT_INFO_PTR = Ptr("<I", CERT_INFO())
 PCERT_INFO = Ptr("<I", CERT_INFO())
 _CertEncodingType_ = DWORD
-_CertEncodingType_PTR_ = Ptr("<I", [CertEncodingType]())
+_CertEncodingType_PTR_ = Ptr("<I", _CertEncodingType_())
 
 class CERT_CONTEXT(MemStruct):
     fields = [
@@ -28199,7 +28199,7 @@ class CERT_CONTEXT(MemStruct):
 CERT_CONTEXT_PTR = Ptr("<I", CERT_CONTEXT())
 PCCERT_CONTEXT = Ptr("<I", CERT_CONTEXT())
 PCCERT_CONTEXT_PTR = Ptr("<I", PCCERT_CONTEXT())
-PCCERT_CONTEXT __ = Ptr("<I", PCCERT_CONTEXT())
+PCCERT_CONTEXT___ = Ptr("<I", PCCERT_CONTEXT())
 
 class SIGNER_CONTEXT(MemStruct):
     fields = [
@@ -28210,7 +28210,7 @@ class SIGNER_CONTEXT(MemStruct):
     ]
 
 SIGNER_CONTEXT_PTR = Ptr("<I", SIGNER_CONTEXT())
-SIGNER_CONTEXT_PTR_PTR = Ptr("<I", SIGNER_CONTEXT*())
+SIGNER_CONTEXT_PTR_PTR = Ptr("<I", SIGNER_CONTEXT_PTR())
 
 class CRYPT_ATTRIBUTE(MemStruct):
     fields = [
@@ -28246,7 +28246,7 @@ class CRYPTCATMEMBER(MemStruct):
     ]
 
 CRYPTCATMEMBER_PTR = Ptr("<I", CRYPTCATMEMBER())
-CRYPTCATMEMBER_PTR_PTR = Ptr("<I", CRYPTCATMEMBER*())
+CRYPTCATMEMBER_PTR_PTR = Ptr("<I", CRYPTCATMEMBER_PTR())
 
 class CRYPT_PROVUI_DATA(MemStruct):
     fields = [
@@ -28443,7 +28443,7 @@ class CRL_INFO(MemStruct):
     ]
 
 PCRL_INFO = Ptr("<I", CRL_INFO())
-PCRL_INFO __ = Ptr("<I", PCRL_INFO())
+PCRL_INFO___ = Ptr("<I", PCRL_INFO())
 
 class CRL_CONTEXT(MemStruct):
     fields = [
@@ -28954,7 +28954,7 @@ class PUBLICKEYSTRUC(MemStruct):
         ("aiKeyAlg", ALG_ID()),
     ]
 
-const PUBLICKEYSTRUC_PTR = Ptr("<I", PUBLICKEYSTRUC())
+const_PUBLICKEYSTRUC_PTR = Ptr("<I", PUBLICKEYSTRUC())
 
 class CRYPT_OID_FUNC_ENTRY(MemStruct):
     fields = [
@@ -28975,7 +28975,7 @@ class CRYPT_PKCS8_IMPORT_PARAMS(MemStruct):
 
 _CertSelectFlags_ = DWORD
 _CertificateStoreContextType_ = DWORD
-_CertificateStoreContextType_PTR_ = Ptr("<I", [CertificateStoreContextType]())
+_CertificateStoreContextType_PTR_ = Ptr("<I", _CertificateStoreContextType_())
 _CertCreateContextFlags_ = DWORD
 _CertCloseStoreFlags_ = DWORD
 _CertControlType_ = DWORD
@@ -28985,7 +28985,7 @@ _CertPropId_ = DWORD
 _CertSetPropertyFlags_ = DWORD
 _CryptEncodeObjectFlags_ = DWORD
 _CryptStringFlags_ = DWORD
-_CryptStringFlags_PTR_ = Ptr("<I", [CryptStringFlags]())
+_CryptStringFlags_PTR_ = Ptr("<I", _CryptStringFlags_())
 _CertStrType_ = DWORD
 _CertNameType_ = DWORD
 _CertNameFlags_ = DWORD
@@ -28993,9 +28993,9 @@ _CryptObjectType_ = DWORD
 _CryptExpectedContentType_ = DWORD
 _CryptExpectedFormatType_ = DWORD
 _CryptFormatType_ = DWORD
-_CryptFormatType_PTR_ = Ptr("<I", [CryptFormatType]())
+_CryptFormatType_PTR_ = Ptr("<I", _CryptFormatType_())
 _CryptContentType_ = DWORD
-_CryptContentType_PTR_ = Ptr("<I", [CryptContentType]())
+_CryptContentType_PTR_ = Ptr("<I", _CryptContentType_())
 _CryptSubjectType_ = DWORD
 _CryptIssuerType_ = DWORD
 _CryptDecodeObjectFlags_ = DWORD
@@ -29004,7 +29004,7 @@ _CertFindFlags_ = DWORD
 _CryptProtectDataFlags_ = DWORD
 _CryptMsgOpenFlags_ = DWORD
 _CryptMsgType_ = DWORD
-_CryptMsgType_PTR_ = Ptr("<I", [CryptMsgType]())
+_CryptMsgType_PTR_ = Ptr("<I", _CryptMsgType_())
 _CryptMsgParamType_ = DWORD
 _CryptMsgControlType_ = DWORD
 _CryptMsgControlFlags_ = DWORD
@@ -29162,7 +29162,7 @@ _SIP_SUBJECTINFO_u_ = Union([
     ("psBlob", MS_ADDINFO_BLOB_PTR),
 ])
 _SignerSignEx_FLAGS_ = DWORD
-_SignerSignEx2_FLAGS_ = [SignerSignEx_FLAGS]
+_SignerSignEx2_FLAGS_ = _SignerSignEx_FLAGS_
 _SIP_SUBJECTINFO_Choice_ = DWORD
 
 class SIP_SUBJECTINFO(MemStruct):
@@ -29370,7 +29370,7 @@ class CERT_CHAIN_CONTEXT(MemStruct):
 
 PCCERT_CHAIN_CONTEXT = Ptr("<I", CERT_CHAIN_CONTEXT())
 PCCERT_CHAIN_CONTEXT_PTR = Ptr("<I", PCCERT_CHAIN_CONTEXT())
-PCCERT_CHAIN_CONTEXT_PTR_PTR = Ptr("<I", PCCERT_CHAIN_CONTEXT*())
+PCCERT_CHAIN_CONTEXT_PTR_PTR = Ptr("<I", PCCERT_CHAIN_CONTEXT_PTR())
 _SGNR_TYPE_ = DWORD
 
 class CRYPT_PROVIDER_SGNR(MemStruct):
@@ -29573,9 +29573,9 @@ PSEC_WINNT_AUTH_IDENTITY_OPAQUE_PTR = Ptr("<I", PSEC_WINNT_AUTH_IDENTITY_OPAQUE(
 SECURITY_STATUS = HRESULT
 SAFER_LEVEL_HANDLE = HANDLE
 SAFER_LEVEL_HANDLE_PTR = Ptr("<I", SAFER_LEVEL_HANDLE())
-BYTE _SAFER_MAX_HASH_SIZE_ = Array(BYTE, 64)
-CHAR _TOKEN_SOURCE_LENGTH_ = Array(CHAR, 8)
-LPSECURITYINFO = ISecurityInformation*
+BYTE__SAFER_MAX_HASH_SIZE_ = Array(BYTE, 64)
+CHAR__TOKEN_SOURCE_LENGTH_ = Array(CHAR, 8)
+LPSECURITYINFO = ISecurityInformation_PTR
 LPSECURITYINFO_PTR = Ptr("<I", LPSECURITYINFO())
 _AceFlags_ = DWORD
 ACCESS_MODE = UINT
@@ -29638,7 +29638,7 @@ PEXPLICIT_ACCESS_PTR = Ptr("<I", PEXPLICIT_ACCESS())
 
 class TOKEN_SOURCE(MemStruct):
     fields = [
-        ("SourceName", CHAR _TOKEN_SOURCE_LENGTH_()),
+        ("SourceName", CHAR__TOKEN_SOURCE_LENGTH_()),
         ("SourceIdentifier", LUID()),
     ]
 
@@ -29652,7 +29652,7 @@ class SAFER_CODE_PROPERTIES(MemStruct):
         ("ImagePath", LPCWSTR()),
         ("hImageFileHandle", HANDLE()),
         ("UrlZoneId", URLZONE()),
-        ("ImageHash", BYTE _SAFER_MAX_HASH_SIZE_()),
+        ("ImageHash", BYTE__SAFER_MAX_HASH_SIZE_()),
         ("dwImageHashSize", DWORD()),
         ("ImageSize", LARGE_INTEGER()),
         ("HashAlgorithm", ALG_ID()),
@@ -29670,7 +29670,7 @@ PSAFER_CODE_PROPERTIES = Ptr("<I", SAFER_CODE_PROPERTIES())
 
 class SID_IDENTIFIER_AUTHORITY(MemStruct):
     fields = [
-        ("Value", BYTE _6_()),
+        ("Value", BYTE__6_()),
     ]
 
 PSID_IDENTIFIER_AUTHORITY = Ptr("<I", SID_IDENTIFIER_AUTHORITY())
@@ -29685,7 +29685,7 @@ class AUDIT_POLICY_INFORMATION(MemStruct):
 PCAUDIT_POLICY_INFORMATION = Ptr("<I", AUDIT_POLICY_INFORMATION())
 PAUDIT_POLICY_INFORMATION_PTR = Ptr("<I", PCAUDIT_POLICY_INFORMATION())
 _AceType_ = BYTE
-_ACE_TYPE|UCHAR_ = [AceType]
+_ACE_TYPE|UCHAR_ = _AceType_
 _AceFlags-BYTE_ = BYTE
 
 class ACE_HEADER(MemStruct):
@@ -29722,14 +29722,14 @@ class LUID_AND_ATTRIBUTES(MemStruct):
     ]
 
 PLUID_AND_ATTRIBUTES = Ptr("<I", LUID_AND_ATTRIBUTES())
-LUID_AND_ATTRIBUTES _ANYSIZE_ARRAY_ = Array(LUID_AND_ATTRIBUTES, 1)
+LUID_AND_ATTRIBUTES__ANYSIZE_ARRAY_ = Array(LUID_AND_ATTRIBUTES, 1)
 _PRIVILEGE_SET_ = DWORD
 
 class PRIVILEGE_SET(MemStruct):
     fields = [
         ("PrivilegeCount", DWORD()),
         ("Control", _PRIVILEGE_SET_()),
-        ("Privilege", LUID_AND_ATTRIBUTES _ANYSIZE_ARRAY_()),
+        ("Privilege", LUID_AND_ATTRIBUTES__ANYSIZE_ARRAY_()),
     ]
 
 PPRIVILEGE_SET = Ptr("<I", PRIVILEGE_SET())
@@ -29737,7 +29737,7 @@ PPRIVILEGE_SET = Ptr("<I", PRIVILEGE_SET())
 class TOKEN_PRIVILEGES(MemStruct):
     fields = [
         ("PrivilegeCount", DWORD()),
-        ("Privileges", LUID_AND_ATTRIBUTES _ANYSIZE_ARRAY_()),
+        ("Privileges", LUID_AND_ATTRIBUTES__ANYSIZE_ARRAY_()),
     ]
 
 PTOKEN_PRIVILEGES = Ptr("<I", TOKEN_PRIVILEGES())
@@ -29782,7 +29782,7 @@ class CREDENTIAL(MemStruct):
 
 PCREDENTIAL = Ptr("<I", CREDENTIAL())
 PCREDENTIAL_PTR = Ptr("<I", PCREDENTIAL())
-PCREDENTIAL_PTR_PTR = Ptr("<I", PCREDENTIAL*())
+PCREDENTIAL_PTR_PTR = Ptr("<I", PCREDENTIAL_PTR())
 
 class CREDENTIAL_TARGET_INFORMATION(MemStruct):
     fields = [
@@ -29844,7 +29844,7 @@ class SECURITY_QUALITY_OF_SERVICE(MemStruct):
         ("EffectiveOnly", BOOLEAN()),
     ]
 
-const SECURITY_QUALITY_OF_SERVICE_PTR = Ptr("<I", SECURITY_QUALITY_OF_SERVICE())
+const_SECURITY_QUALITY_OF_SERVICE_PTR = Ptr("<I", SECURITY_QUALITY_OF_SERVICE())
 PSECURITY_QUALITY_OF_SERVICE = Ptr("<I", SECURITY_QUALITY_OF_SERVICE())
 ACL_INFORMATION_CLASS = UINT
 SAFER_POLICY_INFO_CLASS = UINT
@@ -29878,12 +29878,12 @@ class SID_AND_ATTRIBUTES(MemStruct):
 SID_AND_ATTRIBUTES_PTR = Ptr("<I", SID_AND_ATTRIBUTES())
 PSID_AND_ATTRIBUTES = Ptr("<I", SID_AND_ATTRIBUTES())
 PSID_AND_ATTRIBUTES_PTR = Ptr("<I", PSID_AND_ATTRIBUTES())
-SID_AND_ATTRIBUTES _ANYSIZE_ARRAY_ = Array(SID_AND_ATTRIBUTES, 1)
+SID_AND_ATTRIBUTES__ANYSIZE_ARRAY_ = Array(SID_AND_ATTRIBUTES, 1)
 
 class TOKEN_GROUPS(MemStruct):
     fields = [
         ("GroupCount", DWORD()),
-        ("Groups", SID_AND_ATTRIBUTES _ANYSIZE_ARRAY_()),
+        ("Groups", SID_AND_ATTRIBUTES__ANYSIZE_ARRAY_()),
     ]
 
 PTOKEN_GROUPS = Ptr("<I", TOKEN_GROUPS())
@@ -29912,8 +29912,8 @@ class SECURITY_ATTRIBUTES(MemStruct):
 SECURITY_ATTRIBUTES_PTR = Ptr("<I", SECURITY_ATTRIBUTES())
 LPSECURITY_ATTRIBUTES = Ptr("<I", SECURITY_ATTRIBUTES())
 PSECURITY_ATTRIBUTES = Ptr("<I", SECURITY_ATTRIBUTES())
-const LPSECURITY_ATTRIBUTES = Ptr("<I", SECURITY_ATTRIBUTES())
-const SECURITY_ATTRIBUTES_PTR = Ptr("<I", SECURITY_ATTRIBUTES())
+const_LPSECURITY_ATTRIBUTES = Ptr("<I", SECURITY_ATTRIBUTES())
+const_SECURITY_ATTRIBUTES_PTR = Ptr("<I", SECURITY_ATTRIBUTES())
 
 class SECURITY_DESCRIPTOR_RELATIVE(MemStruct):
     fields = [
@@ -29938,18 +29938,18 @@ SYSTEM_POWER_STATE = UINT
 _POWER_NOTIFICATION_FLAGS_ = DWORD
 HKEY = HANDLE
 HKEY_PTR = Ptr("<I", HKEY())
-PHKEY = HKEY*
-const HKEY_PTR = HKEY*
+PHKEY = HKEY_PTR
+const_HKEY_PTR = HKEY_PTR
 REGSAM = DWORD
 _RegType_ = DWORD
-_RegType_PTR_ = Ptr("<I", [RegType]())
-_RegType-ULONG_ = [RegType]
-_RegType-PULONG_ = Ptr("<I", [RegType-ULONG]())
+_RegType_PTR_ = Ptr("<I", _RegType_())
+_RegType-ULONG_ = _RegType_
+_RegType-PULONG_ = Ptr("<I", _RegType-ULONG_())
 _RegOptions_ = DWORD
 _RegDisposition_ = DWORD
-_RegDisposition_PTR_ = Ptr("<I", [RegDisposition]())
-_RegDisposition-ULONG_ = [RegDisposition]
-_RegDisposition-PULONG_ = Ptr("<I", [RegDisposition-ULONG]())
+_RegDisposition_PTR_ = Ptr("<I", _RegDisposition_())
+_RegDisposition-ULONG_ = _RegDisposition_
+_RegDisposition-PULONG_ = Ptr("<I", _RegDisposition-ULONG_())
 _RegMuiFlags_ = DWORD
 _RegNotifyFlags_ = DWORD
 LSA_UNICODE_STRING = UNICODE_STRING
@@ -30034,8 +30034,8 @@ class LSA_FOREST_TRUST_COLLISION_INFORMATION(MemStruct):
 
 PLSA_FOREST_TRUST_COLLISION_INFORMATION = Ptr("<I", LSA_FOREST_TRUST_COLLISION_INFORMATION())
 PLSA_FOREST_TRUST_COLLISION_INFORMATION_PTR = Ptr("<I", PLSA_FOREST_TRUST_COLLISION_INFORMATION())
-const SOCKET_PEER_TARGET_NAME_PTR = LPVOID
-const SOCKET_SECURITY_QUERY_TEMPLATE_PTR = LPVOID
+const_SOCKET_PEER_TARGET_NAME_PTR = LPVOID
+const_SOCKET_SECURITY_QUERY_TEMPLATE_PTR = LPVOID
 WSAOVERLAPPED = OVERLAPPED
 LPWSAOVERLAPPED = Ptr("<I", WSAOVERLAPPED())
 LPWSAOVERLAPPED_COMPLETION_ROUTINE = LPVOID
@@ -30043,14 +30043,14 @@ LPLOOKUPSERVICE_COMPLETION_ROUTINE = LPVOID
 socklen_t = int
 LPCONDITIONPROC = LPVOID
 WSAEVENT = HANDLE
-const WSAEVENT_PTR = Ptr("<I", WSAEVENT())
-u_int = unsigned int
-int _FD_MAX_EVENTS_ = Array(int, 10)
-TCHAR _WSAPROTOCOL_LEN + 1_ = Array(TCHAR, 256)
-DWORD _MAX_PROTOCOL_CHAIN_ = Array(DWORD, 7)
-char _WSADESCRIPTION_LEN + 1_ = Array(char, 257)
-char _WSASYS_STATUS_LEN + 1_ = Array(char, 129)
-char _14_ = Array(char, 14)
+const_WSAEVENT_PTR = Ptr("<I", WSAEVENT())
+u_int = unsigned_int
+int__FD_MAX_EVENTS_ = Array(int, 10)
+TCHAR__WSAPROTOCOL_LEN_+_1_ = Array(TCHAR, 256)
+DWORD__MAX_PROTOCOL_CHAIN_ = Array(DWORD, 7)
+char__WSADESCRIPTION_LEN_+_1_ = Array(char, 257)
+char__WSASYS_STATUS_LEN_+_1_ = Array(char, 129)
+char__14_ = Array(char, 14)
 _AddressFamily_ = int
 ADDRESS_FAMILY = USHORT
 _ADDRESS_FAMILY_ushort_ = ADDRESS_FAMILY
@@ -30058,18 +30058,18 @@ _ADDRESS_FAMILY_short_ = ADDRESS_FAMILY
 _SocketType_ = int
 _SocketProtocol_ = int
 
-class struct sockaddr(MemStruct):
+class struct_sockaddr(MemStruct):
     fields = [
         ("sa_family", _ADDRESS_FAMILY_ushort_()),
-        ("sa_data", char _14_()),
+        ("sa_data", char__14_()),
     ]
 
-struct sockaddr_PTR = Ptr("<I", struct sockaddr())
-const sockaddr_PTR = Ptr("<I", struct sockaddr())
-const struct sockaddr_PTR = Ptr("<I", struct sockaddr())
+struct_sockaddr_PTR = Ptr("<I", struct_sockaddr())
+const_sockaddr_PTR = Ptr("<I", struct_sockaddr())
+const_struct_sockaddr_PTR = Ptr("<I", struct_sockaddr())
 _AI_FLAGS_ = UINT
 
-class struct addrinfo(MemStruct):
+class struct_addrinfo(MemStruct):
     fields = [
         ("ai_flags", _AI_FLAGS_()),
         ("ai_family", _AddressFamily_()),
@@ -30077,13 +30077,13 @@ class struct addrinfo(MemStruct):
         ("ai_protocol", _SocketProtocol_()),
         ("ai_addrlen", size_t()),
         ("ai_canonname", char_PTR()),
-        ("ai_addr", struct sockaddr_PTR()),
+        ("ai_addr", struct_sockaddr_PTR()),
         ("ai_next", LPVOID()),
     ]
 
-struct addrinfo_PTR = Ptr("<I", struct addrinfo())
-const struct addrinfo_PTR = Ptr("<I", struct addrinfo())
-struct addrinfo_PTR_PTR = Ptr("<I", struct addrinfo*())
+struct_addrinfo_PTR = Ptr("<I", struct_addrinfo())
+const_struct_addrinfo_PTR = Ptr("<I", struct_addrinfo())
+struct_addrinfo_PTR_PTR = Ptr("<I", struct_addrinfo_PTR())
 
 class ADDRINFOW(MemStruct):
     fields = [
@@ -30093,11 +30093,11 @@ class ADDRINFOW(MemStruct):
         ("ai_protocol", _SocketProtocol_()),
         ("ai_addrlen", size_t()),
         ("ai_canonname", PWSTR()),
-        ("ai_addr", struct sockaddr_PTR()),
+        ("ai_addr", struct_sockaddr_PTR()),
         ("ai_next", LPVOID()),
     ]
 
-const ADDRINFOW_PTR = Ptr("<I", ADDRINFOW())
+const_ADDRINFOW_PTR = Ptr("<I", ADDRINFOW())
 PADDRINFOW = Ptr("<I", ADDRINFOW())
 PADDRINFOW_PTR = Ptr("<I", PADDRINFOW())
 
@@ -30109,7 +30109,7 @@ class ADDRINFOEX(MemStruct):
         ("ai_protocol", _SocketProtocol_()),
         ("ai_addrlen", size_t()),
         ("ai_canonname", PCTSTR()),
-        ("ai_addr", struct sockaddr_PTR()),
+        ("ai_addr", struct_sockaddr_PTR()),
         ("ai_blob", void_PTR()),
         ("ai_bloblen", size_t()),
         ("ai_provider", LPGUID()),
@@ -30117,15 +30117,15 @@ class ADDRINFOEX(MemStruct):
     ]
 
 PADDRINFOEX = Ptr("<I", ADDRINFOEX())
-const ADDRINFOEX_PTR = Ptr("<I", ADDRINFOEX())
+const_ADDRINFOEX_PTR = Ptr("<I", ADDRINFOEX())
 PADDRINFOEX_PTR = Ptr("<I", PADDRINFOEX())
 SOCKET = UINT_PTR
-SOCKET _FD_SETSIZE_ = Array(SOCKET, 64)
+SOCKET__FD_SETSIZE_ = Array(SOCKET, 64)
 
 class fd_set(MemStruct):
     fields = [
         ("fd_count", u_int()),
-        ("fd_array", SOCKET _FD_SETSIZE_()),
+        ("fd_array", SOCKET__FD_SETSIZE_()),
     ]
 
 fd_set_PTR = Ptr("<I", fd_set())
@@ -30133,7 +30133,7 @@ fd_set_PTR = Ptr("<I", fd_set())
 class WSAPROTOCOLCHAIN(MemStruct):
     fields = [
         ("ChainLen", int()),
-        ("ChainEntries", DWORD _MAX_PROTOCOL_CHAIN_()),
+        ("ChainEntries", DWORD__MAX_PROTOCOL_CHAIN_()),
     ]
 
 _WSA_PROVIDER_FLAGS_ = DWORD
@@ -30162,19 +30162,19 @@ class WSAPROTOCOL_INFO(MemStruct):
         ("iSecurityScheme", _SecurityScheme_()),
         ("dwMessageSize", DWORD()),
         ("dwProviderReserved", DWORD()),
-        ("szProtocol", TCHAR _WSAPROTOCOL_LEN + 1_()),
+        ("szProtocol", TCHAR__WSAPROTOCOL_LEN_+_1_()),
     ]
 
 LPWSAPROTOCOL_INFO = Ptr("<I", WSAPROTOCOL_INFO())
-SOCKADDR = struct sockaddr
+SOCKADDR = struct_sockaddr
 SOCKADDR_PTR = Ptr("<I", SOCKADDR())
-const SOCKADDR_PTR = Ptr("<I", SOCKADDR())
+const_SOCKADDR_PTR = Ptr("<I", SOCKADDR())
 PSOCKADDR = Ptr("<I", SOCKADDR())
 LPSOCKADDR = Ptr("<I", SOCKADDR())
 LPSOCKADDR_PTR = Ptr("<I", LPSOCKADDR())
 _IN6_ADDR_u_ = Union([
-    ("Byte", UCHAR _16_),
-    ("Word", USHORT _8_),
+    ("Byte", UCHAR__16_),
+    ("Word", USHORT__8_),
 ])
 
 class IN6_ADDR(MemStruct):
@@ -30183,13 +30183,13 @@ class IN6_ADDR(MemStruct):
     ]
 
 IN6_ADDR_PTR = Ptr("<I", IN6_ADDR())
-const IN6_ADDR_PTR = Ptr("<I", IN6_ADDR())
+const_IN6_ADDR_PTR = Ptr("<I", IN6_ADDR())
 _FDEvents_ = ULONG
 
 class WSANETWORKEVENTS(MemStruct):
     fields = [
         ("lNetworkEvents", _FDEvents_()),
-        ("iErrorCode", int _FD_MAX_EVENTS_()),
+        ("iErrorCode", int__FD_MAX_EVENTS_()),
     ]
 
 LPWSANETWORKEVENTS = Ptr("<I", WSANETWORKEVENTS())
@@ -30220,9 +30220,9 @@ class IN_ADDR(MemStruct):
         ("S_un", _IN_ADDR_u_()),
     ]
 
-const IN_ADDR_PTR = Ptr("<I", IN_ADDR())
+const_IN_ADDR_PTR = Ptr("<I", IN_ADDR())
 IN_ADDR_PTR = Ptr("<I", IN_ADDR())
-struct in_addr = IN_ADDR
+struct_in_addr = IN_ADDR
 SOCKET_SECURITY_PROTOCOL = UINT
 _SocketInfoFlags_ = ULONG
 
@@ -30243,18 +30243,18 @@ class SOCKET_SECURITY_SETTINGS(MemStruct):
         ("SecurityFlags", _SocketSecurityFlags_()),
     ]
 
-const SOCKET_SECURITY_SETTINGS_PTR = Ptr("<I", SOCKET_SECURITY_SETTINGS())
+const_SOCKET_SECURITY_SETTINGS_PTR = Ptr("<I", SOCKET_SECURITY_SETTINGS())
 
-class struct timeval(MemStruct):
+class struct_timeval(MemStruct):
     fields = [
         ("tv_sec", long()),
         ("tv_usec", long()),
     ]
 
-struct timeval_PTR = Ptr("<I", struct timeval())
-const struct timeval_PTR = Ptr("<I", struct timeval())
+struct_timeval_PTR = Ptr("<I", struct_timeval())
+const_struct_timeval_PTR = Ptr("<I", struct_timeval())
 
-class struct hostent(MemStruct):
+class struct_hostent(MemStruct):
     fields = [
         ("h_name", char_PTR()),
         ("h_aliases", char_PTR_PTR()),
@@ -30263,16 +30263,16 @@ class struct hostent(MemStruct):
         ("h_addr_list", char_PTR_PTR()),
     ]
 
-struct hostent_PTR = Ptr("<I", struct hostent())
+struct_hostent_PTR = Ptr("<I", struct_hostent())
 
-class struct PROTOENT(MemStruct):
+class struct_PROTOENT(MemStruct):
     fields = [
         ("p_name", char_PTR()),
         ("p_aliases", char_PTR_PTR()),
         ("p_proto", short()),
     ]
 
-struct PROTOENT_PTR = Ptr("<I", struct PROTOENT())
+struct_PROTOENT_PTR = Ptr("<I", struct_PROTOENT())
 
 class SOCKET_ADDRESS(MemStruct):
     fields = [
@@ -30284,12 +30284,12 @@ class SOCKET_ADDRESS(MemStruct):
 SOCKET_ADDRESS_PTR = Ptr("<I", SOCKET_ADDRESS())
 PSOCKET_ADDRESS = Ptr("<I", SOCKET_ADDRESS())
 LPSOCKET_ADDRESS_PTR = Ptr("<I", PSOCKET_ADDRESS())
-SOCKET_ADDRESS _1_ = Array(SOCKET_ADDRESS, 1)
+SOCKET_ADDRESS__1_ = Array(SOCKET_ADDRESS, 1)
 
 class SOCKET_ADDRESS_LIST(MemStruct):
     fields = [
         ("iAddressCount", INT()),
-        ("Address", SOCKET_ADDRESS _1_()),
+        ("Address", SOCKET_ADDRESS__1_()),
     ]
 
 PSOCKET_ADDRESS_LIST = Ptr("<I", SOCKET_ADDRESS_LIST())
@@ -30410,7 +30410,7 @@ class _WSABUF_IN_(MemStruct):
         ("buf", _LPVOID|char_PTR_()),
     ]
 
-_LPWSABUF_IN_ = Ptr("<I", [WSABUF_IN]())
+_LPWSABUF_IN_ = Ptr("<I", _WSABUF_IN_())
 
 class WSAMSG(MemStruct):
     fields = [
@@ -30424,7 +30424,7 @@ class WSAMSG(MemStruct):
 
 LPWSAMSG = Ptr("<I", WSAMSG())
 WSAESETSERVICEOP = UINT
-GROUP = unsigned int
+GROUP = unsigned_int
 SERVICETYPE = ULONG
 
 class FLOWSPEC(MemStruct):
@@ -30451,7 +30451,7 @@ LPQOS = Ptr("<I", QOS())
 _SocketLevel_ = int
 _SocketOption_ = DWORD
 _SendRecvFlags_ = DWORD
-_SendRecvFlags_PTR_ = Ptr("<I", [SendRecvFlags]())
+_SendRecvFlags_PTR_ = Ptr("<I", _SendRecvFlags_())
 _NI_Flags_ = UINT
 _SocketCode-int_ = int
 _SocketCode-INT_ = int
@@ -30461,20 +30461,20 @@ _GetService_Props_ = DWORD
 _SetService_Operation_ = DWORD
 _SetService_Flags_ = DWORD
 _SetService_FlagsOut_ = DWORD
-_SetService_FlagsOut_PTR_ = Ptr("<I", [SetService_FlagsOut]())
+_SetService_FlagsOut_PTR_ = Ptr("<I", _SetService_FlagsOut_())
 _TransmitFile_Flags_ = DWORD
 _SocketShutdownFlags_ = int
-_INET_ADDR_OUTPUT_ = unsigned long
+_INET_ADDR_OUTPUT_ = unsigned_long
 _Socket_IOCTL_ = long
 
 class WSADATA(MemStruct):
     fields = [
         ("wVersion", WORD()),
         ("wHighVersion", WORD()),
-        ("szDescription", char _WSADESCRIPTION_LEN + 1_()),
-        ("szSystemStatus", char _WSASYS_STATUS_LEN + 1_()),
-        ("iMaxSockets", unsigned short()),
-        ("iMaxUdpDg", unsigned short()),
+        ("szDescription", char__WSADESCRIPTION_LEN_+_1_()),
+        ("szSystemStatus", char__WSASYS_STATUS_LEN_+_1_()),
+        ("iMaxSockets", unsigned_short()),
+        ("iMaxUdpDg", unsigned_short()),
         ("lpVendorInfo", _LPVOID|char_PTR_()),
     ]
 
@@ -30488,16 +30488,16 @@ class servent(MemStruct):
         ("s_proto", char_PTR()),
     ]
 
-struct servent_PTR = Ptr("<I", servent())
+struct_servent_PTR = Ptr("<I", servent())
 RETCODE = short
 RETCODE_PTR = Ptr("<I", RETCODE())
 _ODBC_DSN_REQUEST_ = WORD
 _ODBC_DRIVER_REQUEST_ = WORD
 _ODBC_INSTALL_REQUEST_ = WORD
 _ODBC_CONFIG_MODE_ = USHORT
-_ODBC_CONFIG_MODE_PTR_ = Ptr("<I", [ODBC_CONFIG_MODE]())
+_ODBC_CONFIG_MODE_PTR_ = Ptr("<I", _ODBC_CONFIG_MODE_())
 _ODBC_ERROR_CODE_ = DWORD
-_ODBC_ERROR_CODE_PTR_ = Ptr("<I", [ODBC_ERROR_CODE]())
+_ODBC_ERROR_CODE_PTR_ = Ptr("<I", _ODBC_ERROR_CODE_())
 SQLRETURN = short
 LPSNMP_MGR_SESSION = PVOID
 AsnInteger = LONG
@@ -30592,8 +30592,8 @@ class WAVEFORMATEX(MemStruct):
 LPWAVEFORMATEX = Ptr("<I", WAVEFORMATEX())
 LPCWAVEFORMATEX = Ptr("<I", WAVEFORMATEX())
 WAVEFORMATEX_PTR = Ptr("<I", WAVEFORMATEX())
-WAVEFORMATEX_PTR_PTR = Ptr("<I", WAVEFORMATEX*())
-const WAVEFORMATEX_PTR = Ptr("<I", WAVEFORMATEX())
+WAVEFORMATEX_PTR_PTR = Ptr("<I", WAVEFORMATEX_PTR())
+const_WAVEFORMATEX_PTR = Ptr("<I", WAVEFORMATEX())
 _SPEAKER_POSITION_ = DWORD
 
 class AM_MEDIA_TYPE(MemStruct):
@@ -30611,60 +30611,60 @@ class AM_MEDIA_TYPE(MemStruct):
     ]
 
 AM_MEDIA_TYPE_PTR = Ptr("<I", AM_MEDIA_TYPE())
-AM_MEDIA_TYPE_PTR_PTR = Ptr("<I", AM_MEDIA_TYPE*())
-const AM_MEDIA_TYPE_PTR = Ptr("<I", AM_MEDIA_TYPE())
-RPC_BINDING_HANDLE = void*
+AM_MEDIA_TYPE_PTR_PTR = Ptr("<I", AM_MEDIA_TYPE_PTR())
+const_AM_MEDIA_TYPE_PTR = Ptr("<I", AM_MEDIA_TYPE())
+RPC_BINDING_HANDLE = void_PTR
 RPC_BINDING_HANDLE_PTR = Ptr("<I", RPC_BINDING_HANDLE())
 RPC_TSTR = LPTSTR
 RPC_TSTR_PTR = Ptr("<I", RPC_TSTR())
 RPC_CSTR = LPSTR
 RPC_CSTR_PTR = Ptr("<I", RPC_CSTR())
 RPC_WSTR = LPWSTR
-RPC_IF_HANDLE = void*
-RPC_NS_HANDLE = void*
+RPC_IF_HANDLE = void_PTR
+RPC_NS_HANDLE = void_PTR
 RPC_NS_HANDLE_PTR = Ptr("<I", RPC_NS_HANDLE())
-RPC_AUTHZ_HANDLE = void*
+RPC_AUTHZ_HANDLE = void_PTR
 RPC_AUTHZ_HANDLE_PTR = Ptr("<I", RPC_AUTHZ_HANDLE())
-RPC_AUTH_IDENTITY_HANDLE = void*
+RPC_AUTH_IDENTITY_HANDLE = void_PTR
 RPC_AUTH_IDENTITY_HANDLE_PTR = Ptr("<I", RPC_AUTH_IDENTITY_HANDLE())
-RPC_EP_INQ_HANDLE = void*
+RPC_EP_INQ_HANDLE = void_PTR
 RPC_EP_INQ_HANDLE_PTR = Ptr("<I", RPC_EP_INQ_HANDLE())
 RPC_CLIENT_ALLOC_PTR = LPVOID
-RPC_CLIENT_ALLOC_PTR_PTR = Ptr("<I", RPC_CLIENT_ALLOC*())
+RPC_CLIENT_ALLOC_PTR_PTR = Ptr("<I", RPC_CLIENT_ALLOC_PTR())
 RPC_CLIENT_FREE_PTR = LPVOID
-RPC_CLIENT_FREE_PTR_PTR = Ptr("<I", RPC_CLIENT_FREE*())
+RPC_CLIENT_FREE_PTR_PTR = Ptr("<I", RPC_CLIENT_FREE_PTR())
 RPC_MGMT_AUTHORIZATION_FN = LPVOID
 RPC_OBJECT_INQ_FN = LPVOID
-RPC_MGR_EPV_PTR = void*
-RPC_MGR_EPV_PTR_PTR = Ptr("<I", RPC_MGR_EPV*())
+RPC_MGR_EPV_PTR = void_PTR
+RPC_MGR_EPV_PTR_PTR = Ptr("<I", RPC_MGR_EPV_PTR())
 RPC_AUTH_KEY_RETRIEVAL_FN = LPVOID
 RPC_IF_CALLBACK_FN_PTR = LPVOID
-RPC_SS_THREAD_HANDLE = void*
+RPC_SS_THREAD_HANDLE = void_PTR
 PFN_RPCNOTIFICATION_ROUTINE = LPVOID
-UUID_PTR _1_ = Array(UUID_PTR, 1)
-RPC_TSTR _1_ = Array(RPC_TSTR, 1)
-LONG_PTR _4_ = Array(LONG_PTR, 4)
-unsigned long _1_ = Array(unsigned long, 1)
-RPC_BINDING_HANDLE _1_ = Array(RPC_BINDING_HANDLE, 1)
+UUID_PTR__1_ = Array(UUID_PTR, 1)
+RPC_TSTR__1_ = Array(RPC_TSTR, 1)
+LONG_PTR__4_ = Array(LONG_PTR, 4)
+unsigned_long__1_ = Array(unsigned_long, 1)
+RPC_BINDING_HANDLE__1_ = Array(RPC_BINDING_HANDLE, 1)
 
 class RPC_PROTSEQ_VECTOR(MemStruct):
     fields = [
-        ("Count", unsigned int()),
-        ("Protseq", RPC_TSTR _1_()),
+        ("Count", unsigned_int()),
+        ("Protseq", RPC_TSTR__1_()),
     ]
 
 RPC_PROTSEQ_VECTOR_PTR = Ptr("<I", RPC_PROTSEQ_VECTOR())
-RPC_PROTSEQ_VECTOR_PTR_PTR = Ptr("<I", RPC_PROTSEQ_VECTOR*())
+RPC_PROTSEQ_VECTOR_PTR_PTR = Ptr("<I", RPC_PROTSEQ_VECTOR_PTR())
 _RPC_BINDING_HANDLE_TEMPLATE_V1_u_ = Union([
     ("Reserved", RPC_TSTR),
 ])
-_RPC_BHT_ = unsigned long
+_RPC_BHT_ = unsigned_long
 
 class RPC_BINDING_HANDLE_TEMPLATE_V1(MemStruct):
     fields = [
-        ("Version", unsigned long()),
+        ("Version", unsigned_long()),
         ("Flags", _RPC_BHT_()),
-        ("ProtocolSequence", unsigned long()),
+        ("ProtocolSequence", unsigned_long()),
         ("NetworkAddress", RPC_TSTR()),
         ("StringEndpoint", RPC_TSTR()),
         ("u1", _RPC_BINDING_HANDLE_TEMPLATE_V1_u_()),
@@ -30672,31 +30672,31 @@ class RPC_BINDING_HANDLE_TEMPLATE_V1(MemStruct):
     ]
 
 RPC_BINDING_HANDLE_TEMPLATE_V1_PTR = Ptr("<I", RPC_BINDING_HANDLE_TEMPLATE_V1())
-_RPC_C_QOS_CAPABILITIES_ = unsigned long
-_RPC_C_QOS_IDENTITY_ = unsigned long
-_RPC_C_IMP_LEVEL_ = unsigned long
+_RPC_C_QOS_CAPABILITIES_ = unsigned_long
+_RPC_C_QOS_IDENTITY_ = unsigned_long
+_RPC_C_IMP_LEVEL_ = unsigned_long
 
 class RPC_SECURITY_QOS(MemStruct):
     fields = [
-        ("Version", unsigned long()),
+        ("Version", unsigned_long()),
         ("Capabilities", _RPC_C_QOS_CAPABILITIES_()),
         ("IdentityTracking", _RPC_C_QOS_IDENTITY_()),
         ("ImpersonationType", _RPC_C_IMP_LEVEL_()),
     ]
 
 RPC_SECURITY_QOS_PTR = Ptr("<I", RPC_SECURITY_QOS())
-_RPC_C_AUTHN_LEVEL_ = unsigned long
-_RPC_C_AUTHN_LEVEL_PTR_ = Ptr("<I", [RPC_C_AUTHN_LEVEL]())
-_RPC_C_AUTHN_SVC_ = unsigned long
-_RPC_C_AUTHN_SVC_PTR_ = Ptr("<I", [RPC_C_AUTHN_SVC]())
-_SEC_WINNT_AUTH_IDENTITY_ = unsigned long
+_RPC_C_AUTHN_LEVEL_ = unsigned_long
+_RPC_C_AUTHN_LEVEL_PTR_ = Ptr("<I", _RPC_C_AUTHN_LEVEL_())
+_RPC_C_AUTHN_SVC_ = unsigned_long
+_RPC_C_AUTHN_SVC_PTR_ = Ptr("<I", _RPC_C_AUTHN_SVC_())
+_SEC_WINNT_AUTH_IDENTITY_ = unsigned_long
 
 class SEC_WINNT_AUTH_IDENTITY(MemStruct):
     fields = [
         ("User", RPC_TSTR()),
-        ("UserLength", unsigned long()),
+        ("UserLength", unsigned_long()),
         ("Domain", RPC_TSTR()),
-        ("DomainLength", unsigned long()),
+        ("DomainLength", unsigned_long()),
         ("Password", RPC_TSTR()),
         ("PasswordLength", long()),
         ("Flags", _SEC_WINNT_AUTH_IDENTITY_()),
@@ -30706,7 +30706,7 @@ SEC_WINNT_AUTH_IDENTITY_PTR = Ptr("<I", SEC_WINNT_AUTH_IDENTITY())
 
 class RPC_BINDING_HANDLE_SECURITY_V1(MemStruct):
     fields = [
-        ("Version", unsigned long()),
+        ("Version", unsigned_long()),
         ("ServerPrincName", RPC_TSTR()),
         ("AuthnLevel", _RPC_C_AUTHN_LEVEL_()),
         ("AuthnSvc", _RPC_C_AUTHN_SVC_()),
@@ -30715,67 +30715,67 @@ class RPC_BINDING_HANDLE_SECURITY_V1(MemStruct):
     ]
 
 RPC_BINDING_HANDLE_SECURITY_V1_PTR = Ptr("<I", RPC_BINDING_HANDLE_SECURITY_V1())
-_RPC_BHO_ = unsigned long
+_RPC_BHO_ = unsigned_long
 
 class RPC_BINDING_HANDLE_OPTIONS_V1(MemStruct):
     fields = [
-        ("Version", unsigned long()),
+        ("Version", unsigned_long()),
         ("Flags", _RPC_BHO_()),
-        ("ComTimeout", unsigned long()),
-        ("CallTimeout", unsigned long()),
+        ("ComTimeout", unsigned_long()),
+        ("CallTimeout", unsigned_long()),
     ]
 
 RPC_BINDING_HANDLE_OPTIONS_V1_PTR = Ptr("<I", RPC_BINDING_HANDLE_OPTIONS_V1())
 
 class RPC_BINDING_VECTOR(MemStruct):
     fields = [
-        ("Count", unsigned long()),
-        ("BindingH", RPC_BINDING_HANDLE _1_()),
+        ("Count", unsigned_long()),
+        ("BindingH", RPC_BINDING_HANDLE__1_()),
     ]
 
 RPC_BINDING_VECTOR_PTR = Ptr("<I", RPC_BINDING_VECTOR())
-RPC_BINDING_VECTOR_PTR_PTR = Ptr("<I", RPC_BINDING_VECTOR*())
+RPC_BINDING_VECTOR_PTR_PTR = Ptr("<I", RPC_BINDING_VECTOR_PTR())
 
 class RPC_IF_ID(MemStruct):
     fields = [
         ("Uuid", UUID()),
-        ("VersMajor", unsigned short()),
-        ("VersMinor", unsigned short()),
+        ("VersMajor", unsigned_short()),
+        ("VersMinor", unsigned_short()),
     ]
 
 RPC_IF_ID_PTR = Ptr("<I", RPC_IF_ID())
-RPC_IF_ID_PTR _1_ = Array(RPC_IF_ID_PTR, 1)
+RPC_IF_ID_PTR__1_ = Array(RPC_IF_ID_PTR, 1)
 
 class RPC_IF_ID_VECTOR(MemStruct):
     fields = [
-        ("Count", unsigned long()),
-        ("IfId", RPC_IF_ID_PTR _1_()),
+        ("Count", unsigned_long()),
+        ("IfId", RPC_IF_ID_PTR__1_()),
     ]
 
 RPC_IF_ID_VECTOR_PTR = Ptr("<I", RPC_IF_ID_VECTOR())
-RPC_IF_ID_VECTOR_PTR_PTR = Ptr("<I", RPC_IF_ID_VECTOR*())
+RPC_IF_ID_VECTOR_PTR_PTR = Ptr("<I", RPC_IF_ID_VECTOR_PTR())
 
 class RPC_STATS_VECTOR(MemStruct):
     fields = [
-        ("Count", unsigned int()),
-        ("Stats", unsigned long _1_()),
+        ("Count", unsigned_int()),
+        ("Stats", unsigned_long__1_()),
     ]
 
 RPC_STATS_VECTOR_PTR = Ptr("<I", RPC_STATS_VECTOR())
-RPC_STATS_VECTOR_PTR_PTR = Ptr("<I", RPC_STATS_VECTOR*())
+RPC_STATS_VECTOR_PTR_PTR = Ptr("<I", RPC_STATS_VECTOR_PTR())
 
 class UUID_VECTOR(MemStruct):
     fields = [
-        ("Count", unsigned long()),
-        ("Uuid", UUID_PTR _1_()),
+        ("Count", unsigned_long()),
+        ("Uuid", UUID_PTR__1_()),
     ]
 
 UUID_VECTOR_PTR = Ptr("<I", UUID_VECTOR())
 
 class RPC_VERSION(MemStruct):
     fields = [
-        ("MajorVersion", unsigned short()),
-        ("MinorVersion", unsigned short()),
+        ("MajorVersion", unsigned_short()),
+        ("MinorVersion", unsigned_short()),
     ]
 
 RPC_VERSION_PTR = Ptr("<I", RPC_VERSION())
@@ -30787,12 +30787,12 @@ class RPC_SYNTAX_IDENTIFIER(MemStruct):
     ]
 
 PRPC_SYNTAX_IDENTIFIER = Ptr("<I", RPC_SYNTAX_IDENTIFIER())
-_RPC_POLICY_EndPoint_ = unsigned long
-_RPC_POLICY_Nic_ = unsigned long
+_RPC_POLICY_EndPoint_ = unsigned_long
+_RPC_POLICY_Nic_ = unsigned_long
 
 class RPC_POLICY(MemStruct):
     fields = [
-        ("Length", unsigned int()),
+        ("Length", unsigned_int()),
         ("EndpointFlags", _RPC_POLICY_EndPoint_()),
         ("NICFlags", _RPC_POLICY_Nic_()),
     ]
@@ -30808,11 +30808,11 @@ class RPC_ERROR_ENUM_HANDLE(MemStruct):
 
 RPC_ERROR_ENUM_HANDLE_PTR = Ptr("<I", RPC_ERROR_ENUM_HANDLE())
 RPC_NOTIFICATIONS = UINT
-_RPC_C_AUTHN_LEVEL-unsigned-int_ = [RPC_C_AUTHN_LEVEL]
-_RPC_C_AUTHN_LEVEL-unsigned-int_PTR_ = Ptr("<I", [RPC_C_AUTHN_LEVEL-unsigned-int]())
-_RPC_C_AUTHZ_ = unsigned long
-_RPC_C_AUTHZ_PTR_ = Ptr("<I", [RPC_C_AUTHZ]())
-RPC_STATUS = [ERROR_CODE]
+_RPC_C_AUTHN_LEVEL-unsigned-int_ = _RPC_C_AUTHN_LEVEL_
+_RPC_C_AUTHN_LEVEL-unsigned-int_PTR_ = Ptr("<I", _RPC_C_AUTHN_LEVEL-unsigned-int_())
+_RPC_C_AUTHZ_ = unsigned_long
+_RPC_C_AUTHZ_PTR_ = Ptr("<I", _RPC_C_AUTHZ_())
+RPC_STATUS = _ERROR_CODE_
 RPC_STATUS_PTR = Ptr("<I", RPC_STATUS())
 ExtendedErrorParamTypes = UINT
 
@@ -30837,7 +30837,7 @@ class RPC_EE_INFO_PARAM(MemStruct):
         ("u", _RPC_EE_INFO_PARAM_u_()),
     ]
 
-RPC_EE_INFO_PARAM _MaxNumberOfEEInfoParams_ = Array(RPC_EE_INFO_PARAM, 4)
+RPC_EE_INFO_PARAM__MaxNumberOfEEInfoParams_ = Array(RPC_EE_INFO_PARAM, 4)
 _RPC_EXTENDED_ERROR_INFO_u_ = Union([
     ("SystemTime", SYSTEMTIME),
     ("FileTime", FILETIME),
@@ -30855,7 +30855,7 @@ class RPC_EXTENDED_ERROR_INFO(MemStruct):
         ("DetectionLocation", USHORT()),
         ("Flags", _RPC_EE_FLAGS_()),
         ("NumberOfParameters", int()),
-        ("Parameters", RPC_EE_INFO_PARAM _MaxNumberOfEEInfoParams_()),
+        ("Parameters", RPC_EE_INFO_PARAM__MaxNumberOfEEInfoParams_()),
     ]
 
 RPC_EXTENDED_ERROR_INFO_PTR = Ptr("<I", RPC_EXTENDED_ERROR_INFO())
@@ -30890,14 +30890,14 @@ RPC_ASYNC_NOTIFICATION_INFO = Union([
     ("NotificationRoutine", PFN_RPCNOTIFICATION_ROUTINE),
 ])
 RPC_ASYNC_NOTIFICATION_INFO_PTR = Ptr("<I", RPC_ASYNC_NOTIFICATION_INFO())
-_RPC_ASYNC_STATE_FLAGS_ = unsigned long
+_RPC_ASYNC_STATE_FLAGS_ = unsigned_long
 RPC_ASYNC_EVENT = UINT
 RPC_NOTIFICATION_TYPES = UINT
 
 class RPC_ASYNC_STATE(MemStruct):
     fields = [
-        ("Size", unsigned int()),
-        ("Signature", unsigned long()),
+        ("Size", unsigned_int()),
+        ("Signature", unsigned_long()),
         ("Lock", long()),
         ("Flags", _RPC_ASYNC_STATE_FLAGS_()),
         ("StubInfo", void_PTR()),
@@ -30906,11 +30906,11 @@ class RPC_ASYNC_STATE(MemStruct):
         ("Event", RPC_ASYNC_EVENT()),
         ("NotificationType", RPC_NOTIFICATION_TYPES()),
         ("u", RPC_ASYNC_NOTIFICATION_INFO()),
-        ("Reserved", LONG_PTR _4_()),
+        ("Reserved", LONG_PTR__4_()),
     ]
 
 PRPC_ASYNC_STATE = Ptr("<I", RPC_ASYNC_STATE())
-BYTE _IMAGE_SIZEOF_SHORT_NAME_ = Array(BYTE, 8)
+BYTE__IMAGE_SIZEOF_SHORT_NAME_ = Array(BYTE, 8)
 _IMAGE_SECTION_HEADER_u_ = Union([
     ("PhysicalAddress", DWORD),
     ("VirtualSize", DWORD),
@@ -30918,7 +30918,7 @@ _IMAGE_SECTION_HEADER_u_ = Union([
 
 class IMAGE_SECTION_HEADER(MemStruct):
     fields = [
-        ("Name", BYTE _IMAGE_SIZEOF_SHORT_NAME_()),
+        ("Name", BYTE__IMAGE_SIZEOF_SHORT_NAME_()),
         ("Misc", _IMAGE_SECTION_HEADER_u_()),
         ("VirtualAddress", DWORD()),
         ("SizeOfRawData", DWORD()),
@@ -30937,7 +30937,7 @@ _FILE_SHARE_MODE_ = DWORD
 _MemoryType_ = DWORD
 _MemoryAllocationFlags_ = DWORD
 _MemoryProtection_ = DWORD
-_MemoryProtection_PTR_ = Ptr("<I", [MemoryProtection]())
+_MemoryProtection_PTR_ = Ptr("<I", _MemoryProtection_())
 _NtVerType_ = DWORD
 _TOKEN_ACCESS_MASK_ = DWORD
 _ObjectAttributes_ = ULONG
@@ -30953,7 +30953,7 @@ class OBJECT_ATTRIBUTES(MemStruct):
     ]
 
 POBJECT_ATTRIBUTES = Ptr("<I", OBJECT_ATTRIBUTES())
-OBJECT_ATTRIBUTES __ = Ptr("<I", OBJECT_ATTRIBUTES())
+OBJECT_ATTRIBUTES___ = Ptr("<I", OBJECT_ATTRIBUTES())
 
 class RTL_CRITICAL_SECTION_DEBUG(MemStruct):
     fields = [
@@ -30984,7 +30984,7 @@ class RTL_CRITICAL_SECTION(MemStruct):
 
 PRTL_CRITICAL_SECTION = Ptr("<I", RTL_CRITICAL_SECTION())
 _NtProtectionFlags_ = ULONG
-_NtProtectionFlags_PTR_ = Ptr("<I", [NtProtectionFlags]())
+_NtProtectionFlags_PTR_ = Ptr("<I", _NtProtectionFlags_())
 _ProcThreadAttribute_ = DWORD_PTR
 _ProcThreadAttributeFlags_ = DWORD
 
@@ -30996,7 +30996,7 @@ class PROC_THREAD_ATTRIBUTE_ENTRY(MemStruct):
         ("lpValue", PVOID()),
     ]
 
-PROC_THREAD_ATTRIBUTE_ENTRY _ANYSIZE_ARRAY_ = Array(PROC_THREAD_ATTRIBUTE_ENTRY, 1)
+PROC_THREAD_ATTRIBUTE_ENTRY__ANYSIZE_ARRAY_ = Array(PROC_THREAD_ATTRIBUTE_ENTRY, 1)
 
 class PROC_THREAD_ATTRIBUTE_LIST(MemStruct):
     fields = [
@@ -31005,7 +31005,7 @@ class PROC_THREAD_ATTRIBUTE_LIST(MemStruct):
         ("Count", ULONG()),
         ("Reserved", ULONG()),
         ("Unknown", PULONG()),
-        ("Entries", PROC_THREAD_ATTRIBUTE_ENTRY _ANYSIZE_ARRAY_()),
+        ("Entries", PROC_THREAD_ATTRIBUTE_ENTRY__ANYSIZE_ARRAY_()),
     ]
 
 LPPROC_THREAD_ATTRIBUTE_LIST = Ptr("<I", PROC_THREAD_ATTRIBUTE_LIST())
@@ -31033,11 +31033,11 @@ HDWP = HANDLE
 HDWP_PTR = Ptr("<I", HDWP())
 SHELLVIEWID = GUID
 SHELLVIEWID_PTR = Ptr("<I", SHELLVIEWID())
-const SHELLVIEWID_PTR = SHELLVIEWID*
+const_SHELLVIEWID_PTR = SHELLVIEWID_PTR
 KNOWNFOLDERID = GUID
 KNOWNFOLDERID_PTR = Ptr("<I", KNOWNFOLDERID())
-const KNOWNFOLDERID_PTR = Ptr("<I", KNOWNFOLDERID())
-KNOWNFOLDERID_PTR_PTR = Ptr("<I", KNOWNFOLDERID*())
+const_KNOWNFOLDERID_PTR = Ptr("<I", KNOWNFOLDERID())
+KNOWNFOLDERID_PTR_PTR = Ptr("<I", KNOWNFOLDERID_PTR())
 REFKNOWNFOLDERID = Ptr("<I", KNOWNFOLDERID())
 TASKOWNERID = GUID
 REFTASKOWNERID = Ptr("<I", TASKOWNERID())
@@ -31054,15 +31054,15 @@ HTHEME_PTR = Ptr("<I", HTHEME())
 SHCOLUMNID = PROPERTYKEY
 SHCOLUMNID_PTR = Ptr("<I", SHCOLUMNID())
 LPCSHCOLUMNID = Ptr("<I", SHCOLUMNID())
-const SHCOLUMNID_PTR = Ptr("<I", SHCOLUMNID())
+const_SHCOLUMNID_PTR = Ptr("<I", SHCOLUMNID())
 BFFCALLBACK = LPVOID
 DATE = double
 DATE_PTR = Ptr("<I", DATE())
 Image = BYTE
 Image_PTR = Ptr("<I", Image())
-Image_PTR_PTR = Ptr("<I", Image*())
-WCHAR _80_ = Array(WCHAR, 80)
-WCHAR _2084_ = Array(WCHAR, 2084)
+Image_PTR_PTR = Ptr("<I", Image_PTR())
+WCHAR__80_ = Array(WCHAR, 80)
+WCHAR__2084_ = Array(WCHAR, 2084)
 
 class PREVIEWHANDLERFRAMEINFO(MemStruct):
     fields = [
@@ -31075,7 +31075,7 @@ PREVIEWHANDLERFRAMEINFO_PTR = Ptr("<I", PREVIEWHANDLERFRAMEINFO())
 class SHITEMID(MemStruct):
     fields = [
         ("cb", USHORT()),
-        ("abID", BYTE _1_()),
+        ("abID", BYTE__1_()),
     ]
 
 LPSHITEMID = Ptr("<I", SHITEMID())
@@ -31090,7 +31090,7 @@ LPITEMIDLIST = Ptr("<I", ITEMIDLIST())
 LPCITEMIDLIST = Ptr("<I", ITEMIDLIST())
 PIDLIST_ABSOLUTE = Ptr("<I", ITEMIDLIST())
 PIDLIST_ABSOLUTE_PTR = Ptr("<I", PIDLIST_ABSOLUTE())
-PIDLIST_ABSOLUTE_PTR_PTR = Ptr("<I", PIDLIST_ABSOLUTE*())
+PIDLIST_ABSOLUTE_PTR_PTR = Ptr("<I", PIDLIST_ABSOLUTE_PTR())
 PCIDLIST_ABSOLUTE = Ptr("<I", ITEMIDLIST())
 PIDLIST_RELATIVE = Ptr("<I", ITEMIDLIST())
 PUIDLIST_RELATIVE = Ptr("<I", ITEMIDLIST())
@@ -31101,7 +31101,7 @@ PITEMID_CHILD = Ptr("<I", ITEMIDLIST())
 PITEMID_CHILD_PTR = Ptr("<I", PITEMID_CHILD())
 PCUITEMID_CHILD = Ptr("<I", ITEMIDLIST())
 PCUITEMID_CHILD_PTR = Ptr("<I", PCUITEMID_CHILD())
-PCUITEMID_CHILD_PTR_PTR = Ptr("<I", PCUITEMID_CHILD*())
+PCUITEMID_CHILD_PTR_PTR = Ptr("<I", PCUITEMID_CHILD_PTR())
 PCUITEMID_CHILD_ARRAY = Ptr("<I", PCUITEMID_CHILD())
 PCUITEMID_CHILD_ARRAY_PTR = Ptr("<I", PCUITEMID_CHILD_ARRAY())
 PCUIDLIST_RELATIVE_ARRAY = Ptr("<I", PCUIDLIST_RELATIVE())
@@ -31110,7 +31110,7 @@ STRRET_TYPE = UINT
 _STRRET_u_ = Union([
     ("pOleStr", LPWSTR),
     ("uOffset", UINT),
-    ("cStr", char _260_),
+    ("cStr", char__260_),
 ])
 
 class STRRET(MemStruct):
@@ -31136,23 +31136,23 @@ _CSIDL_ = UINT
 class PERSIST_FOLDER_TARGET_INFO(MemStruct):
     fields = [
         ("pidlTargetFolder", PIDLIST_ABSOLUTE()),
-        ("szTargetParsingName", WCHAR _260_()),
-        ("szNetworkProvider", WCHAR _260_()),
+        ("szTargetParsingName", WCHAR__260_()),
+        ("szNetworkProvider", WCHAR__260_()),
         ("dwAttributes", _FileAttributes_()),
         ("csidl", _CSIDL_()),
     ]
 
 PERSIST_FOLDER_TARGET_INFO_PTR = Ptr("<I", PERSIST_FOLDER_TARGET_INFO())
-const PERSIST_FOLDER_TARGET_INFO_PTR = Ptr("<I", PERSIST_FOLDER_TARGET_INFO())
+const_PERSIST_FOLDER_TARGET_INFO_PTR = Ptr("<I", PERSIST_FOLDER_TARGET_INFO())
 
 class SHELL_ITEM_RESOURCE(MemStruct):
     fields = [
         ("guidType", GUID()),
-        ("szName", WCHAR _260_()),
+        ("szName", WCHAR__260_()),
     ]
 
 SHELL_ITEM_RESOURCE_PTR = Ptr("<I", SHELL_ITEM_RESOURCE())
-const SHELL_ITEM_RESOURCE_PTR = Ptr("<I", SHELL_ITEM_RESOURCE())
+const_SHELL_ITEM_RESOURCE_PTR = Ptr("<I", SHELL_ITEM_RESOURCE())
 CM_MASK = DWORD
 CM_STATE = DWORD
 CM_SET_WIDTH_VALUE = UINT
@@ -31165,17 +31165,17 @@ class CM_COLUMNINFO(MemStruct):
         ("uWidth", UINT()),
         ("uDefaultWidth", CM_SET_WIDTH_VALUE()),
         ("uIdealWidth", UINT()),
-        ("wszName", WCHAR _80_()),
+        ("wszName", WCHAR__80_()),
     ]
 
 CM_COLUMNINFO_PTR = Ptr("<I", CM_COLUMNINFO())
-const CM_COLUMNINFO_PTR = Ptr("<I", CM_COLUMNINFO())
+const_CM_COLUMNINFO_PTR = Ptr("<I", CM_COLUMNINFO())
 CATEGORYINFO_FLAGS = UINT
 
 class CATEGORY_INFO(MemStruct):
     fields = [
         ("cif", CATEGORYINFO_FLAGS()),
-        ("wszName", WCHAR _260_()),
+        ("wszName", WCHAR__260_()),
     ]
 
 CATEGORY_INFO_PTR = Ptr("<I", CATEGORY_INFO())
@@ -31189,7 +31189,7 @@ class DESKBANDINFO(MemStruct):
         ("ptMaxSize", POINTL()),
         ("ptIntegral", POINTL()),
         ("ptActual", POINTL()),
-        ("wszTitle", WCHAR _256_()),
+        ("wszTitle", WCHAR__256_()),
         ("dwModeFlags", _DBIMF_()),
         ("crBkgnd", COLORREF()),
     ]
@@ -31199,8 +31199,8 @@ DESKBANDINFO_PTR = Ptr("<I", DESKBANDINFO())
 class EXTRASEARCH(MemStruct):
     fields = [
         ("guidSearch", GUID()),
-        ("wszFriendlyName", WCHAR _80_()),
-        ("wszUrl", WCHAR _2084_()),
+        ("wszFriendlyName", WCHAR__80_()),
+        ("wszUrl", WCHAR__2084_()),
     ]
 
 EXTRASEARCH_PTR = Ptr("<I", EXTRASEARCH())
@@ -31213,7 +31213,7 @@ class THUMBBUTTON(MemStruct):
         ("iId", UINT()),
         ("iBitmap", UINT()),
         ("hIcon", HICON()),
-        ("szTip", WCHAR _260_()),
+        ("szTip", WCHAR__260_()),
         ("dwFlags", THUMBBUTTONFLAGS()),
     ]
 
@@ -31239,7 +31239,7 @@ FOLDERVIEWMODE_PTR = Ptr("<I", FOLDERVIEWMODE())
 FOLDERFLAGS = UINT
 FOLDERFLAGS_PTR = Ptr("<I", FOLDERFLAGS())
 _FOLDERFLAGS_DWORD_ = FOLDERFLAGS
-_FOLDERFLAGS_DWORD_PTR_ = Ptr("<I", [FOLDERFLAGS_DWORD]())
+_FOLDERFLAGS_DWORD_PTR_ = Ptr("<I", _FOLDERFLAGS_DWORD_())
 
 class FOLDERSETTINGS(MemStruct):
     fields = [
@@ -31249,7 +31249,7 @@ class FOLDERSETTINGS(MemStruct):
 
 LPFOLDERSETTINGS = Ptr("<I", FOLDERSETTINGS())
 LPCFOLDERSETTINGS = Ptr("<I", FOLDERSETTINGS())
-const FOLDERSETTINGS_PTR = Ptr("<I", FOLDERSETTINGS())
+const_FOLDERSETTINGS_PTR = Ptr("<I", FOLDERSETTINGS())
 
 class SV2CVW2_PARAMS(MemStruct):
     fields = [
@@ -31258,7 +31258,7 @@ class SV2CVW2_PARAMS(MemStruct):
         ("pfs", LPCFOLDERSETTINGS()),
         ("psbOwner", IShellBrowser_PTR()),
         ("prcView", RECT_PTR()),
-        ("pvid", const SHELLVIEWID_PTR()),
+        ("pvid", const_SHELLVIEWID_PTR()),
         ("hwndView", HWND()),
     ]
 
@@ -31285,7 +31285,7 @@ class KNOWNFOLDER_DEFINITION(MemStruct):
     ]
 
 KNOWNFOLDER_DEFINITION_PTR = Ptr("<I", KNOWNFOLDER_DEFINITION())
-const KNOWNFOLDER_DEFINITION_PTR = Ptr("<I", KNOWNFOLDER_DEFINITION())
+const_KNOWNFOLDER_DEFINITION_PTR = Ptr("<I", KNOWNFOLDER_DEFINITION())
 SORTDIRECTION = int
 
 class SORTCOLUMN(MemStruct):
@@ -31295,7 +31295,7 @@ class SORTCOLUMN(MemStruct):
     ]
 
 SORTCOLUMN_PTR = Ptr("<I", SORTCOLUMN())
-const SORTCOLUMN_PTR = Ptr("<I", SORTCOLUMN())
+const_SORTCOLUMN_PTR = Ptr("<I", SORTCOLUMN())
 
 class BANDSITEINFO(MemStruct):
     fields = [
@@ -31305,7 +31305,7 @@ class BANDSITEINFO(MemStruct):
     ]
 
 BANDSITEINFO_PTR = Ptr("<I", BANDSITEINFO())
-const BANDSITEINFO_PTR = Ptr("<I", BANDSITEINFO())
+const_BANDSITEINFO_PTR = Ptr("<I", BANDSITEINFO())
 _CMIC_Mask_ = DWORD
 
 class CMINVOKECOMMANDINFO(MemStruct):
@@ -31358,7 +31358,7 @@ class COMDLG_FILTERSPEC(MemStruct):
         ("pszSpec", LPCWSTR()),
     ]
 
-const COMDLG_FILTERSPEC_PTR = Ptr("<I", COMDLG_FILTERSPEC())
+const_COMDLG_FILTERSPEC_PTR = Ptr("<I", COMDLG_FILTERSPEC())
 FDAP = UINT
 SHCOLSTATEF = DWORD
 SHCOLSTATEF_PTR = Ptr("<I", SHCOLSTATEF())
@@ -31469,7 +31469,7 @@ FILEOP_FLAGS = WORD
 _FILEOP_FLAGS_DWORD_ = FILEOP_FLAGS
 _GIL_INPUT_FLAGS_ = UINT
 _GIL_OUTPUT_FLAGS_ = UINT
-_GIL_OUTPUT_FLAGS_PTR_ = Ptr("<I", [GIL_OUTPUT_FLAGS]())
+_GIL_OUTPUT_FLAGS_PTR_ = Ptr("<I", _GIL_OUTPUT_FLAGS_())
 _MessageBoxType_ = UINT
 _MessageBoxResult_ = int
 _SHELLEXECUTEINFO_u_ = Union([
@@ -31527,7 +31527,7 @@ WTS_FLAGS = DWORD
 
 class WTS_THUMBNAILID(MemStruct):
     fields = [
-        ("rgbKey", BYTE _16_()),
+        ("rgbKey", BYTE__16_()),
     ]
 
 WTS_THUMBNAILID_PTR = Ptr("<I", WTS_THUMBNAILID())
@@ -31545,8 +31545,8 @@ class PROPSPEC(MemStruct):
         (None, _PROPSPEC_u_()),
     ]
 
-PROPSPEC const__ = Ptr("<I", PROPSPEC())
-const PROPSPEC __ = Ptr("<I", PROPSPEC())
+PROPSPEC_const__ = Ptr("<I", PROPSPEC())
+const_PROPSPEC___ = Ptr("<I", PROPSPEC())
 _SystemParametersInfoEnum_ = UINT
 _SystemParametersInfoFlags_ = UINT
 KNOWN_FOLDER_FLAG = DWORD
@@ -31584,10 +31584,10 @@ GROUPID = LONGLONG
 GROUPID_PTR = Ptr("<I", GROUPID())
 WINHTTP_STATUS_CALLBACK = LPVOID
 GOPHER_ATTRIBUTE_ENUMERATOR = LPVOID
-DWORD _GROUP_OWNER_STORAGE_SIZE_ = Array(DWORD, 4)
-TCHAR _GROUPNAME_MAX_LENGTH_ = Array(TCHAR, 120)
-TCHAR _MAX_GOPHER_DISPLAY_TEXT + 1_ = Array(TCHAR, 129)
-TCHAR _MAX_GOPHER_LOCATOR_LENGTH + 1_ = Array(TCHAR, 653)
+DWORD__GROUP_OWNER_STORAGE_SIZE_ = Array(DWORD, 4)
+TCHAR__GROUPNAME_MAX_LENGTH_ = Array(TCHAR, 120)
+TCHAR__MAX_GOPHER_DISPLAY_TEXT_+_1_ = Array(TCHAR, 129)
+TCHAR__MAX_GOPHER_LOCATOR_LENGTH_+_1_ = Array(TCHAR, 653)
 INTERNET_STATUS_CALLBACK = LPVOID
 HINTERNET = LPVOID
 HINTERNET_PTR = Ptr("<I", HINTERNET())
@@ -31623,8 +31623,8 @@ class INTERNET_CACHE_GROUP_INFO(MemStruct):
         ("dwGroupType", _CACHEGROUP_TYPE_()),
         ("dwDiskUsage", DWORD()),
         ("dwDiskQuota", DWORD()),
-        ("dwOwnerStorage", DWORD _GROUP_OWNER_STORAGE_SIZE_()),
-        ("szGroupName", TCHAR _GROUPNAME_MAX_LENGTH_()),
+        ("dwOwnerStorage", DWORD__GROUP_OWNER_STORAGE_SIZE_()),
+        ("szGroupName", TCHAR__GROUPNAME_MAX_LENGTH_()),
     ]
 
 LPINTERNET_CACHE_GROUP_INFO = Ptr("<I", INTERNET_CACHE_GROUP_INFO())
@@ -31632,12 +31632,12 @@ _GopherType_ = DWORD
 
 class GOPHER_FIND_DATA(MemStruct):
     fields = [
-        ("DisplayString", TCHAR _MAX_GOPHER_DISPLAY_TEXT + 1_()),
+        ("DisplayString", TCHAR__MAX_GOPHER_DISPLAY_TEXT_+_1_()),
         ("GopherType", _GopherType_()),
         ("SizeLow", DWORD()),
         ("SizeHigh", DWORD()),
         ("LastModificationTime", FILETIME()),
-        ("Locator", TCHAR _MAX_GOPHER_LOCATOR_LENGTH + 1_()),
+        ("Locator", TCHAR__MAX_GOPHER_LOCATOR_LENGTH_+_1_()),
     ]
 
 LPGOPHER_FIND_DATA = Ptr("<I", GOPHER_FIND_DATA())
@@ -31743,19 +31743,19 @@ _INTERNET_OPTION_ = DWORD
 _HTTP_QUERY_FLAGS_ = DWORD
 URL_SCHEME = UINT
 _URL_SCHEME|DWORD_ = URL_SCHEME
-_URL_SCHEME_PTR|DWORD_PTR_ = Ptr("<I", [URL_SCHEME|DWORD]())
+_URL_SCHEME_PTR|DWORD_PTR_ = Ptr("<I", _URL_SCHEME|DWORD_())
 _ERROR_INTERNET_ = DWORD
 _HTTP_STATUS_ = DWORD
-_HTTP_STATUS|long_ = [HTTP_STATUS]
-_HTTP_STATUS_PTR|long_PTR_ = Ptr("<I", [HTTP_STATUS|long]())
+_HTTP_STATUS|long_ = _HTTP_STATUS_
+_HTTP_STATUS_PTR|long_PTR_ = Ptr("<I", _HTTP_STATUS|long_())
 READYSTATE = UINT
 READYSTATE_PTR = Ptr("<I", READYSTATE())
 _READYSTATE|long_ = READYSTATE
-_READYSTATE_PTR|long_PTR_ = Ptr("<I", [READYSTATE|long]())
+_READYSTATE_PTR|long_PTR_ = Ptr("<I", _READYSTATE|long_())
 DEVPROPGUID = GUID
 DEVPROPID = ULONG
-TCHAR _LINE_LEN_ = Array(TCHAR, 256)
-TCHAR _MAX_PROFILE_LEN_ = Array(TCHAR, 80)
+TCHAR__LINE_LEN_ = Array(TCHAR, 256)
+TCHAR__MAX_PROFILE_LEN_ = Array(TCHAR, 80)
 
 class DEVPROPKEY(MemStruct):
     fields = [
@@ -31764,7 +31764,7 @@ class DEVPROPKEY(MemStruct):
     ]
 
 DEVPROPKEY_PTR = Ptr("<I", DEVPROPKEY())
-CONST DEVPROPKEY_PTR = Ptr("<I", DEVPROPKEY())
+CONST_DEVPROPKEY_PTR = Ptr("<I", DEVPROPKEY())
 _DiDriverType_ = DWORD
 
 class SP_DRVINFO_DATA(MemStruct):
@@ -31772,9 +31772,9 @@ class SP_DRVINFO_DATA(MemStruct):
         ("cbSize", DWORD()),
         ("DriverType", _DiDriverType_()),
         ("Reserved", ULONG_PTR()),
-        ("Description", TCHAR _LINE_LEN_()),
-        ("MfgName", TCHAR _LINE_LEN_()),
-        ("ProviderName", TCHAR _LINE_LEN_()),
+        ("Description", TCHAR__LINE_LEN_()),
+        ("MfgName", TCHAR__LINE_LEN_()),
+        ("ProviderName", TCHAR__LINE_LEN_()),
         ("DriverDate", FILETIME()),
         ("DriverVersion", DWORDLONG()),
     ]
@@ -31782,9 +31782,9 @@ class SP_DRVINFO_DATA(MemStruct):
 PSP_DRVINFO_DATA = Ptr("<I", SP_DRVINFO_DATA())
 DEVPROPTYPE = ULONG
 DEVPROPTYPE_PTR = Ptr("<I", DEVPROPTYPE())
-LPBINDSTATUSCALLBACK = IBindStatusCallback*
+LPBINDSTATUSCALLBACK = IBindStatusCallback_PTR
 HANDLE_PTR = HANDLE
-WCHAR _200_ = Array(WCHAR, 200)
+WCHAR__200_ = Array(WCHAR, 200)
 BINDINFOF = DWORD
 BINDVERB = DWORD
 BINDINFO_OPTIONS = DWORD
@@ -31808,7 +31808,7 @@ class BINDINFO(MemStruct):
     ]
 
 BINDINFO_PTR = Ptr("<I", BINDINFO())
-const BINDINFO_PTR = Ptr("<I", BINDINFO())
+const_BINDINFO_PTR = Ptr("<I", BINDINFO())
 PARSEACTION = UINT
 QUERYOPTION = UINT
 AUTHENTICATEF = DWORD
@@ -31847,9 +31847,9 @@ ZAFLAGS = DWORD
 class ZONEATTRIBUTES(MemStruct):
     fields = [
         ("cbSize", ULONG()),
-        ("szDisplayName", WCHAR _260_()),
-        ("szDescription", WCHAR _200_()),
-        ("szIconPath", WCHAR _260_()),
+        ("szDisplayName", WCHAR__260_()),
+        ("szDescription", WCHAR__200_()),
+        ("szIconPath", WCHAR__260_()),
         ("dwTemplateMinLevel", DWORD()),
         ("dwTemplateRecommended", DWORD()),
         ("dwTemplateCurrentLevel", DWORD()),
@@ -31894,17 +31894,17 @@ class CODEBASEHOLD(MemStruct):
 LPCODEBASEHOLD = Ptr("<I", CODEBASEHOLD())
 Uri_PROPERTY = UINT
 _URLZONE|DWORD_ = URLZONE
-_URLZONE_PTR|DWORD_PTR_ = Ptr("<I", [URLZONE|DWORD]())
+_URLZONE_PTR|DWORD_PTR_ = Ptr("<I", _URLZONE|DWORD_())
 _Uri_CREATE_FLAGS_ = DWORD
 _UriBuilder_FLAGS_ = DWORD
 _Uri_PROPERTY_DISPLAY_FLAGS_ = DWORD
 Uri_HOST_TYPE = DWORD
 Uri_HOST_TYPE_PTR = Ptr("<I", Uri_HOST_TYPE())
 _SECURITY_IE_STATE_ = UINT
-_SECURITY_IE_STATE_PTR_ = Ptr("<I", [SECURITY_IE_STATE]())
+_SECURITY_IE_STATE_PTR_ = Ptr("<I", _SECURITY_IE_STATE_())
 _MUTZ_FLAGS_ = DWORD
 _MUTZ_OUT_FLAGS_ = DWORD
-_MUTZ_OUT_FLAGS_PTR_ = Ptr("<I", [MUTZ_OUT_FLAGS]())
+_MUTZ_OUT_FLAGS_PTR_ = Ptr("<I", _MUTZ_OUT_FLAGS_())
 _URLACTION_FLAGS_ = DWORD
 PUAF = DWORD
 PUAFOUT = DWORD
@@ -31919,7 +31919,7 @@ BINDF2 = DWORD
 BINDF2_PTR = Ptr("<I", BINDF2())
 BINDSTRING = ULONG
 _Uri_HAS_FLAGS_ = DWORD
-_Uri_HAS_FLAGS_PTR|LPDWORD_ = Ptr("<I", [Uri_HAS_FLAGS]())
+_Uri_HAS_FLAGS_PTR|LPDWORD_ = Ptr("<I", _Uri_HAS_FLAGS_())
 
 class JAVA_TRUST(MemStruct):
     fields = [
@@ -31940,7 +31940,7 @@ class JAVA_TRUST(MemStruct):
     ]
 
 JAVA_TRUST_PTR = Ptr("<I", JAVA_TRUST())
-JAVA_TRUST_PTR_PTR = Ptr("<I", JAVA_TRUST*())
+JAVA_TRUST_PTR_PTR = Ptr("<I", JAVA_TRUST_PTR())
 OIBDG_FLAGS = DWORD
 SCARDCONTEXT = ULONG_PTR
 LPSCARDCONTEXT = Ptr("<I", SCARDCONTEXT())
@@ -31957,10 +31957,10 @@ PFN_AUTHENTICATION_CALLBACK = LPVOID
 PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK = LPVOID
 PFN_DEVICE_CALLBACK = LPVOID
 PFN_AUTHENTICATION_CALLBACK_EX = LPVOID
-WCHAR _BLUETOOTH_MAX_NAME_SIZE_ = Array(WCHAR, 248)
-WCHAR _BLUETOOTH_MAX_SERVICE_NAME_SIZE_ = Array(WCHAR, 256)
-WCHAR _BLUETOOTH_DEVICE_NAME_SIZE_ = Array(WCHAR, 256)
-UCHAR _BTH_MAX_PIN_SIZE_ = Array(UCHAR, 16)
+WCHAR__BLUETOOTH_MAX_NAME_SIZE_ = Array(WCHAR, 248)
+WCHAR__BLUETOOTH_MAX_SERVICE_NAME_SIZE_ = Array(WCHAR, 256)
+WCHAR__BLUETOOTH_DEVICE_NAME_SIZE_ = Array(WCHAR, 256)
+UCHAR__BTH_MAX_PIN_SIZE_ = Array(UCHAR, 16)
 BTH_ADDR = ULONGLONG
 
 class BLUETOOTH_ADDRESS(MemStruct):
@@ -31975,7 +31975,7 @@ class BLUETOOTH_RADIO_INFO(MemStruct):
     fields = [
         ("dwSize", DWORD()),
         ("address", BLUETOOTH_ADDRESS()),
-        ("szName", WCHAR _BLUETOOTH_MAX_NAME_SIZE_()),
+        ("szName", WCHAR__BLUETOOTH_MAX_NAME_SIZE_()),
         ("ulClassofDevice", ULONG()),
         ("lmpSubversion", USHORT()),
         ("manufacturer", _BTH_MFG_()),
@@ -31993,34 +31993,34 @@ class BLUETOOTH_DEVICE_INFO(MemStruct):
         ("fAuthenticated", BOOL()),
         ("stLastSeen", SYSTEMTIME()),
         ("stLastUsed", SYSTEMTIME()),
-        ("szName", WCHAR _BLUETOOTH_MAX_NAME_SIZE_()),
+        ("szName", WCHAR__BLUETOOTH_MAX_NAME_SIZE_()),
     ]
 
 BLUETOOTH_DEVICE_INFO_PTR = Ptr("<I", BLUETOOTH_DEVICE_INFO())
 PBLUETOOTH_DEVICE_INFO = Ptr("<I", BLUETOOTH_DEVICE_INFO())
-const BLUETOOTH_DEVICE_INFO_PTR = Ptr("<I", BLUETOOTH_DEVICE_INFO())
+const_BLUETOOTH_DEVICE_INFO_PTR = Ptr("<I", BLUETOOTH_DEVICE_INFO())
 
 class BLUETOOTH_LOCAL_SERVICE_INFO(MemStruct):
     fields = [
         ("Enabled", BOOL()),
         ("btAddr", BLUETOOTH_ADDRESS()),
-        ("szName", WCHAR _BLUETOOTH_MAX_SERVICE_NAME_SIZE_()),
-        ("szDeviceString", WCHAR _BLUETOOTH_DEVICE_NAME_SIZE_()),
+        ("szName", WCHAR__BLUETOOTH_MAX_SERVICE_NAME_SIZE_()),
+        ("szDeviceString", WCHAR__BLUETOOTH_DEVICE_NAME_SIZE_()),
     ]
 
-const BLUETOOTH_LOCAL_SERVICE_INFO_PTR = Ptr("<I", BLUETOOTH_LOCAL_SERVICE_INFO())
+const_BLUETOOTH_LOCAL_SERVICE_INFO_PTR = Ptr("<I", BLUETOOTH_LOCAL_SERVICE_INFO())
 
 class BLUETOOTH_PIN_INFO(MemStruct):
     fields = [
-        ("pin", UCHAR _BTH_MAX_PIN_SIZE_()),
+        ("pin", UCHAR__BTH_MAX_PIN_SIZE_()),
         ("pinLength", UCHAR()),
     ]
 
 
 class BLUETOOTH_OOB_DATA_INFO(MemStruct):
     fields = [
-        ("C", UCHAR _16_()),
-        ("R", UCHAR _16_()),
+        ("C", UCHAR__16_()),
+        ("R", UCHAR__16_()),
     ]
 
 PBLUETOOTH_OOB_DATA_INFO = Ptr("<I", BLUETOOTH_OOB_DATA_INFO())
@@ -32193,18 +32193,18 @@ PSDP_ELEMENT_DATA = Ptr("<I", SDP_ELEMENT_DATA())
 PFAX_RECIPIENT_CALLBACK = LPVOID
 PFAX_ROUTING_INSTALLATION_CALLBACK = LPVOID
 HCALL = DWORD
-TCHAR _MAX_COMPUTERNAME_LENGTH + 1_ = Array(TCHAR, 16)
-DWORD_PTR _3_ = Array(DWORD_PTR, 3)
+TCHAR__MAX_COMPUTERNAME_LENGTH_+_1_ = Array(TCHAR, 16)
+DWORD_PTR__3_ = Array(DWORD_PTR, 3)
 
 class FAX_CONTEXT_INFO(MemStruct):
     fields = [
         ("SizeOfStruct", DWORD()),
         ("hDC", HDC()),
-        ("ServerName", TCHAR _MAX_COMPUTERNAME_LENGTH + 1_()),
+        ("ServerName", TCHAR__MAX_COMPUTERNAME_LENGTH_+_1_()),
     ]
 
 PFAX_CONTEXT_INFO = Ptr("<I", FAX_CONTEXT_INFO())
-const FAX_CONTEXT_INFO_PTR = Ptr("<I", FAX_CONTEXT_INFO())
+const_FAX_CONTEXT_INFO_PTR = Ptr("<I", FAX_CONTEXT_INFO())
 
 class FAX_JOB_PARAM(MemStruct):
     fields = [
@@ -32222,7 +32222,7 @@ class FAX_JOB_PARAM(MemStruct):
         ("DeliveryReportAddress", LPCTSTR()),
         ("DocumentName", LPCTSTR()),
         ("CallHandle", HCALL()),
-        ("Reserved", DWORD_PTR _3_()),
+        ("Reserved", DWORD_PTR__3_()),
     ]
 
 PFAX_JOB_PARAM = Ptr("<I", FAX_JOB_PARAM())
@@ -32254,7 +32254,7 @@ class FAX_CONFIGURATION(MemStruct):
 
 PFAX_CONFIGURATION = Ptr("<I", FAX_CONFIGURATION())
 PFAX_CONFIGURATION_PTR = Ptr("<I", PFAX_CONFIGURATION())
-const FAX_CONFIGURATION_PTR = Ptr("<I", FAX_CONFIGURATION())
+const_FAX_CONFIGURATION_PTR = Ptr("<I", FAX_CONFIGURATION())
 
 class FAX_GLOBAL_ROUTING_INFO(MemStruct):
     fields = [
@@ -32269,7 +32269,7 @@ class FAX_GLOBAL_ROUTING_INFO(MemStruct):
 
 PFAX_GLOBAL_ROUTING_INFO = Ptr("<I", FAX_GLOBAL_ROUTING_INFO())
 PFAX_GLOBAL_ROUTING_INFO_PTR = Ptr("<I", PFAX_GLOBAL_ROUTING_INFO())
-const FAX_GLOBAL_ROUTING_INFO_PTR = Ptr("<I", FAX_GLOBAL_ROUTING_INFO())
+const_FAX_GLOBAL_ROUTING_INFO_PTR = Ptr("<I", FAX_GLOBAL_ROUTING_INFO())
 _FaxLogCategory_ = DWORD
 _FaxLogLevel_ = DWORD
 
@@ -32282,7 +32282,7 @@ class FAX_LOG_CATEGORY(MemStruct):
 
 PFAX_LOG_CATEGORY = Ptr("<I", FAX_LOG_CATEGORY())
 PFAX_LOG_CATEGORY_PTR = Ptr("<I", PFAX_LOG_CATEGORY())
-const FAX_LOG_CATEGORY_PTR = Ptr("<I", FAX_LOG_CATEGORY())
+const_FAX_LOG_CATEGORY_PTR = Ptr("<I", FAX_LOG_CATEGORY())
 
 class FAX_DEVICE_STATUS(MemStruct):
     fields = [
@@ -32326,7 +32326,7 @@ class FAX_PORT_INFO(MemStruct):
 
 PFAX_PORT_INFO = Ptr("<I", FAX_PORT_INFO())
 PFAX_PORT_INFO_PTR = Ptr("<I", PFAX_PORT_INFO())
-const FAX_PORT_INFO_PTR = Ptr("<I", FAX_PORT_INFO())
+const_FAX_PORT_INFO_PTR = Ptr("<I", FAX_PORT_INFO())
 
 class FAX_COVERPAGE_INFO(MemStruct):
     fields = [
@@ -32363,7 +32363,7 @@ class FAX_COVERPAGE_INFO(MemStruct):
 
 PFAX_COVERPAGE_INFO = Ptr("<I", FAX_COVERPAGE_INFO())
 PFAX_COVERPAGE_INFO_PTR = Ptr("<I", PFAX_COVERPAGE_INFO())
-const FAX_COVERPAGE_INFO_PTR = Ptr("<I", FAX_COVERPAGE_INFO())
+const_FAX_COVERPAGE_INFO_PTR = Ptr("<I", FAX_COVERPAGE_INFO())
 
 class FAX_PRINT_INFO(MemStruct):
     fields = [
@@ -32380,7 +32380,7 @@ class FAX_PRINT_INFO(MemStruct):
         ("OutputFileName", LPCTSTR()),
     ]
 
-const FAX_PRINT_INFO_PTR = Ptr("<I", FAX_PRINT_INFO())
+const_FAX_PRINT_INFO_PTR = Ptr("<I", FAX_PRINT_INFO())
 
 class FAX_JOB_ENTRY(MemStruct):
     fields = [
@@ -32408,7 +32408,7 @@ class FAX_JOB_ENTRY(MemStruct):
 
 PFAX_JOB_ENTRY = Ptr("<I", FAX_JOB_ENTRY())
 PFAX_JOB_ENTRY_PTR = Ptr("<I", PFAX_JOB_ENTRY())
-const FAX_JOB_ENTRY_PTR = Ptr("<I", FAX_JOB_ENTRY())
+const_FAX_JOB_ENTRY_PTR = Ptr("<I", FAX_JOB_ENTRY())
 
 class FAX_ROUTING_METHOD(MemStruct):
     fields = [
@@ -32787,7 +32787,7 @@ class SERVICE_TABLE_ENTRY(MemStruct):
         ("lpServiceProc", LPSERVICE_MAIN_FUNCTION()),
     ]
 
-const SERVICE_TABLE_ENTRY_PTR = Ptr("<I", SERVICE_TABLE_ENTRY())
+const_SERVICE_TABLE_ENTRY_PTR = Ptr("<I", SERVICE_TABLE_ENTRY())
 
 class ENUM_SERVICE_STATUS(MemStruct):
     fields = [
@@ -32823,7 +32823,7 @@ class QUERY_SERVICE_LOCK_STATUS(MemStruct):
 LPQUERY_SERVICE_LOCK_STATUS = Ptr("<I", QUERY_SERVICE_LOCK_STATUS())
 PSSTDAPI = HRESULT
 SERIALIZEDPROPSTORAGE_PTR = LPVOID
-SERIALIZEDPROPSTORAGE_PTR_PTR = Ptr("<I", SERIALIZEDPROPSTORAGE*())
+SERIALIZEDPROPSTORAGE_PTR_PTR = Ptr("<I", SERIALIZEDPROPSTORAGE_PTR())
 PCUSERIALIZEDPROPSTORAGE = LPVOID
 PROPENUMTYPE = UINT
 PROPENUMTYPE_PTR = Ptr("<I", PROPENUMTYPE())
@@ -32855,7 +32855,7 @@ PROPDESC_VIEW_FLAGS = DWORD
 PROPDESC_VIEW_FLAGS_PTR = Ptr("<I", PROPDESC_VIEW_FLAGS())
 PROPDESC_FORMAT_FLAGS = DWORD
 PKA_FLAGS = UINT
-const PKA_FLAGS_PTR = Ptr("<I", PKA_FLAGS())
+const_PKA_FLAGS_PTR = Ptr("<I", PKA_FLAGS())
 PENUM_PAGE_CALLBACK = LPVOID
 
 class MODULEINFO(MemStruct):
@@ -32933,16 +32933,16 @@ class HSTRING_HEADER(MemStruct):
 HSTRING_HEADER_PTR = Ptr("<I", HSTRING_HEADER())
 HSTRING = Ptr("<I", HSTRING_HEADER())
 HSTRING_PTR = Ptr("<I", HSTRING())
-HSTRING_PTR_PTR = Ptr("<I", HSTRING*())
-const HSTRING = HSTRING
-const HSTRING_PTR = Ptr("<I", HSTRING())
+HSTRING_PTR_PTR = Ptr("<I", HSTRING_PTR())
+const_HSTRING = HSTRING
+const_HSTRING_PTR = Ptr("<I", HSTRING())
 HSTRING_BUFFER = Ptr("<I", HSTRING_HEADER())
 HSTRING_BUFFER_PTR = Ptr("<I", HSTRING_BUFFER())
 mdToken = ULONG32
 mdTypeDef = mdToken
 mdTypeDef_PTR = Ptr("<I", mdTypeDef())
 IPAddr = ULONG
-IPAddr _1_ = Array(IPAddr, 1)
+IPAddr__1_ = Array(IPAddr, 1)
 _IpOptionFlags_ = UCHAR
 
 class IP_OPTION_INFORMATION(MemStruct):
@@ -32993,7 +32993,7 @@ class PACKAGE_ID(MemStruct):
         ("publisherId", PWSTR()),
     ]
 
-const PACKAGE_ID_PTR = Ptr("<I", PACKAGE_ID())
+const_PACKAGE_ID_PTR = Ptr("<I", PACKAGE_ID())
 
 class APPX_PACKAGE_SETTINGS(MemStruct):
     fields = [
@@ -33017,12 +33017,12 @@ class _PATCH_INTERLEAVE_MAP_s_(MemStruct):
         ("NewLength", ULONG()),
     ]
 
-_PATCH_INTERLEAVE_MAP_s_ _1_ = Array(_PATCH_INTERLEAVE_MAP_s_, 1)
+_PATCH_INTERLEAVE_MAP_s___1_ = Array(_PATCH_INTERLEAVE_MAP_s_, 1)
 
 class PATCH_INTERLEAVE_MAP(MemStruct):
     fields = [
         ("CountRanges", ULONG()),
-        ("Range", _PATCH_INTERLEAVE_MAP_s_ _1_()),
+        ("Range", _PATCH_INTERLEAVE_MAP_s___1_()),
     ]
 
 PPATCH_INTERLEAVE_MAP = Ptr("<I", PATCH_INTERLEAVE_MAP())
@@ -33092,8 +33092,8 @@ class PATCH_OLD_FILE_INFO(MemStruct):
 
 PPATCH_OLD_FILE_INFO = Ptr("<I", PATCH_OLD_FILE_INFO())
 _PatchOptionFlags_ = ULONG
-LPASSEMBLYNAME = IAssemblyName*
+LPASSEMBLYNAME = IAssemblyName_PTR
 LPASSEMBLYNAME_PTR = Ptr("<I", LPASSEMBLYNAME())
-LPPAPPLICATIONCONTEXT = IApplicationContext*
+LPPAPPLICATIONCONTEXT = IApplicationContext_PTR
 LPPAPPLICATIONCONTEXT_PTR = Ptr("<I", LPPAPPLICATIONCONTEXT())
 ASM_CACHE_FLAGS = DWORD
