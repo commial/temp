@@ -1,5 +1,5 @@
 
-def winspool_AddJob(jitter):
+def winspool_AddJob(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddJob(HANDLE hPrinter, DWORD Level, LPBYTE pData, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -7,7 +7,13 @@ def winspool_AddJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddMonitor(jitter):
+def winspool_AddJobA(jitter):
+    winspool_AddJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddJobW(jitter):
+    winspool_AddJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddMonitor(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddMonitor(LPTSTR pName, DWORD Level, LPBYTE pMonitors)
     """"
@@ -15,7 +21,13 @@ def winspool_AddMonitor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrinter(jitter):
+def winspool_AddMonitorA(jitter):
+    winspool_AddMonitor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddMonitorW(jitter):
+    winspool_AddMonitor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] HANDLE AddPrinter(LPTSTR* pName, DWORD Level, LPBYTE pPrinter)
     """"
@@ -23,7 +35,13 @@ def winspool_AddPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrinterConnection(jitter):
+def winspool_AddPrinterA(jitter):
+    winspool_AddPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrinterW(jitter):
+    winspool_AddPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrinterConnection(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPrinterConnection(LPTSTR pName)
     """"
@@ -31,7 +49,13 @@ def winspool_AddPrinterConnection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrinterConnection2(jitter):
+def winspool_AddPrinterConnectionA(jitter):
+    winspool_AddPrinterConnection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrinterConnectionW(jitter):
+    winspool_AddPrinterConnection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrinterConnection2(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPrinterConnection2(HWND hWnd, LPCTSTR pszName, DWORD dwLevel, PVOID pConnectionInfo)
     """"
@@ -39,7 +63,13 @@ def winspool_AddPrinterConnection2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrinterDriver(jitter):
+def winspool_AddPrinterConnection2A(jitter):
+    winspool_AddPrinterConnection2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrinterConnection2W(jitter):
+    winspool_AddPrinterConnection2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrinterDriver(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPrinterDriver(LPTSTR pName, DWORD Level, LPBYTE pDriverInfo)
     """"
@@ -47,7 +77,13 @@ def winspool_AddPrinterDriver(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrinterDriverEx(jitter):
+def winspool_AddPrinterDriverA(jitter):
+    winspool_AddPrinterDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrinterDriverW(jitter):
+    winspool_AddPrinterDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrinterDriverEx(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPrinterDriverEx(LPTSTR pName, DWORD Level, LPBYTE pDriverInfo, DWORD dwFileCopyFlags)
     """"
@@ -55,7 +91,13 @@ def winspool_AddPrinterDriverEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrintProcessor(jitter):
+def winspool_AddPrinterDriverExA(jitter):
+    winspool_AddPrinterDriverEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrinterDriverExW(jitter):
+    winspool_AddPrinterDriverEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrintProcessor(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPrintProcessor(LPTSTR pName, LPTSTR pEnvironment, LPTSTR pPathName, LPTSTR pPrintProcessorName)
     """"
@@ -63,7 +105,13 @@ def winspool_AddPrintProcessor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPrintProvidor(jitter):
+def winspool_AddPrintProcessorA(jitter):
+    winspool_AddPrintProcessor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrintProcessorW(jitter):
+    winspool_AddPrintProcessor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPrintProvidor(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPrintProvidor(LPTSTR pName, DWORD Level, LPBYTE pProviderInfo)
     """"
@@ -71,7 +119,13 @@ def winspool_AddPrintProvidor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_ConfigurePort(jitter):
+def winspool_AddPrintProvidorA(jitter):
+    winspool_AddPrintProvidor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPrintProvidorW(jitter):
+    winspool_AddPrintProvidor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_ConfigurePort(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL ConfigurePort(LPTSTR pName, HWND hWnd, LPTSTR pPortName)
     """"
@@ -79,7 +133,13 @@ def winspool_ConfigurePort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeleteForm(jitter):
+def winspool_ConfigurePortA(jitter):
+    winspool_ConfigurePort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_ConfigurePortW(jitter):
+    winspool_ConfigurePort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeleteForm(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeleteForm(HANDLE hPrinter, LPTSTR pFormName)
     """"
@@ -87,7 +147,13 @@ def winspool_DeleteForm(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeleteMonitor(jitter):
+def winspool_DeleteFormA(jitter):
+    winspool_DeleteForm(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeleteFormW(jitter):
+    winspool_DeleteForm(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeleteMonitor(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeleteMonitor(LPTSTR pName, LPTSTR pEnvironment, LPTSTR pMonitorName)
     """"
@@ -95,7 +161,13 @@ def winspool_DeleteMonitor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePort(jitter):
+def winspool_DeleteMonitorA(jitter):
+    winspool_DeleteMonitor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeleteMonitorW(jitter):
+    winspool_DeleteMonitor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePort(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeletePort(LPTSTR pName, HWND hWnd, LPTSTR pPortName)
     """"
@@ -103,7 +175,13 @@ def winspool_DeletePort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterConnection(jitter):
+def winspool_DeletePortA(jitter):
+    winspool_DeletePort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePortW(jitter):
+    winspool_DeletePort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterConnection(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeletePrinterConnection(LPTSTR pName)
     """"
@@ -111,7 +189,13 @@ def winspool_DeletePrinterConnection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterData(jitter):
+def winspool_DeletePrinterConnectionA(jitter):
+    winspool_DeletePrinterConnection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterConnectionW(jitter):
+    winspool_DeletePrinterConnection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterData(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] DeletePrinterData(HANDLE hPrinter, LPTSTR pValueName)
     """"
@@ -119,7 +203,13 @@ def winspool_DeletePrinterData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterDataEx(jitter):
+def winspool_DeletePrinterDataA(jitter):
+    winspool_DeletePrinterData(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterDataW(jitter):
+    winspool_DeletePrinterData(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterDataEx(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] DeletePrinterDataEx(HANDLE hPrinter, LPCTSTR pKeyName, LPCTSTR pValueName)
     """"
@@ -127,7 +217,13 @@ def winspool_DeletePrinterDataEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterDriver(jitter):
+def winspool_DeletePrinterDataExA(jitter):
+    winspool_DeletePrinterDataEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterDataExW(jitter):
+    winspool_DeletePrinterDataEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterDriver(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeletePrinterDriver(LPTSTR pName, LPTSTR pEnvironment, LPTSTR pDriverName)
     """"
@@ -135,7 +231,13 @@ def winspool_DeletePrinterDriver(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterDriverEx(jitter):
+def winspool_DeletePrinterDriverA(jitter):
+    winspool_DeletePrinterDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterDriverW(jitter):
+    winspool_DeletePrinterDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterDriverEx(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeletePrinterDriverEx(LPTSTR pName, LPTSTR pEnvironment, LPTSTR pDriverName, DWORD dwDeleteFlag, DWORD dwVersionFlag)
     """"
@@ -143,7 +245,13 @@ def winspool_DeletePrinterDriverEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterKey(jitter):
+def winspool_DeletePrinterDriverExA(jitter):
+    winspool_DeletePrinterDriverEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterDriverExW(jitter):
+    winspool_DeletePrinterDriverEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterKey(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] DeletePrinterKey(HANDLE hPrinter, LPCTSTR pKeyName)
     """"
@@ -151,7 +259,13 @@ def winspool_DeletePrinterKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrintProcessor(jitter):
+def winspool_DeletePrinterKeyA(jitter):
+    winspool_DeletePrinterKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterKeyW(jitter):
+    winspool_DeletePrinterKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrintProcessor(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeletePrintProcessor(LPTSTR pName, LPTSTR pEnvironment, LPTSTR pPrintProcessorName)
     """"
@@ -159,7 +273,13 @@ def winspool_DeletePrintProcessor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrintProvidor(jitter):
+def winspool_DeletePrintProcessorA(jitter):
+    winspool_DeletePrintProcessor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrintProcessorW(jitter):
+    winspool_DeletePrintProcessor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrintProvidor(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL DeletePrintProvidor(LPTSTR pName, LPTSTR pEnvironment, LPTSTR pPrintProviderName)
     """"
@@ -167,7 +287,13 @@ def winspool_DeletePrintProvidor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumForms(jitter):
+def winspool_DeletePrintProvidorA(jitter):
+    winspool_DeletePrintProvidor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrintProvidorW(jitter):
+    winspool_DeletePrintProvidor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumForms(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumForms(HANDLE hPrinter, DWORD Level, LPBYTE pForm, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -175,7 +301,13 @@ def winspool_EnumForms(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumJobs(jitter):
+def winspool_EnumFormsA(jitter):
+    winspool_EnumForms(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumFormsW(jitter):
+    winspool_EnumForms(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumJobs(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumJobs(HANDLE hPrinter, DWORD FirstJob, DWORD NoJobs, DWORD Level, LPBYTE pJob, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -183,7 +315,13 @@ def winspool_EnumJobs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumMonitors(jitter):
+def winspool_EnumJobsA(jitter):
+    winspool_EnumJobs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumJobsW(jitter):
+    winspool_EnumJobs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumMonitors(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumMonitors(LPTSTR pName, DWORD Level, LPBYTE pMonitors, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -191,7 +329,13 @@ def winspool_EnumMonitors(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPorts(jitter):
+def winspool_EnumMonitorsA(jitter):
+    winspool_EnumMonitors(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumMonitorsW(jitter):
+    winspool_EnumMonitors(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPorts(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumPorts(LPTSTR pName, DWORD Level, LPBYTE pPorts, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -199,7 +343,13 @@ def winspool_EnumPorts(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrinterData(jitter):
+def winspool_EnumPortsA(jitter):
+    winspool_EnumPorts(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPortsW(jitter):
+    winspool_EnumPorts(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrinterData(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] EnumPrinterData(HANDLE hPrinter, DWORD dwIndex, LPTSTR pValueName, DWORD cbValueName, LPDWORD pcbValueName, LPDWORD pType, LPBYTE pData, DWORD cbData, LPDWORD pcbData)
     """"
@@ -207,7 +357,13 @@ def winspool_EnumPrinterData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrinterDataEx(jitter):
+def winspool_EnumPrinterDataA(jitter):
+    winspool_EnumPrinterData(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrinterDataW(jitter):
+    winspool_EnumPrinterData(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrinterDataEx(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] EnumPrinterDataEx(HANDLE hPrinter, LPCTSTR pKeyName, LPBYTE pEnumValues, DWORD cbEnumValues, LPDWORD pcbEnumValues, LPDWORD pnEnumValues)
     """"
@@ -215,7 +371,13 @@ def winspool_EnumPrinterDataEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrinterDrivers(jitter):
+def winspool_EnumPrinterDataExA(jitter):
+    winspool_EnumPrinterDataEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrinterDataExW(jitter):
+    winspool_EnumPrinterDataEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrinterDrivers(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumPrinterDrivers(LPTSTR pName, LPTSTR pEnvironment, DWORD Level, LPBYTE pDriverInfo, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -223,7 +385,13 @@ def winspool_EnumPrinterDrivers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrinterKey(jitter):
+def winspool_EnumPrinterDriversA(jitter):
+    winspool_EnumPrinterDrivers(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrinterDriversW(jitter):
+    winspool_EnumPrinterDrivers(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrinterKey(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] EnumPrinterKey(HANDLE hPrinter, LPCTSTR pKeyName, LPTSTR pSubkey, DWORD cbSubkey, LPDWORD pcbSubkey)
     """"
@@ -231,7 +399,13 @@ def winspool_EnumPrinterKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrinters(jitter):
+def winspool_EnumPrinterKeyA(jitter):
+    winspool_EnumPrinterKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrinterKeyW(jitter):
+    winspool_EnumPrinterKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrinters(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumPrinters([EnumPrintersFlags] Flags, LPTSTR Name, DWORD Level, LPBYTE pPrinterEnum, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -239,7 +413,13 @@ def winspool_EnumPrinters(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrintProcessorDatatypes(jitter):
+def winspool_EnumPrintersA(jitter):
+    winspool_EnumPrinters(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrintersW(jitter):
+    winspool_EnumPrinters(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrintProcessorDatatypes(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumPrintProcessorDatatypes(LPTSTR pName, LPTSTR pPrintProcessorName, DWORD Level, LPBYTE pDatatypes, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
@@ -247,13 +427,25 @@ def winspool_EnumPrintProcessorDatatypes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_EnumPrintProcessors(jitter):
+def winspool_EnumPrintProcessorDatatypesA(jitter):
+    winspool_EnumPrintProcessorDatatypes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrintProcessorDatatypesW(jitter):
+    winspool_EnumPrintProcessorDatatypes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_EnumPrintProcessors(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL EnumPrintProcessors(LPTSTR pName, LPTSTR pEnvironment, DWORD Level, LPBYTE pPrintProcessorInfo, DWORD cbBuf, LPDWORD pcbNeeded, LPDWORD pcReturned)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pName", "pEnvironment", "Level", "pPrintProcessorInfo", "cbBuf", "pcbNeeded", "pcReturned"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winspool_EnumPrintProcessorsA(jitter):
+    winspool_EnumPrintProcessors(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_EnumPrintProcessorsW(jitter):
+    winspool_EnumPrintProcessors(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winspool_FlushPrinter(jitter):
     """"
@@ -263,7 +455,7 @@ def winspool_FlushPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetForm(jitter):
+def winspool_GetForm(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetForm(HANDLE hPrinter, LPTSTR pFormName, DWORD Level, LPBYTE pForm, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -271,7 +463,13 @@ def winspool_GetForm(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetJob(jitter):
+def winspool_GetFormA(jitter):
+    winspool_GetForm(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetFormW(jitter):
+    winspool_GetForm(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetJob(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetJob(HANDLE hPrinter, DWORD JobId, DWORD Level, LPBYTE pJob, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -279,7 +477,13 @@ def winspool_GetJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinter(jitter):
+def winspool_GetJobA(jitter):
+    winspool_GetJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetJobW(jitter):
+    winspool_GetJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetPrinter(HANDLE hPrinter, DWORD Level, LPBYTE pPrinter, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -287,7 +491,13 @@ def winspool_GetPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinterData(jitter):
+def winspool_GetPrinterA(jitter):
+    winspool_GetPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterW(jitter):
+    winspool_GetPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinterData(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] GetPrinterData(HANDLE hPrinter, LPTSTR pValueName, [RegType*] pType, LPBYTE pData, DWORD nSize, LPDWORD pcbNeeded)
     """"
@@ -295,7 +505,13 @@ def winspool_GetPrinterData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinterDataEx(jitter):
+def winspool_GetPrinterDataA(jitter):
+    winspool_GetPrinterData(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterDataW(jitter):
+    winspool_GetPrinterData(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinterDataEx(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] GetPrinterDataEx(HANDLE hPrinter, LPCTSTR pKeyName, LPCTSTR pValueName, [RegType*] pType, LPBYTE pData, DWORD nSize, LPDWORD pcbNeeded)
     """"
@@ -303,7 +519,13 @@ def winspool_GetPrinterDataEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinterDriver(jitter):
+def winspool_GetPrinterDataExA(jitter):
+    winspool_GetPrinterDataEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterDataExW(jitter):
+    winspool_GetPrinterDataEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinterDriver(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetPrinterDriver(HANDLE hPrinter, LPTSTR pEnvironment, DWORD Level, LPBYTE pDriverInfo, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -311,7 +533,13 @@ def winspool_GetPrinterDriver(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinterDriverDirectory(jitter):
+def winspool_GetPrinterDriverA(jitter):
+    winspool_GetPrinterDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterDriverW(jitter):
+    winspool_GetPrinterDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinterDriverDirectory(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetPrinterDriverDirectory(LPTSTR pName, LPTSTR pEnvironment, DWORD Level, LPWSTR pDriverDirectory, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -319,7 +547,13 @@ def winspool_GetPrinterDriverDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrintProcessorDirectory(jitter):
+def winspool_GetPrinterDriverDirectoryA(jitter):
+    winspool_GetPrinterDriverDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterDriverDirectoryW(jitter):
+    winspool_GetPrinterDriverDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrintProcessorDirectory(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetPrintProcessorDirectory(LPTSTR pName, LPTSTR pEnvironment, DWORD Level, LPBYTE pPrintProcessorInfo, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -327,7 +561,13 @@ def winspool_GetPrintProcessorDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_OpenPrinter(jitter):
+def winspool_GetPrintProcessorDirectoryA(jitter):
+    winspool_GetPrintProcessorDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrintProcessorDirectoryW(jitter):
+    winspool_GetPrintProcessorDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_OpenPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL OpenPrinter(LPTSTR pPrinterName, LPHANDLE phPrinter, LPPRINTER_DEFAULTS pDefault)
     """"
@@ -335,7 +575,13 @@ def winspool_OpenPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_ResetPrinter(jitter):
+def winspool_OpenPrinterA(jitter):
+    winspool_OpenPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_OpenPrinterW(jitter):
+    winspool_OpenPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_ResetPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL ResetPrinter(HANDLE hPrinter, LPPRINTER_DEFAULTS pDefault)
     """"
@@ -343,7 +589,13 @@ def winspool_ResetPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_StartDocPrinter(jitter):
+def winspool_ResetPrinterA(jitter):
+    winspool_ResetPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_ResetPrinterW(jitter):
+    winspool_ResetPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_StartDocPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] DWORD StartDocPrinter(HANDLE hPrinter, DWORD Level, LPBYTE pDocInfo)
     """"
@@ -351,7 +603,13 @@ def winspool_StartDocPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetForm(jitter):
+def winspool_StartDocPrinterA(jitter):
+    winspool_StartDocPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_StartDocPrinterW(jitter):
+    winspool_StartDocPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_SetForm(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL SetForm(HANDLE hPrinter, LPTSTR pFormName, DWORD Level, LPTSTR pForm)
     """"
@@ -359,7 +617,13 @@ def winspool_SetForm(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetJob(jitter):
+def winspool_SetFormA(jitter):
+    winspool_SetForm(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetFormW(jitter):
+    winspool_SetForm(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_SetJob(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL SetJob(HANDLE hPrinter, DWORD JobId, DWORD Level, LPBYTE pJob, [JobControl] Command)
     """"
@@ -367,7 +631,13 @@ def winspool_SetJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetPort(jitter):
+def winspool_SetJobA(jitter):
+    winspool_SetJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetJobW(jitter):
+    winspool_SetJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_SetPort(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL SetPort(LPTSTR pName, LPTSTR pPortName, DWORD dwLevel, LPBYTE pPortInfo)
     """"
@@ -375,7 +645,13 @@ def winspool_SetPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetPrinter(jitter):
+def winspool_SetPortA(jitter):
+    winspool_SetPort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetPortW(jitter):
+    winspool_SetPort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_SetPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL SetPrinter(HANDLE hPrinter, DWORD Level, LPBYTE pPrinter, [PrinterControl] Command)
     """"
@@ -383,7 +659,13 @@ def winspool_SetPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetPrinterData(jitter):
+def winspool_SetPrinterA(jitter):
+    winspool_SetPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetPrinterW(jitter):
+    winspool_SetPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_SetPrinterData(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] SetPrinterData(HANDLE hPrinter, LPTSTR pValueName, [RegType] Type, LPBYTE pData, DWORD cbData)
     """"
@@ -391,7 +673,13 @@ def winspool_SetPrinterData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetPrinterDataEx(jitter):
+def winspool_SetPrinterDataA(jitter):
+    winspool_SetPrinterData(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetPrinterDataW(jitter):
+    winspool_SetPrinterData(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_SetPrinterDataEx(jitter, get_str, set_str):
     """"
     [Winspool.drv] [ERROR_CODE] SetPrinterDataEx(HANDLE hPrinter, LPCTSTR pKeyName, LPCTSTR pValueName, [RegType] Type, LPBYTE pData, DWORD cbData)
     """"
@@ -399,7 +687,13 @@ def winspool_SetPrinterDataEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeviceCapabilities(jitter):
+def winspool_SetPrinterDataExA(jitter):
+    winspool_SetPrinterDataEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetPrinterDataExW(jitter):
+    winspool_SetPrinterDataEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeviceCapabilities(jitter, get_str, set_str):
     """"
     [Winspool.drv] DWORD DeviceCapabilities(LPCTSTR pDevice, LPCTSTR pPort, [DeviceCapability] fwCapability, LPTSTR pOutput, const DEVMODE* pDevMode)
     """"
@@ -407,7 +701,13 @@ def winspool_DeviceCapabilities(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_CorePrinterDriverInstalled(jitter):
+def winspool_DeviceCapabilitiesA(jitter):
+    winspool_DeviceCapabilities(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeviceCapabilitiesW(jitter):
+    winspool_DeviceCapabilities(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_CorePrinterDriverInstalled(jitter, get_str, set_str):
     """"
     [Winspool.drv] HRESULT CorePrinterDriverInstalled(LPCTSTR pszServer, LPCTSTR pszEnvironment, GUID CoreDriverGUID, FILETIME ftDriverDate, DWORDLONG dwlDriverVersion, BOOL* pbDriverInstalled)
     """"
@@ -415,7 +715,13 @@ def winspool_CorePrinterDriverInstalled(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DeletePrinterDriverPackage(jitter):
+def winspool_CorePrinterDriverInstalledA(jitter):
+    winspool_CorePrinterDriverInstalled(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_CorePrinterDriverInstalledW(jitter):
+    winspool_CorePrinterDriverInstalled(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_DeletePrinterDriverPackage(jitter, get_str, set_str):
     """"
     [Winspool.drv] HRESULT DeletePrinterDriverPackage(LPCTSTR pszServer, LPCTSTR pszInfPath, LPCTSTR pszEnvironment)
     """"
@@ -423,7 +729,13 @@ def winspool_DeletePrinterDriverPackage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetCorePrinterDrivers(jitter):
+def winspool_DeletePrinterDriverPackageA(jitter):
+    winspool_DeletePrinterDriverPackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DeletePrinterDriverPackageW(jitter):
+    winspool_DeletePrinterDriverPackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetCorePrinterDrivers(jitter, get_str, set_str):
     """"
     [Winspool.drv] HRESULT GetCorePrinterDrivers(LPCTSTR pszServer, LPCTSTR pszEnvironment, LPCTSTR pszzCoreDriverDependencies, DWORD cCorePrinterDrivers, PCORE_PRINTER_DRIVER pCorePrinterDrivers)
     """"
@@ -431,7 +743,13 @@ def winspool_GetCorePrinterDrivers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinterDriverPackagePath(jitter):
+def winspool_GetCorePrinterDriversA(jitter):
+    winspool_GetCorePrinterDrivers(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetCorePrinterDriversW(jitter):
+    winspool_GetCorePrinterDrivers(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinterDriverPackagePath(jitter, get_str, set_str):
     """"
     [Winspool.drv] HRESULT GetPrinterDriverPackagePath(LPCTSTR pszServer, LPCTSTR pszEnvironment, LPCTSTR pszLanguage, LPCTSTR pszPackageID, LPTSTR pszDriverPackageCab, DWORD cchDriverPackageCab, LPDWORD pcchRequiredSize)
     """"
@@ -439,7 +757,13 @@ def winspool_GetPrinterDriverPackagePath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_InstallPrinterDriverFromPackage(jitter):
+def winspool_GetPrinterDriverPackagePathA(jitter):
+    winspool_GetPrinterDriverPackagePath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterDriverPackagePathW(jitter):
+    winspool_GetPrinterDriverPackagePath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_InstallPrinterDriverFromPackage(jitter, get_str, set_str):
     """"
     [Winspool.drv] HRESULT InstallPrinterDriverFromPackage(LPCTSTR pszServer, LPCTSTR pszInfPath, LPCTSTR pszDriverName, LPCTSTR pszEnvironment, DWORD dwFlags)
     """"
@@ -447,13 +771,25 @@ def winspool_InstallPrinterDriverFromPackage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_UploadPrinterDriverPackage(jitter):
+def winspool_InstallPrinterDriverFromPackageA(jitter):
+    winspool_InstallPrinterDriverFromPackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_InstallPrinterDriverFromPackageW(jitter):
+    winspool_InstallPrinterDriverFromPackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_UploadPrinterDriverPackage(jitter, get_str, set_str):
     """"
     [Winspool.drv] HRESULT UploadPrinterDriverPackage(LPCTSTR pszServer, LPCTSTR pszInfPath, LPCTSTR pszEnvironment, DWORD dwFlags, HWND hwnd, LPTSTR pszDestInfPath, PULONG pcchDestInfPath)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszServer", "pszInfPath", "pszEnvironment", "dwFlags", "hwnd", "pszDestInfPath", "pcchDestInfPath"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winspool_UploadPrinterDriverPackageA(jitter):
+    winspool_UploadPrinterDriverPackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_UploadPrinterDriverPackageW(jitter):
+    winspool_UploadPrinterDriverPackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winspool_AbortPrinter(jitter):
     """"
@@ -463,7 +799,7 @@ def winspool_AbortPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddForm(jitter):
+def winspool_AddForm(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddForm(HANDLE hPrinter, DWORD Level, LPBYTE pForm)
     """"
@@ -471,7 +807,13 @@ def winspool_AddForm(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AddPort(jitter):
+def winspool_AddFormA(jitter):
+    winspool_AddForm(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddFormW(jitter):
+    winspool_AddForm(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AddPort(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL AddPort(LPTSTR pName, HWND hWnd, LPTSTR pMonitorName)
     """"
@@ -479,13 +821,25 @@ def winspool_AddPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_AdvancedDocumentProperties(jitter):
+def winspool_AddPortA(jitter):
+    winspool_AddPort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AddPortW(jitter):
+    winspool_AddPort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_AdvancedDocumentProperties(jitter, get_str, set_str):
     """"
     [Winspool.drv] LONG AdvancedDocumentProperties(HWND hWnd, HANDLE hPrinter, LPTSTR pDeviceName, PDEVMODE pDevModeOutput, PDEVMODE pDevModeInput)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "hPrinter", "pDeviceName", "pDevModeOutput", "pDevModeInput"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winspool_AdvancedDocumentPropertiesA(jitter):
+    winspool_AdvancedDocumentProperties(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_AdvancedDocumentPropertiesW(jitter):
+    winspool_AdvancedDocumentProperties(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winspool_ClosePrinter(jitter):
     """"
@@ -519,13 +873,19 @@ def winspool_DeletePrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_DocumentProperties(jitter):
+def winspool_DocumentProperties(jitter, get_str, set_str):
     """"
     [Winspool.drv] LONG DocumentProperties(HWND hWnd, HANDLE hPrinter, LPTSTR pDeviceName, PDEVMODE pDevModeOutput, PDEVMODE pDevModeInput, [DocumentMode] fMode)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "hPrinter", "pDeviceName", "pDevModeOutput", "pDevModeInput", "fMode"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winspool_DocumentPropertiesA(jitter):
+    winspool_DocumentProperties(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_DocumentPropertiesW(jitter):
+    winspool_DocumentProperties(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winspool_EndDocPrinter(jitter):
     """"
@@ -575,7 +935,7 @@ def winspool_FreePrinterNotifyInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetDefaultPrinter(jitter):
+def winspool_GetDefaultPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetDefaultPrinter(LPTSTR pszBuffer, LPDWORD pcchBuffer)
     """"
@@ -583,7 +943,13 @@ def winspool_GetDefaultPrinter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_GetPrinterDriver2(jitter):
+def winspool_GetDefaultPrinterA(jitter):
+    winspool_GetDefaultPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetDefaultPrinterW(jitter):
+    winspool_GetDefaultPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_GetPrinterDriver2(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL GetPrinterDriver2(HWND hWnd, HANDLE hPrinter, LPTSTR pEnvironment, DWORD Level, LPBYTE pDriverInfo, DWORD cbBuf, LPDWORD pcbNeeded)
     """"
@@ -591,13 +957,25 @@ def winspool_GetPrinterDriver2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_OpenPrinter2(jitter):
+def winspool_GetPrinterDriver2A(jitter):
+    winspool_GetPrinterDriver2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_GetPrinterDriver2W(jitter):
+    winspool_GetPrinterDriver2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winspool_OpenPrinter2(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL OpenPrinter2(LPCTSTR pPrinterName, LPHANDLE phPrinter, LPPRINTER_DEFAULTS pDefault, PPRINTER_OPTIONS pOptions)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pPrinterName", "phPrinter", "pDefault", "pOptions"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winspool_OpenPrinter2A(jitter):
+    winspool_OpenPrinter2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_OpenPrinter2W(jitter):
+    winspool_OpenPrinter2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winspool_PrinterProperties(jitter):
     """"
@@ -639,13 +1017,19 @@ def winspool_ScheduleJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winspool_SetDefaultPrinter(jitter):
+def winspool_SetDefaultPrinter(jitter, get_str, set_str):
     """"
     [Winspool.drv] BOOL SetDefaultPrinter(LPCTSTR pszPrinter)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszPrinter"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winspool_SetDefaultPrinterA(jitter):
+    winspool_SetDefaultPrinter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winspool_SetDefaultPrinterW(jitter):
+    winspool_SetDefaultPrinter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winspool_StartPagePrinter(jitter):
     """"

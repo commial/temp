@@ -1,5 +1,5 @@
 
-def oledlg_OleUIAddVerbMenu(jitter):
+def oledlg_OleUIAddVerbMenu(jitter, get_str, set_str):
     """"
     [OleDlg.dll] BOOL OleUIAddVerbMenu(LPOLEOBJECT lpOleObj, LPCTSTR lpszShortType, HMENU hMenu, UINT uPos, UINT uIDVerbMin, UINT uIDVerbMax, BOOL bAddConvert, UINT idConvert, HMENU* lphMenu)
     """"
@@ -7,13 +7,25 @@ def oledlg_OleUIAddVerbMenu(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIBusy(jitter):
+def oledlg_OleUIAddVerbMenuA(jitter):
+    oledlg_OleUIAddVerbMenu(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIAddVerbMenuW(jitter):
+    oledlg_OleUIAddVerbMenu(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIBusy(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIBusy(LPOLEUIBUSY lpBZ)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpBZ"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def oledlg_OleUIBusyA(jitter):
+    oledlg_OleUIBusy(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIBusyW(jitter):
+    oledlg_OleUIBusy(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def oledlg_OleUICanConvertOrActivateAs(jitter):
     """"
@@ -23,7 +35,7 @@ def oledlg_OleUICanConvertOrActivateAs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIChangeIcon(jitter):
+def oledlg_OleUIChangeIcon(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIChangeIcon(LPOLEUICHANGEICON lpCI)
     """"
@@ -31,7 +43,13 @@ def oledlg_OleUIChangeIcon(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIChangeSource(jitter):
+def oledlg_OleUIChangeIconA(jitter):
+    oledlg_OleUIChangeIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIChangeIconW(jitter):
+    oledlg_OleUIChangeIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIChangeSource(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIChangeSource(LPOLEUICHANGESOURCE lpCS)
     """"
@@ -39,7 +57,13 @@ def oledlg_OleUIChangeSource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIConvert(jitter):
+def oledlg_OleUIChangeSourceA(jitter):
+    oledlg_OleUIChangeSource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIChangeSourceW(jitter):
+    oledlg_OleUIChangeSource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIConvert(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIConvert(LPOLEUICONVERT lpCV)
     """"
@@ -47,7 +71,13 @@ def oledlg_OleUIConvert(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIEditLinks(jitter):
+def oledlg_OleUIConvertA(jitter):
+    oledlg_OleUIConvert(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIConvertW(jitter):
+    oledlg_OleUIConvert(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIEditLinks(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIEditLinks(LPOLEUIEDITLINKS lpEL)
     """"
@@ -55,7 +85,13 @@ def oledlg_OleUIEditLinks(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIInsertObject(jitter):
+def oledlg_OleUIEditLinksA(jitter):
+    oledlg_OleUIEditLinks(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIEditLinksW(jitter):
+    oledlg_OleUIEditLinks(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIInsertObject(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIInsertObject(LPOLEUIINSERTOBJECT lpIO)
     """"
@@ -63,7 +99,13 @@ def oledlg_OleUIInsertObject(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIObjectProperties(jitter):
+def oledlg_OleUIInsertObjectA(jitter):
+    oledlg_OleUIInsertObject(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIInsertObjectW(jitter):
+    oledlg_OleUIInsertObject(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIObjectProperties(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIObjectProperties(LPOLEUIOBJECTPROPS lpOF)
     """"
@@ -71,7 +113,13 @@ def oledlg_OleUIObjectProperties(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIPasteSpecial(jitter):
+def oledlg_OleUIObjectPropertiesA(jitter):
+    oledlg_OleUIObjectProperties(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIObjectPropertiesW(jitter):
+    oledlg_OleUIObjectProperties(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIPasteSpecial(jitter, get_str, set_str):
     """"
     [OleDlg.dll] UINT OleUIPasteSpecial(LPOLEUIPASTESPECIAL lpPS)
     """"
@@ -79,7 +127,13 @@ def oledlg_OleUIPasteSpecial(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIPromptUser(jitter):
+def oledlg_OleUIPasteSpecialA(jitter):
+    oledlg_OleUIPasteSpecial(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIPasteSpecialW(jitter):
+    oledlg_OleUIPasteSpecial(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIPromptUser(jitter, get_str, set_str):
     """"
     [OleDlg.dll] int OleUIPromptUser(int nTemplate, HWND hwndParent)
     """"
@@ -87,10 +141,22 @@ def oledlg_OleUIPromptUser(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oledlg_OleUIUpdateLinks(jitter):
+def oledlg_OleUIPromptUserA(jitter):
+    oledlg_OleUIPromptUser(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIPromptUserW(jitter):
+    oledlg_OleUIPromptUser(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oledlg_OleUIUpdateLinks(jitter, get_str, set_str):
     """"
     [OleDlg.dll] BOOL OleUIUpdateLinks(LPOLEUILINKCONTAINER lpOleUILinkCntr, HWND hwndParent, LPTSTR lpszTitle, int cLinks)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpOleUILinkCntr", "hwndParent", "lpszTitle", "cLinks"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def oledlg_OleUIUpdateLinksA(jitter):
+    oledlg_OleUIUpdateLinks(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oledlg_OleUIUpdateLinksW(jitter):
+    oledlg_OleUIUpdateLinks(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

@@ -1,5 +1,5 @@
 
-def iscsidsc_AddISNSServer(jitter):
+def iscsidsc_AddISNSServer(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS AddISNSServer(PTCHAR Address)
     """"
@@ -7,7 +7,13 @@ def iscsidsc_AddISNSServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_AddIScsiConnection(jitter):
+def iscsidsc_AddISNSServerA(jitter):
+    iscsidsc_AddISNSServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_AddISNSServerW(jitter):
+    iscsidsc_AddISNSServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_AddIScsiConnection(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS AddIScsiConnection(PISCSI_UNIQUE_SESSION_ID UniqueSessionId, PVOID Reserved, ULONG InitiatorPortNumber, PISCSI_TARGET_PORTAL TargetPortal, ISCSI_SECURITY_FLAGS SecurityFlags, PISCSI_LOGIN_OPTIONS LoginOptions, ULONG KeySize, PCHAR Key, PISCSI_UNIQUE_CONNECTION_ID ConnectionId)
     """"
@@ -15,7 +21,13 @@ def iscsidsc_AddIScsiConnection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_AddIScsiSendTargetPortal(jitter):
+def iscsidsc_AddIScsiConnectionA(jitter):
+    iscsidsc_AddIScsiConnection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_AddIScsiConnectionW(jitter):
+    iscsidsc_AddIScsiConnection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_AddIScsiSendTargetPortal(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS AddIScsiSendTargetPortal(PTCHAR InitiatorName, ULONG InitiatorPortNumber, PISCSI_LOGIN_OPTIONS LoginOptions, ISCSI_SECURITY_FLAGS SecurityFlags, PISCSI_TARGET_PORTAL Portal)
     """"
@@ -23,7 +35,13 @@ def iscsidsc_AddIScsiSendTargetPortal(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_AddIScsiStaticTarget(jitter):
+def iscsidsc_AddIScsiSendTargetPortalA(jitter):
+    iscsidsc_AddIScsiSendTargetPortal(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_AddIScsiSendTargetPortalW(jitter):
+    iscsidsc_AddIScsiSendTargetPortal(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_AddIScsiStaticTarget(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS AddIScsiStaticTarget(PTCHAR TargetName, PTCHAR TargetAlias, ISCSI_TARGET_FLAGS TargetFlags, BOOLEAN Persist, PISCSI_TARGET_MAPPING Mappings, PISCSI_LOGIN_OPTIONS LoginOptions, PISCSI_TARGET_PORTAL_GROUP PortalGroup)
     """"
@@ -31,7 +49,13 @@ def iscsidsc_AddIScsiStaticTarget(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_AddPersistentIScsiDevice(jitter):
+def iscsidsc_AddIScsiStaticTargetA(jitter):
+    iscsidsc_AddIScsiStaticTarget(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_AddIScsiStaticTargetW(jitter):
+    iscsidsc_AddIScsiStaticTarget(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_AddPersistentIScsiDevice(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS AddPersistentIScsiDevice(PTCHAR VolumePath)
     """"
@@ -39,13 +63,25 @@ def iscsidsc_AddPersistentIScsiDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_AddRadiusServer(jitter):
+def iscsidsc_AddPersistentIScsiDeviceA(jitter):
+    iscsidsc_AddPersistentIScsiDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_AddPersistentIScsiDeviceW(jitter):
+    iscsidsc_AddPersistentIScsiDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_AddRadiusServer(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS AddRadiusServer(PWCHAR Address)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Address"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_AddRadiusServerA(jitter):
+    iscsidsc_AddRadiusServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_AddRadiusServerW(jitter):
+    iscsidsc_AddRadiusServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_ClearPersistentIScsiDevices(jitter):
     """"
@@ -55,7 +91,7 @@ def iscsidsc_ClearPersistentIScsiDevices(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_GetDevicesForIScsiSession(jitter):
+def iscsidsc_GetDevicesForIScsiSession(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS GetDevicesForIScsiSession(PISCSI_UNIQUE_SESSION_ID UniqueSessionId, ULONG* DeviceCount, PISCSI_DEVICE_ON_SESSION Devices)
     """"
@@ -63,7 +99,13 @@ def iscsidsc_GetDevicesForIScsiSession(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_GetIScsiIKEInfo(jitter):
+def iscsidsc_GetDevicesForIScsiSessionA(jitter):
+    iscsidsc_GetDevicesForIScsiSession(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_GetDevicesForIScsiSessionW(jitter):
+    iscsidsc_GetDevicesForIScsiSession(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_GetIScsiIKEInfo(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS GetIScsiIKEInfo(PTCHAR InitiatorName, ULONG PortNumber, PULONG Reserved, PIKE_AUTHENTICATION_INFORMATION AuthInfo)
     """"
@@ -71,7 +113,13 @@ def iscsidsc_GetIScsiIKEInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_GetIScsiInitiatorNodeName(jitter):
+def iscsidsc_GetIScsiIKEInfoA(jitter):
+    iscsidsc_GetIScsiIKEInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_GetIScsiIKEInfoW(jitter):
+    iscsidsc_GetIScsiIKEInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_GetIScsiInitiatorNodeName(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS GetIScsiInitiatorNodeName(PTCHAR InitiatorNodeName)
     """"
@@ -79,7 +127,13 @@ def iscsidsc_GetIScsiInitiatorNodeName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_GetIScsiSessionList(jitter):
+def iscsidsc_GetIScsiInitiatorNodeNameA(jitter):
+    iscsidsc_GetIScsiInitiatorNodeName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_GetIScsiInitiatorNodeNameW(jitter):
+    iscsidsc_GetIScsiInitiatorNodeName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_GetIScsiSessionList(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS GetIScsiSessionList(ULONG* BufferSize, ULONG* SessionCount, PISCSI_SESSION_INFO SessionInfo)
     """"
@@ -87,13 +141,25 @@ def iscsidsc_GetIScsiSessionList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_GetIScsiTargetInformation(jitter):
+def iscsidsc_GetIScsiSessionListA(jitter):
+    iscsidsc_GetIScsiSessionList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_GetIScsiSessionListW(jitter):
+    iscsidsc_GetIScsiSessionList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_GetIScsiTargetInformation(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS GetIScsiTargetInformation(PTCHAR TargetName, PTCHAR DiscoveryMechanism, TARGET_INFORMATION_CLASS InfoClass, PULONG BufferSize, PVOID Buffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["TargetName", "DiscoveryMechanism", "InfoClass", "BufferSize", "Buffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_GetIScsiTargetInformationA(jitter):
+    iscsidsc_GetIScsiTargetInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_GetIScsiTargetInformationW(jitter):
+    iscsidsc_GetIScsiTargetInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_GetIScsiVersionInformation(jitter):
     """"
@@ -103,13 +169,19 @@ def iscsidsc_GetIScsiVersionInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_LoginIScsiTarget(jitter):
+def iscsidsc_LoginIScsiTarget(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS LoginIScsiTarget(PTCHAR TargetName, BOOLEAN IsInformationalSession, PTCHAR InitiatorName, ULONG InitiatorPortNumber, PISCSI_TARGET_PORTAL TargetPortal, ISCSI_SECURITY_FLAGS SecurityFlags, PISCSI_TARGET_MAPPING Mappings, PISCSI_LOGIN_OPTIONS LoginOptions, ULONG KeySize, PCHAR Key, BOOLEAN IsPersistent, PISCSI_UNIQUE_SESSION_ID UniqueSessionId, PISCSI_UNIQUE_CONNECTION_ID UniqueConnectionId)
     """"
     ret_ad, args = jitter.func_args_stdcall(["TargetName", "IsInformationalSession", "InitiatorName", "InitiatorPortNumber", "TargetPortal", "SecurityFlags", "Mappings", "LoginOptions", "KeySize", "Key", "IsPersistent", "UniqueSessionId", "UniqueConnectionId"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_LoginIScsiTargetA(jitter):
+    iscsidsc_LoginIScsiTarget(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_LoginIScsiTargetW(jitter):
+    iscsidsc_LoginIScsiTarget(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_LogoutIScsiTarget(jitter):
     """"
@@ -119,7 +191,7 @@ def iscsidsc_LogoutIScsiTarget(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RefreshISNSServer(jitter):
+def iscsidsc_RefreshISNSServer(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RefreshISNSServer(PTCHAR Address)
     """"
@@ -127,7 +199,13 @@ def iscsidsc_RefreshISNSServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RefreshIScsiSendTargetPortal(jitter):
+def iscsidsc_RefreshISNSServerA(jitter):
+    iscsidsc_RefreshISNSServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RefreshISNSServerW(jitter):
+    iscsidsc_RefreshISNSServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_RefreshIScsiSendTargetPortal(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RefreshIScsiSendTargetPortal(PTCHAR InitiatorInstance, ULONG InitiatorPortNumber, PISCSI_TARGET_PORTAL Portal)
     """"
@@ -135,13 +213,25 @@ def iscsidsc_RefreshIScsiSendTargetPortal(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RemoveISNSServer(jitter):
+def iscsidsc_RefreshIScsiSendTargetPortalA(jitter):
+    iscsidsc_RefreshIScsiSendTargetPortal(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RefreshIScsiSendTargetPortalW(jitter):
+    iscsidsc_RefreshIScsiSendTargetPortal(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_RemoveISNSServer(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RemoveISNSServer(PTCHAR Address)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Address"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_RemoveISNSServerA(jitter):
+    iscsidsc_RemoveISNSServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RemoveISNSServerW(jitter):
+    iscsidsc_RemoveISNSServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_RemoveIScsiConnection(jitter):
     """"
@@ -151,7 +241,7 @@ def iscsidsc_RemoveIScsiConnection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RemoveIScsiPersistentTarget(jitter):
+def iscsidsc_RemoveIScsiPersistentTarget(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RemoveIScsiPersistentTarget(PTCHAR InitiatorInstance, ULONG InitiatorPortNumber, PTCHAR TargetName, PISCSI_TARGET_PORTAL Portal)
     """"
@@ -159,7 +249,13 @@ def iscsidsc_RemoveIScsiPersistentTarget(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RemoveIScsiSendTargetPortal(jitter):
+def iscsidsc_RemoveIScsiPersistentTargetA(jitter):
+    iscsidsc_RemoveIScsiPersistentTarget(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RemoveIScsiPersistentTargetW(jitter):
+    iscsidsc_RemoveIScsiPersistentTarget(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_RemoveIScsiSendTargetPortal(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RemoveIScsiSendTargetPortal(PTCHAR InitiatorInstance, ULONG InitiatorPortNumber, PISCSI_TARGET_PORTAL Portal)
     """"
@@ -167,7 +263,13 @@ def iscsidsc_RemoveIScsiSendTargetPortal(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RemoveIScsiStaticTarget(jitter):
+def iscsidsc_RemoveIScsiSendTargetPortalA(jitter):
+    iscsidsc_RemoveIScsiSendTargetPortal(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RemoveIScsiSendTargetPortalW(jitter):
+    iscsidsc_RemoveIScsiSendTargetPortal(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_RemoveIScsiStaticTarget(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RemoveIScsiStaticTarget(PTCHAR TargetName)
     """"
@@ -175,7 +277,13 @@ def iscsidsc_RemoveIScsiStaticTarget(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RemovePersistentIScsiDevice(jitter):
+def iscsidsc_RemoveIScsiStaticTargetA(jitter):
+    iscsidsc_RemoveIScsiStaticTarget(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RemoveIScsiStaticTargetW(jitter):
+    iscsidsc_RemoveIScsiStaticTarget(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_RemovePersistentIScsiDevice(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RemovePersistentIScsiDevice(PTCHAR VolumePath)
     """"
@@ -183,7 +291,13 @@ def iscsidsc_RemovePersistentIScsiDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_RemoveRadiusServer(jitter):
+def iscsidsc_RemovePersistentIScsiDeviceA(jitter):
+    iscsidsc_RemovePersistentIScsiDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RemovePersistentIScsiDeviceW(jitter):
+    iscsidsc_RemovePersistentIScsiDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_RemoveRadiusServer(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS RemoveRadiusServer(PTCHAR Address)
     """"
@@ -191,7 +305,13 @@ def iscsidsc_RemoveRadiusServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportActiveIScsiTargetMappings(jitter):
+def iscsidsc_RemoveRadiusServerA(jitter):
+    iscsidsc_RemoveRadiusServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_RemoveRadiusServerW(jitter):
+    iscsidsc_RemoveRadiusServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportActiveIScsiTargetMappings(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportActiveIScsiTargetMappings(PULONG BufferSize, PULONG MappingCount, PISCSI_TARGET_MAPPING Mappings)
     """"
@@ -199,7 +319,13 @@ def iscsidsc_ReportActiveIScsiTargetMappings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportISNSServerList(jitter):
+def iscsidsc_ReportActiveIScsiTargetMappingsA(jitter):
+    iscsidsc_ReportActiveIScsiTargetMappings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportActiveIScsiTargetMappingsW(jitter):
+    iscsidsc_ReportActiveIScsiTargetMappings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportISNSServerList(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportISNSServerList(PULONG BufferSizeInChar, PTCHAR Buffer)
     """"
@@ -207,7 +333,13 @@ def iscsidsc_ReportISNSServerList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportIScsiInitiatorList(jitter):
+def iscsidsc_ReportISNSServerListA(jitter):
+    iscsidsc_ReportISNSServerList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportISNSServerListW(jitter):
+    iscsidsc_ReportISNSServerList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportIScsiInitiatorList(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportIScsiInitiatorList(ULONG* BufferSize, PTCHAR Buffer)
     """"
@@ -215,7 +347,13 @@ def iscsidsc_ReportIScsiInitiatorList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportIScsiPersistentLogins(jitter):
+def iscsidsc_ReportIScsiInitiatorListA(jitter):
+    iscsidsc_ReportIScsiInitiatorList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportIScsiInitiatorListW(jitter):
+    iscsidsc_ReportIScsiInitiatorList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportIScsiPersistentLogins(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportIScsiPersistentLogins(ULONG* Count, PPERSISTENT_ISCSI_LOGIN_INFO PersistentLoginInfo, PULONG BufferSizeInBytes)
     """"
@@ -223,7 +361,13 @@ def iscsidsc_ReportIScsiPersistentLogins(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportIScsiSendTargetPortals(jitter):
+def iscsidsc_ReportIScsiPersistentLoginsA(jitter):
+    iscsidsc_ReportIScsiPersistentLogins(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportIScsiPersistentLoginsW(jitter):
+    iscsidsc_ReportIScsiPersistentLogins(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportIScsiSendTargetPortals(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportIScsiSendTargetPortals(PULONG PortalCount, PISCSI_TARGET_PORTAL_INFO PortalInfo)
     """"
@@ -231,7 +375,13 @@ def iscsidsc_ReportIScsiSendTargetPortals(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportIScsiSendTargetPortalsEx(jitter):
+def iscsidsc_ReportIScsiSendTargetPortalsA(jitter):
+    iscsidsc_ReportIScsiSendTargetPortals(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportIScsiSendTargetPortalsW(jitter):
+    iscsidsc_ReportIScsiSendTargetPortals(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportIScsiSendTargetPortalsEx(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportIScsiSendTargetPortalsEx(PULONG PortalCount, PULONG PortalInfoSize, PISCSI_TARGET_PORTAL_INFO_EX PortalInfo)
     """"
@@ -239,7 +389,13 @@ def iscsidsc_ReportIScsiSendTargetPortalsEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportIScsiTargets(jitter):
+def iscsidsc_ReportIScsiSendTargetPortalsExA(jitter):
+    iscsidsc_ReportIScsiSendTargetPortalsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportIScsiSendTargetPortalsExW(jitter):
+    iscsidsc_ReportIScsiSendTargetPortalsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportIScsiTargets(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportIScsiTargets(BOOLEAN ForceUpdate, PULONG BufferSize, PTCHAR Buffer)
     """"
@@ -247,7 +403,13 @@ def iscsidsc_ReportIScsiTargets(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportIScsiTargetPortals(jitter):
+def iscsidsc_ReportIScsiTargetsA(jitter):
+    iscsidsc_ReportIScsiTargets(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportIScsiTargetsW(jitter):
+    iscsidsc_ReportIScsiTargets(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportIScsiTargetPortals(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportIScsiTargetPortals(PWCHAR InitiatorName, PWCHAR TargetName, PUSHORT TargetPortalTag, PULONG ElementCount, PISCSI_TARGET_PORTAL Portals)
     """"
@@ -255,7 +417,13 @@ def iscsidsc_ReportIScsiTargetPortals(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportPersistentIScsiDevices(jitter):
+def iscsidsc_ReportIScsiTargetPortalsA(jitter):
+    iscsidsc_ReportIScsiTargetPortals(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportIScsiTargetPortalsW(jitter):
+    iscsidsc_ReportIScsiTargetPortals(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportPersistentIScsiDevices(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportPersistentIScsiDevices(PULONG BufferSizeInChar, PTCHAR Buffer)
     """"
@@ -263,13 +431,25 @@ def iscsidsc_ReportPersistentIScsiDevices(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_ReportRadiusServerList(jitter):
+def iscsidsc_ReportPersistentIScsiDevicesA(jitter):
+    iscsidsc_ReportPersistentIScsiDevices(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportPersistentIScsiDevicesW(jitter):
+    iscsidsc_ReportPersistentIScsiDevices(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_ReportRadiusServerList(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS ReportRadiusServerList(PULONG BufferSizeInChar, PTCHAR Buffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["BufferSizeInChar", "Buffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_ReportRadiusServerListA(jitter):
+    iscsidsc_ReportRadiusServerList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_ReportRadiusServerListW(jitter):
+    iscsidsc_ReportRadiusServerList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_SendScsiInquiry(jitter):
     """"
@@ -303,13 +483,19 @@ def iscsidsc_SetIScsiGroupPresharedKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_SetIScsiIKEInfo(jitter):
+def iscsidsc_SetIScsiIKEInfo(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS SetIScsiIKEInfo(PTCHAR InitiatorName, ULONG PortNumber, PIKE_AUTHENTICATION_INFORMATION AuthInfo, BOOLEAN Persist)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InitiatorName", "PortNumber", "AuthInfo", "Persist"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_SetIScsiIKEInfoA(jitter):
+    iscsidsc_SetIScsiIKEInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_SetIScsiIKEInfoW(jitter):
+    iscsidsc_SetIScsiIKEInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_SetIScsiInitiatorCHAPSharedSecret(jitter):
     """"
@@ -327,7 +513,7 @@ def iscsidsc_SetIScsiInitiatorRADIUSSharedSecret(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_SetIScsiInitiatorNodeName(jitter):
+def iscsidsc_SetIScsiInitiatorNodeName(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS SetIScsiInitiatorNodeName(PTCHAR InitiatorNodeName)
     """"
@@ -335,13 +521,25 @@ def iscsidsc_SetIScsiInitiatorNodeName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def iscsidsc_SetIScsiTunnelModeOuterAddress(jitter):
+def iscsidsc_SetIScsiInitiatorNodeNameA(jitter):
+    iscsidsc_SetIScsiInitiatorNodeName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_SetIScsiInitiatorNodeNameW(jitter):
+    iscsidsc_SetIScsiInitiatorNodeName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def iscsidsc_SetIScsiTunnelModeOuterAddress(jitter, get_str, set_str):
     """"
     [Iscsidsc.dll] ISDSC_STATUS SetIScsiTunnelModeOuterAddress(PTCHAR InitiatorName, ULONG InitiatorPortNumber, PTCHAR DestinationAddress, PTCHAR OuterModeAddress, BOOLEAN Persist)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InitiatorName", "InitiatorPortNumber", "DestinationAddress", "OuterModeAddress", "Persist"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def iscsidsc_SetIScsiTunnelModeOuterAddressA(jitter):
+    iscsidsc_SetIScsiTunnelModeOuterAddress(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def iscsidsc_SetIScsiTunnelModeOuterAddressW(jitter):
+    iscsidsc_SetIScsiTunnelModeOuterAddress(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def iscsidsc_SetupPersistentIScsiDevices(jitter):
     """"

@@ -1,11 +1,17 @@
 
-def mswsock_EnumProtocols(jitter):
+def mswsock_EnumProtocols(jitter, get_str, set_str):
     """"
     [Mswsock.dll] [SocketCode-INT] EnumProtocols(LPINT lpiProtocols, LPVOID lpProtocolBuffer, LPDWORD lpdwBufferLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpiProtocols", "lpProtocolBuffer", "lpdwBufferLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mswsock_EnumProtocolsA(jitter):
+    mswsock_EnumProtocols(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mswsock_EnumProtocolsW(jitter):
+    mswsock_EnumProtocols(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mswsock_GetAcceptExSockaddrs(jitter):
     """"
@@ -23,7 +29,7 @@ def mswsock_AcceptEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mswsock_GetAddressByName(jitter):
+def mswsock_GetAddressByName(jitter, get_str, set_str):
     """"
     [Mswsock.dll] INT GetAddressByName([NameSpaceFlags] dwNameSpace, LPGUID lpServiceType, LPTSTR lpServiceName, LPINT lpiProtocols, [ResolutionFlags] dwResolution, LPSERVICE_ASYNC_INFO lpServiceAsyncInfo, LPVOID lpCsaddrBuffer, LPDWORD lpdwBufferLength, LPTSTR lpAliasBuffer, LPDWORD lpdwAliasBufferLength)
     """"
@@ -31,7 +37,13 @@ def mswsock_GetAddressByName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mswsock_GetNameByType(jitter):
+def mswsock_GetAddressByNameA(jitter):
+    mswsock_GetAddressByName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mswsock_GetAddressByNameW(jitter):
+    mswsock_GetAddressByName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mswsock_GetNameByType(jitter, get_str, set_str):
     """"
     [Mswsock.dll] [SocketCode-INT] GetNameByType(LPGUID lpServiceType, LPTSTR lpServiceName, DWORD dwNameLength)
     """"
@@ -39,7 +51,13 @@ def mswsock_GetNameByType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mswsock_GetService(jitter):
+def mswsock_GetNameByTypeA(jitter):
+    mswsock_GetNameByType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mswsock_GetNameByTypeW(jitter):
+    mswsock_GetNameByType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mswsock_GetService(jitter, get_str, set_str):
     """"
     [Mswsock.dll] [SocketCode-INT] GetService([NameSpaceFlags] dwNameSpace, PGUID lpGuid, LPTSTR lpServiceName, [GetService_Props] dwProperties, LPVOID lpBuffer, LPDWORD lpdwBufferSize, LPSERVICE_ASYNC_INFO lpServiceAsyncInfo)
     """"
@@ -47,7 +65,13 @@ def mswsock_GetService(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mswsock_GetTypeByName(jitter):
+def mswsock_GetServiceA(jitter):
+    mswsock_GetService(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mswsock_GetServiceW(jitter):
+    mswsock_GetService(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mswsock_GetTypeByName(jitter, get_str, set_str):
     """"
     [Mswsock.dll] [SocketCode-INT] GetTypeByName(LPTSTR lpServiceName, PGUID lpServiceType)
     """"
@@ -55,13 +79,25 @@ def mswsock_GetTypeByName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mswsock_SetService(jitter):
+def mswsock_GetTypeByNameA(jitter):
+    mswsock_GetTypeByName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mswsock_GetTypeByNameW(jitter):
+    mswsock_GetTypeByName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mswsock_SetService(jitter, get_str, set_str):
     """"
     [Mswsock.dll] [SocketCode-INT] SetService([NameSpaceFlags] dwNameSpace, [SetService_Operation] dwOperation, [SetService_Flags] dwFlags, LPSERVICE_INFO lpServiceInfo, LPSERVICE_ASYNC_INFO lpServiceAsyncInfo, [SetService_FlagsOut*] lpdwStatusFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwNameSpace", "dwOperation", "dwFlags", "lpServiceInfo", "lpServiceAsyncInfo", "lpdwStatusFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mswsock_SetServiceA(jitter):
+    mswsock_SetService(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mswsock_SetServiceW(jitter):
+    mswsock_SetService(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mswsock_TransmitFile(jitter):
     """"

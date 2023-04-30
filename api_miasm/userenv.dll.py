@@ -7,7 +7,7 @@ def userenv_EnterCriticalPolicySection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_FreeGPOList(jitter):
+def userenv_FreeGPOList(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL FreeGPOList(PGROUP_POLICY_OBJECT pGPOList)
     """"
@@ -15,7 +15,13 @@ def userenv_FreeGPOList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_GetAppliedGPOList(jitter):
+def userenv_FreeGPOListA(jitter):
+    userenv_FreeGPOList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_FreeGPOListW(jitter):
+    userenv_FreeGPOList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_GetAppliedGPOList(jitter, get_str, set_str):
     """"
     [Userenv.dll] [ERROR_CODE] GetAppliedGPOList(DWORD dwFlags, LPCTSTR pMachineName, PSID pSidUser, GUID* pGuidExtension, PGROUP_POLICY_OBJECT* ppGPOList)
     """"
@@ -23,13 +29,25 @@ def userenv_GetAppliedGPOList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_GetGPOList(jitter):
+def userenv_GetAppliedGPOListA(jitter):
+    userenv_GetAppliedGPOList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_GetAppliedGPOListW(jitter):
+    userenv_GetAppliedGPOList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_GetGPOList(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL GetGPOList(HANDLE hToken, LPCTSTR lpName, LPCTSTR lpHostName, LPCTSTR lpComputerName, DWORD dwFlags, PGROUP_POLICY_OBJECT* pGPOList)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hToken", "lpName", "lpHostName", "lpComputerName", "dwFlags", "pGPOList"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def userenv_GetGPOListA(jitter):
+    userenv_GetGPOList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_GetGPOListW(jitter):
+    userenv_GetGPOList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def userenv_LeaveCriticalPolicySection(jitter):
     """"
@@ -135,7 +153,7 @@ def userenv_CreateProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_CreateUserProfileEx(jitter):
+def userenv_CreateUserProfileEx(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL CreateUserProfileEx(PSID pSid, LPCTSTR lpUserName, LPCTSTR lpUserHive, LPTSTR lpProfileDir, DWORD dwDirSize, BOOL bWin9xUpg)
     """"
@@ -143,13 +161,25 @@ def userenv_CreateUserProfileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_DeleteProfile(jitter):
+def userenv_CreateUserProfileExA(jitter):
+    userenv_CreateUserProfileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_CreateUserProfileExW(jitter):
+    userenv_CreateUserProfileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_DeleteProfile(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL DeleteProfile(LPCTSTR lpSidString, LPCTSTR lpProfilePath, LPCTSTR lpComputerName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpSidString", "lpProfilePath", "lpComputerName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def userenv_DeleteProfileA(jitter):
+    userenv_DeleteProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_DeleteProfileW(jitter):
+    userenv_DeleteProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def userenv_DestroyEnvironmentBlock(jitter):
     """"
@@ -159,7 +189,7 @@ def userenv_DestroyEnvironmentBlock(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_ExpandEnvironmentStringsForUser(jitter):
+def userenv_ExpandEnvironmentStringsForUser(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL ExpandEnvironmentStringsForUser(HANDLE hToken, LPCTSTR lpSrc, LPTSTR lpDest, DWORD dwSize)
     """"
@@ -167,7 +197,13 @@ def userenv_ExpandEnvironmentStringsForUser(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_GetAllUsersProfileDirectory(jitter):
+def userenv_ExpandEnvironmentStringsForUserA(jitter):
+    userenv_ExpandEnvironmentStringsForUser(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_ExpandEnvironmentStringsForUserW(jitter):
+    userenv_ExpandEnvironmentStringsForUser(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_GetAllUsersProfileDirectory(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL GetAllUsersProfileDirectory(LPTSTR lpProfileDir, LPDWORD lpcchSize)
     """"
@@ -175,7 +211,13 @@ def userenv_GetAllUsersProfileDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_GetDefaultUserProfileDirectory(jitter):
+def userenv_GetAllUsersProfileDirectoryA(jitter):
+    userenv_GetAllUsersProfileDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_GetAllUsersProfileDirectoryW(jitter):
+    userenv_GetAllUsersProfileDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_GetDefaultUserProfileDirectory(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL GetDefaultUserProfileDirectory(LPTSTR lpProfileDir, LPDWORD lpcchSize)
     """"
@@ -183,13 +225,25 @@ def userenv_GetDefaultUserProfileDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_GetProfilesDirectory(jitter):
+def userenv_GetDefaultUserProfileDirectoryA(jitter):
+    userenv_GetDefaultUserProfileDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_GetDefaultUserProfileDirectoryW(jitter):
+    userenv_GetDefaultUserProfileDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_GetProfilesDirectory(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL GetProfilesDirectory(LPTSTR lpProfilesDir, LPDWORD lpcchSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpProfilesDir", "lpcchSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def userenv_GetProfilesDirectoryA(jitter):
+    userenv_GetProfilesDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_GetProfilesDirectoryW(jitter):
+    userenv_GetProfilesDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def userenv_GetProfileType(jitter):
     """"
@@ -199,7 +253,7 @@ def userenv_GetProfileType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_GetUserProfileDirectory(jitter):
+def userenv_GetUserProfileDirectory(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL GetUserProfileDirectory(HANDLE hToken, LPTSTR lpProfileDir, LPDWORD lpcchSize)
     """"
@@ -207,13 +261,25 @@ def userenv_GetUserProfileDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def userenv_LoadUserProfile(jitter):
+def userenv_GetUserProfileDirectoryA(jitter):
+    userenv_GetUserProfileDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_GetUserProfileDirectoryW(jitter):
+    userenv_GetUserProfileDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def userenv_LoadUserProfile(jitter, get_str, set_str):
     """"
     [Userenv.dll] BOOL LoadUserProfile(HANDLE hToken, LPPROFILEINFO lpProfileInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hToken", "lpProfileInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def userenv_LoadUserProfileA(jitter):
+    userenv_LoadUserProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def userenv_LoadUserProfileW(jitter):
+    userenv_LoadUserProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def userenv_UnloadUserProfile(jitter):
     """"

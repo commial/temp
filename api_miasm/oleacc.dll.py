@@ -47,7 +47,7 @@ def oleacc_GetProcessHandleFromHwnd(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oleacc_GetRoleText(jitter):
+def oleacc_GetRoleText(jitter, get_str, set_str):
     """"
     [Oleacc.dll] UINT GetRoleText(DWORD dwRole, LPTSTR lpszRole, UINT cchRoleMax)
     """"
@@ -55,13 +55,25 @@ def oleacc_GetRoleText(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def oleacc_GetStateText(jitter):
+def oleacc_GetRoleTextA(jitter):
+    oleacc_GetRoleText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oleacc_GetRoleTextW(jitter):
+    oleacc_GetRoleText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def oleacc_GetStateText(jitter, get_str, set_str):
     """"
     [Oleacc.dll] UINT GetStateText(DWORD dwStateBit, LPTSTR lpszStateBit, UINT cchStateBitMax)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwStateBit", "lpszStateBit", "cchStateBitMax"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def oleacc_GetStateTextA(jitter):
+    oleacc_GetStateText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def oleacc_GetStateTextW(jitter):
+    oleacc_GetStateText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def oleacc_WindowFromAccessibleObject(jitter):
     """"

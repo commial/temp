@@ -1,11 +1,17 @@
 
-def avifil32_AVIBuildFilter(jitter):
+def avifil32_AVIBuildFilter(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVIBuildFilter(LPTSTR lpszFilter, LONG cbFilter, BOOL fSaving)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszFilter", "cbFilter", "fSaving"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVIBuildFilterA(jitter):
+    avifil32_AVIBuildFilter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVIBuildFilterW(jitter):
+    avifil32_AVIBuildFilter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIClearClipboard(jitter):
     """"
@@ -23,13 +29,19 @@ def avifil32_AVIFileAddRef(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVIFileCreateStream(jitter):
+def avifil32_AVIFileCreateStream(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVIFileCreateStream(PAVIFILE pfile, PAVISTREAM* ppavi, AVISTREAMINFO* psi)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pfile", "ppavi", "psi"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVIFileCreateStreamA(jitter):
+    avifil32_AVIFileCreateStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVIFileCreateStreamW(jitter):
+    avifil32_AVIFileCreateStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIFileEndRecord(jitter):
     """"
@@ -55,13 +67,19 @@ def avifil32_AVIFileGetStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVIFileInfo(jitter):
+def avifil32_AVIFileInfo(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVIFileInfo(PAVIFILE pfile, AVIFILEINFO* pfi, LONG lSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pfile", "pfi", "lSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVIFileInfoA(jitter):
+    avifil32_AVIFileInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVIFileInfoW(jitter):
+    avifil32_AVIFileInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIFileInit(jitter):
     """"
@@ -71,13 +89,19 @@ def avifil32_AVIFileInit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVIFileOpen(jitter):
+def avifil32_AVIFileOpen(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVIFileOpen(PAVIFILE* ppfile, LPCTSTR szFile, UINT mode, CLSID pclsidHandler)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ppfile", "szFile", "mode", "pclsidHandler"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVIFileOpenA(jitter):
+    avifil32_AVIFileOpen(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVIFileOpenW(jitter):
+    avifil32_AVIFileOpen(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIFileReadData(jitter):
     """"
@@ -143,13 +167,19 @@ def avifil32_AVIPutFileOnClipboard(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVISave(jitter):
+def avifil32_AVISave(jitter, get_str, set_str):
     """"
     [avifil32.dll] HRESULT AVISave(LPCTSTR szFile, CLSID* pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, PAVISTREAM pavi, LPAVICOMPRESSOPTIONS lpOptions)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szFile", "pclsidHandler", "lpfnCallback", "nStreams", "pavi", "lpOptions"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVISaveA(jitter):
+    avifil32_AVISave(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVISaveW(jitter):
+    avifil32_AVISave(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVISaveOptions(jitter):
     """"
@@ -167,13 +197,19 @@ def avifil32_AVISaveOptionsFree(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVISaveV(jitter):
+def avifil32_AVISaveV(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVISaveV(LPCTSTR szFile, CLSID* pclsidHandler, AVISAVECALLBACK lpfnCallback, int nStreams, PAVISTREAM* ppavi, LPAVICOMPRESSOPTIONS* plpOptions)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szFile", "pclsidHandler", "lpfnCallback", "nStreams", "ppavi", "plpOptions"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVISaveVA(jitter):
+    avifil32_AVISaveV(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVISaveVW(jitter):
+    avifil32_AVISaveV(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIStreamAddRef(jitter):
     """"
@@ -239,13 +275,19 @@ def avifil32_AVIStreamGetFrameOpen(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVIStreamInfo(jitter):
+def avifil32_AVIStreamInfo(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVIStreamInfo(PAVISTREAM pavi, AVISTREAMINFO* psi, LONG lSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pavi", "psi", "lSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVIStreamInfoA(jitter):
+    avifil32_AVIStreamInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVIStreamInfoW(jitter):
+    avifil32_AVIStreamInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIStreamLength(jitter):
     """"
@@ -255,13 +297,19 @@ def avifil32_AVIStreamLength(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_AVIStreamOpenFromFile(jitter):
+def avifil32_AVIStreamOpenFromFile(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI AVIStreamOpenFromFile(PAVISTREAM* ppavi, LPCTSTR szFile, DWORD fccType, LONG lParam, UINT mode, CLSID* pclsidHandler)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ppavi", "szFile", "fccType", "lParam", "mode", "pclsidHandler"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_AVIStreamOpenFromFileA(jitter):
+    avifil32_AVIStreamOpenFromFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_AVIStreamOpenFromFileW(jitter):
+    avifil32_AVIStreamOpenFromFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def avifil32_AVIStreamRead(jitter):
     """"
@@ -383,7 +431,7 @@ def avifil32_EditStreamPaste(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_EditStreamSetInfo(jitter):
+def avifil32_EditStreamSetInfo(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI EditStreamSetInfo(PAVISTREAM pavi, AVISTREAMINFO* lpInfo, LONG cbInfo)
     """"
@@ -391,10 +439,22 @@ def avifil32_EditStreamSetInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def avifil32_EditStreamSetName(jitter):
+def avifil32_EditStreamSetInfoA(jitter):
+    avifil32_EditStreamSetInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_EditStreamSetInfoW(jitter):
+    avifil32_EditStreamSetInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def avifil32_EditStreamSetName(jitter, get_str, set_str):
     """"
     [avifil32.dll] STDAPI EditStreamSetName(PAVISTREAM pavi, LPCTSTR lpszName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pavi", "lpszName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def avifil32_EditStreamSetNameA(jitter):
+    avifil32_EditStreamSetName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def avifil32_EditStreamSetNameW(jitter):
+    avifil32_EditStreamSetName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

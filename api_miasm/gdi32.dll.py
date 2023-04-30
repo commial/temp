@@ -727,7 +727,7 @@ def gdi32_CreateCompatibleDC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateDC(jitter):
+def gdi32_CreateDC(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HDC CreateDC(LPCTSTR lpszDriver, LPCTSTR lpszDevice, LPCTSTR lpszOutput, const DEVMODE* lpInitData)
     """"
@@ -735,13 +735,25 @@ def gdi32_CreateDC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateIC(jitter):
+def gdi32_CreateDCA(jitter):
+    gdi32_CreateDC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateDCW(jitter):
+    gdi32_CreateDC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateIC(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HDC CreateIC(LPCTSTR lpszDriver, LPCTSTR lpszDevice, LPCTSTR lpszOutput, const DEVMODE* lpdvmInit)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszDriver", "lpszDevice", "lpszOutput", "lpdvmInit"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_CreateICA(jitter):
+    gdi32_CreateIC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateICW(jitter):
+    gdi32_CreateIC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_DeleteDC(jitter):
     """"
@@ -823,13 +835,19 @@ def gdi32_GetLayout(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetObject(jitter):
+def gdi32_GetObject(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int GetObject(HGDIOBJ hgdiobj, int cbBuffer, LPVOID lpvObject)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hgdiobj", "cbBuffer", "lpvObject"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetObjectA(jitter):
+    gdi32_GetObject(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetObjectW(jitter):
+    gdi32_GetObject(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetObjectType(jitter):
     """"
@@ -847,13 +865,19 @@ def gdi32_GetStockObject(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_ResetDC(jitter):
+def gdi32_ResetDC(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HDC ResetDC(HDC hdc, const DEVMODE* lpInitData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "lpInitData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_ResetDCA(jitter):
+    gdi32_ResetDC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_ResetDCW(jitter):
+    gdi32_ResetDC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_RestoreDC(jitter):
     """"
@@ -967,7 +991,7 @@ def gdi32_AddFontMemResourceEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_AddFontResource(jitter):
+def gdi32_AddFontResource(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int AddFontResource(LPCTSTR lpszFilename)
     """"
@@ -975,7 +999,13 @@ def gdi32_AddFontResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_AddFontResourceEx(jitter):
+def gdi32_AddFontResourceA(jitter):
+    gdi32_AddFontResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_AddFontResourceW(jitter):
+    gdi32_AddFontResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_AddFontResourceEx(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int AddFontResourceEx(LPCTSTR lpszFilename, DWORD fl, PVOID pdv)
     """"
@@ -983,7 +1013,13 @@ def gdi32_AddFontResourceEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateFont(jitter):
+def gdi32_AddFontResourceExA(jitter):
+    gdi32_AddFontResourceEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_AddFontResourceExW(jitter):
+    gdi32_AddFontResourceEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateFont(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HFONT CreateFont(int nHeight, int nWidth, int nEscapement, int nOrientation, [FontWeight] fnWeight, DWORD fdwItalic, DWORD fdwUnderline, DWORD fdwStrikeOut, [FontCharset] fdwCharSet, [FontOutputPrecision] fdwOutputPrecision, [FontClipPrecision] fdwClipPrecision, [FontQuality] fdwQuality, [FontPitchAndFamily] fdwPitchAndFamily, LPCTSTR lpszFace)
     """"
@@ -991,7 +1027,13 @@ def gdi32_CreateFont(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateFontIndirect(jitter):
+def gdi32_CreateFontA(jitter):
+    gdi32_CreateFont(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateFontW(jitter):
+    gdi32_CreateFont(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateFontIndirect(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HFONT CreateFontIndirect(const LOGFONT* lplf)
     """"
@@ -999,7 +1041,13 @@ def gdi32_CreateFontIndirect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateFontIndirectEx(jitter):
+def gdi32_CreateFontIndirectA(jitter):
+    gdi32_CreateFontIndirect(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateFontIndirectW(jitter):
+    gdi32_CreateFontIndirect(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateFontIndirectEx(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HFONT CreateFontIndirectEx(const ENUMLOGFONTEXDV* penumlfex)
     """"
@@ -1007,7 +1055,13 @@ def gdi32_CreateFontIndirectEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateScalableFontResource(jitter):
+def gdi32_CreateFontIndirectExA(jitter):
+    gdi32_CreateFontIndirectEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateFontIndirectExW(jitter):
+    gdi32_CreateFontIndirectEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateScalableFontResource(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL CreateScalableFontResource(DWORD fdwHidden, LPCTSTR lpszFontRes, LPCTSTR lpszFontFile, LPCTSTR lpszCurrentPath)
     """"
@@ -1015,7 +1069,13 @@ def gdi32_CreateScalableFontResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_EnumFontFamiliesEx(jitter):
+def gdi32_CreateScalableFontResourceA(jitter):
+    gdi32_CreateScalableFontResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateScalableFontResourceW(jitter):
+    gdi32_CreateScalableFontResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_EnumFontFamiliesEx(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int EnumFontFamiliesEx(HDC hdc, LPLOGFONT lpLogfont, FONTENUMPROC lpEnumFontFamExProc, LPARAM lParam, DWORD dwFlags)
     """"
@@ -1023,13 +1083,25 @@ def gdi32_EnumFontFamiliesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_ExtTextOut(jitter):
+def gdi32_EnumFontFamiliesExA(jitter):
+    gdi32_EnumFontFamiliesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_EnumFontFamiliesExW(jitter):
+    gdi32_EnumFontFamiliesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_ExtTextOut(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL ExtTextOut(HDC hdc, int X, int Y, [ExtTextOutFlags] fuOptions, const RECT* lprc, LPCTSTR lpString, UINT cbCount, const INT* lpDx)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "X", "Y", "fuOptions", "lprc", "lpString", "cbCount", "lpDx"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_ExtTextOutA(jitter):
+    gdi32_ExtTextOut(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_ExtTextOutW(jitter):
+    gdi32_ExtTextOut(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetAspectRatioFilterEx(jitter):
     """"
@@ -1039,7 +1111,7 @@ def gdi32_GetAspectRatioFilterEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetCharABCWidths(jitter):
+def gdi32_GetCharABCWidths(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetCharABCWidths(HDC hdc, UINT uFirstChar, UINT uLastChar, LPABC lpabc)
     """"
@@ -1047,13 +1119,25 @@ def gdi32_GetCharABCWidths(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetCharABCWidthsFloat(jitter):
+def gdi32_GetCharABCWidthsA(jitter):
+    gdi32_GetCharABCWidths(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetCharABCWidthsW(jitter):
+    gdi32_GetCharABCWidths(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetCharABCWidthsFloat(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetCharABCWidthsFloat(HDC hdc, UINT iFirstChar, UINT iLastChar, LPABCFLOAT lpABCF)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "iFirstChar", "iLastChar", "lpABCF"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetCharABCWidthsFloatA(jitter):
+    gdi32_GetCharABCWidthsFloat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetCharABCWidthsFloatW(jitter):
+    gdi32_GetCharABCWidthsFloat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetCharABCWidthsI(jitter):
     """"
@@ -1063,7 +1147,7 @@ def gdi32_GetCharABCWidthsI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetCharacterPlacement(jitter):
+def gdi32_GetCharacterPlacement(jitter, get_str, set_str):
     """"
     [Gdi32.dll] DWORD GetCharacterPlacement(HDC hdc, LPCTSTR lpString, int nCount, int nMaxExtent, LPGCP_RESULTS lpResults, [GCP_FLAGS] dwFlags)
     """"
@@ -1071,7 +1155,13 @@ def gdi32_GetCharacterPlacement(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetCharWidth32(jitter):
+def gdi32_GetCharacterPlacementA(jitter):
+    gdi32_GetCharacterPlacement(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetCharacterPlacementW(jitter):
+    gdi32_GetCharacterPlacement(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetCharWidth32(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetCharWidth32(HDC hdc, UINT iFirstChar, UINT iLastChar, LPINT lpBuffer)
     """"
@@ -1079,13 +1169,25 @@ def gdi32_GetCharWidth32(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetCharWidthFloat(jitter):
+def gdi32_GetCharWidth32A(jitter):
+    gdi32_GetCharWidth32(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetCharWidth32W(jitter):
+    gdi32_GetCharWidth32(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetCharWidthFloat(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetCharWidthFloat(HDC hdc, UINT iFirstChar, UINT iLastChar, PFLOAT pxBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "iFirstChar", "iLastChar", "pxBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetCharWidthFloatA(jitter):
+    gdi32_GetCharWidthFloat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetCharWidthFloatW(jitter):
+    gdi32_GetCharWidthFloat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetCharWidthI(jitter):
     """"
@@ -1119,7 +1221,7 @@ def gdi32_GetFontUnicodeRanges(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetGlyphIndices(jitter):
+def gdi32_GetGlyphIndices(jitter, get_str, set_str):
     """"
     [Gdi32.dll] DWORD GetGlyphIndices(HDC hdc, LPCTSTR lpstr, int c, LPWORD pgi, [GetGlyphIndicesFlag] fl)
     """"
@@ -1127,7 +1229,13 @@ def gdi32_GetGlyphIndices(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetGlyphOutline(jitter):
+def gdi32_GetGlyphIndicesA(jitter):
+    gdi32_GetGlyphIndices(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetGlyphIndicesW(jitter):
+    gdi32_GetGlyphIndices(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetGlyphOutline(jitter, get_str, set_str):
     """"
     [Gdi32.dll] DWORD GetGlyphOutline(HDC hdc, UINT uChar, [GetGlyphOutlineFormat] uFormat, LPGLYPHMETRICS lpgm, DWORD cbBuffer, LPVOID lpvBuffer, const MAT2* lpmat2)
     """"
@@ -1135,7 +1243,13 @@ def gdi32_GetGlyphOutline(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetKerningPairs(jitter):
+def gdi32_GetGlyphOutlineA(jitter):
+    gdi32_GetGlyphOutline(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetGlyphOutlineW(jitter):
+    gdi32_GetGlyphOutline(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetKerningPairs(jitter, get_str, set_str):
     """"
     [Gdi32.dll] DWORD GetKerningPairs(HDC hdc, DWORD nNumPairs, LPKERNINGPAIR lpkrnpair)
     """"
@@ -1143,13 +1257,25 @@ def gdi32_GetKerningPairs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetOutlineTextMetrics(jitter):
+def gdi32_GetKerningPairsA(jitter):
+    gdi32_GetKerningPairs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetKerningPairsW(jitter):
+    gdi32_GetKerningPairs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetOutlineTextMetrics(jitter, get_str, set_str):
     """"
     [Gdi32.dll] UINT GetOutlineTextMetrics(HDC hdc, UINT cbData, LPOUTLINETEXTMETRIC lpOTM)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "cbData", "lpOTM"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetOutlineTextMetricsA(jitter):
+    gdi32_GetOutlineTextMetrics(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetOutlineTextMetricsW(jitter):
+    gdi32_GetOutlineTextMetrics(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetRasterizerCaps(jitter):
     """"
@@ -1183,13 +1309,19 @@ def gdi32_GetTextColor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetTextExtentExPoint(jitter):
+def gdi32_GetTextExtentExPoint(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetTextExtentExPoint(HDC hdc, LPCTSTR lpszStr, int cchString, int nMaxExtent, LPINT lpnFit, LPINT alpDx, LPSIZE lpSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "lpszStr", "cchString", "nMaxExtent", "lpnFit", "alpDx", "lpSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetTextExtentExPointA(jitter):
+    gdi32_GetTextExtentExPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetTextExtentExPointW(jitter):
+    gdi32_GetTextExtentExPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetTextExtentExPointI(jitter):
     """"
@@ -1199,13 +1331,19 @@ def gdi32_GetTextExtentExPointI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetTextExtentPoint32(jitter):
+def gdi32_GetTextExtentPoint32(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetTextExtentPoint32(HDC hdc, LPCTSTR lpString, int c, LPSIZE lpSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "lpString", "c", "lpSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetTextExtentPoint32A(jitter):
+    gdi32_GetTextExtentPoint32(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetTextExtentPoint32W(jitter):
+    gdi32_GetTextExtentPoint32(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetTextExtentPointI(jitter):
     """"
@@ -1215,7 +1353,7 @@ def gdi32_GetTextExtentPointI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetTextFace(jitter):
+def gdi32_GetTextFace(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int GetTextFace(HDC hdc, int nCount, LPTSTR lpFaceName)
     """"
@@ -1223,7 +1361,13 @@ def gdi32_GetTextFace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetTextMetrics(jitter):
+def gdi32_GetTextFaceA(jitter):
+    gdi32_GetTextFace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetTextFaceW(jitter):
+    gdi32_GetTextFace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetTextMetrics(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetTextMetrics(HDC hdc, LPTEXTMETRIC lptm)
     """"
@@ -1231,13 +1375,25 @@ def gdi32_GetTextMetrics(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_PolyTextOut(jitter):
+def gdi32_GetTextMetricsA(jitter):
+    gdi32_GetTextMetrics(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetTextMetricsW(jitter):
+    gdi32_GetTextMetrics(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_PolyTextOut(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL PolyTextOut(HDC hdc, const POLYTEXT* pptxt, int cStrings)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "pptxt", "cStrings"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_PolyTextOutA(jitter):
+    gdi32_PolyTextOut(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_PolyTextOutW(jitter):
+    gdi32_PolyTextOut(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_RemoveFontMemResourceEx(jitter):
     """"
@@ -1247,7 +1403,7 @@ def gdi32_RemoveFontMemResourceEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_RemoveFontResource(jitter):
+def gdi32_RemoveFontResource(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL RemoveFontResource(LPCTSTR lpFileName)
     """"
@@ -1255,13 +1411,25 @@ def gdi32_RemoveFontResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_RemoveFontResourceEx(jitter):
+def gdi32_RemoveFontResourceA(jitter):
+    gdi32_RemoveFontResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_RemoveFontResourceW(jitter):
+    gdi32_RemoveFontResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_RemoveFontResourceEx(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL RemoveFontResourceEx(LPCTSTR lpFileName, DWORD fl, PVOID pdv)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "fl", "pdv"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_RemoveFontResourceExA(jitter):
+    gdi32_RemoveFontResourceEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_RemoveFontResourceExW(jitter):
+    gdi32_RemoveFontResourceEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_SetMapperFlags(jitter):
     """"
@@ -1303,7 +1471,7 @@ def gdi32_SetTextJustification(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_TextOut(jitter):
+def gdi32_TextOut(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL TextOut(HDC hdc, int nXStart, int nYStart, LPCTSTR lpString, int cbString)
     """"
@@ -1311,7 +1479,13 @@ def gdi32_TextOut(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_EnumFontFamilies(jitter):
+def gdi32_TextOutA(jitter):
+    gdi32_TextOut(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_TextOutW(jitter):
+    gdi32_TextOut(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_EnumFontFamilies(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int EnumFontFamilies(HDC hdc, LPCTSTR lpszFamily, FONTENUMPROC lpEnumFontFamProc, LPARAM lParam)
     """"
@@ -1319,7 +1493,13 @@ def gdi32_EnumFontFamilies(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_EnumFonts(jitter):
+def gdi32_EnumFontFamiliesA(jitter):
+    gdi32_EnumFontFamilies(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_EnumFontFamiliesW(jitter):
+    gdi32_EnumFontFamilies(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_EnumFonts(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int EnumFonts(HDC hdc, LPCTSTR lpFaceName, FONTENUMPROC lpFontFunc, LPARAM lParam)
     """"
@@ -1327,7 +1507,13 @@ def gdi32_EnumFonts(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetCharWidth(jitter):
+def gdi32_EnumFontsA(jitter):
+    gdi32_EnumFonts(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_EnumFontsW(jitter):
+    gdi32_EnumFonts(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetCharWidth(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetCharWidth(HDC hdc, UINT iFirstChar, UINT iLastChar, LPINT lpBuffer)
     """"
@@ -1335,13 +1521,25 @@ def gdi32_GetCharWidth(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetTextExtentPoint(jitter):
+def gdi32_GetCharWidthA(jitter):
+    gdi32_GetCharWidth(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetCharWidthW(jitter):
+    gdi32_GetCharWidth(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetTextExtentPoint(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetTextExtentPoint(HDC hdc, LPCTSTR lpString, int cbString, LPSIZE lpSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "lpString", "cbString", "lpSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetTextExtentPointA(jitter):
+    gdi32_GetTextExtentPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetTextExtentPointW(jitter):
+    gdi32_GetTextExtentPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_AngleArc(jitter):
     """"
@@ -1463,7 +1661,7 @@ def gdi32_CloseEnhMetaFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CopyEnhMetaFile(jitter):
+def gdi32_CopyEnhMetaFile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HENHMETAFILE CopyEnhMetaFile(HENHMETAFILE hemfSrc, LPCTSTR lpszFile)
     """"
@@ -1471,13 +1669,25 @@ def gdi32_CopyEnhMetaFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateEnhMetaFile(jitter):
+def gdi32_CopyEnhMetaFileA(jitter):
+    gdi32_CopyEnhMetaFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CopyEnhMetaFileW(jitter):
+    gdi32_CopyEnhMetaFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateEnhMetaFile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HDC CreateEnhMetaFile(HDC hdcRef, LPCTSTR lpFilename, const RECT* lpRect, LPCTSTR lpDescription)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdcRef", "lpFilename", "lpRect", "lpDescription"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_CreateEnhMetaFileA(jitter):
+    gdi32_CreateEnhMetaFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateEnhMetaFileW(jitter):
+    gdi32_CreateEnhMetaFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_DeleteEnhMetaFile(jitter):
     """"
@@ -1503,13 +1713,19 @@ def gdi32_GdiComment(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetEnhMetaFile(jitter):
+def gdi32_GetEnhMetaFile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HENHMETAFILE GetEnhMetaFile(LPCTSTR lpszMetaFile)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszMetaFile"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetEnhMetaFileA(jitter):
+    gdi32_GetEnhMetaFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetEnhMetaFileW(jitter):
+    gdi32_GetEnhMetaFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetEnhMetaFileBits(jitter):
     """"
@@ -1519,13 +1735,19 @@ def gdi32_GetEnhMetaFileBits(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetEnhMetaFileDescription(jitter):
+def gdi32_GetEnhMetaFileDescription(jitter, get_str, set_str):
     """"
     [Gdi32.dll] UINT GetEnhMetaFileDescription(HENHMETAFILE hemf, UINT cchBuffer, LPTSTR lpszDescription)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hemf", "cchBuffer", "lpszDescription"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetEnhMetaFileDescriptionA(jitter):
+    gdi32_GetEnhMetaFileDescription(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetEnhMetaFileDescriptionW(jitter):
+    gdi32_GetEnhMetaFileDescription(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetEnhMetaFileHeader(jitter):
     """"
@@ -1591,7 +1813,7 @@ def gdi32_CloseMetaFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CopyMetaFile(jitter):
+def gdi32_CopyMetaFile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HMETAFILE CopyMetaFile(HMETAFILE hmfSrc, LPCTSTR lpszFile)
     """"
@@ -1599,13 +1821,25 @@ def gdi32_CopyMetaFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateMetaFile(jitter):
+def gdi32_CopyMetaFileA(jitter):
+    gdi32_CopyMetaFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CopyMetaFileW(jitter):
+    gdi32_CopyMetaFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_CreateMetaFile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HDC CreateMetaFile(LPCTSTR lpszFile)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszFile"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_CreateMetaFileA(jitter):
+    gdi32_CreateMetaFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateMetaFileW(jitter):
+    gdi32_CreateMetaFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_DeleteMetaFile(jitter):
     """"
@@ -1855,13 +2089,19 @@ def gdi32_AbortDoc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_StartDoc(jitter):
+def gdi32_StartDoc(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int StartDoc(HDC hdc, const DOCINFO* lpdi)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "lpdi"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_StartDocA(jitter):
+    gdi32_StartDoc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_StartDocW(jitter):
+    gdi32_StartDoc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_EndDoc(jitter):
     """"
@@ -2183,13 +2423,19 @@ def gdi32_ColorMatchToTarget(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_CreateColorSpace(jitter):
+def gdi32_CreateColorSpace(jitter, get_str, set_str):
     """"
     [Gdi32.dll] HCOLORSPACE CreateColorSpace(LPLOGCOLORSPACE lpLogColorSpace)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpLogColorSpace"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_CreateColorSpaceA(jitter):
+    gdi32_CreateColorSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_CreateColorSpaceW(jitter):
+    gdi32_CreateColorSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_DeleteColorSpace(jitter):
     """"
@@ -2199,13 +2445,19 @@ def gdi32_DeleteColorSpace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_EnumICMProfiles(jitter):
+def gdi32_EnumICMProfiles(jitter, get_str, set_str):
     """"
     [Gdi32.dll] int EnumICMProfiles(HDC hDC, ICMENUMPROC lpEnumICMProfilesFunc, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDC", "lpEnumICMProfilesFunc", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_EnumICMProfilesA(jitter):
+    gdi32_EnumICMProfiles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_EnumICMProfilesW(jitter):
+    gdi32_EnumICMProfiles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetColorSpace(jitter):
     """"
@@ -2215,7 +2467,7 @@ def gdi32_GetColorSpace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetICMProfile(jitter):
+def gdi32_GetICMProfile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetICMProfile(HDC hDC, LPDWORD lpcbName, LPTSTR lpszFilename)
     """"
@@ -2223,13 +2475,25 @@ def gdi32_GetICMProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_GetLogColorSpace(jitter):
+def gdi32_GetICMProfileA(jitter):
+    gdi32_GetICMProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetICMProfileW(jitter):
+    gdi32_GetICMProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def gdi32_GetLogColorSpace(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL GetLogColorSpace(HCOLORSPACE hColorSpace, LPLOGCOLORSPACE lpBuffer, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hColorSpace", "lpBuffer", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_GetLogColorSpaceA(jitter):
+    gdi32_GetLogColorSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_GetLogColorSpaceW(jitter):
+    gdi32_GetLogColorSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_SetColorSpace(jitter):
     """"
@@ -2247,13 +2511,19 @@ def gdi32_SetICMMode(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_SetICMProfile(jitter):
+def gdi32_SetICMProfile(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL SetICMProfile(HDC hDC, LPTSTR lpFileName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDC", "lpFileName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_SetICMProfileA(jitter):
+    gdi32_SetICMProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_SetICMProfileW(jitter):
+    gdi32_SetICMProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdi32_GetDeviceGammaRamp(jitter):
     """"
@@ -2271,10 +2541,16 @@ def gdi32_SetDeviceGammaRamp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdi32_UpdateICMRegKey(jitter):
+def gdi32_UpdateICMRegKey(jitter, get_str, set_str):
     """"
     [Gdi32.dll] BOOL UpdateICMRegKey(DWORD dwReserved, LPTSTR lpszCMID, LPTSTR lpszFileName, [ICM_COMMAND] nCommand)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwReserved", "lpszCMID", "lpszFileName", "nCommand"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdi32_UpdateICMRegKeyA(jitter):
+    gdi32_UpdateICMRegKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdi32_UpdateICMRegKeyW(jitter):
+    gdi32_UpdateICMRegKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

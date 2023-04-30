@@ -7,7 +7,7 @@ def shell32_DuplicateIcon(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ExtractAssociatedIcon(jitter):
+def shell32_ExtractAssociatedIcon(jitter, get_str, set_str):
     """"
     [Shell32.dll] HICON ExtractAssociatedIcon(HINSTANCE hInst, LPTSTR lpIconPath, LPWORD lpiIcon)
     """"
@@ -15,7 +15,13 @@ def shell32_ExtractAssociatedIcon(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ExtractIcon(jitter):
+def shell32_ExtractAssociatedIconA(jitter):
+    shell32_ExtractAssociatedIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ExtractAssociatedIconW(jitter):
+    shell32_ExtractAssociatedIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_ExtractIcon(jitter, get_str, set_str):
     """"
     [Shell32.dll] HICON ExtractIcon(HINSTANCE hInst, LPCTSTR lpszExeFileName, UINT nIconIndex)
     """"
@@ -23,13 +29,25 @@ def shell32_ExtractIcon(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ExtractIconEx(jitter):
+def shell32_ExtractIconA(jitter):
+    shell32_ExtractIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ExtractIconW(jitter):
+    shell32_ExtractIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_ExtractIconEx(jitter, get_str, set_str):
     """"
     [Shell32.dll] UINT ExtractIconEx(LPCTSTR lpszFile, int nIconIndex, HICON* phiconLarge, HICON* phiconSmall, UINT nIcons)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszFile", "nIconIndex", "phiconLarge", "phiconSmall", "nIcons"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_ExtractIconExA(jitter):
+    shell32_ExtractIconEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ExtractIconExW(jitter):
+    shell32_ExtractIconEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_AssocCreateForClasses(jitter):
     """"
@@ -127,13 +145,19 @@ def shell32_DAD_ShowDragImage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_DoEnvironmentSubst(jitter):
+def shell32_DoEnvironmentSubst(jitter, get_str, set_str):
     """"
     [Shell32.dll] DWORD DoEnvironmentSubst(LPTSTR pszString, UINT cchString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszString", "cchString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_DoEnvironmentSubstA(jitter):
+    shell32_DoEnvironmentSubst(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_DoEnvironmentSubstW(jitter):
+    shell32_DoEnvironmentSubst(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_DragAcceptFiles(jitter):
     """"
@@ -151,13 +175,19 @@ def shell32_DragFinish(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_DragQueryFile(jitter):
+def shell32_DragQueryFile(jitter, get_str, set_str):
     """"
     [Shell32.dll] UINT DragQueryFile(HDROP hDrop, UINT iFile, LPTSTR lpszFile, UINT cch)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDrop", "iFile", "lpszFile", "cch"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_DragQueryFileA(jitter):
+    shell32_DragQueryFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_DragQueryFileW(jitter):
+    shell32_DragQueryFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_DragQueryPoint(jitter):
     """"
@@ -175,13 +205,19 @@ def shell32_DriveType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ExtractAssociatedIconEx(jitter):
+def shell32_ExtractAssociatedIconEx(jitter, get_str, set_str):
     """"
     [Shell32.dll] HICON ExtractAssociatedIconEx(HINSTANCE hInst, LPTSTR lpIconPath, LPWORD lpiIconIndex, LPWORD lpiIconId)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInst", "lpIconPath", "lpiIconIndex", "lpiIconId"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_ExtractAssociatedIconExA(jitter):
+    shell32_ExtractAssociatedIconEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ExtractAssociatedIconExW(jitter):
+    shell32_ExtractAssociatedIconEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_FileIconInit(jitter):
     """"
@@ -191,13 +227,19 @@ def shell32_FileIconInit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_FindExecutable(jitter):
+def shell32_FindExecutable(jitter, get_str, set_str):
     """"
     [Shell32.dll] HINSTANCE FindExecutable(LPCTSTR lpFile, LPCTSTR lpDirectory, LPTSTR lpResult)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFile", "lpDirectory", "lpResult"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_FindExecutableA(jitter):
+    shell32_FindExecutable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_FindExecutableW(jitter):
+    shell32_FindExecutable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_GetCurrentProcessExplicitAppUserModelID(jitter):
     """"
@@ -215,13 +257,19 @@ def shell32_GetFileNameFromBrowse(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_GUIDFromString(jitter):
+def shell32_GUIDFromString(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL GUIDFromString(LPCTSTR psz, LPGUID pguid)
     """"
     ret_ad, args = jitter.func_args_stdcall(["psz", "pguid"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_GUIDFromStringA(jitter):
+    shell32_GUIDFromString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_GUIDFromStringW(jitter):
+    shell32_GUIDFromString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_ILAppendID(jitter):
     """"
@@ -263,13 +311,19 @@ def shell32_ILCreateFromPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ILCreateFromPath(jitter):
+def shell32_ILCreateFromPath(jitter, get_str, set_str):
     """"
     [Shell32.dll] PIDLIST_ABSOLUTE ILCreateFromPath(LPCSTR pszPath)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszPath"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_ILCreateFromPathA(jitter):
+    shell32_ILCreateFromPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ILCreateFromPathW(jitter):
+    shell32_ILCreateFromPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_ILFindChild(jitter):
     """"
@@ -455,13 +509,19 @@ def shell32_PathIsExe(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_PathIsSlow(jitter):
+def shell32_PathIsSlow(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL PathIsSlow(LPCTSTR pszFile, DWORD dwFileAttr)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszFile", "dwFileAttr"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_PathIsSlowA(jitter):
+    shell32_PathIsSlow(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_PathIsSlowW(jitter):
+    shell32_PathIsSlow(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_PathMakeUniqueName(jitter):
     """"
@@ -615,13 +675,19 @@ def shell32_SHBindToParent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHBrowseForFolder(jitter):
+def shell32_SHBrowseForFolder(jitter, get_str, set_str):
     """"
     [Shell32.dll] PIDLIST_ABSOLUTE SHBrowseForFolder(LPBROWSEINFO lpbi)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpbi"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHBrowseForFolderA(jitter):
+    shell32_SHBrowseForFolder(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHBrowseForFolderW(jitter):
+    shell32_SHBrowseForFolder(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHChangeNotification_Lock(jitter):
     """"
@@ -735,13 +801,19 @@ def shell32_SHCreateDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHCreateDirectoryEx(jitter):
+def shell32_SHCreateDirectoryEx(jitter, get_str, set_str):
     """"
     [Shell32.dll] int SHCreateDirectoryEx(HWND hwnd, LPCTSTR pszPath, const SECURITY_ATTRIBUTES* psa)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "pszPath", "psa"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHCreateDirectoryExA(jitter):
+    shell32_SHCreateDirectoryEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHCreateDirectoryExW(jitter):
+    shell32_SHCreateDirectoryEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHCreateFileExtractIconW(jitter):
     """"
@@ -879,13 +951,19 @@ def shell32_SHCreateStdEnumFmtEtc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHDefExtractIcon(jitter):
+def shell32_SHDefExtractIcon(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHDefExtractIcon(LPCTSTR pszIconFile, int iIndex, [SHDefExtractIcon_FLAGS] uFlags, HICON* phiconLarge, HICON* phiconSmall, UINT nIconSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszIconFile", "iIndex", "uFlags", "phiconLarge", "phiconSmall", "nIconSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHDefExtractIconA(jitter):
+    shell32_SHDefExtractIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHDefExtractIconW(jitter):
+    shell32_SHDefExtractIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHDestroyPropSheetExtArray(jitter):
     """"
@@ -911,13 +989,19 @@ def shell32_Shell_GetCachedImageIndex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_Shell_GetCachedImageIndex(jitter):
+def shell32_Shell_GetCachedImageIndex(jitter, get_str, set_str):
     """"
     [Shell32.dll] int Shell_GetCachedImageIndex(LPCTSTR pszIconPath, int iIconIndex, UINT uIconFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszIconPath", "iIconIndex", "uIconFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_Shell_GetCachedImageIndexA(jitter):
+    shell32_Shell_GetCachedImageIndex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_Shell_GetCachedImageIndexW(jitter):
+    shell32_Shell_GetCachedImageIndex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_Shell_GetImageLists(jitter):
     """"
@@ -935,13 +1019,19 @@ def shell32_Shell_MergeMenus(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_Shell_NotifyIcon(jitter):
+def shell32_Shell_NotifyIcon(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL Shell_NotifyIcon(DWORD dwMessage, PNOTIFYICONDATA lpdata)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwMessage", "lpdata"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_Shell_NotifyIconA(jitter):
+    shell32_Shell_NotifyIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_Shell_NotifyIconW(jitter):
+    shell32_Shell_NotifyIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_Shell_NotifyIconGetRect(jitter):
     """"
@@ -951,7 +1041,7 @@ def shell32_Shell_NotifyIconGetRect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ShellAbout(jitter):
+def shell32_ShellAbout(jitter, get_str, set_str):
     """"
     [Shell32.dll] int ShellAbout(HWND hWnd, LPCTSTR szApp, LPCTSTR szOtherStuff, HICON hIcon)
     """"
@@ -959,7 +1049,13 @@ def shell32_ShellAbout(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ShellExecuteEx(jitter):
+def shell32_ShellAboutA(jitter):
+    shell32_ShellAbout(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ShellAboutW(jitter):
+    shell32_ShellAbout(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_ShellExecuteEx(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL ShellExecuteEx(LPSHELLEXECUTEINFO lpExecInfo)
     """"
@@ -967,13 +1063,25 @@ def shell32_ShellExecuteEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHEmptyRecycleBin(jitter):
+def shell32_ShellExecuteExA(jitter):
+    shell32_ShellExecuteEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ShellExecuteExW(jitter):
+    shell32_ShellExecuteEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_SHEmptyRecycleBin(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHEmptyRecycleBin(HWND hwnd, LPCTSTR pszRootPath, [SHERB_FLAGS] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "pszRootPath", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHEmptyRecycleBinA(jitter):
+    shell32_SHEmptyRecycleBin(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHEmptyRecycleBinW(jitter):
+    shell32_SHEmptyRecycleBin(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHEnumerateUnreadMailAccountsW(jitter):
     """"
@@ -991,13 +1099,19 @@ def shell32_SHEvaluateSystemCommandTemplate(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_ShellExecute(jitter):
+def shell32_ShellExecute(jitter, get_str, set_str):
     """"
     [Shell32.dll] HINSTANCE ShellExecute(HWND hwnd, LPCTSTR lpOperation, LPCTSTR lpFile, LPCTSTR lpParameters, LPCTSTR lpDirectory, [ShowWindowCmd] nShowCmd)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "lpOperation", "lpFile", "lpParameters", "lpDirectory", "nShowCmd"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_ShellExecuteA(jitter):
+    shell32_ShellExecute(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_ShellExecuteW(jitter):
+    shell32_ShellExecute(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHExtractIconsW(jitter):
     """"
@@ -1063,13 +1177,19 @@ def shell32_SHFreeNameMappings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHFileOperation(jitter):
+def shell32_SHFileOperation(jitter, get_str, set_str):
     """"
     [Shell32.dll] int SHFileOperation(LPSHFILEOPSTRUCT lpFileOp)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileOp"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHFileOperationA(jitter):
+    shell32_SHFileOperation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHFileOperationW(jitter):
+    shell32_SHFileOperation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetAttributesFromDataObject(jitter):
     """"
@@ -1079,13 +1199,19 @@ def shell32_SHGetAttributesFromDataObject(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetDataFromIDList(jitter):
+def shell32_SHGetDataFromIDList(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHGetDataFromIDList(IShellFolder* psf, PCUITEMID_CHILD pidl, [SHGetDataFromIDListFormats] nFormat, PVOID pv, int cb)
     """"
     ret_ad, args = jitter.func_args_stdcall(["psf", "pidl", "nFormat", "pv", "cb"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetDataFromIDListA(jitter):
+    shell32_SHGetDataFromIDList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetDataFromIDListW(jitter):
+    shell32_SHGetDataFromIDList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetDesktopFolder(jitter):
     """"
@@ -1095,7 +1221,7 @@ def shell32_SHGetDesktopFolder(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetDiskFreeSpace(jitter):
+def shell32_SHGetDiskFreeSpace(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL SHGetDiskFreeSpace(LPCTSTR pszVolume, ULARGE_INTEGER* pqwFreeCaller, ULARGE_INTEGER* pqwTot, ULARGE_INTEGER* pqwFree)
     """"
@@ -1103,13 +1229,25 @@ def shell32_SHGetDiskFreeSpace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetDiskFreeSpaceEx(jitter):
+def shell32_SHGetDiskFreeSpaceA(jitter):
+    shell32_SHGetDiskFreeSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetDiskFreeSpaceW(jitter):
+    shell32_SHGetDiskFreeSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_SHGetDiskFreeSpaceEx(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL SHGetDiskFreeSpaceEx(LPCTSTR pszVolume, ULARGE_INTEGER* pqwFreeCaller, ULARGE_INTEGER* pqwTot, ULARGE_INTEGER* pqwFree)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszVolume", "pqwFreeCaller", "pqwTot", "pqwFree"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetDiskFreeSpaceExA(jitter):
+    shell32_SHGetDiskFreeSpaceEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetDiskFreeSpaceExW(jitter):
+    shell32_SHGetDiskFreeSpaceEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetDriveMedia(jitter):
     """"
@@ -1119,13 +1257,19 @@ def shell32_SHGetDriveMedia(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetFileInfo(jitter):
+def shell32_SHGetFileInfo(jitter, get_str, set_str):
     """"
     [Shell32.dll] DWORD_PTR SHGetFileInfo(LPCTSTR pszPath, [FileAttributes] dwFileAttributes, SHFILEINFO* psfi, UINT cbFileInfo, [SHGFI_FLAGS] uFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszPath", "dwFileAttributes", "psfi", "cbFileInfo", "uFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetFileInfoA(jitter):
+    shell32_SHGetFileInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetFileInfoW(jitter):
+    shell32_SHGetFileInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetFolderLocation(jitter):
     """"
@@ -1135,7 +1279,7 @@ def shell32_SHGetFolderLocation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetFolderPath(jitter):
+def shell32_SHGetFolderPath(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHGetFolderPath(HWND hwndOwner, int nFolder, HANDLE hToken, [SHGetFolderPathFlags] dwFlags, LPTSTR pszPath)
     """"
@@ -1143,7 +1287,13 @@ def shell32_SHGetFolderPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetFolderPathAndSubDir(jitter):
+def shell32_SHGetFolderPathA(jitter):
+    shell32_SHGetFolderPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetFolderPathW(jitter):
+    shell32_SHGetFolderPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_SHGetFolderPathAndSubDir(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHGetFolderPathAndSubDir(HWND hwnd, [CSIDL] csidl, HANDLE hToken, [SHGetFolderPathFlags] dwFlags, LPCTSTR pszSubDir, LPTSTR pszPath)
     """"
@@ -1151,13 +1301,25 @@ def shell32_SHGetFolderPathAndSubDir(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetIconOverlayIndex(jitter):
+def shell32_SHGetFolderPathAndSubDirA(jitter):
+    shell32_SHGetFolderPathAndSubDir(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetFolderPathAndSubDirW(jitter):
+    shell32_SHGetFolderPathAndSubDir(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_SHGetIconOverlayIndex(jitter, get_str, set_str):
     """"
     [Shell32.dll] int SHGetIconOverlayIndex(LPCTSTR pszIconPath, int iIconIndex)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszIconPath", "iIconIndex"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetIconOverlayIndexA(jitter):
+    shell32_SHGetIconOverlayIndex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetIconOverlayIndexW(jitter):
+    shell32_SHGetIconOverlayIndex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetIDListFromObject(jitter):
     """"
@@ -1255,13 +1417,19 @@ def shell32_SHGetNameFromPropertyKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetNewLinkInfo(jitter):
+def shell32_SHGetNewLinkInfo(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL SHGetNewLinkInfo(LPCTSTR pszLinkTo, LPCTSTR pszDir, LPTSTR pszName, BOOL* pfMustCopy, [SHGNLI_FLAGS] uFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszLinkTo", "pszDir", "pszName", "pfMustCopy", "uFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetNewLinkInfoA(jitter):
+    shell32_SHGetNewLinkInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetNewLinkInfoW(jitter):
+    shell32_SHGetNewLinkInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetPathFromIDListEx(jitter):
     """"
@@ -1271,13 +1439,19 @@ def shell32_SHGetPathFromIDListEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetPathFromIDList(jitter):
+def shell32_SHGetPathFromIDList(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL SHGetPathFromIDList(PCIDLIST_ABSOLUTE pidl, LPTSTR pszPath)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pidl", "pszPath"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetPathFromIDListA(jitter):
+    shell32_SHGetPathFromIDList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetPathFromIDListW(jitter):
+    shell32_SHGetPathFromIDList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetRealIDL(jitter):
     """"
@@ -1335,13 +1509,19 @@ def shell32_SHGetSpecialFolderPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHGetSpecialFolderPath(jitter):
+def shell32_SHGetSpecialFolderPath(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL SHGetSpecialFolderPath(HWND hwndOwner, LPTSTR lpszPath, [CSIDL] csidl, BOOL fCreate)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndOwner", "lpszPath", "csidl", "fCreate"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHGetSpecialFolderPathA(jitter):
+    shell32_SHGetSpecialFolderPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHGetSpecialFolderPathW(jitter):
+    shell32_SHGetSpecialFolderPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHGetStockIconInfo(jitter):
     """"
@@ -1383,13 +1563,19 @@ def shell32_SHILCreateFromPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHInvokePrinterCommand(jitter):
+def shell32_SHInvokePrinterCommand(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL SHInvokePrinterCommand(HWND hwnd, UINT uAction, LPCTSTR lpBuf1, LPCTSTR lpBuf2, BOOL fModal)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "uAction", "lpBuf1", "lpBuf2", "fModal"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHInvokePrinterCommandA(jitter):
+    shell32_SHInvokePrinterCommand(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHInvokePrinterCommandW(jitter):
+    shell32_SHInvokePrinterCommand(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHIsFileAvailableOffline(jitter):
     """"
@@ -1431,13 +1617,19 @@ def shell32_SHLoadOLE(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHLocalStrDup(jitter):
+def shell32_SHLocalStrDup(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHLocalStrDup(LPCWSTR psz, LPWSTR* ppsz)
     """"
     ret_ad, args = jitter.func_args_stdcall(["psz", "ppsz"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHLocalStrDupA(jitter):
+    shell32_SHLocalStrDup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHLocalStrDupW(jitter):
+    shell32_SHLocalStrDup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHMapIDListToImageListIndexAsync(jitter):
     """"
@@ -1503,7 +1695,7 @@ def shell32_SHParseDisplayName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHPathPrepareForWrite(jitter):
+def shell32_SHPathPrepareForWrite(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHPathPrepareForWrite(HWND hwnd, IUnknown* punkEnableModless, LPCTSTR pszPath, [SHPPFW_FLAGS] dwFlags)
     """"
@@ -1511,13 +1703,25 @@ def shell32_SHPathPrepareForWrite(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHQueryRecycleBin(jitter):
+def shell32_SHPathPrepareForWriteA(jitter):
+    shell32_SHPathPrepareForWrite(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHPathPrepareForWriteW(jitter):
+    shell32_SHPathPrepareForWrite(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shell32_SHQueryRecycleBin(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHQueryRecycleBin(LPCTSTR pszRootPath, LPSHQUERYRBINFO pSHQueryRBInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszRootPath", "pSHQueryRBInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHQueryRecycleBinA(jitter):
+    shell32_SHQueryRecycleBin(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHQueryRecycleBinW(jitter):
+    shell32_SHQueryRecycleBin(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHQueryUserNotificationState(jitter):
     """"
@@ -1575,13 +1779,19 @@ def shell32_SHSetDefaultProperties(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHSetFolderPath(jitter):
+def shell32_SHSetFolderPath(jitter, get_str, set_str):
     """"
     [Shell32.dll] HRESULT SHSetFolderPath([CSIDL] csidl, HANDLE hToken, DWORD dwFlags, LPCTSTR pszPath)
     """"
     ret_ad, args = jitter.func_args_stdcall(["csidl", "hToken", "dwFlags", "pszPath"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHSetFolderPathA(jitter):
+    shell32_SHSetFolderPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHSetFolderPathW(jitter):
+    shell32_SHSetFolderPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHSetInstanceExplorer(jitter):
     """"
@@ -1663,13 +1873,19 @@ def shell32_SHTestTokenMembership(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHUpdateImage(jitter):
+def shell32_SHUpdateImage(jitter, get_str, set_str):
     """"
     [Shell32.dll] void SHUpdateImage(LPCTSTR pszHashItem, int iIndex, [SHUpdateImage_FLAGS] uFlags, int iImageIndex)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszHashItem", "iIndex", "uFlags", "iImageIndex"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHUpdateImageA(jitter):
+    shell32_SHUpdateImage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHUpdateImageW(jitter):
+    shell32_SHUpdateImage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHValidateUNC(jitter):
     """"
@@ -1935,13 +2151,19 @@ def shell32_PathGetPathDisplayName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_PathIsTemporary(jitter):
+def shell32_PathIsTemporary(jitter, get_str, set_str):
     """"
     [Shell32.dll] BOOL PathIsTemporary(LPCTSTR pszFile)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszFile"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_PathIsTemporaryA(jitter):
+    shell32_PathIsTemporary(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_PathIsTemporaryW(jitter):
+    shell32_PathIsTemporary(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_Printer_AddPrinterPropPages(jitter):
     """"
@@ -2007,13 +2229,19 @@ def shell32_SHGetUserPicturePathEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shell32_SHHelpShortcuts_RunDLL(jitter):
+def shell32_SHHelpShortcuts_RunDLL(jitter, get_str, set_str):
     """"
     [Shell32.dll] void SHHelpShortcuts_RunDLL(HWND hwndParent, HINSTANCE unusedHinstance, LPCTSTR commandLine, int unusedInt)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "unusedHinstance", "commandLine", "unusedInt"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shell32_SHHelpShortcuts_RunDLLA(jitter):
+    shell32_SHHelpShortcuts_RunDLL(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shell32_SHHelpShortcuts_RunDLLW(jitter):
+    shell32_SHHelpShortcuts_RunDLL(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shell32_SHResolveUserNames(jitter):
     """"

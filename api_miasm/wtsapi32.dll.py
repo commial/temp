@@ -7,7 +7,7 @@ def wtsapi32_WTSCloseServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSConnectSession(jitter):
+def wtsapi32_WTSConnectSession(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSConnectSession(ULONG LogonId, ULONG TargetLogonId, PTSTR pPassword, BOOL bWait)
     """"
@@ -15,13 +15,25 @@ def wtsapi32_WTSConnectSession(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSCreateListener(jitter):
+def wtsapi32_WTSConnectSessionA(jitter):
+    wtsapi32_WTSConnectSession(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSConnectSessionW(jitter):
+    wtsapi32_WTSConnectSession(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSCreateListener(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSCreateListener([WtsServerHandle] hServer, PVOID pReserved, DWORD Reserved, LPTSTR pListenerName, PWTSLISTENERCONFIG pBuffer, DWORD flag)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hServer", "pReserved", "Reserved", "pListenerName", "pBuffer", "flag"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSCreateListenerA(jitter):
+    wtsapi32_WTSCreateListener(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSCreateListenerW(jitter):
+    wtsapi32_WTSCreateListener(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSDisconnectSession(jitter):
     """"
@@ -39,7 +51,7 @@ def wtsapi32_WTSEnableChildSessions(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSEnumerateListeners(jitter):
+def wtsapi32_WTSEnumerateListeners(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSEnumerateListeners([WtsServerHandle] hServer, PVOID pReserved, DWORD Reserved, PWTSLISTENERNAME pListeners, DWORD* pCount)
     """"
@@ -47,7 +59,13 @@ def wtsapi32_WTSEnumerateListeners(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSEnumerateProcesses(jitter):
+def wtsapi32_WTSEnumerateListenersA(jitter):
+    wtsapi32_WTSEnumerateListeners(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateListenersW(jitter):
+    wtsapi32_WTSEnumerateListeners(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateProcesses(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSEnumerateProcesses([WtsServerHandle] hServer, DWORD Reserved, DWORD Version, PWTS_PROCESS_INFO* ppProcessInfo, DWORD* pCount)
     """"
@@ -55,7 +73,13 @@ def wtsapi32_WTSEnumerateProcesses(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSEnumerateProcessesEx(jitter):
+def wtsapi32_WTSEnumerateProcessesA(jitter):
+    wtsapi32_WTSEnumerateProcesses(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateProcessesW(jitter):
+    wtsapi32_WTSEnumerateProcesses(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateProcessesEx(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSEnumerateProcessesEx([WtsServerHandle] hServer, DWORD* pLevel, DWORD SessionID, LPTSTR* ppProcessInfo, DWORD* pCount)
     """"
@@ -63,7 +87,13 @@ def wtsapi32_WTSEnumerateProcessesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSEnumerateServers(jitter):
+def wtsapi32_WTSEnumerateProcessesExA(jitter):
+    wtsapi32_WTSEnumerateProcessesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateProcessesExW(jitter):
+    wtsapi32_WTSEnumerateProcessesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateServers(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSEnumerateServers(LPTSTR pDomainName, DWORD Reserved, DWORD Version, PWTS_SERVER_INFO* ppServerInfo, DWORD* pCount)
     """"
@@ -71,7 +101,13 @@ def wtsapi32_WTSEnumerateServers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSEnumerateSessions(jitter):
+def wtsapi32_WTSEnumerateServersA(jitter):
+    wtsapi32_WTSEnumerateServers(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateServersW(jitter):
+    wtsapi32_WTSEnumerateServers(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateSessions(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSEnumerateSessions([WtsServerHandle] hServer, DWORD Reserved, DWORD Version, PWTS_SESSION_INFO* ppSessionInfo, DWORD* pCount)
     """"
@@ -79,13 +115,25 @@ def wtsapi32_WTSEnumerateSessions(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSEnumerateSessionsEx(jitter):
+def wtsapi32_WTSEnumerateSessionsA(jitter):
+    wtsapi32_WTSEnumerateSessions(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateSessionsW(jitter):
+    wtsapi32_WTSEnumerateSessions(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateSessionsEx(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSEnumerateSessionsEx([WtsServerHandle] hServer, DWORD* pLevel, DWORD Filter, PWTS_SESSION_INFO_1* ppSessionInfo, DWORD* pCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hServer", "pLevel", "Filter", "ppSessionInfo", "pCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSEnumerateSessionsExA(jitter):
+    wtsapi32_WTSEnumerateSessionsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSEnumerateSessionsExW(jitter):
+    wtsapi32_WTSEnumerateSessionsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSFreeMemory(jitter):
     """"
@@ -95,13 +143,19 @@ def wtsapi32_WTSFreeMemory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSFreeMemoryEx(jitter):
+def wtsapi32_WTSFreeMemoryEx(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSFreeMemoryEx(WTS_TYPE_CLASS WTSTypeClass, PVOID pMemory, ULONG NumberOfEntries)
     """"
     ret_ad, args = jitter.func_args_stdcall(["WTSTypeClass", "pMemory", "NumberOfEntries"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSFreeMemoryExA(jitter):
+    wtsapi32_WTSFreeMemoryEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSFreeMemoryExW(jitter):
+    wtsapi32_WTSFreeMemoryEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSGetChildSessionId(jitter):
     """"
@@ -111,13 +165,19 @@ def wtsapi32_WTSGetChildSessionId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSGetListenerSecurity(jitter):
+def wtsapi32_WTSGetListenerSecurity(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSGetListenerSecurity([WtsServerHandle] hServer, PVOID pReserved, DWORD Reserved, LPTSTR pListenerName, SECURITY_INFORMATION SecurityInformation, PSECURITY_DESCRIPTOR pSecurityDescriptor, DWORD nLength, LPDWORD lpnLengthNeeded)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hServer", "pReserved", "Reserved", "pListenerName", "SecurityInformation", "pSecurityDescriptor", "nLength", "lpnLengthNeeded"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSGetListenerSecurityA(jitter):
+    wtsapi32_WTSGetListenerSecurity(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSGetListenerSecurityW(jitter):
+    wtsapi32_WTSGetListenerSecurity(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSIsChildSessionsEnabled(jitter):
     """"
@@ -135,7 +195,7 @@ def wtsapi32_WTSLogoffSession(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSOpenServer(jitter):
+def wtsapi32_WTSOpenServer(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] HANDLE WTSOpenServer(LPTSTR pServerName)
     """"
@@ -143,7 +203,13 @@ def wtsapi32_WTSOpenServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSOpenServerEx(jitter):
+def wtsapi32_WTSOpenServerA(jitter):
+    wtsapi32_WTSOpenServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSOpenServerW(jitter):
+    wtsapi32_WTSOpenServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSOpenServerEx(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] HANDLE WTSOpenServerEx(LPTSTR pServerName)
     """"
@@ -151,7 +217,13 @@ def wtsapi32_WTSOpenServerEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSQueryListenerConfig(jitter):
+def wtsapi32_WTSOpenServerExA(jitter):
+    wtsapi32_WTSOpenServerEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSOpenServerExW(jitter):
+    wtsapi32_WTSOpenServerEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSQueryListenerConfig(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSQueryListenerConfig([WtsServerHandle] hServer, PVOID pReserved, DWORD Reserved, LPTSTR pListenerName, PWTSLISTENERCONFIG pBuffer)
     """"
@@ -159,7 +231,13 @@ def wtsapi32_WTSQueryListenerConfig(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSQuerySessionInformation(jitter):
+def wtsapi32_WTSQueryListenerConfigA(jitter):
+    wtsapi32_WTSQueryListenerConfig(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSQueryListenerConfigW(jitter):
+    wtsapi32_WTSQueryListenerConfig(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSQuerySessionInformation(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSQuerySessionInformation([WtsServerHandle] hServer, DWORD SessionId, WTS_INFO_CLASS WTSInfoClass, LPTSTR* ppBuffer, DWORD* pBytesReturned)
     """"
@@ -167,13 +245,25 @@ def wtsapi32_WTSQuerySessionInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSQueryUserConfig(jitter):
+def wtsapi32_WTSQuerySessionInformationA(jitter):
+    wtsapi32_WTSQuerySessionInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSQuerySessionInformationW(jitter):
+    wtsapi32_WTSQuerySessionInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSQueryUserConfig(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSQueryUserConfig(LPTSTR pServerName, LPTSTR pUserName, WTS_CONFIG_CLASS WTSConfigClass, LPTSTR* ppBuffer, DWORD* pBytesReturned)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pServerName", "pUserName", "WTSConfigClass", "ppBuffer", "pBytesReturned"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSQueryUserConfigA(jitter):
+    wtsapi32_WTSQueryUserConfig(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSQueryUserConfigW(jitter):
+    wtsapi32_WTSQueryUserConfig(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSQueryUserToken(jitter):
     """"
@@ -199,7 +289,7 @@ def wtsapi32_WTSRegisterSessionNotificationEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSSendMessage(jitter):
+def wtsapi32_WTSSendMessage(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSSendMessage([WtsServerHandle] hServer, DWORD SessionId, LPTSTR pTitle, DWORD TitleLength, LPTSTR pMessage, DWORD MessageLength, DWORD Style, DWORD Timeout, DWORD* pResponse, BOOL bWait)
     """"
@@ -207,7 +297,13 @@ def wtsapi32_WTSSendMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSSetListenerSecurity(jitter):
+def wtsapi32_WTSSendMessageA(jitter):
+    wtsapi32_WTSSendMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSSendMessageW(jitter):
+    wtsapi32_WTSSendMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSSetListenerSecurity(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSSetListenerSecurity([WtsServerHandle] hServer, PVOID pReserved, DWORD Reserved, LPTSTR pListenerName, SECURITY_INFORMATION SecurityInformation, PSECURITY_DESCRIPTOR pSecurityDescriptor)
     """"
@@ -215,13 +311,25 @@ def wtsapi32_WTSSetListenerSecurity(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSSetUserConfig(jitter):
+def wtsapi32_WTSSetListenerSecurityA(jitter):
+    wtsapi32_WTSSetListenerSecurity(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSSetListenerSecurityW(jitter):
+    wtsapi32_WTSSetListenerSecurity(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wtsapi32_WTSSetUserConfig(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSSetUserConfig(LPTSTR pServerName, LPTSTR pUserName, WTS_CONFIG_CLASS WTSConfigClass, LPTSTR pBuffer, DWORD DataLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pServerName", "pUserName", "WTSConfigClass", "pBuffer", "DataLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSSetUserConfigA(jitter):
+    wtsapi32_WTSSetUserConfig(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSSetUserConfigW(jitter):
+    wtsapi32_WTSSetUserConfig(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSShutdownSystem(jitter):
     """"
@@ -231,13 +339,19 @@ def wtsapi32_WTSShutdownSystem(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wtsapi32_WTSStartRemoteControlSession(jitter):
+def wtsapi32_WTSStartRemoteControlSession(jitter, get_str, set_str):
     """"
     [WtsApi32.dll] BOOL WTSStartRemoteControlSession(LPTSTR pTargetServerName, ULONG TargetLogonId, BYTE HotkeyVk, USHORT HotkeyModifiers)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pTargetServerName", "TargetLogonId", "HotkeyVk", "HotkeyModifiers"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wtsapi32_WTSStartRemoteControlSessionA(jitter):
+    wtsapi32_WTSStartRemoteControlSession(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wtsapi32_WTSStartRemoteControlSessionW(jitter):
+    wtsapi32_WTSStartRemoteControlSession(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wtsapi32_WTSStopRemoteControlSession(jitter):
     """"

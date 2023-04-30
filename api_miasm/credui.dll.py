@@ -1,5 +1,5 @@
 
-def credui_CredUICmdLinePromptForCredentials(jitter):
+def credui_CredUICmdLinePromptForCredentials(jitter, get_str, set_str):
     """"
     [Credui.dll] [ERROR_CODE] CredUICmdLinePromptForCredentials(PCTSTR pszTargetName, PCtxtHandle Reserved, DWORD dwAuthError, PTSTR pszUserName, ULONG ulUserNameMaxChars, PTSTR pszPassword, ULONG ulPasswordMaxChars, PBOOL pfSave, [CredUIFlags] dwFlags)
     """"
@@ -7,7 +7,13 @@ def credui_CredUICmdLinePromptForCredentials(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_CredUIConfirmCredentials(jitter):
+def credui_CredUICmdLinePromptForCredentialsA(jitter):
+    credui_CredUICmdLinePromptForCredentials(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredUICmdLinePromptForCredentialsW(jitter):
+    credui_CredUICmdLinePromptForCredentials(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def credui_CredUIConfirmCredentials(jitter, get_str, set_str):
     """"
     [Credui.dll] [ERROR_CODE] CredUIConfirmCredentials(PCTSTR pszTargetName, BOOL bConfirm)
     """"
@@ -15,7 +21,13 @@ def credui_CredUIConfirmCredentials(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_CredUIParseUserName(jitter):
+def credui_CredUIConfirmCredentialsA(jitter):
+    credui_CredUIConfirmCredentials(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredUIConfirmCredentialsW(jitter):
+    credui_CredUIConfirmCredentials(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def credui_CredUIParseUserName(jitter, get_str, set_str):
     """"
     [Credui.dll] [ERROR_CODE] CredUIParseUserName(PCTSTR pszUserName, PTSTR pszUser, ULONG ulUserMaxChars, PTSTR pszDomain, ULONG ulDomainMaxChars)
     """"
@@ -23,7 +35,13 @@ def credui_CredUIParseUserName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_CredUIPromptForCredentials(jitter):
+def credui_CredUIParseUserNameA(jitter):
+    credui_CredUIParseUserName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredUIParseUserNameW(jitter):
+    credui_CredUIParseUserName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def credui_CredUIPromptForCredentials(jitter, get_str, set_str):
     """"
     [Credui.dll] [ERROR_CODE] CredUIPromptForCredentials(PCREDUI_INFO pUiInfo, PCTSTR pszTargetName, PCtxtHandle Reserved, DWORD dwAuthError, PCTSTR pszUserName, ULONG ulUserNameMaxChars, PCTSTR pszPassword, ULONG ulPasswordMaxChars, PBOOL pfSave, [CredUIFlags] dwFlags)
     """"
@@ -31,13 +49,25 @@ def credui_CredUIPromptForCredentials(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_CredUIPromptForWindowsCredentials(jitter):
+def credui_CredUIPromptForCredentialsA(jitter):
+    credui_CredUIPromptForCredentials(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredUIPromptForCredentialsW(jitter):
+    credui_CredUIPromptForCredentials(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def credui_CredUIPromptForWindowsCredentials(jitter, get_str, set_str):
     """"
     [Credui.dll] [ERROR_CODE] CredUIPromptForWindowsCredentials(PCREDUI_INFO pUiInfo, DWORD dwAuthError, ULONG* pulAuthPackage, LPCVOID pvInAuthBuffer, ULONG ulInAuthBufferSize, LPVOID* ppvOutAuthBuffer, ULONG* pulOutAuthBufferSize, BOOL* pfSave, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pUiInfo", "dwAuthError", "pulAuthPackage", "pvInAuthBuffer", "ulInAuthBufferSize", "ppvOutAuthBuffer", "pulOutAuthBufferSize", "pfSave", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def credui_CredUIPromptForWindowsCredentialsA(jitter):
+    credui_CredUIPromptForWindowsCredentials(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredUIPromptForWindowsCredentialsW(jitter):
+    credui_CredUIPromptForWindowsCredentials(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def credui_CredUIReadSSOCredW(jitter):
     """"
@@ -55,7 +85,7 @@ def credui_CredUIStoreSSOCredW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_CredPackAuthenticationBuffer(jitter):
+def credui_CredPackAuthenticationBuffer(jitter, get_str, set_str):
     """"
     [Credui.dll] BOOL CredPackAuthenticationBuffer(DWORD dwFlags, LPTSTR pszUserName, LPTSTR pszPassword, PBYTE pPackedCredentials, DWORD* pcbPackedCredentials)
     """"
@@ -63,13 +93,25 @@ def credui_CredPackAuthenticationBuffer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_CredUnPackAuthenticationBuffer(jitter):
+def credui_CredPackAuthenticationBufferA(jitter):
+    credui_CredPackAuthenticationBuffer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredPackAuthenticationBufferW(jitter):
+    credui_CredPackAuthenticationBuffer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def credui_CredUnPackAuthenticationBuffer(jitter, get_str, set_str):
     """"
     [Credui.dll] BOOL CredUnPackAuthenticationBuffer(DWORD dwFlags, PVOID pAuthBuffer, DWORD cbAuthBuffer, LPTSTR pszUserName, DWORD* pcchMaxUserName, LPTSTR pszDomainName, DWORD* pcchMaxDomainame, LPTSTR pszPassword, DWORD* pcchMaxPassword)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "pAuthBuffer", "cbAuthBuffer", "pszUserName", "pcchMaxUserName", "pszDomainName", "pcchMaxDomainame", "pszPassword", "pcchMaxPassword"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def credui_CredUnPackAuthenticationBufferA(jitter):
+    credui_CredUnPackAuthenticationBuffer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_CredUnPackAuthenticationBufferW(jitter):
+    credui_CredUnPackAuthenticationBuffer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def credui_SspiGetCredUIContext(jitter):
     """"
@@ -87,13 +129,19 @@ def credui_SspiIsPromptingNeeded(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def credui_SspiPromptForCredentials(jitter):
+def credui_SspiPromptForCredentials(jitter, get_str, set_str):
     """"
     [Credui.dll] SECURITY_STATUS SspiPromptForCredentials(PCTSTR pszTargetName, PCREDUI_INFOW pUiInfo, DWORD dwAuthError, PCTSTR pszPackage, PSEC_WINNT_AUTH_IDENTITY_OPAQUE pInputAuthIdentity, PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity, PBOOL pfSave, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszTargetName", "pUiInfo", "dwAuthError", "pszPackage", "pInputAuthIdentity", "ppAuthIdentity", "pfSave", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def credui_SspiPromptForCredentialsA(jitter):
+    credui_SspiPromptForCredentials(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def credui_SspiPromptForCredentialsW(jitter):
+    credui_SspiPromptForCredentials(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def credui_SspiUnmarshalCredUIContext(jitter):
     """"

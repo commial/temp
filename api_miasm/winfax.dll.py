@@ -7,7 +7,7 @@ def winfax_FaxOpenPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxGetConfiguration(jitter):
+def winfax_FaxGetConfiguration(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxGetConfiguration(HANDLE FaxHandle, PFAX_CONFIGURATION* FaxConfig)
     """"
@@ -15,7 +15,13 @@ def winfax_FaxGetConfiguration(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSetConfiguration(jitter):
+def winfax_FaxGetConfigurationA(jitter):
+    winfax_FaxGetConfiguration(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxGetConfigurationW(jitter):
+    winfax_FaxGetConfiguration(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSetConfiguration(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSetConfiguration(HANDLE FaxHandle, const FAX_CONFIGURATION* FaxConfig)
     """"
@@ -23,7 +29,13 @@ def winfax_FaxSetConfiguration(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSetGlobalRoutingInfo(jitter):
+def winfax_FaxSetConfigurationA(jitter):
+    winfax_FaxSetConfiguration(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSetConfigurationW(jitter):
+    winfax_FaxSetConfiguration(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSetGlobalRoutingInfo(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSetGlobalRoutingInfo(HANDLE FaxHandle, const FAX_GLOBAL_ROUTING_INFO* RoutingInfo)
     """"
@@ -31,7 +43,13 @@ def winfax_FaxSetGlobalRoutingInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSetLoggingCategories(jitter):
+def winfax_FaxSetGlobalRoutingInfoA(jitter):
+    winfax_FaxSetGlobalRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSetGlobalRoutingInfoW(jitter):
+    winfax_FaxSetGlobalRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSetLoggingCategories(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSetLoggingCategories(HANDLE FaxHandle, const FAX_LOG_CATEGORY* Categories, DWORD NumberCategories)
     """"
@@ -39,7 +57,13 @@ def winfax_FaxSetLoggingCategories(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxGetDeviceStatus(jitter):
+def winfax_FaxSetLoggingCategoriesA(jitter):
+    winfax_FaxSetLoggingCategories(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSetLoggingCategoriesW(jitter):
+    winfax_FaxSetLoggingCategories(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxGetDeviceStatus(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxGetDeviceStatus(HANDLE FaxPortHandle, PFAX_DEVICE_STATUS* DeviceStatus)
     """"
@@ -47,7 +71,13 @@ def winfax_FaxGetDeviceStatus(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxGetPort(jitter):
+def winfax_FaxGetDeviceStatusA(jitter):
+    winfax_FaxGetDeviceStatus(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxGetDeviceStatusW(jitter):
+    winfax_FaxGetDeviceStatus(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxGetPort(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxGetPort(HANDLE FaxPortHandle, PFAX_PORT_INFO* PortInfo)
     """"
@@ -55,7 +85,13 @@ def winfax_FaxGetPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSetPort(jitter):
+def winfax_FaxGetPortA(jitter):
+    winfax_FaxGetPort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxGetPortW(jitter):
+    winfax_FaxGetPort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSetPort(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSetPort(HANDLE FaxPortHandle, const FAX_PORT_INFO* PortInfo)
     """"
@@ -63,7 +99,13 @@ def winfax_FaxSetPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSendDocumentForBroadcast(jitter):
+def winfax_FaxSetPortA(jitter):
+    winfax_FaxSetPort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSetPortW(jitter):
+    winfax_FaxSetPort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSendDocumentForBroadcast(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSendDocumentForBroadcast(HANDLE FaxHandle, LPCTSTR FileName, LPDWORD FaxJobId, PFAX_RECIPIENT_CALLBACK FaxRecipientCallback, LPVOID Context)
     """"
@@ -71,7 +113,13 @@ def winfax_FaxSendDocumentForBroadcast(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxPrintCoverPage(jitter):
+def winfax_FaxSendDocumentForBroadcastA(jitter):
+    winfax_FaxSendDocumentForBroadcast(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSendDocumentForBroadcastW(jitter):
+    winfax_FaxSendDocumentForBroadcast(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxPrintCoverPage(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxPrintCoverPage(const FAX_CONTEXT_INFO* FaxContextInfo, const FAX_COVERPAGE_INFO* CoverPageInfo)
     """"
@@ -79,13 +127,25 @@ def winfax_FaxPrintCoverPage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxStartPrintJob(jitter):
+def winfax_FaxPrintCoverPageA(jitter):
+    winfax_FaxPrintCoverPage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxPrintCoverPageW(jitter):
+    winfax_FaxPrintCoverPage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxStartPrintJob(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxStartPrintJob(LPCTSTR PrinterName, const FAX_PRINT_INFO* PrintInfo, LPDWORD FaxJobId, PFAX_CONTEXT_INFO FaxContextInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["PrinterName", "PrintInfo", "FaxJobId", "FaxContextInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winfax_FaxStartPrintJobA(jitter):
+    winfax_FaxStartPrintJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxStartPrintJobW(jitter):
+    winfax_FaxStartPrintJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winfax_FaxAbort(jitter):
     """"
@@ -95,7 +155,7 @@ def winfax_FaxAbort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxEnumJobs(jitter):
+def winfax_FaxEnumJobs(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxEnumJobs(HANDLE FaxHandle, PFAX_JOB_ENTRY* JobEntry, LPDWORD JobsReturned)
     """"
@@ -103,7 +163,13 @@ def winfax_FaxEnumJobs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxGetJob(jitter):
+def winfax_FaxEnumJobsA(jitter):
+    winfax_FaxEnumJobs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxEnumJobsW(jitter):
+    winfax_FaxEnumJobs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxGetJob(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxGetJob(HANDLE FaxHandle, DWORD JobId, PFAX_JOB_ENTRY* JobEntry)
     """"
@@ -111,13 +177,25 @@ def winfax_FaxGetJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSetJob(jitter):
+def winfax_FaxGetJobA(jitter):
+    winfax_FaxGetJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxGetJobW(jitter):
+    winfax_FaxGetJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSetJob(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSetJob(HANDLE FaxHandle, DWORD JobId, DWORD Command, const FAX_JOB_ENTRY* JobEntry)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxHandle", "JobId", "Command", "JobEntry"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winfax_FaxSetJobA(jitter):
+    winfax_FaxSetJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSetJobW(jitter):
+    winfax_FaxSetJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winfax_FaxAccessCheck(jitter):
     """"
@@ -127,13 +205,19 @@ def winfax_FaxAccessCheck(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxCompleteJobParams(jitter):
+def winfax_FaxCompleteJobParams(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxCompleteJobParams(PFAX_JOB_PARAM* JobParams, PFAX_COVERPAGE_INFO* CoverpageInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["JobParams", "CoverpageInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winfax_FaxCompleteJobParamsA(jitter):
+    winfax_FaxCompleteJobParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxCompleteJobParamsW(jitter):
+    winfax_FaxCompleteJobParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winfax_FaxFreeBuffer(jitter):
     """"
@@ -167,7 +251,7 @@ def winfax_FaxClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxConnectFaxServer(jitter):
+def winfax_FaxConnectFaxServer(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxConnectFaxServer(LPCTSTR MachineName, LPHANDLE FaxHandle)
     """"
@@ -175,7 +259,13 @@ def winfax_FaxConnectFaxServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxEnableRoutingMethod(jitter):
+def winfax_FaxConnectFaxServerA(jitter):
+    winfax_FaxConnectFaxServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxConnectFaxServerW(jitter):
+    winfax_FaxConnectFaxServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxEnableRoutingMethod(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxEnableRoutingMethod(HANDLE FaxPortHandle, LPCTSTR RoutingGuid, BOOL Enabled)
     """"
@@ -183,7 +273,13 @@ def winfax_FaxEnableRoutingMethod(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxEnumGlobalRoutingInfo(jitter):
+def winfax_FaxEnableRoutingMethodA(jitter):
+    winfax_FaxEnableRoutingMethod(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxEnableRoutingMethodW(jitter):
+    winfax_FaxEnableRoutingMethod(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxEnumGlobalRoutingInfo(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxEnumGlobalRoutingInfo(HANDLE FaxHandle, PFAX_GLOBAL_ROUTING_INFO* RoutingInfo, LPDWORD MethodsReturned)
     """"
@@ -191,7 +287,13 @@ def winfax_FaxEnumGlobalRoutingInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxEnumPorts(jitter):
+def winfax_FaxEnumGlobalRoutingInfoA(jitter):
+    winfax_FaxEnumGlobalRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxEnumGlobalRoutingInfoW(jitter):
+    winfax_FaxEnumGlobalRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxEnumPorts(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxEnumPorts(HANDLE FaxHandle, PFAX_PORT_INFO* PortInfo, LPDWORD PortsReturned)
     """"
@@ -199,7 +301,13 @@ def winfax_FaxEnumPorts(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxEnumRoutingMethods(jitter):
+def winfax_FaxEnumPortsA(jitter):
+    winfax_FaxEnumPorts(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxEnumPortsW(jitter):
+    winfax_FaxEnumPorts(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxEnumRoutingMethods(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxEnumRoutingMethods(HANDLE FaxPortHandle, PFAX_ROUTING_METHOD* RoutingMethod, LPDWORD MethodsReturned)
     """"
@@ -207,13 +315,25 @@ def winfax_FaxEnumRoutingMethods(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxGetLoggingCategories(jitter):
+def winfax_FaxEnumRoutingMethodsA(jitter):
+    winfax_FaxEnumRoutingMethods(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxEnumRoutingMethodsW(jitter):
+    winfax_FaxEnumRoutingMethods(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxGetLoggingCategories(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxGetLoggingCategories(HANDLE FaxHandle, PFAX_LOG_CATEGORY* Categories, LPDWORD NumberCategories)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxHandle", "Categories", "NumberCategories"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winfax_FaxGetLoggingCategoriesA(jitter):
+    winfax_FaxGetLoggingCategories(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxGetLoggingCategoriesW(jitter):
+    winfax_FaxGetLoggingCategories(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winfax_FaxGetPageData(jitter):
     """"
@@ -223,13 +343,19 @@ def winfax_FaxGetPageData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxGetRoutingInfo(jitter):
+def winfax_FaxGetRoutingInfo(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxGetRoutingInfo(HANDLE FaxPortHandle, LPCTSTR RoutingGuid, LPBYTE* RoutingInfoBuffer, LPDWORD RoutingInfoBufferSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxPortHandle", "RoutingGuid", "RoutingInfoBuffer", "RoutingInfoBufferSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winfax_FaxGetRoutingInfoA(jitter):
+    winfax_FaxGetRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxGetRoutingInfoW(jitter):
+    winfax_FaxGetRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winfax_FaxInitializeEventQueue(jitter):
     """"
@@ -239,7 +365,7 @@ def winfax_FaxInitializeEventQueue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSendDocument(jitter):
+def winfax_FaxSendDocument(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSendDocument(HANDLE FaxHandle, LPCTSTR FileName, PFAX_JOB_PARAM JobParams, const FAX_COVERPAGE_INFO* CoverpageInfo, LPDWORD FaxJobId)
     """"
@@ -247,10 +373,22 @@ def winfax_FaxSendDocument(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winfax_FaxSetRoutingInfo(jitter):
+def winfax_FaxSendDocumentA(jitter):
+    winfax_FaxSendDocument(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSendDocumentW(jitter):
+    winfax_FaxSendDocument(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winfax_FaxSetRoutingInfo(jitter, get_str, set_str):
     """"
     [WinFax.dll] BOOL FaxSetRoutingInfo(HANDLE FaxPortHandle, LPCTSTR RoutingGuid, const BYTE* RoutingInfoBuffer, DWORD RoutingInfoBufferSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxPortHandle", "RoutingGuid", "RoutingInfoBuffer", "RoutingInfoBufferSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winfax_FaxSetRoutingInfoA(jitter):
+    winfax_FaxSetRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winfax_FaxSetRoutingInfoW(jitter):
+    winfax_FaxSetRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

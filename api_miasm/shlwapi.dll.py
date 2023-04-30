@@ -7,13 +7,19 @@ def shlwapi_SHAllocShared(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_ShellMessageBox(jitter):
+def shlwapi_ShellMessageBox(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] [MessageBoxResult] ShellMessageBox(HINSTANCE hInst, HWND hWnd, LPCTSTR pszMsg, LPCTSTR pszTitle, [MessageBoxType] fuStyle)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInst", "hWnd", "pszMsg", "pszTitle", "fuStyle"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_ShellMessageBoxA(jitter):
+    shlwapi_ShellMessageBox(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_ShellMessageBoxW(jitter):
+    shlwapi_ShellMessageBox(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHGetViewStatePropertyBag(jitter):
     """"
@@ -103,7 +109,7 @@ def shlwapi_SHGetInverseCMAP(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathAddBackslash(jitter):
+def shlwapi_PathAddBackslash(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LPTSTR PathAddBackslash(LPTSTR lpszPath)
     """"
@@ -111,7 +117,13 @@ def shlwapi_PathAddBackslash(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathAddExtension(jitter):
+def shlwapi_PathAddBackslashA(jitter):
+    shlwapi_PathAddBackslash(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathAddBackslashW(jitter):
+    shlwapi_PathAddBackslash(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathAddExtension(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathAddExtension(LPTSTR pszPath, LPCTSTR pszExtension)
     """"
@@ -119,7 +131,13 @@ def shlwapi_PathAddExtension(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathAppend(jitter):
+def shlwapi_PathAddExtensionA(jitter):
+    shlwapi_PathAddExtension(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathAddExtensionW(jitter):
+    shlwapi_PathAddExtension(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathAppend(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathAppend(LPTSTR pszPath, LPCTSTR pszMore)
     """"
@@ -127,7 +145,13 @@ def shlwapi_PathAppend(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathBuildRoot(jitter):
+def shlwapi_PathAppendA(jitter):
+    shlwapi_PathAppend(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathAppendW(jitter):
+    shlwapi_PathAppend(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathBuildRoot(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LPTSTR PathBuildRoot(LPTSTR szRoot, int iDrive)
     """"
@@ -135,7 +159,13 @@ def shlwapi_PathBuildRoot(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathCanonicalize(jitter):
+def shlwapi_PathBuildRootA(jitter):
+    shlwapi_PathBuildRoot(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathBuildRootW(jitter):
+    shlwapi_PathBuildRoot(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathCanonicalize(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathCanonicalize(LPTSTR lpszDst, LPCTSTR lpszSrc)
     """"
@@ -143,7 +173,13 @@ def shlwapi_PathCanonicalize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathCombine(jitter):
+def shlwapi_PathCanonicalizeA(jitter):
+    shlwapi_PathCanonicalize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathCanonicalizeW(jitter):
+    shlwapi_PathCanonicalize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathCombine(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LPTSTR PathCombine(LPTSTR lpszDest, LPCTSTR lpszDir, LPCTSTR lpszFile)
     """"
@@ -151,7 +187,13 @@ def shlwapi_PathCombine(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathCommonPrefix(jitter):
+def shlwapi_PathCombineA(jitter):
+    shlwapi_PathCombine(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathCombineW(jitter):
+    shlwapi_PathCombine(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathCommonPrefix(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int PathCommonPrefix(LPCTSTR pszFile1, LPCTSTR pszFile2, LPTSTR pszPath)
     """"
@@ -159,7 +201,13 @@ def shlwapi_PathCommonPrefix(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathCompactPath(jitter):
+def shlwapi_PathCommonPrefixA(jitter):
+    shlwapi_PathCommonPrefix(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathCommonPrefixW(jitter):
+    shlwapi_PathCommonPrefix(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathCompactPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathCompactPath(HDC hDC, LPTSTR lpszPath, UINT dx)
     """"
@@ -167,7 +215,13 @@ def shlwapi_PathCompactPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathCompactPathEx(jitter):
+def shlwapi_PathCompactPathA(jitter):
+    shlwapi_PathCompactPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathCompactPathW(jitter):
+    shlwapi_PathCompactPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathCompactPathEx(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathCompactPathEx(LPTSTR pszOut, LPCTSTR pszSrc, UINT cchMax, DWORD dwFlags)
     """"
@@ -175,13 +229,25 @@ def shlwapi_PathCompactPathEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathCreateFromUrl(jitter):
+def shlwapi_PathCompactPathExA(jitter):
+    shlwapi_PathCompactPathEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathCompactPathExW(jitter):
+    shlwapi_PathCompactPathEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathCreateFromUrl(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT PathCreateFromUrl(PCTSTR pszUrl, PTSTR pszPath, DWORD* pcchPath, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszUrl", "pszPath", "pcchPath", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_PathCreateFromUrlA(jitter):
+    shlwapi_PathCreateFromUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathCreateFromUrlW(jitter):
+    shlwapi_PathCreateFromUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_PathCreateFromUrlAlloc(jitter):
     """"
@@ -191,7 +257,7 @@ def shlwapi_PathCreateFromUrlAlloc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathFileExists(jitter):
+def shlwapi_PathFileExists(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathFileExists(LPCTSTR pszPath)
     """"
@@ -199,7 +265,13 @@ def shlwapi_PathFileExists(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathFindExtension(jitter):
+def shlwapi_PathFileExistsA(jitter):
+    shlwapi_PathFileExists(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathFileExistsW(jitter):
+    shlwapi_PathFileExists(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathFindExtension(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR PathFindExtension(PTSTR pszPath)
     """"
@@ -207,7 +279,13 @@ def shlwapi_PathFindExtension(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathFindFileName(jitter):
+def shlwapi_PathFindExtensionA(jitter):
+    shlwapi_PathFindExtension(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathFindExtensionW(jitter):
+    shlwapi_PathFindExtension(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathFindFileName(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR PathFindFileName(PTSTR pPath)
     """"
@@ -215,7 +293,13 @@ def shlwapi_PathFindFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathFindNextComponent(jitter):
+def shlwapi_PathFindFileNameA(jitter):
+    shlwapi_PathFindFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathFindFileNameW(jitter):
+    shlwapi_PathFindFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathFindNextComponent(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR PathFindNextComponent(PTSTR pszPath)
     """"
@@ -223,7 +307,13 @@ def shlwapi_PathFindNextComponent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathFindOnPath(jitter):
+def shlwapi_PathFindNextComponentA(jitter):
+    shlwapi_PathFindNextComponent(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathFindNextComponentW(jitter):
+    shlwapi_PathFindNextComponent(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathFindOnPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathFindOnPath(LPTSTR pszFile, LPCTSTR* ppszOtherDirs)
     """"
@@ -231,7 +321,13 @@ def shlwapi_PathFindOnPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathFindSuffixArray(jitter):
+def shlwapi_PathFindOnPathA(jitter):
+    shlwapi_PathFindOnPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathFindOnPathW(jitter):
+    shlwapi_PathFindOnPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathFindSuffixArray(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LPCTSTR PathFindSuffixArray(LPCTSTR pszPath, const LPCTSTR* apszSuffix, int iArraySize)
     """"
@@ -239,7 +335,13 @@ def shlwapi_PathFindSuffixArray(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathGetArgs(jitter):
+def shlwapi_PathFindSuffixArrayA(jitter):
+    shlwapi_PathFindSuffixArray(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathFindSuffixArrayW(jitter):
+    shlwapi_PathFindSuffixArray(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathGetArgs(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR PathGetArgs(PTSTR pszPath)
     """"
@@ -247,7 +349,13 @@ def shlwapi_PathGetArgs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathGetCharType(jitter):
+def shlwapi_PathGetArgsA(jitter):
+    shlwapi_PathGetArgs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathGetArgsW(jitter):
+    shlwapi_PathGetArgs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathGetCharType(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] UINT PathGetCharType(TCHAR ch)
     """"
@@ -255,7 +363,13 @@ def shlwapi_PathGetCharType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathGetDriveNumber(jitter):
+def shlwapi_PathGetCharTypeA(jitter):
+    shlwapi_PathGetCharType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathGetCharTypeW(jitter):
+    shlwapi_PathGetCharType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathGetDriveNumber(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int PathGetDriveNumber(LPCTSTR lpsz)
     """"
@@ -263,7 +377,13 @@ def shlwapi_PathGetDriveNumber(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsContentType(jitter):
+def shlwapi_PathGetDriveNumberA(jitter):
+    shlwapi_PathGetDriveNumber(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathGetDriveNumberW(jitter):
+    shlwapi_PathGetDriveNumber(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsContentType(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsContentType(LPCTSTR pszPath, LPCTSTR pszContentType)
     """"
@@ -271,7 +391,13 @@ def shlwapi_PathIsContentType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsDirectory(jitter):
+def shlwapi_PathIsContentTypeA(jitter):
+    shlwapi_PathIsContentType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsContentTypeW(jitter):
+    shlwapi_PathIsContentType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsDirectory(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsDirectory(LPCTSTR pszPath)
     """"
@@ -279,7 +405,13 @@ def shlwapi_PathIsDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsDirectoryEmpty(jitter):
+def shlwapi_PathIsDirectoryA(jitter):
+    shlwapi_PathIsDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsDirectoryW(jitter):
+    shlwapi_PathIsDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsDirectoryEmpty(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsDirectoryEmpty(LPCTSTR pszPath)
     """"
@@ -287,7 +419,13 @@ def shlwapi_PathIsDirectoryEmpty(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsFileSpec(jitter):
+def shlwapi_PathIsDirectoryEmptyA(jitter):
+    shlwapi_PathIsDirectoryEmpty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsDirectoryEmptyW(jitter):
+    shlwapi_PathIsDirectoryEmpty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsFileSpec(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsFileSpec(LPCTSTR lpszPath)
     """"
@@ -295,7 +433,13 @@ def shlwapi_PathIsFileSpec(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsHTMLFile(jitter):
+def shlwapi_PathIsFileSpecA(jitter):
+    shlwapi_PathIsFileSpec(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsFileSpecW(jitter):
+    shlwapi_PathIsFileSpec(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsHTMLFile(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsHTMLFile(LPCTSTR pszFile)
     """"
@@ -303,7 +447,13 @@ def shlwapi_PathIsHTMLFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsLFNFileSpec(jitter):
+def shlwapi_PathIsHTMLFileA(jitter):
+    shlwapi_PathIsHTMLFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsHTMLFileW(jitter):
+    shlwapi_PathIsHTMLFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsLFNFileSpec(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsLFNFileSpec(LPCTSTR pszName)
     """"
@@ -311,7 +461,13 @@ def shlwapi_PathIsLFNFileSpec(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsNetworkPath(jitter):
+def shlwapi_PathIsLFNFileSpecA(jitter):
+    shlwapi_PathIsLFNFileSpec(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsLFNFileSpecW(jitter):
+    shlwapi_PathIsLFNFileSpec(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsNetworkPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsNetworkPath(LPCTSTR pszPath)
     """"
@@ -319,7 +475,13 @@ def shlwapi_PathIsNetworkPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsPrefix(jitter):
+def shlwapi_PathIsNetworkPathA(jitter):
+    shlwapi_PathIsNetworkPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsNetworkPathW(jitter):
+    shlwapi_PathIsNetworkPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsPrefix(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsPrefix(LPCTSTR pszPrefix, LPCTSTR pszPath)
     """"
@@ -327,7 +489,13 @@ def shlwapi_PathIsPrefix(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsRelative(jitter):
+def shlwapi_PathIsPrefixA(jitter):
+    shlwapi_PathIsPrefix(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsPrefixW(jitter):
+    shlwapi_PathIsPrefix(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsRelative(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsRelative(LPCTSTR lpszPath)
     """"
@@ -335,7 +503,13 @@ def shlwapi_PathIsRelative(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsRoot(jitter):
+def shlwapi_PathIsRelativeA(jitter):
+    shlwapi_PathIsRelative(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsRelativeW(jitter):
+    shlwapi_PathIsRelative(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsRoot(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsRoot(LPCTSTR pPath)
     """"
@@ -343,7 +517,13 @@ def shlwapi_PathIsRoot(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsSameRoot(jitter):
+def shlwapi_PathIsRootA(jitter):
+    shlwapi_PathIsRoot(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsRootW(jitter):
+    shlwapi_PathIsRoot(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsSameRoot(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsSameRoot(LPCTSTR pszPath1, LPCTSTR pszPath2)
     """"
@@ -351,7 +531,13 @@ def shlwapi_PathIsSameRoot(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsSystemFolder(jitter):
+def shlwapi_PathIsSameRootA(jitter):
+    shlwapi_PathIsSameRoot(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsSameRootW(jitter):
+    shlwapi_PathIsSameRoot(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsSystemFolder(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsSystemFolder(LPCTSTR pszPath, DWORD dwAttrb)
     """"
@@ -359,7 +545,13 @@ def shlwapi_PathIsSystemFolder(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsUNC(jitter):
+def shlwapi_PathIsSystemFolderA(jitter):
+    shlwapi_PathIsSystemFolder(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsSystemFolderW(jitter):
+    shlwapi_PathIsSystemFolder(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsUNC(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsUNC(LPCTSTR pszPath)
     """"
@@ -367,7 +559,13 @@ def shlwapi_PathIsUNC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsUNCServer(jitter):
+def shlwapi_PathIsUNCA(jitter):
+    shlwapi_PathIsUNC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsUNCW(jitter):
+    shlwapi_PathIsUNC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsUNCServer(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsUNCServer(LPCTSTR pszPath)
     """"
@@ -375,7 +573,13 @@ def shlwapi_PathIsUNCServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsUNCServerShare(jitter):
+def shlwapi_PathIsUNCServerA(jitter):
+    shlwapi_PathIsUNCServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsUNCServerW(jitter):
+    shlwapi_PathIsUNCServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsUNCServerShare(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsUNCServerShare(LPCTSTR pszPath)
     """"
@@ -383,7 +587,13 @@ def shlwapi_PathIsUNCServerShare(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathIsURL(jitter):
+def shlwapi_PathIsUNCServerShareA(jitter):
+    shlwapi_PathIsUNCServerShare(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsUNCServerShareW(jitter):
+    shlwapi_PathIsUNCServerShare(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathIsURL(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathIsURL(LPCTSTR pszPath)
     """"
@@ -391,7 +601,13 @@ def shlwapi_PathIsURL(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathMakePretty(jitter):
+def shlwapi_PathIsURLA(jitter):
+    shlwapi_PathIsURL(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathIsURLW(jitter):
+    shlwapi_PathIsURL(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathMakePretty(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathMakePretty(LPTSTR lpPath)
     """"
@@ -399,7 +615,13 @@ def shlwapi_PathMakePretty(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathMakeSystemFolder(jitter):
+def shlwapi_PathMakePrettyA(jitter):
+    shlwapi_PathMakePretty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathMakePrettyW(jitter):
+    shlwapi_PathMakePretty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathMakeSystemFolder(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathMakeSystemFolder(LPTSTR pszPath)
     """"
@@ -407,7 +629,13 @@ def shlwapi_PathMakeSystemFolder(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathMatchSpec(jitter):
+def shlwapi_PathMakeSystemFolderA(jitter):
+    shlwapi_PathMakeSystemFolder(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathMakeSystemFolderW(jitter):
+    shlwapi_PathMakeSystemFolder(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathMatchSpec(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathMatchSpec(LPCSTR pszFile, LPCSTR pszSpec)
     """"
@@ -415,7 +643,13 @@ def shlwapi_PathMatchSpec(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathMatchSpecEx(jitter):
+def shlwapi_PathMatchSpecA(jitter):
+    shlwapi_PathMatchSpec(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathMatchSpecW(jitter):
+    shlwapi_PathMatchSpec(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathMatchSpecEx(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT PathMatchSpecEx(LPCTSTR pszFile, LPCTSTR pszSpec, DWORD dwFlags)
     """"
@@ -423,7 +657,13 @@ def shlwapi_PathMatchSpecEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathParseIconLocation(jitter):
+def shlwapi_PathMatchSpecExA(jitter):
+    shlwapi_PathMatchSpecEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathMatchSpecExW(jitter):
+    shlwapi_PathMatchSpecEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathParseIconLocation(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int PathParseIconLocation(LPTSTR pszIconFile)
     """"
@@ -431,7 +671,13 @@ def shlwapi_PathParseIconLocation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathQuoteSpaces(jitter):
+def shlwapi_PathParseIconLocationA(jitter):
+    shlwapi_PathParseIconLocation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathParseIconLocationW(jitter):
+    shlwapi_PathParseIconLocation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathQuoteSpaces(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathQuoteSpaces(LPTSTR lpsz)
     """"
@@ -439,7 +685,13 @@ def shlwapi_PathQuoteSpaces(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRelativePathTo(jitter):
+def shlwapi_PathQuoteSpacesA(jitter):
+    shlwapi_PathQuoteSpaces(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathQuoteSpacesW(jitter):
+    shlwapi_PathQuoteSpaces(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRelativePathTo(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathRelativePathTo(LPTSTR pszPath, LPCTSTR pszFrom, DWORD dwAttrFrom, LPCTSTR pszTo, DWORD dwAttrTo)
     """"
@@ -447,7 +699,13 @@ def shlwapi_PathRelativePathTo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRemoveArgs(jitter):
+def shlwapi_PathRelativePathToA(jitter):
+    shlwapi_PathRelativePathTo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRelativePathToW(jitter):
+    shlwapi_PathRelativePathTo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRemoveArgs(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathRemoveArgs(LPTSTR pszPath)
     """"
@@ -455,7 +713,13 @@ def shlwapi_PathRemoveArgs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRemoveBackslash(jitter):
+def shlwapi_PathRemoveArgsA(jitter):
+    shlwapi_PathRemoveArgs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRemoveArgsW(jitter):
+    shlwapi_PathRemoveArgs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRemoveBackslash(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LPTSTR PathRemoveBackslash(LPTSTR lpszPath)
     """"
@@ -463,7 +727,13 @@ def shlwapi_PathRemoveBackslash(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRemoveBlanks(jitter):
+def shlwapi_PathRemoveBackslashA(jitter):
+    shlwapi_PathRemoveBackslash(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRemoveBackslashW(jitter):
+    shlwapi_PathRemoveBackslash(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRemoveBlanks(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathRemoveBlanks(LPTSTR lpszString)
     """"
@@ -471,7 +741,13 @@ def shlwapi_PathRemoveBlanks(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRemoveExtension(jitter):
+def shlwapi_PathRemoveBlanksA(jitter):
+    shlwapi_PathRemoveBlanks(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRemoveBlanksW(jitter):
+    shlwapi_PathRemoveBlanks(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRemoveExtension(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathRemoveExtension(LPTSTR pszPath)
     """"
@@ -479,7 +755,13 @@ def shlwapi_PathRemoveExtension(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRemoveFileSpec(jitter):
+def shlwapi_PathRemoveExtensionA(jitter):
+    shlwapi_PathRemoveExtension(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRemoveExtensionW(jitter):
+    shlwapi_PathRemoveExtension(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRemoveFileSpec(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathRemoveFileSpec(LPTSTR pszPath)
     """"
@@ -487,7 +769,13 @@ def shlwapi_PathRemoveFileSpec(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathRenameExtension(jitter):
+def shlwapi_PathRemoveFileSpecA(jitter):
+    shlwapi_PathRemoveFileSpec(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRemoveFileSpecW(jitter):
+    shlwapi_PathRemoveFileSpec(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathRenameExtension(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathRenameExtension(LPTSTR pszPath, LPCTSTR pszExt)
     """"
@@ -495,7 +783,13 @@ def shlwapi_PathRenameExtension(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathSearchAndQualify(jitter):
+def shlwapi_PathRenameExtensionA(jitter):
+    shlwapi_PathRenameExtension(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathRenameExtensionW(jitter):
+    shlwapi_PathRenameExtension(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathSearchAndQualify(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathSearchAndQualify(LPCTSTR pcszPath, LPTSTR pszFullyQualifiedPath, UINT cchFullyQualifiedPath)
     """"
@@ -503,7 +797,13 @@ def shlwapi_PathSearchAndQualify(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathSetDlgItemPath(jitter):
+def shlwapi_PathSearchAndQualifyA(jitter):
+    shlwapi_PathSearchAndQualify(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathSearchAndQualifyW(jitter):
+    shlwapi_PathSearchAndQualify(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathSetDlgItemPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathSetDlgItemPath(HWND hDlg, int id, LPCSTR pszPath)
     """"
@@ -511,7 +811,13 @@ def shlwapi_PathSetDlgItemPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathSkipRoot(jitter):
+def shlwapi_PathSetDlgItemPathA(jitter):
+    shlwapi_PathSetDlgItemPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathSetDlgItemPathW(jitter):
+    shlwapi_PathSetDlgItemPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathSkipRoot(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR PathSkipRoot(PTSTR pszPath)
     """"
@@ -519,7 +825,13 @@ def shlwapi_PathSkipRoot(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathStripPath(jitter):
+def shlwapi_PathSkipRootA(jitter):
+    shlwapi_PathSkipRoot(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathSkipRootW(jitter):
+    shlwapi_PathSkipRoot(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathStripPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathStripPath(LPTSTR pszPath)
     """"
@@ -527,7 +839,13 @@ def shlwapi_PathStripPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathStripToRoot(jitter):
+def shlwapi_PathStripPathA(jitter):
+    shlwapi_PathStripPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathStripPathW(jitter):
+    shlwapi_PathStripPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathStripToRoot(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathStripToRoot(LPTSTR szRoot)
     """"
@@ -535,7 +853,13 @@ def shlwapi_PathStripToRoot(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathUndecorate(jitter):
+def shlwapi_PathStripToRootA(jitter):
+    shlwapi_PathStripToRoot(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathStripToRootW(jitter):
+    shlwapi_PathStripToRoot(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathUndecorate(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathUndecorate(LPTSTR pszPath)
     """"
@@ -543,7 +867,13 @@ def shlwapi_PathUndecorate(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathUnExpandEnvStrings(jitter):
+def shlwapi_PathUndecorateA(jitter):
+    shlwapi_PathUndecorate(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathUndecorateW(jitter):
+    shlwapi_PathUndecorate(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathUnExpandEnvStrings(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathUnExpandEnvStrings(LPCTSTR pszPath, LPTSTR pszBuf, UINT cchBuf)
     """"
@@ -551,7 +881,13 @@ def shlwapi_PathUnExpandEnvStrings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathUnmakeSystemFolder(jitter):
+def shlwapi_PathUnExpandEnvStringsA(jitter):
+    shlwapi_PathUnExpandEnvStrings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathUnExpandEnvStringsW(jitter):
+    shlwapi_PathUnExpandEnvStrings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathUnmakeSystemFolder(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL PathUnmakeSystemFolder(LPTSTR pszPath)
     """"
@@ -559,13 +895,25 @@ def shlwapi_PathUnmakeSystemFolder(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_PathUnquoteSpaces(jitter):
+def shlwapi_PathUnmakeSystemFolderA(jitter):
+    shlwapi_PathUnmakeSystemFolder(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathUnmakeSystemFolderW(jitter):
+    shlwapi_PathUnmakeSystemFolder(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_PathUnquoteSpaces(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] void PathUnquoteSpaces(LPTSTR lpsz)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpsz"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_PathUnquoteSpacesA(jitter):
+    shlwapi_PathUnquoteSpaces(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_PathUnquoteSpacesW(jitter):
+    shlwapi_PathUnquoteSpaces(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHSkipJunction(jitter):
     """"
@@ -575,7 +923,7 @@ def shlwapi_SHSkipJunction(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlApplyScheme(jitter):
+def shlwapi_UrlApplyScheme(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlApplyScheme(PCTSTR pszIn, PTSTR pszOut, DWORD* pcchOut, [URL_APPLY_FLAGS] dwFlags)
     """"
@@ -583,7 +931,13 @@ def shlwapi_UrlApplyScheme(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlCanonicalize(jitter):
+def shlwapi_UrlApplySchemeA(jitter):
+    shlwapi_UrlApplyScheme(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlApplySchemeW(jitter):
+    shlwapi_UrlApplyScheme(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlCanonicalize(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlCanonicalize(PCTSTR pszUrl, PTSTR pszCanonicalized, DWORD* pcchCanonicalized, DWORD dwFlags)
     """"
@@ -591,7 +945,13 @@ def shlwapi_UrlCanonicalize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlCombine(jitter):
+def shlwapi_UrlCanonicalizeA(jitter):
+    shlwapi_UrlCanonicalize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlCanonicalizeW(jitter):
+    shlwapi_UrlCanonicalize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlCombine(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlCombine(PCTSTR pszBase, PCTSTR pszRelative, PTSTR pszCombined, DWORD* pcchCombined, DWORD dwFlags)
     """"
@@ -599,7 +959,13 @@ def shlwapi_UrlCombine(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlCompare(jitter):
+def shlwapi_UrlCombineA(jitter):
+    shlwapi_UrlCombine(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlCombineW(jitter):
+    shlwapi_UrlCombine(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlCompare(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int UrlCompare(PCTSTR psz1, PCTSTR psz2, BOOL fIgnoreSlash)
     """"
@@ -607,7 +973,13 @@ def shlwapi_UrlCompare(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlCreateFromPath(jitter):
+def shlwapi_UrlCompareA(jitter):
+    shlwapi_UrlCompare(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlCompareW(jitter):
+    shlwapi_UrlCompare(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlCreateFromPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlCreateFromPath(PCTSTR pszPath, PTSTR pszUrl, DWORD* pcchUrl, DWORD dwFlags)
     """"
@@ -615,13 +987,25 @@ def shlwapi_UrlCreateFromPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlEscape(jitter):
+def shlwapi_UrlCreateFromPathA(jitter):
+    shlwapi_UrlCreateFromPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlCreateFromPathW(jitter):
+    shlwapi_UrlCreateFromPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlEscape(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlEscape(PCTSTR pszURL, PTSTR pszEscaped, DWORD* pcchEscaped, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszURL", "pszEscaped", "pcchEscaped", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_UrlEscapeA(jitter):
+    shlwapi_UrlEscape(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlEscapeW(jitter):
+    shlwapi_UrlEscape(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_UrlEscapeSpaces(jitter):
     """"
@@ -639,7 +1023,7 @@ def shlwapi_UrlFixupW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlGetLocation(jitter):
+def shlwapi_UrlGetLocation(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LPCTSTR UrlGetLocation(PCTSTR pszURL)
     """"
@@ -647,7 +1031,13 @@ def shlwapi_UrlGetLocation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlGetPart(jitter):
+def shlwapi_UrlGetLocationA(jitter):
+    shlwapi_UrlGetLocation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlGetLocationW(jitter):
+    shlwapi_UrlGetLocation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlGetPart(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlGetPart(PCTSTR pszIn, PTSTR pszOut, DWORD* pcchOut, DWORD dwPart, DWORD dwFlags)
     """"
@@ -655,7 +1045,13 @@ def shlwapi_UrlGetPart(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlHash(jitter):
+def shlwapi_UrlGetPartA(jitter):
+    shlwapi_UrlGetPart(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlGetPartW(jitter):
+    shlwapi_UrlGetPart(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlHash(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlHash(PCTSTR pszURL, BYTE* pbHash, DWORD cbHash)
     """"
@@ -663,7 +1059,13 @@ def shlwapi_UrlHash(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlIs(jitter):
+def shlwapi_UrlHashA(jitter):
+    shlwapi_UrlHash(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlHashW(jitter):
+    shlwapi_UrlHash(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlIs(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL UrlIs(PCTSTR pszUrl, URLIS UrlIs)
     """"
@@ -671,7 +1073,13 @@ def shlwapi_UrlIs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlIsFileUrl(jitter):
+def shlwapi_UrlIsA(jitter):
+    shlwapi_UrlIs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlIsW(jitter):
+    shlwapi_UrlIs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlIsFileUrl(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL UrlIsFileUrl(LPCTSTR pszUrl)
     """"
@@ -679,7 +1087,13 @@ def shlwapi_UrlIsFileUrl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlIsNoHistory(jitter):
+def shlwapi_UrlIsFileUrlA(jitter):
+    shlwapi_UrlIsFileUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlIsFileUrlW(jitter):
+    shlwapi_UrlIsFileUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlIsNoHistory(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL UrlIsNoHistory(PCTSTR pszURL)
     """"
@@ -687,7 +1101,13 @@ def shlwapi_UrlIsNoHistory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlIsOpaque(jitter):
+def shlwapi_UrlIsNoHistoryA(jitter):
+    shlwapi_UrlIsNoHistory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlIsNoHistoryW(jitter):
+    shlwapi_UrlIsNoHistory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlIsOpaque(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL UrlIsOpaque(PCTSTR pszURL)
     """"
@@ -695,13 +1115,25 @@ def shlwapi_UrlIsOpaque(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_UrlUnescape(jitter):
+def shlwapi_UrlIsOpaqueA(jitter):
+    shlwapi_UrlIsOpaque(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlIsOpaqueW(jitter):
+    shlwapi_UrlIsOpaque(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_UrlUnescape(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT UrlUnescape(PTSTR pszURL, PTSTR pszUnescaped, DWORD* pcchUnescaped, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszURL", "pszUnescaped", "pcchUnescaped", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_UrlUnescapeA(jitter):
+    shlwapi_UrlUnescape(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_UrlUnescapeW(jitter):
+    shlwapi_UrlUnescape(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_UrlUnescapeInPlace(jitter):
     """"
@@ -735,7 +1167,7 @@ def shlwapi_AssocIsDangerous(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_AssocQueryKey(jitter):
+def shlwapi_AssocQueryKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT AssocQueryKey(ASSOCF flags, ASSOCKEY key, LPCTSTR pszAssoc, LPCTSTR pszExtra, HKEY* phkeyOut)
     """"
@@ -743,7 +1175,13 @@ def shlwapi_AssocQueryKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_AssocQueryString(jitter):
+def shlwapi_AssocQueryKeyA(jitter):
+    shlwapi_AssocQueryKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_AssocQueryKeyW(jitter):
+    shlwapi_AssocQueryKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_AssocQueryString(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT AssocQueryString(ASSOCF flags, ASSOCSTR str, LPCTSTR pszAssoc, LPCTSTR pszExtra, LPTSTR pszOut, DWORD* pcchOut)
     """"
@@ -751,7 +1189,13 @@ def shlwapi_AssocQueryString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_AssocQueryStringByKey(jitter):
+def shlwapi_AssocQueryStringA(jitter):
+    shlwapi_AssocQueryString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_AssocQueryStringW(jitter):
+    shlwapi_AssocQueryString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_AssocQueryStringByKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT AssocQueryStringByKey(ASSOCF flags, ASSOCSTR str, HKEY hkAssoc, LPCTSTR pszExtra, LPTSTR pszOut, DWORD* pcchOut)
     """"
@@ -759,7 +1203,13 @@ def shlwapi_AssocQueryStringByKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHCopyKey(jitter):
+def shlwapi_AssocQueryStringByKeyA(jitter):
+    shlwapi_AssocQueryStringByKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_AssocQueryStringByKeyW(jitter):
+    shlwapi_AssocQueryStringByKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHCopyKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHCopyKey(HKEY hkeySrc, LPCTSTR pszSrcSubKey, HKEY hkeyDest, DWORD fReserved)
     """"
@@ -767,7 +1217,13 @@ def shlwapi_SHCopyKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHDeleteEmptyKey(jitter):
+def shlwapi_SHCopyKeyA(jitter):
+    shlwapi_SHCopyKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHCopyKeyW(jitter):
+    shlwapi_SHCopyKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHDeleteEmptyKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHDeleteEmptyKey(HKEY hkey, LPCTSTR pszSubKey)
     """"
@@ -775,7 +1231,13 @@ def shlwapi_SHDeleteEmptyKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHDeleteKey(jitter):
+def shlwapi_SHDeleteEmptyKeyA(jitter):
+    shlwapi_SHDeleteEmptyKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHDeleteEmptyKeyW(jitter):
+    shlwapi_SHDeleteEmptyKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHDeleteKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHDeleteKey(HKEY hkey, LPCTSTR pszSubKey)
     """"
@@ -783,7 +1245,13 @@ def shlwapi_SHDeleteKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHDeleteValue(jitter):
+def shlwapi_SHDeleteKeyA(jitter):
+    shlwapi_SHDeleteKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHDeleteKeyW(jitter):
+    shlwapi_SHDeleteKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHDeleteValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHDeleteValue(HKEY hkey, LPCTSTR pszSubKey, LPCTSTR pszValue)
     """"
@@ -791,7 +1259,13 @@ def shlwapi_SHDeleteValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHEnumKeyEx(jitter):
+def shlwapi_SHDeleteValueA(jitter):
+    shlwapi_SHDeleteValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHDeleteValueW(jitter):
+    shlwapi_SHDeleteValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHEnumKeyEx(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHEnumKeyEx(HKEY hkey, DWORD dwIndex, LPTSTR pszName, LPDWORD pcchName)
     """"
@@ -799,7 +1273,13 @@ def shlwapi_SHEnumKeyEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHEnumValue(jitter):
+def shlwapi_SHEnumKeyExA(jitter):
+    shlwapi_SHEnumKeyEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHEnumKeyExW(jitter):
+    shlwapi_SHEnumKeyEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHEnumValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHEnumValue(HKEY hkey, DWORD dwIndex, LPTSTR pszValueName, LPDWORD pcchValueName, [RegType*] pdwType, LPVOID pvData, LPDWORD pcbData)
     """"
@@ -807,7 +1287,13 @@ def shlwapi_SHEnumValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHGetValue(jitter):
+def shlwapi_SHEnumValueA(jitter):
+    shlwapi_SHEnumValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHEnumValueW(jitter):
+    shlwapi_SHEnumValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHGetValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHGetValue(HKEY hkey, LPCTSTR pszSubKey, LPCTSTR pszValue, [RegType*] pdwType, LPVOID pvData, LPDWORD pcbData)
     """"
@@ -815,7 +1301,13 @@ def shlwapi_SHGetValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHOpenRegStream(jitter):
+def shlwapi_SHGetValueA(jitter):
+    shlwapi_SHGetValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHGetValueW(jitter):
+    shlwapi_SHGetValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHOpenRegStream(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] IStream* SHOpenRegStream(HKEY hkey, LPCTSTR pszSubkey, LPCTSTR pszValue, [STGM_FLAGS] grfMode)
     """"
@@ -823,7 +1315,13 @@ def shlwapi_SHOpenRegStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHOpenRegStream2(jitter):
+def shlwapi_SHOpenRegStreamA(jitter):
+    shlwapi_SHOpenRegStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHOpenRegStreamW(jitter):
+    shlwapi_SHOpenRegStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHOpenRegStream2(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] IStream* SHOpenRegStream2(HKEY hkey, LPCTSTR pszSubkey, LPCTSTR pszValue, [STGM_FLAGS] grfMode)
     """"
@@ -831,7 +1329,13 @@ def shlwapi_SHOpenRegStream2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHQueryInfoKey(jitter):
+def shlwapi_SHOpenRegStream2A(jitter):
+    shlwapi_SHOpenRegStream2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHOpenRegStream2W(jitter):
+    shlwapi_SHOpenRegStream2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHQueryInfoKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHQueryInfoKey(HKEY hkey, LPDWORD pcSubKeys, LPDWORD pcchMaxSubKeyLen, LPDWORD pcValues, LPDWORD pcchMaxValueNameLen)
     """"
@@ -839,13 +1343,25 @@ def shlwapi_SHQueryInfoKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHQueryValueEx(jitter):
+def shlwapi_SHQueryInfoKeyA(jitter):
+    shlwapi_SHQueryInfoKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHQueryInfoKeyW(jitter):
+    shlwapi_SHQueryInfoKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHQueryValueEx(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] [ERROR_CODE] SHQueryValueEx(HKEY hkey, LPCTSTR pszValue, LPDWORD pdwReserved, [RegType*] pdwType, LPVOID pvData, LPDWORD pcbData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hkey", "pszValue", "pdwReserved", "pdwType", "pvData", "pcbData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHQueryValueExA(jitter):
+    shlwapi_SHQueryValueEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHQueryValueExW(jitter):
+    shlwapi_SHQueryValueEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHRegCloseUSKey(jitter):
     """"
@@ -855,7 +1371,7 @@ def shlwapi_SHRegCloseUSKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegCreateUSKey(jitter):
+def shlwapi_SHRegCreateUSKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegCreateUSKey(LPCTSTR pszPath, REGSAM samDesired, HUSKEY hRelativeUSKey, PHUSKEY phNewUSKey, [ShRegSetFlags] dwFlags)
     """"
@@ -863,7 +1379,13 @@ def shlwapi_SHRegCreateUSKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegDeleteEmptyUSKey(jitter):
+def shlwapi_SHRegCreateUSKeyA(jitter):
+    shlwapi_SHRegCreateUSKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegCreateUSKeyW(jitter):
+    shlwapi_SHRegCreateUSKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegDeleteEmptyUSKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegDeleteEmptyUSKey(HUSKEY hUSKey, LPCSTR pszValue, SHREGDEL_FLAGS delRegFlags)
     """"
@@ -871,13 +1393,25 @@ def shlwapi_SHRegDeleteEmptyUSKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegDeleteUSValue(jitter):
+def shlwapi_SHRegDeleteEmptyUSKeyA(jitter):
+    shlwapi_SHRegDeleteEmptyUSKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegDeleteEmptyUSKeyW(jitter):
+    shlwapi_SHRegDeleteEmptyUSKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegDeleteUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegDeleteUSValue(HUSKEY hUSKey, LPCTSTR pszValue, SHREGDEL_FLAGS delRegFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hUSKey", "pszValue", "delRegFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHRegDeleteUSValueA(jitter):
+    shlwapi_SHRegDeleteUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegDeleteUSValueW(jitter):
+    shlwapi_SHRegDeleteUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHRegDuplicateHKey(jitter):
     """"
@@ -887,7 +1421,7 @@ def shlwapi_SHRegDuplicateHKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegEnumUSKey(jitter):
+def shlwapi_SHRegEnumUSKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegEnumUSKey(HUSKEY hUSKey, DWORD dwIndex, LPTSTR pszName, LPDWORD pcchName, SHREGENUM_FLAGS enumRegFlags)
     """"
@@ -895,7 +1429,13 @@ def shlwapi_SHRegEnumUSKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegEnumUSValue(jitter):
+def shlwapi_SHRegEnumUSKeyA(jitter):
+    shlwapi_SHRegEnumUSKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegEnumUSKeyW(jitter):
+    shlwapi_SHRegEnumUSKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegEnumUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegEnumUSValue(HUSKEY hUSKey, DWORD dwIndex, LPTSTR pszValueName, LPDWORD pcchValueNameLen, [RegType*] pdwType, void* pvData, LPDWORD pcbData, SHREGENUM_FLAGS enumRegFlags)
     """"
@@ -903,13 +1443,25 @@ def shlwapi_SHRegEnumUSValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegGetBoolUSValue(jitter):
+def shlwapi_SHRegEnumUSValueA(jitter):
+    shlwapi_SHRegEnumUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegEnumUSValueW(jitter):
+    shlwapi_SHRegEnumUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegGetBoolUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL SHRegGetBoolUSValue(LPCTSTR pszSubKey, LPCTSTR pszValue, BOOL fIgnoreHKCU, BOOL fDefault)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszSubKey", "pszValue", "fIgnoreHKCU", "fDefault"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHRegGetBoolUSValueA(jitter):
+    shlwapi_SHRegGetBoolUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegGetBoolUSValueW(jitter):
+    shlwapi_SHRegGetBoolUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHRegGetIntW(jitter):
     """"
@@ -919,7 +1471,7 @@ def shlwapi_SHRegGetIntW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegGetPath(jitter):
+def shlwapi_SHRegGetPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegGetPath(HKEY hkey, LPCTSTR pszSubkey, LPCTSTR pszValue, LPTSTR pszPath, DWORD dwFlags)
     """"
@@ -927,7 +1479,13 @@ def shlwapi_SHRegGetPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegGetUSValue(jitter):
+def shlwapi_SHRegGetPathA(jitter):
+    shlwapi_SHRegGetPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegGetPathW(jitter):
+    shlwapi_SHRegGetPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegGetUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegGetUSValue(LPCTSTR pszSubKey, LPCTSTR pszValue, DWORD* pdwType, void* pvData, DWORD* pcbData, BOOL fIgnoreHKCU, void* pvDefaultData, DWORD dwDefaultDataSize)
     """"
@@ -935,7 +1493,13 @@ def shlwapi_SHRegGetUSValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegGetValue(jitter):
+def shlwapi_SHRegGetUSValueA(jitter):
+    shlwapi_SHRegGetUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegGetUSValueW(jitter):
+    shlwapi_SHRegGetUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegGetValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegGetValue(HKEY hkey, LPCTSTR pszSubKey, LPCTSTR pszValue, SRRF srrfFlags, LPDWORD pdwType, LPVOID pvData, LPDWORD pcbData)
     """"
@@ -943,7 +1507,13 @@ def shlwapi_SHRegGetValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegOpenUSKey(jitter):
+def shlwapi_SHRegGetValueA(jitter):
+    shlwapi_SHRegGetValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegGetValueW(jitter):
+    shlwapi_SHRegGetValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegOpenUSKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegOpenUSKey(LPCTSTR pszPath, REGSAM samDesired, HUSKEY hRelativeUSKey, PHUSKEY phNewUSKey, BOOL fIgnoreHKCU)
     """"
@@ -951,7 +1521,13 @@ def shlwapi_SHRegOpenUSKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegQueryInfoUSKey(jitter):
+def shlwapi_SHRegOpenUSKeyA(jitter):
+    shlwapi_SHRegOpenUSKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegOpenUSKeyW(jitter):
+    shlwapi_SHRegOpenUSKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegQueryInfoUSKey(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegQueryInfoUSKey(HUSKEY hUSKey, LPDWORD pcSubKeys, LPDWORD pcchMaxSubKeyLen, LPDWORD pcValues, LPDWORD pcchMaxValueNameLen, SHREGENUM_FLAGS enumRegFlags)
     """"
@@ -959,7 +1535,13 @@ def shlwapi_SHRegQueryInfoUSKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegQueryUSValue(jitter):
+def shlwapi_SHRegQueryInfoUSKeyA(jitter):
+    shlwapi_SHRegQueryInfoUSKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegQueryInfoUSKeyW(jitter):
+    shlwapi_SHRegQueryInfoUSKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegQueryUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegQueryUSValue(HUSKEY hUSKey, LPCTSTR pszValue, [RegType*] pdwType, LPVOID pvData, LPDWORD pcbData, BOOL fIgnoreHKCU, LPVOID pvDefaultData, DWORD dwDefaultDataSize)
     """"
@@ -967,7 +1549,13 @@ def shlwapi_SHRegQueryUSValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegSetPath(jitter):
+def shlwapi_SHRegQueryUSValueA(jitter):
+    shlwapi_SHRegQueryUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegQueryUSValueW(jitter):
+    shlwapi_SHRegQueryUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegSetPath(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegSetPath(HKEY hkey, LPCTSTR pszSubkey, LPCTSTR pszValue, LPCTSTR pszPath, DWORD dwFlags)
     """"
@@ -975,7 +1563,13 @@ def shlwapi_SHRegSetPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegSetUSValue(jitter):
+def shlwapi_SHRegSetPathA(jitter):
+    shlwapi_SHRegSetPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegSetPathW(jitter):
+    shlwapi_SHRegSetPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegSetUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegSetUSValue(LPCTSTR pszSubKey, LPCTSTR pszValue, DWORD dwType, LPVOID pvData, DWORD cbData, DWORD dwFlags)
     """"
@@ -983,7 +1577,13 @@ def shlwapi_SHRegSetUSValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegSetValue(jitter):
+def shlwapi_SHRegSetUSValueA(jitter):
+    shlwapi_SHRegSetUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegSetUSValueW(jitter):
+    shlwapi_SHRegSetUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegSetValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegSetValue(HKEY hkey, LPCTSTR pszSubKey, LPCTSTR pszValue, SRRF srrfFlags, DWORD dwType, LPCVOID pvData, DWORD cbData)
     """"
@@ -991,7 +1591,13 @@ def shlwapi_SHRegSetValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHRegWriteUSValue(jitter):
+def shlwapi_SHRegSetValueA(jitter):
+    shlwapi_SHRegSetValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegSetValueW(jitter):
+    shlwapi_SHRegSetValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHRegWriteUSValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHRegWriteUSValue(HUSKEY hUSKey, LPCTSTR pszValue, DWORD dwType, LPVOID pvData, DWORD cbData, DWORD dwFlags)
     """"
@@ -999,13 +1605,25 @@ def shlwapi_SHRegWriteUSValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHSetValue(jitter):
+def shlwapi_SHRegWriteUSValueA(jitter):
+    shlwapi_SHRegWriteUSValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHRegWriteUSValueW(jitter):
+    shlwapi_SHRegWriteUSValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHSetValue(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LSTATUS SHSetValue(HKEY hkey, LPCTSTR pszSubKey, LPCTSTR pszValue, [RegType] dwType, LPCVOID pvData, DWORD cbData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hkey", "pszSubKey", "pszValue", "dwType", "pvData", "cbData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHSetValueA(jitter):
+    shlwapi_SHSetValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHSetValueW(jitter):
+    shlwapi_SHSetValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_CharLowerWrapW(jitter):
     """"
@@ -1023,13 +1641,19 @@ def shlwapi_CharUpperBuffWrapW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_ChrCmpI(jitter):
+def shlwapi_ChrCmpI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL ChrCmpI(TCHAR w1, TCHAR w2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["w1", "w2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_ChrCmpIA(jitter):
+    shlwapi_ChrCmpI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_ChrCmpIW(jitter):
+    shlwapi_ChrCmpI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_CompareStringWrapW(jitter):
     """"
@@ -1039,13 +1663,19 @@ def shlwapi_CompareStringWrapW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_GetAcceptLanguages(jitter):
+def shlwapi_GetAcceptLanguages(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT GetAcceptLanguages(LPTSTR pszLanguages, DWORD* pcchLanguages)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszLanguages", "pcchLanguages"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_GetAcceptLanguagesA(jitter):
+    shlwapi_GetAcceptLanguages(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_GetAcceptLanguagesW(jitter):
+    shlwapi_GetAcceptLanguages(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_GetDateFormatWrapW(jitter):
     """"
@@ -1063,7 +1693,7 @@ def shlwapi_GetTimeFormatWrapW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_IntlStrEqN(jitter):
+def shlwapi_IntlStrEqN(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL IntlStrEqN(LPCTSTR pszStr1, LPCTSTR pszStr2, int nChar)
     """"
@@ -1071,7 +1701,13 @@ def shlwapi_IntlStrEqN(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_IntlStrEqNI(jitter):
+def shlwapi_IntlStrEqNA(jitter):
+    shlwapi_IntlStrEqN(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_IntlStrEqNW(jitter):
+    shlwapi_IntlStrEqN(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_IntlStrEqNI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL IntlStrEqNI(LPCTSTR pszStr1, LPCTSTR pszStr2, int nChar)
     """"
@@ -1079,13 +1715,25 @@ def shlwapi_IntlStrEqNI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_IntlStrEqWorker(jitter):
+def shlwapi_IntlStrEqNIA(jitter):
+    shlwapi_IntlStrEqNI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_IntlStrEqNIW(jitter):
+    shlwapi_IntlStrEqNI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_IntlStrEqWorker(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL IntlStrEqWorker(BOOL fCaseSens, LPCTSTR pszStr1, LPCTSTR pszStr2, int nChar)
     """"
     ret_ad, args = jitter.func_args_stdcall(["fCaseSens", "pszStr1", "pszStr2", "nChar"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_IntlStrEqWorkerA(jitter):
+    shlwapi_IntlStrEqWorker(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_IntlStrEqWorkerW(jitter):
+    shlwapi_IntlStrEqWorker(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_IsCharAlphaNumericWrapW(jitter):
     """"
@@ -1095,13 +1743,19 @@ def shlwapi_IsCharAlphaNumericWrapW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_IsCharSpace(jitter):
+def shlwapi_IsCharSpace(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL IsCharSpace(TCHAR wch)
     """"
     ret_ad, args = jitter.func_args_stdcall(["wch"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_IsCharSpaceA(jitter):
+    shlwapi_IsCharSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_IsCharSpaceW(jitter):
+    shlwapi_IsCharSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_OutputDebugStringWrapW(jitter):
     """"
@@ -1119,7 +1773,7 @@ def shlwapi_SHLoadIndirectString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHStrDup(jitter):
+def shlwapi_SHStrDup(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT SHStrDup(LPCTSTR pszSource, LPTSTR* ppwsz)
     """"
@@ -1127,7 +1781,13 @@ def shlwapi_SHStrDup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCat(jitter):
+def shlwapi_SHStrDupA(jitter):
+    shlwapi_SHStrDup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHStrDupW(jitter):
+    shlwapi_SHStrDup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCat(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrCat(PTSTR psz1, PCTSTR psz2)
     """"
@@ -1135,13 +1795,25 @@ def shlwapi_StrCat(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCatBuff(jitter):
+def shlwapi_StrCatA(jitter):
+    shlwapi_StrCat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCatW(jitter):
+    shlwapi_StrCat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCatBuff(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrCatBuff(PTSTR pszDest, PCTSTR pszSrc, int cchDestBuffSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszDest", "pszSrc", "cchDestBuffSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_StrCatBuffA(jitter):
+    shlwapi_StrCatBuff(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCatBuffW(jitter):
+    shlwapi_StrCatBuff(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_StrCatChainW(jitter):
     """"
@@ -1151,7 +1823,7 @@ def shlwapi_StrCatChainW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrChr(jitter):
+def shlwapi_StrChr(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrChr(PTSTR pszStart, TCHAR wMatch)
     """"
@@ -1159,13 +1831,25 @@ def shlwapi_StrChr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrChrI(jitter):
+def shlwapi_StrChrA(jitter):
+    shlwapi_StrChr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrChrW(jitter):
+    shlwapi_StrChr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrChrI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrChrI(PTSTR pszStart, TCHAR wMatch)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszStart", "wMatch"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_StrChrIA(jitter):
+    shlwapi_StrChrI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrChrIW(jitter):
+    shlwapi_StrChrI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_StrChrNIW(jitter):
     """"
@@ -1183,7 +1867,7 @@ def shlwapi_StrChrNW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmp(jitter):
+def shlwapi_StrCmp(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmp(PCTSTR psz1, PCTSTR psz2)
     """"
@@ -1191,7 +1875,13 @@ def shlwapi_StrCmp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpC(jitter):
+def shlwapi_StrCmpA(jitter):
+    shlwapi_StrCmp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpW(jitter):
+    shlwapi_StrCmp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCmpC(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpC(LPCTSTR lpStr1, LPCTSTR lpStr2)
     """"
@@ -1199,7 +1889,13 @@ def shlwapi_StrCmpC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpI(jitter):
+def shlwapi_StrCmpCA(jitter):
+    shlwapi_StrCmpC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpCW(jitter):
+    shlwapi_StrCmpC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCmpI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpI(PCTSTR psz1, PCTSTR psz2)
     """"
@@ -1207,13 +1903,25 @@ def shlwapi_StrCmpI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpIC(jitter):
+def shlwapi_StrCmpIA(jitter):
+    shlwapi_StrCmpI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpIW(jitter):
+    shlwapi_StrCmpI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCmpIC(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpIC(LPCTSTR lpStr1, LPCTSTR lpStr2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpStr1", "lpStr2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_StrCmpICA(jitter):
+    shlwapi_StrCmpIC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpICW(jitter):
+    shlwapi_StrCmpIC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_StrCmpLogicalW(jitter):
     """"
@@ -1223,7 +1931,7 @@ def shlwapi_StrCmpLogicalW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpN(jitter):
+def shlwapi_StrCmpN(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpN(PCTSTR psz1, PCTSTR psz2, int nChar)
     """"
@@ -1231,7 +1939,13 @@ def shlwapi_StrCmpN(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpNC(jitter):
+def shlwapi_StrCmpNA(jitter):
+    shlwapi_StrCmpN(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpNW(jitter):
+    shlwapi_StrCmpN(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCmpNC(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpNC(LPCTSTR pszStr1, LPCTSTR pszStr2, int nChar)
     """"
@@ -1239,7 +1953,13 @@ def shlwapi_StrCmpNC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpNI(jitter):
+def shlwapi_StrCmpNCA(jitter):
+    shlwapi_StrCmpNC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpNCW(jitter):
+    shlwapi_StrCmpNC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCmpNI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpNI(PCTSTR psz1, PCTSTR psz2, int nChar)
     """"
@@ -1247,7 +1967,13 @@ def shlwapi_StrCmpNI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCmpNIC(jitter):
+def shlwapi_StrCmpNIA(jitter):
+    shlwapi_StrCmpNI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpNIW(jitter):
+    shlwapi_StrCmpNI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCmpNIC(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCmpNIC(LPCTSTR pszStr1, LPCTSTR pszStr2, int nChar)
     """"
@@ -1255,7 +1981,13 @@ def shlwapi_StrCmpNIC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCpy(jitter):
+def shlwapi_StrCmpNICA(jitter):
+    shlwapi_StrCmpNIC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCmpNICW(jitter):
+    shlwapi_StrCmpNIC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCpy(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrCpy(PTSTR psz1, PCTSTR psz2)
     """"
@@ -1263,7 +1995,13 @@ def shlwapi_StrCpy(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCpyN(jitter):
+def shlwapi_StrCpyA(jitter):
+    shlwapi_StrCpy(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCpyW(jitter):
+    shlwapi_StrCpy(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCpyN(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrCpyN(PTSTR pszDst, PCTSTR pszSrc, int cchMax)
     """"
@@ -1271,7 +2009,13 @@ def shlwapi_StrCpyN(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCSpn(jitter):
+def shlwapi_StrCpyNA(jitter):
+    shlwapi_StrCpyN(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCpyNW(jitter):
+    shlwapi_StrCpyN(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCSpn(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCSpn(PCTSTR pszStr, PCTSTR pszSet)
     """"
@@ -1279,7 +2023,13 @@ def shlwapi_StrCSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrCSpnI(jitter):
+def shlwapi_StrCSpnA(jitter):
+    shlwapi_StrCSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCSpnW(jitter):
+    shlwapi_StrCSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrCSpnI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrCSpnI(PCTSTR pszStr, PCTSTR pszSet)
     """"
@@ -1287,7 +2037,13 @@ def shlwapi_StrCSpnI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrDup(jitter):
+def shlwapi_StrCSpnIA(jitter):
+    shlwapi_StrCSpnI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrCSpnIW(jitter):
+    shlwapi_StrCSpnI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrDup(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrDup(PCTSTR pszSrch)
     """"
@@ -1295,13 +2051,25 @@ def shlwapi_StrDup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrFormatByteSize64(jitter):
+def shlwapi_StrDupA(jitter):
+    shlwapi_StrDup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrDupW(jitter):
+    shlwapi_StrDup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrFormatByteSize64(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrFormatByteSize64(LONGLONG qdw, PTSTR pszBuf, UINT cchBuf)
     """"
     ret_ad, args = jitter.func_args_stdcall(["qdw", "pszBuf", "cchBuf"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_StrFormatByteSize64A(jitter):
+    shlwapi_StrFormatByteSize64(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrFormatByteSize64W(jitter):
+    shlwapi_StrFormatByteSize64(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_StrFormatByteSizeA(jitter):
     """"
@@ -1327,7 +2095,7 @@ def shlwapi_StrFormatByteSizeEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrFormatKBSize(jitter):
+def shlwapi_StrFormatKBSize(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrFormatKBSize(LONGLONG qdw, PTSTR pszBuf, UINT cchBuf)
     """"
@@ -1335,7 +2103,13 @@ def shlwapi_StrFormatKBSize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrFromTimeInterval(jitter):
+def shlwapi_StrFormatKBSizeA(jitter):
+    shlwapi_StrFormatKBSize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrFormatKBSizeW(jitter):
+    shlwapi_StrFormatKBSize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrFromTimeInterval(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrFromTimeInterval(PTSTR pszOut, UINT cchMax, DWORD dwTimeMS, int digits)
     """"
@@ -1343,7 +2117,13 @@ def shlwapi_StrFromTimeInterval(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrIsIntlEqual(jitter):
+def shlwapi_StrFromTimeIntervalA(jitter):
+    shlwapi_StrFromTimeInterval(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrFromTimeIntervalW(jitter):
+    shlwapi_StrFromTimeInterval(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrIsIntlEqual(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL StrIsIntlEqual(BOOL fCaseSens, PCTSTR pszString1, PCTSTR pszString2, int nChar)
     """"
@@ -1351,7 +2131,13 @@ def shlwapi_StrIsIntlEqual(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrNCat(jitter):
+def shlwapi_StrIsIntlEqualA(jitter):
+    shlwapi_StrIsIntlEqual(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrIsIntlEqualW(jitter):
+    shlwapi_StrIsIntlEqual(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrNCat(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrNCat(PTSTR psz1, PCTSTR psz2, int cchMax)
     """"
@@ -1359,7 +2145,13 @@ def shlwapi_StrNCat(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrPBrk(jitter):
+def shlwapi_StrNCatA(jitter):
+    shlwapi_StrNCat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrNCatW(jitter):
+    shlwapi_StrNCat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrPBrk(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrPBrk(PTSTR psz, PCTSTR pszSet)
     """"
@@ -1367,7 +2159,13 @@ def shlwapi_StrPBrk(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrRChr(jitter):
+def shlwapi_StrPBrkA(jitter):
+    shlwapi_StrPBrk(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrPBrkW(jitter):
+    shlwapi_StrPBrk(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrRChr(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrRChr(PTSTR pszStart, PCTSTR pszEnd, TCHAR wMatch)
     """"
@@ -1375,13 +2173,25 @@ def shlwapi_StrRChr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrRChrI(jitter):
+def shlwapi_StrRChrA(jitter):
+    shlwapi_StrRChr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrRChrW(jitter):
+    shlwapi_StrRChr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrRChrI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrRChrI(PTSTR pszStart, PCTSTR pszEnd, TCHAR wMatch)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszStart", "pszEnd", "wMatch"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_StrRChrIA(jitter):
+    shlwapi_StrRChrI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrRChrIW(jitter):
+    shlwapi_StrRChrI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_StrRetToBSTR(jitter):
     """"
@@ -1391,7 +2201,7 @@ def shlwapi_StrRetToBSTR(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrRetToBuf(jitter):
+def shlwapi_StrRetToBuf(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT StrRetToBuf(STRRET* pstr, PCUITEMID_CHILD pidl, LPTSTR pszBuf, UINT cchBuf)
     """"
@@ -1399,7 +2209,13 @@ def shlwapi_StrRetToBuf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrRetToStr(jitter):
+def shlwapi_StrRetToBufA(jitter):
+    shlwapi_StrRetToBuf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrRetToBufW(jitter):
+    shlwapi_StrRetToBuf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrRetToStr(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT StrRetToStr(STRRET* pstr, PCUITEMID_CHILD pidl, LPTSTR* ppszName)
     """"
@@ -1407,7 +2223,13 @@ def shlwapi_StrRetToStr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrRStrI(jitter):
+def shlwapi_StrRetToStrA(jitter):
+    shlwapi_StrRetToStr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrRetToStrW(jitter):
+    shlwapi_StrRetToStr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrRStrI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrRStrI(PTSTR pszSource, PCTSTR pszLast, PCTSTR pszSrch)
     """"
@@ -1415,7 +2237,13 @@ def shlwapi_StrRStrI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrSpn(jitter):
+def shlwapi_StrRStrIA(jitter):
+    shlwapi_StrRStrI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrRStrIW(jitter):
+    shlwapi_StrRStrI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrSpn(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrSpn(PCTSTR psz, PCTSTR pszSet)
     """"
@@ -1423,7 +2251,13 @@ def shlwapi_StrSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrStr(jitter):
+def shlwapi_StrSpnA(jitter):
+    shlwapi_StrSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrSpnW(jitter):
+    shlwapi_StrSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrStr(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrStr(PTSTR pszFirst, PCTSTR pszSrch)
     """"
@@ -1431,7 +2265,13 @@ def shlwapi_StrStr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrStrI(jitter):
+def shlwapi_StrStrA(jitter):
+    shlwapi_StrStr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrStrW(jitter):
+    shlwapi_StrStr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrStrI(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] PTSTR StrStrI(PTSTR pszFirst, PCTSTR pszSrch)
     """"
@@ -1439,7 +2279,13 @@ def shlwapi_StrStrI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrToInt(jitter):
+def shlwapi_StrStrIA(jitter):
+    shlwapi_StrStrI(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrStrIW(jitter):
+    shlwapi_StrStrI(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrToInt(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int StrToInt(PCTSTR pszSrc)
     """"
@@ -1447,7 +2293,13 @@ def shlwapi_StrToInt(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrToInt64Ex(jitter):
+def shlwapi_StrToIntA(jitter):
+    shlwapi_StrToInt(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrToIntW(jitter):
+    shlwapi_StrToInt(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrToInt64Ex(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL StrToInt64Ex(PCTSTR pszString, STIF_FLAGS dwFlags, LONGLONG* pllRet)
     """"
@@ -1455,7 +2307,13 @@ def shlwapi_StrToInt64Ex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrToIntEx(jitter):
+def shlwapi_StrToInt64ExA(jitter):
+    shlwapi_StrToInt64Ex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrToInt64ExW(jitter):
+    shlwapi_StrToInt64Ex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrToIntEx(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL StrToIntEx(PCTSTR pszString, STIF_FLAGS dwFlags, int* piRet)
     """"
@@ -1463,7 +2321,13 @@ def shlwapi_StrToIntEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_StrTrim(jitter):
+def shlwapi_StrToIntExA(jitter):
+    shlwapi_StrToIntEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrToIntExW(jitter):
+    shlwapi_StrToIntEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_StrTrim(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL StrTrim(PTSTR psz, PCTSTR pszTrimChars)
     """"
@@ -1471,7 +2335,13 @@ def shlwapi_StrTrim(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_wnsprintf(jitter):
+def shlwapi_StrTrimA(jitter):
+    shlwapi_StrTrim(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_StrTrimW(jitter):
+    shlwapi_StrTrim(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_wnsprintf(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int wnsprintf(PTSTR pszDest, int cchDest, PCTSTR pszFmt)
     """"
@@ -1479,13 +2349,25 @@ def shlwapi_wnsprintf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_wvnsprintf(jitter):
+def shlwapi_wnsprintfA(jitter):
+    shlwapi_wnsprintf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_wnsprintfW(jitter):
+    shlwapi_wnsprintf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_wvnsprintf(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int wvnsprintf(PTSTR pszDest, int cchDest, PCTSTR pszFmt, va_list arglist)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszDest", "cchDest", "pszFmt", "arglist"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_wvnsprintfA(jitter):
+    shlwapi_wvnsprintf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_wvnsprintfW(jitter):
+    shlwapi_wvnsprintf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_ConnectToConnectionPoint(jitter):
     """"
@@ -1527,13 +2409,19 @@ def shlwapi_HashData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_GUIDFromString(jitter):
+def shlwapi_GUIDFromString(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL GUIDFromString(LPCTSTR psz, LPGUID pguid)
     """"
     ret_ad, args = jitter.func_args_stdcall(["psz", "pguid"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_GUIDFromStringA(jitter):
+    shlwapi_GUIDFromString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_GUIDFromStringW(jitter):
+    shlwapi_GUIDFromString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_IsInternetESCEnabled(jitter):
     """"
@@ -1679,7 +2567,7 @@ def shlwapi_MLFreeLibrary(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_MLLoadLibrary(jitter):
+def shlwapi_MLLoadLibrary(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HINSTANCE MLLoadLibrary(LPCTSTR lpszLibFileName, HMODULE hModule, DWORD dwCrossCodePage)
     """"
@@ -1687,7 +2575,13 @@ def shlwapi_MLLoadLibrary(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_MLHtmlHelp(jitter):
+def shlwapi_MLLoadLibraryA(jitter):
+    shlwapi_MLLoadLibrary(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_MLLoadLibraryW(jitter):
+    shlwapi_MLLoadLibrary(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_MLHtmlHelp(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HWND MLHtmlHelp(HWND hwndCaller, LPCTSTR pszFile, UINT uCommand, DWORD_PTR dwData, DWORD dwCrossCodePage)
     """"
@@ -1695,7 +2589,13 @@ def shlwapi_MLHtmlHelp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_MLWinHelp(jitter):
+def shlwapi_MLHtmlHelpA(jitter):
+    shlwapi_MLHtmlHelp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_MLHtmlHelpW(jitter):
+    shlwapi_MLHtmlHelp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_MLWinHelp(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] BOOL MLWinHelp(HWND hWndMain, LPCTSTR lpszHelp, UINT uCommand, DWORD_PTR dwData)
     """"
@@ -1703,13 +2603,25 @@ def shlwapi_MLWinHelp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_ParseURL(jitter):
+def shlwapi_MLWinHelpA(jitter):
+    shlwapi_MLWinHelp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_MLWinHelpW(jitter):
+    shlwapi_MLWinHelp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_ParseURL(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT ParseURL(LPCTSTR pcszUrl, PARSEDURL* ppu)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pcszUrl", "ppu"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_ParseURLA(jitter):
+    shlwapi_ParseURL(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_ParseURLW(jitter):
+    shlwapi_ParseURL(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_QISearch(jitter):
     """"
@@ -1751,13 +2663,19 @@ def shlwapi_SHCreateMemStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHCreateStreamOnFile(jitter):
+def shlwapi_SHCreateStreamOnFile(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] HRESULT SHCreateStreamOnFile(LPCTSTR pszFile, [STGM_FLAGS] grfMode, IStream** ppstm)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszFile", "grfMode", "ppstm"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHCreateStreamOnFileA(jitter):
+    shlwapi_SHCreateStreamOnFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHCreateStreamOnFileW(jitter):
+    shlwapi_SHCreateStreamOnFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHCreateStreamOnFileEx(jitter):
     """"
@@ -1791,13 +2709,19 @@ def shlwapi_SHCreateThreadWithHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHFormatDateTime(jitter):
+def shlwapi_SHFormatDateTime(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int SHFormatDateTime(const FILETIME* pft, DWORD* pdwFlags, LPTSTR pszBuf, UINT cchBuf)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pft", "pdwFlags", "pszBuf", "cchBuf"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHFormatDateTimeA(jitter):
+    shlwapi_SHFormatDateTime(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHFormatDateTimeW(jitter):
+    shlwapi_SHFormatDateTime(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHGetThreadRef(jitter):
     """"
@@ -1863,7 +2787,7 @@ def shlwapi_SHIsLowMemoryMachine(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHMessageBoxCheck(jitter):
+def shlwapi_SHMessageBoxCheck(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] int SHMessageBoxCheck(HWND hwnd, LPCTSTR pszText, LPCTSTR pszCaption, UINT uType, int iDefault, LPCTSTR pszRegVal)
     """"
@@ -1871,7 +2795,13 @@ def shlwapi_SHMessageBoxCheck(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHSendMessageBroadcast(jitter):
+def shlwapi_SHMessageBoxCheckA(jitter):
+    shlwapi_SHMessageBoxCheck(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHMessageBoxCheckW(jitter):
+    shlwapi_SHMessageBoxCheck(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHSendMessageBroadcast(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] LRESULT SHSendMessageBroadcast(UINT uMsg, WPARAM wParam, LPARAM lParam)
     """"
@@ -1879,13 +2809,25 @@ def shlwapi_SHSendMessageBroadcast(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def shlwapi_SHStripMneumonic(jitter):
+def shlwapi_SHSendMessageBroadcastA(jitter):
+    shlwapi_SHSendMessageBroadcast(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHSendMessageBroadcastW(jitter):
+    shlwapi_SHSendMessageBroadcast(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def shlwapi_SHStripMneumonic(jitter, get_str, set_str):
     """"
     [ShLwApi.dll] TCHAR SHStripMneumonic(LPTSTR* pszMenu)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszMenu"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def shlwapi_SHStripMneumonicA(jitter):
+    shlwapi_SHStripMneumonic(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def shlwapi_SHStripMneumonicW(jitter):
+    shlwapi_SHStripMneumonic(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def shlwapi_SHUnicodeToAnsi(jitter):
     """"

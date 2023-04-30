@@ -1,11 +1,17 @@
 
-def mspatcha_ApplyPatchToFile(jitter):
+def mspatcha_ApplyPatchToFile(jitter, get_str, set_str):
     """"
     [mspatcha.dll] BOOL ApplyPatchToFile(LPCTSTR PatchFileName, LPCTSTR OldFileName, LPCTSTR NewFileName, [ApplyOptionFlags] ApplyOptionFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["PatchFileName", "OldFileName", "NewFileName", "ApplyOptionFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mspatcha_ApplyPatchToFileA(jitter):
+    mspatcha_ApplyPatchToFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatcha_ApplyPatchToFileW(jitter):
+    mspatcha_ApplyPatchToFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mspatcha_ApplyPatchToFileByBuffers(jitter):
     """"
@@ -31,7 +37,7 @@ def mspatcha_ApplyPatchToFileByHandlesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mspatcha_ApplyPatchToFileEx(jitter):
+def mspatcha_ApplyPatchToFileEx(jitter, get_str, set_str):
     """"
     [mspatcha.dll] BOOL ApplyPatchToFileEx(LPCTSTR PatchFileName, LPCTSTR OldFileName, LPCTSTR NewFileName, [ApplyOptionFlags] ApplyOptionFlags, PPATCH_PROGRESS_CALLBACK ProgressCallback, PVOID CallbackContext)
     """"
@@ -39,13 +45,25 @@ def mspatcha_ApplyPatchToFileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mspatcha_GetFilePatchSignature(jitter):
+def mspatcha_ApplyPatchToFileExA(jitter):
+    mspatcha_ApplyPatchToFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatcha_ApplyPatchToFileExW(jitter):
+    mspatcha_ApplyPatchToFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mspatcha_GetFilePatchSignature(jitter, get_str, set_str):
     """"
     [mspatcha.dll] BOOL GetFilePatchSignature(LPCTSTR FileName, [PatchOptionFlags] OptionFlags, PVOID OptionData, ULONG IgnoreRangeCount, PPATCH_IGNORE_RANGE IgnoreRangeArray, ULONG RetainRangeCount, PPATCH_RETAIN_RANGE RetainRangeArray, ULONG SignatureBufferSize, PVOID SignatureBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "OptionFlags", "OptionData", "IgnoreRangeCount", "IgnoreRangeArray", "RetainRangeCount", "RetainRangeArray", "SignatureBufferSize", "SignatureBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mspatcha_GetFilePatchSignatureA(jitter):
+    mspatcha_GetFilePatchSignature(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatcha_GetFilePatchSignatureW(jitter):
+    mspatcha_GetFilePatchSignature(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mspatcha_GetFilePatchSignatureByBuffer(jitter):
     """"
@@ -71,13 +89,19 @@ def mspatcha_NormalizeFileForPatchSignature(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mspatcha_TestApplyPatchToFile(jitter):
+def mspatcha_TestApplyPatchToFile(jitter, get_str, set_str):
     """"
     [mspatcha.dll] BOOL TestApplyPatchToFile(LPCTSTR PatchFileName, LPCTSTR OldFileName, [ApplyOptionFlags] ApplyOptionFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["PatchFileName", "OldFileName", "ApplyOptionFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mspatcha_TestApplyPatchToFileA(jitter):
+    mspatcha_TestApplyPatchToFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatcha_TestApplyPatchToFileW(jitter):
+    mspatcha_TestApplyPatchToFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mspatcha_TestApplyPatchToFileByBuffers(jitter):
     """"

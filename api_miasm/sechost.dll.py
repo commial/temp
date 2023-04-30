@@ -1,5 +1,5 @@
 
-def sechost_LookupAccountNameLocal(jitter):
+def sechost_LookupAccountNameLocal(jitter, get_str, set_str):
     """"
     [Sechost.dll] BOOL LookupAccountNameLocal(LPCTSTR lpAccountName, PSID Sid, LPDWORD cbSid, LPTSTR ReferencedDomainName, LPDWORD cchReferencedDomainName, PSID_NAME_USE peUse)
     """"
@@ -7,13 +7,25 @@ def sechost_LookupAccountNameLocal(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def sechost_LookupAccountSidLocal(jitter):
+def sechost_LookupAccountNameLocalA(jitter):
+    sechost_LookupAccountNameLocal(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def sechost_LookupAccountNameLocalW(jitter):
+    sechost_LookupAccountNameLocal(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def sechost_LookupAccountSidLocal(jitter, get_str, set_str):
     """"
     [Sechost.dll] BOOL LookupAccountSidLocal(PSID lpSid, LPTSTR lpName, LPDWORD cchName, LPTSTR lpReferencedDomainName, LPDWORD cchReferencedDomainName, PSID_NAME_USE peUse)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpSid", "lpName", "cchName", "lpReferencedDomainName", "cchReferencedDomainName", "peUse"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def sechost_LookupAccountSidLocalA(jitter):
+    sechost_LookupAccountSidLocal(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def sechost_LookupAccountSidLocalW(jitter):
+    sechost_LookupAccountSidLocal(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def sechost_LsaLookupClose(jitter):
     """"

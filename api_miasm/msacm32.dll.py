@@ -1,11 +1,17 @@
 
-def msacm32_acmDriverAdd(jitter):
+def msacm32_acmDriverAdd(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmDriverAdd(LPHACMDRIVERID phadid, HINSTANCE hinstModule, LPARAM lParam, DWORD dwPriority, DWORD fdwAdd)
     """"
     ret_ad, args = jitter.func_args_stdcall(["phadid", "hinstModule", "lParam", "dwPriority", "fdwAdd"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def msacm32_acmDriverAddA(jitter):
+    msacm32_acmDriverAdd(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmDriverAddW(jitter):
+    msacm32_acmDriverAdd(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def msacm32_acmDriverClose(jitter):
     """"
@@ -15,13 +21,19 @@ def msacm32_acmDriverClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmDriverDetails(jitter):
+def msacm32_acmDriverDetails(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmDriverDetails(HACMDRIVERID hadid, LPACMDRIVERDETAILS padd, DWORD fdwDetails)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hadid", "padd", "fdwDetails"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def msacm32_acmDriverDetailsA(jitter):
+    msacm32_acmDriverDetails(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmDriverDetailsW(jitter):
+    msacm32_acmDriverDetails(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def msacm32_acmDriverEnum(jitter):
     """"
@@ -71,7 +83,7 @@ def msacm32_acmDriverRemove(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFilterChoose(jitter):
+def msacm32_acmFilterChoose(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFilterChoose(LPACMFILTERCHOOSE pafltrc)
     """"
@@ -79,7 +91,13 @@ def msacm32_acmFilterChoose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFilterDetails(jitter):
+def msacm32_acmFilterChooseA(jitter):
+    msacm32_acmFilterChoose(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFilterChooseW(jitter):
+    msacm32_acmFilterChoose(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFilterDetails(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFilterDetails(HACMDRIVER had, LPACMFILTERDETAILS pafd, DWORD fdwDetails)
     """"
@@ -87,7 +105,13 @@ def msacm32_acmFilterDetails(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFilterEnum(jitter):
+def msacm32_acmFilterDetailsA(jitter):
+    msacm32_acmFilterDetails(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFilterDetailsW(jitter):
+    msacm32_acmFilterDetails(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFilterEnum(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFilterEnum(HACMDRIVER had, LPACMFILTERDETAILS pafd, ACMFILTERENUMCB fnCallback, DWORD_PTR dwInstance, [ACM_FILTERENUMF] fdwEnum)
     """"
@@ -95,7 +119,13 @@ def msacm32_acmFilterEnum(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFilterTagDetails(jitter):
+def msacm32_acmFilterEnumA(jitter):
+    msacm32_acmFilterEnum(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFilterEnumW(jitter):
+    msacm32_acmFilterEnum(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFilterTagDetails(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFilterTagDetails(HACMDRIVER had, LPACMFILTERTAGDETAILS paftd, DWORD_PTR fdwDetails)
     """"
@@ -103,7 +133,13 @@ def msacm32_acmFilterTagDetails(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFilterTagEnum(jitter):
+def msacm32_acmFilterTagDetailsA(jitter):
+    msacm32_acmFilterTagDetails(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFilterTagDetailsW(jitter):
+    msacm32_acmFilterTagDetails(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFilterTagEnum(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFilterTagEnum(HACMDRIVER had, LPACMFILTERTAGDETAILS paftd, ACMFILTERTAGENUMCB fnCallback, DWORD_PTR dwInstance, DWORD fdwEnum)
     """"
@@ -111,7 +147,13 @@ def msacm32_acmFilterTagEnum(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFormatChoose(jitter):
+def msacm32_acmFilterTagEnumA(jitter):
+    msacm32_acmFilterTagEnum(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFilterTagEnumW(jitter):
+    msacm32_acmFilterTagEnum(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFormatChoose(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFormatChoose(LPACMFORMATCHOOSE pfmtc)
     """"
@@ -119,7 +161,13 @@ def msacm32_acmFormatChoose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFormatDetails(jitter):
+def msacm32_acmFormatChooseA(jitter):
+    msacm32_acmFormatChoose(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFormatChooseW(jitter):
+    msacm32_acmFormatChoose(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFormatDetails(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFormatDetails(HACMDRIVER had, LPACMFORMATDETAILS pafd, DWORD fdwDetails)
     """"
@@ -127,13 +175,25 @@ def msacm32_acmFormatDetails(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFormatEnum(jitter):
+def msacm32_acmFormatDetailsA(jitter):
+    msacm32_acmFormatDetails(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFormatDetailsW(jitter):
+    msacm32_acmFormatDetails(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFormatEnum(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFormatEnum(HACMDRIVER had, LPACMFORMATDETAILS pafd, ACMFORMATENUMCB fnCallback, DWORD_PTR dwInstance, DWORD fdwEnum)
     """"
     ret_ad, args = jitter.func_args_stdcall(["had", "pafd", "fnCallback", "dwInstance", "fdwEnum"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def msacm32_acmFormatEnumA(jitter):
+    msacm32_acmFormatEnum(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFormatEnumW(jitter):
+    msacm32_acmFormatEnum(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def msacm32_acmFormatSuggest(jitter):
     """"
@@ -143,7 +203,7 @@ def msacm32_acmFormatSuggest(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFormatTagDetails(jitter):
+def msacm32_acmFormatTagDetails(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFormatTagDetails(HACMDRIVER had, LPACMFORMATTAGDETAILS paftd, DWORD fdwDetails)
     """"
@@ -151,13 +211,25 @@ def msacm32_acmFormatTagDetails(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msacm32_acmFormatTagEnum(jitter):
+def msacm32_acmFormatTagDetailsA(jitter):
+    msacm32_acmFormatTagDetails(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFormatTagDetailsW(jitter):
+    msacm32_acmFormatTagDetails(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msacm32_acmFormatTagEnum(jitter, get_str, set_str):
     """"
     [msacm32.dll] MMRESULT acmFormatTagEnum(HACMDRIVER had, LPACMFORMATTAGDETAILS paftd, ACMFORMATTAGENUMCB fnCallback, DWORD_PTR dwInstance, DWORD fdwEnum)
     """"
     ret_ad, args = jitter.func_args_stdcall(["had", "paftd", "fnCallback", "dwInstance", "fdwEnum"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def msacm32_acmFormatTagEnumA(jitter):
+    msacm32_acmFormatTagEnum(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msacm32_acmFormatTagEnumW(jitter):
+    msacm32_acmFormatTagEnum(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def msacm32_acmGetVersion(jitter):
     """"

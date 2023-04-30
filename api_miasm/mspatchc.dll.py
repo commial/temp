@@ -1,11 +1,17 @@
 
-def mspatchc_CreatePatchFile(jitter):
+def mspatchc_CreatePatchFile(jitter, get_str, set_str):
     """"
     [mspatchc.dll] BOOL CreatePatchFile(LPCTSTR OldFileName, LPCTSTR NewFileName, LPCTSTR PatchFileName, [PatchOptionFlags] OptionFlags, PPATCH_OPTION_DATA OptionData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["OldFileName", "NewFileName", "PatchFileName", "OptionFlags", "OptionData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mspatchc_CreatePatchFileA(jitter):
+    mspatchc_CreatePatchFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatchc_CreatePatchFileW(jitter):
+    mspatchc_CreatePatchFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mspatchc_CreatePatchFileByHandles(jitter):
     """"
@@ -23,7 +29,7 @@ def mspatchc_CreatePatchFileByHandlesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mspatchc_CreatePatchFileEx(jitter):
+def mspatchc_CreatePatchFileEx(jitter, get_str, set_str):
     """"
     [mspatchc.dll] BOOL CreatePatchFileEx(ULONG OldFileCount, PPATCH_OLD_FILE_INFO OldFileInfoArray, LPCTSTR NewFileName, LPCTSTR PatchFileName, [PatchOptionFlags] OptionFlags, PPATCH_OPTION_DATA OptionData, PPATCH_PROGRESS_CALLBACK ProgressCallback, PVOID CallbackContext)
     """"
@@ -31,13 +37,25 @@ def mspatchc_CreatePatchFileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mspatchc_ExtractPatchHeaderToFile(jitter):
+def mspatchc_CreatePatchFileExA(jitter):
+    mspatchc_CreatePatchFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatchc_CreatePatchFileExW(jitter):
+    mspatchc_CreatePatchFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mspatchc_ExtractPatchHeaderToFile(jitter, get_str, set_str):
     """"
     [mspatchc.dll] BOOL ExtractPatchHeaderToFile(LPCTSTR PatchFileName, LPCTSTR PatchHeaderFileName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["PatchFileName", "PatchHeaderFileName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mspatchc_ExtractPatchHeaderToFileA(jitter):
+    mspatchc_ExtractPatchHeaderToFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatchc_ExtractPatchHeaderToFileW(jitter):
+    mspatchc_ExtractPatchHeaderToFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mspatchc_ExtractPatchHeaderToFileByHandles(jitter):
     """"
@@ -47,13 +65,19 @@ def mspatchc_ExtractPatchHeaderToFileByHandles(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mspatchc_GetFilePatchSignature(jitter):
+def mspatchc_GetFilePatchSignature(jitter, get_str, set_str):
     """"
     [mspatchc.dll] BOOL GetFilePatchSignature(LPCTSTR FileName, [PatchOptionFlags] OptionFlags, PVOID OptionData, ULONG IgnoreRangeCount, PPATCH_IGNORE_RANGE IgnoreRangeArray, ULONG RetainRangeCount, PPATCH_RETAIN_RANGE RetainRangeArray, ULONG SignatureBufferSize, PVOID SignatureBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "OptionFlags", "OptionData", "IgnoreRangeCount", "IgnoreRangeArray", "RetainRangeCount", "RetainRangeArray", "SignatureBufferSize", "SignatureBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mspatchc_GetFilePatchSignatureA(jitter):
+    mspatchc_GetFilePatchSignature(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mspatchc_GetFilePatchSignatureW(jitter):
+    mspatchc_GetFilePatchSignature(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mspatchc_GetFilePatchSignatureByBuffer(jitter):
     """"

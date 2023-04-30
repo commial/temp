@@ -1,11 +1,17 @@
 
-def winmm_auxGetDevCaps(jitter):
+def winmm_auxGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT auxGetDevCaps(UINT_PTR uDeviceID, LPAUXCAPS lpCaps, UINT cbCaps)
     """"
     ret_ad, args = jitter.func_args_stdcall(["uDeviceID", "lpCaps", "cbCaps"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_auxGetDevCapsA(jitter):
+    winmm_auxGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_auxGetDevCapsW(jitter):
+    winmm_auxGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_auxGetNumDevs(jitter):
     """"
@@ -47,13 +53,19 @@ def winmm_joyConfigChanged(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_joyGetDevCaps(jitter):
+def winmm_joyGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT joyGetDevCaps(UINT_PTR uJoyID, LPJOYCAPS pjc, UINT cbjc)
     """"
     ret_ad, args = jitter.func_args_stdcall(["uJoyID", "pjc", "cbjc"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_joyGetDevCapsA(jitter):
+    winmm_joyGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_joyGetDevCapsW(jitter):
+    winmm_joyGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_joyGetNumDevs(jitter):
     """"
@@ -127,7 +139,7 @@ def winmm_mciGetCreatorTask(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mciGetDeviceID(jitter):
+def winmm_mciGetDeviceID(jitter, get_str, set_str):
     """"
     [Winmm.dll] MCIDEVICEID mciGetDeviceID(LPCTSTR lpszDevice)
     """"
@@ -135,7 +147,13 @@ def winmm_mciGetDeviceID(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mciGetDeviceIDFromElementID(jitter):
+def winmm_mciGetDeviceIDA(jitter):
+    winmm_mciGetDeviceID(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mciGetDeviceIDW(jitter):
+    winmm_mciGetDeviceID(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_mciGetDeviceIDFromElementID(jitter, get_str, set_str):
     """"
     [Winmm.dll] MCIDEVICEID mciGetDeviceIDFromElementID(DWORD dwElementID, LPCTSTR lpstrType)
     """"
@@ -143,13 +161,25 @@ def winmm_mciGetDeviceIDFromElementID(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mciGetErrorString(jitter):
+def winmm_mciGetDeviceIDFromElementIDA(jitter):
+    winmm_mciGetDeviceIDFromElementID(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mciGetDeviceIDFromElementIDW(jitter):
+    winmm_mciGetDeviceIDFromElementID(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_mciGetErrorString(jitter, get_str, set_str):
     """"
     [Winmm.dll] BOOL mciGetErrorString(DWORD fdwError, LPTSTR lpszErrorText, UINT cchErrorText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["fdwError", "lpszErrorText", "cchErrorText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mciGetErrorStringA(jitter):
+    winmm_mciGetErrorString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mciGetErrorStringW(jitter):
+    winmm_mciGetErrorString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mciGetYieldProc(jitter):
     """"
@@ -159,7 +189,7 @@ def winmm_mciGetYieldProc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mciSendCommand(jitter):
+def winmm_mciSendCommand(jitter, get_str, set_str):
     """"
     [Winmm.dll] MCIERROR mciSendCommand(MCIDEVICEID IDDevice, UINT uMsg, DWORD fdwCommand, DWORD_PTR dwParam)
     """"
@@ -167,13 +197,25 @@ def winmm_mciSendCommand(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mciSendString(jitter):
+def winmm_mciSendCommandA(jitter):
+    winmm_mciSendCommand(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mciSendCommandW(jitter):
+    winmm_mciSendCommand(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_mciSendString(jitter, get_str, set_str):
     """"
     [Winmm.dll] MCIERROR mciSendString(LPCTSTR lpszCommand, LPTSTR lpszReturnString, UINT cchReturn, HANDLE hwndCallback)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszCommand", "lpszReturnString", "cchReturn", "hwndCallback"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mciSendStringA(jitter):
+    winmm_mciSendString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mciSendStringW(jitter):
+    winmm_mciSendString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mciSetYieldProc(jitter):
     """"
@@ -215,7 +257,7 @@ def winmm_midiInClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_midiInGetDevCaps(jitter):
+def winmm_midiInGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT midiInGetDevCaps(UINT_PTR uDeviceID, LPMIDIINCAPS lpMidiInCaps, UINT cbMidiInCaps)
     """"
@@ -223,13 +265,25 @@ def winmm_midiInGetDevCaps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_midiInGetErrorText(jitter):
+def winmm_midiInGetDevCapsA(jitter):
+    winmm_midiInGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_midiInGetDevCapsW(jitter):
+    winmm_midiInGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_midiInGetErrorText(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT midiInGetErrorText(MMRESULT wError, LPTSTR lpText, UINT cchText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["wError", "lpText", "cchText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_midiInGetErrorTextA(jitter):
+    winmm_midiInGetErrorText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_midiInGetErrorTextW(jitter):
+    winmm_midiInGetErrorText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_midiInGetID(jitter):
     """"
@@ -327,7 +381,7 @@ def winmm_midiOutClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_midiOutGetDevCaps(jitter):
+def winmm_midiOutGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT midiOutGetDevCaps(UINT_PTR uDeviceID, LPMIDIOUTCAPS lpMidiOutCaps, UINT cbMidiOutCaps)
     """"
@@ -335,13 +389,25 @@ def winmm_midiOutGetDevCaps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_midiOutGetErrorText(jitter):
+def winmm_midiOutGetDevCapsA(jitter):
+    winmm_midiOutGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_midiOutGetDevCapsW(jitter):
+    winmm_midiOutGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_midiOutGetErrorText(jitter, get_str, set_str):
     """"
     [Winmm.dll] UINT midiOutGetErrorText(MMRESULT mmrError, LPTSTR lpText, UINT cchText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["mmrError", "lpText", "cchText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_midiOutGetErrorTextA(jitter):
+    winmm_midiOutGetErrorText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_midiOutGetErrorTextW(jitter):
+    winmm_midiOutGetErrorText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_midiOutGetID(jitter):
     """"
@@ -503,7 +569,7 @@ def winmm_mixerClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mixerGetControlDetails(jitter):
+def winmm_mixerGetControlDetails(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT mixerGetControlDetails(HMIXEROBJ hmxobj, LPMIXERCONTROLDETAILS pmxcd, DWORD fdwDetails)
     """"
@@ -511,13 +577,25 @@ def winmm_mixerGetControlDetails(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mixerGetDevCaps(jitter):
+def winmm_mixerGetControlDetailsA(jitter):
+    winmm_mixerGetControlDetails(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mixerGetControlDetailsW(jitter):
+    winmm_mixerGetControlDetails(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_mixerGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT mixerGetDevCaps(UINT_PTR uMxId, LPMIXERCAPS pmxcaps, UINT cbmxcaps)
     """"
     ret_ad, args = jitter.func_args_stdcall(["uMxId", "pmxcaps", "cbmxcaps"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mixerGetDevCapsA(jitter):
+    winmm_mixerGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mixerGetDevCapsW(jitter):
+    winmm_mixerGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mixerGetID(jitter):
     """"
@@ -527,7 +605,7 @@ def winmm_mixerGetID(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mixerGetLineControls(jitter):
+def winmm_mixerGetLineControls(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT mixerGetLineControls(HMIXEROBJ hmxobj, LPMIXERLINECONTROLS pmxlc, DWORD fdwControls)
     """"
@@ -535,13 +613,25 @@ def winmm_mixerGetLineControls(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mixerGetLineInfo(jitter):
+def winmm_mixerGetLineControlsA(jitter):
+    winmm_mixerGetLineControls(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mixerGetLineControlsW(jitter):
+    winmm_mixerGetLineControls(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_mixerGetLineInfo(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT mixerGetLineInfo(HMIXEROBJ hmxobj, LPMIXERLINE pmxl, DWORD fdwInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hmxobj", "pmxl", "fdwInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mixerGetLineInfoA(jitter):
+    winmm_mixerGetLineInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mixerGetLineInfoW(jitter):
+    winmm_mixerGetLineInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mixerGetNumDevs(jitter):
     """"
@@ -631,7 +721,7 @@ def winmm_mmioGetInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mmioInstallIOProc(jitter):
+def winmm_mmioInstallIOProc(jitter, get_str, set_str):
     """"
     [Winmm.dll] LPMMIOPROC mmioInstallIOProc(FOURCC fccIOProc, LPMMIOPROC pIOProc, [mmioInstallIOProcFlags] dwFlags)
     """"
@@ -639,13 +729,25 @@ def winmm_mmioInstallIOProc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mmioOpen(jitter):
+def winmm_mmioInstallIOProcA(jitter):
+    winmm_mmioInstallIOProc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mmioInstallIOProcW(jitter):
+    winmm_mmioInstallIOProc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_mmioOpen(jitter, get_str, set_str):
     """"
     [Winmm.dll] HMMIO mmioOpen(LPTSTR szFilename, LPMMIOINFO lpmmioinfo, DWORD dwOpenFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szFilename", "lpmmioinfo", "dwOpenFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mmioOpenA(jitter):
+    winmm_mmioOpen(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mmioOpenW(jitter):
+    winmm_mmioOpen(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mmioRead(jitter):
     """"
@@ -655,13 +757,19 @@ def winmm_mmioRead(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mmioRename(jitter):
+def winmm_mmioRename(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT mmioRename(LPCTSTR szFilename, LPCTSTR szNewFilename, const LPMMIOINFO lpmmioinfo, DWORD dwRenameFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szFilename", "szNewFilename", "lpmmioinfo", "dwRenameFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mmioRenameA(jitter):
+    winmm_mmioRename(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mmioRenameW(jitter):
+    winmm_mmioRename(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mmioSeek(jitter):
     """"
@@ -695,13 +803,19 @@ def winmm_mmioSetInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_mmioStringToFOURCC(jitter):
+def winmm_mmioStringToFOURCC(jitter, get_str, set_str):
     """"
     [Winmm.dll] FOURCC mmioStringToFOURCC(LPCTSTR sz, [mmioStringToFOURCCFlags] wFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["sz", "wFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_mmioStringToFOURCCA(jitter):
+    winmm_mmioStringToFOURCC(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_mmioStringToFOURCCW(jitter):
+    winmm_mmioStringToFOURCC(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_mmioWrite(jitter):
     """"
@@ -783,7 +897,7 @@ def winmm_waveInClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_waveInGetDevCaps(jitter):
+def winmm_waveInGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT waveInGetDevCaps(UINT_PTR uDeviceID, LPWAVEINCAPS pwic, UINT cbwic)
     """"
@@ -791,13 +905,25 @@ def winmm_waveInGetDevCaps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_waveInGetErrorText(jitter):
+def winmm_waveInGetDevCapsA(jitter):
+    winmm_waveInGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_waveInGetDevCapsW(jitter):
+    winmm_waveInGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_waveInGetErrorText(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT waveInGetErrorText(MMRESULT mmrError, LPTSTR pszText, UINT cchText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["mmrError", "pszText", "cchText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_waveInGetErrorTextA(jitter):
+    winmm_waveInGetErrorText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_waveInGetErrorTextW(jitter):
+    winmm_waveInGetErrorText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_waveInGetID(jitter):
     """"
@@ -895,7 +1021,7 @@ def winmm_waveOutClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_waveOutGetDevCaps(jitter):
+def winmm_waveOutGetDevCaps(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT waveOutGetDevCaps(UINT_PTR uDeviceID, LPWAVEOUTCAPS pwoc, UINT cbwoc)
     """"
@@ -903,13 +1029,25 @@ def winmm_waveOutGetDevCaps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_waveOutGetErrorText(jitter):
+def winmm_waveOutGetDevCapsA(jitter):
+    winmm_waveOutGetDevCaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_waveOutGetDevCapsW(jitter):
+    winmm_waveOutGetDevCaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_waveOutGetErrorText(jitter, get_str, set_str):
     """"
     [Winmm.dll] MMRESULT waveOutGetErrorText(MMRESULT mmrError, LPTSTR pszText, UINT cchText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["mmrError", "pszText", "cchText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_waveOutGetErrorTextA(jitter):
+    winmm_waveOutGetErrorText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_waveOutGetErrorTextW(jitter):
+    winmm_waveOutGetErrorText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_waveOutGetID(jitter):
     """"
@@ -1047,7 +1185,7 @@ def winmm_waveOutWrite(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_PlaySound(jitter):
+def winmm_PlaySound(jitter, get_str, set_str):
     """"
     [Winmm.dll] BOOL PlaySound(LPCTSTR pszSound, HMODULE hmod, [SND_FLAGS] fdwSound)
     """"
@@ -1055,13 +1193,25 @@ def winmm_PlaySound(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winmm_sndPlaySound(jitter):
+def winmm_PlaySoundA(jitter):
+    winmm_PlaySound(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_PlaySoundW(jitter):
+    winmm_PlaySound(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winmm_sndPlaySound(jitter, get_str, set_str):
     """"
     [Winmm.dll] BOOL sndPlaySound(LPCTSTR lpszSound, [SND_FLAGS] fuSound)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszSound", "fuSound"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winmm_sndPlaySoundA(jitter):
+    winmm_sndPlaySound(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winmm_sndPlaySoundW(jitter):
+    winmm_sndPlaySound(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winmm_CloseDriver(jitter):
     """"

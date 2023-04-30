@@ -31,13 +31,19 @@ def mscms_ConvertIndexToColorName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_CreateColorTransform(jitter):
+def mscms_CreateColorTransform(jitter, get_str, set_str):
     """"
     [Mscms.dll] HTRANSFORM CreateColorTransform(LPLOGCOLORSPACE pLogColorSpace, HPROFILE hDestProfile, HPROFILE hTargetProfile, [CCT_FLAGS] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pLogColorSpace", "hDestProfile", "hTargetProfile", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mscms_CreateColorTransformA(jitter):
+    mscms_CreateColorTransform(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_CreateColorTransformW(jitter):
+    mscms_CreateColorTransform(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mscms_CreateMultiProfileTransform(jitter):
     """"
@@ -119,13 +125,19 @@ def mscms_CloseColorProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_CreateDeviceLinkProfile(jitter):
+def mscms_CreateDeviceLinkProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL CreateDeviceLinkProfile(PHPROFILE pahProfiles, DWORD nProfiles, [RENDERING_INTENT*] padwIntent, DWORD nIntents, [CCT_FLAGS] dwFlags, PBYTE pProfileData, DWORD indexPreferredCMM)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pahProfiles", "nProfiles", "padwIntent", "nIntents", "dwFlags", "pProfileData", "indexPreferredCMM"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mscms_CreateDeviceLinkProfileA(jitter):
+    mscms_CreateDeviceLinkProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_CreateDeviceLinkProfileW(jitter):
+    mscms_CreateDeviceLinkProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mscms_GetColorProfileElement(jitter):
     """"
@@ -207,13 +219,19 @@ def mscms_IsColorProfileValid(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_OpenColorProfile(jitter):
+def mscms_OpenColorProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] HPROFILE OpenColorProfile(PPROFILE pProfile, [PROFILE_ACCESS] dwDesiredAccess, [FILE_SHARE_MODE] dwShareMode, [CreationDisposition] dwCreationMode)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pProfile", "dwDesiredAccess", "dwShareMode", "dwCreationMode"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mscms_OpenColorProfileA(jitter):
+    mscms_OpenColorProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_OpenColorProfileW(jitter):
+    mscms_OpenColorProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mscms_SetColorProfileElement(jitter):
     """"
@@ -263,7 +281,7 @@ def mscms_WcsSetCalibrationManagementState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_AssociateColorProfileWithDevice(jitter):
+def mscms_AssociateColorProfileWithDevice(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL AssociateColorProfileWithDevice(PCTSTR pMachineName, PCTSTR pProfileName, PCTSTR pDeviceName)
     """"
@@ -271,7 +289,13 @@ def mscms_AssociateColorProfileWithDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_CreateProfileFromLogColorSpace(jitter):
+def mscms_AssociateColorProfileWithDeviceA(jitter):
+    mscms_AssociateColorProfileWithDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_AssociateColorProfileWithDeviceW(jitter):
+    mscms_AssociateColorProfileWithDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_CreateProfileFromLogColorSpace(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL CreateProfileFromLogColorSpace(LPLOGCOLORSPACE pLogColorSpace, PBYTE* pBuffer)
     """"
@@ -279,7 +303,13 @@ def mscms_CreateProfileFromLogColorSpace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_DisassociateColorProfileFromDevice(jitter):
+def mscms_CreateProfileFromLogColorSpaceA(jitter):
+    mscms_CreateProfileFromLogColorSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_CreateProfileFromLogColorSpaceW(jitter):
+    mscms_CreateProfileFromLogColorSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_DisassociateColorProfileFromDevice(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL DisassociateColorProfileFromDevice(PCTSTR pMachineName, PCTSTR pProfileName, PCTSTR pDeviceName)
     """"
@@ -287,7 +317,13 @@ def mscms_DisassociateColorProfileFromDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_EnumColorProfiles(jitter):
+def mscms_DisassociateColorProfileFromDeviceA(jitter):
+    mscms_DisassociateColorProfileFromDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_DisassociateColorProfileFromDeviceW(jitter):
+    mscms_DisassociateColorProfileFromDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_EnumColorProfiles(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL EnumColorProfiles(PCTSTR pMachineName, PENUMTYPE pEnumRecord, PBYTE pBuffer, PDWORD pdwSize, PDWORD pnProfiles)
     """"
@@ -295,7 +331,13 @@ def mscms_EnumColorProfiles(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_GetColorDirectory(jitter):
+def mscms_EnumColorProfilesA(jitter):
+    mscms_EnumColorProfiles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_EnumColorProfilesW(jitter):
+    mscms_EnumColorProfiles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_GetColorDirectory(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL GetColorDirectory(PCTSTR pMachineName, PTSTR pBuffer, PDWORD pdwSize)
     """"
@@ -303,7 +345,13 @@ def mscms_GetColorDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_GetStandardColorSpaceProfile(jitter):
+def mscms_GetColorDirectoryA(jitter):
+    mscms_GetColorDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_GetColorDirectoryW(jitter):
+    mscms_GetColorDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_GetStandardColorSpaceProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL GetStandardColorSpaceProfile(PCTSTR pMachineName, [LCSCSTYPE_DWORD] dwProfileID, PTSTR pProfileName, PDWORD pdwSize)
     """"
@@ -311,7 +359,13 @@ def mscms_GetStandardColorSpaceProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_InstallColorProfile(jitter):
+def mscms_GetStandardColorSpaceProfileA(jitter):
+    mscms_GetStandardColorSpaceProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_GetStandardColorSpaceProfileW(jitter):
+    mscms_GetStandardColorSpaceProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_InstallColorProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL InstallColorProfile(PCTSTR pMachineName, PCTSTR pProfileName)
     """"
@@ -319,7 +373,13 @@ def mscms_InstallColorProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_RegisterCMM(jitter):
+def mscms_InstallColorProfileA(jitter):
+    mscms_InstallColorProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_InstallColorProfileW(jitter):
+    mscms_InstallColorProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_RegisterCMM(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL RegisterCMM(PCTSTR pMachineName, DWORD cmmID, PCTSTR pCMMdll)
     """"
@@ -327,7 +387,13 @@ def mscms_RegisterCMM(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_SetStandardColorSpaceProfile(jitter):
+def mscms_RegisterCMMA(jitter):
+    mscms_RegisterCMM(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_RegisterCMMW(jitter):
+    mscms_RegisterCMM(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_SetStandardColorSpaceProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL SetStandardColorSpaceProfile(PCTSTR pMachineName, [LCSCSTYPE_DWORD] dwProfileID, PCSTR pProfilename)
     """"
@@ -335,7 +401,13 @@ def mscms_SetStandardColorSpaceProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_UninstallColorProfile(jitter):
+def mscms_SetStandardColorSpaceProfileA(jitter):
+    mscms_SetStandardColorSpaceProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_SetStandardColorSpaceProfileW(jitter):
+    mscms_SetStandardColorSpaceProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_UninstallColorProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL UninstallColorProfile(PCTSTR pMachineName, PCTSTR pProfileName, BOOL bDelete)
     """"
@@ -343,7 +415,13 @@ def mscms_UninstallColorProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_UnregisterCMM(jitter):
+def mscms_UninstallColorProfileA(jitter):
+    mscms_UninstallColorProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_UninstallColorProfileW(jitter):
+    mscms_UninstallColorProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_UnregisterCMM(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL UnregisterCMM(PCTSTR pMachineName, DWORD cmmID)
     """"
@@ -351,13 +429,25 @@ def mscms_UnregisterCMM(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_WcsAssociateColorProfileWithDevice(jitter):
+def mscms_UnregisterCMMA(jitter):
+    mscms_UnregisterCMM(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_UnregisterCMMW(jitter):
+    mscms_UnregisterCMM(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def mscms_WcsAssociateColorProfileWithDevice(jitter, get_str, set_str):
     """"
     [Mscms.dll] BOOL WcsAssociateColorProfileWithDevice(WCS_PROFILE_MANAGEMENT_SCOPE profileManagementScope, PCWSTR pProfileName, PCWSTR pDeviceName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["profileManagementScope", "pProfileName", "pDeviceName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mscms_WcsAssociateColorProfileWithDeviceA(jitter):
+    mscms_WcsAssociateColorProfileWithDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_WcsAssociateColorProfileWithDeviceW(jitter):
+    mscms_WcsAssociateColorProfileWithDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mscms_WcsCreateIccProfile(jitter):
     """"
@@ -423,13 +513,19 @@ def mscms_WcsGetUsePerUserProfiles(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def mscms_WcsOpenColorProfile(jitter):
+def mscms_WcsOpenColorProfile(jitter, get_str, set_str):
     """"
     [Mscms.dll] HPROFILE WcsOpenColorProfile(PPROFILE pCDMPProfile, PPROFILE pCAMPProfile, PPROFILE pGMMPProfile, [PROFILE_ACCESS] dwDesiredAccess, [FILE_SHARE_MODE] dwShareMode, [CreationDisposition] dwCreationMode, [WCS_OPEN_PROFILE_FLAG] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pCDMPProfile", "pCAMPProfile", "pGMMPProfile", "dwDesiredAccess", "dwShareMode", "dwCreationMode", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def mscms_WcsOpenColorProfileA(jitter):
+    mscms_WcsOpenColorProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def mscms_WcsOpenColorProfileW(jitter):
+    mscms_WcsOpenColorProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def mscms_WcsSetDefaultColorProfile(jitter):
     """"

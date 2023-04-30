@@ -1,11 +1,17 @@
 
-def dbghelp_EnumDirTree(jitter):
+def dbghelp_EnumDirTree(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL EnumDirTree([ProcessHandle] hProcess, PCTSTR RootPath, PCTSTR InputPathName, PTSTR OutputPathBuffer, PENUMDIRTREE_CALLBACK Callback, PVOID CallbackData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "RootPath", "InputPathName", "OutputPathBuffer", "Callback", "CallbackData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_EnumDirTreeA(jitter):
+    dbghelp_EnumDirTree(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_EnumDirTreeW(jitter):
+    dbghelp_EnumDirTree(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_ImagehlpApiVersion(jitter):
     """"
@@ -31,13 +37,19 @@ def dbghelp_MakeSureDirectoryPathExists(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SearchTreeForFile(jitter):
+def dbghelp_SearchTreeForFile(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SearchTreeForFile(PCTSTR RootPath, PCTSTR InputPathName, PTSTR OutputPathBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["RootPath", "InputPathName", "OutputPathBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SearchTreeForFileA(jitter):
+    dbghelp_SearchTreeForFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SearchTreeForFileW(jitter):
+    dbghelp_SearchTreeForFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_EnumerateLoadedModules(jitter):
     """"
@@ -63,13 +75,19 @@ def dbghelp_EnumerateLoadedModulesW64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_EnumerateLoadedModulesEx(jitter):
+def dbghelp_EnumerateLoadedModulesEx(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL EnumerateLoadedModulesEx([ProcessHandle] hProcess, PENUMLOADED_MODULES_CALLBACK64 EnumLoadedModulesCallback, PVOID UserContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "EnumLoadedModulesCallback", "UserContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_EnumerateLoadedModulesExA(jitter):
+    dbghelp_EnumerateLoadedModulesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_EnumerateLoadedModulesExW(jitter):
+    dbghelp_EnumerateLoadedModulesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_FindDebugInfoFile(jitter):
     """"
@@ -79,13 +97,19 @@ def dbghelp_FindDebugInfoFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_FindDebugInfoFileEx(jitter):
+def dbghelp_FindDebugInfoFileEx(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] HANDLE FindDebugInfoFileEx(PCTSTR FileName, PCTSTR SymbolPath, PTSTR DebugFilePath, PFIND_DEBUG_FILE_CALLBACK Callback, PVOID CallerData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "SymbolPath", "DebugFilePath", "Callback", "CallerData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_FindDebugInfoFileExA(jitter):
+    dbghelp_FindDebugInfoFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_FindDebugInfoFileExW(jitter):
+    dbghelp_FindDebugInfoFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_FindExecutableImage(jitter):
     """"
@@ -95,13 +119,19 @@ def dbghelp_FindExecutableImage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_FindExecutableImageEx(jitter):
+def dbghelp_FindExecutableImageEx(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] HANDLE FindExecutableImageEx(PCTSTR FileName, PCTSTR SymbolPath, PTSTR ImageFilePath, PFIND_EXE_FILE_CALLBACK Callback, PVOID CallerData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "SymbolPath", "ImageFilePath", "Callback", "CallerData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_FindExecutableImageExA(jitter):
+    dbghelp_FindExecutableImageEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_FindExecutableImageExW(jitter):
+    dbghelp_FindExecutableImageEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_StackWalk(jitter):
     """"
@@ -127,13 +157,19 @@ def dbghelp_SymSetParentWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_UnDecorateSymbolName(jitter):
+def dbghelp_UnDecorateSymbolName(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] DWORD UnDecorateSymbolName(PCTSTR DecoratedName, PTSTR UnDecoratedName, DWORD UndecoratedLength, [UNDNAME_FLAGS] Flags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DecoratedName", "UnDecoratedName", "UndecoratedLength", "Flags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_UnDecorateSymbolNameA(jitter):
+    dbghelp_UnDecorateSymbolName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_UnDecorateSymbolNameW(jitter):
+    dbghelp_UnDecorateSymbolName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_GetTimestampForLoadedLibrary(jitter):
     """"
@@ -191,7 +227,7 @@ def dbghelp_SymAddSourceStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymAddSourceStream(jitter):
+def dbghelp_SymAddSourceStream(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymAddSourceStream([ProcessHandle] hProcess, ULONG64 Base, PCTSTR StreamFile, PBYTE Buffer, size_t Size)
     """"
@@ -199,13 +235,25 @@ def dbghelp_SymAddSourceStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymAddSymbol(jitter):
+def dbghelp_SymAddSourceStreamA(jitter):
+    dbghelp_SymAddSourceStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymAddSourceStreamW(jitter):
+    dbghelp_SymAddSourceStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymAddSymbol(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymAddSymbol([ProcessHandle] hProcess, ULONG64 BaseOfDll, PCTSTR Name, DWORD64 Address, DWORD Size, DWORD Flags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "BaseOfDll", "Name", "Address", "Size", "Flags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymAddSymbolA(jitter):
+    dbghelp_SymAddSymbol(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymAddSymbolW(jitter):
+    dbghelp_SymAddSymbol(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymCleanup(jitter):
     """"
@@ -215,7 +263,7 @@ def dbghelp_SymCleanup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymDeleteSymbol(jitter):
+def dbghelp_SymDeleteSymbol(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymDeleteSymbol([ProcessHandle] hProcess, ULONG64 BaseOfDll, PCTSTR Name, DWORD64 Address, DWORD Flags)
     """"
@@ -223,13 +271,25 @@ def dbghelp_SymDeleteSymbol(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumLines(jitter):
+def dbghelp_SymDeleteSymbolA(jitter):
+    dbghelp_SymDeleteSymbol(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymDeleteSymbolW(jitter):
+    dbghelp_SymDeleteSymbol(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumLines(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumLines([ProcessHandle] hProcess, ULONG64 Base, PCTSTR Obj, PCTSTR File, PSYM_ENUMLINES_CALLBACK EnumLinesCallback, PVOID UserContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Base", "Obj", "File", "EnumLinesCallback", "UserContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymEnumLinesA(jitter):
+    dbghelp_SymEnumLines(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumLinesW(jitter):
+    dbghelp_SymEnumLines(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymEnumProcesses(jitter):
     """"
@@ -239,7 +299,7 @@ def dbghelp_SymEnumProcesses(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumSourceFiles(jitter):
+def dbghelp_SymEnumSourceFiles(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumSourceFiles([ProcessHandle] hProcess, ULONG64 ModBase, PCTSTR Mask, PSYM_ENUMSOURCEFILES_CALLBACK EnumSymbolsCallback, PVOID UserContext)
     """"
@@ -247,7 +307,13 @@ def dbghelp_SymEnumSourceFiles(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumSourceFileTokens(jitter):
+def dbghelp_SymEnumSourceFilesA(jitter):
+    dbghelp_SymEnumSourceFiles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumSourceFilesW(jitter):
+    dbghelp_SymEnumSourceFiles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumSourceFileTokens(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumSourceFileTokens([ProcessHandle] hProcess, ULONG64 Base, PENUMSOURCEFILETOKENSCALLBACK Callback)
     """"
@@ -255,7 +321,13 @@ def dbghelp_SymEnumSourceFileTokens(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumSourceLines(jitter):
+def dbghelp_SymEnumSourceFileTokensA(jitter):
+    dbghelp_SymEnumSourceFileTokens(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumSourceFileTokensW(jitter):
+    dbghelp_SymEnumSourceFileTokens(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumSourceLines(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumSourceLines([ProcessHandle] hProcess, ULONG64 Base, PCTSTR Obj, PCTSTR File, DWORD Line, [ESLFLAG] Flags, PSYM_ENUMLINES_CALLBACK EnumLinesCallback, PVOID UserContext)
     """"
@@ -263,7 +335,13 @@ def dbghelp_SymEnumSourceLines(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumSymbols(jitter):
+def dbghelp_SymEnumSourceLinesA(jitter):
+    dbghelp_SymEnumSourceLines(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumSourceLinesW(jitter):
+    dbghelp_SymEnumSourceLines(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumSymbols(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumSymbols([ProcessHandle] hProcess, ULONG64 BaseOfDll, PCTSTR Mask, PSYM_ENUMERATESYMBOLS_CALLBACK EnumSymbolsCallback, const PVOID UserContext)
     """"
@@ -271,7 +349,13 @@ def dbghelp_SymEnumSymbols(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumSymbolsForAddr(jitter):
+def dbghelp_SymEnumSymbolsA(jitter):
+    dbghelp_SymEnumSymbols(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumSymbolsW(jitter):
+    dbghelp_SymEnumSymbols(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumSymbolsForAddr(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumSymbolsForAddr([ProcessHandle] hProcess, DWORD64 Address, PSYM_ENUMERATESYMBOLS_CALLBACK EnumSymbolsCallback, PVOID UserContext)
     """"
@@ -279,7 +363,13 @@ def dbghelp_SymEnumSymbolsForAddr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumTypes(jitter):
+def dbghelp_SymEnumSymbolsForAddrA(jitter):
+    dbghelp_SymEnumSymbolsForAddr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumSymbolsForAddrW(jitter):
+    dbghelp_SymEnumSymbolsForAddr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumTypes(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumTypes([ProcessHandle] hProcess, ULONG64 BaseOfDll, PSYM_ENUMERATESYMBOLS_CALLBACK EnumSymbolsCallback, PVOID UserContext)
     """"
@@ -287,7 +377,13 @@ def dbghelp_SymEnumTypes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumTypesByName(jitter):
+def dbghelp_SymEnumTypesA(jitter):
+    dbghelp_SymEnumTypes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumTypesW(jitter):
+    dbghelp_SymEnumTypes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymEnumTypesByName(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumTypesByName([ProcessHandle] hProcess, ULONG64 BaseOfDll, PCSTR mask, PSYM_ENUMERATESYMBOLS_CALLBACK EnumSymbolsCallback, PVOID UserContext)
     """"
@@ -295,7 +391,13 @@ def dbghelp_SymEnumTypesByName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFindDebugInfoFile(jitter):
+def dbghelp_SymEnumTypesByNameA(jitter):
+    dbghelp_SymEnumTypesByName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumTypesByNameW(jitter):
+    dbghelp_SymEnumTypesByName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFindDebugInfoFile(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] HANDLE SymFindDebugInfoFile([ProcessHandle] hProcess, PCTSTR FileName, PTSTR DebugFilePath, PFIND_DEBUG_FILE_CALLBACK Callback, PVOID CallerData)
     """"
@@ -303,7 +405,13 @@ def dbghelp_SymFindDebugInfoFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFindExecutableImage(jitter):
+def dbghelp_SymFindDebugInfoFileA(jitter):
+    dbghelp_SymFindDebugInfoFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFindDebugInfoFileW(jitter):
+    dbghelp_SymFindDebugInfoFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFindExecutableImage(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] HANDLE SymFindExecutableImage([ProcessHandle] hProcess, PCTSTR FileName, PTSTR ImageFilePath, PFIND_EXE_FILE_CALLBACK Callback, PVOID CallerData)
     """"
@@ -311,7 +419,13 @@ def dbghelp_SymFindExecutableImage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFindFileInPath(jitter):
+def dbghelp_SymFindExecutableImageA(jitter):
+    dbghelp_SymFindExecutableImage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFindExecutableImageW(jitter):
+    dbghelp_SymFindExecutableImage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFindFileInPath(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymFindFileInPath([ProcessHandle] hProcess, PCTSTR SearchPath, PCTSTR FileName, PVOID id, DWORD two, DWORD three, [SSRVOPT] flags, PTSTR FilePath, PFINDFILEINPATHCALLBACK callback, PVOID context)
     """"
@@ -319,7 +433,13 @@ def dbghelp_SymFindFileInPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFromAddr(jitter):
+def dbghelp_SymFindFileInPathA(jitter):
+    dbghelp_SymFindFileInPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFindFileInPathW(jitter):
+    dbghelp_SymFindFileInPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFromAddr(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymFromAddr([ProcessHandle] hProcess, DWORD64 Address, PDWORD64 Displacement, PSYMBOL_INFO Symbol)
     """"
@@ -327,7 +447,13 @@ def dbghelp_SymFromAddr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFromIndex(jitter):
+def dbghelp_SymFromAddrA(jitter):
+    dbghelp_SymFromAddr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFromAddrW(jitter):
+    dbghelp_SymFromAddr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFromIndex(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymFromIndex([ProcessHandle] hProcess, ULONG64 BaseOfDll, DWORD Index, PSYMBOL_INFO Symbol)
     """"
@@ -335,7 +461,13 @@ def dbghelp_SymFromIndex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFromName(jitter):
+def dbghelp_SymFromIndexA(jitter):
+    dbghelp_SymFromIndex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFromIndexW(jitter):
+    dbghelp_SymFromIndex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFromName(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymFromName([ProcessHandle] hProcess, PCTSTR Name, PSYMBOL_INFO Symbol)
     """"
@@ -343,13 +475,25 @@ def dbghelp_SymFromName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymFromToken(jitter):
+def dbghelp_SymFromNameA(jitter):
+    dbghelp_SymFromName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFromNameW(jitter):
+    dbghelp_SymFromName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymFromToken(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymFromToken([ProcessHandle] hProcess, DWORD64 Base, DWORD Token, PSYMBOL_INFO Symbol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Base", "Token", "Symbol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymFromTokenA(jitter):
+    dbghelp_SymFromToken(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymFromTokenW(jitter):
+    dbghelp_SymFromToken(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymFunctionTableAccess(jitter):
     """"
@@ -375,7 +519,7 @@ def dbghelp_SymGetFileLineOffsets64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetHomeDirectory(jitter):
+def dbghelp_SymGetHomeDirectory(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] PTCHAR SymGetHomeDirectory(DWORD type, PTSTR dir, size_t size)
     """"
@@ -383,13 +527,25 @@ def dbghelp_SymGetHomeDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetLineFromAddr(jitter):
+def dbghelp_SymGetHomeDirectoryA(jitter):
+    dbghelp_SymGetHomeDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetHomeDirectoryW(jitter):
+    dbghelp_SymGetHomeDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetLineFromAddr(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetLineFromAddr([ProcessHandle] hProcess, DWORD dwAddr, PDWORD pdwDisplacement, PIMAGEHLP_LINE Line)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "dwAddr", "pdwDisplacement", "Line"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetLineFromAddrA(jitter):
+    dbghelp_SymGetLineFromAddr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetLineFromAddrW(jitter):
+    dbghelp_SymGetLineFromAddr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetLineFromAddr64(jitter):
     """"
@@ -431,13 +587,19 @@ def dbghelp_SymGetLineFromNameW64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetLineNext(jitter):
+def dbghelp_SymGetLineNext(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetLineNext([ProcessHandle] hProcess, PIMAGEHLP_LINE Line)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Line"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetLineNextA(jitter):
+    dbghelp_SymGetLineNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetLineNextW(jitter):
+    dbghelp_SymGetLineNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetLineNext64(jitter):
     """"
@@ -455,13 +617,19 @@ def dbghelp_SymGetLineNextW64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetLinePrev(jitter):
+def dbghelp_SymGetLinePrev(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetLinePrev([ProcessHandle] hProcess, PIMAGEHLP_LINE Line)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Line"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetLinePrevA(jitter):
+    dbghelp_SymGetLinePrev(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetLinePrevW(jitter):
+    dbghelp_SymGetLinePrev(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetLinePrev64(jitter):
     """"
@@ -495,13 +663,19 @@ def dbghelp_SymGetModuleBase64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetModuleInfo(jitter):
+def dbghelp_SymGetModuleInfo(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetModuleInfo([ProcessHandle] hProcess, DWORD dwAddr, PIMAGEHLP_MODULE ModuleInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "dwAddr", "ModuleInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetModuleInfoA(jitter):
+    dbghelp_SymGetModuleInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetModuleInfoW(jitter):
+    dbghelp_SymGetModuleInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetModuleInfo64(jitter):
     """"
@@ -535,7 +709,7 @@ def dbghelp_SymGetOptions(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetScope(jitter):
+def dbghelp_SymGetScope(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetScope([ProcessHandle] hProcess, ULONG64 BaseOfDll, DWORD Index, PSYMBOL_INFO Symbol)
     """"
@@ -543,7 +717,13 @@ def dbghelp_SymGetScope(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSearchPath(jitter):
+def dbghelp_SymGetScopeA(jitter):
+    dbghelp_SymGetScope(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetScopeW(jitter):
+    dbghelp_SymGetScope(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetSearchPath(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSearchPath([ProcessHandle] hProcess, PTSTR SearchPath, DWORD SearchPathLength)
     """"
@@ -551,7 +731,13 @@ def dbghelp_SymGetSearchPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSymbolFile(jitter):
+def dbghelp_SymGetSearchPathA(jitter):
+    dbghelp_SymGetSearchPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSearchPathW(jitter):
+    dbghelp_SymGetSearchPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetSymbolFile(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSymbolFile([ProcessHandle] hProcess, PCTSTR SymPath, PCTSTR ImageFile, DWORD Type, PTSTR SymbolFile, size_t cSymbolFile, PTSTR DbgFile, size_t cDbgFile)
     """"
@@ -559,13 +745,25 @@ def dbghelp_SymGetSymbolFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetTypeFromName(jitter):
+def dbghelp_SymGetSymbolFileA(jitter):
+    dbghelp_SymGetSymbolFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSymbolFileW(jitter):
+    dbghelp_SymGetSymbolFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetTypeFromName(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetTypeFromName([ProcessHandle] hProcess, ULONG64 BaseOfDll, PCTSTR Name, PSYMBOL_INFO Symbol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "BaseOfDll", "Name", "Symbol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetTypeFromNameA(jitter):
+    dbghelp_SymGetTypeFromName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetTypeFromNameW(jitter):
+    dbghelp_SymGetTypeFromName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetTypeInfo(jitter):
     """"
@@ -583,13 +781,19 @@ def dbghelp_SymGetTypeInfoEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymInitialize(jitter):
+def dbghelp_SymInitialize(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymInitialize([ProcessHandle] hProcess, PCTSTR UserSearchPath, BOOL fInvadeProcess)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "UserSearchPath", "fInvadeProcess"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymInitializeA(jitter):
+    dbghelp_SymInitialize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymInitializeW(jitter):
+    dbghelp_SymInitialize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymLoadModule(jitter):
     """"
@@ -607,7 +811,7 @@ def dbghelp_SymLoadModule64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymLoadModuleEx(jitter):
+def dbghelp_SymLoadModuleEx(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] DWORD64 SymLoadModuleEx([ProcessHandle] hProcess, HANDLE hFile, PCTSTR ImageName, PCTSTR ModuleName, DWORD64 BaseOfDll, DWORD DllSize, PMODLOAD_DATA Data, DWORD Flags)
     """"
@@ -615,13 +819,25 @@ def dbghelp_SymLoadModuleEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymMatchFileName(jitter):
+def dbghelp_SymLoadModuleExA(jitter):
+    dbghelp_SymLoadModuleEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymLoadModuleExW(jitter):
+    dbghelp_SymLoadModuleEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymMatchFileName(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymMatchFileName(PCTSTR FileName, PCTSTR Match, PTSTR* FileNameStop, PTSTR* MatchStop)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "Match", "FileNameStop", "MatchStop"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymMatchFileNameA(jitter):
+    dbghelp_SymMatchFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymMatchFileNameW(jitter):
+    dbghelp_SymMatchFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymMatchString(jitter):
     """"
@@ -631,7 +847,7 @@ def dbghelp_SymMatchString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymMatchString(jitter):
+def dbghelp_SymMatchString(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymMatchString(PCTSTR string, PCTSTR expression, BOOL fCase)
     """"
@@ -639,7 +855,13 @@ def dbghelp_SymMatchString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymNext(jitter):
+def dbghelp_SymMatchStringA(jitter):
+    dbghelp_SymMatchString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymMatchStringW(jitter):
+    dbghelp_SymMatchString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymNext(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymNext([ProcessHandle] hProcess, PSYMBOL_INFO Symbol)
     """"
@@ -647,13 +869,25 @@ def dbghelp_SymNext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymPrev(jitter):
+def dbghelp_SymNextA(jitter):
+    dbghelp_SymNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymNextW(jitter):
+    dbghelp_SymNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymPrev(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymPrev([ProcessHandle] hProcess, PSYMBOL_INFO Symbol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Symbol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymPrevA(jitter):
+    dbghelp_SymPrev(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymPrevW(jitter):
+    dbghelp_SymPrev(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymRefreshModuleList(jitter):
     """"
@@ -703,13 +937,19 @@ def dbghelp_SymRegisterFunctionEntryCallback64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSearch(jitter):
+def dbghelp_SymSearch(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymSearch([ProcessHandle] hProcess, ULONG64 BaseOfDll, DWORD Index, DWORD SymTag, PCTSTR Mask, DWORD64 Address, PSYM_ENUMERATESYMBOLS_CALLBACK EnumSymbolsCallback, PVOID UserContext, [SYMSEARCH_FLAGS] Options)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "BaseOfDll", "Index", "SymTag", "Mask", "Address", "EnumSymbolsCallback", "UserContext", "Options"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymSearchA(jitter):
+    dbghelp_SymSearch(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSearchW(jitter):
+    dbghelp_SymSearch(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymSetContext(jitter):
     """"
@@ -719,13 +959,19 @@ def dbghelp_SymSetContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSetHomeDirectory(jitter):
+def dbghelp_SymSetHomeDirectory(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] PTCHAR SymSetHomeDirectory([ProcessHandle] hProcess, PCTSTR dir)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "dir"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymSetHomeDirectoryA(jitter):
+    dbghelp_SymSetHomeDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSetHomeDirectoryW(jitter):
+    dbghelp_SymSetHomeDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymSetOptions(jitter):
     """"
@@ -775,13 +1021,19 @@ def dbghelp_SymEnumerateModulesW64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSetSearchPath(jitter):
+def dbghelp_SymSetSearchPath(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymSetSearchPath([ProcessHandle] hProcess, PCTSTR SearchPath)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "SearchPath"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymSetSearchPathA(jitter):
+    dbghelp_SymSetSearchPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSetSearchPathW(jitter):
+    dbghelp_SymSetSearchPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymUnDName(jitter):
     """"
@@ -815,7 +1067,7 @@ def dbghelp_SymUnloadModule64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvDeltaName(jitter):
+def dbghelp_SymSrvDeltaName(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] PCTSTR SymSrvDeltaName([ProcessHandle] hProcess, PCTSTR SymPath, PCTSTR Type, PCTSTR File1, PCTSTR File2)
     """"
@@ -823,7 +1075,13 @@ def dbghelp_SymSrvDeltaName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvGetFileIndexes(jitter):
+def dbghelp_SymSrvDeltaNameA(jitter):
+    dbghelp_SymSrvDeltaName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvDeltaNameW(jitter):
+    dbghelp_SymSrvDeltaName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvGetFileIndexes(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymSrvGetFileIndexes(PCTSTR File, GUID* Id, DWORD* Val1, DWORD* Val2, DWORD Flags)
     """"
@@ -831,7 +1089,13 @@ def dbghelp_SymSrvGetFileIndexes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvGetFileIndexInfo(jitter):
+def dbghelp_SymSrvGetFileIndexesA(jitter):
+    dbghelp_SymSrvGetFileIndexes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvGetFileIndexesW(jitter):
+    dbghelp_SymSrvGetFileIndexes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvGetFileIndexInfo(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymSrvGetFileIndexInfo(PCTSTR File, PSYMSRV_INDEX_INFO Info, DWORD Flags)
     """"
@@ -839,7 +1103,13 @@ def dbghelp_SymSrvGetFileIndexInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvGetFileIndexString(jitter):
+def dbghelp_SymSrvGetFileIndexInfoA(jitter):
+    dbghelp_SymSrvGetFileIndexInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvGetFileIndexInfoW(jitter):
+    dbghelp_SymSrvGetFileIndexInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvGetFileIndexString(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymSrvGetFileIndexString([ProcessHandle] hProcess, PCTSTR SrvPath, PCTSTR File, PTSTR Index, size_t Size, DWORD Flags)
     """"
@@ -847,7 +1117,13 @@ def dbghelp_SymSrvGetFileIndexString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvGetSupplement(jitter):
+def dbghelp_SymSrvGetFileIndexStringA(jitter):
+    dbghelp_SymSrvGetFileIndexString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvGetFileIndexStringW(jitter):
+    dbghelp_SymSrvGetFileIndexString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvGetSupplement(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] PCTSTR SymSrvGetSupplement([ProcessHandle] hProcess, PCTSTR SymPath, PCTSTR Node, PCTSTR File)
     """"
@@ -855,7 +1131,13 @@ def dbghelp_SymSrvGetSupplement(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvIsStore(jitter):
+def dbghelp_SymSrvGetSupplementA(jitter):
+    dbghelp_SymSrvGetSupplement(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvGetSupplementW(jitter):
+    dbghelp_SymSrvGetSupplement(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvIsStore(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymSrvIsStore([ProcessHandle] hProcess, PCTSTR path)
     """"
@@ -863,7 +1145,13 @@ def dbghelp_SymSrvIsStore(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvStoreFile(jitter):
+def dbghelp_SymSrvIsStoreA(jitter):
+    dbghelp_SymSrvIsStore(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvIsStoreW(jitter):
+    dbghelp_SymSrvIsStore(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvStoreFile(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] PCTSTR SymSrvStoreFile([ProcessHandle] hProcess, PCTSTR SrvPath, PCTSTR File, DWORD Flags)
     """"
@@ -871,13 +1159,25 @@ def dbghelp_SymSrvStoreFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymSrvStoreSupplement(jitter):
+def dbghelp_SymSrvStoreFileA(jitter):
+    dbghelp_SymSrvStoreFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvStoreFileW(jitter):
+    dbghelp_SymSrvStoreFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymSrvStoreSupplement(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] PCTSTR SymSrvStoreSupplement([ProcessHandle] hProcess, const PCTSTR SymPath, PCTSTR Node, PCTSTR File, DWORD Flags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "SymPath", "Node", "File", "Flags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymSrvStoreSupplementA(jitter):
+    dbghelp_SymSrvStoreSupplement(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymSrvStoreSupplementW(jitter):
+    dbghelp_SymSrvStoreSupplement(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_MiniDumpReadDumpStream(jitter):
     """"
@@ -895,7 +1195,7 @@ def dbghelp_MiniDumpWriteDump(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSourceFile(jitter):
+def dbghelp_SymGetSourceFile(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSourceFile([ProcessHandle] hProcess, ULONG64 Base, PCTSTR Params, PCTSTR FileSpec, PTSTR FilePath, DWORD Size)
     """"
@@ -903,7 +1203,13 @@ def dbghelp_SymGetSourceFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSourceFileFromToken(jitter):
+def dbghelp_SymGetSourceFileA(jitter):
+    dbghelp_SymGetSourceFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSourceFileW(jitter):
+    dbghelp_SymGetSourceFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetSourceFileFromToken(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSourceFileFromToken([ProcessHandle] hProcess, PVOID Token, PCTSTR Params, PTSTR FilePath, DWORD Size)
     """"
@@ -911,7 +1217,13 @@ def dbghelp_SymGetSourceFileFromToken(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSourceFileToken(jitter):
+def dbghelp_SymGetSourceFileFromTokenA(jitter):
+    dbghelp_SymGetSourceFileFromToken(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSourceFileFromTokenW(jitter):
+    dbghelp_SymGetSourceFileFromToken(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetSourceFileToken(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSourceFileToken([ProcessHandle] hProcess, ULONG64 Base, PCTSTR FileSpec, PVOID* Token, DWORD* Size)
     """"
@@ -919,13 +1231,25 @@ def dbghelp_SymGetSourceFileToken(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSourceVarFromToken(jitter):
+def dbghelp_SymGetSourceFileTokenA(jitter):
+    dbghelp_SymGetSourceFileToken(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSourceFileTokenW(jitter):
+    dbghelp_SymGetSourceFileToken(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def dbghelp_SymGetSourceVarFromToken(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSourceVarFromToken([ProcessHandle] hProcess, PVOID Token, PCTSTR Params, PCTSTR VarName, PTSTR Value, DWORD Size)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Token", "Params", "VarName", "Value", "Size"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetSourceVarFromTokenA(jitter):
+    dbghelp_SymGetSourceVarFromToken(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSourceVarFromTokenW(jitter):
+    dbghelp_SymGetSourceVarFromToken(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_MapDebugInformation(jitter):
     """"
@@ -935,13 +1259,19 @@ def dbghelp_MapDebugInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymEnumerateSymbols(jitter):
+def dbghelp_SymEnumerateSymbols(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymEnumerateSymbols([ProcessHandle] hProcess, ULONG BaseOfDll, PSYM_ENUMSYMBOLS_CALLBACK EnumSymbolsCallback, PVOID UserContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "BaseOfDll", "EnumSymbolsCallback", "UserContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymEnumerateSymbolsA(jitter):
+    dbghelp_SymEnumerateSymbols(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymEnumerateSymbolsW(jitter):
+    dbghelp_SymEnumerateSymbols(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymEnumerateSymbols64(jitter):
     """"
@@ -991,13 +1321,19 @@ def dbghelp_SymGetSymFromName64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSymNext(jitter):
+def dbghelp_SymGetSymNext(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSymNext([ProcessHandle] hProcess, PIMAGEHLP_SYMBOL Symbol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Symbol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetSymNextA(jitter):
+    dbghelp_SymGetSymNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSymNextW(jitter):
+    dbghelp_SymGetSymNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetSymNext64(jitter):
     """"
@@ -1007,13 +1343,19 @@ def dbghelp_SymGetSymNext64(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def dbghelp_SymGetSymPrev(jitter):
+def dbghelp_SymGetSymPrev(jitter, get_str, set_str):
     """"
     [DbgHelp.dll] BOOL SymGetSymPrev([ProcessHandle] hProcess, PIMAGEHLP_SYMBOL Symbol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Symbol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def dbghelp_SymGetSymPrevA(jitter):
+    dbghelp_SymGetSymPrev(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def dbghelp_SymGetSymPrevW(jitter):
+    dbghelp_SymGetSymPrev(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def dbghelp_SymGetSymPrev64(jitter):
     """"

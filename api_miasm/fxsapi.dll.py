@@ -7,7 +7,7 @@ def fxsapi_FaxOpenPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxGetConfiguration(jitter):
+def fxsapi_FaxGetConfiguration(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxGetConfiguration(HANDLE FaxHandle, PFAX_CONFIGURATION* FaxConfig)
     """"
@@ -15,7 +15,13 @@ def fxsapi_FaxGetConfiguration(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSetConfiguration(jitter):
+def fxsapi_FaxGetConfigurationA(jitter):
+    fxsapi_FaxGetConfiguration(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxGetConfigurationW(jitter):
+    fxsapi_FaxGetConfiguration(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSetConfiguration(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSetConfiguration(HANDLE FaxHandle, const FAX_CONFIGURATION* FaxConfig)
     """"
@@ -23,7 +29,13 @@ def fxsapi_FaxSetConfiguration(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSetGlobalRoutingInfo(jitter):
+def fxsapi_FaxSetConfigurationA(jitter):
+    fxsapi_FaxSetConfiguration(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSetConfigurationW(jitter):
+    fxsapi_FaxSetConfiguration(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSetGlobalRoutingInfo(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSetGlobalRoutingInfo(HANDLE FaxHandle, const FAX_GLOBAL_ROUTING_INFO* RoutingInfo)
     """"
@@ -31,7 +43,13 @@ def fxsapi_FaxSetGlobalRoutingInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSetLoggingCategories(jitter):
+def fxsapi_FaxSetGlobalRoutingInfoA(jitter):
+    fxsapi_FaxSetGlobalRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSetGlobalRoutingInfoW(jitter):
+    fxsapi_FaxSetGlobalRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSetLoggingCategories(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSetLoggingCategories(HANDLE FaxHandle, const FAX_LOG_CATEGORY* Categories, DWORD NumberCategories)
     """"
@@ -39,7 +57,13 @@ def fxsapi_FaxSetLoggingCategories(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxGetDeviceStatus(jitter):
+def fxsapi_FaxSetLoggingCategoriesA(jitter):
+    fxsapi_FaxSetLoggingCategories(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSetLoggingCategoriesW(jitter):
+    fxsapi_FaxSetLoggingCategories(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxGetDeviceStatus(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxGetDeviceStatus(HANDLE FaxPortHandle, PFAX_DEVICE_STATUS* DeviceStatus)
     """"
@@ -47,7 +71,13 @@ def fxsapi_FaxGetDeviceStatus(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxGetPort(jitter):
+def fxsapi_FaxGetDeviceStatusA(jitter):
+    fxsapi_FaxGetDeviceStatus(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxGetDeviceStatusW(jitter):
+    fxsapi_FaxGetDeviceStatus(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxGetPort(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxGetPort(HANDLE FaxPortHandle, PFAX_PORT_INFO* PortInfo)
     """"
@@ -55,7 +85,13 @@ def fxsapi_FaxGetPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSetPort(jitter):
+def fxsapi_FaxGetPortA(jitter):
+    fxsapi_FaxGetPort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxGetPortW(jitter):
+    fxsapi_FaxGetPort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSetPort(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSetPort(HANDLE FaxPortHandle, const FAX_PORT_INFO* PortInfo)
     """"
@@ -63,7 +99,13 @@ def fxsapi_FaxSetPort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSendDocumentForBroadcast(jitter):
+def fxsapi_FaxSetPortA(jitter):
+    fxsapi_FaxSetPort(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSetPortW(jitter):
+    fxsapi_FaxSetPort(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSendDocumentForBroadcast(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSendDocumentForBroadcast(HANDLE FaxHandle, LPCTSTR FileName, LPDWORD FaxJobId, PFAX_RECIPIENT_CALLBACK FaxRecipientCallback, LPVOID Context)
     """"
@@ -71,7 +113,13 @@ def fxsapi_FaxSendDocumentForBroadcast(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxPrintCoverPage(jitter):
+def fxsapi_FaxSendDocumentForBroadcastA(jitter):
+    fxsapi_FaxSendDocumentForBroadcast(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSendDocumentForBroadcastW(jitter):
+    fxsapi_FaxSendDocumentForBroadcast(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxPrintCoverPage(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxPrintCoverPage(const FAX_CONTEXT_INFO* FaxContextInfo, const FAX_COVERPAGE_INFO* CoverPageInfo)
     """"
@@ -79,13 +127,25 @@ def fxsapi_FaxPrintCoverPage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxStartPrintJob(jitter):
+def fxsapi_FaxPrintCoverPageA(jitter):
+    fxsapi_FaxPrintCoverPage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxPrintCoverPageW(jitter):
+    fxsapi_FaxPrintCoverPage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxStartPrintJob(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxStartPrintJob(LPCTSTR PrinterName, const FAX_PRINT_INFO* PrintInfo, LPDWORD FaxJobId, PFAX_CONTEXT_INFO FaxContextInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["PrinterName", "PrintInfo", "FaxJobId", "FaxContextInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def fxsapi_FaxStartPrintJobA(jitter):
+    fxsapi_FaxStartPrintJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxStartPrintJobW(jitter):
+    fxsapi_FaxStartPrintJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def fxsapi_FaxAbort(jitter):
     """"
@@ -95,7 +155,7 @@ def fxsapi_FaxAbort(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxEnumJobs(jitter):
+def fxsapi_FaxEnumJobs(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxEnumJobs(HANDLE FaxHandle, PFAX_JOB_ENTRY* JobEntry, LPDWORD JobsReturned)
     """"
@@ -103,7 +163,13 @@ def fxsapi_FaxEnumJobs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxGetJob(jitter):
+def fxsapi_FaxEnumJobsA(jitter):
+    fxsapi_FaxEnumJobs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxEnumJobsW(jitter):
+    fxsapi_FaxEnumJobs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxGetJob(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxGetJob(HANDLE FaxHandle, DWORD JobId, PFAX_JOB_ENTRY* JobEntry)
     """"
@@ -111,13 +177,25 @@ def fxsapi_FaxGetJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSetJob(jitter):
+def fxsapi_FaxGetJobA(jitter):
+    fxsapi_FaxGetJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxGetJobW(jitter):
+    fxsapi_FaxGetJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSetJob(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSetJob(HANDLE FaxHandle, DWORD JobId, DWORD Command, const FAX_JOB_ENTRY* JobEntry)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxHandle", "JobId", "Command", "JobEntry"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def fxsapi_FaxSetJobA(jitter):
+    fxsapi_FaxSetJob(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSetJobW(jitter):
+    fxsapi_FaxSetJob(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def fxsapi_FaxAccessCheck(jitter):
     """"
@@ -127,13 +205,19 @@ def fxsapi_FaxAccessCheck(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxCompleteJobParams(jitter):
+def fxsapi_FaxCompleteJobParams(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxCompleteJobParams(PFAX_JOB_PARAM* JobParams, PFAX_COVERPAGE_INFO* CoverpageInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["JobParams", "CoverpageInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def fxsapi_FaxCompleteJobParamsA(jitter):
+    fxsapi_FaxCompleteJobParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxCompleteJobParamsW(jitter):
+    fxsapi_FaxCompleteJobParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def fxsapi_FaxFreeBuffer(jitter):
     """"
@@ -167,7 +251,7 @@ def fxsapi_FaxClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxConnectFaxServer(jitter):
+def fxsapi_FaxConnectFaxServer(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxConnectFaxServer(LPCTSTR MachineName, LPHANDLE FaxHandle)
     """"
@@ -175,7 +259,13 @@ def fxsapi_FaxConnectFaxServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxEnableRoutingMethod(jitter):
+def fxsapi_FaxConnectFaxServerA(jitter):
+    fxsapi_FaxConnectFaxServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxConnectFaxServerW(jitter):
+    fxsapi_FaxConnectFaxServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxEnableRoutingMethod(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxEnableRoutingMethod(HANDLE FaxPortHandle, LPCTSTR RoutingGuid, BOOL Enabled)
     """"
@@ -183,7 +273,13 @@ def fxsapi_FaxEnableRoutingMethod(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxEnumGlobalRoutingInfo(jitter):
+def fxsapi_FaxEnableRoutingMethodA(jitter):
+    fxsapi_FaxEnableRoutingMethod(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxEnableRoutingMethodW(jitter):
+    fxsapi_FaxEnableRoutingMethod(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxEnumGlobalRoutingInfo(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxEnumGlobalRoutingInfo(HANDLE FaxHandle, PFAX_GLOBAL_ROUTING_INFO* RoutingInfo, LPDWORD MethodsReturned)
     """"
@@ -191,7 +287,13 @@ def fxsapi_FaxEnumGlobalRoutingInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxEnumPorts(jitter):
+def fxsapi_FaxEnumGlobalRoutingInfoA(jitter):
+    fxsapi_FaxEnumGlobalRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxEnumGlobalRoutingInfoW(jitter):
+    fxsapi_FaxEnumGlobalRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxEnumPorts(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxEnumPorts(HANDLE FaxHandle, PFAX_PORT_INFO* PortInfo, LPDWORD PortsReturned)
     """"
@@ -199,7 +301,13 @@ def fxsapi_FaxEnumPorts(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxEnumRoutingMethods(jitter):
+def fxsapi_FaxEnumPortsA(jitter):
+    fxsapi_FaxEnumPorts(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxEnumPortsW(jitter):
+    fxsapi_FaxEnumPorts(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxEnumRoutingMethods(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxEnumRoutingMethods(HANDLE FaxPortHandle, PFAX_ROUTING_METHOD* RoutingMethod, LPDWORD MethodsReturned)
     """"
@@ -207,13 +315,25 @@ def fxsapi_FaxEnumRoutingMethods(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxGetLoggingCategories(jitter):
+def fxsapi_FaxEnumRoutingMethodsA(jitter):
+    fxsapi_FaxEnumRoutingMethods(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxEnumRoutingMethodsW(jitter):
+    fxsapi_FaxEnumRoutingMethods(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxGetLoggingCategories(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxGetLoggingCategories(HANDLE FaxHandle, PFAX_LOG_CATEGORY* Categories, LPDWORD NumberCategories)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxHandle", "Categories", "NumberCategories"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def fxsapi_FaxGetLoggingCategoriesA(jitter):
+    fxsapi_FaxGetLoggingCategories(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxGetLoggingCategoriesW(jitter):
+    fxsapi_FaxGetLoggingCategories(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def fxsapi_FaxGetPageData(jitter):
     """"
@@ -223,13 +343,19 @@ def fxsapi_FaxGetPageData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxGetRoutingInfo(jitter):
+def fxsapi_FaxGetRoutingInfo(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxGetRoutingInfo(HANDLE FaxPortHandle, LPCTSTR RoutingGuid, LPBYTE* RoutingInfoBuffer, LPDWORD RoutingInfoBufferSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxPortHandle", "RoutingGuid", "RoutingInfoBuffer", "RoutingInfoBufferSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def fxsapi_FaxGetRoutingInfoA(jitter):
+    fxsapi_FaxGetRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxGetRoutingInfoW(jitter):
+    fxsapi_FaxGetRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def fxsapi_FaxInitializeEventQueue(jitter):
     """"
@@ -239,7 +365,7 @@ def fxsapi_FaxInitializeEventQueue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSendDocument(jitter):
+def fxsapi_FaxSendDocument(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSendDocument(HANDLE FaxHandle, LPCTSTR FileName, PFAX_JOB_PARAM JobParams, const FAX_COVERPAGE_INFO* CoverpageInfo, LPDWORD FaxJobId)
     """"
@@ -247,10 +373,22 @@ def fxsapi_FaxSendDocument(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def fxsapi_FaxSetRoutingInfo(jitter):
+def fxsapi_FaxSendDocumentA(jitter):
+    fxsapi_FaxSendDocument(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSendDocumentW(jitter):
+    fxsapi_FaxSendDocument(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def fxsapi_FaxSetRoutingInfo(jitter, get_str, set_str):
     """"
     [FxsApi.dll] BOOL FaxSetRoutingInfo(HANDLE FaxPortHandle, LPCTSTR RoutingGuid, const BYTE* RoutingInfoBuffer, DWORD RoutingInfoBufferSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FaxPortHandle", "RoutingGuid", "RoutingInfoBuffer", "RoutingInfoBufferSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def fxsapi_FaxSetRoutingInfoA(jitter):
+    fxsapi_FaxSetRoutingInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def fxsapi_FaxSetRoutingInfoW(jitter):
+    fxsapi_FaxSetRoutingInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

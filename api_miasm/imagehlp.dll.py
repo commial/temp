@@ -127,13 +127,19 @@ def imagehlp_CheckSumMappedFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def imagehlp_MapFileAndCheckSum(jitter):
+def imagehlp_MapFileAndCheckSum(jitter, get_str, set_str):
     """"
     [ImageHlp.dll] DWORD MapFileAndCheckSum(PTSTR Filename, PDWORD HeaderSum, PDWORD CheckSum)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Filename", "HeaderSum", "CheckSum"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def imagehlp_MapFileAndCheckSumA(jitter):
+    imagehlp_MapFileAndCheckSum(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def imagehlp_MapFileAndCheckSumW(jitter):
+    imagehlp_MapFileAndCheckSum(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def imagehlp_ReBaseImage(jitter):
     """"

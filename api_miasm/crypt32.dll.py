@@ -151,13 +151,19 @@ def crypt32_CertOpenStore(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CertOpenSystemStore(jitter):
+def crypt32_CertOpenSystemStore(jitter, get_str, set_str):
     """"
     [Crypt32.dll] HCERTSTORE CertOpenSystemStore(HCRYPTPROV_LEGACY hprov, LPCTSTR szSubsystemProtocol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hprov", "szSubsystemProtocol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def crypt32_CertOpenSystemStoreA(jitter):
+    crypt32_CertOpenSystemStore(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CertOpenSystemStoreW(jitter):
+    crypt32_CertOpenSystemStore(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def crypt32_CertRegisterPhysicalStore(jitter):
     """"
@@ -1431,7 +1437,7 @@ def crypt32_CertAlgIdToOID(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CertGetNameString(jitter):
+def crypt32_CertGetNameString(jitter, get_str, set_str):
     """"
     [Crypt32.dll] DWORD CertGetNameString(PCCERT_CONTEXT pCertContext, [CertNameType] dwType, [CertNameFlags] dwFlags, void* pvTypePara, LPTSTR pszNameString, DWORD cchNameString)
     """"
@@ -1439,13 +1445,25 @@ def crypt32_CertGetNameString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CertNameToStr(jitter):
+def crypt32_CertGetNameStringA(jitter):
+    crypt32_CertGetNameString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CertGetNameStringW(jitter):
+    crypt32_CertGetNameString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def crypt32_CertNameToStr(jitter, get_str, set_str):
     """"
     [Crypt32.dll] DWORD CertNameToStr([CertEncodingType] dwCertEncodingType, PCERT_NAME_BLOB pName, [CertStrType] dwStrType, LPTSTR psz, DWORD csz)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwCertEncodingType", "pName", "dwStrType", "psz", "csz"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def crypt32_CertNameToStrA(jitter):
+    crypt32_CertNameToStr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CertNameToStrW(jitter):
+    crypt32_CertNameToStr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def crypt32_CertOIDToAlgId(jitter):
     """"
@@ -1455,7 +1473,7 @@ def crypt32_CertOIDToAlgId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CertRDNValueToStr(jitter):
+def crypt32_CertRDNValueToStr(jitter, get_str, set_str):
     """"
     [Crypt32.dll] DWORD CertRDNValueToStr(DWORD dwValueType, PCERT_RDN_VALUE_BLOB pValue, LPTSTR psz, DWORD csz)
     """"
@@ -1463,7 +1481,13 @@ def crypt32_CertRDNValueToStr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CertStrToName(jitter):
+def crypt32_CertRDNValueToStrA(jitter):
+    crypt32_CertRDNValueToStr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CertRDNValueToStrW(jitter):
+    crypt32_CertRDNValueToStr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def crypt32_CertStrToName(jitter, get_str, set_str):
     """"
     [Crypt32.dll] BOOL CertStrToName([CertEncodingType] dwCertEncodingType, LPCTSTR pszX500, [CertStrType] dwStrType, void* pvReserved, BYTE* pbEncoded, DWORD* pcbEncoded, LPCTSTR* ppszError)
     """"
@@ -1471,13 +1495,25 @@ def crypt32_CertStrToName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CryptBinaryToString(jitter):
+def crypt32_CertStrToNameA(jitter):
+    crypt32_CertStrToName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CertStrToNameW(jitter):
+    crypt32_CertStrToName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def crypt32_CryptBinaryToString(jitter, get_str, set_str):
     """"
     [Crypt32.dll] BOOL CryptBinaryToString(const BYTE* pbBinary, DWORD cbBinary, [CryptStringFlags] dwFlags, LPTSTR pszString, DWORD* pcchString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pbBinary", "cbBinary", "dwFlags", "pszString", "pcchString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def crypt32_CryptBinaryToStringA(jitter):
+    crypt32_CryptBinaryToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CryptBinaryToStringW(jitter):
+    crypt32_CryptBinaryToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def crypt32_CryptFormatObject(jitter):
     """"
@@ -1487,13 +1523,19 @@ def crypt32_CryptFormatObject(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def crypt32_CryptStringToBinary(jitter):
+def crypt32_CryptStringToBinary(jitter, get_str, set_str):
     """"
     [Crypt32.dll] BOOL CryptStringToBinary(LPCTSTR pszString, DWORD cchString, [CryptStringFlags] dwFlags, BYTE* pbBinary, DWORD* pcbBinary, DWORD* pdwSkip, [CryptStringFlags*] pdwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszString", "cchString", "dwFlags", "pbBinary", "pcbBinary", "pdwSkip", "pdwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def crypt32_CryptStringToBinaryA(jitter):
+    crypt32_CryptStringToBinary(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def crypt32_CryptStringToBinaryW(jitter):
+    crypt32_CryptStringToBinary(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def crypt32_CertAddEnhancedKeyUsageIdentifier(jitter):
     """"

@@ -1,5 +1,5 @@
 
-def pdh_PdhAddCounter(jitter):
+def pdh_PdhAddCounter(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhAddCounter(PDH_HQUERY hQuery, LPCTSTR szFullCounterPath, DWORD_PTR dwUserData, PDH_HCOUNTER* phCounter)
     """"
@@ -7,7 +7,13 @@ def pdh_PdhAddCounter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhAddEnglishCounter(jitter):
+def pdh_PdhAddCounterA(jitter):
+    pdh_PdhAddCounter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhAddCounterW(jitter):
+    pdh_PdhAddCounter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhAddEnglishCounter(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhAddEnglishCounter(PDH_HQUERY hQuery, LPCTSTR szFullCounterPath, DWORD_PTR dwUserData, PDH_HCOUNTER* phCounter)
     """"
@@ -15,7 +21,13 @@ def pdh_PdhAddEnglishCounter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhBindInputDataSource(jitter):
+def pdh_PdhAddEnglishCounterA(jitter):
+    pdh_PdhAddEnglishCounter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhAddEnglishCounterW(jitter):
+    pdh_PdhAddEnglishCounter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhBindInputDataSource(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhBindInputDataSource(PDH_HLOG* phDataSource, LPCTSTR szLogFileNameList)
     """"
@@ -23,7 +35,13 @@ def pdh_PdhBindInputDataSource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhBrowseCounters(jitter):
+def pdh_PdhBindInputDataSourceA(jitter):
+    pdh_PdhBindInputDataSource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhBindInputDataSourceW(jitter):
+    pdh_PdhBindInputDataSource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhBrowseCounters(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhBrowseCounters(PPDH_BROWSE_DLG_CONFIG pBrowseDlgData)
     """"
@@ -31,13 +49,25 @@ def pdh_PdhBrowseCounters(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhBrowseCountersH(jitter):
+def pdh_PdhBrowseCountersA(jitter):
+    pdh_PdhBrowseCounters(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhBrowseCountersW(jitter):
+    pdh_PdhBrowseCounters(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhBrowseCountersH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhBrowseCountersH(PPDH_BROWSE_DLG_CONFIG pBrowseDlgData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pBrowseDlgData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhBrowseCountersHA(jitter):
+    pdh_PdhBrowseCountersH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhBrowseCountersHW(jitter):
+    pdh_PdhBrowseCountersH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhCalculateCounterFromRawValue(jitter):
     """"
@@ -95,7 +125,7 @@ def pdh_PdhComputeCounterStatistics(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhConnectMachine(jitter):
+def pdh_PdhConnectMachine(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhConnectMachine(LPCTSTR szMachineName)
     """"
@@ -103,7 +133,13 @@ def pdh_PdhConnectMachine(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumLogSetNames(jitter):
+def pdh_PdhConnectMachineA(jitter):
+    pdh_PdhConnectMachine(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhConnectMachineW(jitter):
+    pdh_PdhConnectMachine(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumLogSetNames(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumLogSetNames(LPCTSTR szDataSource, LPTSTR mszLogSetNameList, LPDWORD pcchBufferLength)
     """"
@@ -111,7 +147,13 @@ def pdh_PdhEnumLogSetNames(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumMachines(jitter):
+def pdh_PdhEnumLogSetNamesA(jitter):
+    pdh_PdhEnumLogSetNames(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumLogSetNamesW(jitter):
+    pdh_PdhEnumLogSetNames(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumMachines(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumMachines(LPCTSTR szDataSource, LPTSTR mszMachineNameList, LPDWORD pcchBufferLength)
     """"
@@ -119,7 +161,13 @@ def pdh_PdhEnumMachines(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumMachinesH(jitter):
+def pdh_PdhEnumMachinesA(jitter):
+    pdh_PdhEnumMachines(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumMachinesW(jitter):
+    pdh_PdhEnumMachines(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumMachinesH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumMachinesH(PDH_HLOG hDataSource, LPTSTR mszMachineNameList, LPDWORD pcchBufferLength)
     """"
@@ -127,7 +175,13 @@ def pdh_PdhEnumMachinesH(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumObjectItems(jitter):
+def pdh_PdhEnumMachinesHA(jitter):
+    pdh_PdhEnumMachinesH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumMachinesHW(jitter):
+    pdh_PdhEnumMachinesH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumObjectItems(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumObjectItems(LPCTSTR szDataSource, LPCTSTR szMachineName, LPCTSTR szObjectName, LPTSTR mszCounterList, LPDWORD pcchCounterListLength, LPTSTR mszInstanceList, LPDWORD pcchInstanceListLength, [PerfDetailLevel] dwDetailLevel, DWORD dwFlags)
     """"
@@ -135,7 +189,13 @@ def pdh_PdhEnumObjectItems(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumObjectItemsH(jitter):
+def pdh_PdhEnumObjectItemsA(jitter):
+    pdh_PdhEnumObjectItems(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumObjectItemsW(jitter):
+    pdh_PdhEnumObjectItems(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumObjectItemsH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumObjectItemsH(PDH_HLOG hDataSource, LPCTSTR szMachineName, LPCTSTR szObjectName, LPTSTR mszCounterList, LPDWORD pcchCounterListLength, LPTSTR mszInstanceList, LPDWORD pcchInstanceListLength, [PerfDetailLevel] dwDetailLevel, DWORD dwFlags)
     """"
@@ -143,7 +203,13 @@ def pdh_PdhEnumObjectItemsH(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumObjects(jitter):
+def pdh_PdhEnumObjectItemsHA(jitter):
+    pdh_PdhEnumObjectItemsH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumObjectItemsHW(jitter):
+    pdh_PdhEnumObjectItemsH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumObjects(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumObjects(LPCTSTR szDataSource, LPCTSTR szMachineName, LPTSTR mszObjectList, LPDWORD pcchBufferLength, [PerfDetailLevel] dwDetailLevel, BOOL bRefresh)
     """"
@@ -151,7 +217,13 @@ def pdh_PdhEnumObjects(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhEnumObjectsH(jitter):
+def pdh_PdhEnumObjectsA(jitter):
+    pdh_PdhEnumObjects(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumObjectsW(jitter):
+    pdh_PdhEnumObjects(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhEnumObjectsH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhEnumObjectsH(PDH_HLOG hDataSource, LPCTSTR szMachineName, LPTSTR mszObjectList, LPDWORD pcchBufferLength, [PerfDetailLevel] dwDetailLevel, BOOL bRefresh)
     """"
@@ -159,7 +231,13 @@ def pdh_PdhEnumObjectsH(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhExpandCounterPath(jitter):
+def pdh_PdhEnumObjectsHA(jitter):
+    pdh_PdhEnumObjectsH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhEnumObjectsHW(jitter):
+    pdh_PdhEnumObjectsH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhExpandCounterPath(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhExpandCounterPath(LPCTSTR szWildCardPath, LPTSTR mszExpandedPathList, LPDWORD pcchPathListLength)
     """"
@@ -167,7 +245,13 @@ def pdh_PdhExpandCounterPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhExpandWildCardPath(jitter):
+def pdh_PdhExpandCounterPathA(jitter):
+    pdh_PdhExpandCounterPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhExpandCounterPathW(jitter):
+    pdh_PdhExpandCounterPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhExpandWildCardPath(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhExpandWildCardPath(LPCTSTR szDataSource, LPCTSTR szWildCardPath, LPTSTR mszExpandedPathList, LPDWORD pcchPathListLength, [PdhExpandFlags] dwFlags)
     """"
@@ -175,13 +259,25 @@ def pdh_PdhExpandWildCardPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhExpandWildCardPathH(jitter):
+def pdh_PdhExpandWildCardPathA(jitter):
+    pdh_PdhExpandWildCardPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhExpandWildCardPathW(jitter):
+    pdh_PdhExpandWildCardPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhExpandWildCardPathH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhExpandWildCardPathH(PDH_HLOG hDataSource, LPCTSTR szWildCardPath, LPTSTR mszExpandedPathList, LPDWORD pcchPathListLength, [PdhExpandFlags] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDataSource", "szWildCardPath", "mszExpandedPathList", "pcchPathListLength", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhExpandWildCardPathHA(jitter):
+    pdh_PdhExpandWildCardPathH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhExpandWildCardPathHW(jitter):
+    pdh_PdhExpandWildCardPathH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhFormatFromRawValue(jitter):
     """"
@@ -191,13 +287,19 @@ def pdh_PdhFormatFromRawValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetCounterInfo(jitter):
+def pdh_PdhGetCounterInfo(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetCounterInfo(PDH_HCOUNTER hCounter, BOOLEAN bRetrieveExplainText, LPDWORD pdwBufferSize, PPDH_COUNTER_INFO lpBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hCounter", "bRetrieveExplainText", "pdwBufferSize", "lpBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhGetCounterInfoA(jitter):
+    pdh_PdhGetCounterInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetCounterInfoW(jitter):
+    pdh_PdhGetCounterInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhGetCounterTimeBase(jitter):
     """"
@@ -207,13 +309,19 @@ def pdh_PdhGetCounterTimeBase(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetDataSourceTimeRange(jitter):
+def pdh_PdhGetDataSourceTimeRange(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetDataSourceTimeRange(LPCTSTR szDataSource, LPDWORD pdwNumEntries, PPDH_TIME_INFO pInfo, LPDWORD pdwBufferSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szDataSource", "pdwNumEntries", "pInfo", "pdwBufferSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhGetDataSourceTimeRangeA(jitter):
+    pdh_PdhGetDataSourceTimeRange(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetDataSourceTimeRangeW(jitter):
+    pdh_PdhGetDataSourceTimeRange(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhGetDataSourceTimeRangeH(jitter):
     """"
@@ -223,7 +331,7 @@ def pdh_PdhGetDataSourceTimeRangeH(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetDefaultPerfCounter(jitter):
+def pdh_PdhGetDefaultPerfCounter(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetDefaultPerfCounter(LPCTSTR szDataSource, LPCTSTR szMachineName, LPCTSTR szObjectName, LPTSTR szDefaultCounterName, LPDWORD pcchBufferSize)
     """"
@@ -231,7 +339,13 @@ def pdh_PdhGetDefaultPerfCounter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetDefaultPerfCounterH(jitter):
+def pdh_PdhGetDefaultPerfCounterA(jitter):
+    pdh_PdhGetDefaultPerfCounter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfCounterW(jitter):
+    pdh_PdhGetDefaultPerfCounter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfCounterH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetDefaultPerfCounterH(PDH_HLOG hDataSource, LPCTSTR szMachineName, LPCTSTR szObjectName, LPTSTR szDefaultCounterName, LPDWORD pcchBufferSize)
     """"
@@ -239,7 +353,13 @@ def pdh_PdhGetDefaultPerfCounterH(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetDefaultPerfObject(jitter):
+def pdh_PdhGetDefaultPerfCounterHA(jitter):
+    pdh_PdhGetDefaultPerfCounterH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfCounterHW(jitter):
+    pdh_PdhGetDefaultPerfCounterH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfObject(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetDefaultPerfObject(LPCTSTR szDataSource, LPCTSTR szMachineName, LPTSTR szDefaultObjectName, LPDWORD pcchBufferSize)
     """"
@@ -247,13 +367,25 @@ def pdh_PdhGetDefaultPerfObject(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetDefaultPerfObjectH(jitter):
+def pdh_PdhGetDefaultPerfObjectA(jitter):
+    pdh_PdhGetDefaultPerfObject(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfObjectW(jitter):
+    pdh_PdhGetDefaultPerfObject(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfObjectH(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetDefaultPerfObjectH(PDH_HLOG hDataSource, LPCTSTR szMachineName, LPTSTR szDefaultObjectName, LPDWORD pcchBufferSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDataSource", "szMachineName", "szDefaultObjectName", "pcchBufferSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhGetDefaultPerfObjectHA(jitter):
+    pdh_PdhGetDefaultPerfObjectH(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetDefaultPerfObjectHW(jitter):
+    pdh_PdhGetDefaultPerfObjectH(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhGetDllVersion(jitter):
     """"
@@ -263,13 +395,19 @@ def pdh_PdhGetDllVersion(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetFormattedCounterArray(jitter):
+def pdh_PdhGetFormattedCounterArray(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetFormattedCounterArray(PDH_HCOUNTER hCounter, [PdhFormatFlags] dwFormat, LPDWORD lpdwBufferSize, LPDWORD lpdwBufferCount, PPDH_FMT_COUNTERVALUE_ITEM ItemBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hCounter", "dwFormat", "lpdwBufferSize", "lpdwBufferCount", "ItemBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhGetFormattedCounterArrayA(jitter):
+    pdh_PdhGetFormattedCounterArray(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetFormattedCounterArrayW(jitter):
+    pdh_PdhGetFormattedCounterArray(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhGetFormattedCounterValue(jitter):
     """"
@@ -287,13 +425,19 @@ def pdh_PdhGetLogFileSize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhGetRawCounterArray(jitter):
+def pdh_PdhGetRawCounterArray(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhGetRawCounterArray(PDH_HCOUNTER hCounter, LPDWORD lpdwBufferSize, LPDWORD lpdwItemCount, PPDH_RAW_COUNTER_ITEM ItemBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hCounter", "lpdwBufferSize", "lpdwItemCount", "ItemBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhGetRawCounterArrayA(jitter):
+    pdh_PdhGetRawCounterArray(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhGetRawCounterArrayW(jitter):
+    pdh_PdhGetRawCounterArray(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhGetRawCounterValue(jitter):
     """"
@@ -311,7 +455,7 @@ def pdh_PdhIsRealTimeQuery(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhLookupPerfIndexByName(jitter):
+def pdh_PdhLookupPerfIndexByName(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhLookupPerfIndexByName(LPCTSTR szMachineName, LPCTSTR szNameBuffer, LPDWORD pdwIndex)
     """"
@@ -319,7 +463,13 @@ def pdh_PdhLookupPerfIndexByName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhLookupPerfNameByIndex(jitter):
+def pdh_PdhLookupPerfIndexByNameA(jitter):
+    pdh_PdhLookupPerfIndexByName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhLookupPerfIndexByNameW(jitter):
+    pdh_PdhLookupPerfIndexByName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhLookupPerfNameByIndex(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhLookupPerfNameByIndex(LPCTSTR szMachineName, DWORD dwNameIndex, LPTSTR szNameBuffer, LPDWORD pcchNameBufferSize)
     """"
@@ -327,7 +477,13 @@ def pdh_PdhLookupPerfNameByIndex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhMakeCounterPath(jitter):
+def pdh_PdhLookupPerfNameByIndexA(jitter):
+    pdh_PdhLookupPerfNameByIndex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhLookupPerfNameByIndexW(jitter):
+    pdh_PdhLookupPerfNameByIndex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhMakeCounterPath(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhMakeCounterPath(PDH_COUNTER_PATH_ELEMENTS* pCounterPathElements, LPTSTR szFullPathBuffer, LPDWORD pcchBufferSize, [PdhPathFlags] dwFlags)
     """"
@@ -335,7 +491,13 @@ def pdh_PdhMakeCounterPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhOpenLog(jitter):
+def pdh_PdhMakeCounterPathA(jitter):
+    pdh_PdhMakeCounterPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhMakeCounterPathW(jitter):
+    pdh_PdhMakeCounterPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhOpenLog(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhOpenLog(LPCTSTR szLogFileName, [PdhOpenLogFlags] dwAccessFlags, [PDH_LOG_TYPE*] lpdwLogType, PDH_HQUERY hQuery, DWORD dwMaxSize, LPCTSTR szUserCaption, PDH_HLOG* phLog)
     """"
@@ -343,13 +505,25 @@ def pdh_PdhOpenLog(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhOpenQuery(jitter):
+def pdh_PdhOpenLogA(jitter):
+    pdh_PdhOpenLog(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhOpenLogW(jitter):
+    pdh_PdhOpenLog(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhOpenQuery(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhOpenQuery(LPCTSTR szDataSource, DWORD_PTR dwUserData, PDH_HQUERY* phQuery)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szDataSource", "dwUserData", "phQuery"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhOpenQueryA(jitter):
+    pdh_PdhOpenQuery(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhOpenQueryW(jitter):
+    pdh_PdhOpenQuery(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhOpenQueryH(jitter):
     """"
@@ -359,7 +533,7 @@ def pdh_PdhOpenQueryH(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhParseCounterPath(jitter):
+def pdh_PdhParseCounterPath(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhParseCounterPath(LPCTSTR szFullPathBuffer, PDH_COUNTER_PATH_ELEMENTS* pCounterPathElements, LPDWORD pdwBufferSize, DWORD dwFlags)
     """"
@@ -367,13 +541,25 @@ def pdh_PdhParseCounterPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhParseInstanceName(jitter):
+def pdh_PdhParseCounterPathA(jitter):
+    pdh_PdhParseCounterPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhParseCounterPathW(jitter):
+    pdh_PdhParseCounterPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhParseInstanceName(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhParseInstanceName(LPCTSTR szInstanceString, LPTSTR szInstanceName, LPDWORD pcchInstanceNameLength, LPTSTR szParentName, LPDWORD pcchParentNameLength, LPDWORD lpIndex)
     """"
     ret_ad, args = jitter.func_args_stdcall(["szInstanceString", "szInstanceName", "pcchInstanceNameLength", "szParentName", "pcchParentNameLength", "lpIndex"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhParseInstanceNameA(jitter):
+    pdh_PdhParseInstanceName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhParseInstanceNameW(jitter):
+    pdh_PdhParseInstanceName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhReadRawLogRecord(jitter):
     """"
@@ -391,13 +577,19 @@ def pdh_PdhRemoveCounter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhSelectDataSource(jitter):
+def pdh_PdhSelectDataSource(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhSelectDataSource(HWND hWndOwner, DWORD dwFlags, LPTSTR szDataSource, LPDWORD pcchBufferLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWndOwner", "dwFlags", "szDataSource", "pcchBufferLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhSelectDataSourceA(jitter):
+    pdh_PdhSelectDataSource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhSelectDataSourceW(jitter):
+    pdh_PdhSelectDataSource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhSetCounterScaleFactor(jitter):
     """"
@@ -423,13 +615,19 @@ def pdh_PdhSetQueryTimeRange(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhUpdateLog(jitter):
+def pdh_PdhUpdateLog(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhUpdateLog(PDH_HLOG hLog, LPCTSTR szUserString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hLog", "szUserString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhUpdateLogA(jitter):
+    pdh_PdhUpdateLog(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhUpdateLogW(jitter):
+    pdh_PdhUpdateLog(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def pdh_PdhUpdateLogFileCatalog(jitter):
     """"
@@ -439,7 +637,7 @@ def pdh_PdhUpdateLogFileCatalog(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhValidatePath(jitter):
+def pdh_PdhValidatePath(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhValidatePath(LPCTSTR szFullCounterPath)
     """"
@@ -447,10 +645,22 @@ def pdh_PdhValidatePath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def pdh_PdhValidatePathEx(jitter):
+def pdh_PdhValidatePathA(jitter):
+    pdh_PdhValidatePath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhValidatePathW(jitter):
+    pdh_PdhValidatePath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def pdh_PdhValidatePathEx(jitter, get_str, set_str):
     """"
     [Pdh.dll] PDH_STATUS PdhValidatePathEx(PDH_HLOG hDataSource, LPCTSTR szFullPathBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDataSource", "szFullPathBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def pdh_PdhValidatePathExA(jitter):
+    pdh_PdhValidatePathEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def pdh_PdhValidatePathExW(jitter):
+    pdh_PdhValidatePathEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

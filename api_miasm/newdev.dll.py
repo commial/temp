@@ -15,13 +15,19 @@ def newdev_DiInstallDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def newdev_DiInstallDriver(jitter):
+def newdev_DiInstallDriver(jitter, get_str, set_str):
     """"
     [Newdev.dll] BOOL DiInstallDriver(HWND hwndParent, LPCTSTR FullInfPath, DWORD Flags, PBOOL NeedReboot)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "FullInfPath", "Flags", "NeedReboot"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def newdev_DiInstallDriverA(jitter):
+    newdev_DiInstallDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def newdev_DiInstallDriverW(jitter):
+    newdev_DiInstallDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def newdev_DiRollbackDriver(jitter):
     """"
@@ -47,7 +53,7 @@ def newdev_DiUninstallDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def newdev_UpdateDriverForPlugAndPlayDevices(jitter):
+def newdev_UpdateDriverForPlugAndPlayDevices(jitter, get_str, set_str):
     """"
     [Newdev.dll] BOOL UpdateDriverForPlugAndPlayDevices(HWND hwndParent, LPCTSTR HardwareId, LPCTSTR FullInfPath, DWORD InstallFlags, PBOOL bRebootRequired)
     """"
@@ -55,10 +61,22 @@ def newdev_UpdateDriverForPlugAndPlayDevices(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def newdev_InstallSelectedDriver(jitter):
+def newdev_UpdateDriverForPlugAndPlayDevicesA(jitter):
+    newdev_UpdateDriverForPlugAndPlayDevices(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def newdev_UpdateDriverForPlugAndPlayDevicesW(jitter):
+    newdev_UpdateDriverForPlugAndPlayDevices(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def newdev_InstallSelectedDriver(jitter, get_str, set_str):
     """"
     [Newdev.dll] BOOL InstallSelectedDriver(HWND hwndParent, HDEVINFO DeviceInfoSet, LPCTSTR Reserved, BOOL Backup, PDWORD bReboot)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "DeviceInfoSet", "Reserved", "Backup", "bReboot"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def newdev_InstallSelectedDriverA(jitter):
+    newdev_InstallSelectedDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def newdev_InstallSelectedDriverW(jitter):
+    newdev_InstallSelectedDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

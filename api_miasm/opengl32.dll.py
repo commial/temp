@@ -111,7 +111,7 @@ def opengl32_wglSwapLayerBuffers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def opengl32_wglUseFontBitmaps(jitter):
+def opengl32_wglUseFontBitmaps(jitter, get_str, set_str):
     """"
     [Opengl32.dll] BOOL wglUseFontBitmaps(HDC hdc, DWORD first, DWORD count, DWORD listBase)
     """"
@@ -119,10 +119,22 @@ def opengl32_wglUseFontBitmaps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def opengl32_wglUseFontOutlines(jitter):
+def opengl32_wglUseFontBitmapsA(jitter):
+    opengl32_wglUseFontBitmaps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def opengl32_wglUseFontBitmapsW(jitter):
+    opengl32_wglUseFontBitmaps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def opengl32_wglUseFontOutlines(jitter, get_str, set_str):
     """"
     [Opengl32.dll] BOOL wglUseFontOutlines(HDC hdc, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "first", "count", "listBase", "deviation", "extrusion", "format", "lpgmf"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def opengl32_wglUseFontOutlinesA(jitter):
+    opengl32_wglUseFontOutlines(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def opengl32_wglUseFontOutlinesW(jitter):
+    opengl32_wglUseFontOutlines(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

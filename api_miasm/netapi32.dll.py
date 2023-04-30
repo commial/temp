@@ -1,5 +1,5 @@
 
-def netapi32_DsAddressToSiteNames(jitter):
+def netapi32_DsAddressToSiteNames(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsAddressToSiteNames(LPCTSTR ComputerName, DWORD EntryCount, PSOCKET_ADDRESS SocketAddresses, LPTSTR** SiteNames)
     """"
@@ -7,7 +7,13 @@ def netapi32_DsAddressToSiteNames(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsAddressToSiteNamesEx(jitter):
+def netapi32_DsAddressToSiteNamesA(jitter):
+    netapi32_DsAddressToSiteNames(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsAddressToSiteNamesW(jitter):
+    netapi32_DsAddressToSiteNames(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def netapi32_DsAddressToSiteNamesEx(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsAddressToSiteNamesEx(LPCTSTR ComputerName, DWORD EntryCount, PSOCKET_ADDRESS SocketAddresses, LPTSTR** SiteNames, LPTSTR** SubnetNames)
     """"
@@ -15,7 +21,13 @@ def netapi32_DsAddressToSiteNamesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsDeregisterDnsHostRecords(jitter):
+def netapi32_DsAddressToSiteNamesExA(jitter):
+    netapi32_DsAddressToSiteNamesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsAddressToSiteNamesExW(jitter):
+    netapi32_DsAddressToSiteNamesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def netapi32_DsDeregisterDnsHostRecords(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsDeregisterDnsHostRecords(LPTSTR ServerName, LPTSTR DnsDomainName, GUID* DomainGuid, GUID* DsaGuid, LPTSTR DnsHostName)
     """"
@@ -23,13 +35,25 @@ def netapi32_DsDeregisterDnsHostRecords(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsEnumerateDomainTrusts(jitter):
+def netapi32_DsDeregisterDnsHostRecordsA(jitter):
+    netapi32_DsDeregisterDnsHostRecords(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsDeregisterDnsHostRecordsW(jitter):
+    netapi32_DsDeregisterDnsHostRecords(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def netapi32_DsEnumerateDomainTrusts(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsEnumerateDomainTrusts(LPTSTR ServerName, ULONG Flags, PDS_DOMAIN_TRUSTS* Domains, PULONG DomainCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ServerName", "Flags", "Domains", "DomainCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def netapi32_DsEnumerateDomainTrustsA(jitter):
+    netapi32_DsEnumerateDomainTrusts(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsEnumerateDomainTrustsW(jitter):
+    netapi32_DsEnumerateDomainTrusts(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def netapi32_DsGetDcCloseW(jitter):
     """"
@@ -39,7 +63,7 @@ def netapi32_DsGetDcCloseW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsGetDcName(jitter):
+def netapi32_DsGetDcName(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsGetDcName(LPCTSTR ComputerName, LPCTSTR DomainName, GUID* DomainGuid, LPCTSTR SiteName, [DsGetDcNameFlags] Flags, PDOMAIN_CONTROLLER_INFO* DomainControllerInfo)
     """"
@@ -47,7 +71,13 @@ def netapi32_DsGetDcName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsGetDcNext(jitter):
+def netapi32_DsGetDcNameA(jitter):
+    netapi32_DsGetDcName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsGetDcNameW(jitter):
+    netapi32_DsGetDcName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def netapi32_DsGetDcNext(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsGetDcNext(HANDLE GetDcContextHandle, PULONG SockAddressCount, LPSOCKET_ADDRESS* SockAddresses, LPTSTR* DnsHostName)
     """"
@@ -55,7 +85,13 @@ def netapi32_DsGetDcNext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsGetDcOpen(jitter):
+def netapi32_DsGetDcNextA(jitter):
+    netapi32_DsGetDcNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsGetDcNextW(jitter):
+    netapi32_DsGetDcNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def netapi32_DsGetDcOpen(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsGetDcOpen(LPCTSTR DnsName, ULONG OptionFlags, LPCTSTR SiteName, GUID* DomainGuid, LPCTSTR DnsForestName, ULONG DcFlags, PHANDLE RetGetDcContext)
     """"
@@ -63,13 +99,25 @@ def netapi32_DsGetDcOpen(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsGetDcSiteCoverage(jitter):
+def netapi32_DsGetDcOpenA(jitter):
+    netapi32_DsGetDcOpen(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsGetDcOpenW(jitter):
+    netapi32_DsGetDcOpen(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def netapi32_DsGetDcSiteCoverage(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsGetDcSiteCoverage(LPCTSTR ServerName, PULONG EntryCount, LPTSTR** SiteNames)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ServerName", "EntryCount", "SiteNames"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def netapi32_DsGetDcSiteCoverageA(jitter):
+    netapi32_DsGetDcSiteCoverage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsGetDcSiteCoverageW(jitter):
+    netapi32_DsGetDcSiteCoverage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def netapi32_DsGetForestTrustInformationW(jitter):
     """"
@@ -79,13 +127,19 @@ def netapi32_DsGetForestTrustInformationW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsGetSiteName(jitter):
+def netapi32_DsGetSiteName(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsGetSiteName(LPCTSTR ComputerName, LPTSTR* SiteName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ComputerName", "SiteName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def netapi32_DsGetSiteNameA(jitter):
+    netapi32_DsGetSiteName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsGetSiteNameW(jitter):
+    netapi32_DsGetSiteName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def netapi32_DsMergeForestTrustInformationW(jitter):
     """"
@@ -111,13 +165,19 @@ def netapi32_DsRoleGetPrimaryDomainInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def netapi32_DsValidateSubnetName(jitter):
+def netapi32_DsValidateSubnetName(jitter, get_str, set_str):
     """"
     [Netapi32.dll] [ERROR_CODE] DsValidateSubnetName(LPCTSTR SubnetName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["SubnetName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def netapi32_DsValidateSubnetNameA(jitter):
+    netapi32_DsValidateSubnetName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def netapi32_DsValidateSubnetNameW(jitter):
+    netapi32_DsValidateSubnetName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def netapi32_NetAlertRaise(jitter):
     """"

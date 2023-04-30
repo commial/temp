@@ -7,13 +7,19 @@ def wldap32_cldap_open(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_cldap_open(jitter):
+def wldap32_cldap_open(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP* cldap_open(PTSTR HostName, ULONG PortNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["HostName", "PortNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_cldap_openA(jitter):
+    wldap32_cldap_open(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_cldap_openW(jitter):
+    wldap32_cldap_open(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_open(jitter):
     """"
@@ -23,13 +29,19 @@ def wldap32_ldap_open(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_open(jitter):
+def wldap32_ldap_open(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP* ldap_open(PTSTR HostName, ULONG PortNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["HostName", "PortNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_openA(jitter):
+    wldap32_ldap_open(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_openW(jitter):
+    wldap32_ldap_open(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_bind(jitter):
     """"
@@ -39,13 +51,19 @@ def wldap32_ldap_bind(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_bind(jitter):
+def wldap32_ldap_bind(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_bind(LDAP* ld, PTSTR dn, PTCHAR cred, ULONG method)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "cred", "method"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_bindA(jitter):
+    wldap32_ldap_bind(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_bindW(jitter):
+    wldap32_ldap_bind(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_bind_s(jitter):
     """"
@@ -55,13 +73,19 @@ def wldap32_ldap_bind_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_bind_s(jitter):
+def wldap32_ldap_bind_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_bind_s(LDAP* ld, PTSTR dn, PTCHAR cred, ULONG method)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "cred", "method"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_bind_sA(jitter):
+    wldap32_ldap_bind_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_bind_sW(jitter):
+    wldap32_ldap_bind_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_simple_bind(jitter):
     """"
@@ -71,13 +95,19 @@ def wldap32_ldap_simple_bind(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_simple_bind(jitter):
+def wldap32_ldap_simple_bind(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_simple_bind(LDAP* ld, PTSTR dn, PTSTR passwd)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "passwd"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_simple_bindA(jitter):
+    wldap32_ldap_simple_bind(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_simple_bindW(jitter):
+    wldap32_ldap_simple_bind(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_simple_bind_s(jitter):
     """"
@@ -87,7 +117,7 @@ def wldap32_ldap_simple_bind_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_simple_bind_s(jitter):
+def wldap32_ldap_simple_bind_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_simple_bind_s(LDAP* ld, PTSTR dn, PTSTR passwd)
     """"
@@ -95,7 +125,13 @@ def wldap32_ldap_simple_bind_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_sasl_bind(jitter):
+def wldap32_ldap_simple_bind_sA(jitter):
+    wldap32_ldap_simple_bind_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_simple_bind_sW(jitter):
+    wldap32_ldap_simple_bind_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_sasl_bind(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_sasl_bind(LDAP* ExternalHandle, const PCHAR DistName, const PCHAR AuthMechanism, const BERVAL* cred, PLDAPControl* ServerCtrls, PLDAPControl* ClientCtrls, int* MessageNumber)
     """"
@@ -103,13 +139,25 @@ def wldap32_ldap_sasl_bind(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_sasl_bind_s(jitter):
+def wldap32_ldap_sasl_bindA(jitter):
+    wldap32_ldap_sasl_bind(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_sasl_bindW(jitter):
+    wldap32_ldap_sasl_bind(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_sasl_bind_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_sasl_bind_s(LDAP* ExternalHandle, const PCHAR DistName, const PCHAR AuthMechanism, const BERVAL* cred, PLDAPControl* ServerCtrls, PLDAPControl* ClientCtrls, PBERVAL* ServerData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "DistName", "AuthMechanism", "cred", "ServerCtrls", "ClientCtrls", "ServerData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_sasl_bind_sA(jitter):
+    wldap32_ldap_sasl_bind_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_sasl_bind_sW(jitter):
+    wldap32_ldap_sasl_bind_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_connect(jitter):
     """"
@@ -127,13 +175,19 @@ def wldap32_ldap_init(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_init(jitter):
+def wldap32_ldap_init(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP* ldap_init(PTSTR HostName, ULONG PortNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["HostName", "PortNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_initA(jitter):
+    wldap32_ldap_init(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_initW(jitter):
+    wldap32_ldap_init(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_sslinit(jitter):
     """"
@@ -143,7 +197,7 @@ def wldap32_ldap_sslinit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_sslinit(jitter):
+def wldap32_ldap_sslinit(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP* ldap_sslinit(PTSTR HostName, ULONG PortNumber, int secure)
     """"
@@ -151,13 +205,11 @@ def wldap32_ldap_sslinit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_get_option(jitter):
-    """"
-    [Wldap32.dll] LDAP_RETCODE ldap_get_option(LDAP* ld, int option, void* outvalue)
-    """"
-    ret_ad, args = jitter.func_args_stdcall(["ld", "option", "outvalue"])
-    raise RuntimeError('API not implemented')
-    jitter.func_ret_stdcall(ret_ad, ret_value)
+def wldap32_ldap_sslinitA(jitter):
+    wldap32_ldap_sslinit(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_sslinitW(jitter):
+    wldap32_ldap_sslinit(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_get_option(jitter):
     """"
@@ -167,13 +219,19 @@ def wldap32_ldap_get_option(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_set_option(jitter):
+def wldap32_ldap_get_option(jitter, get_str, set_str):
     """"
-    [Wldap32.dll] LDAP_RETCODE ldap_set_option(LDAP* ld, int option, void* invalue)
+    [Wldap32.dll] LDAP_RETCODE ldap_get_option(LDAP* ld, int option, void* outvalue)
     """"
-    ret_ad, args = jitter.func_args_stdcall(["ld", "option", "invalue"])
+    ret_ad, args = jitter.func_args_stdcall(["ld", "option", "outvalue"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_get_optionA(jitter):
+    wldap32_ldap_get_option(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_get_optionW(jitter):
+    wldap32_ldap_get_option(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_set_option(jitter):
     """"
@@ -182,6 +240,20 @@ def wldap32_ldap_set_option(jitter):
     ret_ad, args = jitter.func_args_stdcall(["ld", "option", "invalue"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_set_option(jitter, get_str, set_str):
+    """"
+    [Wldap32.dll] LDAP_RETCODE ldap_set_option(LDAP* ld, int option, void* invalue)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["ld", "option", "invalue"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_set_optionA(jitter):
+    wldap32_ldap_set_option(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_set_optionW(jitter):
+    wldap32_ldap_set_option(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_abandon(jitter):
     """"
@@ -215,13 +287,19 @@ def wldap32_ldap_add(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_add(jitter):
+def wldap32_ldap_add(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_add(LDAP* ld, PTSTR dn, LDAPMod* [] attrs)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "attrs"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_addA(jitter):
+    wldap32_ldap_add(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_addW(jitter):
+    wldap32_ldap_add(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_add_ext(jitter):
     """"
@@ -231,13 +309,19 @@ def wldap32_ldap_add_ext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_add_ext(jitter):
+def wldap32_ldap_add_ext(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_add_ext(LDAP* ld, PTSTR dn, LDAPMod* [] attrs, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "attrs", "ServerControls", "ClientControls", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_add_extA(jitter):
+    wldap32_ldap_add_ext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_add_extW(jitter):
+    wldap32_ldap_add_ext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_add_s(jitter):
     """"
@@ -247,13 +331,19 @@ def wldap32_ldap_add_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_add_s(jitter):
+def wldap32_ldap_add_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_add_s(LDAP* ld, PTSTR dn, LDAPMod* [] attrs)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "attrs"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_add_sA(jitter):
+    wldap32_ldap_add_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_add_sW(jitter):
+    wldap32_ldap_add_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_add_ext_s(jitter):
     """"
@@ -263,13 +353,19 @@ def wldap32_ldap_add_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_add_ext_s(jitter):
+def wldap32_ldap_add_ext_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_add_ext_s(LDAP* ld, PTSTR dn, LDAPMod* [] attrs, PLDAPControl* ServerControls, PLDAPControl* ClientControls)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "attrs", "ServerControls", "ClientControls"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_add_ext_sA(jitter):
+    wldap32_ldap_add_ext_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_add_ext_sW(jitter):
+    wldap32_ldap_add_ext_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_compare(jitter):
     """"
@@ -279,13 +375,19 @@ def wldap32_ldap_compare(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_compare(jitter):
+def wldap32_ldap_compare(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_compare(LDAP* ld, PTSTR dn, PTSTR attr, PTSTR value)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "attr", "value"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_compareA(jitter):
+    wldap32_ldap_compare(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_compareW(jitter):
+    wldap32_ldap_compare(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_compare_ext(jitter):
     """"
@@ -295,13 +397,19 @@ def wldap32_ldap_compare_ext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_compare_ext(jitter):
+def wldap32_ldap_compare_ext(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_compare_ext(LDAP* ld, PTSTR dn, PTSTR Attr, PTSTR Value, struct berval* Data, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "Attr", "Value", "Data", "ServerControls", "ClientControls", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_compare_extA(jitter):
+    wldap32_ldap_compare_ext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_compare_extW(jitter):
+    wldap32_ldap_compare_ext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_compare_s(jitter):
     """"
@@ -311,13 +419,19 @@ def wldap32_ldap_compare_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_compare_s(jitter):
+def wldap32_ldap_compare_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_compare_s(LDAP* ld, PTSTR dn, PTSTR attr, PTSTR value)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "attr", "value"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_compare_sA(jitter):
+    wldap32_ldap_compare_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_compare_sW(jitter):
+    wldap32_ldap_compare_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_compare_ext_s(jitter):
     """"
@@ -327,13 +441,19 @@ def wldap32_ldap_compare_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_compare_ext_s(jitter):
+def wldap32_ldap_compare_ext_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_compare_ext_s(LDAP* ld, PTSTR dn, PTSTR Attr, PTSTR Value, struct berval* Data, PLDAPControl* ServerControls, PLDAPControl* ClientControls)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "Attr", "Value", "Data", "ServerControls", "ClientControls"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_compare_ext_sA(jitter):
+    wldap32_ldap_compare_ext_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_compare_ext_sW(jitter):
+    wldap32_ldap_compare_ext_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_delete(jitter):
     """"
@@ -343,13 +463,19 @@ def wldap32_ldap_delete(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_delete(jitter):
+def wldap32_ldap_delete(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_delete(LDAP* ld, PTSTR dn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_deleteA(jitter):
+    wldap32_ldap_delete(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_deleteW(jitter):
+    wldap32_ldap_delete(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_delete_ext(jitter):
     """"
@@ -359,13 +485,19 @@ def wldap32_ldap_delete_ext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_delete_ext(jitter):
+def wldap32_ldap_delete_ext(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_delete_ext(LDAP* ld, PTSTR dn, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "ServerControls", "ClientControls", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_delete_extA(jitter):
+    wldap32_ldap_delete_ext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_delete_extW(jitter):
+    wldap32_ldap_delete_ext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_delete_s(jitter):
     """"
@@ -375,13 +507,19 @@ def wldap32_ldap_delete_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_delete_s(jitter):
+def wldap32_ldap_delete_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_delete_s(LDAP* ld, PTSTR dn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_delete_sA(jitter):
+    wldap32_ldap_delete_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_delete_sW(jitter):
+    wldap32_ldap_delete_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_delete_ext_s(jitter):
     """"
@@ -391,7 +529,7 @@ def wldap32_ldap_delete_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_delete_ext_s(jitter):
+def wldap32_ldap_delete_ext_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_delete_ext_s(LDAP* ld, PTSTR dn, PLDAPControl* ServerControls, PLDAPControl* ClientControls)
     """"
@@ -399,13 +537,25 @@ def wldap32_ldap_delete_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_extended_operation_s(jitter):
+def wldap32_ldap_delete_ext_sA(jitter):
+    wldap32_ldap_delete_ext_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_delete_ext_sW(jitter):
+    wldap32_ldap_delete_ext_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_extended_operation_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_extended_operation_s(LDAP* ld, PSTR Oid, struct berval* Data, PLDAPControl* ServerControls, PLDAPControl* ClientControls, PCHAR* ReturnedOid, struct berval** ReturnedData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "Oid", "Data", "ServerControls", "ClientControls", "ReturnedOid", "ReturnedData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_extended_operation_sA(jitter):
+    wldap32_ldap_extended_operation_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_extended_operation_sW(jitter):
+    wldap32_ldap_extended_operation_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_extended_operation(jitter):
     """"
@@ -415,13 +565,19 @@ def wldap32_ldap_extended_operation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_extended_operation(jitter):
+def wldap32_ldap_extended_operation(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_extended_operation(LDAP* ld, PTSTR Oid, struct berval* Data, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "Oid", "Data", "ServerControls", "ClientControls", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_extended_operationA(jitter):
+    wldap32_ldap_extended_operation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_extended_operationW(jitter):
+    wldap32_ldap_extended_operation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_close_extended_op(jitter):
     """"
@@ -439,13 +595,19 @@ def wldap32_ldap_modify(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_modify(jitter):
+def wldap32_ldap_modify(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_modify(LDAP* ld, PTSTR dn, LDAPMod* [] mods)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "mods"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_modifyA(jitter):
+    wldap32_ldap_modify(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_modifyW(jitter):
+    wldap32_ldap_modify(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_modify_ext(jitter):
     """"
@@ -455,13 +617,19 @@ def wldap32_ldap_modify_ext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_modify_ext(jitter):
+def wldap32_ldap_modify_ext(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_modify_ext(LDAP* ld, PTSTR dn, LDAPMod* [] mods, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "mods", "ServerControls", "ClientControls", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_modify_extA(jitter):
+    wldap32_ldap_modify_ext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_modify_extW(jitter):
+    wldap32_ldap_modify_ext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_modify_s(jitter):
     """"
@@ -471,13 +639,19 @@ def wldap32_ldap_modify_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_modify_s(jitter):
+def wldap32_ldap_modify_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_modify_s(LDAP* ld, PTSTR dn, LDAPMod* [] mods)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "mods"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_modify_sA(jitter):
+    wldap32_ldap_modify_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_modify_sW(jitter):
+    wldap32_ldap_modify_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_modify_ext_s(jitter):
     """"
@@ -487,7 +661,7 @@ def wldap32_ldap_modify_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_modify_ext_s(jitter):
+def wldap32_ldap_modify_ext_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_modify_ext_s(LDAP* ld, PTSTR dn, LDAPMod* [] mods, PLDAPControl* ServerControls, PLDAPControl* ClientControls)
     """"
@@ -495,13 +669,25 @@ def wldap32_ldap_modify_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_check_filter(jitter):
+def wldap32_ldap_modify_ext_sA(jitter):
+    wldap32_ldap_modify_ext_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_modify_ext_sW(jitter):
+    wldap32_ldap_modify_ext_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_check_filter(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_check_filter(LDAP* ld, PWCHAR SearchFilter)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "SearchFilter"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_check_filterA(jitter):
+    wldap32_ldap_check_filter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_check_filterW(jitter):
+    wldap32_ldap_check_filter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_count_entries(jitter):
     """"
@@ -527,13 +713,19 @@ def wldap32_ldap_count_values(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_count_values(jitter):
+def wldap32_ldap_count_values(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_count_values(PTCHAR* vals)
     """"
     ret_ad, args = jitter.func_args_stdcall(["vals"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_count_valuesA(jitter):
+    wldap32_ldap_count_values(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_count_valuesW(jitter):
+    wldap32_ldap_count_values(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_count_values_len(jitter):
     """"
@@ -551,7 +743,7 @@ def wldap32_ldap_create_page_control(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_create_page_control(jitter):
+def wldap32_ldap_create_page_control(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_create_page_control(PLDAP ExternalHandle, ULONG PageSize, struct berval* Cookie, UCHAR IsCritical, PLDAPControl* Control)
     """"
@@ -559,13 +751,11 @@ def wldap32_ldap_create_page_control(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_create_sort_control(jitter):
-    """"
-    [Wldap32.dll] LDAP_RETCODE ldap_create_sort_control(PLDAP ExternalHandle, PLDAPSortKey* SortKeys, UCHAR IsCritical, PLDAPControl* Control)
-    """"
-    ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "SortKeys", "IsCritical", "Control"])
-    raise RuntimeError('API not implemented')
-    jitter.func_ret_stdcall(ret_ad, ret_value)
+def wldap32_ldap_create_page_controlA(jitter):
+    wldap32_ldap_create_page_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_create_page_controlW(jitter):
+    wldap32_ldap_create_page_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_create_sort_control(jitter):
     """"
@@ -575,7 +765,21 @@ def wldap32_ldap_create_sort_control(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_create_vlv_control(jitter):
+def wldap32_ldap_create_sort_control(jitter, get_str, set_str):
+    """"
+    [Wldap32.dll] LDAP_RETCODE ldap_create_sort_control(PLDAP ExternalHandle, PLDAPSortKey* SortKeys, UCHAR IsCritical, PLDAPControl* Control)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "SortKeys", "IsCritical", "Control"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_create_sort_controlA(jitter):
+    wldap32_ldap_create_sort_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_create_sort_controlW(jitter):
+    wldap32_ldap_create_sort_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_create_vlv_control(jitter, get_str, set_str):
     """"
     [Wldap32.dll] [LDAP_RETCODE_INT] ldap_create_vlv_control(LDAP* ld, LDAPVLVInfo* Vlvinfop, char IsCritical, LDAPControl** ctrlp)
     """"
@@ -583,13 +787,25 @@ def wldap32_ldap_create_vlv_control(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_encode_sort_control(jitter):
+def wldap32_ldap_create_vlv_controlA(jitter):
+    wldap32_ldap_create_vlv_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_create_vlv_controlW(jitter):
+    wldap32_ldap_create_vlv_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_encode_sort_control(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_encode_sort_control(PLDAP ExternalHandle, PLDAPSortKey* SortKeys, PLDAPControl Control, BOOLEAN IsCritical)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "SortKeys", "Control", "IsCritical"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_encode_sort_controlA(jitter):
+    wldap32_ldap_encode_sort_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_encode_sort_controlW(jitter):
+    wldap32_ldap_encode_sort_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_escape_filter_element(jitter):
     """"
@@ -599,13 +815,19 @@ def wldap32_ldap_escape_filter_element(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_escape_filter_element(jitter):
+def wldap32_ldap_escape_filter_element(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_escape_filter_element(PTCHAR sourceFilterElement, ULONG sourceLength, PCHAR destFilterElement, ULONG destLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["sourceFilterElement", "sourceLength", "destFilterElement", "destLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_escape_filter_elementA(jitter):
+    wldap32_ldap_escape_filter_element(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_escape_filter_elementW(jitter):
+    wldap32_ldap_escape_filter_element(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_first_attribute(jitter):
     """"
@@ -615,13 +837,19 @@ def wldap32_ldap_first_attribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_first_attribute(jitter):
+def wldap32_ldap_first_attribute(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR ldap_first_attribute(LDAP* ld, LDAPMessage* entry, BerElement** ptr)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "entry", "ptr"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_first_attributeA(jitter):
+    wldap32_ldap_first_attribute(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_first_attributeW(jitter):
+    wldap32_ldap_first_attribute(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_next_attribute(jitter):
     """"
@@ -631,13 +859,19 @@ def wldap32_ldap_next_attribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_next_attribute(jitter):
+def wldap32_ldap_next_attribute(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR ldap_next_attribute(LDAP* ld, LDAPMessage* entry, BerElement* ptr)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "entry", "ptr"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_next_attributeA(jitter):
+    wldap32_ldap_next_attribute(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_next_attributeW(jitter):
+    wldap32_ldap_next_attribute(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_first_entry(jitter):
     """"
@@ -703,13 +937,19 @@ def wldap32_ldap_get_values(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_get_values(jitter):
+def wldap32_ldap_get_values(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR* ldap_get_values(LDAP* ld, LDAPMessage* entry, PTSTR attr)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "entry", "attr"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_get_valuesA(jitter):
+    wldap32_ldap_get_values(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_get_valuesW(jitter):
+    wldap32_ldap_get_values(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_get_values_len(jitter):
     """"
@@ -719,7 +959,7 @@ def wldap32_ldap_get_values_len(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_get_values_len(jitter):
+def wldap32_ldap_get_values_len(jitter, get_str, set_str):
     """"
     [Wldap32.dll] struct berval** ldap_get_values_len(LDAP* ExternalHandle, LDAPMessage* Message, PTSTR attr)
     """"
@@ -727,7 +967,13 @@ def wldap32_ldap_get_values_len(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_parse_extended_result(jitter):
+def wldap32_ldap_get_values_lenA(jitter):
+    wldap32_ldap_get_values_len(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_get_values_lenW(jitter):
+    wldap32_ldap_get_values_len(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_parse_extended_result(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_parse_extended_result(LDAP* Connection, LDAPMessage* ResultMessage, PCHAR* ResultOID, struct berval** ResultData, BOOLEAN Freeit)
     """"
@@ -735,13 +981,11 @@ def wldap32_ldap_parse_extended_result(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_parse_page_control(jitter):
-    """"
-    [Wldap32.dll] LDAP_RETCODE ldap_parse_page_control(PLDAP ExternalHandle, PLDAPControl* ServerControls, ULONG* TotalCount, struct berval** Cookie)
-    """"
-    ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "ServerControls", "TotalCount", "Cookie"])
-    raise RuntimeError('API not implemented')
-    jitter.func_ret_stdcall(ret_ad, ret_value)
+def wldap32_ldap_parse_extended_resultA(jitter):
+    wldap32_ldap_parse_extended_result(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_parse_extended_resultW(jitter):
+    wldap32_ldap_parse_extended_result(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_parse_page_control(jitter):
     """"
@@ -750,6 +994,20 @@ def wldap32_ldap_parse_page_control(jitter):
     ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "ServerControls", "TotalCount", "Cookie"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_parse_page_control(jitter, get_str, set_str):
+    """"
+    [Wldap32.dll] LDAP_RETCODE ldap_parse_page_control(PLDAP ExternalHandle, PLDAPControl* ServerControls, ULONG* TotalCount, struct berval** Cookie)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "ServerControls", "TotalCount", "Cookie"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_parse_page_controlA(jitter):
+    wldap32_ldap_parse_page_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_parse_page_controlW(jitter):
+    wldap32_ldap_parse_page_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_parse_reference(jitter):
     """"
@@ -759,13 +1017,19 @@ def wldap32_ldap_parse_reference(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_parse_reference(jitter):
+def wldap32_ldap_parse_reference(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_parse_reference(LDAP* Connection, LDAPMessage* ResultMessage, PTCHAR** Referrals)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Connection", "ResultMessage", "Referrals"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_parse_referenceA(jitter):
+    wldap32_ldap_parse_reference(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_parse_referenceW(jitter):
+    wldap32_ldap_parse_reference(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_parse_result(jitter):
     """"
@@ -775,13 +1039,19 @@ def wldap32_ldap_parse_result(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_parse_result(jitter):
+def wldap32_ldap_parse_result(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_parse_result(LDAP* Connection, LDAPMessage* ResultMessage, ULONG* ReturnCode, PTCHAR* MatchedDNs, PTCHAR* ErrorMessage, PTCHAR** Referrals, PLDAPControl** ServerControls, BOOLEAN Freeit)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Connection", "ResultMessage", "ReturnCode", "MatchedDNs", "ErrorMessage", "Referrals", "ServerControls", "Freeit"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_parse_resultA(jitter):
+    wldap32_ldap_parse_result(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_parse_resultW(jitter):
+    wldap32_ldap_parse_result(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_parse_sort_control(jitter):
     """"
@@ -791,7 +1061,7 @@ def wldap32_ldap_parse_sort_control(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_parse_sort_control(jitter):
+def wldap32_ldap_parse_sort_control(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_parse_sort_control(PLDAP ExternalHandle, PLDAPControl* Control, ULONG* Result, PTCHAR* Attribute)
     """"
@@ -799,13 +1069,25 @@ def wldap32_ldap_parse_sort_control(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_parse_vlv_control(jitter):
+def wldap32_ldap_parse_sort_controlA(jitter):
+    wldap32_ldap_parse_sort_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_parse_sort_controlW(jitter):
+    wldap32_ldap_parse_sort_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wldap32_ldap_parse_vlv_control(jitter, get_str, set_str):
     """"
     [Wldap32.dll] [LDAP_RETCODE_INT] ldap_parse_vlv_control(LDAP* ld, LDAPControl** ctrls, unsigned long* target_posp, unsigned long* list_countp, struct berval** contextp, int* errcodep)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "ctrls", "target_posp", "list_countp", "contextp", "errcodep"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_parse_vlv_controlA(jitter):
+    wldap32_ldap_parse_vlv_control(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_parse_vlv_controlW(jitter):
+    wldap32_ldap_parse_vlv_control(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_result(jitter):
     """"
@@ -823,13 +1105,19 @@ def wldap32_ldap_search(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_search(jitter):
+def wldap32_ldap_search(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_search(LDAP* ld, PTCHAR base, ULONG scope, PTCHAR filter, ULONG attrsonly)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "base", "scope", "filter", "attrsonly"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_searchA(jitter):
+    wldap32_ldap_search(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_searchW(jitter):
+    wldap32_ldap_search(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_search_s(jitter):
     """"
@@ -839,13 +1127,19 @@ def wldap32_ldap_search_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_search_s(jitter):
+def wldap32_ldap_search_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_search_s(LDAP* ld, PTCHAR base, ULONG scope, PTCHAR filter, ULONG attrsonly, LDAPMessage** res)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "base", "scope", "filter", "attrsonly", "res"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_search_sA(jitter):
+    wldap32_ldap_search_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_search_sW(jitter):
+    wldap32_ldap_search_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_search_st(jitter):
     """"
@@ -855,13 +1149,19 @@ def wldap32_ldap_search_st(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_search_st(jitter):
+def wldap32_ldap_search_st(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_search_st(LDAP* ld, PTCHAR base, ULONG scope, PTCHAR filter, ULONG attrsonly, struct l_timeval* timeout, LDAPMessage** res)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "base", "scope", "filter", "attrsonly", "timeout", "res"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_search_stA(jitter):
+    wldap32_ldap_search_st(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_search_stW(jitter):
+    wldap32_ldap_search_st(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_search_ext(jitter):
     """"
@@ -871,13 +1171,19 @@ def wldap32_ldap_search_ext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_search_ext(jitter):
+def wldap32_ldap_search_ext(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_search_ext(LDAP* ld, PTCHAR base, ULONG scope, PTCHAR filter, ULONG attrsonly, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG TimeLimit, ULONG SizeLimit, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "base", "scope", "filter", "attrsonly", "ServerControls", "ClientControls", "TimeLimit", "SizeLimit", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_search_extA(jitter):
+    wldap32_ldap_search_ext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_search_extW(jitter):
+    wldap32_ldap_search_ext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_search_ext_s(jitter):
     """"
@@ -887,13 +1193,19 @@ def wldap32_ldap_search_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_search_ext_s(jitter):
+def wldap32_ldap_search_ext_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_search_ext_s(LDAP* ld, PTCHAR base, ULONG scope, PTCHAR filter, ULONG attrsonly, PLDAPControl* ServerControls, PLDAPControl* ClientControls, struct l_timeval* timeout, ULONG SizeLimit, LDAPMessage** res)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "base", "scope", "filter", "attrsonly", "ServerControls", "ClientControls", "timeout", "SizeLimit", "res"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_search_ext_sA(jitter):
+    wldap32_ldap_search_ext_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_search_ext_sW(jitter):
+    wldap32_ldap_search_ext_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_search_init_page(jitter):
     """"
@@ -903,13 +1215,19 @@ def wldap32_ldap_search_init_page(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_search_init_page(jitter):
+def wldap32_ldap_search_init_page(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PLDAPSearch ldap_search_init_page(PLDAP ExternalHandle, PTCHAR DistinguishedName, ULONG ScopeOfSearch, PTCHAR SearchFilter, ULONG AttributesOnly, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG PageTimeLimit, ULONG TotalSizeLimit, PLDAPSortKey* SortKeys)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "DistinguishedName", "ScopeOfSearch", "SearchFilter", "AttributesOnly", "ServerControls", "ClientControls", "PageTimeLimit", "TotalSizeLimit", "SortKeys"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_search_init_pageA(jitter):
+    wldap32_ldap_search_init_page(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_search_init_pageW(jitter):
+    wldap32_ldap_search_init_page(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_search_abandon_page(jitter):
     """"
@@ -927,13 +1245,19 @@ def wldap32_ldap_err2string(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_err2string(jitter):
+def wldap32_ldap_err2string(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR ldap_err2string(ULONG err)
     """"
     ret_ad, args = jitter.func_args_stdcall(["err"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_err2stringA(jitter):
+    wldap32_ldap_err2string(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_err2stringW(jitter):
+    wldap32_ldap_err2string(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_LdapGetLastError(jitter):
     """"
@@ -967,7 +1291,7 @@ def wldap32_ldap_control_free(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_control_free(jitter):
+def wldap32_ldap_control_free(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_control_free(LDAPControl* Control)
     """"
@@ -975,13 +1299,11 @@ def wldap32_ldap_control_free(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_controls_free(jitter):
-    """"
-    [Wldap32.dll] LDAP_RETCODE ldap_controls_free(LDAPControl** Controls)
-    """"
-    ret_ad, args = jitter.func_args_stdcall(["Controls"])
-    raise RuntimeError('API not implemented')
-    jitter.func_ret_stdcall(ret_ad, ret_value)
+def wldap32_ldap_control_freeA(jitter):
+    wldap32_ldap_control_free(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_control_freeW(jitter):
+    wldap32_ldap_control_free(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_controls_free(jitter):
     """"
@@ -990,6 +1312,20 @@ def wldap32_ldap_controls_free(jitter):
     ret_ad, args = jitter.func_args_stdcall(["Controls"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_controls_free(jitter, get_str, set_str):
+    """"
+    [Wldap32.dll] LDAP_RETCODE ldap_controls_free(LDAPControl** Controls)
+    """"
+    ret_ad, args = jitter.func_args_stdcall(["Controls"])
+    raise RuntimeError('API not implemented')
+    jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_controls_freeA(jitter):
+    wldap32_ldap_controls_free(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_controls_freeW(jitter):
+    wldap32_ldap_controls_free(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_memfree(jitter):
     """"
@@ -999,13 +1335,19 @@ def wldap32_ldap_memfree(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_memfree(jitter):
+def wldap32_ldap_memfree(jitter, get_str, set_str):
     """"
     [Wldap32.dll] VOID ldap_memfree(PTCHAR Block)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Block"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_memfreeA(jitter):
+    wldap32_ldap_memfree(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_memfreeW(jitter):
+    wldap32_ldap_memfree(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_msgfree(jitter):
     """"
@@ -1023,13 +1365,19 @@ def wldap32_ldap_value_free(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_value_free(jitter):
+def wldap32_ldap_value_free(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_value_free(PTCHAR* vals)
     """"
     ret_ad, args = jitter.func_args_stdcall(["vals"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_value_freeA(jitter):
+    wldap32_ldap_value_free(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_value_freeW(jitter):
+    wldap32_ldap_value_free(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_value_free_len(jitter):
     """"
@@ -1047,13 +1395,19 @@ def wldap32_ldap_dn2ufn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_dn2ufn(jitter):
+def wldap32_ldap_dn2ufn(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR ldap_dn2ufn(PTSTR dn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_dn2ufnA(jitter):
+    wldap32_ldap_dn2ufn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_dn2ufnW(jitter):
+    wldap32_ldap_dn2ufn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_ufn2dn(jitter):
     """"
@@ -1063,13 +1417,19 @@ def wldap32_ldap_ufn2dn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_ufn2dn(jitter):
+def wldap32_ldap_ufn2dn(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_ufn2dn(PTCHAR ufn, PTCHAR* pDn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ufn", "pDn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_ufn2dnA(jitter):
+    wldap32_ldap_ufn2dn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_ufn2dnW(jitter):
+    wldap32_ldap_ufn2dn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_explode_dn(jitter):
     """"
@@ -1079,13 +1439,19 @@ def wldap32_ldap_explode_dn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_explode_dn(jitter):
+def wldap32_ldap_explode_dn(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR* ldap_explode_dn(PTSTR dn, ULONG notypes)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dn", "notypes"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_explode_dnA(jitter):
+    wldap32_ldap_explode_dn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_explode_dnW(jitter):
+    wldap32_ldap_explode_dn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_get_dn(jitter):
     """"
@@ -1095,13 +1461,19 @@ def wldap32_ldap_get_dn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_get_dn(jitter):
+def wldap32_ldap_get_dn(jitter, get_str, set_str):
     """"
     [Wldap32.dll] PTCHAR ldap_get_dn(LDAP* ld, LDAPMessage* entry)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "entry"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_get_dnA(jitter):
+    wldap32_ldap_get_dn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_get_dnW(jitter):
+    wldap32_ldap_get_dn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_conn_from_msg(jitter):
     """"
@@ -1119,13 +1491,19 @@ def wldap32_ldap_modrdn2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_modrdn2(jitter):
+def wldap32_ldap_modrdn2(jitter, get_str, set_str):
     """"
     [Wldap32.dll] ULONG ldap_modrdn2(LDAP* ExternalHandle, PTCHAR DistinguishedName, PTCHAR NewDistinguishedName, INT DeleteOldRdn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "DistinguishedName", "NewDistinguishedName", "DeleteOldRdn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_modrdn2A(jitter):
+    wldap32_ldap_modrdn2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_modrdn2W(jitter):
+    wldap32_ldap_modrdn2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_modrdn2_s(jitter):
     """"
@@ -1135,13 +1513,19 @@ def wldap32_ldap_modrdn2_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_modrdn2_s(jitter):
+def wldap32_ldap_modrdn2_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_modrdn2_s(LDAP* ExternalHandle, PTCHAR DistinguishedName, PTCHAR NewDistinguishedName, INT DeleteOldRdn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ExternalHandle", "DistinguishedName", "NewDistinguishedName", "DeleteOldRdn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_modrdn2_sA(jitter):
+    wldap32_ldap_modrdn2_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_modrdn2_sW(jitter):
+    wldap32_ldap_modrdn2_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_rename_ext(jitter):
     """"
@@ -1151,13 +1535,19 @@ def wldap32_ldap_rename_ext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_rename_ext(jitter):
+def wldap32_ldap_rename_ext(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_rename_ext(LDAP* ld, PTSTR dn, PTSTR NewRDN, PTSTR NewParent, INT DeleteOldRdn, PLDAPControl* ServerControls, PLDAPControl* ClientControls, ULONG* MessageNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "NewRDN", "NewParent", "DeleteOldRdn", "ServerControls", "ClientControls", "MessageNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_rename_extA(jitter):
+    wldap32_ldap_rename_ext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_rename_extW(jitter):
+    wldap32_ldap_rename_ext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_ldap_rename_ext_s(jitter):
     """"
@@ -1167,13 +1557,19 @@ def wldap32_ldap_rename_ext_s(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wldap32_ldap_rename_ext_s(jitter):
+def wldap32_ldap_rename_ext_s(jitter, get_str, set_str):
     """"
     [Wldap32.dll] LDAP_RETCODE ldap_rename_ext_s(LDAP* ld, PTSTR dn, PTSTR NewRDN, PTSTR NewParent, INT DeleteOldRdn, PLDAPControl* ServerControls, PLDAPControl* ClientControls)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ld", "dn", "NewRDN", "NewParent", "DeleteOldRdn", "ServerControls", "ClientControls"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wldap32_ldap_rename_ext_sA(jitter):
+    wldap32_ldap_rename_ext_s(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wldap32_ldap_rename_ext_sW(jitter):
+    wldap32_ldap_rename_ext_s(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wldap32_LdapUnicodeToUTF8(jitter):
     """"

@@ -1,11 +1,17 @@
 
-def wininet_CommitUrlCacheEntry(jitter):
+def wininet_CommitUrlCacheEntry(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI CommitUrlCacheEntry(LPCTSTR lpszUrlName, LPCTSTR lpszLocalFileName, FILETIME ExpireTime, FILETIME LastModifiedTime, [CacheEntryType] CacheEntryType, LPVOID lpHeaderInfo, DWORD dwHeaderSize, LPCTSTR lpszFileExtension, LPCTSTR lpszOriginalUrl)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName", "lpszLocalFileName", "ExpireTime", "LastModifiedTime", "CacheEntryType", "lpHeaderInfo", "dwHeaderSize", "lpszFileExtension", "lpszOriginalUrl"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_CommitUrlCacheEntryA(jitter):
+    wininet_CommitUrlCacheEntry(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_CommitUrlCacheEntryW(jitter):
+    wininet_CommitUrlCacheEntry(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_CreateMD5SSOHash(jitter):
     """"
@@ -15,13 +21,19 @@ def wininet_CreateMD5SSOHash(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_CreateUrlCacheEntry(jitter):
+def wininet_CreateUrlCacheEntry(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI CreateUrlCacheEntry(LPCTSTR lpszUrlName, DWORD dwExpectedFileSize, LPCTSTR lpszFileExtension, LPTSTR lpszFileName, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName", "dwExpectedFileSize", "lpszFileExtension", "lpszFileName", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_CreateUrlCacheEntryA(jitter):
+    wininet_CreateUrlCacheEntry(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_CreateUrlCacheEntryW(jitter):
+    wininet_CreateUrlCacheEntry(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_CreateUrlCacheGroup(jitter):
     """"
@@ -31,13 +43,19 @@ def wininet_CreateUrlCacheGroup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_DeleteUrlCacheEntry(jitter):
+def wininet_DeleteUrlCacheEntry(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI DeleteUrlCacheEntry(LPCTSTR lpszUrlName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_DeleteUrlCacheEntryA(jitter):
+    wininet_DeleteUrlCacheEntry(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_DeleteUrlCacheEntryW(jitter):
+    wininet_DeleteUrlCacheEntry(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_DeleteUrlCacheEntry(jitter):
     """"
@@ -71,7 +89,7 @@ def wininet_FindCloseUrlCache(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FindFirstUrlCacheEntry(jitter):
+def wininet_FindFirstUrlCacheEntry(jitter, get_str, set_str):
     """"
     [Wininet.dll] HANDLE FindFirstUrlCacheEntry(LPCTSTR lpszUrlSearchPattern, LPINTERNET_CACHE_ENTRY_INFO lpFirstCacheEntryInfo, LPDWORD lpcbCacheEntryInfo)
     """"
@@ -79,13 +97,25 @@ def wininet_FindFirstUrlCacheEntry(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FindFirstUrlCacheEntryEx(jitter):
+def wininet_FindFirstUrlCacheEntryA(jitter):
+    wininet_FindFirstUrlCacheEntry(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FindFirstUrlCacheEntryW(jitter):
+    wininet_FindFirstUrlCacheEntry(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FindFirstUrlCacheEntryEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] HANDLE FindFirstUrlCacheEntryEx(LPCTSTR lpszUrlSearchPattern, DWORD dwFlags, DWORD dwFilter, GROUPID GroupId, LPINTERNET_CACHE_ENTRY_INFO lpFirstCacheEntryInfo, LPDWORD lpdwEntryInfo, LPVOID lpGroupAttributes, LPDWORD lpcbGroupAttributes, LPVOID lpReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlSearchPattern", "dwFlags", "dwFilter", "GroupId", "lpFirstCacheEntryInfo", "lpdwEntryInfo", "lpGroupAttributes", "lpcbGroupAttributes", "lpReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_FindFirstUrlCacheEntryExA(jitter):
+    wininet_FindFirstUrlCacheEntryEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FindFirstUrlCacheEntryExW(jitter):
+    wininet_FindFirstUrlCacheEntryEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_FindFirstUrlCacheGroup(jitter):
     """"
@@ -95,7 +125,7 @@ def wininet_FindFirstUrlCacheGroup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FindNextUrlCacheEntry(jitter):
+def wininet_FindNextUrlCacheEntry(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI FindNextUrlCacheEntry(HANDLE hEnumHandle, LPINTERNET_CACHE_ENTRY_INFO lpNextCacheEntryInfo, LPDWORD lpcbCacheEntryInfo)
     """"
@@ -103,13 +133,25 @@ def wininet_FindNextUrlCacheEntry(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FindNextUrlCacheEntryEx(jitter):
+def wininet_FindNextUrlCacheEntryA(jitter):
+    wininet_FindNextUrlCacheEntry(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FindNextUrlCacheEntryW(jitter):
+    wininet_FindNextUrlCacheEntry(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FindNextUrlCacheEntryEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FindNextUrlCacheEntryEx(HANDLE hEnumHandle, LPINTERNET_CACHE_ENTRY_INFO lpNextCacheEntryInfo, LPDWORD lpcbEntryInfo, LPVOID lpGroupAttributes, LPDWORD lpcbGroupAttributes, LPVOID lpReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hEnumHandle", "lpNextCacheEntryInfo", "lpcbEntryInfo", "lpGroupAttributes", "lpcbGroupAttributes", "lpReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_FindNextUrlCacheEntryExA(jitter):
+    wininet_FindNextUrlCacheEntryEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FindNextUrlCacheEntryExW(jitter):
+    wininet_FindNextUrlCacheEntryEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_FindNextUrlCacheGroup(jitter):
     """"
@@ -119,7 +161,7 @@ def wininet_FindNextUrlCacheGroup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpCommand(jitter):
+def wininet_FtpCommand(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpCommand(HINTERNET hConnect, BOOL fExpectResponse, DWORD dwFlags, LPCTSTR lpszCommand, DWORD_PTR dwContext, HINTERNET* phFtpCommand)
     """"
@@ -127,7 +169,13 @@ def wininet_FtpCommand(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpCreateDirectory(jitter):
+def wininet_FtpCommandA(jitter):
+    wininet_FtpCommand(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpCommandW(jitter):
+    wininet_FtpCommand(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpCreateDirectory(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpCreateDirectory(HINTERNET hConnect, LPCTSTR lpszDirectory)
     """"
@@ -135,7 +183,13 @@ def wininet_FtpCreateDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpDeleteFile(jitter):
+def wininet_FtpCreateDirectoryA(jitter):
+    wininet_FtpCreateDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpCreateDirectoryW(jitter):
+    wininet_FtpCreateDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpDeleteFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpDeleteFile(HINTERNET hConnect, LPCTSTR lpszFileName)
     """"
@@ -143,7 +197,13 @@ def wininet_FtpDeleteFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpFindFirstFile(jitter):
+def wininet_FtpDeleteFileA(jitter):
+    wininet_FtpDeleteFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpDeleteFileW(jitter):
+    wininet_FtpDeleteFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpFindFirstFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET FtpFindFirstFile(HINTERNET hConnect, LPCTSTR lpszSearchFile, LPWIN32_FIND_DATA lpFindFileData, DWORD dwFlags, DWORD_PTR dwContext)
     """"
@@ -151,7 +211,13 @@ def wininet_FtpFindFirstFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpGetCurrentDirectory(jitter):
+def wininet_FtpFindFirstFileA(jitter):
+    wininet_FtpFindFirstFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpFindFirstFileW(jitter):
+    wininet_FtpFindFirstFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpGetCurrentDirectory(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpGetCurrentDirectory(HINTERNET hConnect, LPTSTR lpszCurrentDirectory, LPDWORD lpdwCurrentDirectory)
     """"
@@ -159,13 +225,25 @@ def wininet_FtpGetCurrentDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpGetFile(jitter):
+def wininet_FtpGetCurrentDirectoryA(jitter):
+    wininet_FtpGetCurrentDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpGetCurrentDirectoryW(jitter):
+    wininet_FtpGetCurrentDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpGetFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpGetFile(HINTERNET hConnect, LPCTSTR lpszRemoteFile, LPCTSTR lpszNewFile, BOOL fFailIfExists, [FileAttributes] dwFlagsAndAttributes, [FTP_TRANSFER_FLAGS] dwFlags, DWORD_PTR dwContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hConnect", "lpszRemoteFile", "lpszNewFile", "fFailIfExists", "dwFlagsAndAttributes", "dwFlags", "dwContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_FtpGetFileA(jitter):
+    wininet_FtpGetFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpGetFileW(jitter):
+    wininet_FtpGetFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_FtpGetFileSize(jitter):
     """"
@@ -175,7 +253,7 @@ def wininet_FtpGetFileSize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpOpenFile(jitter):
+def wininet_FtpOpenFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET FtpOpenFile(HINTERNET hConnect, LPCTSTR lpszFileName, DWORD dwAccess, DWORD dwFlags, DWORD_PTR dwContext)
     """"
@@ -183,7 +261,13 @@ def wininet_FtpOpenFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpPutFile(jitter):
+def wininet_FtpOpenFileA(jitter):
+    wininet_FtpOpenFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpOpenFileW(jitter):
+    wininet_FtpOpenFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpPutFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpPutFile(HINTERNET hConnect, LPCTSTR lpszLocalFile, LPCTSTR lpszNewRemoteFile, [FTP_TRANSFER_FLAGS] dwFlags, DWORD_PTR dwContext)
     """"
@@ -191,7 +275,13 @@ def wininet_FtpPutFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpRemoveDirectory(jitter):
+def wininet_FtpPutFileA(jitter):
+    wininet_FtpPutFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpPutFileW(jitter):
+    wininet_FtpPutFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpRemoveDirectory(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpRemoveDirectory(HINTERNET hConnect, LPCTSTR lpszDirectory)
     """"
@@ -199,7 +289,13 @@ def wininet_FtpRemoveDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpRenameFile(jitter):
+def wininet_FtpRemoveDirectoryA(jitter):
+    wininet_FtpRemoveDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpRemoveDirectoryW(jitter):
+    wininet_FtpRemoveDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpRenameFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpRenameFile(HINTERNET hConnect, LPCTSTR lpszExisting, LPCTSTR lpszNew)
     """"
@@ -207,7 +303,13 @@ def wininet_FtpRenameFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FtpSetCurrentDirectory(jitter):
+def wininet_FtpRenameFileA(jitter):
+    wininet_FtpRenameFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpRenameFileW(jitter):
+    wininet_FtpRenameFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FtpSetCurrentDirectory(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL FtpSetCurrentDirectory(HINTERNET hConnect, LPCTSTR lpszDirectory)
     """"
@@ -215,7 +317,13 @@ def wininet_FtpSetCurrentDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GetUrlCacheEntryInfo(jitter):
+def wininet_FtpSetCurrentDirectoryA(jitter):
+    wininet_FtpSetCurrentDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FtpSetCurrentDirectoryW(jitter):
+    wininet_FtpSetCurrentDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GetUrlCacheEntryInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL GetUrlCacheEntryInfo(LPCTSTR lpszUrlName, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, LPDWORD lpcbCacheEntryInfo)
     """"
@@ -223,7 +331,13 @@ def wininet_GetUrlCacheEntryInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GetUrlCacheEntryInfoEx(jitter):
+def wininet_GetUrlCacheEntryInfoA(jitter):
+    wininet_GetUrlCacheEntryInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GetUrlCacheEntryInfoW(jitter):
+    wininet_GetUrlCacheEntryInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GetUrlCacheEntryInfoEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI GetUrlCacheEntryInfoEx(LPCTSTR lpszUrl, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, LPDWORD lpcbCacheEntryInfo, LPTSTR lpszRedirectUrl, LPDWORD lpcbRedirectUrl, LPVOID lpReserved, DWORD dwFlags)
     """"
@@ -231,7 +345,13 @@ def wininet_GetUrlCacheEntryInfoEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GetUrlCacheGroupAttribute(jitter):
+def wininet_GetUrlCacheEntryInfoExA(jitter):
+    wininet_GetUrlCacheEntryInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GetUrlCacheEntryInfoExW(jitter):
+    wininet_GetUrlCacheEntryInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GetUrlCacheGroupAttribute(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL GetUrlCacheGroupAttribute(GROUPID gid, DWORD dwFlags, DWORD dwAttributes, LPINTERNET_CACHE_GROUP_INFO lpGroupInfo, LPDWORD lpdwGroupInfo, LPVOID lpReserved)
     """"
@@ -239,7 +359,13 @@ def wininet_GetUrlCacheGroupAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GopherCreateLocator(jitter):
+def wininet_GetUrlCacheGroupAttributeA(jitter):
+    wininet_GetUrlCacheGroupAttribute(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GetUrlCacheGroupAttributeW(jitter):
+    wininet_GetUrlCacheGroupAttribute(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GopherCreateLocator(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL GopherCreateLocator(LPCTSTR lpszHost, INTERNET_PORT nServerPort, LPCTSTR lpszDisplayString, LPCTSTR lpszSelectorString, DWORD dwGopherType, LPTSTR lpszLocator, LPDWORD lpdwBufferLength)
     """"
@@ -247,7 +373,13 @@ def wininet_GopherCreateLocator(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GopherFindFirstFile(jitter):
+def wininet_GopherCreateLocatorA(jitter):
+    wininet_GopherCreateLocator(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GopherCreateLocatorW(jitter):
+    wininet_GopherCreateLocator(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GopherFindFirstFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET GopherFindFirstFile(HINTERNET hConnect, LPCTSTR lpszLocator, LPCTSTR lpszSearchString, LPGOPHER_FIND_DATA lpFindData, DWORD dwFlags, DWORD_PTR dwContext)
     """"
@@ -255,7 +387,13 @@ def wininet_GopherFindFirstFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GopherGetAttribute(jitter):
+def wininet_GopherFindFirstFileA(jitter):
+    wininet_GopherFindFirstFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GopherFindFirstFileW(jitter):
+    wininet_GopherFindFirstFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GopherGetAttribute(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL GopherGetAttribute(HINTERNET hConnect, LPCTSTR lpszLocator, LPCTSTR lpszAttributeName, LPBYTE lpBuffer, DWORD dwBufferLength, LPDWORD lpdwCharactersReturned, GOPHER_ATTRIBUTE_ENUMERATOR lpfnEnumerator, DWORD_PTR dwContext)
     """"
@@ -263,7 +401,13 @@ def wininet_GopherGetAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GopherGetLocatorType(jitter):
+def wininet_GopherGetAttributeA(jitter):
+    wininet_GopherGetAttribute(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GopherGetAttributeW(jitter):
+    wininet_GopherGetAttribute(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GopherGetLocatorType(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL GopherGetLocatorType(LPCTSTR lpszLocator, LPDWORD lpdwGopherType)
     """"
@@ -271,7 +415,13 @@ def wininet_GopherGetLocatorType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GopherOpenFile(jitter):
+def wininet_GopherGetLocatorTypeA(jitter):
+    wininet_GopherGetLocatorType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GopherGetLocatorTypeW(jitter):
+    wininet_GopherGetLocatorType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GopherOpenFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET GopherOpenFile(HINTERNET hConnect, LPCTSTR lpszLocator, LPCTSTR lpszView, DWORD dwFlags, DWORD_PTR dwContext)
     """"
@@ -279,7 +429,13 @@ def wininet_GopherOpenFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpAddRequestHeaders(jitter):
+def wininet_GopherOpenFileA(jitter):
+    wininet_GopherOpenFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GopherOpenFileW(jitter):
+    wininet_GopherOpenFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_HttpAddRequestHeaders(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL HttpAddRequestHeaders(HINTERNET hConnect, LPCTSTR lpszHeaders, DWORD dwHeadersLength, [HttpAddReqFlag] dwModifiers)
     """"
@@ -287,7 +443,13 @@ def wininet_HttpAddRequestHeaders(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpEndRequest(jitter):
+def wininet_HttpAddRequestHeadersA(jitter):
+    wininet_HttpAddRequestHeaders(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpAddRequestHeadersW(jitter):
+    wininet_HttpAddRequestHeaders(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_HttpEndRequest(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL HttpEndRequest(HINTERNET hRequest, LPINTERNET_BUFFERS lpBuffersOut, DWORD dwFlags, DWORD_PTR dwContext)
     """"
@@ -295,7 +457,13 @@ def wininet_HttpEndRequest(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpOpenRequest(jitter):
+def wininet_HttpEndRequestA(jitter):
+    wininet_HttpEndRequest(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpEndRequestW(jitter):
+    wininet_HttpEndRequest(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_HttpOpenRequest(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET HttpOpenRequest(HINTERNET hConnect, LPCTSTR lpszVerb, LPCTSTR lpszObjectName, LPCTSTR lpszVersion, LPCTSTR lpszReferer, LPCTSTR* lplpszAcceptTypes, [InternetFlags] dwFlags, DWORD_PTR dwContext)
     """"
@@ -303,7 +471,13 @@ def wininet_HttpOpenRequest(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpQueryInfo(jitter):
+def wininet_HttpOpenRequestA(jitter):
+    wininet_HttpOpenRequest(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpOpenRequestW(jitter):
+    wininet_HttpOpenRequest(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_HttpQueryInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL HttpQueryInfo(HINTERNET hRequest, [HTTP_QUERY_FLAGS] dwInfoLevel, LPVOID lpvBuffer, LPDWORD lpdwBufferLength, LPDWORD lpdwIndex)
     """"
@@ -311,7 +485,13 @@ def wininet_HttpQueryInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpSendRequest(jitter):
+def wininet_HttpQueryInfoA(jitter):
+    wininet_HttpQueryInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpQueryInfoW(jitter):
+    wininet_HttpQueryInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_HttpSendRequest(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL HttpSendRequest(HINTERNET hRequest, LPCTSTR lpszHeaders, DWORD dwHeadersLength, LPVOID lpOptional, DWORD dwOptionalLength)
     """"
@@ -319,13 +499,25 @@ def wininet_HttpSendRequest(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpSendRequestEx(jitter):
+def wininet_HttpSendRequestA(jitter):
+    wininet_HttpSendRequest(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpSendRequestW(jitter):
+    wininet_HttpSendRequest(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_HttpSendRequestEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL HttpSendRequestEx(HINTERNET hRequest, LPINTERNET_BUFFERS lpBuffersIn, LPINTERNET_BUFFERS lpBuffersOut, DWORD dwFlags, DWORD_PTR dwContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hRequest", "lpBuffersIn", "lpBuffersOut", "dwFlags", "dwContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_HttpSendRequestExA(jitter):
+    wininet_HttpSendRequestEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpSendRequestExW(jitter):
+    wininet_HttpSendRequestEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetAttemptConnect(jitter):
     """"
@@ -351,7 +543,7 @@ def wininet_InternetAutodialHangup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetCanonicalizeUrl(jitter):
+def wininet_InternetCanonicalizeUrl(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetCanonicalizeUrl(LPCTSTR lpszUrl, LPTSTR lpszBuffer, LPDWORD lpdwBufferLength, [InternetCanonicalizeUrlFlags] dwFlags)
     """"
@@ -359,13 +551,25 @@ def wininet_InternetCanonicalizeUrl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetCheckConnection(jitter):
+def wininet_InternetCanonicalizeUrlA(jitter):
+    wininet_InternetCanonicalizeUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetCanonicalizeUrlW(jitter):
+    wininet_InternetCanonicalizeUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetCheckConnection(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetCheckConnection(LPCTSTR lpszUrl, DWORD dwFlags, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrl", "dwFlags", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetCheckConnectionA(jitter):
+    wininet_InternetCheckConnection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetCheckConnectionW(jitter):
+    wininet_InternetCheckConnection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetCloseHandle(jitter):
     """"
@@ -375,7 +579,7 @@ def wininet_InternetCloseHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetCombineUrl(jitter):
+def wininet_InternetCombineUrl(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetCombineUrl(LPCTSTR lpszBaseUrl, LPCTSTR lpszRelativeUrl, LPTSTR lpszBuffer, LPDWORD lpdwBufferLength, [InternetCanonicalizeUrlFlags] dwFlags)
     """"
@@ -383,13 +587,25 @@ def wininet_InternetCombineUrl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetConfirmZoneCrossing(jitter):
+def wininet_InternetCombineUrlA(jitter):
+    wininet_InternetCombineUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetCombineUrlW(jitter):
+    wininet_InternetCombineUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetConfirmZoneCrossing(jitter, get_str, set_str):
     """"
     [Wininet.dll] [ERROR_CODE] InternetConfirmZoneCrossing(HWND hWnd, LPTSTR szUrlPrev, LPTSTR szUrlNew, BOOL bPost)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "szUrlPrev", "szUrlNew", "bPost"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetConfirmZoneCrossingA(jitter):
+    wininet_InternetConfirmZoneCrossing(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetConfirmZoneCrossingW(jitter):
+    wininet_InternetConfirmZoneCrossing(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetConfirmZoneCrossing(jitter):
     """"
@@ -399,7 +615,7 @@ def wininet_InternetConfirmZoneCrossing(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetConnect(jitter):
+def wininet_InternetConnect(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET InternetConnect(HINTERNET hInternet, LPCTSTR lpszServerName, INTERNET_PORT nServerPort, LPCTSTR lpszUsername, LPCTSTR lpszPassword, [InternetService] dwService, [InternetFlags] dwFlags, DWORD_PTR dwContext)
     """"
@@ -407,7 +623,13 @@ def wininet_InternetConnect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetCrackUrl(jitter):
+def wininet_InternetConnectA(jitter):
+    wininet_InternetConnect(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetConnectW(jitter):
+    wininet_InternetConnect(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetCrackUrl(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetCrackUrl(LPCTSTR lpszUrl, DWORD dwUrlLength, [InternetCrackUrlFlags] dwFlags, LPURL_COMPONENTS lpUrlComponents)
     """"
@@ -415,7 +637,13 @@ def wininet_InternetCrackUrl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetCreateUrl(jitter):
+def wininet_InternetCrackUrlA(jitter):
+    wininet_InternetCrackUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetCrackUrlW(jitter):
+    wininet_InternetCrackUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetCreateUrl(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetCreateUrl(LPURL_COMPONENTS lpUrlComponents, [InternetCrackUrlFlags] dwFlags, LPTSTR lpszUrl, LPDWORD lpdwUrlLength)
     """"
@@ -423,13 +651,25 @@ def wininet_InternetCreateUrl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetDial(jitter):
+def wininet_InternetCreateUrlA(jitter):
+    wininet_InternetCreateUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetCreateUrlW(jitter):
+    wininet_InternetCreateUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetDial(jitter, get_str, set_str):
     """"
     [Wininet.dll] [ERROR_CODE] InternetDial(HWND hwndParent, LPTSTR pszEntryName, [INTERNET_DIAL_FLAGS] dwFlags, DWORD_PTR* lpdwConnection, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "pszEntryName", "dwFlags", "lpdwConnection", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetDialA(jitter):
+    wininet_InternetDial(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetDialW(jitter):
+    wininet_InternetDial(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetDial(jitter):
     """"
@@ -447,13 +687,19 @@ def wininet_InternetErrorDlg(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetFindNextFile(jitter):
+def wininet_InternetFindNextFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetFindNextFile(HINTERNET hFind, LPVOID lpvFindData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFind", "lpvFindData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetFindNextFileA(jitter):
+    wininet_InternetFindNextFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetFindNextFileW(jitter):
+    wininet_InternetFindNextFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetGetConnectedState(jitter):
     """"
@@ -463,13 +709,19 @@ def wininet_InternetGetConnectedState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGetConnectedStateEx(jitter):
+def wininet_InternetGetConnectedStateEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetGetConnectedStateEx([InternetGetConnectedStateFlags*] lpdwFlags, LPTSTR lpszConnectionName, DWORD dwNameLen, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpdwFlags", "lpszConnectionName", "dwNameLen", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetGetConnectedStateExA(jitter):
+    wininet_InternetGetConnectedStateEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGetConnectedStateExW(jitter):
+    wininet_InternetGetConnectedStateEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetGetConnectedStateEx(jitter):
     """"
@@ -479,7 +731,7 @@ def wininet_InternetGetConnectedStateEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGetCookie(jitter):
+def wininet_InternetGetCookie(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetGetCookie(LPCTSTR lpszUrl, LPCTSTR lpszCookieName, LPTSTR lpszCookieData, LPDWORD lpdwSize)
     """"
@@ -487,7 +739,13 @@ def wininet_InternetGetCookie(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGetCookieEx(jitter):
+def wininet_InternetGetCookieA(jitter):
+    wininet_InternetGetCookie(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGetCookieW(jitter):
+    wininet_InternetGetCookie(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetGetCookieEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetGetCookieEx(LPCTSTR pchURL, LPCTSTR pchCookieName, LPTSTR pchCookieData, LPDWORD pcchCookieData, [InternetCookieFlags] dwFlags, LPVOID lpReserved)
     """"
@@ -495,7 +753,13 @@ def wininet_InternetGetCookieEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGetLastResponseInfo(jitter):
+def wininet_InternetGetCookieExA(jitter):
+    wininet_InternetGetCookieEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGetCookieExW(jitter):
+    wininet_InternetGetCookieEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetGetLastResponseInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetGetLastResponseInfo(LPDWORD lpdwError, LPTSTR lpszBuffer, LPDWORD lpdwBufferLength)
     """"
@@ -503,13 +767,25 @@ def wininet_InternetGetLastResponseInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGoOnline(jitter):
+def wininet_InternetGetLastResponseInfoA(jitter):
+    wininet_InternetGetLastResponseInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGetLastResponseInfoW(jitter):
+    wininet_InternetGetLastResponseInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetGoOnline(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetGoOnline(LPTSTR lpszURL, HWND hwndParent, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszURL", "hwndParent", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetGoOnlineA(jitter):
+    wininet_InternetGoOnline(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGoOnlineW(jitter):
+    wininet_InternetGoOnline(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetGoOnline(jitter):
     """"
@@ -535,7 +811,7 @@ def wininet_InternetLockRequestFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetOpen(jitter):
+def wininet_InternetOpen(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET InternetOpen(LPCTSTR lpszAgent, [InternetOpenType] dwAccessType, LPCTSTR lpszProxyName, LPCTSTR lpszProxyBypass, [InternetOpenFlags] dwFlags)
     """"
@@ -543,13 +819,25 @@ def wininet_InternetOpen(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetOpenUrl(jitter):
+def wininet_InternetOpenA(jitter):
+    wininet_InternetOpen(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetOpenW(jitter):
+    wininet_InternetOpen(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetOpenUrl(jitter, get_str, set_str):
     """"
     [Wininet.dll] HINTERNET InternetOpenUrl(HINTERNET hInternet, LPCTSTR lpszUrl, LPCTSTR lpszHeaders, DWORD dwHeadersLength, [InternetFlags] dwFlags, DWORD_PTR dwContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInternet", "lpszUrl", "lpszHeaders", "dwHeadersLength", "dwFlags", "dwContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetOpenUrlA(jitter):
+    wininet_InternetOpenUrl(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetOpenUrlW(jitter):
+    wininet_InternetOpenUrl(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetQueryDataAvailable(jitter):
     """"
@@ -559,13 +847,19 @@ def wininet_InternetQueryDataAvailable(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetQueryOption(jitter):
+def wininet_InternetQueryOption(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetQueryOption(HINTERNET hInternet, [INTERNET_OPTION] dwOption, LPVOID lpBuffer, LPDWORD lpdwBufferLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInternet", "dwOption", "lpBuffer", "lpdwBufferLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetQueryOptionA(jitter):
+    wininet_InternetQueryOption(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetQueryOptionW(jitter):
+    wininet_InternetQueryOption(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetReadFile(jitter):
     """"
@@ -575,7 +869,7 @@ def wininet_InternetReadFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetReadFileEx(jitter):
+def wininet_InternetReadFileEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetReadFileEx(HINTERNET hFile, LPINTERNET_BUFFERS lpBuffersOut, [InternetReadFileFlags] dwFlags, DWORD_PTR dwContext)
     """"
@@ -583,7 +877,13 @@ def wininet_InternetReadFileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetCookie(jitter):
+def wininet_InternetReadFileExA(jitter):
+    wininet_InternetReadFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetReadFileExW(jitter):
+    wininet_InternetReadFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetSetCookie(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetSetCookie(LPCTSTR lpszUrl, LPCTSTR lpszCookieName, LPCTSTR lpszCookieData)
     """"
@@ -591,13 +891,25 @@ def wininet_InternetSetCookie(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetCookieEx(jitter):
+def wininet_InternetSetCookieA(jitter):
+    wininet_InternetSetCookie(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetCookieW(jitter):
+    wininet_InternetSetCookie(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetSetCookieEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] InternetCookieState InternetSetCookieEx(LPCTSTR lpszURL, LPCTSTR lpszCookieName, LPCTSTR lpszCookieData, [InternetCookieFlags] dwFlags, DWORD_PTR dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszURL", "lpszCookieName", "lpszCookieData", "dwFlags", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetSetCookieExA(jitter):
+    wininet_InternetSetCookieEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetCookieExW(jitter):
+    wininet_InternetSetCookieEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetSetFilePointer(jitter):
     """"
@@ -607,7 +919,7 @@ def wininet_InternetSetFilePointer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetOption(jitter):
+def wininet_InternetSetOption(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetSetOption(HINTERNET hInternet, [INTERNET_OPTION] dwOption, LPVOID lpBuffer, DWORD dwBufferLength)
     """"
@@ -615,13 +927,25 @@ def wininet_InternetSetOption(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetStatusCallback(jitter):
+def wininet_InternetSetOptionA(jitter):
+    wininet_InternetSetOption(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetOptionW(jitter):
+    wininet_InternetSetOption(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetSetStatusCallback(jitter, get_str, set_str):
     """"
     [Wininet.dll] INTERNET_STATUS_CALLBACK InternetSetStatusCallback(HINTERNET hInternet, INTERNET_STATUS_CALLBACK lpfnInternetCallback)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInternet", "lpfnInternetCallback"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetSetStatusCallbackA(jitter):
+    wininet_InternetSetStatusCallback(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetStatusCallbackW(jitter):
+    wininet_InternetSetStatusCallback(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetSetStatusCallback(jitter):
     """"
@@ -631,13 +955,19 @@ def wininet_InternetSetStatusCallback(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetTimeFromSystemTime(jitter):
+def wininet_InternetTimeFromSystemTime(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetTimeFromSystemTime(const SYSTEMTIME* pst, DWORD dwRFC, LPTSTR lpszTime, DWORD cbTime)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pst", "dwRFC", "lpszTime", "cbTime"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetTimeFromSystemTimeA(jitter):
+    wininet_InternetTimeFromSystemTime(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetTimeFromSystemTimeW(jitter):
+    wininet_InternetTimeFromSystemTime(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetTimeFromSystemTime(jitter):
     """"
@@ -647,13 +977,19 @@ def wininet_InternetTimeFromSystemTime(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetTimeToSystemTime(jitter):
+def wininet_InternetTimeToSystemTime(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetTimeToSystemTime(LPCTSTR lpszTime, SYSTEMTIME* pst, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszTime", "pst", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetTimeToSystemTimeA(jitter):
+    wininet_InternetTimeToSystemTime(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetTimeToSystemTimeW(jitter):
+    wininet_InternetTimeToSystemTime(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetTimeToSystemTime(jitter):
     """"
@@ -695,7 +1031,7 @@ def wininet_ResumeSuspendedDownload(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_RetrieveUrlCacheEntryFile(jitter):
+def wininet_RetrieveUrlCacheEntryFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI RetrieveUrlCacheEntryFile(LPCTSTR lpszUrlName, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, LPDWORD lpcbCacheEntryInfo, DWORD dwReserved)
     """"
@@ -703,7 +1039,13 @@ def wininet_RetrieveUrlCacheEntryFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_RetrieveUrlCacheEntryStream(jitter):
+def wininet_RetrieveUrlCacheEntryFileA(jitter):
+    wininet_RetrieveUrlCacheEntryFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_RetrieveUrlCacheEntryFileW(jitter):
+    wininet_RetrieveUrlCacheEntryFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_RetrieveUrlCacheEntryStream(jitter, get_str, set_str):
     """"
     [Wininet.dll] HANDLE RetrieveUrlCacheEntryStream(LPCTSTR lpszUrlName, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, LPDWORD lpcbCacheEntryInfo, BOOL fRandomRead, DWORD dwReserved)
     """"
@@ -711,13 +1053,25 @@ def wininet_RetrieveUrlCacheEntryStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_SetUrlCacheEntryGroup(jitter):
+def wininet_RetrieveUrlCacheEntryStreamA(jitter):
+    wininet_RetrieveUrlCacheEntryStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_RetrieveUrlCacheEntryStreamW(jitter):
+    wininet_RetrieveUrlCacheEntryStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_SetUrlCacheEntryGroup(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI SetUrlCacheEntryGroup(LPCTSTR lpszUrlName, DWORD dwFlags, GROUPID GroupId, LPBYTE pbGroupAttributes, DWORD cbGroupAttributes, LPVOID lpReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName", "dwFlags", "GroupId", "pbGroupAttributes", "cbGroupAttributes", "lpReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_SetUrlCacheEntryGroupA(jitter):
+    wininet_SetUrlCacheEntryGroup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_SetUrlCacheEntryGroupW(jitter):
+    wininet_SetUrlCacheEntryGroup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_SetUrlCacheEntryGroup(jitter):
     """"
@@ -727,7 +1081,7 @@ def wininet_SetUrlCacheEntryGroup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_SetUrlCacheEntryInfo(jitter):
+def wininet_SetUrlCacheEntryInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI SetUrlCacheEntryInfo(LPCTSTR lpszUrlName, LPINTERNET_CACHE_ENTRY_INFO lpCacheEntryInfo, [CacheEntryFieldControl] dwFieldControl)
     """"
@@ -735,7 +1089,13 @@ def wininet_SetUrlCacheEntryInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_SetUrlCacheGroupAttribute(jitter):
+def wininet_SetUrlCacheEntryInfoA(jitter):
+    wininet_SetUrlCacheEntryInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_SetUrlCacheEntryInfoW(jitter):
+    wininet_SetUrlCacheEntryInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_SetUrlCacheGroupAttribute(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL SetUrlCacheGroupAttribute(GROUPID gid, DWORD dwFlags, DWORD dwAttributes, LPINTERNET_CACHE_GROUP_INFO lpGroupInfo, LPVOID lpReserved)
     """"
@@ -743,13 +1103,25 @@ def wininet_SetUrlCacheGroupAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_UnlockUrlCacheEntryFile(jitter):
+def wininet_SetUrlCacheGroupAttributeA(jitter):
+    wininet_SetUrlCacheGroupAttribute(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_SetUrlCacheGroupAttributeW(jitter):
+    wininet_SetUrlCacheGroupAttribute(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_UnlockUrlCacheEntryFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI UnlockUrlCacheEntryFile(LPCTSTR lpszUrlName, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_UnlockUrlCacheEntryFileA(jitter):
+    wininet_UnlockUrlCacheEntryFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_UnlockUrlCacheEntryFileW(jitter):
+    wininet_UnlockUrlCacheEntryFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_UnlockUrlCacheEntryFile(jitter):
     """"
@@ -775,7 +1147,7 @@ def wininet_InternetClearAllPerSiteCookieDecisions(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetEnumPerSiteCookieDecision(jitter):
+def wininet_InternetEnumPerSiteCookieDecision(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetEnumPerSiteCookieDecision(LPTSTR pszSiteName, unsigned long* pcSiteNameSize, unsigned long* pdwDecision, unsigned long dwIndex)
     """"
@@ -783,7 +1155,13 @@ def wininet_InternetEnumPerSiteCookieDecision(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGetPerSiteCookieDecision(jitter):
+def wininet_InternetEnumPerSiteCookieDecisionA(jitter):
+    wininet_InternetEnumPerSiteCookieDecision(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetEnumPerSiteCookieDecisionW(jitter):
+    wininet_InternetEnumPerSiteCookieDecision(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetGetPerSiteCookieDecision(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetGetPerSiteCookieDecision(LPCTSTR pchHostName, unsigned long* pResult)
     """"
@@ -791,13 +1169,25 @@ def wininet_InternetGetPerSiteCookieDecision(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetPerSiteCookieDecision(jitter):
+def wininet_InternetGetPerSiteCookieDecisionA(jitter):
+    wininet_InternetGetPerSiteCookieDecision(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGetPerSiteCookieDecisionW(jitter):
+    wininet_InternetGetPerSiteCookieDecision(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetSetPerSiteCookieDecision(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOL InternetSetPerSiteCookieDecision(LPCTSTR pchHostName, DWORD dwDecision)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pchHostName", "dwDecision"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetSetPerSiteCookieDecisionA(jitter):
+    wininet_InternetSetPerSiteCookieDecision(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetPerSiteCookieDecisionW(jitter):
+    wininet_InternetSetPerSiteCookieDecision(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_PrivacyGetZonePreferenceW(jitter):
     """"
@@ -823,7 +1213,7 @@ def wininet_InternetInitializeAutoProxyDll(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetAlgIdToString(jitter):
+def wininet_InternetAlgIdToString(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetAlgIdToString(ALG_ID ai, LPTSTR lpstr, LPDWORD lpdwstrLength, DWORD dwReserved)
     """"
@@ -831,7 +1221,13 @@ def wininet_InternetAlgIdToString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSecurityProtocolToString(jitter):
+def wininet_InternetAlgIdToStringA(jitter):
+    wininet_InternetAlgIdToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetAlgIdToStringW(jitter):
+    wininet_InternetAlgIdToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetSecurityProtocolToString(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetSecurityProtocolToString(DWORD dwProtocol, LPTSTR lpstr, LPDWORD lpdwstrLength, DWORD dwReserved)
     """"
@@ -839,13 +1235,25 @@ def wininet_InternetSecurityProtocolToString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetGetSecurityInfoByURL(jitter):
+def wininet_InternetSecurityProtocolToStringA(jitter):
+    wininet_InternetSecurityProtocolToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSecurityProtocolToStringW(jitter):
+    wininet_InternetSecurityProtocolToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_InternetGetSecurityInfoByURL(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetGetSecurityInfoByURL(LPTSTR lpszURL, PCCERT_CHAIN_CONTEXT* ppCertChain, DWORD* pdwSecureFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszURL", "ppCertChain", "pdwSecureFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetGetSecurityInfoByURLA(jitter):
+    wininet_InternetGetSecurityInfoByURL(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetGetSecurityInfoByURLW(jitter):
+    wininet_InternetGetSecurityInfoByURL(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetGetSecurityInfoByURL(jitter):
     """"
@@ -887,13 +1295,19 @@ def wininet_ParseX509EncodedCertificateForListBoxEntry(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetShowSecurityInfoByURL(jitter):
+def wininet_InternetShowSecurityInfoByURL(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetShowSecurityInfoByURL(LPTSTR lpszURL, HWND hwndParent)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszURL", "hwndParent"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetShowSecurityInfoByURLA(jitter):
+    wininet_InternetShowSecurityInfoByURL(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetShowSecurityInfoByURLW(jitter):
+    wininet_InternetShowSecurityInfoByURL(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetShowSecurityInfoByURL(jitter):
     """"
@@ -943,13 +1357,19 @@ def wininet_InternetDebugGetLocalTime(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetWriteFileEx(jitter):
+def wininet_InternetWriteFileEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetWriteFileEx(HINTERNET hFile, LPINTERNET_BUFFERS lpBuffersIn, DWORD dwFlags, DWORD_PTR dwContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFile", "lpBuffersIn", "dwFlags", "dwContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetWriteFileExA(jitter):
+    wininet_InternetWriteFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetWriteFileExW(jitter):
+    wininet_InternetWriteFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_FindP3PPolicySymbol(jitter):
     """"
@@ -983,13 +1403,19 @@ def wininet_HttpPushClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_HttpCheckDavCompliance(jitter):
+def wininet_HttpCheckDavCompliance(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI HttpCheckDavCompliance(LPCTSTR lpszUrl, LPCTSTR lpszComplianceToken, LPBOOL lpfFound, HWND hWnd, LPVOID lpvReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrl", "lpszComplianceToken", "lpfFound", "hWnd", "lpvReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_HttpCheckDavComplianceA(jitter):
+    wininet_HttpCheckDavCompliance(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_HttpCheckDavComplianceW(jitter):
+    wininet_HttpCheckDavCompliance(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_HttpCheckDavCompliance(jitter):
     """"
@@ -999,13 +1425,19 @@ def wininet_HttpCheckDavCompliance(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_IsUrlCacheEntryExpired(jitter):
+def wininet_IsUrlCacheEntryExpired(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI IsUrlCacheEntryExpired(LPCTSTR lpszUrlName, DWORD dwFlags, FILETIME* pftLastModified)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName", "dwFlags", "pftLastModified"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_IsUrlCacheEntryExpiredA(jitter):
+    wininet_IsUrlCacheEntryExpired(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_IsUrlCacheEntryExpiredW(jitter):
+    wininet_IsUrlCacheEntryExpired(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_CreateUrlCacheEntryExW(jitter):
     """"
@@ -1031,7 +1463,7 @@ def wininet_CommitUrlCacheEntryBinaryBlob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_CreateUrlCacheContainer(jitter):
+def wininet_CreateUrlCacheContainer(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI CreateUrlCacheContainer(LPCTSTR Name, LPCTSTR lpCachePrefix, LPCTSTR lpszCachePath, DWORD KBCacheLimit, DWORD dwContainerType, [INTERNET_CACHE_CONTAINER_FLAGS] dwOptions, LPVOID pvBuffer, LPDWORD cbBuffer)
     """"
@@ -1039,7 +1471,13 @@ def wininet_CreateUrlCacheContainer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_DeleteUrlCacheContainer(jitter):
+def wininet_CreateUrlCacheContainerA(jitter):
+    wininet_CreateUrlCacheContainer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_CreateUrlCacheContainerW(jitter):
+    wininet_CreateUrlCacheContainer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_DeleteUrlCacheContainer(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI DeleteUrlCacheContainer(LPCTSTR Name, DWORD dwOptions)
     """"
@@ -1047,7 +1485,13 @@ def wininet_DeleteUrlCacheContainer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FindFirstUrlCacheContainer(jitter):
+def wininet_DeleteUrlCacheContainerA(jitter):
+    wininet_DeleteUrlCacheContainer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_DeleteUrlCacheContainerW(jitter):
+    wininet_DeleteUrlCacheContainer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FindFirstUrlCacheContainer(jitter, get_str, set_str):
     """"
     [Wininet.dll] HANDLE FindFirstUrlCacheContainer(LPDWORD pdwModified, LPINTERNET_CACHE_CONTAINER_INFO lpContainerInfo, LPDWORD lpcbContainerInfo, [CACHE_FIND_CONTAINER_FLAGS] dwOptions)
     """"
@@ -1055,7 +1499,13 @@ def wininet_FindFirstUrlCacheContainer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FindNextUrlCacheContainer(jitter):
+def wininet_FindFirstUrlCacheContainerA(jitter):
+    wininet_FindFirstUrlCacheContainer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FindFirstUrlCacheContainerW(jitter):
+    wininet_FindFirstUrlCacheContainer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FindNextUrlCacheContainer(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI FindNextUrlCacheContainer(HANDLE hEnumHandle, LPINTERNET_CACHE_CONTAINER_INFO lpContainerInfo, LPDWORD lpcbContainerInfo)
     """"
@@ -1063,7 +1513,13 @@ def wininet_FindNextUrlCacheContainer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_FreeUrlCacheSpace(jitter):
+def wininet_FindNextUrlCacheContainerA(jitter):
+    wininet_FindNextUrlCacheContainer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FindNextUrlCacheContainerW(jitter):
+    wininet_FindNextUrlCacheContainer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_FreeUrlCacheSpace(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI FreeUrlCacheSpace(LPCTSTR lpszCachePath, DWORD dwSize, DWORD dwFilter)
     """"
@@ -1071,7 +1527,13 @@ def wininet_FreeUrlCacheSpace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GetUrlCacheConfigInfo(jitter):
+def wininet_FreeUrlCacheSpaceA(jitter):
+    wininet_FreeUrlCacheSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_FreeUrlCacheSpaceW(jitter):
+    wininet_FreeUrlCacheSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_GetUrlCacheConfigInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI GetUrlCacheConfigInfo(LPINTERNET_CACHE_CONFIG_INFO lpCacheConfigInfo, LPDWORD lpcbCacheConfigInfo, [CACHE_CONFIG_FC] dwFieldControl)
     """"
@@ -1079,13 +1541,25 @@ def wininet_GetUrlCacheConfigInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_SetUrlCacheConfigInfo(jitter):
+def wininet_GetUrlCacheConfigInfoA(jitter):
+    wininet_GetUrlCacheConfigInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GetUrlCacheConfigInfoW(jitter):
+    wininet_GetUrlCacheConfigInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_SetUrlCacheConfigInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI SetUrlCacheConfigInfo(LPINTERNET_CACHE_CONFIG_INFO lpCacheConfigInfo, [CACHE_CONFIG_FC] dwFieldControl)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpCacheConfigInfo", "dwFieldControl"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_SetUrlCacheConfigInfoA(jitter):
+    wininet_SetUrlCacheConfigInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_SetUrlCacheConfigInfoW(jitter):
+    wininet_SetUrlCacheConfigInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_RunOnceUrlCache(jitter):
     """"
@@ -1151,13 +1625,19 @@ def wininet_LoadUrlCacheContent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_GetUrlCacheContainerInfo(jitter):
+def wininet_GetUrlCacheContainerInfo(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI GetUrlCacheContainerInfo(LPTSTR lpszUrlName, LPINTERNET_CACHE_CONTAINER_INFO lpContainerInfo, LPDWORD lpcbContainerInfo, DWORD dwOptions)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszUrlName", "lpContainerInfo", "lpcbContainerInfo", "dwOptions"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_GetUrlCacheContainerInfoA(jitter):
+    wininet_GetUrlCacheContainerInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_GetUrlCacheContainerInfoW(jitter):
+    wininet_GetUrlCacheContainerInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_AppCacheLookup(jitter):
     """"
@@ -1447,13 +1927,19 @@ def wininet_ReadGuidsForConnectedNetworks(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetDialState(jitter):
+def wininet_InternetSetDialState(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetSetDialState(LPCTSTR lpszConnectoid, DWORD dwState, DWORD dwReserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszConnectoid", "dwState", "dwReserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetSetDialStateA(jitter):
+    wininet_InternetSetDialState(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetDialStateW(jitter):
+    wininet_InternetSetDialState(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_InternetSetDialState(jitter):
     """"
@@ -1535,7 +2021,7 @@ def wininet_InternalInternetGetCookie(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_ImportCookieFile(jitter):
+def wininet_ImportCookieFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI ImportCookieFile(LPCTSTR szFilename)
     """"
@@ -1543,7 +2029,13 @@ def wininet_ImportCookieFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_ExportCookieFile(jitter):
+def wininet_ImportCookieFileA(jitter):
+    wininet_ImportCookieFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_ImportCookieFileW(jitter):
+    wininet_ImportCookieFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_ExportCookieFile(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI ExportCookieFile(LPCTSTR szFilename, BOOL fAppend)
     """"
@@ -1551,13 +2043,25 @@ def wininet_ExportCookieFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_IsDomainLegalCookieDomain(jitter):
+def wininet_ExportCookieFileA(jitter):
+    wininet_ExportCookieFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_ExportCookieFileW(jitter):
+    wininet_ExportCookieFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def wininet_IsDomainLegalCookieDomain(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI IsDomainLegalCookieDomain(LPCTSTR pchDomain, LPCTSTR pchFullDomain)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pchDomain", "pchFullDomain"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_IsDomainLegalCookieDomainA(jitter):
+    wininet_IsDomainLegalCookieDomain(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_IsDomainLegalCookieDomainW(jitter):
+    wininet_IsDomainLegalCookieDomain(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_UrlZonesDetach(jitter):
     """"
@@ -1607,13 +2111,19 @@ def wininet_GetP3PRequestStatus(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def wininet_InternetSetOptionEx(jitter):
+def wininet_InternetSetOptionEx(jitter, get_str, set_str):
     """"
     [Wininet.dll] BOOLAPI InternetSetOptionEx(HINTERNET hInternet, [INTERNET_OPTION] dwOption, LPVOID lpBuffer, DWORD dwBufferLength, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInternet", "dwOption", "lpBuffer", "dwBufferLength", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def wininet_InternetSetOptionExA(jitter):
+    wininet_InternetSetOptionEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def wininet_InternetSetOptionExW(jitter):
+    wininet_InternetSetOptionEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def wininet_FtpPutFileEx(jitter):
     """"

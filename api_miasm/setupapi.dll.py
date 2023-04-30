@@ -1,5 +1,5 @@
 
-def setupapi_InstallHinfSection(jitter):
+def setupapi_InstallHinfSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] VOID InstallHinfSection(HWND hwnd, HINSTANCE ModuleHandle, PCTSTR CmdLineBuffer, INT nCmdShow)
     """"
@@ -7,7 +7,13 @@ def setupapi_InstallHinfSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupAddInstallSectionToDiskSpaceList(jitter):
+def setupapi_InstallHinfSectionA(jitter):
+    setupapi_InstallHinfSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_InstallHinfSectionW(jitter):
+    setupapi_InstallHinfSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupAddInstallSectionToDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupAddInstallSectionToDiskSpaceList(HDSKSPC DiskSpace, HINF InfHandle, HINF LayoutInfHandle, PCTSTR SectionName, PVOID Reserved1, UINT Reserved2)
     """"
@@ -15,7 +21,13 @@ def setupapi_SetupAddInstallSectionToDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupAddSectionToDiskSpaceList(jitter):
+def setupapi_SetupAddInstallSectionToDiskSpaceListA(jitter):
+    setupapi_SetupAddInstallSectionToDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupAddInstallSectionToDiskSpaceListW(jitter):
+    setupapi_SetupAddInstallSectionToDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupAddSectionToDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupAddSectionToDiskSpaceList(HDSKSPC DiskSpace, HINF InfHandle, HINF ListInfHandle, PCTSTR SectionName, UINT Operation, PVOID Reserved1, UINT Reserved2)
     """"
@@ -23,7 +35,13 @@ def setupapi_SetupAddSectionToDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupAddToDiskSpaceList(jitter):
+def setupapi_SetupAddSectionToDiskSpaceListA(jitter):
+    setupapi_SetupAddSectionToDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupAddSectionToDiskSpaceListW(jitter):
+    setupapi_SetupAddSectionToDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupAddToDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupAddToDiskSpaceList(HDSKSPC DiskSpace, PCTSTR TargetFilespec, LONGLONG FileSize, UINT Operation, PVOID Reserved1, UINT Reserved2)
     """"
@@ -31,7 +49,13 @@ def setupapi_SetupAddToDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupAddToSourceList(jitter):
+def setupapi_SetupAddToDiskSpaceListA(jitter):
+    setupapi_SetupAddToDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupAddToDiskSpaceListW(jitter):
+    setupapi_SetupAddToDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupAddToSourceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupAddToSourceList(DWORD Flags, PCTSTR Source)
     """"
@@ -39,7 +63,13 @@ def setupapi_SetupAddToSourceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupAdjustDiskSpaceList(jitter):
+def setupapi_SetupAddToSourceListA(jitter):
+    setupapi_SetupAddToSourceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupAddToSourceListW(jitter):
+    setupapi_SetupAddToSourceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupAdjustDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupAdjustDiskSpaceList(HDSKSPC DiskSpace, LPCTSTR DriveRoot, LONGLONG Amount, PVOID Reserved1, UINT Reserved2)
     """"
@@ -47,13 +77,25 @@ def setupapi_SetupAdjustDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupBackupError(jitter):
+def setupapi_SetupAdjustDiskSpaceListA(jitter):
+    setupapi_SetupAdjustDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupAdjustDiskSpaceListW(jitter):
+    setupapi_SetupAdjustDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupBackupError(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] UINT SetupBackupError(HWND hwndParent, PCTSTR DialogTitle, PCTSTR SourceFile, PCTSTR TargetFile, UINT Win32ErrorCode, DWORD Style)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "DialogTitle", "SourceFile", "TargetFile", "Win32ErrorCode", "Style"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupBackupErrorA(jitter):
+    setupapi_SetupBackupError(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupBackupErrorW(jitter):
+    setupapi_SetupBackupError(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupCancelTemporarySourceList(jitter):
     """"
@@ -79,7 +121,7 @@ def setupapi_SetupCloseInfFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupCommitFileQueue(jitter):
+def setupapi_SetupCommitFileQueue(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupCommitFileQueue(HWND Owner, HSPFILEQ QueueHandle, PSP_FILE_CALLBACK MsgHandler, PVOID Context)
     """"
@@ -87,7 +129,13 @@ def setupapi_SetupCommitFileQueue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupConfigureWmiFromInfSection(jitter):
+def setupapi_SetupCommitFileQueueA(jitter):
+    setupapi_SetupCommitFileQueue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupCommitFileQueueW(jitter):
+    setupapi_SetupCommitFileQueue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupConfigureWmiFromInfSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupConfigureWmiFromInfSection(HINF InfHandle, PCWSTR SectionName, DWORD Flags)
     """"
@@ -95,7 +143,13 @@ def setupapi_SetupConfigureWmiFromInfSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupCopyError(jitter):
+def setupapi_SetupConfigureWmiFromInfSectionA(jitter):
+    setupapi_SetupConfigureWmiFromInfSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupConfigureWmiFromInfSectionW(jitter):
+    setupapi_SetupConfigureWmiFromInfSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupCopyError(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] UINT SetupCopyError(HWND hwndParent, PCTSTR DialogTitle, PCTSTR DiskName, PCTSTR PathToSource, PCTSTR SourceFile, PCTSTR TargetPathFile, UINT Win32ErrorCode, DWORD Style, PTSTR PathBuffer, DWORD PathBufferSize, PDWORD PathRequiredSize)
     """"
@@ -103,7 +157,13 @@ def setupapi_SetupCopyError(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupCopyOEMInf(jitter):
+def setupapi_SetupCopyErrorA(jitter):
+    setupapi_SetupCopyError(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupCopyErrorW(jitter):
+    setupapi_SetupCopyError(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupCopyOEMInf(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupCopyOEMInf(PCTSTR SourceInfFileName, PCTSTR OEMSourceMediaLocation, DWORD OEMSourceMediaType, DWORD CopyStyle, PTSTR DestinationInfFileName, DWORD DestinationInfFileNameSize, PDWORD RequiredSize, PTSTR DestinationInfFileNameComponent)
     """"
@@ -111,7 +171,13 @@ def setupapi_SetupCopyOEMInf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupCreateDiskSpaceList(jitter):
+def setupapi_SetupCopyOEMInfA(jitter):
+    setupapi_SetupCopyOEMInf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupCopyOEMInfW(jitter):
+    setupapi_SetupCopyOEMInf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupCreateDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HDSKSPC SetupCreateDiskSpaceList(PVOID Reserved1, DWORD Reserved2, [SPDSL_FLAGS] Flags)
     """"
@@ -119,7 +185,13 @@ def setupapi_SetupCreateDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDecompressOrCopyFile(jitter):
+def setupapi_SetupCreateDiskSpaceListA(jitter):
+    setupapi_SetupCreateDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupCreateDiskSpaceListW(jitter):
+    setupapi_SetupCreateDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDecompressOrCopyFile(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] [ERROR_CODE] SetupDecompressOrCopyFile(PCTSTR SourceFileName, PCTSTR TargetFileName, PUINT CompressionType)
     """"
@@ -127,7 +199,13 @@ def setupapi_SetupDecompressOrCopyFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDefaultQueueCallback(jitter):
+def setupapi_SetupDecompressOrCopyFileA(jitter):
+    setupapi_SetupDecompressOrCopyFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDecompressOrCopyFileW(jitter):
+    setupapi_SetupDecompressOrCopyFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDefaultQueueCallback(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] UINT SetupDefaultQueueCallback(PVOID Context, UINT Notification, UINT Param1, UINT Param2)
     """"
@@ -135,13 +213,25 @@ def setupapi_SetupDefaultQueueCallback(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDeleteError(jitter):
+def setupapi_SetupDefaultQueueCallbackA(jitter):
+    setupapi_SetupDefaultQueueCallback(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDefaultQueueCallbackW(jitter):
+    setupapi_SetupDefaultQueueCallback(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDeleteError(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] UINT SetupDeleteError(HWND hwndParent, PCTSTR DialogTitle, PCTSTR File, UINT Win32ErrorCode, DWORD Style)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "DialogTitle", "File", "Win32ErrorCode", "Style"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDeleteErrorA(jitter):
+    setupapi_SetupDeleteError(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDeleteErrorW(jitter):
+    setupapi_SetupDeleteError(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDestroyDiskSpaceList(jitter):
     """"
@@ -151,7 +241,7 @@ def setupapi_SetupDestroyDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDuplicateDiskSpaceList(jitter):
+def setupapi_SetupDuplicateDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HDSKSPC SetupDuplicateDiskSpaceList(HDSKSPC DiskSpace, PVOID Reserved1, DWORD Reserved2, UINT Flags)
     """"
@@ -159,7 +249,13 @@ def setupapi_SetupDuplicateDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupEnumInfSections(jitter):
+def setupapi_SetupDuplicateDiskSpaceListA(jitter):
+    setupapi_SetupDuplicateDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDuplicateDiskSpaceListW(jitter):
+    setupapi_SetupDuplicateDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupEnumInfSections(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupEnumInfSections(HINF InfHandle, UINT EnumerationIndex, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -167,13 +263,25 @@ def setupapi_SetupEnumInfSections(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupFindFirstLine(jitter):
+def setupapi_SetupEnumInfSectionsA(jitter):
+    setupapi_SetupEnumInfSections(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupEnumInfSectionsW(jitter):
+    setupapi_SetupEnumInfSections(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupFindFirstLine(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupFindFirstLine(HINF InfHandle, PCTSTR Section, PCTSTR Key, PINFCONTEXT Context)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InfHandle", "Section", "Key", "Context"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupFindFirstLineA(jitter):
+    setupapi_SetupFindFirstLine(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupFindFirstLineW(jitter):
+    setupapi_SetupFindFirstLine(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupFindNextLine(jitter):
     """"
@@ -183,7 +291,7 @@ def setupapi_SetupFindNextLine(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupFindNextMatchLine(jitter):
+def setupapi_SetupFindNextMatchLine(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupFindNextMatchLine(PINFCONTEXT ContextIn, PCTSTR Key, PINFCONTEXT ContextOut)
     """"
@@ -191,13 +299,25 @@ def setupapi_SetupFindNextMatchLine(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupFreeSourceList(jitter):
+def setupapi_SetupFindNextMatchLineA(jitter):
+    setupapi_SetupFindNextMatchLine(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupFindNextMatchLineW(jitter):
+    setupapi_SetupFindNextMatchLine(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupFreeSourceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupFreeSourceList(PCTSTR** List, UINT Count)
     """"
     ret_ad, args = jitter.func_args_stdcall(["List", "Count"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupFreeSourceListA(jitter):
+    setupapi_SetupFreeSourceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupFreeSourceListW(jitter):
+    setupapi_SetupFreeSourceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupGetBinaryField(jitter):
     """"
@@ -215,7 +335,7 @@ def setupapi_SetupGetFieldCount(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetFileCompressionInfo(jitter):
+def setupapi_SetupGetFileCompressionInfo(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] [ERROR_CODE] SetupGetFileCompressionInfo(PCTSTR SourceFileName, PTSTR* ActualSourceFileName, PDWORD SourceFileSize, PDWORD TargetFileSize, PUINT CompressionType)
     """"
@@ -223,13 +343,25 @@ def setupapi_SetupGetFileCompressionInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetFileCompressionInfoEx(jitter):
+def setupapi_SetupGetFileCompressionInfoA(jitter):
+    setupapi_SetupGetFileCompressionInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetFileCompressionInfoW(jitter):
+    setupapi_SetupGetFileCompressionInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetFileCompressionInfoEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetFileCompressionInfoEx(PCTSTR SourceFileName, PTSTR ActualSourceFileNameBuffer, DWORD ActualSourceFileNameLen, PDWORD RequiredBufferLen, PDWORD SourceFileSize, PDWORD TargetFileSize, PUINT CompressionType)
     """"
     ret_ad, args = jitter.func_args_stdcall(["SourceFileName", "ActualSourceFileNameBuffer", "ActualSourceFileNameLen", "RequiredBufferLen", "SourceFileSize", "TargetFileSize", "CompressionType"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupGetFileCompressionInfoExA(jitter):
+    setupapi_SetupGetFileCompressionInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetFileCompressionInfoExW(jitter):
+    setupapi_SetupGetFileCompressionInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupGetFileQueueCount(jitter):
     """"
@@ -247,7 +379,7 @@ def setupapi_SetupGetFileQueueFlags(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetInfFileList(jitter):
+def setupapi_SetupGetInfFileList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetInfFileList(PCTSTR DirectoryPath, [InfStyle] InfStyle, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -255,13 +387,25 @@ def setupapi_SetupGetInfFileList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetInfInformation(jitter):
+def setupapi_SetupGetInfFileListA(jitter):
+    setupapi_SetupGetInfFileList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetInfFileListW(jitter):
+    setupapi_SetupGetInfFileList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetInfInformation(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetInfInformation(LPCVOID InfSpec, DWORD SearchControl, PSP_INF_INFORMATION ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InfSpec", "SearchControl", "ReturnBuffer", "ReturnBufferSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupGetInfInformationA(jitter):
+    setupapi_SetupGetInfInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetInfInformationW(jitter):
+    setupapi_SetupGetInfInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupGetIntField(jitter):
     """"
@@ -271,7 +415,7 @@ def setupapi_SetupGetIntField(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetLineByIndex(jitter):
+def setupapi_SetupGetLineByIndex(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetLineByIndex(HINF InfHandle, PCTSTR Section, DWORD Index, PINFCONTEXT Context)
     """"
@@ -279,7 +423,13 @@ def setupapi_SetupGetLineByIndex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetLineCount(jitter):
+def setupapi_SetupGetLineByIndexA(jitter):
+    setupapi_SetupGetLineByIndex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetLineByIndexW(jitter):
+    setupapi_SetupGetLineByIndex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetLineCount(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] LONG SetupGetLineCount(HINF InfHandle, PCTSTR Section)
     """"
@@ -287,7 +437,13 @@ def setupapi_SetupGetLineCount(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetLineText(jitter):
+def setupapi_SetupGetLineCountA(jitter):
+    setupapi_SetupGetLineCount(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetLineCountW(jitter):
+    setupapi_SetupGetLineCount(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetLineText(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetLineText(PINFCONTEXT Context, HINF InfHandle, PCTSTR Section, PCTSTR Key, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -295,7 +451,13 @@ def setupapi_SetupGetLineText(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetMultiSzField(jitter):
+def setupapi_SetupGetLineTextA(jitter):
+    setupapi_SetupGetLineText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetLineTextW(jitter):
+    setupapi_SetupGetLineText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetMultiSzField(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetMultiSzField(PINFCONTEXT Context, DWORD FieldIndex, PTSTR ReturnBuffer, DWORD ReturnBufferSize, LPDWORD RequiredSize)
     """"
@@ -303,7 +465,13 @@ def setupapi_SetupGetMultiSzField(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetSourceFileLocation(jitter):
+def setupapi_SetupGetMultiSzFieldA(jitter):
+    setupapi_SetupGetMultiSzField(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetMultiSzFieldW(jitter):
+    setupapi_SetupGetMultiSzField(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetSourceFileLocation(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetSourceFileLocation(HINF InfHandle, PINFCONTEXT InfContext, PCTSTR FileName, PUINT SourceId, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -311,7 +479,13 @@ def setupapi_SetupGetSourceFileLocation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetSourceFileSize(jitter):
+def setupapi_SetupGetSourceFileLocationA(jitter):
+    setupapi_SetupGetSourceFileLocation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetSourceFileLocationW(jitter):
+    setupapi_SetupGetSourceFileLocation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetSourceFileSize(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetSourceFileSize(HINF InfHandle, PINFCONTEXT InfContext, PCTSTR FileName, PCTSTR Section, PDWORD FileSize, UINT RoundingFactor)
     """"
@@ -319,7 +493,13 @@ def setupapi_SetupGetSourceFileSize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetSourceInfo(jitter):
+def setupapi_SetupGetSourceFileSizeA(jitter):
+    setupapi_SetupGetSourceFileSize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetSourceFileSizeW(jitter):
+    setupapi_SetupGetSourceFileSize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetSourceInfo(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetSourceInfo(HINF InfHandle, UINT SourceId, UINT InfoDesired, PTSTR ReturnBuffer, DWORD ReturnBufferSize, LPDWORD RequiredSize)
     """"
@@ -327,7 +507,13 @@ def setupapi_SetupGetSourceInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetStringField(jitter):
+def setupapi_SetupGetSourceInfoA(jitter):
+    setupapi_SetupGetSourceInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetSourceInfoW(jitter):
+    setupapi_SetupGetSourceInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetStringField(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetStringField(PINFCONTEXT Context, DWORD FieldIndex, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -335,13 +521,25 @@ def setupapi_SetupGetStringField(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetTargetPath(jitter):
+def setupapi_SetupGetStringFieldA(jitter):
+    setupapi_SetupGetStringField(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetStringFieldW(jitter):
+    setupapi_SetupGetStringField(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetTargetPath(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetTargetPath(HINF InfHandle, PINFCONTEXT InfContext, PCTSTR Section, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InfHandle", "InfContext", "Section", "ReturnBuffer", "ReturnBufferSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupGetTargetPathA(jitter):
+    setupapi_SetupGetTargetPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetTargetPathW(jitter):
+    setupapi_SetupGetTargetPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupInitDefaultQueueCallback(jitter):
     """"
@@ -359,7 +557,7 @@ def setupapi_SetupInitDefaultQueueCallbackEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInitializeFileLog(jitter):
+def setupapi_SetupInitializeFileLog(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HSPFILELOG SetupInitializeFileLog(PCTSTR LogFileName, DWORD Flags)
     """"
@@ -367,7 +565,13 @@ def setupapi_SetupInitializeFileLog(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInstallFile(jitter):
+def setupapi_SetupInitializeFileLogA(jitter):
+    setupapi_SetupInitializeFileLog(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInitializeFileLogW(jitter):
+    setupapi_SetupInitializeFileLog(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupInstallFile(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupInstallFile(HINF InfHandle, PINFCONTEXT InfContext, PCTSTR SourceFile, PCTSTR SourcePathRoot, PCTSTR DestinationName, DWORD CopyStyle, PSP_FILE_CALLBACK CopyMsgHandler, PVOID Context)
     """"
@@ -375,7 +579,13 @@ def setupapi_SetupInstallFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInstallFileEx(jitter):
+def setupapi_SetupInstallFileA(jitter):
+    setupapi_SetupInstallFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInstallFileW(jitter):
+    setupapi_SetupInstallFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupInstallFileEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupInstallFileEx(HINF InfHandle, PINFCONTEXT InfContext, PCTSTR SourceFile, PCTSTR SourcePathRoot, PCTSTR DestinationName, DWORD CopyStyle, PSP_FILE_CALLBACK CopyMsgHandler, PVOID Context, PBOOL FileWasInUse)
     """"
@@ -383,7 +593,13 @@ def setupapi_SetupInstallFileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInstallFilesFromInfSection(jitter):
+def setupapi_SetupInstallFileExA(jitter):
+    setupapi_SetupInstallFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInstallFileExW(jitter):
+    setupapi_SetupInstallFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupInstallFilesFromInfSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupInstallFilesFromInfSection(HINF InfHandle, HINF LayoutInfHandle, HSPFILEQ FileQueue, PCTSTR SectionName, PCTSTR SourceRootPath, UINT CopyFlags)
     """"
@@ -391,7 +607,13 @@ def setupapi_SetupInstallFilesFromInfSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInstallFromInfSection(jitter):
+def setupapi_SetupInstallFilesFromInfSectionA(jitter):
+    setupapi_SetupInstallFilesFromInfSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInstallFilesFromInfSectionW(jitter):
+    setupapi_SetupInstallFilesFromInfSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupInstallFromInfSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupInstallFromInfSection(HWND Owner, HINF InfHandle, PCTSTR SectionName, [SPINST_FLAGS] Flags, HKEY RelativeKeyRoot, PCTSTR SourceRootPath, UINT CopyFlags, PSP_FILE_CALLBACK MsgHandler, PVOID Context, HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData)
     """"
@@ -399,7 +621,13 @@ def setupapi_SetupInstallFromInfSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInstallServicesFromInfSection(jitter):
+def setupapi_SetupInstallFromInfSectionA(jitter):
+    setupapi_SetupInstallFromInfSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInstallFromInfSectionW(jitter):
+    setupapi_SetupInstallFromInfSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupInstallServicesFromInfSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupInstallServicesFromInfSection(HINF InfHandle, PCTSTR SectionName, DWORD Flags)
     """"
@@ -407,7 +635,13 @@ def setupapi_SetupInstallServicesFromInfSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupInstallServicesFromInfSectionEx(jitter):
+def setupapi_SetupInstallServicesFromInfSectionA(jitter):
+    setupapi_SetupInstallServicesFromInfSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInstallServicesFromInfSectionW(jitter):
+    setupapi_SetupInstallServicesFromInfSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupInstallServicesFromInfSectionEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupInstallServicesFromInfSectionEx(HINF InfHandle, PCTSTR SectionName, DWORD Flags, HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PVOID Reserved1, PVOID Reserved2)
     """"
@@ -415,7 +649,13 @@ def setupapi_SetupInstallServicesFromInfSectionEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupIterateCabinet(jitter):
+def setupapi_SetupInstallServicesFromInfSectionExA(jitter):
+    setupapi_SetupInstallServicesFromInfSectionEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupInstallServicesFromInfSectionExW(jitter):
+    setupapi_SetupInstallServicesFromInfSectionEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupIterateCabinet(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupIterateCabinet(PCTSTR CabinetFile, DWORD Reserved, PSP_FILE_CALLBACK MsgHandler, PVOID Context)
     """"
@@ -423,7 +663,13 @@ def setupapi_SetupIterateCabinet(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupLogFile(jitter):
+def setupapi_SetupIterateCabinetA(jitter):
+    setupapi_SetupIterateCabinet(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupIterateCabinetW(jitter):
+    setupapi_SetupIterateCabinet(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupLogFile(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupLogFile(HSPFILELOG FileLogHandle, PCTSTR LogSectionName, PCTSTR SourceFileName, PCTSTR TargetFileName, DWORD Checksum, PCTSTR DiskTagfile, PCTSTR DiskDescription, PCTSTR OtherInfo, DWORD Flags)
     """"
@@ -431,7 +677,13 @@ def setupapi_SetupLogFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupLogError(jitter):
+def setupapi_SetupLogFileA(jitter):
+    setupapi_SetupLogFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupLogFileW(jitter):
+    setupapi_SetupLogFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupLogError(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupLogError(PCTSTR MessageString, LogSeverity Severity)
     """"
@@ -439,13 +691,25 @@ def setupapi_SetupLogError(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupOpenAppendInfFile(jitter):
+def setupapi_SetupLogErrorA(jitter):
+    setupapi_SetupLogError(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupLogErrorW(jitter):
+    setupapi_SetupLogError(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupOpenAppendInfFile(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupOpenAppendInfFile(PCTSTR FileName, HINF InfHandle, PUINT ErrorLine)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "InfHandle", "ErrorLine"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupOpenAppendInfFileA(jitter):
+    setupapi_SetupOpenAppendInfFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupOpenAppendInfFileW(jitter):
+    setupapi_SetupOpenAppendInfFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupOpenFileQueue(jitter):
     """"
@@ -455,13 +719,19 @@ def setupapi_SetupOpenFileQueue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupOpenInfFile(jitter):
+def setupapi_SetupOpenInfFile(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HINF SetupOpenInfFile(PCTSTR FileName, PCTSTR InfClass, [InfStyle] InfStyle, PUINT ErrorLine)
     """"
     ret_ad, args = jitter.func_args_stdcall(["FileName", "InfClass", "InfStyle", "ErrorLine"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupOpenInfFileA(jitter):
+    setupapi_SetupOpenInfFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupOpenInfFileW(jitter):
+    setupapi_SetupOpenInfFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupOpenLog(jitter):
     """"
@@ -487,13 +757,19 @@ def setupapi_SetupOpenMasterInf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupPromptForDisk(jitter):
+def setupapi_SetupPromptForDisk(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] UINT SetupPromptForDisk(HWND hwndParent, PCTSTR DialogTitle, PCTSTR DiskName, PCTSTR PathToSource, PCTSTR FileSought, PCTSTR TagFile, DWORD DiskPromptStyle, PTSTR PathBuffer, DWORD PathBufferSize, PDWORD PathRequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "DialogTitle", "DiskName", "PathToSource", "FileSought", "TagFile", "DiskPromptStyle", "PathBuffer", "PathBufferSize", "PathRequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupPromptForDiskA(jitter):
+    setupapi_SetupPromptForDisk(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupPromptForDiskW(jitter):
+    setupapi_SetupPromptForDisk(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupPromptReboot(jitter):
     """"
@@ -503,7 +779,7 @@ def setupapi_SetupPromptReboot(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueryDrivesInDiskSpaceList(jitter):
+def setupapi_SetupQueryDrivesInDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueryDrivesInDiskSpaceList(HDSKSPC DiskSpace, PSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -511,7 +787,13 @@ def setupapi_SetupQueryDrivesInDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueryFileLog(jitter):
+def setupapi_SetupQueryDrivesInDiskSpaceListA(jitter):
+    setupapi_SetupQueryDrivesInDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueryDrivesInDiskSpaceListW(jitter):
+    setupapi_SetupQueryDrivesInDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueryFileLog(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueryFileLog(HSPFILELOG FileLogHandle, PCTSTR LogSectionName, PCTSTR TargetFileName, SetupFileLogInfo DesiredInfo, PTSTR DataOut, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -519,7 +801,13 @@ def setupapi_SetupQueryFileLog(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueryInfFileInformation(jitter):
+def setupapi_SetupQueryFileLogA(jitter):
+    setupapi_SetupQueryFileLog(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueryFileLogW(jitter):
+    setupapi_SetupQueryFileLog(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueryInfFileInformation(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueryInfFileInformation(PSP_INF_INFORMATION InfInformation, UINT InfIndex, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -527,7 +815,13 @@ def setupapi_SetupQueryInfFileInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueryInfOriginalFileInformation(jitter):
+def setupapi_SetupQueryInfFileInformationA(jitter):
+    setupapi_SetupQueryInfFileInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueryInfFileInformationW(jitter):
+    setupapi_SetupQueryInfFileInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueryInfOriginalFileInformation(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueryInfOriginalFileInformation(PSP_INF_INFORMATION InfInformation, UINT InfIndex, PSP_ALTPLATFORM_INFO AlternatePlatformInfo, PSP_ORIGINAL_FILE_INFO OriginalFileInfo)
     """"
@@ -535,7 +829,13 @@ def setupapi_SetupQueryInfOriginalFileInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueryInfVersionInformation(jitter):
+def setupapi_SetupQueryInfOriginalFileInformationA(jitter):
+    setupapi_SetupQueryInfOriginalFileInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueryInfOriginalFileInformationW(jitter):
+    setupapi_SetupQueryInfOriginalFileInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueryInfVersionInformation(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueryInfVersionInformation(PSP_INF_INFORMATION InfInformation, UINT InfIndex, PCTSTR Key, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -543,7 +843,13 @@ def setupapi_SetupQueryInfVersionInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQuerySourceList(jitter):
+def setupapi_SetupQueryInfVersionInformationA(jitter):
+    setupapi_SetupQueryInfVersionInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueryInfVersionInformationW(jitter):
+    setupapi_SetupQueryInfVersionInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQuerySourceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQuerySourceList(DWORD Flags, PCTSTR** List, PUINT Count)
     """"
@@ -551,7 +857,13 @@ def setupapi_SetupQuerySourceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQuerySpaceRequiredOnDrive(jitter):
+def setupapi_SetupQuerySourceListA(jitter):
+    setupapi_SetupQuerySourceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQuerySourceListW(jitter):
+    setupapi_SetupQuerySourceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQuerySpaceRequiredOnDrive(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQuerySpaceRequiredOnDrive(HDSKSPC DiskSpace, PCTSTR DriveSpec, LONGLONG* SpaceRequired, PVOID Reserved1, UINT Reserved2)
     """"
@@ -559,7 +871,13 @@ def setupapi_SetupQuerySpaceRequiredOnDrive(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueCopy(jitter):
+def setupapi_SetupQuerySpaceRequiredOnDriveA(jitter):
+    setupapi_SetupQuerySpaceRequiredOnDrive(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQuerySpaceRequiredOnDriveW(jitter):
+    setupapi_SetupQuerySpaceRequiredOnDrive(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueCopy(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueCopy(HSPFILEQ QueueHandle, PCTSTR SourceRootPath, PCTSTR SourcePath, PCTSTR SourceFileName, PCTSTR SourceDescription, PCTSTR SourceTagFile, PCTSTR TargetDirectory, PCTSTR TargetFileName, DWORD CopyStyle)
     """"
@@ -567,7 +885,13 @@ def setupapi_SetupQueueCopy(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueCopyIndirect(jitter):
+def setupapi_SetupQueueCopyA(jitter):
+    setupapi_SetupQueueCopy(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueCopyW(jitter):
+    setupapi_SetupQueueCopy(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueCopyIndirect(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueCopyIndirect(PSP_FILE_COPY_PARAMS CopyParams)
     """"
@@ -575,7 +899,13 @@ def setupapi_SetupQueueCopyIndirect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueCopySection(jitter):
+def setupapi_SetupQueueCopyIndirectA(jitter):
+    setupapi_SetupQueueCopyIndirect(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueCopyIndirectW(jitter):
+    setupapi_SetupQueueCopyIndirect(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueCopySection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueCopySection(HSPFILEQ QueueHandle, PCTSTR SourceRootPath, HINF InfHandle, HINF ListInfHandle, PCTSTR Section, DWORD CopyStyle)
     """"
@@ -583,7 +913,13 @@ def setupapi_SetupQueueCopySection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueDefaultCopy(jitter):
+def setupapi_SetupQueueCopySectionA(jitter):
+    setupapi_SetupQueueCopySection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueCopySectionW(jitter):
+    setupapi_SetupQueueCopySection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueDefaultCopy(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueDefaultCopy(HSPFILEQ QueueHandle, HINF InfHandle, PCTSTR SourceRootPath, PCTSTR SourceFileName, PCTSTR TargetFileName, DWORD CopyStyle)
     """"
@@ -591,7 +927,13 @@ def setupapi_SetupQueueDefaultCopy(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueDelete(jitter):
+def setupapi_SetupQueueDefaultCopyA(jitter):
+    setupapi_SetupQueueDefaultCopy(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueDefaultCopyW(jitter):
+    setupapi_SetupQueueDefaultCopy(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueDelete(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueDelete(HSPFILEQ QueueHandle, PCTSTR PathPart1, PCTSTR PathPart2)
     """"
@@ -599,7 +941,13 @@ def setupapi_SetupQueueDelete(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueDeleteSection(jitter):
+def setupapi_SetupQueueDeleteA(jitter):
+    setupapi_SetupQueueDelete(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueDeleteW(jitter):
+    setupapi_SetupQueueDelete(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueDeleteSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueDeleteSection(HSPFILEQ QueueHandle, HINF InfHandle, HINF ListInfHandle, PCTSTR Section)
     """"
@@ -607,7 +955,13 @@ def setupapi_SetupQueueDeleteSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueRename(jitter):
+def setupapi_SetupQueueDeleteSectionA(jitter):
+    setupapi_SetupQueueDeleteSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueDeleteSectionW(jitter):
+    setupapi_SetupQueueDeleteSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueRename(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueRename(HSPFILEQ QueueHandle, PCTSTR SourcePath, PCTSTR SourceFileName, PCTSTR TargetPath, PCTSTR TargetFileName)
     """"
@@ -615,7 +969,13 @@ def setupapi_SetupQueueRename(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupQueueRenameSection(jitter):
+def setupapi_SetupQueueRenameA(jitter):
+    setupapi_SetupQueueRename(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueRenameW(jitter):
+    setupapi_SetupQueueRename(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupQueueRenameSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupQueueRenameSection(HSPFILEQ QueueHandle, HINF InfHandle, HINF ListInfHandle, PCTSTR Section)
     """"
@@ -623,7 +983,13 @@ def setupapi_SetupQueueRenameSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupRemoveFileLogEntry(jitter):
+def setupapi_SetupQueueRenameSectionA(jitter):
+    setupapi_SetupQueueRenameSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupQueueRenameSectionW(jitter):
+    setupapi_SetupQueueRenameSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupRemoveFileLogEntry(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupRemoveFileLogEntry(HSPFILELOG FileLogHandle, PCTSTR LogSectionName, PCTSTR TargetFileName)
     """"
@@ -631,7 +997,13 @@ def setupapi_SetupRemoveFileLogEntry(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupRemoveFromDiskSpaceList(jitter):
+def setupapi_SetupRemoveFileLogEntryA(jitter):
+    setupapi_SetupRemoveFileLogEntry(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupRemoveFileLogEntryW(jitter):
+    setupapi_SetupRemoveFileLogEntry(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupRemoveFromDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupRemoveFromDiskSpaceList(HDSKSPC DiskSpace, PCTSTR TargetFilespec, UINT Operation, PVOID Reserved1, UINT Reserved2)
     """"
@@ -639,7 +1011,13 @@ def setupapi_SetupRemoveFromDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupRemoveFromSourceList(jitter):
+def setupapi_SetupRemoveFromDiskSpaceListA(jitter):
+    setupapi_SetupRemoveFromDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupRemoveFromDiskSpaceListW(jitter):
+    setupapi_SetupRemoveFromDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupRemoveFromSourceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupRemoveFromSourceList(DWORD Flags, PCTSTR Source)
     """"
@@ -647,7 +1025,13 @@ def setupapi_SetupRemoveFromSourceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupRemoveInstallSectionFromDiskSpaceList(jitter):
+def setupapi_SetupRemoveFromSourceListA(jitter):
+    setupapi_SetupRemoveFromSourceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupRemoveFromSourceListW(jitter):
+    setupapi_SetupRemoveFromSourceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupRemoveInstallSectionFromDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupRemoveInstallSectionFromDiskSpaceList(HDSKSPC DiskSpace, HINF InfHandle, HINF LayoutInfHandle, PCTSTR SectionName, PVOID Reserved1, UINT Reserved2)
     """"
@@ -655,7 +1039,13 @@ def setupapi_SetupRemoveInstallSectionFromDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupRemoveSectionFromDiskSpaceList(jitter):
+def setupapi_SetupRemoveInstallSectionFromDiskSpaceListA(jitter):
+    setupapi_SetupRemoveInstallSectionFromDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupRemoveInstallSectionFromDiskSpaceListW(jitter):
+    setupapi_SetupRemoveInstallSectionFromDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupRemoveSectionFromDiskSpaceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupRemoveSectionFromDiskSpaceList(HDSKSPC DiskSpace, HINF InfHandle, HINF ListInfHandle, PCTSTR SectionName, UINT Operation, PVOID Reserved1, UINT Reserved2)
     """"
@@ -663,7 +1053,13 @@ def setupapi_SetupRemoveSectionFromDiskSpaceList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupRenameError(jitter):
+def setupapi_SetupRemoveSectionFromDiskSpaceListA(jitter):
+    setupapi_SetupRemoveSectionFromDiskSpaceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupRemoveSectionFromDiskSpaceListW(jitter):
+    setupapi_SetupRemoveSectionFromDiskSpaceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupRenameError(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] UINT SetupRenameError(HWND hwndParent, PCTSTR DialogTitle, PCTSTR SourceFile, PCTSTR TargetFile, UINT Win32ErrorCode, DWORD Style)
     """"
@@ -671,7 +1067,13 @@ def setupapi_SetupRenameError(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupScanFileQueue(jitter):
+def setupapi_SetupRenameErrorA(jitter):
+    setupapi_SetupRenameError(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupRenameErrorW(jitter):
+    setupapi_SetupRenameError(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupScanFileQueue(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupScanFileQueue(HSPFILEQ FileQueue, DWORD Flags, HWND Window, PSP_FILE_CALLBACK CallbackRoutine, PVOID CallbackContext, PDWORD Result)
     """"
@@ -679,7 +1081,13 @@ def setupapi_SetupScanFileQueue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupSetDirectoryId(jitter):
+def setupapi_SetupScanFileQueueA(jitter):
+    setupapi_SetupScanFileQueue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupScanFileQueueW(jitter):
+    setupapi_SetupScanFileQueue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupSetDirectoryId(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupSetDirectoryId(HINF InfHandle, DWORD Id, PCTSTR Directory)
     """"
@@ -687,7 +1095,13 @@ def setupapi_SetupSetDirectoryId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupSetDirectoryIdEx(jitter):
+def setupapi_SetupSetDirectoryIdA(jitter):
+    setupapi_SetupSetDirectoryId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupSetDirectoryIdW(jitter):
+    setupapi_SetupSetDirectoryId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupSetDirectoryIdEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupSetDirectoryIdEx(HINF InfHandle, DWORD Id, PCTSTR Directory, DWORD Flags, DWORD Reserved1, PVOID Reserved2)
     """"
@@ -695,13 +1109,25 @@ def setupapi_SetupSetDirectoryIdEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupSetFileQueueAlternatePlatform(jitter):
+def setupapi_SetupSetDirectoryIdExA(jitter):
+    setupapi_SetupSetDirectoryIdEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupSetDirectoryIdExW(jitter):
+    setupapi_SetupSetDirectoryIdEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupSetFileQueueAlternatePlatform(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupSetFileQueueAlternatePlatform(HSPFILEQ QueueHandle, PSP_ALTPLATFORM_INFO AlternatePlatformInfo, PCWSTR AlternateDefaultCatalogFile)
     """"
     ret_ad, args = jitter.func_args_stdcall(["QueueHandle", "AlternatePlatformInfo", "AlternateDefaultCatalogFile"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupSetFileQueueAlternatePlatformA(jitter):
+    setupapi_SetupSetFileQueueAlternatePlatform(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupSetFileQueueAlternatePlatformW(jitter):
+    setupapi_SetupSetFileQueueAlternatePlatform(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupSetFileQueueFlags(jitter):
     """"
@@ -711,7 +1137,7 @@ def setupapi_SetupSetFileQueueFlags(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupSetPlatformPathOverride(jitter):
+def setupapi_SetupSetPlatformPathOverride(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupSetPlatformPathOverride(PCTSTR Override)
     """"
@@ -719,13 +1145,25 @@ def setupapi_SetupSetPlatformPathOverride(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupSetSourceList(jitter):
+def setupapi_SetupSetPlatformPathOverrideA(jitter):
+    setupapi_SetupSetPlatformPathOverride(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupSetPlatformPathOverrideW(jitter):
+    setupapi_SetupSetPlatformPathOverride(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupSetSourceList(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupSetSourceList(DWORD Flags, PCTSTR* SourceList, UINT SourceCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Flags", "SourceList", "SourceCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupSetSourceListA(jitter):
+    setupapi_SetupSetSourceList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupSetSourceListW(jitter):
+    setupapi_SetupSetSourceList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupTermDefaultQueueCallback(jitter):
     """"
@@ -751,7 +1189,7 @@ def setupapi_SetupUninstallNewlyCopiedInfs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupUninstallOEMInf(jitter):
+def setupapi_SetupUninstallOEMInf(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupUninstallOEMInf(PCWSTR InfFileName, DWORD Flags, PVOID Reserved)
     """"
@@ -759,7 +1197,13 @@ def setupapi_SetupUninstallOEMInf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupVerifyInfFile(jitter):
+def setupapi_SetupUninstallOEMInfA(jitter):
+    setupapi_SetupUninstallOEMInf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupUninstallOEMInfW(jitter):
+    setupapi_SetupUninstallOEMInf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupVerifyInfFile(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupVerifyInfFile(PCWSTR InfName, PSP_ALTPLATFORM_INFO AltPlatformInfo, PSP_INF_SIGNER_INFO InfFileName)
     """"
@@ -767,7 +1211,13 @@ def setupapi_SetupVerifyInfFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetInfDriverStoreLocation(jitter):
+def setupapi_SetupVerifyInfFileA(jitter):
+    setupapi_SetupVerifyInfFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupVerifyInfFileW(jitter):
+    setupapi_SetupVerifyInfFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetInfDriverStoreLocation(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetInfDriverStoreLocation(PCTSTR FileName, PSP_ALTPLATFORM_INFO AlternatePlatformInfo, PCTSTR LocaleName, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
@@ -775,13 +1225,25 @@ def setupapi_SetupGetInfDriverStoreLocation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupGetInfPublishedName(jitter):
+def setupapi_SetupGetInfDriverStoreLocationA(jitter):
+    setupapi_SetupGetInfDriverStoreLocation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetInfDriverStoreLocationW(jitter):
+    setupapi_SetupGetInfDriverStoreLocation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupGetInfPublishedName(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupGetInfPublishedName(PCTSTR DriverStoreLocation, PTSTR ReturnBuffer, DWORD ReturnBufferSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DriverStoreLocation", "ReturnBuffer", "ReturnBufferSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupGetInfPublishedNameA(jitter):
+    setupapi_SetupGetInfPublishedName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupGetInfPublishedNameW(jitter):
+    setupapi_SetupGetInfPublishedName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupGetNonInteractiveMode(jitter):
     """"
@@ -815,13 +1277,19 @@ def setupapi_SetupDiBuildClassInfoList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiBuildClassInfoListEx(jitter):
+def setupapi_SetupDiBuildClassInfoListEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiBuildClassInfoListEx([SetupDiBuildClassInfoListFlags] Flags, LPGUID ClassGuidList, DWORD ClassGuidListSize, PDWORD RequiredSize, PCTSTR MachineName, PVOID Reserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Flags", "ClassGuidList", "ClassGuidListSize", "RequiredSize", "MachineName", "Reserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiBuildClassInfoListExA(jitter):
+    setupapi_SetupDiBuildClassInfoListEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiBuildClassInfoListExW(jitter):
+    setupapi_SetupDiBuildClassInfoListEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiBuildDriverInfoList(jitter):
     """"
@@ -855,7 +1323,7 @@ def setupapi_SetupDiChangeState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiClassGuidsFromName(jitter):
+def setupapi_SetupDiClassGuidsFromName(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiClassGuidsFromName(PCTSTR ClassName, LPGUID ClassGuidList, DWORD ClassGuidListSize, PDWORD RequiredSize)
     """"
@@ -863,7 +1331,13 @@ def setupapi_SetupDiClassGuidsFromName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiClassGuidsFromNameEx(jitter):
+def setupapi_SetupDiClassGuidsFromNameA(jitter):
+    setupapi_SetupDiClassGuidsFromName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiClassGuidsFromNameW(jitter):
+    setupapi_SetupDiClassGuidsFromName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiClassGuidsFromNameEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiClassGuidsFromNameEx(PCTSTR ClassName, LPGUID ClassGuidList, DWORD ClassGuidListSize, PDWORD RequiredSize, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -871,7 +1345,13 @@ def setupapi_SetupDiClassGuidsFromNameEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiClassNameFromGuid(jitter):
+def setupapi_SetupDiClassGuidsFromNameExA(jitter):
+    setupapi_SetupDiClassGuidsFromNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiClassGuidsFromNameExW(jitter):
+    setupapi_SetupDiClassGuidsFromNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiClassNameFromGuid(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiClassNameFromGuid(LPGUID ClassGuid, PTSTR ClassName, DWORD ClassNameSize, PDWORD RequiredSize)
     """"
@@ -879,7 +1359,13 @@ def setupapi_SetupDiClassNameFromGuid(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiClassNameFromGuidEx(jitter):
+def setupapi_SetupDiClassNameFromGuidA(jitter):
+    setupapi_SetupDiClassNameFromGuid(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiClassNameFromGuidW(jitter):
+    setupapi_SetupDiClassNameFromGuid(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiClassNameFromGuidEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiClassNameFromGuidEx(LPGUID ClassGuid, PTSTR ClassName, DWORD ClassNameSize, PDWORD RequiredSize, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -887,13 +1373,25 @@ def setupapi_SetupDiClassNameFromGuidEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiCreateDeviceInfo(jitter):
+def setupapi_SetupDiClassNameFromGuidExA(jitter):
+    setupapi_SetupDiClassNameFromGuidEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiClassNameFromGuidExW(jitter):
+    setupapi_SetupDiClassNameFromGuidEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInfo(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiCreateDeviceInfo(HDEVINFO DeviceInfoSet, PCTSTR DeviceName, LPGUID ClassGuid, PCTSTR DeviceDescription, HWND hwndParent, [SetupDiCreateDeviceInfoFlags] CreationFlags, PSP_DEVINFO_DATA DeviceInfoData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceName", "ClassGuid", "DeviceDescription", "hwndParent", "CreationFlags", "DeviceInfoData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiCreateDeviceInfoA(jitter):
+    setupapi_SetupDiCreateDeviceInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInfoW(jitter):
+    setupapi_SetupDiCreateDeviceInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiCreateDeviceInfoList(jitter):
     """"
@@ -903,7 +1401,7 @@ def setupapi_SetupDiCreateDeviceInfoList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiCreateDeviceInfoListEx(jitter):
+def setupapi_SetupDiCreateDeviceInfoListEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HDEVINFO SetupDiCreateDeviceInfoListEx(LPGUID ClassGuid, HWND hwndParent, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -911,7 +1409,13 @@ def setupapi_SetupDiCreateDeviceInfoListEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiCreateDeviceInterface(jitter):
+def setupapi_SetupDiCreateDeviceInfoListExA(jitter):
+    setupapi_SetupDiCreateDeviceInfoListEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInfoListExW(jitter):
+    setupapi_SetupDiCreateDeviceInfoListEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInterface(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiCreateDeviceInterface(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, LPGUID InterfaceClassGuid, PCTSTR ReferenceString, DWORD CreationFlags, PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData)
     """"
@@ -919,7 +1423,13 @@ def setupapi_SetupDiCreateDeviceInterface(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiCreateDeviceInterfaceRegKey(jitter):
+def setupapi_SetupDiCreateDeviceInterfaceA(jitter):
+    setupapi_SetupDiCreateDeviceInterface(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInterfaceW(jitter):
+    setupapi_SetupDiCreateDeviceInterface(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInterfaceRegKey(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HKEY SetupDiCreateDeviceInterfaceRegKey(HDEVINFO DeviceInfoSet, PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData, DWORD Reserved, REGSAM samDesired, HINF InfHandle, PCTSTR InfSectionName)
     """"
@@ -927,13 +1437,25 @@ def setupapi_SetupDiCreateDeviceInterfaceRegKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiCreateDevRegKey(jitter):
+def setupapi_SetupDiCreateDeviceInterfaceRegKeyA(jitter):
+    setupapi_SetupDiCreateDeviceInterfaceRegKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiCreateDeviceInterfaceRegKeyW(jitter):
+    setupapi_SetupDiCreateDeviceInterfaceRegKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiCreateDevRegKey(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HKEY SetupDiCreateDevRegKey(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, [DeviceInfoScope] Scope, DWORD HwProfile, [DeviceInfoKeyType] KeyType, HINF InfHandle, PCTSTR InfSectionName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "Scope", "HwProfile", "KeyType", "InfHandle", "InfSectionName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiCreateDevRegKeyA(jitter):
+    setupapi_SetupDiCreateDevRegKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiCreateDevRegKeyW(jitter):
+    setupapi_SetupDiCreateDevRegKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiDeleteDeviceInfo(jitter):
     """"
@@ -1015,13 +1537,19 @@ def setupapi_SetupDiEnumDeviceInterfaces(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiEnumDriverInfo(jitter):
+def setupapi_SetupDiEnumDriverInfo(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiEnumDriverInfo(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, [DiDriverType] DriverType, DWORD MemberIndex, PSP_DRVINFO_DATA DriverInfoData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "DriverType", "MemberIndex", "DriverInfoData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiEnumDriverInfoA(jitter):
+    setupapi_SetupDiEnumDriverInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiEnumDriverInfoW(jitter):
+    setupapi_SetupDiEnumDriverInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiFinishInstallAction(jitter):
     """"
@@ -1031,7 +1559,7 @@ def setupapi_SetupDiFinishInstallAction(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetActualModelsSection(jitter):
+def setupapi_SetupDiGetActualModelsSection(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetActualModelsSection(PINFCONTEXT Context, PSP_ALTPLATFORM_INFO AlternatePlatformInfo, PTSTR DecoratedModelsSection, DWORD DecoratedModelsSectionSize, PDWORD RequiredSize, PVOID Reserved)
     """"
@@ -1039,7 +1567,13 @@ def setupapi_SetupDiGetActualModelsSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetActualSectionToInstall(jitter):
+def setupapi_SetupDiGetActualModelsSectionA(jitter):
+    setupapi_SetupDiGetActualModelsSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetActualModelsSectionW(jitter):
+    setupapi_SetupDiGetActualModelsSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetActualSectionToInstall(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetActualSectionToInstall(HINF InfHandle, PCTSTR InfSectionName, PTSTR InfSectionWithExt, DWORD InfSectionWithExtSize, PDWORD RequiredSize, PTSTR* Extension)
     """"
@@ -1047,13 +1581,25 @@ def setupapi_SetupDiGetActualSectionToInstall(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetActualSectionToInstallEx(jitter):
+def setupapi_SetupDiGetActualSectionToInstallA(jitter):
+    setupapi_SetupDiGetActualSectionToInstall(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetActualSectionToInstallW(jitter):
+    setupapi_SetupDiGetActualSectionToInstall(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetActualSectionToInstallEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetActualSectionToInstallEx(HINF InfHandle, PCTSTR InfSectionName, PSP_ALTPLATFORM_INFO AlternatePlatformInfo, PTSTR InfSectionWithExt, DWORD InfSectionWithExtSize, PDWORD RequiredSize, PTSTR* Extension, PVOID Reserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InfHandle", "InfSectionName", "AlternatePlatformInfo", "InfSectionWithExt", "InfSectionWithExtSize", "RequiredSize", "Extension", "Reserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetActualSectionToInstallExA(jitter):
+    setupapi_SetupDiGetActualSectionToInstallEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetActualSectionToInstallExW(jitter):
+    setupapi_SetupDiGetActualSectionToInstallEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetClassBitmapIndex(jitter):
     """"
@@ -1063,7 +1609,7 @@ def setupapi_SetupDiGetClassBitmapIndex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassDescription(jitter):
+def setupapi_SetupDiGetClassDescription(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetClassDescription(LPGUID ClassGuid, PTSTR ClassDescription, DWORD ClassDescriptionSize, PDWORD RequiredSize)
     """"
@@ -1071,7 +1617,13 @@ def setupapi_SetupDiGetClassDescription(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassDescriptionEx(jitter):
+def setupapi_SetupDiGetClassDescriptionA(jitter):
+    setupapi_SetupDiGetClassDescription(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDescriptionW(jitter):
+    setupapi_SetupDiGetClassDescription(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDescriptionEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetClassDescriptionEx(LPGUID ClassGuid, PTSTR ClassDescription, DWORD ClassDescriptionSize, PDWORD RequiredSize, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -1079,7 +1631,13 @@ def setupapi_SetupDiGetClassDescriptionEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassDevPropertySheets(jitter):
+def setupapi_SetupDiGetClassDescriptionExA(jitter):
+    setupapi_SetupDiGetClassDescriptionEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDescriptionExW(jitter):
+    setupapi_SetupDiGetClassDescriptionEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDevPropertySheets(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetClassDevPropertySheets(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, LPPROPSHEETHEADER PropertySheetHeader, DWORD PropertySheetHeaderPageListSize, PDWORD RequiredSize, [DiGetClassDevPropertySheetsType] PropertySheetType)
     """"
@@ -1087,7 +1645,13 @@ def setupapi_SetupDiGetClassDevPropertySheets(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassDevs(jitter):
+def setupapi_SetupDiGetClassDevPropertySheetsA(jitter):
+    setupapi_SetupDiGetClassDevPropertySheets(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDevPropertySheetsW(jitter):
+    setupapi_SetupDiGetClassDevPropertySheets(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDevs(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HDEVINFO SetupDiGetClassDevs(LPGUID ClassGuid, PCTSTR Enumerator, HWND hwndParent, [DeviceInfoGetFlags] Flags)
     """"
@@ -1095,13 +1659,25 @@ def setupapi_SetupDiGetClassDevs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassDevsEx(jitter):
+def setupapi_SetupDiGetClassDevsA(jitter):
+    setupapi_SetupDiGetClassDevs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDevsW(jitter):
+    setupapi_SetupDiGetClassDevs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDevsEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HDEVINFO SetupDiGetClassDevsEx(LPGUID ClassGuid, PCTSTR Enumerator, HWND hwndParent, [DeviceInfoGetFlags] Flags, HDEVINFO DeviceInfoSet, PCTSTR MachineName, PVOID Reserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ClassGuid", "Enumerator", "hwndParent", "Flags", "DeviceInfoSet", "MachineName", "Reserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetClassDevsExA(jitter):
+    setupapi_SetupDiGetClassDevsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassDevsExW(jitter):
+    setupapi_SetupDiGetClassDevsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetClassImageIndex(jitter):
     """"
@@ -1119,7 +1695,7 @@ def setupapi_SetupDiGetClassImageList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassImageListEx(jitter):
+def setupapi_SetupDiGetClassImageListEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetClassImageListEx(PSP_CLASSIMAGELIST_DATA ClassImageListData, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -1127,13 +1703,25 @@ def setupapi_SetupDiGetClassImageListEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassInstallParams(jitter):
+def setupapi_SetupDiGetClassImageListExA(jitter):
+    setupapi_SetupDiGetClassImageListEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassImageListExW(jitter):
+    setupapi_SetupDiGetClassImageListEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetClassInstallParams(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetClassInstallParams(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_CLASSINSTALL_HEADER ClassInstallParams, DWORD ClassInstallParamsSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "ClassInstallParams", "ClassInstallParamsSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetClassInstallParamsA(jitter):
+    setupapi_SetupDiGetClassInstallParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassInstallParamsW(jitter):
+    setupapi_SetupDiGetClassInstallParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetClassPropertyW(jitter):
     """"
@@ -1167,7 +1755,7 @@ def setupapi_SetupDiGetClassPropertyKeysExW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetClassRegistryProperty(jitter):
+def setupapi_SetupDiGetClassRegistryProperty(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetClassRegistryProperty(LPGUID ClassGuid, DWORD Property, [RegType*] PropertyRegDataType, PBYTE PropertyBuffer, DWORD PropertyBufferSize, PDWORD RequiredSize, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -1175,13 +1763,25 @@ def setupapi_SetupDiGetClassRegistryProperty(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetCustomDeviceProperty(jitter):
+def setupapi_SetupDiGetClassRegistryPropertyA(jitter):
+    setupapi_SetupDiGetClassRegistryProperty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetClassRegistryPropertyW(jitter):
+    setupapi_SetupDiGetClassRegistryProperty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetCustomDeviceProperty(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetCustomDeviceProperty(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PCTSTR CustomPropertyName, [GetCustomDevicePropertyFlags] Flags, [RegType*] PropertyRegDataType, PBYTE PropertyBuffer, DWORD PropertyBufferSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "CustomPropertyName", "Flags", "PropertyRegDataType", "PropertyBuffer", "PropertyBufferSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetCustomDevicePropertyA(jitter):
+    setupapi_SetupDiGetCustomDeviceProperty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetCustomDevicePropertyW(jitter):
+    setupapi_SetupDiGetCustomDeviceProperty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetDeviceInfoListClass(jitter):
     """"
@@ -1191,7 +1791,7 @@ def setupapi_SetupDiGetDeviceInfoListClass(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDeviceInfoListDetail(jitter):
+def setupapi_SetupDiGetDeviceInfoListDetail(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDeviceInfoListDetail(HDEVINFO DeviceInfoSet, PSP_DEVINFO_LIST_DETAIL_DATA DeviceInfoSetDetailData)
     """"
@@ -1199,7 +1799,13 @@ def setupapi_SetupDiGetDeviceInfoListDetail(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDeviceInstallParams(jitter):
+def setupapi_SetupDiGetDeviceInfoListDetailA(jitter):
+    setupapi_SetupDiGetDeviceInfoListDetail(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceInfoListDetailW(jitter):
+    setupapi_SetupDiGetDeviceInfoListDetail(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceInstallParams(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDeviceInstallParams(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DEVINSTALL_PARAMS DeviceInstallParams)
     """"
@@ -1207,13 +1813,25 @@ def setupapi_SetupDiGetDeviceInstallParams(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDeviceInstanceId(jitter):
+def setupapi_SetupDiGetDeviceInstallParamsA(jitter):
+    setupapi_SetupDiGetDeviceInstallParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceInstallParamsW(jitter):
+    setupapi_SetupDiGetDeviceInstallParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceInstanceId(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDeviceInstanceId(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PTSTR DeviceInstanceId, DWORD DeviceInstanceIdSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "DeviceInstanceId", "DeviceInstanceIdSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetDeviceInstanceIdA(jitter):
+    setupapi_SetupDiGetDeviceInstanceId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceInstanceIdW(jitter):
+    setupapi_SetupDiGetDeviceInstanceId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetDeviceInterfaceAlias(jitter):
     """"
@@ -1223,13 +1841,19 @@ def setupapi_SetupDiGetDeviceInterfaceAlias(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDeviceInterfaceDetail(jitter):
+def setupapi_SetupDiGetDeviceInterfaceDetail(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDeviceInterfaceDetail(HDEVINFO DeviceInfoSet, PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData, PSP_DEVICE_INTERFACE_DETAIL_DATA DeviceInterfaceDetailData, DWORD DeviceInterfaceDetailDataSize, PDWORD RequiredSize, PSP_DEVINFO_DATA DeviceInfoData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInterfaceData", "DeviceInterfaceDetailData", "DeviceInterfaceDetailDataSize", "RequiredSize", "DeviceInfoData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetDeviceInterfaceDetailA(jitter):
+    setupapi_SetupDiGetDeviceInterfaceDetail(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceInterfaceDetailW(jitter):
+    setupapi_SetupDiGetDeviceInterfaceDetail(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetDeviceInterfacePropertyW(jitter):
     """"
@@ -1263,7 +1887,7 @@ def setupapi_SetupDiGetDevicePropertyKeys(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDeviceRegistryProperty(jitter):
+def setupapi_SetupDiGetDeviceRegistryProperty(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDeviceRegistryProperty(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, [SetupDeviceRegistryProperty] Property, [RegType*] PropertyRegDataType, PBYTE PropertyBuffer, DWORD PropertyBufferSize, PDWORD RequiredSize)
     """"
@@ -1271,7 +1895,13 @@ def setupapi_SetupDiGetDeviceRegistryProperty(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDriverInfoDetail(jitter):
+def setupapi_SetupDiGetDeviceRegistryPropertyA(jitter):
+    setupapi_SetupDiGetDeviceRegistryProperty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDeviceRegistryPropertyW(jitter):
+    setupapi_SetupDiGetDeviceRegistryProperty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetDriverInfoDetail(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDriverInfoDetail(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DRVINFO_DATA DriverInfoData, PSP_DRVINFO_DETAIL_DATA DriverInfoDetailData, DWORD DriverInfoDetailDataSize, PDWORD RequiredSize)
     """"
@@ -1279,7 +1909,13 @@ def setupapi_SetupDiGetDriverInfoDetail(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetDriverInstallParams(jitter):
+def setupapi_SetupDiGetDriverInfoDetailA(jitter):
+    setupapi_SetupDiGetDriverInfoDetail(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDriverInfoDetailW(jitter):
+    setupapi_SetupDiGetDriverInfoDetail(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetDriverInstallParams(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetDriverInstallParams(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DRVINFO_DATA DriverInfoData, PSP_DRVINSTALL_PARAMS DriverInstallParams)
     """"
@@ -1287,7 +1923,13 @@ def setupapi_SetupDiGetDriverInstallParams(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetHwProfileFriendlyName(jitter):
+def setupapi_SetupDiGetDriverInstallParamsA(jitter):
+    setupapi_SetupDiGetDriverInstallParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetDriverInstallParamsW(jitter):
+    setupapi_SetupDiGetDriverInstallParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetHwProfileFriendlyName(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetHwProfileFriendlyName(DWORD HwProfile, PTSTR FriendlyName, DWORD FriendlyNameSize, PDWORD RequiredSize)
     """"
@@ -1295,13 +1937,25 @@ def setupapi_SetupDiGetHwProfileFriendlyName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetHwProfileFriendlyNameEx(jitter):
+def setupapi_SetupDiGetHwProfileFriendlyNameA(jitter):
+    setupapi_SetupDiGetHwProfileFriendlyName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetHwProfileFriendlyNameW(jitter):
+    setupapi_SetupDiGetHwProfileFriendlyName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetHwProfileFriendlyNameEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetHwProfileFriendlyNameEx(DWORD HwProfile, PTSTR FriendlyName, DWORD FriendlyNameSize, PDWORD RequiredSize, PCTSTR MachineName, PVOID Reserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["HwProfile", "FriendlyName", "FriendlyNameSize", "RequiredSize", "MachineName", "Reserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetHwProfileFriendlyNameExA(jitter):
+    setupapi_SetupDiGetHwProfileFriendlyNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetHwProfileFriendlyNameExW(jitter):
+    setupapi_SetupDiGetHwProfileFriendlyNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetHwProfileList(jitter):
     """"
@@ -1311,7 +1965,7 @@ def setupapi_SetupDiGetHwProfileList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetHwProfileListEx(jitter):
+def setupapi_SetupDiGetHwProfileListEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetHwProfileListEx(PDWORD HwProfileList, DWORD HwProfileListSize, PDWORD RequiredSize, PDWORD CurrentlyActiveIndex, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -1319,13 +1973,25 @@ def setupapi_SetupDiGetHwProfileListEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetINFClass(jitter):
+def setupapi_SetupDiGetHwProfileListExA(jitter):
+    setupapi_SetupDiGetHwProfileListEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetHwProfileListExW(jitter):
+    setupapi_SetupDiGetHwProfileListEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiGetINFClass(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetINFClass(PCTSTR InfName, LPGUID ClassGuid, PTSTR ClassName, DWORD ClassNameSize, PDWORD RequiredSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InfName", "ClassGuid", "ClassName", "ClassNameSize", "RequiredSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetINFClassA(jitter):
+    setupapi_SetupDiGetINFClass(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetINFClassW(jitter):
+    setupapi_SetupDiGetINFClass(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetSelectedDevice(jitter):
     """"
@@ -1335,13 +2001,19 @@ def setupapi_SetupDiGetSelectedDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiGetSelectedDriver(jitter):
+def setupapi_SetupDiGetSelectedDriver(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiGetSelectedDriver(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DRVINFO_DATA DriverInfoData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "DriverInfoData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiGetSelectedDriverA(jitter):
+    setupapi_SetupDiGetSelectedDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiGetSelectedDriverW(jitter):
+    setupapi_SetupDiGetSelectedDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiGetWizardPage(jitter):
     """"
@@ -1351,7 +2023,7 @@ def setupapi_SetupDiGetWizardPage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiInstallClass(jitter):
+def setupapi_SetupDiInstallClass(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiInstallClass(HWND hwndParent, PCTSTR InfFileName, DWORD Flags, HSPFILEQ FileQueue)
     """"
@@ -1359,13 +2031,25 @@ def setupapi_SetupDiInstallClass(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiInstallClassEx(jitter):
+def setupapi_SetupDiInstallClassA(jitter):
+    setupapi_SetupDiInstallClass(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiInstallClassW(jitter):
+    setupapi_SetupDiInstallClass(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiInstallClassEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiInstallClassEx(HWND hwndParent, PCTSTR InfFileName, DWORD Flags, HSPFILEQ FileQueue, LPGUID InterfaceClassGuid, PVOID Reserved1, PVOID Reserved2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "InfFileName", "Flags", "FileQueue", "InterfaceClassGuid", "Reserved1", "Reserved2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiInstallClassExA(jitter):
+    setupapi_SetupDiInstallClassEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiInstallClassExW(jitter):
+    setupapi_SetupDiInstallClassEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiInstallDevice(jitter):
     """"
@@ -1415,7 +2099,7 @@ def setupapi_SetupDiOpenClassRegKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiOpenClassRegKeyEx(jitter):
+def setupapi_SetupDiOpenClassRegKeyEx(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] HKEY SetupDiOpenClassRegKeyEx(LPGUID ClassGuid, REGSAM samDesired, DWORD Flags, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -1423,7 +2107,13 @@ def setupapi_SetupDiOpenClassRegKeyEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiOpenDeviceInfo(jitter):
+def setupapi_SetupDiOpenClassRegKeyExA(jitter):
+    setupapi_SetupDiOpenClassRegKeyEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiOpenClassRegKeyExW(jitter):
+    setupapi_SetupDiOpenClassRegKeyEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiOpenDeviceInfo(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiOpenDeviceInfo(HDEVINFO DeviceInfoSet, PCTSTR DeviceInstanceId, HWND hwndParent, [OpenDeviceInfoFlags] OpenFlags, PSP_DEVINFO_DATA DeviceInfoData)
     """"
@@ -1431,13 +2121,25 @@ def setupapi_SetupDiOpenDeviceInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiOpenDeviceInterface(jitter):
+def setupapi_SetupDiOpenDeviceInfoA(jitter):
+    setupapi_SetupDiOpenDeviceInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiOpenDeviceInfoW(jitter):
+    setupapi_SetupDiOpenDeviceInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiOpenDeviceInterface(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiOpenDeviceInterface(HDEVINFO DeviceInfoSet, PCTSTR DevicePath, [OpenDeviceInterfaceFlags] OpenFlags, PSP_DEVICE_INTERFACE_DATA DeviceInterfaceData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DevicePath", "OpenFlags", "DeviceInterfaceData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiOpenDeviceInterfaceA(jitter):
+    setupapi_SetupDiOpenDeviceInterface(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiOpenDeviceInterfaceW(jitter):
+    setupapi_SetupDiOpenDeviceInterface(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiOpenDeviceInterfaceRegKey(jitter):
     """"
@@ -1519,13 +2221,19 @@ def setupapi_SetupDiSelectOEMDrv(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiSetClassInstallParams(jitter):
+def setupapi_SetupDiSetClassInstallParams(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiSetClassInstallParams(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_CLASSINSTALL_HEADER ClassInstallParams, DWORD ClassInstallParamsSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "ClassInstallParams", "ClassInstallParamsSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiSetClassInstallParamsA(jitter):
+    setupapi_SetupDiSetClassInstallParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiSetClassInstallParamsW(jitter):
+    setupapi_SetupDiSetClassInstallParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiSetClassPropertyW(jitter):
     """"
@@ -1543,7 +2251,7 @@ def setupapi_SetupDiSetClassPropertyExW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiSetClassRegistryProperty(jitter):
+def setupapi_SetupDiSetClassRegistryProperty(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiSetClassRegistryProperty(LPGUID ClassGuid, DWORD Property, CONST BYTE* PropertyBuffer, DWORD PropertyBufferSize, PCTSTR MachineName, PVOID Reserved)
     """"
@@ -1551,13 +2259,25 @@ def setupapi_SetupDiSetClassRegistryProperty(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiSetDeviceInstallParams(jitter):
+def setupapi_SetupDiSetClassRegistryPropertyA(jitter):
+    setupapi_SetupDiSetClassRegistryProperty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiSetClassRegistryPropertyW(jitter):
+    setupapi_SetupDiSetClassRegistryProperty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiSetDeviceInstallParams(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiSetDeviceInstallParams(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DEVINSTALL_PARAMS DeviceInstallParams)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "DeviceInstallParams"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiSetDeviceInstallParamsA(jitter):
+    setupapi_SetupDiSetDeviceInstallParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiSetDeviceInstallParamsW(jitter):
+    setupapi_SetupDiSetDeviceInstallParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiSetDeviceInterfaceDefault(jitter):
     """"
@@ -1583,7 +2303,7 @@ def setupapi_SetupDiSetDevicePropertyW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiSetDeviceRegistryProperty(jitter):
+def setupapi_SetupDiSetDeviceRegistryProperty(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiSetDeviceRegistryProperty(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, [SetupDeviceRegistryProperty] Property, CONST BYTE* PropertyBuffer, DWORD PropertyBufferSize)
     """"
@@ -1591,13 +2311,25 @@ def setupapi_SetupDiSetDeviceRegistryProperty(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiSetDriverInstallParams(jitter):
+def setupapi_SetupDiSetDeviceRegistryPropertyA(jitter):
+    setupapi_SetupDiSetDeviceRegistryProperty(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiSetDeviceRegistryPropertyW(jitter):
+    setupapi_SetupDiSetDeviceRegistryProperty(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def setupapi_SetupDiSetDriverInstallParams(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiSetDriverInstallParams(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DRVINFO_DATA DriverInfoData, PSP_DRVINSTALL_PARAMS DriverInstallParams)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "DriverInfoData", "DriverInstallParams"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiSetDriverInstallParamsA(jitter):
+    setupapi_SetupDiSetDriverInstallParams(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiSetDriverInstallParamsW(jitter):
+    setupapi_SetupDiSetDriverInstallParams(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiSetSelectedDevice(jitter):
     """"
@@ -1607,13 +2339,19 @@ def setupapi_SetupDiSetSelectedDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def setupapi_SetupDiSetSelectedDriver(jitter):
+def setupapi_SetupDiSetSelectedDriver(jitter, get_str, set_str):
     """"
     [SetupAPI.dll] BOOL SetupDiSetSelectedDriver(HDEVINFO DeviceInfoSet, PSP_DEVINFO_DATA DeviceInfoData, PSP_DRVINFO_DATA DriverInfoData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DeviceInfoSet", "DeviceInfoData", "DriverInfoData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def setupapi_SetupDiSetSelectedDriverA(jitter):
+    setupapi_SetupDiSetSelectedDriver(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def setupapi_SetupDiSetSelectedDriverW(jitter):
+    setupapi_SetupDiSetSelectedDriver(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def setupapi_SetupDiUnremoveDevice(jitter):
     """"

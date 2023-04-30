@@ -119,7 +119,7 @@ def msvfw32_DrawDibTime(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msvfw32_GetOpenFileNamePreview(jitter):
+def msvfw32_GetOpenFileNamePreview(jitter, get_str, set_str):
     """"
     [msvfw32.dll] BOOL GetOpenFileNamePreview(LPOPENFILENAME lpofn)
     """"
@@ -127,7 +127,13 @@ def msvfw32_GetOpenFileNamePreview(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msvfw32_GetSaveFileNamePreview(jitter):
+def msvfw32_GetOpenFileNamePreviewA(jitter):
+    msvfw32_GetOpenFileNamePreview(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msvfw32_GetOpenFileNamePreviewW(jitter):
+    msvfw32_GetOpenFileNamePreview(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msvfw32_GetSaveFileNamePreview(jitter, get_str, set_str):
     """"
     [msvfw32.dll] BOOL GetSaveFileNamePreview(LPOPENFILENAME lpofn)
     """"
@@ -135,13 +141,25 @@ def msvfw32_GetSaveFileNamePreview(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def msvfw32_MCIWndCreate(jitter):
+def msvfw32_GetSaveFileNamePreviewA(jitter):
+    msvfw32_GetSaveFileNamePreview(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msvfw32_GetSaveFileNamePreviewW(jitter):
+    msvfw32_GetSaveFileNamePreview(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def msvfw32_MCIWndCreate(jitter, get_str, set_str):
     """"
     [msvfw32.dll] HWND MCIWndCreate(HWND hwndParent, HINSTANCE hInstance, DWORD dwStyle, LPCTSTR szFile)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "hInstance", "dwStyle", "szFile"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def msvfw32_MCIWndCreateA(jitter):
+    msvfw32_MCIWndCreate(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def msvfw32_MCIWndCreateW(jitter):
+    msvfw32_MCIWndCreate(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def msvfw32_MCIWndRegisterClass(jitter):
     """"

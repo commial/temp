@@ -151,13 +151,19 @@ def kernel32_LocateLegacyContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OutputDebugString(jitter):
+def kernel32_OutputDebugString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] void OutputDebugString(LPCTSTR lpOutputString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpOutputString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OutputDebugStringA(jitter):
+    kernel32_OutputDebugString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OutputDebugStringW(jitter):
+    kernel32_OutputDebugString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ReadProcessMemory(jitter):
     """"
@@ -255,7 +261,7 @@ def kernel32_FreeLibraryAndExitThread(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetDllDirectory(jitter):
+def kernel32_GetDllDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetDllDirectory(DWORD nBufferLength, LPTSTR lpBuffer)
     """"
@@ -263,7 +269,13 @@ def kernel32_GetDllDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetModuleFileName(jitter):
+def kernel32_GetDllDirectoryA(jitter):
+    kernel32_GetDllDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetDllDirectoryW(jitter):
+    kernel32_GetDllDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetModuleFileName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetModuleFileName(HMODULE hModule, LPTSTR lpFilename, DWORD nSize)
     """"
@@ -271,7 +283,13 @@ def kernel32_GetModuleFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetModuleHandle(jitter):
+def kernel32_GetModuleFileNameA(jitter):
+    kernel32_GetModuleFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetModuleFileNameW(jitter):
+    kernel32_GetModuleFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetModuleHandle(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HMODULE GetModuleHandle(LPCTSTR lpModuleName)
     """"
@@ -279,13 +297,25 @@ def kernel32_GetModuleHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetModuleHandleEx(jitter):
+def kernel32_GetModuleHandleA(jitter):
+    kernel32_GetModuleHandle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetModuleHandleW(jitter):
+    kernel32_GetModuleHandle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetModuleHandleEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetModuleHandleEx([GetModuleHandleExFlags] dwFlags, LPCTSTR lpModuleName, HMODULE* phModule)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "lpModuleName", "phModule"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetModuleHandleExA(jitter):
+    kernel32_GetModuleHandleEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetModuleHandleExW(jitter):
+    kernel32_GetModuleHandleEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetProcAddress(jitter):
     """"
@@ -295,7 +325,7 @@ def kernel32_GetProcAddress(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_LoadLibrary(jitter):
+def kernel32_LoadLibrary(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HMODULE LoadLibrary(LPCTSTR lpFileName)
     """"
@@ -303,13 +333,25 @@ def kernel32_LoadLibrary(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_LoadLibraryEx(jitter):
+def kernel32_LoadLibraryA(jitter):
+    kernel32_LoadLibrary(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_LoadLibraryW(jitter):
+    kernel32_LoadLibrary(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_LoadLibraryEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HMODULE LoadLibraryEx(LPCTSTR lpFileName, HANDLE hFile, [LoadLibraryExFlags] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "hFile", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_LoadLibraryExA(jitter):
+    kernel32_LoadLibraryEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_LoadLibraryExW(jitter):
+    kernel32_LoadLibraryEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_LoadModule(jitter):
     """"
@@ -343,13 +385,19 @@ def kernel32_SetDefaultDllDirectories(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetDllDirectory(jitter):
+def kernel32_SetDllDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetDllDirectory(LPCTSTR lpPathName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpPathName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetDllDirectoryA(jitter):
+    kernel32_SetDllDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetDllDirectoryW(jitter):
+    kernel32_SetDllDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_CreateToolhelp32Snapshot(jitter):
     """"
@@ -391,7 +439,7 @@ def kernel32_Heap32Next(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_Module32First(jitter):
+def kernel32_Module32First(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL Module32First(HANDLE hSnapshot, LPMODULEENTRY32 lpme)
     """"
@@ -399,7 +447,13 @@ def kernel32_Module32First(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_Module32Next(jitter):
+def kernel32_Module32FirstA(jitter):
+    kernel32_Module32First(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_Module32FirstW(jitter):
+    kernel32_Module32First(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_Module32Next(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL Module32Next(HANDLE hSnapshot, LPMODULEENTRY32 lpme)
     """"
@@ -407,7 +461,13 @@ def kernel32_Module32Next(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_Process32First(jitter):
+def kernel32_Module32NextA(jitter):
+    kernel32_Module32Next(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_Module32NextW(jitter):
+    kernel32_Module32Next(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_Process32First(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL Process32First(HANDLE hSnapshot, LPPROCESSENTRY32 lppe)
     """"
@@ -415,13 +475,25 @@ def kernel32_Process32First(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_Process32Next(jitter):
+def kernel32_Process32FirstA(jitter):
+    kernel32_Process32First(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_Process32FirstW(jitter):
+    kernel32_Process32First(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_Process32Next(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL Process32Next(HANDLE hSnapshot, LPPROCESSENTRY32 lppe)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hSnapshot", "lppe"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_Process32NextA(jitter):
+    kernel32_Process32Next(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_Process32NextW(jitter):
+    kernel32_Process32Next(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_Thread32First(jitter):
     """"
@@ -511,7 +583,7 @@ def kernel32_UnregisterApplicationRestart(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetPrivateProfileInt(jitter):
+def kernel32_GetPrivateProfileInt(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetPrivateProfileInt(LPCTSTR lpAppName, LPCTSTR lpKeyName, INT nDefault, LPCTSTR lpFileName)
     """"
@@ -519,7 +591,13 @@ def kernel32_GetPrivateProfileInt(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetPrivateProfileSection(jitter):
+def kernel32_GetPrivateProfileIntA(jitter):
+    kernel32_GetPrivateProfileInt(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetPrivateProfileIntW(jitter):
+    kernel32_GetPrivateProfileInt(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetPrivateProfileSection(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetPrivateProfileSection(LPCTSTR lpAppName, LPTSTR lpReturnedString, DWORD nSize, LPCTSTR lpFileName)
     """"
@@ -527,7 +605,13 @@ def kernel32_GetPrivateProfileSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetPrivateProfileSectionNames(jitter):
+def kernel32_GetPrivateProfileSectionA(jitter):
+    kernel32_GetPrivateProfileSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetPrivateProfileSectionW(jitter):
+    kernel32_GetPrivateProfileSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetPrivateProfileSectionNames(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetPrivateProfileSectionNames(LPTSTR lpszReturnBuffer, DWORD nSize, LPCTSTR lpFileName)
     """"
@@ -535,7 +619,13 @@ def kernel32_GetPrivateProfileSectionNames(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetPrivateProfileString(jitter):
+def kernel32_GetPrivateProfileSectionNamesA(jitter):
+    kernel32_GetPrivateProfileSectionNames(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetPrivateProfileSectionNamesW(jitter):
+    kernel32_GetPrivateProfileSectionNames(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetPrivateProfileString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetPrivateProfileString(LPCTSTR lpAppName, LPCTSTR lpKeyName, LPCTSTR lpDefault, LPTSTR lpReturnedString, DWORD nSize, LPCTSTR lpFileName)
     """"
@@ -543,7 +633,13 @@ def kernel32_GetPrivateProfileString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetPrivateProfileStruct(jitter):
+def kernel32_GetPrivateProfileStringA(jitter):
+    kernel32_GetPrivateProfileString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetPrivateProfileStringW(jitter):
+    kernel32_GetPrivateProfileString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetPrivateProfileStruct(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetPrivateProfileStruct(LPCTSTR lpszSection, LPCTSTR lpszKey, LPVOID lpStruct, UINT uSizeStruct, LPCTSTR szFile)
     """"
@@ -551,7 +647,13 @@ def kernel32_GetPrivateProfileStruct(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetProfileInt(jitter):
+def kernel32_GetPrivateProfileStructA(jitter):
+    kernel32_GetPrivateProfileStruct(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetPrivateProfileStructW(jitter):
+    kernel32_GetPrivateProfileStruct(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetProfileInt(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetProfileInt(LPCTSTR lpAppName, LPCTSTR lpKeyName, INT nDefault)
     """"
@@ -559,7 +661,13 @@ def kernel32_GetProfileInt(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetProfileSection(jitter):
+def kernel32_GetProfileIntA(jitter):
+    kernel32_GetProfileInt(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetProfileIntW(jitter):
+    kernel32_GetProfileInt(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetProfileSection(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetProfileSection(LPCTSTR lpAppName, LPTSTR lpReturnedString, DWORD nSize)
     """"
@@ -567,7 +675,13 @@ def kernel32_GetProfileSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetProfileString(jitter):
+def kernel32_GetProfileSectionA(jitter):
+    kernel32_GetProfileSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetProfileSectionW(jitter):
+    kernel32_GetProfileSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetProfileString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetProfileString(LPCTSTR lpAppName, LPCTSTR lpKeyName, LPCTSTR lpDefault, LPTSTR lpReturnedString, DWORD nSize)
     """"
@@ -575,7 +689,13 @@ def kernel32_GetProfileString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WritePrivateProfileSection(jitter):
+def kernel32_GetProfileStringA(jitter):
+    kernel32_GetProfileString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetProfileStringW(jitter):
+    kernel32_GetProfileString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WritePrivateProfileSection(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WritePrivateProfileSection(LPCTSTR lpAppName, LPCTSTR lpString, LPCTSTR lpFileName)
     """"
@@ -583,7 +703,13 @@ def kernel32_WritePrivateProfileSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WritePrivateProfileString(jitter):
+def kernel32_WritePrivateProfileSectionA(jitter):
+    kernel32_WritePrivateProfileSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WritePrivateProfileSectionW(jitter):
+    kernel32_WritePrivateProfileSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WritePrivateProfileString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WritePrivateProfileString(LPCTSTR lpAppName, LPCTSTR lpKeyName, LPCTSTR lpString, LPCTSTR lpFileName)
     """"
@@ -591,7 +717,13 @@ def kernel32_WritePrivateProfileString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WritePrivateProfileStruct(jitter):
+def kernel32_WritePrivateProfileStringA(jitter):
+    kernel32_WritePrivateProfileString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WritePrivateProfileStringW(jitter):
+    kernel32_WritePrivateProfileString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WritePrivateProfileStruct(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WritePrivateProfileStruct(LPCTSTR lpszSection, LPCTSTR lpszKey, LPVOID lpStruct, UINT uSizeStruct, LPCTSTR szFile)
     """"
@@ -599,7 +731,13 @@ def kernel32_WritePrivateProfileStruct(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WriteProfileSection(jitter):
+def kernel32_WritePrivateProfileStructA(jitter):
+    kernel32_WritePrivateProfileStruct(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WritePrivateProfileStructW(jitter):
+    kernel32_WritePrivateProfileStruct(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WriteProfileSection(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WriteProfileSection(LPCTSTR lpAppName, LPCTSTR lpString)
     """"
@@ -607,13 +745,25 @@ def kernel32_WriteProfileSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WriteProfileString(jitter):
+def kernel32_WriteProfileSectionA(jitter):
+    kernel32_WriteProfileSection(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WriteProfileSectionW(jitter):
+    kernel32_WriteProfileSection(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WriteProfileString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WriteProfileString(LPCTSTR lpAppName, LPCTSTR lpKeyName, LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpAppName", "lpKeyName", "lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_WriteProfileStringA(jitter):
+    kernel32_WriteProfileString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WriteProfileStringW(jitter):
+    kernel32_WriteProfileString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32__lopen(jitter):
     """"
@@ -687,7 +837,7 @@ def kernel32_AreFileApisANSI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CheckNameLegalDOS8Dot3(jitter):
+def kernel32_CheckNameLegalDOS8Dot3(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CheckNameLegalDOS8Dot3(LPCTSTR lpName, LPSTR lpOemName, DWORD OemNameSize, PBOOL pbNameContainsSpaces, PBOOL pbNameLegal)
     """"
@@ -695,13 +845,25 @@ def kernel32_CheckNameLegalDOS8Dot3(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CopyFile(jitter):
+def kernel32_CheckNameLegalDOS8Dot3A(jitter):
+    kernel32_CheckNameLegalDOS8Dot3(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CheckNameLegalDOS8Dot3W(jitter):
+    kernel32_CheckNameLegalDOS8Dot3(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CopyFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CopyFile(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName, BOOL bFailIfExists)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpExistingFileName", "lpNewFileName", "bFailIfExists"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CopyFileA(jitter):
+    kernel32_CopyFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CopyFileW(jitter):
+    kernel32_CopyFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_CopyFile2(jitter):
     """"
@@ -711,7 +873,7 @@ def kernel32_CopyFile2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CopyFileEx(jitter):
+def kernel32_CopyFileEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CopyFileEx(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName, LPPROGRESS_ROUTINE lpProgressRoutine, LPVOID lpData, LPBOOL pbCancel, [COPY_FILE_FLAGS] dwCopyFlags)
     """"
@@ -719,7 +881,13 @@ def kernel32_CopyFileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CopyFileTransacted(jitter):
+def kernel32_CopyFileExA(jitter):
+    kernel32_CopyFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CopyFileExW(jitter):
+    kernel32_CopyFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CopyFileTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CopyFileTransacted(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName, LPPROGRESS_ROUTINE lpProgressRoutine, LPVOID lpData, LPBOOL pbCancel, [COPY_FILE_FLAGS] dwCopyFlags, HANDLE hTransaction)
     """"
@@ -727,13 +895,25 @@ def kernel32_CopyFileTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateFile(jitter):
+def kernel32_CopyFileTransactedA(jitter):
+    kernel32_CopyFileTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CopyFileTransactedW(jitter):
+    kernel32_CopyFileTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [FILE_HANDLE] CreateFile(LPCTSTR lpFileName, [FILE_ACCESS_MASK] dwDesiredAccess, [FILE_SHARE_MODE] dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, [CreationDisposition] dwCreationDisposition, [FlagsAndAttributes] dwFlagsAndAttributes, HANDLE hTemplateFile)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "dwDesiredAccess", "dwShareMode", "lpSecurityAttributes", "dwCreationDisposition", "dwFlagsAndAttributes", "hTemplateFile"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateFileA(jitter):
+    kernel32_CreateFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateFileW(jitter):
+    kernel32_CreateFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_CreateFile2(jitter):
     """"
@@ -743,7 +923,7 @@ def kernel32_CreateFile2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateFileTransacted(jitter):
+def kernel32_CreateFileTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [FILE_HANDLE] CreateFileTransacted(LPCTSTR lpFileName, [FILE_ACCESS_MASK] dwDesiredAccess, [FILE_SHARE_MODE] dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, [CreationDisposition] dwCreationDisposition, [FlagsAndAttributes] dwFlagsAndAttributes, HANDLE hTemplateFile, HANDLE hTransaction, PUSHORT pusMiniVersion, PVOID pExtendedParameter)
     """"
@@ -751,7 +931,13 @@ def kernel32_CreateFileTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateHardLink(jitter):
+def kernel32_CreateFileTransactedA(jitter):
+    kernel32_CreateFileTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateFileTransactedW(jitter):
+    kernel32_CreateFileTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateHardLink(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CreateHardLink(LPCTSTR lpFileName, LPCTSTR lpExistingFileName, LPSECURITY_ATTRIBUTES lpSecurityAttributes)
     """"
@@ -759,7 +945,13 @@ def kernel32_CreateHardLink(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateHardLinkTransacted(jitter):
+def kernel32_CreateHardLinkA(jitter):
+    kernel32_CreateHardLink(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateHardLinkW(jitter):
+    kernel32_CreateHardLink(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateHardLinkTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CreateHardLinkTransacted(LPCTSTR lpFileName, LPCTSTR lpExistingFileName, LPSECURITY_ATTRIBUTES lpSecurityAttributes, HANDLE hTransaction)
     """"
@@ -767,7 +959,13 @@ def kernel32_CreateHardLinkTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateSymbolicLink(jitter):
+def kernel32_CreateHardLinkTransactedA(jitter):
+    kernel32_CreateHardLinkTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateHardLinkTransactedW(jitter):
+    kernel32_CreateHardLinkTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateSymbolicLink(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOLEAN CreateSymbolicLink(LPTSTR lpSymlinkFileName, LPTSTR lpTargetFileName, [CreateSymbolicLinkFlags] dwFlags)
     """"
@@ -775,7 +973,13 @@ def kernel32_CreateSymbolicLink(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateSymbolicLinkTransacted(jitter):
+def kernel32_CreateSymbolicLinkA(jitter):
+    kernel32_CreateSymbolicLink(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateSymbolicLinkW(jitter):
+    kernel32_CreateSymbolicLink(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateSymbolicLinkTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOLEAN CreateSymbolicLinkTransacted(LPTSTR lpSymlinkFileName, LPTSTR lpTargetFileName, [CreateSymbolicLinkFlags] dwFlags, HANDLE hTransaction)
     """"
@@ -783,7 +987,13 @@ def kernel32_CreateSymbolicLinkTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_DeleteFile(jitter):
+def kernel32_CreateSymbolicLinkTransactedA(jitter):
+    kernel32_CreateSymbolicLinkTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateSymbolicLinkTransactedW(jitter):
+    kernel32_CreateSymbolicLinkTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_DeleteFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL DeleteFile(LPCTSTR lpFileName)
     """"
@@ -791,13 +1001,25 @@ def kernel32_DeleteFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_DeleteFileTransacted(jitter):
+def kernel32_DeleteFileA(jitter):
+    kernel32_DeleteFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_DeleteFileW(jitter):
+    kernel32_DeleteFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_DeleteFileTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL DeleteFileTransacted(LPCTSTR lpFileName, HANDLE hTransaction)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "hTransaction"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_DeleteFileTransactedA(jitter):
+    kernel32_DeleteFileTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_DeleteFileTransactedW(jitter):
+    kernel32_DeleteFileTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindClose(jitter):
     """"
@@ -807,7 +1029,7 @@ def kernel32_FindClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindFirstFile(jitter):
+def kernel32_FindFirstFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [FILE_HANDLE] FindFirstFile(LPCTSTR lpFileName, LPWIN32_FIND_DATA lpFindFileData)
     """"
@@ -815,13 +1037,25 @@ def kernel32_FindFirstFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindFirstFileEx(jitter):
+def kernel32_FindFirstFileA(jitter):
+    kernel32_FindFirstFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindFirstFileW(jitter):
+    kernel32_FindFirstFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindFirstFileEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [FILE_HANDLE] FindFirstFileEx(LPCTSTR lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, LPVOID lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, LPVOID lpSearchFilter, [FindFirstFileExFlags] dwAdditionalFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "fInfoLevelId", "lpFindFileData", "fSearchOp", "lpSearchFilter", "dwAdditionalFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindFirstFileExA(jitter):
+    kernel32_FindFirstFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindFirstFileExW(jitter):
+    kernel32_FindFirstFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindFirstFileNameTransactedW(jitter):
     """"
@@ -839,13 +1073,19 @@ def kernel32_FindFirstFileNameW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindFirstFileTransacted(jitter):
+def kernel32_FindFirstFileTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [FILE_HANDLE] FindFirstFileTransacted(LPCTSTR lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, LPVOID lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, LPVOID lpSearchFilter, [FindFirstFileExFlags] dwAdditionalFlags, HANDLE hTransaction)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "fInfoLevelId", "lpFindFileData", "fSearchOp", "lpSearchFilter", "dwAdditionalFlags", "hTransaction"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindFirstFileTransactedA(jitter):
+    kernel32_FindFirstFileTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindFirstFileTransactedW(jitter):
+    kernel32_FindFirstFileTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindFirstStreamTransactedW(jitter):
     """"
@@ -863,13 +1103,19 @@ def kernel32_FindFirstStreamW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindNextFile(jitter):
+def kernel32_FindNextFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL FindNextFile(HANDLE hFindFile, LPWIN32_FIND_DATA lpFindFileData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFindFile", "lpFindFileData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindNextFileA(jitter):
+    kernel32_FindNextFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindNextFileW(jitter):
+    kernel32_FindNextFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindNextFileNameW(jitter):
     """"
@@ -887,7 +1133,7 @@ def kernel32_FindNextStreamW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetBinaryType(jitter):
+def kernel32_GetBinaryType(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetBinaryType(LPCTSTR lpApplicationName, [GetBinaryTypeResult*] lpBinaryType)
     """"
@@ -895,7 +1141,13 @@ def kernel32_GetBinaryType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCompressedFileSize(jitter):
+def kernel32_GetBinaryTypeA(jitter):
+    kernel32_GetBinaryType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetBinaryTypeW(jitter):
+    kernel32_GetBinaryType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetCompressedFileSize(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetCompressedFileSize(LPCTSTR lpFileName, LPDWORD lpFileSizeHigh)
     """"
@@ -903,7 +1155,13 @@ def kernel32_GetCompressedFileSize(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCompressedFileSizeTransacted(jitter):
+def kernel32_GetCompressedFileSizeA(jitter):
+    kernel32_GetCompressedFileSize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCompressedFileSizeW(jitter):
+    kernel32_GetCompressedFileSize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetCompressedFileSizeTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetCompressedFileSizeTransacted(LPCTSTR lpFileName, LPDWORD lpFileSizeHigh, HANDLE hTransaction)
     """"
@@ -911,7 +1169,13 @@ def kernel32_GetCompressedFileSizeTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFileAttributes(jitter):
+def kernel32_GetCompressedFileSizeTransactedA(jitter):
+    kernel32_GetCompressedFileSizeTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCompressedFileSizeTransactedW(jitter):
+    kernel32_GetCompressedFileSizeTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFileAttributes(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [FileAttributes] GetFileAttributes(LPCTSTR lpFileName)
     """"
@@ -919,7 +1183,13 @@ def kernel32_GetFileAttributes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFileAttributesEx(jitter):
+def kernel32_GetFileAttributesA(jitter):
+    kernel32_GetFileAttributes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFileAttributesW(jitter):
+    kernel32_GetFileAttributes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFileAttributesEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetFileAttributesEx(LPCTSTR lpFileName, GET_FILEEX_INFO_LEVELS fInfoLevelId, LPVOID lpFileInformation)
     """"
@@ -927,13 +1197,25 @@ def kernel32_GetFileAttributesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFileAttributesTransacted(jitter):
+def kernel32_GetFileAttributesExA(jitter):
+    kernel32_GetFileAttributesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFileAttributesExW(jitter):
+    kernel32_GetFileAttributesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFileAttributesTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetFileAttributesTransacted(LPCTSTR lpFileName, GET_FILEEX_INFO_LEVELS fInfoLevelId, LPVOID lpFileInformation, HANDLE hTransaction)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "fInfoLevelId", "lpFileInformation", "hTransaction"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetFileAttributesTransactedA(jitter):
+    kernel32_GetFileAttributesTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFileAttributesTransactedW(jitter):
+    kernel32_GetFileAttributesTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetFileBandwidthReservation(jitter):
     """"
@@ -983,7 +1265,7 @@ def kernel32_GetFileType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFinalPathNameByHandle(jitter):
+def kernel32_GetFinalPathNameByHandle(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetFinalPathNameByHandle(HANDLE hFile, LPTSTR lpszFilePath, DWORD cchFilePath, [GetFinalPathNameByHandleFlags] dwFlags)
     """"
@@ -991,7 +1273,13 @@ def kernel32_GetFinalPathNameByHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFullPathName(jitter):
+def kernel32_GetFinalPathNameByHandleA(jitter):
+    kernel32_GetFinalPathNameByHandle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFinalPathNameByHandleW(jitter):
+    kernel32_GetFinalPathNameByHandle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFullPathName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetFullPathName(LPCTSTR lpFileName, DWORD nBufferLength, LPTSTR lpBuffer, LPTSTR* lpFilePart)
     """"
@@ -999,7 +1287,13 @@ def kernel32_GetFullPathName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFullPathNameTransacted(jitter):
+def kernel32_GetFullPathNameA(jitter):
+    kernel32_GetFullPathName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFullPathNameW(jitter):
+    kernel32_GetFullPathName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFullPathNameTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetFullPathNameTransacted(LPCTSTR lpFileName, DWORD nBufferLength, LPTSTR lpBuffer, LPTSTR* lpFilePart, HANDLE hTransaction)
     """"
@@ -1007,7 +1301,13 @@ def kernel32_GetFullPathNameTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetLongPathName(jitter):
+def kernel32_GetFullPathNameTransactedA(jitter):
+    kernel32_GetFullPathNameTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFullPathNameTransactedW(jitter):
+    kernel32_GetFullPathNameTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetLongPathName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetLongPathName(LPCTSTR lpszShortPath, LPTSTR lpszLongPath, DWORD cchBuffer)
     """"
@@ -1015,7 +1315,13 @@ def kernel32_GetLongPathName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetLongPathNameTransacted(jitter):
+def kernel32_GetLongPathNameA(jitter):
+    kernel32_GetLongPathName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetLongPathNameW(jitter):
+    kernel32_GetLongPathName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetLongPathNameTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetLongPathNameTransacted(LPCTSTR lpszShortPath, LPTSTR lpszLongPath, DWORD cchBuffer, HANDLE hTransaction)
     """"
@@ -1023,7 +1329,13 @@ def kernel32_GetLongPathNameTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetShortPathName(jitter):
+def kernel32_GetLongPathNameTransactedA(jitter):
+    kernel32_GetLongPathNameTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetLongPathNameTransactedW(jitter):
+    kernel32_GetLongPathNameTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetShortPathName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetShortPathName(LPCTSTR lpszLongPath, LPTSTR lpszShortPath, DWORD cchBuffer)
     """"
@@ -1031,7 +1343,13 @@ def kernel32_GetShortPathName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetTempFileName(jitter):
+def kernel32_GetShortPathNameA(jitter):
+    kernel32_GetShortPathName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetShortPathNameW(jitter):
+    kernel32_GetShortPathName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetTempFileName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetTempFileName(LPCTSTR lpPathName, LPCTSTR lpPrefixString, UINT uUnique, LPTSTR lpTempFileName)
     """"
@@ -1039,7 +1357,13 @@ def kernel32_GetTempFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetTempPath(jitter):
+def kernel32_GetTempFileNameA(jitter):
+    kernel32_GetTempFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetTempFileNameW(jitter):
+    kernel32_GetTempFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetTempPath(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetTempPath(DWORD nBufferLength, LPTSTR lpBuffer)
     """"
@@ -1047,7 +1371,13 @@ def kernel32_GetTempPath(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_MoveFile(jitter):
+def kernel32_GetTempPathA(jitter):
+    kernel32_GetTempPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetTempPathW(jitter):
+    kernel32_GetTempPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_MoveFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL MoveFile(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName)
     """"
@@ -1055,7 +1385,13 @@ def kernel32_MoveFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_MoveFileEx(jitter):
+def kernel32_MoveFileA(jitter):
+    kernel32_MoveFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_MoveFileW(jitter):
+    kernel32_MoveFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_MoveFileEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL MoveFileEx(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName, [MoveFileFlags] dwFlags)
     """"
@@ -1063,7 +1399,13 @@ def kernel32_MoveFileEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_MoveFileTransacted(jitter):
+def kernel32_MoveFileExA(jitter):
+    kernel32_MoveFileEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_MoveFileExW(jitter):
+    kernel32_MoveFileEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_MoveFileTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL MoveFileTransacted(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName, LPPROGRESS_ROUTINE lpProgressRoutine, LPVOID lpData, DWORD dwFlags, HANDLE hTransaction)
     """"
@@ -1071,13 +1413,25 @@ def kernel32_MoveFileTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_MoveFileWithProgress(jitter):
+def kernel32_MoveFileTransactedA(jitter):
+    kernel32_MoveFileTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_MoveFileTransactedW(jitter):
+    kernel32_MoveFileTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_MoveFileWithProgress(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL MoveFileWithProgress(LPCTSTR lpExistingFileName, LPCTSTR lpNewFileName, LPPROGRESS_ROUTINE lpProgressRoutine, LPVOID lpData, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpExistingFileName", "lpNewFileName", "lpProgressRoutine", "lpData", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_MoveFileWithProgressA(jitter):
+    kernel32_MoveFileWithProgress(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_MoveFileWithProgressW(jitter):
+    kernel32_MoveFileWithProgress(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_OpenFile(jitter):
     """"
@@ -1103,7 +1457,7 @@ def kernel32_ReOpenFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ReplaceFile(jitter):
+def kernel32_ReplaceFile(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL ReplaceFile(LPCTSTR lpReplacedFileName, LPCTSTR lpReplacementFileName, LPCTSTR lpBackupFileName, DWORD dwReplaceFlags, LPVOID lpExclude, LPVOID lpReserved)
     """"
@@ -1111,13 +1465,25 @@ def kernel32_ReplaceFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SearchPath(jitter):
+def kernel32_ReplaceFileA(jitter):
+    kernel32_ReplaceFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ReplaceFileW(jitter):
+    kernel32_ReplaceFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SearchPath(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD SearchPath(LPCTSTR lpPath, LPCTSTR lpFileName, LPCTSTR lpExtension, DWORD nBufferLength, LPTSTR lpBuffer, LPTSTR* lpFilePart)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpPath", "lpFileName", "lpExtension", "nBufferLength", "lpBuffer", "lpFilePart"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SearchPathA(jitter):
+    kernel32_SearchPath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SearchPathW(jitter):
+    kernel32_SearchPath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetFileApisToANSI(jitter):
     """"
@@ -1135,7 +1501,7 @@ def kernel32_SetFileApisToOEM(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetFileAttributes(jitter):
+def kernel32_SetFileAttributes(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetFileAttributes(LPCTSTR lpFileName, [FileAttributes] dwFileAttributes)
     """"
@@ -1143,13 +1509,25 @@ def kernel32_SetFileAttributes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetFileAttributesTransacted(jitter):
+def kernel32_SetFileAttributesA(jitter):
+    kernel32_SetFileAttributes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetFileAttributesW(jitter):
+    kernel32_SetFileAttributes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetFileAttributesTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetFileAttributesTransacted(LPCTSTR lpFileName, [FileAttributes] dwFileAttributes, HANDLE hTransaction)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "dwFileAttributes", "hTransaction"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetFileAttributesTransactedA(jitter):
+    kernel32_SetFileAttributesTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetFileAttributesTransactedW(jitter):
+    kernel32_SetFileAttributesTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetFileBandwidthReservation(jitter):
     """"
@@ -1167,13 +1545,19 @@ def kernel32_SetFileInformationByHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetFileShortName(jitter):
+def kernel32_SetFileShortName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetFileShortName(HANDLE hFile, LPCTSTR lpShortName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFile", "lpShortName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetFileShortNameA(jitter):
+    kernel32_SetFileShortName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetFileShortNameW(jitter):
+    kernel32_SetFileShortName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetFileValidData(jitter):
     """"
@@ -1511,13 +1895,19 @@ def kernel32_SetProcessDEPPolicy(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateFileMapping(jitter):
+def kernel32_CreateFileMapping(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateFileMapping([FILE_HANDLE] hFile, LPSECURITY_ATTRIBUTES lpAttributes, [MemoryProtection] flProtect, DWORD dwMaximumSizeHigh, DWORD dwMaximumSizeLow, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFile", "lpAttributes", "flProtect", "dwMaximumSizeHigh", "dwMaximumSizeLow", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateFileMappingA(jitter):
+    kernel32_CreateFileMapping(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateFileMappingW(jitter):
+    kernel32_CreateFileMapping(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_CreateFileMappingFromApp(jitter):
     """"
@@ -1527,13 +1917,19 @@ def kernel32_CreateFileMappingFromApp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateFileMappingNuma(jitter):
+def kernel32_CreateFileMappingNuma(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateFileMappingNuma([FILE_HANDLE] hFile, LPSECURITY_ATTRIBUTES lpFileMappingAttributes, [MemoryProtection] flProtect, DWORD dwMaximumSizeHigh, DWORD dwMaximumSizeLow, LPCTSTR lpName, DWORD nndPreferred)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFile", "lpFileMappingAttributes", "flProtect", "dwMaximumSizeHigh", "dwMaximumSizeLow", "lpName", "nndPreferred"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateFileMappingNumaA(jitter):
+    kernel32_CreateFileMappingNuma(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateFileMappingNumaW(jitter):
+    kernel32_CreateFileMappingNuma(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FlushViewOfFile(jitter):
     """"
@@ -1575,13 +1971,19 @@ def kernel32_MapViewOfFileFromApp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenFileMapping(jitter):
+def kernel32_OpenFileMapping(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenFileMapping([MapAccessFlags] dwDesiredAccess, BOOL bInheritHandle, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwDesiredAccess", "bInheritHandle", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OpenFileMappingA(jitter):
+    kernel32_OpenFileMapping(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenFileMappingW(jitter):
+    kernel32_OpenFileMapping(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_UnmapViewOfFile(jitter):
     """"
@@ -2015,13 +2417,19 @@ def kernel32_IsBadReadPtr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_IsBadStringPtr(jitter):
+def kernel32_IsBadStringPtr(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL IsBadStringPtr(LPCTSTR lpsz, UINT_PTR ucchMax)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpsz", "ucchMax"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_IsBadStringPtrA(jitter):
+    kernel32_IsBadStringPtr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_IsBadStringPtrW(jitter):
+    kernel32_IsBadStringPtr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_IsBadWritePtr(jitter):
     """"
@@ -2039,13 +2447,19 @@ def kernel32_GlobalMemoryStatus(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateProcess(jitter):
+def kernel32_CreateProcess(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CreateProcess(LPCTSTR lpApplicationName, LPTSTR lpCommandLine, LPSECURITY_ATTRIBUTES lpProcessAttributes, LPSECURITY_ATTRIBUTES lpThreadAttributes, BOOL bInheritHandles, [CreateProcessFlags] dwCreationFlags, LPVOID lpEnvironment, LPCTSTR lpCurrentDirectory, LPSTARTUPINFO lpStartupInfo, LPPROCESS_INFORMATION lpProcessInformation)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpApplicationName", "lpCommandLine", "lpProcessAttributes", "lpThreadAttributes", "bInheritHandles", "dwCreationFlags", "lpEnvironment", "lpCurrentDirectory", "lpStartupInfo", "lpProcessInformation"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateProcessA(jitter):
+    kernel32_CreateProcess(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateProcessW(jitter):
+    kernel32_CreateProcess(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ExitProcess(jitter):
     """"
@@ -2063,7 +2477,7 @@ def kernel32_FlushProcessWriteBuffers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FreeEnvironmentStrings(jitter):
+def kernel32_FreeEnvironmentStrings(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL FreeEnvironmentStrings(LPTCH lpszEnvironmentBlock)
     """"
@@ -2071,13 +2485,25 @@ def kernel32_FreeEnvironmentStrings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCommandLine(jitter):
+def kernel32_FreeEnvironmentStringsA(jitter):
+    kernel32_FreeEnvironmentStrings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FreeEnvironmentStringsW(jitter):
+    kernel32_FreeEnvironmentStrings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetCommandLine(jitter, get_str, set_str):
     """"
     [Kernel32.dll] LPTSTR GetCommandLine()
     """"
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetCommandLineA(jitter):
+    kernel32_GetCommandLine(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCommandLineW(jitter):
+    kernel32_GetCommandLine(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetCurrentProcess(jitter):
     """"
@@ -2103,7 +2529,7 @@ def kernel32_GetEnvironmentStrings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetEnvironmentStrings(jitter):
+def kernel32_GetEnvironmentStrings(jitter, get_str, set_str):
     """"
     [Kernel32.dll] LPTCH GetEnvironmentStrings()
     """"
@@ -2111,13 +2537,25 @@ def kernel32_GetEnvironmentStrings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetEnvironmentVariable(jitter):
+def kernel32_GetEnvironmentStringsA(jitter):
+    kernel32_GetEnvironmentStrings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetEnvironmentStringsW(jitter):
+    kernel32_GetEnvironmentStrings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetEnvironmentVariable(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetEnvironmentVariable(LPCTSTR lpName, LPTSTR lpBuffer, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpName", "lpBuffer", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetEnvironmentVariableA(jitter):
+    kernel32_GetEnvironmentVariable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetEnvironmentVariableW(jitter):
+    kernel32_GetEnvironmentVariable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetExitCodeProcess(jitter):
     """"
@@ -2255,7 +2693,7 @@ def kernel32_GetProcessorSystemCycleTime(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetStartupInfo(jitter):
+def kernel32_GetStartupInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] VOID GetStartupInfo(LPSTARTUPINFO lpStartupInfo)
     """"
@@ -2263,13 +2701,25 @@ def kernel32_GetStartupInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_NeedCurrentDirectoryForExePath(jitter):
+def kernel32_GetStartupInfoA(jitter):
+    kernel32_GetStartupInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetStartupInfoW(jitter):
+    kernel32_GetStartupInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_NeedCurrentDirectoryForExePath(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL NeedCurrentDirectoryForExePath(LPCTSTR ExeName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ExeName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_NeedCurrentDirectoryForExePathA(jitter):
+    kernel32_NeedCurrentDirectoryForExePath(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_NeedCurrentDirectoryForExePathW(jitter):
+    kernel32_NeedCurrentDirectoryForExePath(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_OpenProcess(jitter):
     """"
@@ -2279,13 +2729,19 @@ def kernel32_OpenProcess(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_QueryFullProcessImageName(jitter):
+def kernel32_QueryFullProcessImageName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL QueryFullProcessImageName([ProcessHandle] hProcess, [QueryFullProcessImageNameFlags] dwFlags, LPTSTR lpExeName, PDWORD lpdwSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "dwFlags", "lpExeName", "lpdwSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_QueryFullProcessImageNameA(jitter):
+    kernel32_QueryFullProcessImageName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_QueryFullProcessImageNameW(jitter):
+    kernel32_QueryFullProcessImageName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_QueryProcessAffinityUpdateMode(jitter):
     """"
@@ -2303,13 +2759,19 @@ def kernel32_QueryProcessCycleTime(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetEnvironmentVariable(jitter):
+def kernel32_SetEnvironmentVariable(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetEnvironmentVariable(LPCTSTR lpName, LPCTSTR lpValue)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpName", "lpValue"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetEnvironmentVariableA(jitter):
+    kernel32_SetEnvironmentVariable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetEnvironmentVariableW(jitter):
+    kernel32_SetEnvironmentVariable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetPriorityClass(jitter):
     """"
@@ -2719,13 +3181,19 @@ def kernel32_AssignProcessToJobObject(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateJobObject(jitter):
+def kernel32_CreateJobObject(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateJobObject(LPSECURITY_ATTRIBUTES lpJobAttributes, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpJobAttributes", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateJobObjectA(jitter):
+    kernel32_CreateJobObject(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateJobObjectW(jitter):
+    kernel32_CreateJobObject(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_IsProcessInJob(jitter):
     """"
@@ -2735,13 +3203,19 @@ def kernel32_IsProcessInJob(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenJobObject(jitter):
+def kernel32_OpenJobObject(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenJobObject(DWORD dwDesiredAccess, BOOL bInheritHandles, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwDesiredAccess", "bInheritHandles", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OpenJobObjectA(jitter):
+    kernel32_OpenJobObject(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenJobObjectW(jitter):
+    kernel32_OpenJobObject(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_QueryInformationJobObject(jitter):
     """"
@@ -3463,13 +3937,19 @@ def kernel32_AddRefActCtx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateActCtx(jitter):
+def kernel32_CreateActCtx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateActCtx(PACTCTX pActCtx)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pActCtx"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateActCtxA(jitter):
+    kernel32_CreateActCtx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateActCtxW(jitter):
+    kernel32_CreateActCtx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_DeactivateActCtx(jitter):
     """"
@@ -3487,13 +3967,19 @@ def kernel32_FindActCtxSectionGuid(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindActCtxSectionString(jitter):
+def kernel32_FindActCtxSectionString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL FindActCtxSectionString([FIND_ACTCTX_SECTION_FLAGS] dwFlags, const GUID* lpExtensionGuid, [ACTIVATION_CONTEXT_SECTION] ulSectionId, LPCTSTR lpStringToFind, PACTCTX_SECTION_KEYED_DATA ReturnedData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "lpExtensionGuid", "ulSectionId", "lpStringToFind", "ReturnedData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindActCtxSectionStringA(jitter):
+    kernel32_FindActCtxSectionString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindActCtxSectionStringW(jitter):
+    kernel32_FindActCtxSectionString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetCurrentActCtx(jitter):
     """"
@@ -3535,13 +4021,19 @@ def kernel32_ZombifyActCtx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_AddAtom(jitter):
+def kernel32_AddAtom(jitter, get_str, set_str):
     """"
     [Kernel32.dll] ATOM AddAtom(LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_AddAtomA(jitter):
+    kernel32_AddAtom(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_AddAtomW(jitter):
+    kernel32_AddAtom(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_DeleteAtom(jitter):
     """"
@@ -3551,7 +4043,7 @@ def kernel32_DeleteAtom(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindAtom(jitter):
+def kernel32_FindAtom(jitter, get_str, set_str):
     """"
     [Kernel32.dll] ATOM FindAtom(LPCTSTR lpString)
     """"
@@ -3559,7 +4051,13 @@ def kernel32_FindAtom(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetAtomName(jitter):
+def kernel32_FindAtomA(jitter):
+    kernel32_FindAtom(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindAtomW(jitter):
+    kernel32_FindAtom(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetAtomName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetAtomName(ATOM nAtom, LPTSTR lpBuffer, int nSize)
     """"
@@ -3567,13 +4065,25 @@ def kernel32_GetAtomName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GlobalAddAtom(jitter):
+def kernel32_GetAtomNameA(jitter):
+    kernel32_GetAtomName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetAtomNameW(jitter):
+    kernel32_GetAtomName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GlobalAddAtom(jitter, get_str, set_str):
     """"
     [Kernel32.dll] ATOM GlobalAddAtom(LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GlobalAddAtomA(jitter):
+    kernel32_GlobalAddAtom(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GlobalAddAtomW(jitter):
+    kernel32_GlobalAddAtom(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GlobalDeleteAtom(jitter):
     """"
@@ -3583,7 +4093,7 @@ def kernel32_GlobalDeleteAtom(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GlobalFindAtom(jitter):
+def kernel32_GlobalFindAtom(jitter, get_str, set_str):
     """"
     [Kernel32.dll] ATOM GlobalFindAtom(LPCTSTR lpString)
     """"
@@ -3591,13 +4101,25 @@ def kernel32_GlobalFindAtom(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GlobalGetAtomName(jitter):
+def kernel32_GlobalFindAtomA(jitter):
+    kernel32_GlobalFindAtom(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GlobalFindAtomW(jitter):
+    kernel32_GlobalFindAtom(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GlobalGetAtomName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GlobalGetAtomName(ATOM nAtom, LPTSTR lpBuffer, int nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["nAtom", "lpBuffer", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GlobalGetAtomNameA(jitter):
+    kernel32_GlobalGetAtomName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GlobalGetAtomNameW(jitter):
+    kernel32_GlobalGetAtomName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_InitAtomTable(jitter):
     """"
@@ -3607,7 +4129,7 @@ def kernel32_InitAtomTable(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_BuildCommDCB(jitter):
+def kernel32_BuildCommDCB(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL BuildCommDCB(LPCTSTR lpDef, LPDCB lpDCB)
     """"
@@ -3615,13 +4137,25 @@ def kernel32_BuildCommDCB(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_BuildCommDCBAndTimeouts(jitter):
+def kernel32_BuildCommDCBA(jitter):
+    kernel32_BuildCommDCB(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_BuildCommDCBW(jitter):
+    kernel32_BuildCommDCB(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_BuildCommDCBAndTimeouts(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL BuildCommDCBAndTimeouts(LPCTSTR lpDef, LPDCB lpDCB, LPCOMMTIMEOUTS lpCommTimeouts)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpDef", "lpDCB", "lpCommTimeouts"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_BuildCommDCBAndTimeoutsA(jitter):
+    kernel32_BuildCommDCBAndTimeouts(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_BuildCommDCBAndTimeoutsW(jitter):
+    kernel32_BuildCommDCBAndTimeouts(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ClearCommBreak(jitter):
     """"
@@ -3639,13 +4173,19 @@ def kernel32_ClearCommError(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CommConfigDialog(jitter):
+def kernel32_CommConfigDialog(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CommConfigDialog(LPCTSTR lpszName, HWND hWnd, LPCOMMCONFIG lpCC)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszName", "hWnd", "lpCC"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CommConfigDialogA(jitter):
+    kernel32_CommConfigDialog(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CommConfigDialogW(jitter):
+    kernel32_CommConfigDialog(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EscapeCommFunction(jitter):
     """"
@@ -3703,13 +4243,19 @@ def kernel32_GetCommTimeouts(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetDefaultCommConfig(jitter):
+def kernel32_GetDefaultCommConfig(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetDefaultCommConfig(LPCTSTR lpszName, LPCOMMCONFIG lpCC, LPDWORD lpdwSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszName", "lpCC", "lpdwSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetDefaultCommConfigA(jitter):
+    kernel32_GetDefaultCommConfig(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetDefaultCommConfigW(jitter):
+    kernel32_GetDefaultCommConfig(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_PurgeComm(jitter):
     """"
@@ -3759,13 +4305,19 @@ def kernel32_SetCommTimeouts(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetDefaultCommConfig(jitter):
+def kernel32_SetDefaultCommConfig(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetDefaultCommConfig(LPCTSTR lpszName, LPCOMMCONFIG lpCC, DWORD dwSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszName", "lpCC", "dwSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetDefaultCommConfigA(jitter):
+    kernel32_SetDefaultCommConfig(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetDefaultCommConfigW(jitter):
+    kernel32_SetDefaultCommConfig(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetupComm(jitter):
     """"
@@ -3791,13 +4343,19 @@ def kernel32_WaitCommEvent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_AddConsoleAlias(jitter):
+def kernel32_AddConsoleAlias(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL AddConsoleAlias(LPCTSTR Source, LPCTSTR Target, LPCTSTR ExeName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Source", "Target", "ExeName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_AddConsoleAliasA(jitter):
+    kernel32_AddConsoleAlias(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_AddConsoleAliasW(jitter):
+    kernel32_AddConsoleAlias(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_AllocConsole(jitter):
     """"
@@ -3831,13 +4389,19 @@ def kernel32_FillConsoleOutputAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FillConsoleOutputCharacter(jitter):
+def kernel32_FillConsoleOutputCharacter(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL FillConsoleOutputCharacter(HANDLE hConsoleOutput, TCHAR cCharacter, DWORD nLength, COORD dwWriteCoord, LPDWORD lpNumberOfCharsWritten)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hConsoleOutput", "cCharacter", "nLength", "dwWriteCoord", "lpNumberOfCharsWritten"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FillConsoleOutputCharacterA(jitter):
+    kernel32_FillConsoleOutputCharacter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FillConsoleOutputCharacterW(jitter):
+    kernel32_FillConsoleOutputCharacter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FlushConsoleInputBuffer(jitter):
     """"
@@ -3863,7 +4427,7 @@ def kernel32_GenerateConsoleCtrlEvent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleAlias(jitter):
+def kernel32_GetConsoleAlias(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleAlias(LPTSTR lpSource, LPTSTR lpTargetBuffer, DWORD TargetBufferLength, LPTSTR lpExeName)
     """"
@@ -3871,7 +4435,13 @@ def kernel32_GetConsoleAlias(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleAliases(jitter):
+def kernel32_GetConsoleAliasA(jitter):
+    kernel32_GetConsoleAlias(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleAliasW(jitter):
+    kernel32_GetConsoleAlias(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetConsoleAliases(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleAliases(LPTSTR lpAliasBuffer, DWORD AliasBufferLength, LPTSTR lpExeName)
     """"
@@ -3879,7 +4449,13 @@ def kernel32_GetConsoleAliases(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleAliasesLength(jitter):
+def kernel32_GetConsoleAliasesA(jitter):
+    kernel32_GetConsoleAliases(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleAliasesW(jitter):
+    kernel32_GetConsoleAliases(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetConsoleAliasesLength(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleAliasesLength(LPTSTR lpExeName)
     """"
@@ -3887,7 +4463,13 @@ def kernel32_GetConsoleAliasesLength(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleAliasExes(jitter):
+def kernel32_GetConsoleAliasesLengthA(jitter):
+    kernel32_GetConsoleAliasesLength(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleAliasesLengthW(jitter):
+    kernel32_GetConsoleAliasesLength(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetConsoleAliasExes(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleAliasExes(LPTSTR lpExeNameBuffer, DWORD ExeNameBufferLength)
     """"
@@ -3895,13 +4477,25 @@ def kernel32_GetConsoleAliasExes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleAliasExesLength(jitter):
+def kernel32_GetConsoleAliasExesA(jitter):
+    kernel32_GetConsoleAliasExes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleAliasExesW(jitter):
+    kernel32_GetConsoleAliasExes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetConsoleAliasExesLength(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleAliasExesLength()
     """"
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetConsoleAliasExesLengthA(jitter):
+    kernel32_GetConsoleAliasExesLength(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleAliasExesLengthW(jitter):
+    kernel32_GetConsoleAliasExesLength(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetConsoleCP(jitter):
     """"
@@ -3951,13 +4545,19 @@ def kernel32_GetConsoleMode(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleOriginalTitle(jitter):
+def kernel32_GetConsoleOriginalTitle(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleOriginalTitle(LPTSTR lpConsoleTitle, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpConsoleTitle", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetConsoleOriginalTitleA(jitter):
+    kernel32_GetConsoleOriginalTitle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleOriginalTitleW(jitter):
+    kernel32_GetConsoleOriginalTitle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetConsoleOutputCP(jitter):
     """"
@@ -3999,13 +4599,19 @@ def kernel32_GetConsoleSelectionInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetConsoleTitle(jitter):
+def kernel32_GetConsoleTitle(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetConsoleTitle(LPTSTR lpConsoleTitle, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpConsoleTitle", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetConsoleTitleA(jitter):
+    kernel32_GetConsoleTitle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetConsoleTitleW(jitter):
+    kernel32_GetConsoleTitle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetConsoleWindow(jitter):
     """"
@@ -4063,7 +4669,7 @@ def kernel32_GetStdHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_PeekConsoleInput(jitter):
+def kernel32_PeekConsoleInput(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL PeekConsoleInput(HANDLE hConsoleInput, PINPUT_RECORD lpBuffer, DWORD nLength, LPDWORD lpNumberOfEventsRead)
     """"
@@ -4071,7 +4677,13 @@ def kernel32_PeekConsoleInput(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ReadConsole(jitter):
+def kernel32_PeekConsoleInputA(jitter):
+    kernel32_PeekConsoleInput(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_PeekConsoleInputW(jitter):
+    kernel32_PeekConsoleInput(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_ReadConsole(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL ReadConsole(HANDLE hConsoleInput, LPVOID lpBuffer, DWORD nNumberOfCharsToRead, LPDWORD lpNumberOfCharsRead, LPVOID pInputControl)
     """"
@@ -4079,7 +4691,13 @@ def kernel32_ReadConsole(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ReadConsoleInput(jitter):
+def kernel32_ReadConsoleA(jitter):
+    kernel32_ReadConsole(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ReadConsoleW(jitter):
+    kernel32_ReadConsole(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_ReadConsoleInput(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL ReadConsoleInput(HANDLE hConsoleInput, PINPUT_RECORD lpBuffer, DWORD nLength, LPDWORD lpNumberOfEventsRead)
     """"
@@ -4087,13 +4705,25 @@ def kernel32_ReadConsoleInput(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ReadConsoleOutput(jitter):
+def kernel32_ReadConsoleInputA(jitter):
+    kernel32_ReadConsoleInput(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ReadConsoleInputW(jitter):
+    kernel32_ReadConsoleInput(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_ReadConsoleOutput(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL ReadConsoleOutput(HANDLE hConsoleOutput, PCHAR_INFO lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, PSMALL_RECT lpReadRegion)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hConsoleOutput", "lpBuffer", "dwBufferSize", "dwBufferCoord", "lpReadRegion"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_ReadConsoleOutputA(jitter):
+    kernel32_ReadConsoleOutput(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ReadConsoleOutputW(jitter):
+    kernel32_ReadConsoleOutput(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ReadConsoleOutputAttribute(jitter):
     """"
@@ -4103,7 +4733,7 @@ def kernel32_ReadConsoleOutputAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ReadConsoleOutputCharacter(jitter):
+def kernel32_ReadConsoleOutputCharacter(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL ReadConsoleOutputCharacter(HANDLE hConsoleOutput, LPTSTR lpCharacter, DWORD nLength, COORD dwReadCoord, LPDWORD lpNumberOfCharsRead)
     """"
@@ -4111,13 +4741,25 @@ def kernel32_ReadConsoleOutputCharacter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ScrollConsoleScreenBuffer(jitter):
+def kernel32_ReadConsoleOutputCharacterA(jitter):
+    kernel32_ReadConsoleOutputCharacter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ReadConsoleOutputCharacterW(jitter):
+    kernel32_ReadConsoleOutputCharacter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_ScrollConsoleScreenBuffer(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL ScrollConsoleScreenBuffer(HANDLE hConsoleOutput, const SMALL_RECT* lpScrollRectangle, const SMALL_RECT* lpClipRectangle, COORD dwDestinationOrigin, const CHAR_INFO* lpFill)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hConsoleOutput", "lpScrollRectangle", "lpClipRectangle", "dwDestinationOrigin", "lpFill"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_ScrollConsoleScreenBufferA(jitter):
+    kernel32_ScrollConsoleScreenBuffer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ScrollConsoleScreenBufferW(jitter):
+    kernel32_ScrollConsoleScreenBuffer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetConsoleActiveScreenBuffer(jitter):
     """"
@@ -4215,13 +4857,19 @@ def kernel32_SetConsoleTextAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetConsoleTitle(jitter):
+def kernel32_SetConsoleTitle(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetConsoleTitle(LPCTSTR lpConsoleTitle)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpConsoleTitle"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetConsoleTitleA(jitter):
+    kernel32_SetConsoleTitle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetConsoleTitleW(jitter):
+    kernel32_SetConsoleTitle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetConsoleWindowInfo(jitter):
     """"
@@ -4247,7 +4895,7 @@ def kernel32_SetStdHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WriteConsole(jitter):
+def kernel32_WriteConsole(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WriteConsole(HANDLE hConsoleOutput, LPCTSTR lpBuffer, DWORD nNumberOfCharsToWrite, LPDWORD lpNumberOfCharsWritten, LPVOID lpReserved)
     """"
@@ -4255,7 +4903,13 @@ def kernel32_WriteConsole(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WriteConsoleInput(jitter):
+def kernel32_WriteConsoleA(jitter):
+    kernel32_WriteConsole(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WriteConsoleW(jitter):
+    kernel32_WriteConsole(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WriteConsoleInput(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WriteConsoleInput(HANDLE hConsoleInput, const INPUT_RECORD* lpBuffer, DWORD nLength, LPDWORD lpNumberOfEventsWritten)
     """"
@@ -4263,13 +4917,25 @@ def kernel32_WriteConsoleInput(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WriteConsoleOutput(jitter):
+def kernel32_WriteConsoleInputA(jitter):
+    kernel32_WriteConsoleInput(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WriteConsoleInputW(jitter):
+    kernel32_WriteConsoleInput(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_WriteConsoleOutput(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WriteConsoleOutput(HANDLE hConsoleOutput, const CHAR_INFO* lpBuffer, COORD dwBufferSize, COORD dwBufferCoord, PSMALL_RECT lpWriteRegion)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hConsoleOutput", "lpBuffer", "dwBufferSize", "dwBufferCoord", "lpWriteRegion"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_WriteConsoleOutputA(jitter):
+    kernel32_WriteConsoleOutput(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WriteConsoleOutputW(jitter):
+    kernel32_WriteConsoleOutput(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_WriteConsoleOutputAttribute(jitter):
     """"
@@ -4279,7 +4945,7 @@ def kernel32_WriteConsoleOutputAttribute(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WriteConsoleOutputCharacter(jitter):
+def kernel32_WriteConsoleOutputCharacter(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WriteConsoleOutputCharacter(HANDLE hConsoleOutput, LPCTSTR lpCharacter, DWORD nLength, COORD dwWriteCoord, LPDWORD lpNumberOfCharsWritten)
     """"
@@ -4287,13 +4953,25 @@ def kernel32_WriteConsoleOutputCharacter(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetConsoleInputExeName(jitter):
+def kernel32_WriteConsoleOutputCharacterA(jitter):
+    kernel32_WriteConsoleOutputCharacter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WriteConsoleOutputCharacterW(jitter):
+    kernel32_WriteConsoleOutputCharacter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetConsoleInputExeName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetConsoleInputExeName(LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetConsoleInputExeNameA(jitter):
+    kernel32_SetConsoleInputExeName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetConsoleInputExeNameW(jitter):
+    kernel32_SetConsoleInputExeName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_DeviceIoControl(jitter):
     """"
@@ -4319,7 +4997,7 @@ def kernel32_RtlCaptureStackBackTrace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FatalAppExit(jitter):
+def kernel32_FatalAppExit(jitter, get_str, set_str):
     """"
     [Kernel32.dll] void FatalAppExit(UINT uAction, LPCTSTR lpMessageText)
     """"
@@ -4327,13 +5005,25 @@ def kernel32_FatalAppExit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FormatMessage(jitter):
+def kernel32_FatalAppExitA(jitter):
+    kernel32_FatalAppExit(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FatalAppExitW(jitter):
+    kernel32_FatalAppExit(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FormatMessage(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD FormatMessage([FormatMessageFlags] dwFlags, LPCVOID lpSource, DWORD dwMessageId, DWORD dwLanguageId, LPTSTR lpBuffer, DWORD nSize, va_list* Arguments)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "lpSource", "dwMessageId", "dwLanguageId", "lpBuffer", "nSize", "Arguments"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FormatMessageA(jitter):
+    kernel32_FormatMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FormatMessageW(jitter):
+    kernel32_FormatMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetErrorMode(jitter):
     """"
@@ -4439,13 +5129,19 @@ def kernel32_SetHandleCount(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateMailslot(jitter):
+def kernel32_CreateMailslot(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateMailslot(LPCTSTR lpName, DWORD nMaxMessageSize, DWORD lReadTimeout, LPSECURITY_ATTRIBUTES lpSecurityAttributes)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpName", "nMaxMessageSize", "lReadTimeout", "lpSecurityAttributes"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateMailslotA(jitter):
+    kernel32_CreateMailslot(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateMailslotW(jitter):
+    kernel32_CreateMailslot(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetMailslotInfo(jitter):
     """"
@@ -4471,13 +5167,19 @@ def kernel32_AdjustCalendarDate(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CompareString(jitter):
+def kernel32_CompareString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int CompareString(LCID Locale, [NLS_STRING_COMPARE_FLAGS] dwCmpFlags, LPCTSTR lpString1, int cchCount1, LPCTSTR lpString2, int cchCount2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwCmpFlags", "lpString1", "cchCount1", "lpString2", "cchCount2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CompareStringA(jitter):
+    kernel32_CompareString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CompareStringW(jitter):
+    kernel32_CompareString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_CompareStringEx(jitter):
     """"
@@ -4519,7 +5221,7 @@ def kernel32_ConvertSystemTimeToCalDateTime(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumCalendarInfo(jitter):
+def kernel32_EnumCalendarInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumCalendarInfo(CALINFO_ENUMPROC pCalInfoEnumProc, LCID Locale, CALID Calendar, CALTYPE CalType)
     """"
@@ -4527,13 +5229,25 @@ def kernel32_EnumCalendarInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumCalendarInfoEx(jitter):
+def kernel32_EnumCalendarInfoA(jitter):
+    kernel32_EnumCalendarInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumCalendarInfoW(jitter):
+    kernel32_EnumCalendarInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumCalendarInfoEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumCalendarInfoEx(CALINFO_ENUMPROCEX pCalInfoEnumProcEx, LCID Locale, CALID Calendar, CALTYPE CalType)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pCalInfoEnumProcEx", "Locale", "Calendar", "CalType"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_EnumCalendarInfoExA(jitter):
+    kernel32_EnumCalendarInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumCalendarInfoExW(jitter):
+    kernel32_EnumCalendarInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EnumCalendarInfoExEx(jitter):
     """"
@@ -4543,7 +5257,7 @@ def kernel32_EnumCalendarInfoExEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumDateFormats(jitter):
+def kernel32_EnumDateFormats(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumDateFormats(DATEFMT_ENUMPROC lpDateFmtEnumProc, LCID Locale, [NLS_DATE_FLAGS] dwFlags)
     """"
@@ -4551,13 +5265,25 @@ def kernel32_EnumDateFormats(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumDateFormatsEx(jitter):
+def kernel32_EnumDateFormatsA(jitter):
+    kernel32_EnumDateFormats(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumDateFormatsW(jitter):
+    kernel32_EnumDateFormats(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumDateFormatsEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumDateFormatsEx(DATEFMT_ENUMPROCEX lpDateFmtEnumProcEx, LCID Locale, [NLS_DATE_FLAGS] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpDateFmtEnumProcEx", "Locale", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_EnumDateFormatsExA(jitter):
+    kernel32_EnumDateFormatsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumDateFormatsExW(jitter):
+    kernel32_EnumDateFormatsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EnumDateFormatsExEx(jitter):
     """"
@@ -4567,7 +5293,7 @@ def kernel32_EnumDateFormatsExEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumLanguageGroupLocales(jitter):
+def kernel32_EnumLanguageGroupLocales(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumLanguageGroupLocales(LANGGROUPLOCALE_ENUMPROC lpLangGroupLocaleEnumProc, LGRPID LanguageGroup, DWORD dwFlags, LONG_PTR lParam)
     """"
@@ -4575,13 +5301,25 @@ def kernel32_EnumLanguageGroupLocales(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumSystemCodePages(jitter):
+def kernel32_EnumLanguageGroupLocalesA(jitter):
+    kernel32_EnumLanguageGroupLocales(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumLanguageGroupLocalesW(jitter):
+    kernel32_EnumLanguageGroupLocales(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumSystemCodePages(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumSystemCodePages(CODEPAGE_ENUMPROC lpCodePageEnumProc, [CodePageEnumerationFlags] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpCodePageEnumProc", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_EnumSystemCodePagesA(jitter):
+    kernel32_EnumSystemCodePages(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumSystemCodePagesW(jitter):
+    kernel32_EnumSystemCodePages(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EnumSystemGeoID(jitter):
     """"
@@ -4591,7 +5329,7 @@ def kernel32_EnumSystemGeoID(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumSystemLanguageGroups(jitter):
+def kernel32_EnumSystemLanguageGroups(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumSystemLanguageGroups(LANGUAGEGROUP_ENUMPROC lpLanguageGroupEnumProc, [LANGUAGE_GROUP_FLAGS] dwFlags, LONG_PTR lParam)
     """"
@@ -4599,13 +5337,25 @@ def kernel32_EnumSystemLanguageGroups(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumSystemLocales(jitter):
+def kernel32_EnumSystemLanguageGroupsA(jitter):
+    kernel32_EnumSystemLanguageGroups(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumSystemLanguageGroupsW(jitter):
+    kernel32_EnumSystemLanguageGroups(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumSystemLocales(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumSystemLocales(LOCALE_ENUMPROC lpLocaleEnumProc, [LocaleEnumerationFlags] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpLocaleEnumProc", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_EnumSystemLocalesA(jitter):
+    kernel32_EnumSystemLocales(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumSystemLocalesW(jitter):
+    kernel32_EnumSystemLocales(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EnumSystemLocalesEx(jitter):
     """"
@@ -4615,13 +5365,19 @@ def kernel32_EnumSystemLocalesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumTimeFormats(jitter):
+def kernel32_EnumTimeFormats(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumTimeFormats(TIMEFMT_ENUMPROC lpTimeFmtEnumProc, LCID Locale, [NLS_TIME_FLAGS] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpTimeFmtEnumProc", "Locale", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_EnumTimeFormatsA(jitter):
+    kernel32_EnumTimeFormats(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumTimeFormatsW(jitter):
+    kernel32_EnumTimeFormats(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EnumTimeFormatsEx(jitter):
     """"
@@ -4655,13 +5411,19 @@ def kernel32_FindStringOrdinal(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FoldString(jitter):
+def kernel32_FoldString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int FoldString([MappingFlags] dwMapFlags, LPCTSTR lpSrcStr, int cchSrc, LPTSTR lpDestStr, int cchDest)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwMapFlags", "lpSrcStr", "cchSrc", "lpDestStr", "cchDest"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FoldStringA(jitter):
+    kernel32_FoldString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FoldStringW(jitter):
+    kernel32_FoldString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetACP(jitter):
     """"
@@ -4679,13 +5441,19 @@ def kernel32_GetCalendarDateFormatEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCalendarInfo(jitter):
+def kernel32_GetCalendarInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetCalendarInfo(LCID Locale, CALID Calendar, CALTYPE CalType, LPTSTR lpCalData, int cchData, LPDWORD lpValue)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "Calendar", "CalType", "lpCalData", "cchData", "lpValue"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetCalendarInfoA(jitter):
+    kernel32_GetCalendarInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCalendarInfoW(jitter):
+    kernel32_GetCalendarInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetCalendarInfoEx(jitter):
     """"
@@ -4711,7 +5479,7 @@ def kernel32_GetCPInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCPInfoEx(jitter):
+def kernel32_GetCPInfoEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetCPInfoEx([CodePageEnum] CodePage, DWORD dwFlags, LPCPINFOEX lpCPInfoEx)
     """"
@@ -4719,13 +5487,25 @@ def kernel32_GetCPInfoEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCurrencyFormat(jitter):
+def kernel32_GetCPInfoExA(jitter):
+    kernel32_GetCPInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCPInfoExW(jitter):
+    kernel32_GetCPInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetCurrencyFormat(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetCurrencyFormat(LCID Locale, [LOCALE_NOUSEROVERRIDE_FLAG] dwFlags, LPCTSTR lpValue, const CURRENCYFMT* lpFormat, LPTSTR lpCurrencyStr, int cchCurrency)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwFlags", "lpValue", "lpFormat", "lpCurrencyStr", "cchCurrency"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetCurrencyFormatA(jitter):
+    kernel32_GetCurrencyFormat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCurrencyFormatW(jitter):
+    kernel32_GetCurrencyFormat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetCurrencyFormatEx(jitter):
     """"
@@ -4735,13 +5515,19 @@ def kernel32_GetCurrencyFormatEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetDateFormat(jitter):
+def kernel32_GetDateFormat(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetDateFormat(LCID Locale, [NLS_DATE_FLAGS] dwFlags, const SYSTEMTIME* lpDate, LPCTSTR lpFormat, LPTSTR lpDateStr, int cchDate)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwFlags", "lpDate", "lpFormat", "lpDateStr", "cchDate"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetDateFormatA(jitter):
+    kernel32_GetDateFormat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetDateFormatW(jitter):
+    kernel32_GetDateFormat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetDateFormatEx(jitter):
     """"
@@ -4767,7 +5553,7 @@ def kernel32_GetDurationFormatEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetGeoInfo(jitter):
+def kernel32_GetGeoInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetGeoInfo(GEOID Location, GEOTYPE GeoType, LPTSTR lpGeoData, int cchData, LANGID LangId)
     """"
@@ -4775,13 +5561,25 @@ def kernel32_GetGeoInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetLocaleInfo(jitter):
+def kernel32_GetGeoInfoA(jitter):
+    kernel32_GetGeoInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetGeoInfoW(jitter):
+    kernel32_GetGeoInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetLocaleInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetLocaleInfo(LCID Locale, LCTYPE LCType, LPTSTR lpLCData, int cchData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "LCType", "lpLCData", "cchData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetLocaleInfoA(jitter):
+    kernel32_GetLocaleInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetLocaleInfoW(jitter):
+    kernel32_GetLocaleInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetLocaleInfoEx(jitter):
     """"
@@ -4807,13 +5605,19 @@ def kernel32_GetNLSVersionEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetNumberFormat(jitter):
+def kernel32_GetNumberFormat(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetNumberFormat(LCID Locale, [LOCALE_NOUSEROVERRIDE_FLAG] dwFlags, LPCTSTR lpValue, const NUMBERFMT* lpFormat, LPTSTR lpNumberStr, int cchNumber)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwFlags", "lpValue", "lpFormat", "lpNumberStr", "cchNumber"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetNumberFormatA(jitter):
+    kernel32_GetNumberFormat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetNumberFormatW(jitter):
+    kernel32_GetNumberFormat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetNumberFormatEx(jitter):
     """"
@@ -4847,13 +5651,19 @@ def kernel32_GetStringTypeA(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetStringTypeEx(jitter):
+def kernel32_GetStringTypeEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetStringTypeEx(LCID Locale, [CharacterTypeFlag] dwInfoType, LPCTSTR lpSrcStr, int cchSrc, LPWORD lpCharType)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwInfoType", "lpSrcStr", "cchSrc", "lpCharType"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetStringTypeExA(jitter):
+    kernel32_GetStringTypeEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetStringTypeExW(jitter):
+    kernel32_GetStringTypeEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetStringTypeW(jitter):
     """"
@@ -4895,13 +5705,19 @@ def kernel32_GetThreadLocale(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetTimeFormat(jitter):
+def kernel32_GetTimeFormat(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int GetTimeFormat(LCID Locale, [NLS_TIME_FLAGS] dwFlags, const SYSTEMTIME* lpTime, LPCTSTR lpFormat, LPTSTR lpTimeStr, int cchTime)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwFlags", "lpTime", "lpFormat", "lpTimeStr", "cchTime"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetTimeFormatA(jitter):
+    kernel32_GetTimeFormat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetTimeFormatW(jitter):
+    kernel32_GetTimeFormat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetTimeFormatEx(jitter):
     """"
@@ -5007,13 +5823,19 @@ def kernel32_LCIDToLocaleName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_LCMapString(jitter):
+def kernel32_LCMapString(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int LCMapString(LCID Locale, [LocaleMappingFlags] dwMapFlags, LPCTSTR lpSrcStr, int cchSrc, LPTSTR lpDestStr, int cchDest)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "dwMapFlags", "lpSrcStr", "cchSrc", "lpDestStr", "cchDest"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_LCMapStringA(jitter):
+    kernel32_LCMapString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_LCMapStringW(jitter):
+    kernel32_LCMapString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_LCMapStringEx(jitter):
     """"
@@ -5055,7 +5877,7 @@ def kernel32_ResolveLocaleName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetCalendarInfo(jitter):
+def kernel32_SetCalendarInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetCalendarInfo(LCID Locale, CALID Calendar, CALTYPE CalType, LPCTSTR lpCalData)
     """"
@@ -5063,13 +5885,25 @@ def kernel32_SetCalendarInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetLocaleInfo(jitter):
+def kernel32_SetCalendarInfoA(jitter):
+    kernel32_SetCalendarInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetCalendarInfoW(jitter):
+    kernel32_SetCalendarInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetLocaleInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetLocaleInfo(LCID Locale, LCTYPE LCType, LPCTSTR lpLCData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Locale", "LCType", "lpLCData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetLocaleInfoA(jitter):
+    kernel32_SetLocaleInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetLocaleInfoW(jitter):
+    kernel32_SetLocaleInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetThreadLocale(jitter):
     """"
@@ -5183,7 +6017,7 @@ def kernel32_SetSystemPowerState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_BeginUpdateResource(jitter):
+def kernel32_BeginUpdateResource(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE BeginUpdateResource(LPCTSTR pFileName, BOOL bDeleteExistingResources)
     """"
@@ -5191,7 +6025,13 @@ def kernel32_BeginUpdateResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EndUpdateResource(jitter):
+def kernel32_BeginUpdateResourceA(jitter):
+    kernel32_BeginUpdateResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_BeginUpdateResourceW(jitter):
+    kernel32_BeginUpdateResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EndUpdateResource(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EndUpdateResource(HANDLE hUpdate, BOOL fDiscard)
     """"
@@ -5199,7 +6039,13 @@ def kernel32_EndUpdateResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumResourceLanguages(jitter):
+def kernel32_EndUpdateResourceA(jitter):
+    kernel32_EndUpdateResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EndUpdateResourceW(jitter):
+    kernel32_EndUpdateResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumResourceLanguages(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumResourceLanguages(HMODULE hModule, LPCTSTR lpType, LPCTSTR lpName, ENUMRESLANGPROC lpEnumFunc, LONG_PTR lParam)
     """"
@@ -5207,7 +6053,13 @@ def kernel32_EnumResourceLanguages(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumResourceLanguagesEx(jitter):
+def kernel32_EnumResourceLanguagesA(jitter):
+    kernel32_EnumResourceLanguages(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumResourceLanguagesW(jitter):
+    kernel32_EnumResourceLanguages(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumResourceLanguagesEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumResourceLanguagesEx(HMODULE hModule, LPCTSTR lpType, LPCTSTR lpName, ENUMRESLANGPROC lpEnumFunc, LONG_PTR lParam, [RESOURCE_ENUM_FLAGS] dwFlags, LANGID LangId)
     """"
@@ -5215,7 +6067,13 @@ def kernel32_EnumResourceLanguagesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumResourceNames(jitter):
+def kernel32_EnumResourceLanguagesExA(jitter):
+    kernel32_EnumResourceLanguagesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumResourceLanguagesExW(jitter):
+    kernel32_EnumResourceLanguagesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumResourceNames(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumResourceNames(HMODULE hModule, LPCTSTR lpszType, ENUMRESNAMEPROC lpEnumFunc, LONG_PTR lParam)
     """"
@@ -5223,7 +6081,13 @@ def kernel32_EnumResourceNames(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumResourceNamesEx(jitter):
+def kernel32_EnumResourceNamesA(jitter):
+    kernel32_EnumResourceNames(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumResourceNamesW(jitter):
+    kernel32_EnumResourceNames(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumResourceNamesEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumResourceNamesEx(HMODULE hModule, LPCTSTR lpszType, ENUMRESNAMEPROC lpEnumFunc, LONG_PTR lParam, [RESOURCE_ENUM_FLAGS] dwFlags, LANGID LangId)
     """"
@@ -5231,7 +6095,13 @@ def kernel32_EnumResourceNamesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumResourceTypes(jitter):
+def kernel32_EnumResourceNamesExA(jitter):
+    kernel32_EnumResourceNamesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumResourceNamesExW(jitter):
+    kernel32_EnumResourceNamesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumResourceTypes(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumResourceTypes(HMODULE hModule, ENUMRESTYPEPROC lpEnumFunc, LONG_PTR lParam)
     """"
@@ -5239,7 +6109,13 @@ def kernel32_EnumResourceTypes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumResourceTypesEx(jitter):
+def kernel32_EnumResourceTypesA(jitter):
+    kernel32_EnumResourceTypes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumResourceTypesW(jitter):
+    kernel32_EnumResourceTypes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_EnumResourceTypesEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumResourceTypesEx(HMODULE hModule, ENUMRESTYPEPROC lpEnumFunc, LONG_PTR lParam, [RESOURCE_ENUM_FLAGS] dwFlags, LANGID LangId)
     """"
@@ -5247,7 +6123,13 @@ def kernel32_EnumResourceTypesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindResource(jitter):
+def kernel32_EnumResourceTypesExA(jitter):
+    kernel32_EnumResourceTypesEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumResourceTypesExW(jitter):
+    kernel32_EnumResourceTypesEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindResource(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HRSRC FindResource(HMODULE hModule, LPCTSTR lpName, LPCTSTR lpType)
     """"
@@ -5255,13 +6137,25 @@ def kernel32_FindResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindResourceEx(jitter):
+def kernel32_FindResourceA(jitter):
+    kernel32_FindResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindResourceW(jitter):
+    kernel32_FindResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindResourceEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HRSRC FindResourceEx(HMODULE hModule, LPCTSTR lpType, LPCTSTR lpName, WORD wLanguage)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hModule", "lpType", "lpName", "wLanguage"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindResourceExA(jitter):
+    kernel32_FindResourceEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindResourceExW(jitter):
+    kernel32_FindResourceEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FreeResource(jitter):
     """"
@@ -5295,13 +6189,19 @@ def kernel32_SizeofResource(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_UpdateResource(jitter):
+def kernel32_UpdateResource(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL UpdateResource(HANDLE hUpdate, LPCTSTR lpType, LPCTSTR lpName, WORD wLanguage, LPVOID lpData, DWORD cbData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hUpdate", "lpType", "lpName", "wLanguage", "lpData", "cbData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_UpdateResourceA(jitter):
+    kernel32_UpdateResource(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_UpdateResourceW(jitter):
+    kernel32_UpdateResource(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_lstrcat(jitter):
     """"
@@ -5311,13 +6211,19 @@ def kernel32_lstrcat(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_lstrcat(jitter):
+def kernel32_lstrcat(jitter, get_str, set_str):
     """"
     [Kernel32.dll] LPTSTR lstrcat(LPTSTR lpString1, LPTSTR lpString2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString1", "lpString2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_lstrcatA(jitter):
+    kernel32_lstrcat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_lstrcatW(jitter):
+    kernel32_lstrcat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_lstrcmp(jitter):
     """"
@@ -5327,13 +6233,19 @@ def kernel32_lstrcmp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_lstrcmp(jitter):
+def kernel32_lstrcmp(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int lstrcmp(LPCTSTR lpString1, LPCTSTR lpString2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString1", "lpString2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_lstrcmpA(jitter):
+    kernel32_lstrcmp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_lstrcmpW(jitter):
+    kernel32_lstrcmp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_lstrcmpi(jitter):
     """"
@@ -5343,13 +6255,19 @@ def kernel32_lstrcmpi(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_lstrcmpi(jitter):
+def kernel32_lstrcmpi(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int lstrcmpi(LPCTSTR lpString1, LPCTSTR lpString2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString1", "lpString2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_lstrcmpiA(jitter):
+    kernel32_lstrcmpi(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_lstrcmpiW(jitter):
+    kernel32_lstrcmpi(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_lstrcpy(jitter):
     """"
@@ -5359,13 +6277,19 @@ def kernel32_lstrcpy(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_lstrcpy(jitter):
+def kernel32_lstrcpy(jitter, get_str, set_str):
     """"
     [Kernel32.dll] LPTSTR lstrcpy(LPTSTR lpString1, LPTSTR lpString2)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString1", "lpString2"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_lstrcpyA(jitter):
+    kernel32_lstrcpy(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_lstrcpyW(jitter):
+    kernel32_lstrcpy(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_lstrcpyn(jitter):
     """"
@@ -5375,13 +6299,19 @@ def kernel32_lstrcpyn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_lstrcpyn(jitter):
+def kernel32_lstrcpyn(jitter, get_str, set_str):
     """"
     [Kernel32.dll] LPTSTR lstrcpyn(LPTSTR lpString1, LPCTSTR lpString2, int iMaxLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString1", "lpString2", "iMaxLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_lstrcpynA(jitter):
+    kernel32_lstrcpyn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_lstrcpynW(jitter):
+    kernel32_lstrcpyn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_lstrlen(jitter):
     """"
@@ -5391,13 +6321,19 @@ def kernel32_lstrlen(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_lstrlen(jitter):
+def kernel32_lstrlen(jitter, get_str, set_str):
     """"
     [Kernel32.dll] int lstrlen(LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_lstrlenA(jitter):
+    kernel32_lstrlen(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_lstrlenW(jitter):
+    kernel32_lstrlen(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_AddVectoredContinueHandler(jitter):
     """"
@@ -5671,7 +6607,7 @@ def kernel32_TryEnterCriticalSection(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateEvent(jitter):
+def kernel32_CreateEvent(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateEvent(LPSECURITY_ATTRIBUTES lpEventAttributes, BOOL bManualReset, BOOL bInitialState, LPCTSTR lpName)
     """"
@@ -5679,7 +6615,13 @@ def kernel32_CreateEvent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateEventEx(jitter):
+def kernel32_CreateEventA(jitter):
+    kernel32_CreateEvent(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateEventW(jitter):
+    kernel32_CreateEvent(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateEventEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateEventEx(LPSECURITY_ATTRIBUTES lpEventAttributes, LPCTSTR lpName, [CREATE_EVENT_FLAGS] dwFlags, [EventAccessRights] dwDesiredAccess)
     """"
@@ -5687,13 +6629,25 @@ def kernel32_CreateEventEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenEvent(jitter):
+def kernel32_CreateEventExA(jitter):
+    kernel32_CreateEventEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateEventExW(jitter):
+    kernel32_CreateEventEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_OpenEvent(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenEvent([EventAccessRights] dwDesiredAccess, BOOL bInheritHandle, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwDesiredAccess", "bInheritHandle", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OpenEventA(jitter):
+    kernel32_OpenEvent(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenEventW(jitter):
+    kernel32_OpenEvent(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_PulseEvent(jitter):
     """"
@@ -5799,7 +6753,7 @@ def kernel32_InterlockedIncrement(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateMutex(jitter):
+def kernel32_CreateMutex(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateMutex(LPSECURITY_ATTRIBUTES lpMutexAttributes, BOOL bInitialOwner, LPCTSTR lpName)
     """"
@@ -5807,7 +6761,13 @@ def kernel32_CreateMutex(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateMutexEx(jitter):
+def kernel32_CreateMutexA(jitter):
+    kernel32_CreateMutex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateMutexW(jitter):
+    kernel32_CreateMutex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateMutexEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateMutexEx(LPSECURITY_ATTRIBUTES lpMutexAttributes, LPCTSTR lpName, [CREATE_MUTEX_FLAGS] dwFlags, [MutexAccessRights] dwDesiredAccess)
     """"
@@ -5815,13 +6775,25 @@ def kernel32_CreateMutexEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenMutex(jitter):
+def kernel32_CreateMutexExA(jitter):
+    kernel32_CreateMutexEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateMutexExW(jitter):
+    kernel32_CreateMutexEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_OpenMutex(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenMutex([MutexAccessRights] dwDesiredAccess, BOOL bInheritHandle, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwDesiredAccess", "bInheritHandle", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OpenMutexA(jitter):
+    kernel32_OpenMutex(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenMutexW(jitter):
+    kernel32_OpenMutex(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ReleaseMutex(jitter):
     """"
@@ -5855,7 +6827,7 @@ def kernel32_ClosePrivateNamespace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateBoundaryDescriptor(jitter):
+def kernel32_CreateBoundaryDescriptor(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateBoundaryDescriptor(LPCTSTR Name, ULONG Flags)
     """"
@@ -5863,13 +6835,25 @@ def kernel32_CreateBoundaryDescriptor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreatePrivateNamespace(jitter):
+def kernel32_CreateBoundaryDescriptorA(jitter):
+    kernel32_CreateBoundaryDescriptor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateBoundaryDescriptorW(jitter):
+    kernel32_CreateBoundaryDescriptor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreatePrivateNamespace(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreatePrivateNamespace(LPSECURITY_ATTRIBUTES lpPrivateNamespaceAttributes, LPVOID lpBoundaryDescriptor, LPCTSTR lpAliasPrefix)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpPrivateNamespaceAttributes", "lpBoundaryDescriptor", "lpAliasPrefix"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreatePrivateNamespaceA(jitter):
+    kernel32_CreatePrivateNamespace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreatePrivateNamespaceW(jitter):
+    kernel32_CreatePrivateNamespace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_DeleteBoundaryDescriptor(jitter):
     """"
@@ -5879,7 +6863,7 @@ def kernel32_DeleteBoundaryDescriptor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenPrivateNamespace(jitter):
+def kernel32_OpenPrivateNamespace(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenPrivateNamespace(LPVOID lpBoundaryDescriptor, LPCTSTR lpAliasPrefix)
     """"
@@ -5887,7 +6871,13 @@ def kernel32_OpenPrivateNamespace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateSemaphore(jitter):
+def kernel32_OpenPrivateNamespaceA(jitter):
+    kernel32_OpenPrivateNamespace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenPrivateNamespaceW(jitter):
+    kernel32_OpenPrivateNamespace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateSemaphore(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateSemaphore(LPSECURITY_ATTRIBUTES lpSemaphoreAttributes, LONG lInitialCount, LONG lMaximumCount, LPCTSTR lpName)
     """"
@@ -5895,7 +6885,13 @@ def kernel32_CreateSemaphore(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateSemaphoreEx(jitter):
+def kernel32_CreateSemaphoreA(jitter):
+    kernel32_CreateSemaphore(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateSemaphoreW(jitter):
+    kernel32_CreateSemaphore(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateSemaphoreEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateSemaphoreEx(LPSECURITY_ATTRIBUTES lpSemaphoreAttributes, LONG lInitialCount, LONG lMaximumCount, LPCTSTR lpName, DWORD dwFlags, [SemaphoreAccessRights] dwDesiredAccess)
     """"
@@ -5903,13 +6899,25 @@ def kernel32_CreateSemaphoreEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenSemaphore(jitter):
+def kernel32_CreateSemaphoreExA(jitter):
+    kernel32_CreateSemaphoreEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateSemaphoreExW(jitter):
+    kernel32_CreateSemaphoreEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_OpenSemaphore(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenSemaphore([SemaphoreAccessRights] dwDesiredAccess, BOOL bInheritHandle, LPCTSTR lpName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwDesiredAccess", "bInheritHandle", "lpName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OpenSemaphoreA(jitter):
+    kernel32_OpenSemaphore(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenSemaphoreW(jitter):
+    kernel32_OpenSemaphore(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ReleaseSemaphore(jitter):
     """"
@@ -6143,7 +7151,7 @@ def kernel32_CancelWaitableTimer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateWaitableTimer(jitter):
+def kernel32_CreateWaitableTimer(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateWaitableTimer(LPSECURITY_ATTRIBUTES lpTimerAttributes, BOOL bManualReset, LPCTSTR lpTimerName)
     """"
@@ -6151,7 +7159,13 @@ def kernel32_CreateWaitableTimer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateWaitableTimerEx(jitter):
+def kernel32_CreateWaitableTimerA(jitter):
+    kernel32_CreateWaitableTimer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateWaitableTimerW(jitter):
+    kernel32_CreateWaitableTimer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateWaitableTimerEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateWaitableTimerEx(LPSECURITY_ATTRIBUTES lpTimerAttributes, LPCTSTR lpTimerName, [CREATE_WAITABLE_TIMER_FLAGS] dwFlags, [TimerAccessRights] dwDesiredAccess)
     """"
@@ -6159,13 +7173,25 @@ def kernel32_CreateWaitableTimerEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_OpenWaitableTimer(jitter):
+def kernel32_CreateWaitableTimerExA(jitter):
+    kernel32_CreateWaitableTimerEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateWaitableTimerExW(jitter):
+    kernel32_CreateWaitableTimerEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_OpenWaitableTimer(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE OpenWaitableTimer([TimerAccessRights] dwDesiredAccess, BOOL bInheritHandle, LPCTSTR lpTimerName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwDesiredAccess", "bInheritHandle", "lpTimerName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_OpenWaitableTimerA(jitter):
+    kernel32_OpenWaitableTimer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_OpenWaitableTimerW(jitter):
+    kernel32_OpenWaitableTimer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_SetWaitableTimer(jitter):
     """"
@@ -6183,13 +7209,19 @@ def kernel32_SetWaitableTimerEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_DnsHostnameToComputerName(jitter):
+def kernel32_DnsHostnameToComputerName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL DnsHostnameToComputerName(LPCTSTR Hostname, LPTSTR ComputerName, LPDWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Hostname", "ComputerName", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_DnsHostnameToComputerNameA(jitter):
+    kernel32_DnsHostnameToComputerName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_DnsHostnameToComputerNameW(jitter):
+    kernel32_DnsHostnameToComputerName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_EnumSystemFirmwareTables(jitter):
     """"
@@ -6199,7 +7231,7 @@ def kernel32_EnumSystemFirmwareTables(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_ExpandEnvironmentStrings(jitter):
+def kernel32_ExpandEnvironmentStrings(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD ExpandEnvironmentStrings(LPCTSTR lpSrc, LPTSTR lpDst, DWORD nSize)
     """"
@@ -6207,7 +7239,13 @@ def kernel32_ExpandEnvironmentStrings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetComputerName(jitter):
+def kernel32_ExpandEnvironmentStringsA(jitter):
+    kernel32_ExpandEnvironmentStrings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_ExpandEnvironmentStringsW(jitter):
+    kernel32_ExpandEnvironmentStrings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetComputerName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetComputerName(LPTSTR lpBuffer, LPDWORD lpnSize)
     """"
@@ -6215,7 +7253,13 @@ def kernel32_GetComputerName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetComputerNameEx(jitter):
+def kernel32_GetComputerNameA(jitter):
+    kernel32_GetComputerName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetComputerNameW(jitter):
+    kernel32_GetComputerName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetComputerNameEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetComputerNameEx(COMPUTER_NAME_FORMAT NameType, LPTSTR lpBuffer, LPDWORD lpnSize)
     """"
@@ -6223,7 +7267,13 @@ def kernel32_GetComputerNameEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFirmwareEnvironmentVariable(jitter):
+def kernel32_GetComputerNameExA(jitter):
+    kernel32_GetComputerNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetComputerNameExW(jitter):
+    kernel32_GetComputerNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFirmwareEnvironmentVariable(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetFirmwareEnvironmentVariable(LPCTSTR lpName, LPCTSTR lpGuid, PVOID pBuffer, DWORD nSize)
     """"
@@ -6231,13 +7281,25 @@ def kernel32_GetFirmwareEnvironmentVariable(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetFirmwareEnvironmentVariableEx(jitter):
+def kernel32_GetFirmwareEnvironmentVariableA(jitter):
+    kernel32_GetFirmwareEnvironmentVariable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFirmwareEnvironmentVariableW(jitter):
+    kernel32_GetFirmwareEnvironmentVariable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetFirmwareEnvironmentVariableEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetFirmwareEnvironmentVariableEx(LPCTSTR lpName, LPCTSTR lpGuid, PVOID pBuffer, DWORD nSize, PDWORD pdwAttribubutes)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpName", "lpGuid", "pBuffer", "nSize", "pdwAttribubutes"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetFirmwareEnvironmentVariableExA(jitter):
+    kernel32_GetFirmwareEnvironmentVariableEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetFirmwareEnvironmentVariableExW(jitter):
+    kernel32_GetFirmwareEnvironmentVariableEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetFirmwareType(jitter):
     """"
@@ -6263,13 +7325,19 @@ def kernel32_GetProductInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetSystemDirectory(jitter):
+def kernel32_GetSystemDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetSystemDirectory(LPTSTR lpBuffer, UINT uSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpBuffer", "uSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetSystemDirectoryA(jitter):
+    kernel32_GetSystemDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetSystemDirectoryW(jitter):
+    kernel32_GetSystemDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetSystemFirmwareTable(jitter):
     """"
@@ -6295,7 +7363,7 @@ def kernel32_GetSystemRegistryQuota(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetSystemWindowsDirectory(jitter):
+def kernel32_GetSystemWindowsDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetSystemWindowsDirectory(LPTSTR lpBuffer, UINT uSize)
     """"
@@ -6303,13 +7371,25 @@ def kernel32_GetSystemWindowsDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetSystemWow64Directory(jitter):
+def kernel32_GetSystemWindowsDirectoryA(jitter):
+    kernel32_GetSystemWindowsDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetSystemWindowsDirectoryW(jitter):
+    kernel32_GetSystemWindowsDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetSystemWow64Directory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetSystemWow64Directory(LPTSTR lpBuffer, UINT uSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpBuffer", "uSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetSystemWow64DirectoryA(jitter):
+    kernel32_GetSystemWow64Directory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetSystemWow64DirectoryW(jitter):
+    kernel32_GetSystemWow64Directory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetVersion(jitter):
     """"
@@ -6319,7 +7399,7 @@ def kernel32_GetVersion(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetVersionEx(jitter):
+def kernel32_GetVersionEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetVersionEx(LPOSVERSIONINFO lpVersionInfo)
     """"
@@ -6327,13 +7407,25 @@ def kernel32_GetVersionEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetWindowsDirectory(jitter):
+def kernel32_GetVersionExA(jitter):
+    kernel32_GetVersionEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetVersionExW(jitter):
+    kernel32_GetVersionEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetWindowsDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] UINT GetWindowsDirectory(LPTSTR lpBuffer, UINT uSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpBuffer", "uSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetWindowsDirectoryA(jitter):
+    kernel32_GetWindowsDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetWindowsDirectoryW(jitter):
+    kernel32_GetWindowsDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_IsProcessorFeaturePresent(jitter):
     """"
@@ -6343,7 +7435,7 @@ def kernel32_IsProcessorFeaturePresent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetComputerName(jitter):
+def kernel32_SetComputerName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetComputerName(LPCTSTR lpComputerName)
     """"
@@ -6351,7 +7443,13 @@ def kernel32_SetComputerName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetComputerNameEx(jitter):
+def kernel32_SetComputerNameA(jitter):
+    kernel32_SetComputerName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetComputerNameW(jitter):
+    kernel32_SetComputerName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetComputerNameEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetComputerNameEx(COMPUTER_NAME_FORMAT NameType, LPCTSTR lpBuffer)
     """"
@@ -6359,7 +7457,13 @@ def kernel32_SetComputerNameEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetFirmwareEnvironmentVariable(jitter):
+def kernel32_SetComputerNameExA(jitter):
+    kernel32_SetComputerNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetComputerNameExW(jitter):
+    kernel32_SetComputerNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetFirmwareEnvironmentVariable(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetFirmwareEnvironmentVariable(LPCTSTR lpName, LPCTSTR lpGuid, PVOID pBuffer, DWORD nSize)
     """"
@@ -6367,13 +7471,25 @@ def kernel32_SetFirmwareEnvironmentVariable(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_VerifyVersionInfo(jitter):
+def kernel32_SetFirmwareEnvironmentVariableA(jitter):
+    kernel32_SetFirmwareEnvironmentVariable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetFirmwareEnvironmentVariableW(jitter):
+    kernel32_SetFirmwareEnvironmentVariable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_VerifyVersionInfo(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL VerifyVersionInfo(LPOSVERSIONINFOEX lpVersionInfo, [NtVerType] dwTypeMask, DWORDLONG dwlConditionMask)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpVersionInfo", "dwTypeMask", "dwlConditionMask"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_VerifyVersionInfoA(jitter):
+    kernel32_VerifyVersionInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_VerifyVersionInfoW(jitter):
+    kernel32_VerifyVersionInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_VerSetConditionMask(jitter):
     """"
@@ -6759,13 +7875,19 @@ def kernel32_WideCharToMultiByte(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_VerLanguageName(jitter):
+def kernel32_VerLanguageName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD VerLanguageName(DWORD wLang, LPTSTR szLang, DWORD cchLang)
     """"
     ret_ad, args = jitter.func_args_stdcall(["wLang", "szLang", "cchLang"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_VerLanguageNameA(jitter):
+    kernel32_VerLanguageName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_VerLanguageNameW(jitter):
+    kernel32_VerLanguageName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_RaiseFailFastException(jitter):
     """"
@@ -6839,7 +7961,7 @@ def kernel32_WerUnregisterRuntimeExceptionModule(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateDirectory(jitter):
+def kernel32_CreateDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CreateDirectory(LPCTSTR lpPathName, LPSECURITY_ATTRIBUTES lpSecurityAttributes)
     """"
@@ -6847,7 +7969,13 @@ def kernel32_CreateDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateDirectoryEx(jitter):
+def kernel32_CreateDirectoryA(jitter):
+    kernel32_CreateDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateDirectoryW(jitter):
+    kernel32_CreateDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateDirectoryEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CreateDirectoryEx(LPCTSTR lpTemplateDirectory, LPCTSTR lpNewDirectory, LPSECURITY_ATTRIBUTES lpSecurityAttributes)
     """"
@@ -6855,13 +7983,25 @@ def kernel32_CreateDirectoryEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateDirectoryTransacted(jitter):
+def kernel32_CreateDirectoryExA(jitter):
+    kernel32_CreateDirectoryEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateDirectoryExW(jitter):
+    kernel32_CreateDirectoryEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_CreateDirectoryTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CreateDirectoryTransacted(LPCTSTR lpTemplateDirectory, LPCTSTR lpNewDirectory, LPSECURITY_ATTRIBUTES lpSecurityAttributes, HANDLE hTransaction)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpTemplateDirectory", "lpNewDirectory", "lpSecurityAttributes", "hTransaction"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateDirectoryTransactedA(jitter):
+    kernel32_CreateDirectoryTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateDirectoryTransactedW(jitter):
+    kernel32_CreateDirectoryTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindCloseChangeNotification(jitter):
     """"
@@ -6871,13 +8011,19 @@ def kernel32_FindCloseChangeNotification(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindFirstChangeNotification(jitter):
+def kernel32_FindFirstChangeNotification(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE FindFirstChangeNotification(LPCTSTR lpPathName, BOOL bWatchSubtree, [FILE_NOTIFY_CHANGE_FLAGS] dwNotifyFilter)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpPathName", "bWatchSubtree", "dwNotifyFilter"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindFirstChangeNotificationA(jitter):
+    kernel32_FindFirstChangeNotification(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindFirstChangeNotificationW(jitter):
+    kernel32_FindFirstChangeNotification(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindNextChangeNotification(jitter):
     """"
@@ -6887,13 +8033,19 @@ def kernel32_FindNextChangeNotification(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetCurrentDirectory(jitter):
+def kernel32_GetCurrentDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetCurrentDirectory(DWORD nBufferLength, LPTSTR lpBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["nBufferLength", "lpBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetCurrentDirectoryA(jitter):
+    kernel32_GetCurrentDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetCurrentDirectoryW(jitter):
+    kernel32_GetCurrentDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ReadDirectoryChangesW(jitter):
     """"
@@ -6903,7 +8055,7 @@ def kernel32_ReadDirectoryChangesW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_RemoveDirectory(jitter):
+def kernel32_RemoveDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL RemoveDirectory(LPCTSTR lpPathName)
     """"
@@ -6911,7 +8063,13 @@ def kernel32_RemoveDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_RemoveDirectoryTransacted(jitter):
+def kernel32_RemoveDirectoryA(jitter):
+    kernel32_RemoveDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_RemoveDirectoryW(jitter):
+    kernel32_RemoveDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_RemoveDirectoryTransacted(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL RemoveDirectoryTransacted(LPCTSTR lpPathName, HANDLE hTransaction)
     """"
@@ -6919,7 +8077,13 @@ def kernel32_RemoveDirectoryTransacted(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetCurrentDirectory(jitter):
+def kernel32_RemoveDirectoryTransactedA(jitter):
+    kernel32_RemoveDirectoryTransacted(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_RemoveDirectoryTransactedW(jitter):
+    kernel32_RemoveDirectoryTransacted(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetCurrentDirectory(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetCurrentDirectory(LPCTSTR lpPathName)
     """"
@@ -6927,7 +8091,13 @@ def kernel32_SetCurrentDirectory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetDiskFreeSpace(jitter):
+def kernel32_SetCurrentDirectoryA(jitter):
+    kernel32_SetCurrentDirectory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetCurrentDirectoryW(jitter):
+    kernel32_SetCurrentDirectory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetDiskFreeSpace(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetDiskFreeSpace(LPCTSTR lpRootPathName, LPDWORD lpSectorsPerCluster, LPDWORD lpBytesPerSector, LPDWORD lpNumberOfFreeClusters, LPDWORD lpTotalNumberOfClusters)
     """"
@@ -6935,7 +8105,13 @@ def kernel32_GetDiskFreeSpace(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetDiskFreeSpaceEx(jitter):
+def kernel32_GetDiskFreeSpaceA(jitter):
+    kernel32_GetDiskFreeSpace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetDiskFreeSpaceW(jitter):
+    kernel32_GetDiskFreeSpace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetDiskFreeSpaceEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetDiskFreeSpaceEx(LPCTSTR lpDirectoryName, PULARGE_INTEGER lpFreeBytesAvailable, PULARGE_INTEGER lpTotalNumberOfBytes, PULARGE_INTEGER lpTotalNumberOfFreeBytes)
     """"
@@ -6943,7 +8119,13 @@ def kernel32_GetDiskFreeSpaceEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_DefineDosDevice(jitter):
+def kernel32_GetDiskFreeSpaceExA(jitter):
+    kernel32_GetDiskFreeSpaceEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetDiskFreeSpaceExW(jitter):
+    kernel32_GetDiskFreeSpaceEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_DefineDosDevice(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL DefineDosDevice([DDD_FLAGS] dwFlags, LPCTSTR lpDeviceName, LPCTSTR lpTargetPath)
     """"
@@ -6951,7 +8133,13 @@ def kernel32_DefineDosDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_DeleteVolumeMountPoint(jitter):
+def kernel32_DefineDosDeviceA(jitter):
+    kernel32_DefineDosDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_DefineDosDeviceW(jitter):
+    kernel32_DefineDosDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_DeleteVolumeMountPoint(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL DeleteVolumeMountPoint(LPCTSTR lpszVolumeMountPoint)
     """"
@@ -6959,7 +8147,13 @@ def kernel32_DeleteVolumeMountPoint(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindFirstVolume(jitter):
+def kernel32_DeleteVolumeMountPointA(jitter):
+    kernel32_DeleteVolumeMountPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_DeleteVolumeMountPointW(jitter):
+    kernel32_DeleteVolumeMountPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindFirstVolume(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE FindFirstVolume(LPTSTR lpszVolumeName, DWORD cchBufferLength)
     """"
@@ -6967,7 +8161,13 @@ def kernel32_FindFirstVolume(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindNextVolume(jitter):
+def kernel32_FindFirstVolumeA(jitter):
+    kernel32_FindFirstVolume(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindFirstVolumeW(jitter):
+    kernel32_FindFirstVolume(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindNextVolume(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL FindNextVolume(HANDLE hFindVolume, LPTSTR lpszVolumeName, DWORD cchBufferLength)
     """"
@@ -6975,13 +8175,25 @@ def kernel32_FindNextVolume(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindNextVolumeMountPoint(jitter):
+def kernel32_FindNextVolumeA(jitter):
+    kernel32_FindNextVolume(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindNextVolumeW(jitter):
+    kernel32_FindNextVolume(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindNextVolumeMountPoint(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL FindNextVolumeMountPoint(HANDLE hFindVolumeMountPoint, LPTSTR lpszVolumeMountPoint, DWORD cchBufferLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hFindVolumeMountPoint", "lpszVolumeMountPoint", "cchBufferLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_FindNextVolumeMountPointA(jitter):
+    kernel32_FindNextVolumeMountPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindNextVolumeMountPointW(jitter):
+    kernel32_FindNextVolumeMountPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_FindVolumeClose(jitter):
     """"
@@ -6999,13 +8211,19 @@ def kernel32_FindVolumeMountPointClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetDriveType(jitter):
+def kernel32_GetDriveType(jitter, get_str, set_str):
     """"
     [Kernel32.dll] [DRIVE_TYPE] GetDriveType(LPCTSTR lpRootPathName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpRootPathName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetDriveTypeA(jitter):
+    kernel32_GetDriveType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetDriveTypeW(jitter):
+    kernel32_GetDriveType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetLogicalDrives(jitter):
     """"
@@ -7015,7 +8233,7 @@ def kernel32_GetLogicalDrives(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetLogicalDriveStrings(jitter):
+def kernel32_GetLogicalDriveStrings(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD GetLogicalDriveStrings(DWORD nBufferLength, LPTSTR lpBuffer)
     """"
@@ -7023,13 +8241,25 @@ def kernel32_GetLogicalDriveStrings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetVolumeInformation(jitter):
+def kernel32_GetLogicalDriveStringsA(jitter):
+    kernel32_GetLogicalDriveStrings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetLogicalDriveStringsW(jitter):
+    kernel32_GetLogicalDriveStrings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetVolumeInformation(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetVolumeInformation(LPCTSTR lpRootPathName, LPTSTR lpVolumeNameBuffer, DWORD nVolumeNameSize, LPDWORD lpVolumeSerialNumber, LPDWORD lpMaximumComponentLength, [LPFILE_SYSTEM_FLAGS] lpFileSystemFlags, LPTSTR lpFileSystemNameBuffer, DWORD nFileSystemNameSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpRootPathName", "lpVolumeNameBuffer", "nVolumeNameSize", "lpVolumeSerialNumber", "lpMaximumComponentLength", "lpFileSystemFlags", "lpFileSystemNameBuffer", "nFileSystemNameSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetVolumeInformationA(jitter):
+    kernel32_GetVolumeInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetVolumeInformationW(jitter):
+    kernel32_GetVolumeInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetVolumeInformationByHandleW(jitter):
     """"
@@ -7039,7 +8269,7 @@ def kernel32_GetVolumeInformationByHandleW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetVolumeNameForVolumeMountPoint(jitter):
+def kernel32_GetVolumeNameForVolumeMountPoint(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetVolumeNameForVolumeMountPoint(LPCTSTR lpszVolumeMountPoint, LPTSTR lpszVolumeName, DWORD cchBufferLength)
     """"
@@ -7047,7 +8277,13 @@ def kernel32_GetVolumeNameForVolumeMountPoint(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetVolumePathName(jitter):
+def kernel32_GetVolumeNameForVolumeMountPointA(jitter):
+    kernel32_GetVolumeNameForVolumeMountPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetVolumeNameForVolumeMountPointW(jitter):
+    kernel32_GetVolumeNameForVolumeMountPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetVolumePathName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetVolumePathName(LPCTSTR lpszFileName, LPTSTR lpszVolumePathName, DWORD cchBufferLength)
     """"
@@ -7055,7 +8291,13 @@ def kernel32_GetVolumePathName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetVolumePathNamesForVolumeName(jitter):
+def kernel32_GetVolumePathNameA(jitter):
+    kernel32_GetVolumePathName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetVolumePathNameW(jitter):
+    kernel32_GetVolumePathName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_GetVolumePathNamesForVolumeName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetVolumePathNamesForVolumeName(LPCTSTR lpszVolumeName, LPTSTR lpszVolumePathNames, DWORD cchBufferLength, PDWORD lpcchReturnLength)
     """"
@@ -7063,7 +8305,13 @@ def kernel32_GetVolumePathNamesForVolumeName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_QueryDosDevice(jitter):
+def kernel32_GetVolumePathNamesForVolumeNameA(jitter):
+    kernel32_GetVolumePathNamesForVolumeName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetVolumePathNamesForVolumeNameW(jitter):
+    kernel32_GetVolumePathNamesForVolumeName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_QueryDosDevice(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD QueryDosDevice(LPCTSTR lpDeviceName, LPTSTR lpTargetPath, DWORD ucchMax)
     """"
@@ -7071,7 +8319,13 @@ def kernel32_QueryDosDevice(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetVolumeLabel(jitter):
+def kernel32_QueryDosDeviceA(jitter):
+    kernel32_QueryDosDevice(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_QueryDosDeviceW(jitter):
+    kernel32_QueryDosDevice(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetVolumeLabel(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetVolumeLabel(LPCTSTR lpRootPathName, LPCTSTR lpVolumeName)
     """"
@@ -7079,7 +8333,13 @@ def kernel32_SetVolumeLabel(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_FindFirstVolumeMountPoint(jitter):
+def kernel32_SetVolumeLabelA(jitter):
+    kernel32_SetVolumeLabel(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetVolumeLabelW(jitter):
+    kernel32_SetVolumeLabel(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_FindFirstVolumeMountPoint(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE FindFirstVolumeMountPoint(LPTSTR lpszRootPathName, LPTSTR lpszVolumeMountPoint, DWORD cchBufferLength)
     """"
@@ -7087,13 +8347,25 @@ def kernel32_FindFirstVolumeMountPoint(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_SetVolumeMountPoint(jitter):
+def kernel32_FindFirstVolumeMountPointA(jitter):
+    kernel32_FindFirstVolumeMountPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_FindFirstVolumeMountPointW(jitter):
+    kernel32_FindFirstVolumeMountPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_SetVolumeMountPoint(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL SetVolumeMountPoint(LPCTSTR lpszVolumeMountPoint, LPCTSTR lpszVolumeName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszVolumeMountPoint", "lpszVolumeName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_SetVolumeMountPointA(jitter):
+    kernel32_SetVolumeMountPoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_SetVolumeMountPointW(jitter):
+    kernel32_SetVolumeMountPoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_CreatePipe(jitter):
     """"
@@ -7103,13 +8375,19 @@ def kernel32_CreatePipe(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CallNamedPipe(jitter):
+def kernel32_CallNamedPipe(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL CallNamedPipe(LPCTSTR lpNamedPipeName, LPVOID lpInBuffer, DWORD nInBufferSize, LPVOID lpOutBuffer, DWORD nOutBufferSize, LPDWORD lpBytesRead, [NMPWAIT] nTimeOut)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpNamedPipeName", "lpInBuffer", "nInBufferSize", "lpOutBuffer", "nOutBufferSize", "lpBytesRead", "nTimeOut"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CallNamedPipeA(jitter):
+    kernel32_CallNamedPipe(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CallNamedPipeW(jitter):
+    kernel32_CallNamedPipe(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_ConnectNamedPipe(jitter):
     """"
@@ -7119,13 +8397,19 @@ def kernel32_ConnectNamedPipe(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_CreateNamedPipe(jitter):
+def kernel32_CreateNamedPipe(jitter, get_str, set_str):
     """"
     [Kernel32.dll] HANDLE CreateNamedPipe(LPCTSTR lpName, [PIPE_ACCESS] dwOpenMode, [PIPE_MODE] dwPipeMode, DWORD nMaxInstances, DWORD nOutBufferSize, DWORD nInBufferSize, DWORD nDefaultTimeOut, LPSECURITY_ATTRIBUTES lpSecurityAttributes)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpName", "dwOpenMode", "dwPipeMode", "nMaxInstances", "nOutBufferSize", "nInBufferSize", "nDefaultTimeOut", "lpSecurityAttributes"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_CreateNamedPipeA(jitter):
+    kernel32_CreateNamedPipe(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_CreateNamedPipeW(jitter):
+    kernel32_CreateNamedPipe(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_DisconnectNamedPipe(jitter):
     """"
@@ -7135,13 +8419,19 @@ def kernel32_DisconnectNamedPipe(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetNamedPipeClientComputerName(jitter):
+def kernel32_GetNamedPipeClientComputerName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetNamedPipeClientComputerName(HANDLE Pipe, LPTSTR ClientComputerName, ULONG ClientComputerNameLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Pipe", "ClientComputerName", "ClientComputerNameLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetNamedPipeClientComputerNameA(jitter):
+    kernel32_GetNamedPipeClientComputerName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetNamedPipeClientComputerNameW(jitter):
+    kernel32_GetNamedPipeClientComputerName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetNamedPipeClientProcessId(jitter):
     """"
@@ -7159,13 +8449,19 @@ def kernel32_GetNamedPipeClientSessionId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_GetNamedPipeHandleState(jitter):
+def kernel32_GetNamedPipeHandleState(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL GetNamedPipeHandleState(HANDLE hNamedPipe, [PIPE_STATE*] lpState, LPDWORD lpCurInstances, LPDWORD lpMaxCollectionCount, LPDWORD lpCollectDataTimeout, LPTSTR lpUserName, DWORD nMaxUserNameSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hNamedPipe", "lpState", "lpCurInstances", "lpMaxCollectionCount", "lpCollectDataTimeout", "lpUserName", "nMaxUserNameSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_GetNamedPipeHandleStateA(jitter):
+    kernel32_GetNamedPipeHandleState(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_GetNamedPipeHandleStateW(jitter):
+    kernel32_GetNamedPipeHandleState(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetNamedPipeInfo(jitter):
     """"
@@ -7215,13 +8511,19 @@ def kernel32_TransactNamedPipe(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_WaitNamedPipe(jitter):
+def kernel32_WaitNamedPipe(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL WaitNamedPipe(LPCTSTR lpNamedPipeName, [NMPWAIT] nTimeOut)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpNamedPipeName", "nTimeOut"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_WaitNamedPipeA(jitter):
+    kernel32_WaitNamedPipe(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_WaitNamedPipeW(jitter):
+    kernel32_WaitNamedPipe(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_DisableThreadProfiling(jitter):
     """"
@@ -7607,13 +8909,19 @@ def kernel32_K32EnumDeviceDrivers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32EnumPageFiles(jitter):
+def kernel32_K32EnumPageFiles(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL K32EnumPageFiles(PENUM_PAGE_CALLBACK pCallbackRoutine, LPVOID lpContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pCallbackRoutine", "lpContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_K32EnumPageFilesA(jitter):
+    kernel32_K32EnumPageFiles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32EnumPageFilesW(jitter):
+    kernel32_K32EnumPageFiles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_K32EnumProcesses(jitter):
     """"
@@ -7639,7 +8947,7 @@ def kernel32_K32EnumProcessModulesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32GetDeviceDriverBaseName(jitter):
+def kernel32_K32GetDeviceDriverBaseName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD K32GetDeviceDriverBaseName(LPVOID ImageBase, LPTSTR lpBaseName, DWORD nSize)
     """"
@@ -7647,7 +8955,13 @@ def kernel32_K32GetDeviceDriverBaseName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32GetDeviceDriverFileName(jitter):
+def kernel32_K32GetDeviceDriverBaseNameA(jitter):
+    kernel32_K32GetDeviceDriverBaseName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32GetDeviceDriverBaseNameW(jitter):
+    kernel32_K32GetDeviceDriverBaseName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_K32GetDeviceDriverFileName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD K32GetDeviceDriverFileName(LPVOID ImageBase, LPTSTR lpFilename, DWORD nSize)
     """"
@@ -7655,7 +8969,13 @@ def kernel32_K32GetDeviceDriverFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32GetMappedFileName(jitter):
+def kernel32_K32GetDeviceDriverFileNameA(jitter):
+    kernel32_K32GetDeviceDriverFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32GetDeviceDriverFileNameW(jitter):
+    kernel32_K32GetDeviceDriverFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_K32GetMappedFileName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD K32GetMappedFileName([ProcessHandle] hProcess, LPVOID lpv, LPTSTR lpFilename, DWORD nSize)
     """"
@@ -7663,7 +8983,13 @@ def kernel32_K32GetMappedFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32GetModuleBaseName(jitter):
+def kernel32_K32GetMappedFileNameA(jitter):
+    kernel32_K32GetMappedFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32GetMappedFileNameW(jitter):
+    kernel32_K32GetMappedFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_K32GetModuleBaseName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD K32GetModuleBaseName([ProcessHandle] hProcess, HMODULE hModule, LPTSTR lpBaseName, DWORD nSize)
     """"
@@ -7671,13 +8997,25 @@ def kernel32_K32GetModuleBaseName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32GetModuleFileNameEx(jitter):
+def kernel32_K32GetModuleBaseNameA(jitter):
+    kernel32_K32GetModuleBaseName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32GetModuleBaseNameW(jitter):
+    kernel32_K32GetModuleBaseName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def kernel32_K32GetModuleFileNameEx(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD K32GetModuleFileNameEx([ProcessHandle] hProcess, HMODULE hModule, LPTSTR lpFilename, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "hModule", "lpFilename", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_K32GetModuleFileNameExA(jitter):
+    kernel32_K32GetModuleFileNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32GetModuleFileNameExW(jitter):
+    kernel32_K32GetModuleFileNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_K32GetModuleInformation(jitter):
     """"
@@ -7695,13 +9033,19 @@ def kernel32_K32GetPerformanceInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_K32GetProcessImageFileName(jitter):
+def kernel32_K32GetProcessImageFileName(jitter, get_str, set_str):
     """"
     [Kernel32.dll] DWORD K32GetProcessImageFileName([ProcessHandle] hProcess, LPTSTR lpImageFileName, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "lpImageFileName", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_K32GetProcessImageFileNameA(jitter):
+    kernel32_K32GetProcessImageFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_K32GetProcessImageFileNameW(jitter):
+    kernel32_K32GetProcessImageFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_K32GetProcessMemoryInfo(jitter):
     """"
@@ -7751,13 +9095,19 @@ def kernel32_K32QueryWorkingSetEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def kernel32_EnumUILanguages(jitter):
+def kernel32_EnumUILanguages(jitter, get_str, set_str):
     """"
     [Kernel32.dll] BOOL EnumUILanguages(UILANGUAGE_ENUMPROC lpUILanguageEnumProc, [EnumUILanguages_FLAGS] dwFlags, LONG_PTR lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpUILanguageEnumProc", "dwFlags", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def kernel32_EnumUILanguagesA(jitter):
+    kernel32_EnumUILanguages(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def kernel32_EnumUILanguagesW(jitter):
+    kernel32_EnumUILanguages(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def kernel32_GetFileMUIInfo(jitter):
     """"

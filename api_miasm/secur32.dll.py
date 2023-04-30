@@ -1,5 +1,5 @@
 
-def secur32_GetComputerObjectName(jitter):
+def secur32_GetComputerObjectName(jitter, get_str, set_str):
     """"
     [Secur32.dll] BOOLEAN GetComputerObjectName(EXTENDED_NAME_FORMAT NameFormat, LPTSTR lpNameBuffer, PULONG lpnSize)
     """"
@@ -7,7 +7,13 @@ def secur32_GetComputerObjectName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_GetUserNameEx(jitter):
+def secur32_GetComputerObjectNameA(jitter):
+    secur32_GetComputerObjectName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_GetComputerObjectNameW(jitter):
+    secur32_GetComputerObjectName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_GetUserNameEx(jitter, get_str, set_str):
     """"
     [Secur32.dll] BOOLEAN GetUserNameEx(EXTENDED_NAME_FORMAT NameFormat, LPTSTR lpNameBuffer, PULONG lpnSize)
     """"
@@ -15,7 +21,13 @@ def secur32_GetUserNameEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_TranslateName(jitter):
+def secur32_GetUserNameExA(jitter):
+    secur32_GetUserNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_GetUserNameExW(jitter):
+    secur32_GetUserNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_TranslateName(jitter, get_str, set_str):
     """"
     [Secur32.dll] BOOLEAN TranslateName(LPCTSTR lpAccountName, EXTENDED_NAME_FORMAT AccountNameFormat, EXTENDED_NAME_FORMAT DesiredNameFormat, LPTSTR lpTranslatedName, PULONG nSize)
     """"
@@ -23,7 +35,13 @@ def secur32_TranslateName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_EnumerateSecurityPackages(jitter):
+def secur32_TranslateNameA(jitter):
+    secur32_TranslateName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_TranslateNameW(jitter):
+    secur32_TranslateName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_EnumerateSecurityPackages(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS EnumerateSecurityPackages(PULONG pcPackages, PSecPkgInfo* ppPackageInfo)
     """"
@@ -31,7 +49,13 @@ def secur32_EnumerateSecurityPackages(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_InitSecurityInterface(jitter):
+def secur32_EnumerateSecurityPackagesA(jitter):
+    secur32_EnumerateSecurityPackages(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_EnumerateSecurityPackagesW(jitter):
+    secur32_EnumerateSecurityPackages(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_InitSecurityInterface(jitter, get_str, set_str):
     """"
     [Secur32.dll] PSecurityFunctionTable InitSecurityInterface()
     """"
@@ -39,7 +63,13 @@ def secur32_InitSecurityInterface(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_QuerySecurityPackageInfo(jitter):
+def secur32_InitSecurityInterfaceA(jitter):
+    secur32_InitSecurityInterface(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_InitSecurityInterfaceW(jitter):
+    secur32_InitSecurityInterface(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_QuerySecurityPackageInfo(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS QuerySecurityPackageInfo(SEC_CHAR* pszPackageName, PSecPkgInfo* ppPackageInfo)
     """"
@@ -47,13 +77,25 @@ def secur32_QuerySecurityPackageInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_AcquireCredentialsHandle(jitter):
+def secur32_QuerySecurityPackageInfoA(jitter):
+    secur32_QuerySecurityPackageInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_QuerySecurityPackageInfoW(jitter):
+    secur32_QuerySecurityPackageInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_AcquireCredentialsHandle(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS AcquireCredentialsHandle(SEC_CHAR* pszPrincipal, SEC_CHAR* pszPackage, [SecCredentialUse] fCredentialUse, PLUID pvLogonID, PVOID pAuthData, SEC_GET_KEY_FN pGetKeyFn, PVOID pvGetKeyArgument, PCredHandle phCredential, PTimeStamp ptsExpiry)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszPrincipal", "pszPackage", "fCredentialUse", "pvLogonID", "pAuthData", "pGetKeyFn", "pvGetKeyArgument", "phCredential", "ptsExpiry"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_AcquireCredentialsHandleA(jitter):
+    secur32_AcquireCredentialsHandle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_AcquireCredentialsHandleW(jitter):
+    secur32_AcquireCredentialsHandle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_ExportSecurityContext(jitter):
     """"
@@ -71,7 +113,7 @@ def secur32_FreeCredentialsHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_ImportSecurityContext(jitter):
+def secur32_ImportSecurityContext(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS ImportSecurityContext(PSECURITY_STRING pszPackage, PSecBuffer pPackedContext, HANDLE pToken, PCtxtHandle phContext)
     """"
@@ -79,13 +121,25 @@ def secur32_ImportSecurityContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_QueryCredentialsAttributes(jitter):
+def secur32_ImportSecurityContextA(jitter):
+    secur32_ImportSecurityContext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_ImportSecurityContextW(jitter):
+    secur32_ImportSecurityContext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_QueryCredentialsAttributes(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS QueryCredentialsAttributes(PCredHandle phCredential, ULONG ulAttribute, PVOID pBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["phCredential", "ulAttribute", "pBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_QueryCredentialsAttributesA(jitter):
+    secur32_QueryCredentialsAttributes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_QueryCredentialsAttributesW(jitter):
+    secur32_QueryCredentialsAttributes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_AcceptSecurityContext(jitter):
     """"
@@ -135,7 +189,7 @@ def secur32_ImpersonateSecurityContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_InitializeSecurityContext(jitter):
+def secur32_InitializeSecurityContext(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS InitializeSecurityContext(PCredHandle phCredential, PCtxtHandle phContext, SEC_CHAR* pszTargetName, [InitializeSecurityContextRequestFlags] fContextReq, ULONG Reserved1, ULONG TargetDataRep, PSecBufferDesc pInput, ULONG Reserved2, PCtxtHandle phNewContext, PSecBufferDesc pOutput, [InitializeSecurityContextRetFlags*] pfContextAttr, PTimeStamp ptsExpiry)
     """"
@@ -143,13 +197,25 @@ def secur32_InitializeSecurityContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_QueryContextAttributes(jitter):
+def secur32_InitializeSecurityContextA(jitter):
+    secur32_InitializeSecurityContext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_InitializeSecurityContextW(jitter):
+    secur32_InitializeSecurityContext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_QueryContextAttributes(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS QueryContextAttributes(PCtxtHandle phContext, [SecContextAttr] ulAttribute, PVOID pBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["phContext", "ulAttribute", "pBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_QueryContextAttributesA(jitter):
+    secur32_QueryContextAttributes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_QueryContextAttributesW(jitter):
+    secur32_QueryContextAttributes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_QuerySecurityContextToken(jitter):
     """"
@@ -159,13 +225,19 @@ def secur32_QuerySecurityContextToken(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_SetContextAttributes(jitter):
+def secur32_SetContextAttributes(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS SetContextAttributes(PCtxtHandle phContext, [SecContextAttr] ulAttribute, void* pBuffer, ULONG cbBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["phContext", "ulAttribute", "pBuffer", "cbBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_SetContextAttributesA(jitter):
+    secur32_SetContextAttributes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_SetContextAttributesW(jitter):
+    secur32_SetContextAttributes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_RevertSecurityContext(jitter):
     """"
@@ -287,13 +359,19 @@ def secur32_SaslAcceptSecurityContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_SaslEnumerateProfiles(jitter):
+def secur32_SaslEnumerateProfiles(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS SaslEnumerateProfiles(LPTSTR* ProfileList, ULONG* ProfileCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ProfileList", "ProfileCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_SaslEnumerateProfilesA(jitter):
+    secur32_SaslEnumerateProfiles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_SaslEnumerateProfilesW(jitter):
+    secur32_SaslEnumerateProfiles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_SaslGetContextOption(jitter):
     """"
@@ -303,7 +381,7 @@ def secur32_SaslGetContextOption(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_SaslGetProfilePackage(jitter):
+def secur32_SaslGetProfilePackage(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS SaslGetProfilePackage(LPTSTR ProfileName, PSecPkgInfo* PackageInfo)
     """"
@@ -311,7 +389,13 @@ def secur32_SaslGetProfilePackage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_SaslIdentifyPackage(jitter):
+def secur32_SaslGetProfilePackageA(jitter):
+    secur32_SaslGetProfilePackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_SaslGetProfilePackageW(jitter):
+    secur32_SaslGetProfilePackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_SaslIdentifyPackage(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS SaslIdentifyPackage(PSecBufferDesc pInput, PSecPkgInfo* PackageInfo)
     """"
@@ -319,13 +403,25 @@ def secur32_SaslIdentifyPackage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_SaslInitializeSecurityContext(jitter):
+def secur32_SaslIdentifyPackageA(jitter):
+    secur32_SaslIdentifyPackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_SaslIdentifyPackageW(jitter):
+    secur32_SaslIdentifyPackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_SaslInitializeSecurityContext(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS SaslInitializeSecurityContext(PCredHandle phCredential, PCtxtHandle phContext, LPTSTR pszTargetName, [InitializeSecurityContextRequestFlags] fContextReq, unsigned long Reserved1, unsigned long TargetDataRep, PSecBufferDesc pInput, unsigned long Reserved2, PCtxtHandle phNewContext, PSecBufferDesc pOutput, [InitializeSecurityContextRetFlags-unsigned-long*] pfContextAttr, PTimeStamp ptsExpiry)
     """"
     ret_ad, args = jitter.func_args_stdcall(["phCredential", "phContext", "pszTargetName", "fContextReq", "Reserved1", "TargetDataRep", "pInput", "Reserved2", "phNewContext", "pOutput", "pfContextAttr", "ptsExpiry"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_SaslInitializeSecurityContextA(jitter):
+    secur32_SaslInitializeSecurityContext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_SaslInitializeSecurityContextW(jitter):
+    secur32_SaslInitializeSecurityContext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_SaslSetContextOption(jitter):
     """"
@@ -335,7 +431,7 @@ def secur32_SaslSetContextOption(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_AddSecurityPackage(jitter):
+def secur32_AddSecurityPackage(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS AddSecurityPackage(LPTSTR pszPackageName, PSECURITY_PACKAGE_OPTIONS pOptions)
     """"
@@ -343,7 +439,13 @@ def secur32_AddSecurityPackage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_ChangeAccountPassword(jitter):
+def secur32_AddSecurityPackageA(jitter):
+    secur32_AddSecurityPackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_AddSecurityPackageW(jitter):
+    secur32_AddSecurityPackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_ChangeAccountPassword(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS ChangeAccountPassword(SEC_WCHAR* pszPackageName, SEC_WCHAR* pszDomainName, SEC_WCHAR* pszAccountName, SEC_WCHAR* pszOldPassword, SEC_WCHAR* pszNewPassword, BOOLEAN bImpersonating, unsigned long dwReserved, PSecBufferDesc pOutput)
     """"
@@ -351,13 +453,25 @@ def secur32_ChangeAccountPassword(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def secur32_DeleteSecurityPackage(jitter):
+def secur32_ChangeAccountPasswordA(jitter):
+    secur32_ChangeAccountPassword(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_ChangeAccountPasswordW(jitter):
+    secur32_ChangeAccountPassword(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def secur32_DeleteSecurityPackage(jitter, get_str, set_str):
     """"
     [Secur32.dll] SECURITY_STATUS DeleteSecurityPackage(LPTSTR pszPackageName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pszPackageName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def secur32_DeleteSecurityPackageA(jitter):
+    secur32_DeleteSecurityPackage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def secur32_DeleteSecurityPackageW(jitter):
+    secur32_DeleteSecurityPackage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def secur32_LsaRegisterPolicyChangeNotification(jitter):
     """"

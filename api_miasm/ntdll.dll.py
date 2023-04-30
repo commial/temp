@@ -6175,7 +6175,7 @@ def ntdll_RtlIntegerToUnicode(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv4AddressToString(jitter):
+def ntdll_RtlIpv4AddressToString(jitter, get_str, set_str):
     """"
     [Ntdll.dll] LPTSTR RtlIpv4AddressToString(const IN_ADDR* Addr, LPTSTR S)
     """"
@@ -6183,7 +6183,13 @@ def ntdll_RtlIpv4AddressToString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv4AddressToStringEx(jitter):
+def ntdll_RtlIpv4AddressToStringA(jitter):
+    ntdll_RtlIpv4AddressToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv4AddressToStringW(jitter):
+    ntdll_RtlIpv4AddressToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv4AddressToStringEx(jitter, get_str, set_str):
     """"
     [Ntdll.dll] NTSTATUS RtlIpv4AddressToStringEx(const IN_ADDR* Address, USHORT Port, LPTSTR AddressString, PULONG AddressStringLength)
     """"
@@ -6191,7 +6197,13 @@ def ntdll_RtlIpv4AddressToStringEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv6AddressToString(jitter):
+def ntdll_RtlIpv4AddressToStringExA(jitter):
+    ntdll_RtlIpv4AddressToStringEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv4AddressToStringExW(jitter):
+    ntdll_RtlIpv4AddressToStringEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv6AddressToString(jitter, get_str, set_str):
     """"
     [Ntdll.dll] LPTSTR RtlIpv6AddressToString(const IN6_ADDR* Addr, LPTSTR S)
     """"
@@ -6199,7 +6211,13 @@ def ntdll_RtlIpv6AddressToString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv6AddressToStringEx(jitter):
+def ntdll_RtlIpv6AddressToStringA(jitter):
+    ntdll_RtlIpv6AddressToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv6AddressToStringW(jitter):
+    ntdll_RtlIpv6AddressToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv6AddressToStringEx(jitter, get_str, set_str):
     """"
     [Ntdll.dll] NTSTATUS RtlIpv6AddressToStringEx(const IN6_ADDR* Address, ULONG ScopeId, USHORT Port, LPTSTR AddressString, PULONG AddressStringLength)
     """"
@@ -6207,7 +6225,13 @@ def ntdll_RtlIpv6AddressToStringEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv4StringToAddress(jitter):
+def ntdll_RtlIpv6AddressToStringExA(jitter):
+    ntdll_RtlIpv6AddressToStringEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv6AddressToStringExW(jitter):
+    ntdll_RtlIpv6AddressToStringEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv4StringToAddress(jitter, get_str, set_str):
     """"
     [Ntdll.dll] NTSTATUS RtlIpv4StringToAddress(PCTSTR String, BOOLEAN Strict, LPTSTR* Terminator, IN_ADDR* Addr)
     """"
@@ -6215,7 +6239,13 @@ def ntdll_RtlIpv4StringToAddress(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv4StringToAddressEx(jitter):
+def ntdll_RtlIpv4StringToAddressA(jitter):
+    ntdll_RtlIpv4StringToAddress(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv4StringToAddressW(jitter):
+    ntdll_RtlIpv4StringToAddress(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv4StringToAddressEx(jitter, get_str, set_str):
     """"
     [Ntdll.dll] NTSTATUS RtlIpv4StringToAddressEx(PCTSTR AddressString, BOOLEAN Strict, IN_ADDR* Address, PUSHORT Port)
     """"
@@ -6223,7 +6253,13 @@ def ntdll_RtlIpv4StringToAddressEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv6StringToAddress(jitter):
+def ntdll_RtlIpv4StringToAddressExA(jitter):
+    ntdll_RtlIpv4StringToAddressEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv4StringToAddressExW(jitter):
+    ntdll_RtlIpv4StringToAddressEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv6StringToAddress(jitter, get_str, set_str):
     """"
     [Ntdll.dll] NTSTATUS RtlIpv6StringToAddress(PCTSTR String, PCTSTR* Terminator, IN6_ADDR* Addr)
     """"
@@ -6231,13 +6267,25 @@ def ntdll_RtlIpv6StringToAddress(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdll_RtlIpv6StringToAddressEx(jitter):
+def ntdll_RtlIpv6StringToAddressA(jitter):
+    ntdll_RtlIpv6StringToAddress(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv6StringToAddressW(jitter):
+    ntdll_RtlIpv6StringToAddress(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdll_RtlIpv6StringToAddressEx(jitter, get_str, set_str):
     """"
     [Ntdll.dll] NTSTATUS RtlIpv6StringToAddressEx(PCTSTR AddressString, IN6_ADDR* Address, PULONG ScopeId, PUSHORT Port)
     """"
     ret_ad, args = jitter.func_args_stdcall(["AddressString", "Address", "ScopeId", "Port"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdll_RtlIpv6StringToAddressExA(jitter):
+    ntdll_RtlIpv6StringToAddressEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdll_RtlIpv6StringToAddressExW(jitter):
+    ntdll_RtlIpv6StringToAddressEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdll_RtlCutoverTimeToSystemTime(jitter):
     """"

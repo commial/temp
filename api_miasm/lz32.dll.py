@@ -1,11 +1,17 @@
 
-def lz32_GetExpandedName(jitter):
+def lz32_GetExpandedName(jitter, get_str, set_str):
     """"
     [Lz32.dll] INT GetExpandedName(LPTSTR lpszSource, LPTSTR lpszBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszSource", "lpszBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def lz32_GetExpandedNameA(jitter):
+    lz32_GetExpandedName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def lz32_GetExpandedNameW(jitter):
+    lz32_GetExpandedName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def lz32_LZClose(jitter):
     """"
@@ -31,13 +37,19 @@ def lz32_LZInit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def lz32_LZOpenFile(jitter):
+def lz32_LZOpenFile(jitter, get_str, set_str):
     """"
     [Lz32.dll] INT LZOpenFile(LPTSTR lpFileName, LPOFSTRUCT lpReOpenBuf, [OpenFlags] wStyle)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName", "lpReOpenBuf", "wStyle"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def lz32_LZOpenFileA(jitter):
+    lz32_LZOpenFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def lz32_LZOpenFileW(jitter):
+    lz32_LZOpenFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def lz32_LZRead(jitter):
     """"

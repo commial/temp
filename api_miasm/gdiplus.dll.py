@@ -4535,13 +4535,19 @@ def gdiplus_GdipCreateFontFromDC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdiplus_GdipCreateFontFromLogfont(jitter):
+def gdiplus_GdipCreateFontFromLogfont(jitter, get_str, set_str):
     """"
     [gdiplus.dll] GpStatus GdipCreateFontFromLogfont(HDC hdc, GDIPCONST LOGFONT* logfont, GpFont** font)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "logfont", "font"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdiplus_GdipCreateFontFromLogfontA(jitter):
+    gdiplus_GdipCreateFontFromLogfont(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdiplus_GdipCreateFontFromLogfontW(jitter):
+    gdiplus_GdipCreateFontFromLogfont(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdiplus_GdipCreateFont(jitter):
     """"
@@ -4615,13 +4621,19 @@ def gdiplus_GdipGetFontHeightGivenDPI(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def gdiplus_GdipGetLogFont(jitter):
+def gdiplus_GdipGetLogFont(jitter, get_str, set_str):
     """"
     [gdiplus.dll] GpStatus GdipGetLogFont(GpFont* font, GpGraphics* graphics, LOGFONT* logfont)
     """"
     ret_ad, args = jitter.func_args_stdcall(["font", "graphics", "logfont"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def gdiplus_GdipGetLogFontA(jitter):
+    gdiplus_GdipGetLogFont(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def gdiplus_GdipGetLogFontW(jitter):
+    gdiplus_GdipGetLogFont(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def gdiplus_GdipNewInstalledFontCollection(jitter):
     """"

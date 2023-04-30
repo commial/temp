@@ -1,5 +1,5 @@
 
-def user32_CreateDialogIndirectParam(jitter):
+def user32_CreateDialogIndirectParam(jitter, get_str, set_str):
     """"
     [User32.dll] HWND CreateDialogIndirectParam(HINSTANCE hInstance, LPCDLGTEMPLATE lpTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM lParamInit)
     """"
@@ -7,7 +7,13 @@ def user32_CreateDialogIndirectParam(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateDialogParam(jitter):
+def user32_CreateDialogIndirectParamA(jitter):
+    user32_CreateDialogIndirectParam(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateDialogIndirectParamW(jitter):
+    user32_CreateDialogIndirectParam(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CreateDialogParam(jitter, get_str, set_str):
     """"
     [User32.dll] HWND CreateDialogParam(HINSTANCE hInstance, LPCTSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM lParamInit)
     """"
@@ -15,7 +21,13 @@ def user32_CreateDialogParam(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DefDlgProc(jitter):
+def user32_CreateDialogParamA(jitter):
+    user32_CreateDialogParam(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateDialogParamW(jitter):
+    user32_CreateDialogParam(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DefDlgProc(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT DefDlgProc(HWND hDlg, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
@@ -23,7 +35,13 @@ def user32_DefDlgProc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DialogBoxIndirectParam(jitter):
+def user32_DefDlgProcA(jitter):
+    user32_DefDlgProc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DefDlgProcW(jitter):
+    user32_DefDlgProc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DialogBoxIndirectParam(jitter, get_str, set_str):
     """"
     [User32.dll] INT_PTR DialogBoxIndirectParam(HINSTANCE hInstance, LPCDLGTEMPLATE hDialogTemplate, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam)
     """"
@@ -31,13 +49,25 @@ def user32_DialogBoxIndirectParam(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DialogBoxParam(jitter):
+def user32_DialogBoxIndirectParamA(jitter):
+    user32_DialogBoxIndirectParam(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DialogBoxIndirectParamW(jitter):
+    user32_DialogBoxIndirectParam(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DialogBoxParam(jitter, get_str, set_str):
     """"
     [User32.dll] INT_PTR DialogBoxParam(HINSTANCE hInstance, LPCTSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInstance", "lpTemplateName", "hWndParent", "lpDialogFunc", "dwInitParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DialogBoxParamA(jitter):
+    user32_DialogBoxParam(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DialogBoxParamW(jitter):
+    user32_DialogBoxParam(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_EndDialog(jitter):
     """"
@@ -79,13 +109,19 @@ def user32_GetDlgItemInt(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetDlgItemText(jitter):
+def user32_GetDlgItemText(jitter, get_str, set_str):
     """"
     [User32.dll] UINT GetDlgItemText(HWND hDlg, int nIDDlgItem, LPTSTR lpString, int nMaxCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "nIDDlgItem", "lpString", "nMaxCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetDlgItemTextA(jitter):
+    user32_GetDlgItemText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetDlgItemTextW(jitter):
+    user32_GetDlgItemText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetNextDlgGroupItem(jitter):
     """"
@@ -103,13 +139,19 @@ def user32_GetNextDlgTabItem(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_IsDialogMessage(jitter):
+def user32_IsDialogMessage(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL IsDialogMessage(HWND hDlg, LPMSG lpMsg)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "lpMsg"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_IsDialogMessageA(jitter):
+    user32_IsDialogMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_IsDialogMessageW(jitter):
+    user32_IsDialogMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_MapDialogRect(jitter):
     """"
@@ -119,7 +161,7 @@ def user32_MapDialogRect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_MessageBox(jitter):
+def user32_MessageBox(jitter, get_str, set_str):
     """"
     [User32.dll] [MessageBoxResult] MessageBox(HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, [MessageBoxType] uType)
     """"
@@ -127,7 +169,13 @@ def user32_MessageBox(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_MessageBoxEx(jitter):
+def user32_MessageBoxA(jitter):
+    user32_MessageBox(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_MessageBoxW(jitter):
+    user32_MessageBox(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_MessageBoxEx(jitter, get_str, set_str):
     """"
     [User32.dll] [MessageBoxResult] MessageBoxEx(HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, [MessageBoxType] uType, WORD wLanguageId)
     """"
@@ -135,7 +183,13 @@ def user32_MessageBoxEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_MessageBoxIndirect(jitter):
+def user32_MessageBoxExA(jitter):
+    user32_MessageBoxEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_MessageBoxExW(jitter):
+    user32_MessageBoxEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_MessageBoxIndirect(jitter, get_str, set_str):
     """"
     [User32.dll] int MessageBoxIndirect(const LPMSGBOXPARAMS lpMsgBoxParams)
     """"
@@ -143,7 +197,13 @@ def user32_MessageBoxIndirect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_MessageBoxTimeout(jitter):
+def user32_MessageBoxIndirectA(jitter):
+    user32_MessageBoxIndirect(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_MessageBoxIndirectW(jitter):
+    user32_MessageBoxIndirect(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_MessageBoxTimeout(jitter, get_str, set_str):
     """"
     [User32.dll] [MessageBoxResult] MessageBoxTimeout(HWND hWnd, LPCTSTR lpText, LPCTSTR lpCaption, [MessageBoxType] uType, WORD wLanguageId, [WaitTimeout] dwMilliseconds)
     """"
@@ -151,13 +211,25 @@ def user32_MessageBoxTimeout(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SendDlgItemMessage(jitter):
+def user32_MessageBoxTimeoutA(jitter):
+    user32_MessageBoxTimeout(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_MessageBoxTimeoutW(jitter):
+    user32_MessageBoxTimeout(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_SendDlgItemMessage(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT SendDlgItemMessage(HWND hDlg, int nIDDlgItem, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "nIDDlgItem", "Msg", "wParam", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SendDlgItemMessageA(jitter):
+    user32_SendDlgItemMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SendDlgItemMessageW(jitter):
+    user32_SendDlgItemMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_SetDlgItemInt(jitter):
     """"
@@ -167,13 +239,19 @@ def user32_SetDlgItemInt(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetDlgItemText(jitter):
+def user32_SetDlgItemText(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SetDlgItemText(HWND hDlg, int nIDDlgItem, LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "nIDDlgItem", "lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetDlgItemTextA(jitter):
+    user32_SetDlgItemText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetDlgItemTextW(jitter):
+    user32_SetDlgItemText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_BroadcastSystemMessage(jitter):
     """"
@@ -183,7 +261,7 @@ def user32_BroadcastSystemMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_BroadcastSystemMessageEx(jitter):
+def user32_BroadcastSystemMessageEx(jitter, get_str, set_str):
     """"
     [User32.dll] long BroadcastSystemMessageEx(DWORD dwFlags, LPDWORD lpdwRecipients, UINT uiMessage, WPARAM wParam, LPARAM lParam, PBSMINFO pBSMInfo)
     """"
@@ -191,13 +269,25 @@ def user32_BroadcastSystemMessageEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DispatchMessage(jitter):
+def user32_BroadcastSystemMessageExA(jitter):
+    user32_BroadcastSystemMessageEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_BroadcastSystemMessageExW(jitter):
+    user32_BroadcastSystemMessageEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DispatchMessage(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT DispatchMessage(const MSG* lpmsg)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpmsg"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DispatchMessageA(jitter):
+    user32_DispatchMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DispatchMessageW(jitter):
+    user32_DispatchMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetInputState(jitter):
     """"
@@ -207,13 +297,19 @@ def user32_GetInputState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetMessage(jitter):
+def user32_GetMessage(jitter, get_str, set_str):
     """"
     [User32.dll] [BOOL_NUMBER] GetMessage(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpMsg", "hWnd", "wMsgFilterMin", "wMsgFilterMax"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetMessageA(jitter):
+    user32_GetMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetMessageW(jitter):
+    user32_GetMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetMessageExtraInfo(jitter):
     """"
@@ -263,7 +359,7 @@ def user32_InSendMessageEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_PeekMessage(jitter):
+def user32_PeekMessage(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL PeekMessage(LPMSG lpMsg, HWND hWnd, UINT wMsgFilterMin, UINT wMsgFilterMax, [PeekMessageFlag] wRemoveMsg)
     """"
@@ -271,13 +367,25 @@ def user32_PeekMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_PostMessage(jitter):
+def user32_PeekMessageA(jitter):
+    user32_PeekMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_PeekMessageW(jitter):
+    user32_PeekMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_PostMessage(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL PostMessage(HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "Msg", "wParam", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_PostMessageA(jitter):
+    user32_PostMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_PostMessageW(jitter):
+    user32_PostMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_PostQuitMessage(jitter):
     """"
@@ -287,7 +395,7 @@ def user32_PostQuitMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_PostThreadMessage(jitter):
+def user32_PostThreadMessage(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL PostThreadMessage(DWORD idThread, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
@@ -295,13 +403,25 @@ def user32_PostThreadMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_RegisterWindowMessage(jitter):
+def user32_PostThreadMessageA(jitter):
+    user32_PostThreadMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_PostThreadMessageW(jitter):
+    user32_PostThreadMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_RegisterWindowMessage(jitter, get_str, set_str):
     """"
     [User32.dll] UINT RegisterWindowMessage(LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_RegisterWindowMessageA(jitter):
+    user32_RegisterWindowMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_RegisterWindowMessageW(jitter):
+    user32_RegisterWindowMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_ReplyMessage(jitter):
     """"
@@ -311,7 +431,7 @@ def user32_ReplyMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SendMessage(jitter):
+def user32_SendMessage(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT SendMessage(HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
@@ -319,7 +439,13 @@ def user32_SendMessage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SendMessageCallback(jitter):
+def user32_SendMessageA(jitter):
+    user32_SendMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SendMessageW(jitter):
+    user32_SendMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_SendMessageCallback(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SendMessageCallback(HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam, SENDASYNCPROC lpCallBack, ULONG_PTR dwData)
     """"
@@ -327,7 +453,13 @@ def user32_SendMessageCallback(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SendMessageTimeout(jitter):
+def user32_SendMessageCallbackA(jitter):
+    user32_SendMessageCallback(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SendMessageCallbackW(jitter):
+    user32_SendMessageCallback(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_SendMessageTimeout(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT SendMessageTimeout(HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam, [SendMessageTimeoutFlags] fuFlags, UINT uTimeout, PDWORD_PTR lpdwResult)
     """"
@@ -335,13 +467,25 @@ def user32_SendMessageTimeout(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SendNotifyMessage(jitter):
+def user32_SendMessageTimeoutA(jitter):
+    user32_SendMessageTimeout(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SendMessageTimeoutW(jitter):
+    user32_SendMessageTimeout(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_SendNotifyMessage(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SendNotifyMessage(HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "Msg", "wParam", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SendNotifyMessageA(jitter):
+    user32_SendNotifyMessage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SendNotifyMessageW(jitter):
+    user32_SendNotifyMessage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_SetMessageExtraInfo(jitter):
     """"
@@ -551,7 +695,7 @@ def user32_CloseWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateWindow(jitter):
+def user32_CreateWindow(jitter, get_str, set_str):
     """"
     [User32.dll] HWND CreateWindow(LPCTSTR lpClassName, LPCTSTR lpWindowName, DWORD dwStyle, [CreateWindow_CW] x, [CreateWindow_CW] y, [CreateWindow_CW] nWidth, [CreateWindow_CW] nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam)
     """"
@@ -559,13 +703,25 @@ def user32_CreateWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateWindowEx(jitter):
+def user32_CreateWindowA(jitter):
+    user32_CreateWindow(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateWindowW(jitter):
+    user32_CreateWindow(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CreateWindowEx(jitter, get_str, set_str):
     """"
     [User32.dll] HWND CreateWindowEx([WindowExStyle] dwExStyle, LPCTSTR lpClassName, LPCTSTR lpWindowName, [WindowStyle] dwStyle, [CreateWindow_CW] x, [CreateWindow_CW] y, [CreateWindow_CW] nWidth, [CreateWindow_CW] nHeight, HWND hWndParent, HMENU hMenu, HINSTANCE hInstance, LPVOID lpParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["dwExStyle", "lpClassName", "lpWindowName", "dwStyle", "x", "y", "nWidth", "nHeight", "hWndParent", "hMenu", "hInstance", "lpParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_CreateWindowExA(jitter):
+    user32_CreateWindowEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateWindowExW(jitter):
+    user32_CreateWindowEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_DeferWindowPos(jitter):
     """"
@@ -631,7 +787,7 @@ def user32_EnumWindows(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_FindWindow(jitter):
+def user32_FindWindow(jitter, get_str, set_str):
     """"
     [User32.dll] HWND FindWindow(LPCTSTR lpClassName, LPCTSTR lpWindowName)
     """"
@@ -639,7 +795,13 @@ def user32_FindWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_FindWindowEx(jitter):
+def user32_FindWindowA(jitter):
+    user32_FindWindow(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_FindWindowW(jitter):
+    user32_FindWindow(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_FindWindowEx(jitter, get_str, set_str):
     """"
     [User32.dll] HWND FindWindowEx(HWND hwndParent, HWND hwndChildAfter, LPCTSTR lpszClass, LPCTSTR lpszWindow)
     """"
@@ -647,13 +809,25 @@ def user32_FindWindowEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetAltTabInfo(jitter):
+def user32_FindWindowExA(jitter):
+    user32_FindWindowEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_FindWindowExW(jitter):
+    user32_FindWindowEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetAltTabInfo(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetAltTabInfo(HWND hwnd, int iItem, PALTTABINFO pati, LPTSTR pszItemText, UINT cchItemText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "iItem", "pati", "pszItemText", "cchItemText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetAltTabInfoA(jitter):
+    user32_GetAltTabInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetAltTabInfoW(jitter):
+    user32_GetAltTabInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetAncestor(jitter):
     """"
@@ -775,13 +949,19 @@ def user32_GetWindowInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetWindowModuleFileName(jitter):
+def user32_GetWindowModuleFileName(jitter, get_str, set_str):
     """"
     [User32.dll] UINT GetWindowModuleFileName(HWND hwnd, LPTSTR lpszFileName, UINT cchFileNameMax)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "lpszFileName", "cchFileNameMax"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetWindowModuleFileNameA(jitter):
+    user32_GetWindowModuleFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetWindowModuleFileNameW(jitter):
+    user32_GetWindowModuleFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetWindowPlacement(jitter):
     """"
@@ -799,7 +979,7 @@ def user32_GetWindowRect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetWindowText(jitter):
+def user32_GetWindowText(jitter, get_str, set_str):
     """"
     [User32.dll] int GetWindowText(HWND hWnd, LPTSTR lpString, int nMaxCount)
     """"
@@ -807,13 +987,25 @@ def user32_GetWindowText(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetWindowTextLength(jitter):
+def user32_GetWindowTextA(jitter):
+    user32_GetWindowText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetWindowTextW(jitter):
+    user32_GetWindowText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetWindowTextLength(jitter, get_str, set_str):
     """"
     [User32.dll] int GetWindowTextLength(HWND hWnd)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetWindowTextLengthA(jitter):
+    user32_GetWindowTextLength(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetWindowTextLengthW(jitter):
+    user32_GetWindowTextLength(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetWindowThreadProcessId(jitter):
     """"
@@ -1031,13 +1223,19 @@ def user32_SetWindowPos(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetWindowText(jitter):
+def user32_SetWindowText(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SetWindowText(HWND hWnd, LPCTSTR lpString)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "lpString"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetWindowTextA(jitter):
+    user32_SetWindowText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetWindowTextW(jitter):
+    user32_SetWindowText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_ShowOwnedPopups(jitter):
     """"
@@ -1159,13 +1357,19 @@ def user32_ShutdownBlockReasonQuery(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadBitmap(jitter):
+def user32_LoadBitmap(jitter, get_str, set_str):
     """"
     [User32.dll] HBITMAP LoadBitmap(HINSTANCE hInstance, [LoadBitmapString/LPCTSTR] lpBitmapName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInstance", "lpBitmapName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_LoadBitmapA(jitter):
+    user32_LoadBitmap(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadBitmapW(jitter):
+    user32_LoadBitmap(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetSysColorBrush(jitter):
     """"
@@ -1319,13 +1523,19 @@ def user32_GetClipboardData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetClipboardFormatName(jitter):
+def user32_GetClipboardFormatName(jitter, get_str, set_str):
     """"
     [User32.dll] int GetClipboardFormatName(UINT format, LPTSTR lpszFormatName, int cchMaxCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["format", "lpszFormatName", "cchMaxCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetClipboardFormatNameA(jitter):
+    user32_GetClipboardFormatName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetClipboardFormatNameW(jitter):
+    user32_GetClipboardFormatName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetClipboardOwner(jitter):
     """"
@@ -1391,13 +1601,19 @@ def user32_OpenClipboard(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_RegisterClipboardFormat(jitter):
+def user32_RegisterClipboardFormat(jitter, get_str, set_str):
     """"
     [User32.dll] UINT RegisterClipboardFormat(LPCTSTR lpszFormat)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszFormat"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_RegisterClipboardFormatA(jitter):
+    user32_RegisterClipboardFormat(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_RegisterClipboardFormatW(jitter):
+    user32_RegisterClipboardFormat(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_RemoveClipboardFormatListener(jitter):
     """"
@@ -1423,7 +1639,7 @@ def user32_SetClipboardViewer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DlgDirListComboBox(jitter):
+def user32_DlgDirListComboBox(jitter, get_str, set_str):
     """"
     [User32.dll] int DlgDirListComboBox(HWND hDlg, LPTSTR lpPathSpec, int nIDComboBox, int nIDStaticPath, UINT uFiletype)
     """"
@@ -1431,13 +1647,25 @@ def user32_DlgDirListComboBox(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DlgDirSelectComboBoxEx(jitter):
+def user32_DlgDirListComboBoxA(jitter):
+    user32_DlgDirListComboBox(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DlgDirListComboBoxW(jitter):
+    user32_DlgDirListComboBox(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DlgDirSelectComboBoxEx(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL DlgDirSelectComboBoxEx(HWND hDlg, LPTSTR lpString, int nCount, int nIDComboBox)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "lpString", "nCount", "nIDComboBox"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DlgDirSelectComboBoxExA(jitter):
+    user32_DlgDirSelectComboBoxEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DlgDirSelectComboBoxExW(jitter):
+    user32_DlgDirSelectComboBoxEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetComboBoxInfo(jitter):
     """"
@@ -1543,7 +1771,7 @@ def user32_GetPhysicalCursorPos(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadCursor(jitter):
+def user32_LoadCursor(jitter, get_str, set_str):
     """"
     [User32.dll] HCURSOR LoadCursor(HINSTANCE hInstance, [LoadCursorString/LPCTSTR] lpCursorName)
     """"
@@ -1551,13 +1779,25 @@ def user32_LoadCursor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadCursorFromFile(jitter):
+def user32_LoadCursorA(jitter):
+    user32_LoadCursor(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadCursorW(jitter):
+    user32_LoadCursor(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_LoadCursorFromFile(jitter, get_str, set_str):
     """"
     [User32.dll] HCURSOR LoadCursorFromFile(LPCTSTR lpFileName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpFileName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_LoadCursorFromFileA(jitter):
+    user32_LoadCursorFromFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadCursorFromFileW(jitter):
+    user32_LoadCursorFromFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_SetCursor(jitter):
     """"
@@ -1599,7 +1839,7 @@ def user32_ShowCursor(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_ChangeDisplaySettings(jitter):
+def user32_ChangeDisplaySettings(jitter, get_str, set_str):
     """"
     [User32.dll] LONG ChangeDisplaySettings(DEVMODE* lpDevMode, DWORD dwflags)
     """"
@@ -1607,7 +1847,13 @@ def user32_ChangeDisplaySettings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_ChangeDisplaySettingsEx(jitter):
+def user32_ChangeDisplaySettingsA(jitter):
+    user32_ChangeDisplaySettings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_ChangeDisplaySettingsW(jitter):
+    user32_ChangeDisplaySettings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_ChangeDisplaySettingsEx(jitter, get_str, set_str):
     """"
     [User32.dll] LONG ChangeDisplaySettingsEx(LPCTSTR lpszDeviceName, DEVMODE* lpDevMode, HWND hwnd, DWORD dwflags, LPVOID lParam)
     """"
@@ -1615,7 +1861,13 @@ def user32_ChangeDisplaySettingsEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumDisplayDevices(jitter):
+def user32_ChangeDisplaySettingsExA(jitter):
+    user32_ChangeDisplaySettingsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_ChangeDisplaySettingsExW(jitter):
+    user32_ChangeDisplaySettingsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumDisplayDevices(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL EnumDisplayDevices(LPCTSTR lpDevice, DWORD iDevNum, PDISPLAY_DEVICE lpDisplayDevice, [EnumDisplayDevicesFlags] dwFlags)
     """"
@@ -1623,7 +1875,13 @@ def user32_EnumDisplayDevices(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumDisplaySettings(jitter):
+def user32_EnumDisplayDevicesA(jitter):
+    user32_EnumDisplayDevices(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumDisplayDevicesW(jitter):
+    user32_EnumDisplayDevices(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumDisplaySettings(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL EnumDisplaySettings(LPCTSTR lpszDeviceName, [EnumDisplaySettingsEnum] iModeNum, DEVMODE* lpDevMode)
     """"
@@ -1631,13 +1889,25 @@ def user32_EnumDisplaySettings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumDisplaySettingsEx(jitter):
+def user32_EnumDisplaySettingsA(jitter):
+    user32_EnumDisplaySettings(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumDisplaySettingsW(jitter):
+    user32_EnumDisplaySettings(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumDisplaySettingsEx(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL EnumDisplaySettingsEx(LPCTSTR lpszDeviceName, DWORD iModeNum, DEVMODE* lpDevMode, DWORD dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszDeviceName", "iModeNum", "lpDevMode", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_EnumDisplaySettingsExA(jitter):
+    user32_EnumDisplaySettingsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumDisplaySettingsExW(jitter):
+    user32_EnumDisplaySettingsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetDC(jitter):
     """"
@@ -1663,13 +1933,19 @@ def user32_ReleaseDC(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_RegisterDeviceNotification(jitter):
+def user32_RegisterDeviceNotification(jitter, get_str, set_str):
     """"
     [User32.dll] HDEVNOTIFY RegisterDeviceNotification(HANDLE hRecipient, LPVOID NotificationFilter, [DeviceNotificationFlags] Flags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hRecipient", "NotificationFilter", "Flags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_RegisterDeviceNotificationA(jitter):
+    user32_RegisterDeviceNotification(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_RegisterDeviceNotificationW(jitter):
+    user32_RegisterDeviceNotification(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_UnregisterDeviceNotification(jitter):
     """"
@@ -1791,13 +2067,19 @@ def user32_DdeCreateDataHandle(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DdeCreateStringHandle(jitter):
+def user32_DdeCreateStringHandle(jitter, get_str, set_str):
     """"
     [User32.dll] HSZ DdeCreateStringHandle(DWORD idInst, LPTSTR psz, [CODE_PAGE|int] iCodePage)
     """"
     ret_ad, args = jitter.func_args_stdcall(["idInst", "psz", "iCodePage"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DdeCreateStringHandleA(jitter):
+    user32_DdeCreateStringHandle(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DdeCreateStringHandleW(jitter):
+    user32_DdeCreateStringHandle(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_DdeDisconnect(jitter):
     """"
@@ -1863,13 +2145,19 @@ def user32_DdeImpersonateClient(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DdeInitialize(jitter):
+def user32_DdeInitialize(jitter, get_str, set_str):
     """"
     [User32.dll] UINT DdeInitialize(LPDWORD pidInst, PFNCALLBACK pfnCallback, [DDE_INITIALIZE_FLAGS] afCmd, DWORD ulRes)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pidInst", "pfnCallback", "afCmd", "ulRes"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DdeInitializeA(jitter):
+    user32_DdeInitialize(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DdeInitializeW(jitter):
+    user32_DdeInitialize(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_DdeKeepStringHandle(jitter):
     """"
@@ -1911,13 +2199,19 @@ def user32_DdeQueryNextServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DdeQueryString(jitter):
+def user32_DdeQueryString(jitter, get_str, set_str):
     """"
     [User32.dll] DWORD DdeQueryString(DWORD idInst, HSZ hsz, LPTSTR psz, DWORD cchMax, [CODE_PAGE|int] iCodePage)
     """"
     ret_ad, args = jitter.func_args_stdcall(["idInst", "hsz", "psz", "cchMax", "iCodePage"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DdeQueryStringA(jitter):
+    user32_DdeQueryString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DdeQueryStringW(jitter):
+    user32_DdeQueryString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_DdeReconnect(jitter):
     """"
@@ -2007,7 +2301,7 @@ def user32_InvertRect(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DrawText(jitter):
+def user32_DrawText(jitter, get_str, set_str):
     """"
     [User32.dll] int DrawText(HDC hDC, LPCTSTR lpchText, int nCount, LPRECT lpRect, [DrawTextFlags] uFormat)
     """"
@@ -2015,7 +2309,13 @@ def user32_DrawText(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DrawTextEx(jitter):
+def user32_DrawTextA(jitter):
+    user32_DrawText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DrawTextW(jitter):
+    user32_DrawText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DrawTextEx(jitter, get_str, set_str):
     """"
     [User32.dll] int DrawTextEx(HDC hdc, LPTSTR lpchText, int cchText, LPRECT lprc, [DrawTextFlags] dwDTFormat, LPDRAWTEXTPARAMS lpDTParams)
     """"
@@ -2023,7 +2323,13 @@ def user32_DrawTextEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetTabbedTextExtent(jitter):
+def user32_DrawTextExA(jitter):
+    user32_DrawTextEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DrawTextExW(jitter):
+    user32_DrawTextEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetTabbedTextExtent(jitter, get_str, set_str):
     """"
     [User32.dll] DWORD GetTabbedTextExtent(HDC hDC, LPCTSTR lpString, int nCount, int nTabPositions, const LPINT lpnTabStopPositions)
     """"
@@ -2031,7 +2337,13 @@ def user32_GetTabbedTextExtent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_TabbedTextOut(jitter):
+def user32_GetTabbedTextExtentA(jitter):
+    user32_GetTabbedTextExtent(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetTabbedTextExtentW(jitter):
+    user32_GetTabbedTextExtent(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_TabbedTextOut(jitter, get_str, set_str):
     """"
     [User32.dll] LONG TabbedTextOut(HDC hDC, int X, int Y, LPCTSTR lpString, int nCount, int nTabPositions, const LPINT lpnTabStopPositions, int nTabOrigin)
     """"
@@ -2039,13 +2351,25 @@ def user32_TabbedTextOut(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CallMsgFilter(jitter):
+def user32_TabbedTextOutA(jitter):
+    user32_TabbedTextOut(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_TabbedTextOutW(jitter):
+    user32_TabbedTextOut(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CallMsgFilter(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL CallMsgFilter(LPMSG lpMsg, int nCode)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpMsg", "nCode"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_CallMsgFilterA(jitter):
+    user32_CallMsgFilter(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CallMsgFilterW(jitter):
+    user32_CallMsgFilter(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_CallNextHookEx(jitter):
     """"
@@ -2055,13 +2379,19 @@ def user32_CallNextHookEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetWindowsHookEx(jitter):
+def user32_SetWindowsHookEx(jitter, get_str, set_str):
     """"
     [User32.dll] HHOOK SetWindowsHookEx([WindowsHook] idHook, HOOKPROC lpfn, HINSTANCE hMod, DWORD dwThreadId)
     """"
     ret_ad, args = jitter.func_args_stdcall(["idHook", "lpfn", "hMod", "dwThreadId"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetWindowsHookExA(jitter):
+    user32_SetWindowsHookEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetWindowsHookExW(jitter):
+    user32_SetWindowsHookEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_UnhookWindowsHookEx(jitter):
     """"
@@ -2143,7 +2473,7 @@ def user32_GetIconInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetIconInfoEx(jitter):
+def user32_GetIconInfoEx(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetIconInfoEx(HICON hIcon, PICONINFOEX piconinfoex)
     """"
@@ -2151,13 +2481,25 @@ def user32_GetIconInfoEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadIcon(jitter):
+def user32_GetIconInfoExA(jitter):
+    user32_GetIconInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetIconInfoExW(jitter):
+    user32_GetIconInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_LoadIcon(jitter, get_str, set_str):
     """"
     [User32.dll] HICON LoadIcon(HINSTANCE hInstance, [LoadIconString/LPCTSTR] lpIconName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hInstance", "lpIconName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_LoadIconA(jitter):
+    user32_LoadIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadIconW(jitter):
+    user32_LoadIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_LookupIconIdFromDirectory(jitter):
     """"
@@ -2175,7 +2517,7 @@ def user32_LookupIconIdFromDirectoryEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_PrivateExtractIcons(jitter):
+def user32_PrivateExtractIcons(jitter, get_str, set_str):
     """"
     [User32.dll] UINT PrivateExtractIcons(LPCTSTR lpszFile, int nIconIndex, int cxIcon, int cyIcon, HICON* phicon, UINT* piconid, UINT nIcons, [LRFlags] flags)
     """"
@@ -2183,7 +2525,13 @@ def user32_PrivateExtractIcons(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CopyAcceleratorTable(jitter):
+def user32_PrivateExtractIconsA(jitter):
+    user32_PrivateExtractIcons(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_PrivateExtractIconsW(jitter):
+    user32_PrivateExtractIcons(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CopyAcceleratorTable(jitter, get_str, set_str):
     """"
     [User32.dll] int CopyAcceleratorTable(HACCEL hAccelSrc, LPACCEL lpAccelDst, int cAccelEntries)
     """"
@@ -2191,13 +2539,25 @@ def user32_CopyAcceleratorTable(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateAcceleratorTable(jitter):
+def user32_CopyAcceleratorTableA(jitter):
+    user32_CopyAcceleratorTable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CopyAcceleratorTableW(jitter):
+    user32_CopyAcceleratorTable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CreateAcceleratorTable(jitter, get_str, set_str):
     """"
     [User32.dll] HACCEL CreateAcceleratorTable(LPACCEL lpaccl, int cEntries)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpaccl", "cEntries"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_CreateAcceleratorTableA(jitter):
+    user32_CreateAcceleratorTable(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateAcceleratorTableW(jitter):
+    user32_CreateAcceleratorTable(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_DestroyAcceleratorTable(jitter):
     """"
@@ -2207,7 +2567,7 @@ def user32_DestroyAcceleratorTable(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadAccelerators(jitter):
+def user32_LoadAccelerators(jitter, get_str, set_str):
     """"
     [User32.dll] HACCEL LoadAccelerators(HINSTANCE hInstance, LPCTSTR lpTableName)
     """"
@@ -2215,13 +2575,25 @@ def user32_LoadAccelerators(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_TranslateAccelerator(jitter):
+def user32_LoadAcceleratorsA(jitter):
+    user32_LoadAccelerators(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadAcceleratorsW(jitter):
+    user32_LoadAccelerators(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_TranslateAccelerator(jitter, get_str, set_str):
     """"
     [User32.dll] int TranslateAccelerator(HWND hWnd, HACCEL hAccTable, LPMSG lpMsg)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "hAccTable", "lpMsg"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_TranslateAcceleratorA(jitter):
+    user32_TranslateAccelerator(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_TranslateAcceleratorW(jitter):
+    user32_TranslateAccelerator(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_ActivateKeyboardLayout(jitter):
     """"
@@ -2295,13 +2667,19 @@ def user32_GetKeyboardLayoutList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetKeyboardLayoutName(jitter):
+def user32_GetKeyboardLayoutName(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetKeyboardLayoutName(LPTSTR pwszKLID)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pwszKLID"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetKeyboardLayoutNameA(jitter):
+    user32_GetKeyboardLayoutName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetKeyboardLayoutNameW(jitter):
+    user32_GetKeyboardLayoutName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetKeyboardState(jitter):
     """"
@@ -2311,13 +2689,19 @@ def user32_GetKeyboardState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetKeyNameText(jitter):
+def user32_GetKeyNameText(jitter, get_str, set_str):
     """"
     [User32.dll] int GetKeyNameText(LONG lParam, LPTSTR lpString, int nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lParam", "lpString", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetKeyNameTextA(jitter):
+    user32_GetKeyNameText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetKeyNameTextW(jitter):
+    user32_GetKeyNameText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetKeyState(jitter):
     """"
@@ -2351,7 +2735,7 @@ def user32_keybd_event(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadKeyboardLayout(jitter):
+def user32_LoadKeyboardLayout(jitter, get_str, set_str):
     """"
     [User32.dll] HKL LoadKeyboardLayout(LPCTSTR pwszKLID, [KeyboardLayoutFlags] Flags)
     """"
@@ -2359,7 +2743,13 @@ def user32_LoadKeyboardLayout(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_MapVirtualKey(jitter):
+def user32_LoadKeyboardLayoutA(jitter):
+    user32_LoadKeyboardLayout(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadKeyboardLayoutW(jitter):
+    user32_LoadKeyboardLayout(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_MapVirtualKey(jitter, get_str, set_str):
     """"
     [User32.dll] UINT MapVirtualKey(UINT uCode, [MapVirtualKeyType] uMapType)
     """"
@@ -2367,13 +2757,25 @@ def user32_MapVirtualKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_MapVirtualKeyEx(jitter):
+def user32_MapVirtualKeyA(jitter):
+    user32_MapVirtualKey(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_MapVirtualKeyW(jitter):
+    user32_MapVirtualKey(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_MapVirtualKeyEx(jitter, get_str, set_str):
     """"
     [User32.dll] UINT MapVirtualKeyEx(UINT uCode, [MapVirtualKeyType] uMapType, HKL dwhkl)
     """"
     ret_ad, args = jitter.func_args_stdcall(["uCode", "uMapType", "dwhkl"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_MapVirtualKeyExA(jitter):
+    user32_MapVirtualKeyEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_MapVirtualKeyExW(jitter):
+    user32_MapVirtualKeyEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_OemKeyScan(jitter):
     """"
@@ -2471,7 +2873,7 @@ def user32_UnregisterHotKey(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_VkKeyScan(jitter):
+def user32_VkKeyScan(jitter, get_str, set_str):
     """"
     [User32.dll] SHORT VkKeyScan(TCHAR ch)
     """"
@@ -2479,7 +2881,13 @@ def user32_VkKeyScan(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_VkKeyScanEx(jitter):
+def user32_VkKeyScanA(jitter):
+    user32_VkKeyScan(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_VkKeyScanW(jitter):
+    user32_VkKeyScan(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_VkKeyScanEx(jitter, get_str, set_str):
     """"
     [User32.dll] SHORT VkKeyScanEx(TCHAR ch, HKL dwhkl)
     """"
@@ -2487,7 +2895,13 @@ def user32_VkKeyScanEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DlgDirList(jitter):
+def user32_VkKeyScanExA(jitter):
+    user32_VkKeyScanEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_VkKeyScanExW(jitter):
+    user32_VkKeyScanEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DlgDirList(jitter, get_str, set_str):
     """"
     [User32.dll] int DlgDirList(HWND hDlg, LPTSTR lpPathSpec, int nIDListBox, int nIDStaticPath, UINT uFileType)
     """"
@@ -2495,13 +2909,25 @@ def user32_DlgDirList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DlgDirSelectEx(jitter):
+def user32_DlgDirListA(jitter):
+    user32_DlgDirList(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DlgDirListW(jitter):
+    user32_DlgDirList(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DlgDirSelectEx(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL DlgDirSelectEx(HWND hDlg, LPTSTR lpString, int nCount, int nIDListBox)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "lpString", "nCount", "nIDListBox"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DlgDirSelectExA(jitter):
+    user32_DlgDirSelectEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DlgDirSelectExW(jitter):
+    user32_DlgDirSelectEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetListBoxInfo(jitter):
     """"
@@ -2511,13 +2937,19 @@ def user32_GetListBoxInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_AppendMenu(jitter):
+def user32_AppendMenu(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL AppendMenu(HMENU hMenu, UINT uFlags, UINT_PTR uIDNewItem, LPCTSTR lpNewItem)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMenu", "uFlags", "uIDNewItem", "lpNewItem"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_AppendMenuA(jitter):
+    user32_AppendMenu(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_AppendMenuW(jitter):
+    user32_AppendMenu(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_CheckMenuItem(jitter):
     """"
@@ -2647,13 +3079,19 @@ def user32_GetMenuItemID(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetMenuItemInfo(jitter):
+def user32_GetMenuItemInfo(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetMenuItemInfo(HMENU hMenu, UINT uItem, BOOL fByPosition, LPMENUITEMINFO lpmii)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMenu", "uItem", "fByPosition", "lpmii"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetMenuItemInfoA(jitter):
+    user32_GetMenuItemInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetMenuItemInfoW(jitter):
+    user32_GetMenuItemInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetMenuItemRect(jitter):
     """"
@@ -2671,13 +3109,19 @@ def user32_GetMenuState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetMenuString(jitter):
+def user32_GetMenuString(jitter, get_str, set_str):
     """"
     [User32.dll] int GetMenuString(HMENU hMenu, UINT uIDItem, LPTSTR lpString, int nMaxCount, UINT uFlag)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMenu", "uIDItem", "lpString", "nMaxCount", "uFlag"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetMenuStringA(jitter):
+    user32_GetMenuString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetMenuStringW(jitter):
+    user32_GetMenuString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetSubMenu(jitter):
     """"
@@ -2703,7 +3147,7 @@ def user32_HiliteMenuItem(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_InsertMenu(jitter):
+def user32_InsertMenu(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL InsertMenu(HMENU hMenu, UINT uPosition, [InsertMenuFlags] uFlags, UINT_PTR uIDNewItem, LPCTSTR lpNewItem)
     """"
@@ -2711,13 +3155,25 @@ def user32_InsertMenu(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_InsertMenuItem(jitter):
+def user32_InsertMenuA(jitter):
+    user32_InsertMenu(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_InsertMenuW(jitter):
+    user32_InsertMenu(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_InsertMenuItem(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL InsertMenuItem(HMENU hMenu, UINT uItem, BOOL fByPosition, LPCMENUITEMINFO lpmii)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMenu", "uItem", "fByPosition", "lpmii"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_InsertMenuItemA(jitter):
+    user32_InsertMenuItem(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_InsertMenuItemW(jitter):
+    user32_InsertMenuItem(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_IsMenu(jitter):
     """"
@@ -2727,7 +3183,7 @@ def user32_IsMenu(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadMenu(jitter):
+def user32_LoadMenu(jitter, get_str, set_str):
     """"
     [User32.dll] HMENU LoadMenu(HINSTANCE hInstance, LPCTSTR lpMenuName)
     """"
@@ -2735,13 +3191,25 @@ def user32_LoadMenu(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadMenuIndirect(jitter):
+def user32_LoadMenuA(jitter):
+    user32_LoadMenu(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadMenuW(jitter):
+    user32_LoadMenu(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_LoadMenuIndirect(jitter, get_str, set_str):
     """"
     [User32.dll] HMENU LoadMenuIndirect(CONST MENUTEMPLATE* lpMenuTemplate)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpMenuTemplate"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_LoadMenuIndirectA(jitter):
+    user32_LoadMenuIndirect(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadMenuIndirectW(jitter):
+    user32_LoadMenuIndirect(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_MenuItemFromPoint(jitter):
     """"
@@ -2751,13 +3219,19 @@ def user32_MenuItemFromPoint(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_ModifyMenu(jitter):
+def user32_ModifyMenu(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL ModifyMenu(HMENU hMnu, UINT uPosition, UINT uFlags, UINT_PTR uIDNewItem, LPCTSTR lpNewItem)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMnu", "uPosition", "uFlags", "uIDNewItem", "lpNewItem"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_ModifyMenuA(jitter):
+    user32_ModifyMenu(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_ModifyMenuW(jitter):
+    user32_ModifyMenu(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_RemoveMenu(jitter):
     """"
@@ -2799,13 +3273,19 @@ def user32_SetMenuItemBitmaps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetMenuItemInfo(jitter):
+def user32_SetMenuItemInfo(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SetMenuItemInfo(HMENU hMenu, UINT uItem, BOOL fByPosition, LPMENUITEMINFO lpmii)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMenu", "uItem", "fByPosition", "lpmii"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetMenuItemInfoA(jitter):
+    user32_SetMenuItemInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetMenuItemInfoW(jitter):
+    user32_SetMenuItemInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_TrackPopupMenu(jitter):
     """"
@@ -2911,13 +3391,19 @@ def user32_EnumDisplayMonitors(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetMonitorInfo(jitter):
+def user32_GetMonitorInfo(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetMonitorInfo(HMONITOR hMonitor, LPMONITORINFO lpmi)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hMonitor", "lpmi"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetMonitorInfoA(jitter):
+    user32_GetMonitorInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetMonitorInfoW(jitter):
+    user32_GetMonitorInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_MonitorFromPoint(jitter):
     """"
@@ -2943,7 +3429,7 @@ def user32_MonitorFromWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateMDIWindow(jitter):
+def user32_CreateMDIWindow(jitter, get_str, set_str):
     """"
     [User32.dll] HWND CreateMDIWindow(LPCTSTR lpClassName, LPCTSTR lpWindowName, DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HINSTANCE hInstance, LPARAM lParam)
     """"
@@ -2951,7 +3437,13 @@ def user32_CreateMDIWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DefFrameProc(jitter):
+def user32_CreateMDIWindowA(jitter):
+    user32_CreateMDIWindow(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateMDIWindowW(jitter):
+    user32_CreateMDIWindow(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DefFrameProc(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT DefFrameProc(HWND hWnd, HWND hWndMDIClient, UINT uMsg, WPARAM wParam, LPARAM lParam)
     """"
@@ -2959,13 +3451,25 @@ def user32_DefFrameProc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DefMDIChildProc(jitter):
+def user32_DefFrameProcA(jitter):
+    user32_DefFrameProc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DefFrameProcW(jitter):
+    user32_DefFrameProc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DefMDIChildProc(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT DefMDIChildProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "uMsg", "wParam", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DefMDIChildProcA(jitter):
+    user32_DefMDIChildProc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DefMDIChildProcW(jitter):
+    user32_DefMDIChildProc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_TranslateMDISysAccel(jitter):
     """"
@@ -3023,13 +3527,19 @@ def user32_DrawFrameControl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DrawState(jitter):
+def user32_DrawState(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL DrawState(HDC hdc, HBRUSH hbr, DRAWSTATEPROC lpOutputFunc, LPARAM lData, WPARAM wData, int x, int y, int cx, int cy, [DrawStateFlags] fuFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "hbr", "lpOutputFunc", "lData", "wData", "x", "y", "cx", "cy", "fuFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_DrawStateA(jitter):
+    user32_DrawState(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DrawStateW(jitter):
+    user32_DrawState(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_EndPaint(jitter):
     """"
@@ -3087,13 +3597,19 @@ def user32_GetWindowRgnBox(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GrayString(jitter):
+def user32_GrayString(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GrayString(HDC hDC, HBRUSH hBrush, GRAYSTRINGPROC lpOutputFunc, LPARAM lpData, int nCount, int X, int Y, int nWidth, int nHeight)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDC", "hBrush", "lpOutputFunc", "lpData", "nCount", "X", "Y", "nWidth", "nHeight"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GrayStringA(jitter):
+    user32_GrayString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GrayStringW(jitter):
+    user32_GrayString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_InvalidateRect(jitter):
     """"
@@ -3223,13 +3739,19 @@ def user32_GetRawInputData(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetRawInputDeviceInfo(jitter):
+def user32_GetRawInputDeviceInfo(jitter, get_str, set_str):
     """"
     [User32.dll] UINT GetRawInputDeviceInfo(HANDLE hDevice, UINT uiCommand, LPVOID pData, PUINT pcbSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDevice", "uiCommand", "pData", "pcbSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetRawInputDeviceInfoA(jitter):
+    user32_GetRawInputDeviceInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetRawInputDeviceInfoW(jitter):
+    user32_GetRawInputDeviceInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetRawInputDeviceList(jitter):
     """"
@@ -3351,13 +3873,19 @@ def user32_CopyImage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadImage(jitter):
+def user32_LoadImage(jitter, get_str, set_str):
     """"
     [User32.dll] HANDLE LoadImage(HINSTANCE hinst, [LoadImageString/LPCTSTR] lpszName, [ImageType] uType, int cxDesired, int cyDesired, [LRFlags] fuLoad)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hinst", "lpszName", "uType", "cxDesired", "cyDesired", "fuLoad"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_LoadImageA(jitter):
+    user32_LoadImage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadImageW(jitter):
+    user32_LoadImage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_EnableScrollBar(jitter):
     """"
@@ -3455,7 +3983,7 @@ def user32_ShowScrollBar(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharLower(jitter):
+def user32_CharLower(jitter, get_str, set_str):
     """"
     [User32.dll] LPTSTR CharLower(LPTSTR lpsz)
     """"
@@ -3463,7 +3991,13 @@ def user32_CharLower(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharLowerBuff(jitter):
+def user32_CharLowerA(jitter):
+    user32_CharLower(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharLowerW(jitter):
+    user32_CharLower(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CharLowerBuff(jitter, get_str, set_str):
     """"
     [User32.dll] DWORD CharLowerBuff(LPTSTR lpsz, DWORD cchLength)
     """"
@@ -3471,13 +4005,25 @@ def user32_CharLowerBuff(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharNext(jitter):
+def user32_CharLowerBuffA(jitter):
+    user32_CharLowerBuff(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharLowerBuffW(jitter):
+    user32_CharLowerBuff(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CharNext(jitter, get_str, set_str):
     """"
     [User32.dll] LPTSTR CharNext(LPCTSTR lpsz)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpsz"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_CharNextA(jitter):
+    user32_CharNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharNextW(jitter):
+    user32_CharNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_CharNextExA(jitter):
     """"
@@ -3487,13 +4033,19 @@ def user32_CharNextExA(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharPrev(jitter):
+def user32_CharPrev(jitter, get_str, set_str):
     """"
     [User32.dll] LPTSTR CharPrev(LPCTSTR lpszStart, LPCTSTR lpszCurrent)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszStart", "lpszCurrent"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_CharPrevA(jitter):
+    user32_CharPrev(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharPrevW(jitter):
+    user32_CharPrev(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_CharPrevExA(jitter):
     """"
@@ -3503,7 +4055,7 @@ def user32_CharPrevExA(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharToOem(jitter):
+def user32_CharToOem(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL CharToOem(LPCTSTR lpszSrc, LPSTR lpszDst)
     """"
@@ -3511,7 +4063,13 @@ def user32_CharToOem(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharToOemBuff(jitter):
+def user32_CharToOemA(jitter):
+    user32_CharToOem(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharToOemW(jitter):
+    user32_CharToOem(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CharToOemBuff(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL CharToOemBuff(LPCTSTR lpszSrc, LPSTR lpszDst, DWORD cchDstLength)
     """"
@@ -3519,7 +4077,13 @@ def user32_CharToOemBuff(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharUpper(jitter):
+def user32_CharToOemBuffA(jitter):
+    user32_CharToOemBuff(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharToOemBuffW(jitter):
+    user32_CharToOemBuff(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CharUpper(jitter, get_str, set_str):
     """"
     [User32.dll] LPTSTR CharUpper(LPTSTR lpsz)
     """"
@@ -3527,7 +4091,13 @@ def user32_CharUpper(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CharUpperBuff(jitter):
+def user32_CharUpperA(jitter):
+    user32_CharUpper(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharUpperW(jitter):
+    user32_CharUpper(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CharUpperBuff(jitter, get_str, set_str):
     """"
     [User32.dll] DWORD CharUpperBuff(LPTSTR lpsz, DWORD cchLength)
     """"
@@ -3535,7 +4105,13 @@ def user32_CharUpperBuff(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_IsCharAlpha(jitter):
+def user32_CharUpperBuffA(jitter):
+    user32_CharUpperBuff(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CharUpperBuffW(jitter):
+    user32_CharUpperBuff(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_IsCharAlpha(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL IsCharAlpha(TCHAR ch)
     """"
@@ -3543,7 +4119,13 @@ def user32_IsCharAlpha(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_IsCharAlphaNumeric(jitter):
+def user32_IsCharAlphaA(jitter):
+    user32_IsCharAlpha(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_IsCharAlphaW(jitter):
+    user32_IsCharAlpha(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_IsCharAlphaNumeric(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL IsCharAlphaNumeric(TCHAR ch)
     """"
@@ -3551,7 +4133,13 @@ def user32_IsCharAlphaNumeric(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_IsCharLower(jitter):
+def user32_IsCharAlphaNumericA(jitter):
+    user32_IsCharAlphaNumeric(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_IsCharAlphaNumericW(jitter):
+    user32_IsCharAlphaNumeric(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_IsCharLower(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL IsCharLower(TCHAR ch)
     """"
@@ -3559,7 +4147,13 @@ def user32_IsCharLower(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_IsCharUpper(jitter):
+def user32_IsCharLowerA(jitter):
+    user32_IsCharLower(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_IsCharLowerW(jitter):
+    user32_IsCharLower(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_IsCharUpper(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL IsCharUpper(TCHAR ch)
     """"
@@ -3567,7 +4161,13 @@ def user32_IsCharUpper(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_LoadString(jitter):
+def user32_IsCharUpperA(jitter):
+    user32_IsCharUpper(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_IsCharUpperW(jitter):
+    user32_IsCharUpper(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_LoadString(jitter, get_str, set_str):
     """"
     [User32.dll] int LoadString(HINSTANCE hInstance, UINT uID, LPTSTR lpBuffer, int nBufferMax)
     """"
@@ -3575,7 +4175,13 @@ def user32_LoadString(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_OemToChar(jitter):
+def user32_LoadStringA(jitter):
+    user32_LoadString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_LoadStringW(jitter):
+    user32_LoadString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_OemToChar(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL OemToChar(LPCSTR lpszSrc, LPTSTR lpszDst)
     """"
@@ -3583,7 +4189,13 @@ def user32_OemToChar(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_OemToCharBuff(jitter):
+def user32_OemToCharA(jitter):
+    user32_OemToChar(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_OemToCharW(jitter):
+    user32_OemToChar(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_OemToCharBuff(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL OemToCharBuff(LPCTSTR lpszSrc, LPTSTR lpszDst, DWORD cchDstLength)
     """"
@@ -3591,7 +4203,13 @@ def user32_OemToCharBuff(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_wsprintf(jitter):
+def user32_OemToCharBuffA(jitter):
+    user32_OemToCharBuff(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_OemToCharBuffW(jitter):
+    user32_OemToCharBuff(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_wsprintf(jitter, get_str, set_str):
     """"
     [User32.dll] int wsprintf(LPTSTR lpOut, LPCTSTR lpFmt)
     """"
@@ -3599,13 +4217,25 @@ def user32_wsprintf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_wvsprintf(jitter):
+def user32_wsprintfA(jitter):
+    user32_wsprintf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_wsprintfW(jitter):
+    user32_wsprintf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_wvsprintf(jitter, get_str, set_str):
     """"
     [User32.dll] int wvsprintf(LPTSTR lpOutput, LPCTSTR lpFmt, va_list arglist)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpOutput", "lpFmt", "arglist"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_wvsprintfA(jitter):
+    user32_wvsprintf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_wvsprintfW(jitter):
+    user32_wvsprintf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_MsgWaitForMultipleObjects(jitter):
     """"
@@ -3655,13 +4285,19 @@ def user32_SetSysColors(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SystemParametersInfo(jitter):
+def user32_SystemParametersInfo(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SystemParametersInfo([SystemParametersInfoEnum] uiAction, UINT uiParam, PVOID pvParam, [SystemParametersInfoFlags] fWinIni)
     """"
     ret_ad, args = jitter.func_args_stdcall(["uiAction", "uiParam", "pvParam", "fWinIni"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SystemParametersInfoA(jitter):
+    user32_SystemParametersInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SystemParametersInfoW(jitter):
+    user32_SystemParametersInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_KillTimer(jitter):
     """"
@@ -3687,7 +4323,7 @@ def user32_SetTimer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetClassInfo(jitter):
+def user32_GetClassInfo(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetClassInfo(HINSTANCE hInstance, LPCTSTR lpClassName, LPWNDCLASS lpWndClass)
     """"
@@ -3695,7 +4331,13 @@ def user32_GetClassInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetClassInfoEx(jitter):
+def user32_GetClassInfoA(jitter):
+    user32_GetClassInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetClassInfoW(jitter):
+    user32_GetClassInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetClassInfoEx(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetClassInfoEx(HINSTANCE hinst, LPCTSTR lpszClass, LPWNDCLASSEX lpwcx)
     """"
@@ -3703,7 +4345,13 @@ def user32_GetClassInfoEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetClassLong(jitter):
+def user32_GetClassInfoExA(jitter):
+    user32_GetClassInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetClassInfoExW(jitter):
+    user32_GetClassInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetClassLong(jitter, get_str, set_str):
     """"
     [User32.dll] DWORD GetClassLong(HWND hWnd, [ClassLongIndex] nIndex)
     """"
@@ -3711,13 +4359,25 @@ def user32_GetClassLong(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetClassName(jitter):
+def user32_GetClassLongA(jitter):
+    user32_GetClassLong(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetClassLongW(jitter):
+    user32_GetClassLong(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetClassName(jitter, get_str, set_str):
     """"
     [User32.dll] int GetClassName(HWND hWnd, LPTSTR lpClassName, int nMaxCount)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "lpClassName", "nMaxCount"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_GetClassNameA(jitter):
+    user32_GetClassName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetClassNameW(jitter):
+    user32_GetClassName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetClassWord(jitter):
     """"
@@ -3727,7 +4387,7 @@ def user32_GetClassWord(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetWindowLong(jitter):
+def user32_GetWindowLong(jitter, get_str, set_str):
     """"
     [User32.dll] LONG GetWindowLong(HWND hWnd, [WindowLongIndex] nIndex)
     """"
@@ -3735,7 +4395,13 @@ def user32_GetWindowLong(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_RegisterClass(jitter):
+def user32_GetWindowLongA(jitter):
+    user32_GetWindowLong(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetWindowLongW(jitter):
+    user32_GetWindowLong(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_RegisterClass(jitter, get_str, set_str):
     """"
     [User32.dll] ATOM RegisterClass(CONST WNDCLASS* lpWndClass)
     """"
@@ -3743,7 +4409,13 @@ def user32_RegisterClass(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_RegisterClassEx(jitter):
+def user32_RegisterClassA(jitter):
+    user32_RegisterClass(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_RegisterClassW(jitter):
+    user32_RegisterClass(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_RegisterClassEx(jitter, get_str, set_str):
     """"
     [User32.dll] ATOM RegisterClassEx(CONST WNDCLASSEX* lpwcx)
     """"
@@ -3751,13 +4423,25 @@ def user32_RegisterClassEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetClassLong(jitter):
+def user32_RegisterClassExA(jitter):
+    user32_RegisterClassEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_RegisterClassExW(jitter):
+    user32_RegisterClassEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_SetClassLong(jitter, get_str, set_str):
     """"
     [User32.dll] DWORD SetClassLong(HWND hWnd, [ClassLongIndex] nIndex, LONG dwNewLong)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "nIndex", "dwNewLong"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetClassLongA(jitter):
+    user32_SetClassLong(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetClassLongW(jitter):
+    user32_SetClassLong(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_SetClassWord(jitter):
     """"
@@ -3767,7 +4451,7 @@ def user32_SetClassWord(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetWindowLong(jitter):
+def user32_SetWindowLong(jitter, get_str, set_str):
     """"
     [User32.dll] LONG SetWindowLong(HWND hWnd, [WindowLongIndex] nIndex, LONG dwNewLong)
     """"
@@ -3775,7 +4459,13 @@ def user32_SetWindowLong(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_UnregisterClass(jitter):
+def user32_SetWindowLongA(jitter):
+    user32_SetWindowLong(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetWindowLongW(jitter):
+    user32_SetWindowLong(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_UnregisterClass(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL UnregisterClass(LPCTSTR lpClassName, HINSTANCE hInstance)
     """"
@@ -3783,7 +4473,13 @@ def user32_UnregisterClass(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CallWindowProc(jitter):
+def user32_UnregisterClassA(jitter):
+    user32_UnregisterClass(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_UnregisterClassW(jitter):
+    user32_UnregisterClass(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CallWindowProc(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT CallWindowProc(WNDPROC lpPrevWndFunc, HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
@@ -3791,7 +4487,13 @@ def user32_CallWindowProc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_DefWindowProc(jitter):
+def user32_CallWindowProcA(jitter):
+    user32_CallWindowProc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CallWindowProcW(jitter):
+    user32_CallWindowProc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_DefWindowProc(jitter, get_str, set_str):
     """"
     [User32.dll] LRESULT DefWindowProc(HWND hWnd, [WinMsg] Msg, WPARAM wParam, LPARAM lParam)
     """"
@@ -3799,7 +4501,13 @@ def user32_DefWindowProc(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumProps(jitter):
+def user32_DefWindowProcA(jitter):
+    user32_DefWindowProc(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_DefWindowProcW(jitter):
+    user32_DefWindowProc(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumProps(jitter, get_str, set_str):
     """"
     [User32.dll] int EnumProps(HWND hWnd, PROPENUMPROC lpEnumFunc)
     """"
@@ -3807,7 +4515,13 @@ def user32_EnumProps(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumPropsEx(jitter):
+def user32_EnumPropsA(jitter):
+    user32_EnumProps(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumPropsW(jitter):
+    user32_EnumProps(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumPropsEx(jitter, get_str, set_str):
     """"
     [User32.dll] int EnumPropsEx(HWND hWnd, PROPENUMPROCEX lpEnumFunc, LPARAM lParam)
     """"
@@ -3815,7 +4529,13 @@ def user32_EnumPropsEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetProp(jitter):
+def user32_EnumPropsExA(jitter):
+    user32_EnumPropsEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumPropsExW(jitter):
+    user32_EnumPropsEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_GetProp(jitter, get_str, set_str):
     """"
     [User32.dll] HANDLE GetProp(HWND hWnd, LPCTSTR lpString)
     """"
@@ -3823,7 +4543,13 @@ def user32_GetProp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_RemoveProp(jitter):
+def user32_GetPropA(jitter):
+    user32_GetProp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetPropW(jitter):
+    user32_GetProp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_RemoveProp(jitter, get_str, set_str):
     """"
     [User32.dll] HANDLE RemoveProp(HWND hWnd, LPCTSTR lpString)
     """"
@@ -3831,13 +4557,25 @@ def user32_RemoveProp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetProp(jitter):
+def user32_RemovePropA(jitter):
+    user32_RemoveProp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_RemovePropW(jitter):
+    user32_RemoveProp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_SetProp(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SetProp(HWND hWnd, LPCTSTR lpString, HANDLE hData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWnd", "lpString", "hData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetPropA(jitter):
+    user32_SetProp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetPropW(jitter):
+    user32_SetProp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_CloseWindowStation(jitter):
     """"
@@ -3847,7 +4585,7 @@ def user32_CloseWindowStation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateWindowStation(jitter):
+def user32_CreateWindowStation(jitter, get_str, set_str):
     """"
     [User32.dll] HWINSTA CreateWindowStation(LPCTSTR lpwinsta, [CreateWindowStationFlags] dwFlags, [WindowStationAccessRights] dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa)
     """"
@@ -3855,13 +4593,25 @@ def user32_CreateWindowStation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumWindowStations(jitter):
+def user32_CreateWindowStationA(jitter):
+    user32_CreateWindowStation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateWindowStationW(jitter):
+    user32_CreateWindowStation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumWindowStations(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL EnumWindowStations(WINSTAENUMPROC lpEnumFunc, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpEnumFunc", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_EnumWindowStationsA(jitter):
+    user32_EnumWindowStations(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumWindowStationsW(jitter):
+    user32_EnumWindowStations(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetProcessWindowStation(jitter):
     """"
@@ -3871,7 +4621,7 @@ def user32_GetProcessWindowStation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_GetUserObjectInformation(jitter):
+def user32_GetUserObjectInformation(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL GetUserObjectInformation(HANDLE hObj, [UserObjectInformationEnum] nIndex, PVOID pvInfo, DWORD nLength, LPDWORD lpnLengthNeeded)
     """"
@@ -3879,13 +4629,25 @@ def user32_GetUserObjectInformation(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_OpenWindowStation(jitter):
+def user32_GetUserObjectInformationA(jitter):
+    user32_GetUserObjectInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_GetUserObjectInformationW(jitter):
+    user32_GetUserObjectInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_OpenWindowStation(jitter, get_str, set_str):
     """"
     [User32.dll] HWINSTA OpenWindowStation(LPTSTR lpszWinSta, BOOL fInherit, [WindowStationAccessRights] dwDesiredAccess)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszWinSta", "fInherit", "dwDesiredAccess"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_OpenWindowStationA(jitter):
+    user32_OpenWindowStation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_OpenWindowStationW(jitter):
+    user32_OpenWindowStation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_SetProcessWindowStation(jitter):
     """"
@@ -3903,7 +4665,7 @@ def user32_CloseDesktop(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateDesktop(jitter):
+def user32_CreateDesktop(jitter, get_str, set_str):
     """"
     [User32.dll] HDESK CreateDesktop(LPCTSTR lpszDesktop, LPCTSTR lpszDevice, LPDEVMODE pDevmode, [DesktopFlags] dwFlags, [DESKTOP_ACCESS_MASK] dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa)
     """"
@@ -3911,7 +4673,13 @@ def user32_CreateDesktop(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_CreateDesktopEx(jitter):
+def user32_CreateDesktopA(jitter):
+    user32_CreateDesktop(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateDesktopW(jitter):
+    user32_CreateDesktop(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_CreateDesktopEx(jitter, get_str, set_str):
     """"
     [User32.dll] HDESK CreateDesktopEx(LPCTSTR lpszDesktop, LPCTSTR lpszDevice, LPDEVMODE pDevmode, [DesktopFlags] dwFlags, [DESKTOP_ACCESS_MASK] dwDesiredAccess, LPSECURITY_ATTRIBUTES lpsa, ULONG ulHeapSize, PVOID pvoid)
     """"
@@ -3919,13 +4687,25 @@ def user32_CreateDesktopEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_EnumDesktops(jitter):
+def user32_CreateDesktopExA(jitter):
+    user32_CreateDesktopEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_CreateDesktopExW(jitter):
+    user32_CreateDesktopEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def user32_EnumDesktops(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL EnumDesktops(HWINSTA hwinsta, DESKTOPENUMPROC lpEnumFunc, LPARAM lParam)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hwinsta", "lpEnumFunc", "lParam"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_EnumDesktopsA(jitter):
+    user32_EnumDesktops(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_EnumDesktopsW(jitter):
+    user32_EnumDesktops(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_EnumDesktopWindows(jitter):
     """"
@@ -3943,13 +4723,19 @@ def user32_GetThreadDesktop(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_OpenDesktop(jitter):
+def user32_OpenDesktop(jitter, get_str, set_str):
     """"
     [User32.dll] HDESK OpenDesktop(LPTSTR lpszDesktop, [DesktopFlags] dwFlags, BOOL fInherit, [DESKTOP_ACCESS_MASK] dwDesiredAccess)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpszDesktop", "dwFlags", "fInherit", "dwDesiredAccess"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_OpenDesktopA(jitter):
+    user32_OpenDesktop(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_OpenDesktopW(jitter):
+    user32_OpenDesktop(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_OpenInputDesktop(jitter):
     """"
@@ -3967,13 +4753,19 @@ def user32_SetThreadDesktop(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_SetUserObjectInformation(jitter):
+def user32_SetUserObjectInformation(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL SetUserObjectInformation(HANDLE hObj, [UserObjectInformationEnum] nIndex, PVOID pvInfo, DWORD nLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hObj", "nIndex", "pvInfo", "nLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_SetUserObjectInformationA(jitter):
+    user32_SetUserObjectInformation(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_SetUserObjectInformationW(jitter):
+    user32_SetUserObjectInformation(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_SwitchDesktop(jitter):
     """"
@@ -4015,13 +4807,19 @@ def user32_SetWindowContextHelpId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def user32_WinHelp(jitter):
+def user32_WinHelp(jitter, get_str, set_str):
     """"
     [User32.dll] BOOL WinHelp(HWND hWndMain, LPCTSTR lpszHelp, UINT uCommand, ULONG_PTR dwData)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hWndMain", "lpszHelp", "uCommand", "dwData"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def user32_WinHelpA(jitter):
+    user32_WinHelp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def user32_WinHelpW(jitter):
+    user32_WinHelp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def user32_GetUserObjectSecurity(jitter):
     """"

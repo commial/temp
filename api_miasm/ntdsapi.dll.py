@@ -1,5 +1,5 @@
 
-def ntdsapi_DsAddSidHistory(jitter):
+def ntdsapi_DsAddSidHistory(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsAddSidHistory(HANDLE hDS, DWORD Flags, LPCTSTR SrcDomain, LPCTSTR SrcPrincipal, LPCTSTR SrcDomainController, RPC_AUTH_IDENTITY_HANDLE SrcDomainCreds, LPCTSTR DstDomain, LPCTSTR DstPrincipal)
     """"
@@ -7,13 +7,25 @@ def ntdsapi_DsAddSidHistory(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsBind(jitter):
+def ntdsapi_DsAddSidHistoryA(jitter):
+    ntdsapi_DsAddSidHistory(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsAddSidHistoryW(jitter):
+    ntdsapi_DsAddSidHistory(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsBind(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsBind(LPCTSTR DomainControllerName, LPCTSTR DnsDomainName, HANDLE* phDS)
     """"
     ret_ad, args = jitter.func_args_stdcall(["DomainControllerName", "DnsDomainName", "phDS"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsBindA(jitter):
+    ntdsapi_DsBind(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsBindW(jitter):
+    ntdsapi_DsBind(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdsapi_DsBindingSetTimeout(jitter):
     """"
@@ -23,7 +35,7 @@ def ntdsapi_DsBindingSetTimeout(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsBindToISTG(jitter):
+def ntdsapi_DsBindToISTG(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsBindToISTG(LPCTSTR SiteName, HANDLE* phDS)
     """"
@@ -31,7 +43,13 @@ def ntdsapi_DsBindToISTG(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsBindWithCred(jitter):
+def ntdsapi_DsBindToISTGA(jitter):
+    ntdsapi_DsBindToISTG(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsBindToISTGW(jitter):
+    ntdsapi_DsBindToISTG(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsBindWithCred(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsBindWithCred(LPCTSTR DomainControllerName, LPCTSTR DnsDomainName, RPC_AUTH_IDENTITY_HANDLE AuthIdentity, HANDLE* phDS)
     """"
@@ -39,7 +57,13 @@ def ntdsapi_DsBindWithCred(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsBindWithSpn(jitter):
+def ntdsapi_DsBindWithCredA(jitter):
+    ntdsapi_DsBindWithCred(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsBindWithCredW(jitter):
+    ntdsapi_DsBindWithCred(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsBindWithSpn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsBindWithSpn(LPCTSTR DomainControllerName, LPCTSTR DnsDomainName, RPC_AUTH_IDENTITY_HANDLE AuthIdentity, LPCTSTR ServicePrincipalName, HANDLE* phDS)
     """"
@@ -47,7 +71,13 @@ def ntdsapi_DsBindWithSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsBindWithSpnEx(jitter):
+def ntdsapi_DsBindWithSpnA(jitter):
+    ntdsapi_DsBindWithSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsBindWithSpnW(jitter):
+    ntdsapi_DsBindWithSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsBindWithSpnEx(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsBindWithSpnEx(LPCTSTR DomainControllerName, LPCTSTR DnsDomainName, RPC_AUTH_IDENTITY_HANDLE AuthIdentity, LPCTSTR ServicePrincipalName, DWORD BindFlags, HANDLE* phDS)
     """"
@@ -55,7 +85,13 @@ def ntdsapi_DsBindWithSpnEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsClientMakeSpnForTargetServer(jitter):
+def ntdsapi_DsBindWithSpnExA(jitter):
+    ntdsapi_DsBindWithSpnEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsBindWithSpnExW(jitter):
+    ntdsapi_DsBindWithSpnEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsClientMakeSpnForTargetServer(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsClientMakeSpnForTargetServer(LPCTSTR ServiceClass, LPCTSTR ServiceName, DWORD* pcSpnLength, LPTSTR pszSpn)
     """"
@@ -63,7 +99,13 @@ def ntdsapi_DsClientMakeSpnForTargetServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsCrackNames(jitter):
+def ntdsapi_DsClientMakeSpnForTargetServerA(jitter):
+    ntdsapi_DsClientMakeSpnForTargetServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsClientMakeSpnForTargetServerW(jitter):
+    ntdsapi_DsClientMakeSpnForTargetServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsCrackNames(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsCrackNames(HANDLE hDS, DS_NAME_FLAGS flags, DS_NAME_FORMAT formatOffered, DS_NAME_FORMAT formatDesired, DWORD cNames, LPCTSTR* rpNames, PDS_NAME_RESULT* ppResult)
     """"
@@ -71,7 +113,13 @@ def ntdsapi_DsCrackNames(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsCrackSpn(jitter):
+def ntdsapi_DsCrackNamesA(jitter):
+    ntdsapi_DsCrackNames(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsCrackNamesW(jitter):
+    ntdsapi_DsCrackNames(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsCrackSpn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsCrackSpn(LPCTSTR pszSPN, DWORD* pcServiceClass, LPTSTR ServiceClass, DWORD* pcServiceName, LPTSTR ServiceName, DWORD* pcInstanceName, LPTSTR InstanceName, USHORT* pInstancePort)
     """"
@@ -79,7 +127,13 @@ def ntdsapi_DsCrackSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsCrackUnquotedMangledRdn(jitter):
+def ntdsapi_DsCrackSpnA(jitter):
+    ntdsapi_DsCrackSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsCrackSpnW(jitter):
+    ntdsapi_DsCrackSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsCrackUnquotedMangledRdn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] BOOL DsCrackUnquotedMangledRdn(LPCTSTR pszRDN, DWORD cchRDN, GUID* pGuid, DS_MANGLE_FOR* peDsMangleFor)
     """"
@@ -87,7 +141,13 @@ def ntdsapi_DsCrackUnquotedMangledRdn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsFreeDomainControllerInfo(jitter):
+def ntdsapi_DsCrackUnquotedMangledRdnA(jitter):
+    ntdsapi_DsCrackUnquotedMangledRdn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsCrackUnquotedMangledRdnW(jitter):
+    ntdsapi_DsCrackUnquotedMangledRdn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsFreeDomainControllerInfo(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] void DsFreeDomainControllerInfo(DWORD InfoLevel, DWORD cInfo, VOID* pInfo)
     """"
@@ -95,13 +155,25 @@ def ntdsapi_DsFreeDomainControllerInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsFreeNameResult(jitter):
+def ntdsapi_DsFreeDomainControllerInfoA(jitter):
+    ntdsapi_DsFreeDomainControllerInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsFreeDomainControllerInfoW(jitter):
+    ntdsapi_DsFreeDomainControllerInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsFreeNameResult(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] void DsFreeNameResult(DS_NAME_RESULT* pResult)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pResult"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsFreeNameResultA(jitter):
+    ntdsapi_DsFreeNameResult(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsFreeNameResultW(jitter):
+    ntdsapi_DsFreeNameResult(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdsapi_DsFreePasswordCredentials(jitter):
     """"
@@ -111,7 +183,7 @@ def ntdsapi_DsFreePasswordCredentials(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsFreeSchemaGuidMap(jitter):
+def ntdsapi_DsFreeSchemaGuidMap(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] void DsFreeSchemaGuidMap(PDS_SCHEMA_GUID_MAP pGuidMap)
     """"
@@ -119,7 +191,13 @@ def ntdsapi_DsFreeSchemaGuidMap(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsFreeSpnArray(jitter):
+def ntdsapi_DsFreeSchemaGuidMapA(jitter):
+    ntdsapi_DsFreeSchemaGuidMap(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsFreeSchemaGuidMapW(jitter):
+    ntdsapi_DsFreeSchemaGuidMap(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsFreeSpnArray(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] void DsFreeSpnArray(DWORD cSpn, LPTSTR* rpszSpn)
     """"
@@ -127,13 +205,25 @@ def ntdsapi_DsFreeSpnArray(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsGetDomainControllerInfo(jitter):
+def ntdsapi_DsFreeSpnArrayA(jitter):
+    ntdsapi_DsFreeSpnArray(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsFreeSpnArrayW(jitter):
+    ntdsapi_DsFreeSpnArray(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsGetDomainControllerInfo(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsGetDomainControllerInfo(HANDLE hDs, LPTSTR DomainName, DWORD InfoLevel, DWORD* pcOut, VOID** ppInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDs", "DomainName", "InfoLevel", "pcOut", "ppInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsGetDomainControllerInfoA(jitter):
+    ntdsapi_DsGetDomainControllerInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsGetDomainControllerInfoW(jitter):
+    ntdsapi_DsGetDomainControllerInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdsapi_DsGetRdnW(jitter):
     """"
@@ -143,7 +233,7 @@ def ntdsapi_DsGetRdnW(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsGetSpn(jitter):
+def ntdsapi_DsGetSpn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsGetSpn(DS_SPN_NAME_TYPE ServiceType, LPCTSTR ServiceClass, LPCTSTR ServiceName, USHORT InstancePort, USHORT cInstanceNames, LPCTSTR* pInstanceNames, const USHORT* pInstancePorts, DWORD* pcSpn, LPTSTR** prpszSpn)
     """"
@@ -151,7 +241,13 @@ def ntdsapi_DsGetSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsInheritSecurityIdentity(jitter):
+def ntdsapi_DsGetSpnA(jitter):
+    ntdsapi_DsGetSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsGetSpnW(jitter):
+    ntdsapi_DsGetSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsInheritSecurityIdentity(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsInheritSecurityIdentity(HANDLE hDS, DWORD Flags, LPCTSTR SrcPrincipal, LPCTSTR DstPrincipal)
     """"
@@ -159,7 +255,13 @@ def ntdsapi_DsInheritSecurityIdentity(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsIsMangledDn(jitter):
+def ntdsapi_DsInheritSecurityIdentityA(jitter):
+    ntdsapi_DsInheritSecurityIdentity(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsInheritSecurityIdentityW(jitter):
+    ntdsapi_DsInheritSecurityIdentity(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsIsMangledDn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] BOOL DsIsMangledDn(LPCTSTR pszDn, DS_MANGLE_FOR eDsMangleFor)
     """"
@@ -167,7 +269,13 @@ def ntdsapi_DsIsMangledDn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsIsMangledRdnValue(jitter):
+def ntdsapi_DsIsMangledDnA(jitter):
+    ntdsapi_DsIsMangledDn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsIsMangledDnW(jitter):
+    ntdsapi_DsIsMangledDn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsIsMangledRdnValue(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] BOOL DsIsMangledRdnValue(LPCTSTR pszRdn, DWORD cRdn, DS_MANGLE_FOR eDsMangleForDesired)
     """"
@@ -175,7 +283,13 @@ def ntdsapi_DsIsMangledRdnValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsListDomainsInSite(jitter):
+def ntdsapi_DsIsMangledRdnValueA(jitter):
+    ntdsapi_DsIsMangledRdnValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsIsMangledRdnValueW(jitter):
+    ntdsapi_DsIsMangledRdnValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsListDomainsInSite(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsListDomainsInSite(HANDLE hDs, LPTSTR site, PDS_NAME_RESULT* ppDomains)
     """"
@@ -183,7 +297,13 @@ def ntdsapi_DsListDomainsInSite(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsListInfoForServer(jitter):
+def ntdsapi_DsListDomainsInSiteA(jitter):
+    ntdsapi_DsListDomainsInSite(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsListDomainsInSiteW(jitter):
+    ntdsapi_DsListDomainsInSite(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsListInfoForServer(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsListInfoForServer(HANDLE hDs, LPTSTR server, PDS_NAME_RESULT* ppInfo)
     """"
@@ -191,7 +311,13 @@ def ntdsapi_DsListInfoForServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsListRoles(jitter):
+def ntdsapi_DsListInfoForServerA(jitter):
+    ntdsapi_DsListInfoForServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsListInfoForServerW(jitter):
+    ntdsapi_DsListInfoForServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsListRoles(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsListRoles(HANDLE hDs, PDS_NAME_RESULT* ppRoles)
     """"
@@ -199,7 +325,13 @@ def ntdsapi_DsListRoles(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsListServersForDomainInSite(jitter):
+def ntdsapi_DsListRolesA(jitter):
+    ntdsapi_DsListRoles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsListRolesW(jitter):
+    ntdsapi_DsListRoles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsListServersForDomainInSite(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsListServersForDomainInSite(HANDLE hDs, LPTSTR domain, LPTSTR site, PDS_NAME_RESULT* ppServers)
     """"
@@ -207,7 +339,13 @@ def ntdsapi_DsListServersForDomainInSite(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsListServersInSite(jitter):
+def ntdsapi_DsListServersForDomainInSiteA(jitter):
+    ntdsapi_DsListServersForDomainInSite(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsListServersForDomainInSiteW(jitter):
+    ntdsapi_DsListServersForDomainInSite(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsListServersInSite(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsListServersInSite(HANDLE hDs, LPTSTR site, PDS_NAME_RESULT* ppServers)
     """"
@@ -215,7 +353,13 @@ def ntdsapi_DsListServersInSite(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsListSites(jitter):
+def ntdsapi_DsListServersInSiteA(jitter):
+    ntdsapi_DsListServersInSite(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsListServersInSiteW(jitter):
+    ntdsapi_DsListServersInSite(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsListSites(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsListSites(HANDLE hDs, PDS_NAME_RESULT* ppSites)
     """"
@@ -223,7 +367,13 @@ def ntdsapi_DsListSites(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsMakePasswordCredentials(jitter):
+def ntdsapi_DsListSitesA(jitter):
+    ntdsapi_DsListSites(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsListSitesW(jitter):
+    ntdsapi_DsListSites(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsMakePasswordCredentials(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsMakePasswordCredentials(LPCTSTR User, LPCTSTR Domain, LPCTSTR Password, RPC_AUTH_IDENTITY_HANDLE* pAuthIdentity)
     """"
@@ -231,7 +381,13 @@ def ntdsapi_DsMakePasswordCredentials(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsMakeSpn(jitter):
+def ntdsapi_DsMakePasswordCredentialsA(jitter):
+    ntdsapi_DsMakePasswordCredentials(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsMakePasswordCredentialsW(jitter):
+    ntdsapi_DsMakePasswordCredentials(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsMakeSpn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsMakeSpn(LPCTSTR ServiceClass, LPCTSTR ServiceName, LPCTSTR InstanceName, USHORT InstancePort, LPCTSTR Referrer, DWORD* pcSpnLength, LPTSTR pszSpn)
     """"
@@ -239,7 +395,13 @@ def ntdsapi_DsMakeSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsMapSchemaGuids(jitter):
+def ntdsapi_DsMakeSpnA(jitter):
+    ntdsapi_DsMakeSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsMakeSpnW(jitter):
+    ntdsapi_DsMakeSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsMapSchemaGuids(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsMapSchemaGuids(HANDLE hDs, DWORD cGuids, GUID* rGuids, DS_SCHEMA_GUID_MAP** ppGuidMap)
     """"
@@ -247,13 +409,25 @@ def ntdsapi_DsMapSchemaGuids(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsQuerySitesByCost(jitter):
+def ntdsapi_DsMapSchemaGuidsA(jitter):
+    ntdsapi_DsMapSchemaGuids(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsMapSchemaGuidsW(jitter):
+    ntdsapi_DsMapSchemaGuids(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsQuerySitesByCost(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsQuerySitesByCost(HANDLE hDS, LPTSTR pwszFromSite, LPTSTR* rgwszToSites, DWORD cToSites, DWORD dwFlags, PDS_SITE_COST_INFO* prgSiteInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDS", "pwszFromSite", "rgwszToSites", "cToSites", "dwFlags", "prgSiteInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsQuerySitesByCostA(jitter):
+    ntdsapi_DsQuerySitesByCost(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsQuerySitesByCostW(jitter):
+    ntdsapi_DsQuerySitesByCost(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdsapi_DsQuerySitesFree(jitter):
     """"
@@ -263,7 +437,7 @@ def ntdsapi_DsQuerySitesFree(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsQuoteRdnValue(jitter):
+def ntdsapi_DsQuoteRdnValue(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsQuoteRdnValue(DWORD cUnquotedRdnValueLength, LPCTCH psUnquotedRdnValue, DWORD* pcQuotedRdnValueLength, LPTCH psQuotedRdnValue)
     """"
@@ -271,7 +445,13 @@ def ntdsapi_DsQuoteRdnValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsRemoveDsDomain(jitter):
+def ntdsapi_DsQuoteRdnValueA(jitter):
+    ntdsapi_DsQuoteRdnValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsQuoteRdnValueW(jitter):
+    ntdsapi_DsQuoteRdnValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsRemoveDsDomain(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsRemoveDsDomain(HANDLE hDs, LPTSTR DomainDN)
     """"
@@ -279,7 +459,13 @@ def ntdsapi_DsRemoveDsDomain(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsRemoveDsServer(jitter):
+def ntdsapi_DsRemoveDsDomainA(jitter):
+    ntdsapi_DsRemoveDsDomain(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsRemoveDsDomainW(jitter):
+    ntdsapi_DsRemoveDsDomain(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsRemoveDsServer(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsRemoveDsServer(HANDLE hDs, LPTSTR ServerDN, LPTSTR DomainDN, BOOL* fLastDcInDomain, BOOL fCommit)
     """"
@@ -287,13 +473,25 @@ def ntdsapi_DsRemoveDsServer(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaAdd(jitter):
+def ntdsapi_DsRemoveDsServerA(jitter):
+    ntdsapi_DsRemoveDsServer(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsRemoveDsServerW(jitter):
+    ntdsapi_DsRemoveDsServer(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsReplicaAdd(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaAdd(HANDLE hDS, LPCTSTR NameContext, LPCTSTR SourceDsaDn, LPCTSTR TransportDn, LPCTSTR SourceDsaAddress, const PSCHEDULE pSchedule, DWORD Options)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDS", "NameContext", "SourceDsaDn", "TransportDn", "SourceDsaAddress", "pSchedule", "Options"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsReplicaAddA(jitter):
+    ntdsapi_DsReplicaAdd(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaAddW(jitter):
+    ntdsapi_DsReplicaAdd(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdsapi_DsReplicaConsistencyCheck(jitter):
     """"
@@ -303,13 +501,19 @@ def ntdsapi_DsReplicaConsistencyCheck(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaDel(jitter):
+def ntdsapi_DsReplicaDel(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaDel(HANDLE hDS, LPCTSTR NameContext, LPCTSTR DsaSrc, ULONG Options)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDS", "NameContext", "DsaSrc", "Options"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsReplicaDelA(jitter):
+    ntdsapi_DsReplicaDel(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaDelW(jitter):
+    ntdsapi_DsReplicaDel(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ntdsapi_DsReplicaFreeInfo(jitter):
     """"
@@ -335,7 +539,7 @@ def ntdsapi_DsReplicaGetInfo2W(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaModify(jitter):
+def ntdsapi_DsReplicaModify(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaModify(HANDLE hDS, LPCTSTR NameContext, const UUID* pUuidSourceDsa, LPCTSTR TransportDn, LPCTSTR SourceDsaAddress, const PSCHEDULE pSchedule, DWORD ReplicaFlags, DWORD ModifyFields, DWORD Options)
     """"
@@ -343,7 +547,13 @@ def ntdsapi_DsReplicaModify(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaSync(jitter):
+def ntdsapi_DsReplicaModifyA(jitter):
+    ntdsapi_DsReplicaModify(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaModifyW(jitter):
+    ntdsapi_DsReplicaModify(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsReplicaSync(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaSync(HANDLE hDS, LPCTSTR NameContext, const UUID* pUuidDsaSrc, ULONG Options)
     """"
@@ -351,7 +561,13 @@ def ntdsapi_DsReplicaSync(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaSyncAll(jitter):
+def ntdsapi_DsReplicaSyncA(jitter):
+    ntdsapi_DsReplicaSync(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaSyncW(jitter):
+    ntdsapi_DsReplicaSync(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsReplicaSyncAll(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaSyncAll(HANDLE hDS, LPTSTR pszNameContext, ULONG ulFlags, LPVOID pCallbackData, PDS_REPSYNCALL_ERRINFO** pErrors)
     """"
@@ -359,7 +575,13 @@ def ntdsapi_DsReplicaSyncAll(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaUpdateRefs(jitter):
+def ntdsapi_DsReplicaSyncAllA(jitter):
+    ntdsapi_DsReplicaSyncAll(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaSyncAllW(jitter):
+    ntdsapi_DsReplicaSyncAll(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsReplicaUpdateRefs(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaUpdateRefs(HANDLE hDS, LPCTSTR NameContext, LPCTSTR DsaDest, const UUID* pUuidDsaDest, ULONG Options)
     """"
@@ -367,7 +589,13 @@ def ntdsapi_DsReplicaUpdateRefs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsReplicaVerifyObjects(jitter):
+def ntdsapi_DsReplicaUpdateRefsA(jitter):
+    ntdsapi_DsReplicaUpdateRefs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaUpdateRefsW(jitter):
+    ntdsapi_DsReplicaUpdateRefs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsReplicaVerifyObjects(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsReplicaVerifyObjects(HANDLE hDS, LPCTSTR NameContext, const UUID* pUuidDsaSrc, ULONG ulOptions)
     """"
@@ -375,7 +603,13 @@ def ntdsapi_DsReplicaVerifyObjects(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsServerRegisterSpn(jitter):
+def ntdsapi_DsReplicaVerifyObjectsA(jitter):
+    ntdsapi_DsReplicaVerifyObjects(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsReplicaVerifyObjectsW(jitter):
+    ntdsapi_DsReplicaVerifyObjects(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsServerRegisterSpn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsServerRegisterSpn(DS_SPN_WRITE_OP Operation, LPCTSTR ServiceClass, LPCTSTR UserObjectDN)
     """"
@@ -383,7 +617,13 @@ def ntdsapi_DsServerRegisterSpn(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsUnBind(jitter):
+def ntdsapi_DsServerRegisterSpnA(jitter):
+    ntdsapi_DsServerRegisterSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsServerRegisterSpnW(jitter):
+    ntdsapi_DsServerRegisterSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsUnBind(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsUnBind(HANDLE* phDS)
     """"
@@ -391,7 +631,13 @@ def ntdsapi_DsUnBind(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsUnquoteRdnValue(jitter):
+def ntdsapi_DsUnBindA(jitter):
+    ntdsapi_DsUnBind(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsUnBindW(jitter):
+    ntdsapi_DsUnBind(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsUnquoteRdnValue(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsUnquoteRdnValue(DWORD cQuotedRdnValueLength, LPCTCH psQuotedRdnValue, DWORD* pcUnquotedRdnValueLength, LPTCH psUnquotedRdnValue)
     """"
@@ -399,10 +645,22 @@ def ntdsapi_DsUnquoteRdnValue(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ntdsapi_DsWriteAccountSpn(jitter):
+def ntdsapi_DsUnquoteRdnValueA(jitter):
+    ntdsapi_DsUnquoteRdnValue(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsUnquoteRdnValueW(jitter):
+    ntdsapi_DsUnquoteRdnValue(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ntdsapi_DsWriteAccountSpn(jitter, get_str, set_str):
     """"
     [NtDsAPI.dll] [ERROR_CODE] DsWriteAccountSpn(HANDLE hDS, DS_SPN_WRITE_OP Operation, LPCTSTR pszAccount, DWORD cSpn, LPCTSTR* rpszSpn)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hDS", "Operation", "pszAccount", "cSpn", "rpszSpn"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ntdsapi_DsWriteAccountSpnA(jitter):
+    ntdsapi_DsWriteAccountSpn(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ntdsapi_DsWriteAccountSpnW(jitter):
+    ntdsapi_DsWriteAccountSpn(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

@@ -423,7 +423,7 @@ def urlmon_RevokeFormatEnumerator(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def urlmon_URLDownloadToCacheFile(jitter):
+def urlmon_URLDownloadToCacheFile(jitter, get_str, set_str):
     """"
     [urlmon.dll] HRESULT URLDownloadToCacheFile(LPUNKNOWN lpUnkcaller, LPCSTR szURL, LPTSTR szFileName, DWORD cchFileName, DWORD dwReserved, IBindStatusCallback* pBSC)
     """"
@@ -431,13 +431,25 @@ def urlmon_URLDownloadToCacheFile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def urlmon_URLDownloadToFile(jitter):
+def urlmon_URLDownloadToCacheFileA(jitter):
+    urlmon_URLDownloadToCacheFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def urlmon_URLDownloadToCacheFileW(jitter):
+    urlmon_URLDownloadToCacheFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def urlmon_URLDownloadToFile(jitter, get_str, set_str):
     """"
     [urlmon.dll] HRESULT URLDownloadToFile(LPUNKNOWN pCaller, LPCTSTR szURL, LPCTSTR szFileName, DWORD dwReserved, LPBINDSTATUSCALLBACK lpfnCB)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pCaller", "szURL", "szFileName", "dwReserved", "lpfnCB"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def urlmon_URLDownloadToFileA(jitter):
+    urlmon_URLDownloadToFile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def urlmon_URLDownloadToFileW(jitter):
+    urlmon_URLDownloadToFile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def urlmon_UrlMkGetSessionOption(jitter):
     """"
@@ -455,7 +467,7 @@ def urlmon_UrlMkSetSessionOption(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def urlmon_URLOpenBlockingStream(jitter):
+def urlmon_URLOpenBlockingStream(jitter, get_str, set_str):
     """"
     [urlmon.dll] HRESULT URLOpenBlockingStream(LPUNKNOWN pCaller, LPCSTR szURL, LPSTREAM* ppStream, DWORD dwReserved, LPBINDSTATUSCALLBACK lpfnCB)
     """"
@@ -463,7 +475,13 @@ def urlmon_URLOpenBlockingStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def urlmon_URLOpenPullStream(jitter):
+def urlmon_URLOpenBlockingStreamA(jitter):
+    urlmon_URLOpenBlockingStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def urlmon_URLOpenBlockingStreamW(jitter):
+    urlmon_URLOpenBlockingStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def urlmon_URLOpenPullStream(jitter, get_str, set_str):
     """"
     [urlmon.dll] HRESULT URLOpenPullStream(LPUNKNOWN pCaller, LPCSTR szURL, DWORD dwReserved, LPBINDSTATUSCALLBACK lpfnCB)
     """"
@@ -471,13 +489,25 @@ def urlmon_URLOpenPullStream(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def urlmon_URLOpenStream(jitter):
+def urlmon_URLOpenPullStreamA(jitter):
+    urlmon_URLOpenPullStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def urlmon_URLOpenPullStreamW(jitter):
+    urlmon_URLOpenPullStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def urlmon_URLOpenStream(jitter, get_str, set_str):
     """"
     [urlmon.dll] HRESULT URLOpenStream(LPUNKNOWN pCaller, LPCSTR szURL, DWORD dwReserved, LPBINDSTATUSCALLBACK lpfnCB)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pCaller", "szURL", "dwReserved", "lpfnCB"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def urlmon_URLOpenStreamA(jitter):
+    urlmon_URLOpenStream(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def urlmon_URLOpenStreamW(jitter):
+    urlmon_URLOpenStream(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def urlmon_CompatFlagsFromClsid(jitter):
     """"

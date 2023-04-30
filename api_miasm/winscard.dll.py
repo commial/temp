@@ -7,13 +7,19 @@ def winscard_SCardAccessStartedEvent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardAddReaderToGroup(jitter):
+def winscard_SCardAddReaderToGroup(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardAddReaderToGroup(SCARDCONTEXT hContext, LPCTSTR szReaderName, LPCTSTR szGroupName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "szReaderName", "szGroupName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardAddReaderToGroupA(jitter):
+    winscard_SCardAddReaderToGroup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardAddReaderToGroupW(jitter):
+    winscard_SCardAddReaderToGroup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardAudit(jitter):
     """"
@@ -39,13 +45,19 @@ def winscard_SCardCancel(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardConnect(jitter):
+def winscard_SCardConnect(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardConnect(SCARDCONTEXT hContext, LPCTSTR szReader, DWORD dwShareMode, DWORD dwPreferredProtocols, LPSCARDHANDLE phCard, LPDWORD pdwActiveProtocol)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "szReader", "dwShareMode", "dwPreferredProtocols", "phCard", "pdwActiveProtocol"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardConnectA(jitter):
+    winscard_SCardConnect(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardConnectW(jitter):
+    winscard_SCardConnect(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardControl(jitter):
     """"
@@ -79,7 +91,7 @@ def winscard_SCardEstablishContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardForgetCardType(jitter):
+def winscard_SCardForgetCardType(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardForgetCardType(SCARDCONTEXT hContext, LPCTSTR szCardName)
     """"
@@ -87,7 +99,13 @@ def winscard_SCardForgetCardType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardForgetReader(jitter):
+def winscard_SCardForgetCardTypeA(jitter):
+    winscard_SCardForgetCardType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardForgetCardTypeW(jitter):
+    winscard_SCardForgetCardType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardForgetReader(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardForgetReader(SCARDCONTEXT hContext, LPCTSTR szReaderName)
     """"
@@ -95,13 +113,25 @@ def winscard_SCardForgetReader(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardForgetReaderGroup(jitter):
+def winscard_SCardForgetReaderA(jitter):
+    winscard_SCardForgetReader(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardForgetReaderW(jitter):
+    winscard_SCardForgetReader(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardForgetReaderGroup(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardForgetReaderGroup(SCARDCONTEXT hContext, LPCTSTR szGroupName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "szGroupName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardForgetReaderGroupA(jitter):
+    winscard_SCardForgetReaderGroup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardForgetReaderGroupW(jitter):
+    winscard_SCardForgetReaderGroup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardFreeMemory(jitter):
     """"
@@ -119,7 +149,7 @@ def winscard_SCardGetAttrib(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardGetCardTypeProviderName(jitter):
+def winscard_SCardGetCardTypeProviderName(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardGetCardTypeProviderName(SCARDCONTEXT hContext, LPCTSTR szCardName, DWORD dwProviderId, LPTSTR szProvider, LPDWORD* pcchProvider)
     """"
@@ -127,7 +157,13 @@ def winscard_SCardGetCardTypeProviderName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardGetDeviceTypeId(jitter):
+def winscard_SCardGetCardTypeProviderNameA(jitter):
+    winscard_SCardGetCardTypeProviderName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardGetCardTypeProviderNameW(jitter):
+    winscard_SCardGetCardTypeProviderName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardGetDeviceTypeId(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardGetDeviceTypeId(SCARDCONTEXT hContext, LPCTSTR szReaderName, LPDWORD pdwDeviceTypeId)
     """"
@@ -135,7 +171,13 @@ def winscard_SCardGetDeviceTypeId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardGetProviderId(jitter):
+def winscard_SCardGetDeviceTypeIdA(jitter):
+    winscard_SCardGetDeviceTypeId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardGetDeviceTypeIdW(jitter):
+    winscard_SCardGetDeviceTypeId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardGetProviderId(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardGetProviderId(SCARDCONTEXT hContext, LPCTSTR szCard, LPGUID pguidProviderId)
     """"
@@ -143,7 +185,13 @@ def winscard_SCardGetProviderId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardGetReaderDeviceInstanceId(jitter):
+def winscard_SCardGetProviderIdA(jitter):
+    winscard_SCardGetProviderId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardGetProviderIdW(jitter):
+    winscard_SCardGetProviderId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardGetReaderDeviceInstanceId(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardGetReaderDeviceInstanceId(SCARDCONTEXT hContext, LPCTSTR szReaderName, LPTSTR szDeviceInstanceId, LPDWORD cchDeviceInstanceId)
     """"
@@ -151,7 +199,13 @@ def winscard_SCardGetReaderDeviceInstanceId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardGetReaderIcon(jitter):
+def winscard_SCardGetReaderDeviceInstanceIdA(jitter):
+    winscard_SCardGetReaderDeviceInstanceId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardGetReaderDeviceInstanceIdW(jitter):
+    winscard_SCardGetReaderDeviceInstanceId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardGetReaderIcon(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardGetReaderIcon(SCARDCONTEXT hContext, LPCTSTR szReaderName, LPBYTE pbIcon, LPDWORD pcbIcon)
     """"
@@ -159,13 +213,25 @@ def winscard_SCardGetReaderIcon(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardGetStatusChange(jitter):
+def winscard_SCardGetReaderIconA(jitter):
+    winscard_SCardGetReaderIcon(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardGetReaderIconW(jitter):
+    winscard_SCardGetReaderIcon(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardGetStatusChange(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardGetStatusChange(SCARDCONTEXT hContext, DWORD dwTimeout, LPSCARD_READERSTATE rgReaderStates, DWORD cReaders)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "dwTimeout", "rgReaderStates", "cReaders"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardGetStatusChangeA(jitter):
+    winscard_SCardGetStatusChange(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardGetStatusChangeW(jitter):
+    winscard_SCardGetStatusChange(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardGetTransmitCount(jitter):
     """"
@@ -175,7 +241,7 @@ def winscard_SCardGetTransmitCount(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardIntroduceCardType(jitter):
+def winscard_SCardIntroduceCardType(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardIntroduceCardType(SCARDCONTEXT hContext, LPCTSTR szCardName, LPCGUID pguidPrimaryProvider, LPCGUID rgguidInterfaces, DWORD dwInterfaceCount, LPCBYTE pbAtr, LPCBYTE pbAtrMask, DWORD cbAtrLen)
     """"
@@ -183,7 +249,13 @@ def winscard_SCardIntroduceCardType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardIntroduceReader(jitter):
+def winscard_SCardIntroduceCardTypeA(jitter):
+    winscard_SCardIntroduceCardType(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardIntroduceCardTypeW(jitter):
+    winscard_SCardIntroduceCardType(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardIntroduceReader(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardIntroduceReader(SCARDCONTEXT hContext, LPCTSTR szReaderName, LPCTSTR szDeviceName)
     """"
@@ -191,13 +263,25 @@ def winscard_SCardIntroduceReader(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardIntroduceReaderGroup(jitter):
+def winscard_SCardIntroduceReaderA(jitter):
+    winscard_SCardIntroduceReader(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardIntroduceReaderW(jitter):
+    winscard_SCardIntroduceReader(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardIntroduceReaderGroup(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardIntroduceReaderGroup(SCARDCONTEXT hContext, LPCTSTR szGroupName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "szGroupName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardIntroduceReaderGroupA(jitter):
+    winscard_SCardIntroduceReaderGroup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardIntroduceReaderGroupW(jitter):
+    winscard_SCardIntroduceReaderGroup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardIsValidContext(jitter):
     """"
@@ -207,7 +291,7 @@ def winscard_SCardIsValidContext(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardListCards(jitter):
+def winscard_SCardListCards(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardListCards(SCARDCONTEXT hContext, LPCBYTE pbAtr, LPCGUID rgguidInterfaces, DWORD cguidInterfaceCount, LPTSTR mszCards, LPDWORD pcchCards)
     """"
@@ -215,7 +299,13 @@ def winscard_SCardListCards(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardListInterfaces(jitter):
+def winscard_SCardListCardsA(jitter):
+    winscard_SCardListCards(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardListCardsW(jitter):
+    winscard_SCardListCards(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardListInterfaces(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardListInterfaces(SCARDCONTEXT hContext, LPCTSTR szCard, LPGUID pguidInterfaces, LPDWORD pcguidInterfaces)
     """"
@@ -223,7 +313,13 @@ def winscard_SCardListInterfaces(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardListReaderGroups(jitter):
+def winscard_SCardListInterfacesA(jitter):
+    winscard_SCardListInterfaces(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardListInterfacesW(jitter):
+    winscard_SCardListInterfaces(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardListReaderGroups(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardListReaderGroups(SCARDCONTEXT hContext, LPTSTR mszGroups, LPDWORD pcchGroups)
     """"
@@ -231,7 +327,13 @@ def winscard_SCardListReaderGroups(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardListReaders(jitter):
+def winscard_SCardListReaderGroupsA(jitter):
+    winscard_SCardListReaderGroups(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardListReaderGroupsW(jitter):
+    winscard_SCardListReaderGroups(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardListReaders(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardListReaders(SCARDCONTEXT hContext, LPCTSTR mszGroups, LPTSTR mszReaders, LPDWORD pcchReaders)
     """"
@@ -239,7 +341,13 @@ def winscard_SCardListReaders(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardListReadersWithDeviceInstanceId(jitter):
+def winscard_SCardListReadersA(jitter):
+    winscard_SCardListReaders(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardListReadersW(jitter):
+    winscard_SCardListReaders(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardListReadersWithDeviceInstanceId(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardListReadersWithDeviceInstanceId(SCARDCONTEXT hContext, LPCTSTR szDeviceInstanceId, LPTSTR mszReaders, LPDWORD pcchReaders)
     """"
@@ -247,7 +355,13 @@ def winscard_SCardListReadersWithDeviceInstanceId(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardLocateCards(jitter):
+def winscard_SCardListReadersWithDeviceInstanceIdA(jitter):
+    winscard_SCardListReadersWithDeviceInstanceId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardListReadersWithDeviceInstanceIdW(jitter):
+    winscard_SCardListReadersWithDeviceInstanceId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardLocateCards(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardLocateCards(SCARDCONTEXT hContext, LPCTSTR mszCards, LPSCARD_READERSTATE rgReaderStates, DWORD cReaders)
     """"
@@ -255,7 +369,13 @@ def winscard_SCardLocateCards(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardLocateCardsByATR(jitter):
+def winscard_SCardLocateCardsA(jitter):
+    winscard_SCardLocateCards(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardLocateCardsW(jitter):
+    winscard_SCardLocateCards(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardLocateCardsByATR(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardLocateCardsByATR(SCARDCONTEXT hContext, LPSCARD_ATRMASK rgAtrMasks, DWORD cAtrs, LPSCARD_READERSTATE rgReaderStates, DWORD cReaders)
     """"
@@ -263,13 +383,25 @@ def winscard_SCardLocateCardsByATR(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardReadCache(jitter):
+def winscard_SCardLocateCardsByATRA(jitter):
+    winscard_SCardLocateCardsByATR(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardLocateCardsByATRW(jitter):
+    winscard_SCardLocateCardsByATR(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def winscard_SCardReadCache(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardReadCache(SCARDCONTEXT hContext, UUID* CardIdentifier, DWORD FreshnessCounter, LPTSTR LookupName, PBYTE Data, DWORD* DataLen)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "CardIdentifier", "FreshnessCounter", "LookupName", "Data", "DataLen"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardReadCacheA(jitter):
+    winscard_SCardReadCache(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardReadCacheW(jitter):
+    winscard_SCardReadCache(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardReconnect(jitter):
     """"
@@ -295,13 +427,19 @@ def winscard_SCardReleaseStartedEvent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardRemoveReaderFromGroup(jitter):
+def winscard_SCardRemoveReaderFromGroup(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardRemoveReaderFromGroup(SCARDCONTEXT hContext, LPCTSTR szReaderName, LPCTSTR szGroupName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "szReaderName", "szGroupName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardRemoveReaderFromGroupA(jitter):
+    winscard_SCardRemoveReaderFromGroup(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardRemoveReaderFromGroupW(jitter):
+    winscard_SCardRemoveReaderFromGroup(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardSetAttrib(jitter):
     """"
@@ -311,13 +449,19 @@ def winscard_SCardSetAttrib(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardSetCardTypeProviderName(jitter):
+def winscard_SCardSetCardTypeProviderName(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardSetCardTypeProviderName(SCARDCONTEXT hContext, LPCTSTR szCardName, DWORD dwProviderId, LPCTSTR szProvider)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "szCardName", "dwProviderId", "szProvider"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardSetCardTypeProviderNameA(jitter):
+    winscard_SCardSetCardTypeProviderName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardSetCardTypeProviderNameW(jitter):
+    winscard_SCardSetCardTypeProviderName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardState(jitter):
     """"
@@ -327,13 +471,19 @@ def winscard_SCardState(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardStatus(jitter):
+def winscard_SCardStatus(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardStatus(SCARDHANDLE hCard, LPTSTR szReaderName, LPDWORD pcchReaderLen, LPDWORD pdwState, LPDWORD pdwProtocol, LPBYTE pbAtr, LPDWORD pcbAtrLen)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hCard", "szReaderName", "pcchReaderLen", "pdwState", "pdwProtocol", "pbAtr", "pcbAtrLen"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardStatusA(jitter):
+    winscard_SCardStatus(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardStatusW(jitter):
+    winscard_SCardStatus(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def winscard_SCardTransmit(jitter):
     """"
@@ -343,10 +493,16 @@ def winscard_SCardTransmit(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def winscard_SCardWriteCache(jitter):
+def winscard_SCardWriteCache(jitter, get_str, set_str):
     """"
     [WinSCard.dll] [SCARD_ERROR] SCardWriteCache(SCARDCONTEXT hContext, UUID* CardIdentifier, DWORD FreshnessCounter, LPTSTR LookupName, PBYTE Data, DWORD DataLen)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hContext", "CardIdentifier", "FreshnessCounter", "LookupName", "Data", "DataLen"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def winscard_SCardWriteCacheA(jitter):
+    winscard_SCardWriteCache(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def winscard_SCardWriteCacheW(jitter):
+    winscard_SCardWriteCache(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))

@@ -55,7 +55,7 @@ def icm32_CMCreateMultiProfileTransform(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def icm32_CMCreateProfile(jitter):
+def icm32_CMCreateProfile(jitter, get_str, set_str):
     """"
     [Icm32.dll] BOOL CMCreateProfile(LPLOGCOLORSPACE lpColorSpace, LPBYTE* lpProfileData)
     """"
@@ -63,13 +63,25 @@ def icm32_CMCreateProfile(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def icm32_CMCreateTransformExt(jitter):
+def icm32_CMCreateProfileA(jitter):
+    icm32_CMCreateProfile(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def icm32_CMCreateProfileW(jitter):
+    icm32_CMCreateProfile(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def icm32_CMCreateTransformExt(jitter, get_str, set_str):
     """"
     [Icm32.dll] HCMTRANSFORM CMCreateTransformExt(LPLOGCOLORSPACE lpColorSpace, LPDEVCHARACTER lpDevCharacter, LPDEVCHARACTER lpTargetDevCharacter, [CCT_FLAGS] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpColorSpace", "lpDevCharacter", "lpTargetDevCharacter", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def icm32_CMCreateTransformExtA(jitter):
+    icm32_CMCreateTransformExt(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def icm32_CMCreateTransformExtW(jitter):
+    icm32_CMCreateTransformExt(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def icm32_CMDeleteTransform(jitter):
     """"

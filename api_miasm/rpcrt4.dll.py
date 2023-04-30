@@ -1,11 +1,17 @@
 
-def rpcrt4_DceErrorInqText(jitter):
+def rpcrt4_DceErrorInqText(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS DceErrorInqText(unsigned long StatusToConvert, RPC_TSTR ErrorText)
     """"
     ret_ad, args = jitter.func_args_stdcall(["StatusToConvert", "ErrorText"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_DceErrorInqTextA(jitter):
+    rpcrt4_DceErrorInqText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_DceErrorInqTextW(jitter):
+    rpcrt4_DceErrorInqText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_MesBufferHandleReset(jitter):
     """"
@@ -143,13 +149,19 @@ def rpcrt4_RpcBindingCopy(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingCreate(jitter):
+def rpcrt4_RpcBindingCreate(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingCreate(RPC_BINDING_HANDLE_TEMPLATE_V1* Template, RPC_BINDING_HANDLE_SECURITY_V1* Security, RPC_BINDING_HANDLE_OPTIONS_V1* Options, RPC_BINDING_HANDLE* Binding)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Template", "Security", "Options", "Binding"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcBindingCreateA(jitter):
+    rpcrt4_RpcBindingCreate(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingCreateW(jitter):
+    rpcrt4_RpcBindingCreate(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcBindingFree(jitter):
     """"
@@ -159,7 +171,7 @@ def rpcrt4_RpcBindingFree(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingFromStringBinding(jitter):
+def rpcrt4_RpcBindingFromStringBinding(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingFromStringBinding(RPC_TSTR StringBinding, RPC_BINDING_HANDLE* Binding)
     """"
@@ -167,7 +179,13 @@ def rpcrt4_RpcBindingFromStringBinding(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingInqAuthClient(jitter):
+def rpcrt4_RpcBindingFromStringBindingA(jitter):
+    rpcrt4_RpcBindingFromStringBinding(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingFromStringBindingW(jitter):
+    rpcrt4_RpcBindingFromStringBinding(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthClient(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingInqAuthClient(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE* Privs, RPC_TSTR* ServerPrincName, [RPC_C_AUTHN_LEVEL*] AuthnLevel, [RPC_C_AUTHN_SVC*] AuthnSvc, [RPC_C_AUTHZ*] AuthzSvc)
     """"
@@ -175,7 +193,13 @@ def rpcrt4_RpcBindingInqAuthClient(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingInqAuthClientEx(jitter):
+def rpcrt4_RpcBindingInqAuthClientA(jitter):
+    rpcrt4_RpcBindingInqAuthClient(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthClientW(jitter):
+    rpcrt4_RpcBindingInqAuthClient(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthClientEx(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingInqAuthClientEx(RPC_BINDING_HANDLE ClientBinding, RPC_AUTHZ_HANDLE* Privs, RPC_TSTR* ServerPrincName, [RPC_C_AUTHN_LEVEL*] AuthnLevel, [RPC_C_AUTHN_SVC*] AuthnSvc, [RPC_C_AUTHZ*] AuthzSvc, unsigned long flags)
     """"
@@ -183,7 +207,13 @@ def rpcrt4_RpcBindingInqAuthClientEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingInqAuthInfo(jitter):
+def rpcrt4_RpcBindingInqAuthClientExA(jitter):
+    rpcrt4_RpcBindingInqAuthClientEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthClientExW(jitter):
+    rpcrt4_RpcBindingInqAuthClientEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthInfo(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingInqAuthInfo(RPC_BINDING_HANDLE Binding, RPC_TSTR* ServerPrincName, [RPC_C_AUTHN_LEVEL*] AuthnLevel, [RPC_C_AUTHN_SVC*] AuthnSvc, RPC_AUTH_IDENTITY_HANDLE* AuthIdentity, [RPC_C_AUTHZ*] AuthzSvc)
     """"
@@ -191,13 +221,25 @@ def rpcrt4_RpcBindingInqAuthInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingInqAuthInfoEx(jitter):
+def rpcrt4_RpcBindingInqAuthInfoA(jitter):
+    rpcrt4_RpcBindingInqAuthInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthInfoW(jitter):
+    rpcrt4_RpcBindingInqAuthInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthInfoEx(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingInqAuthInfoEx(RPC_BINDING_HANDLE Binding, RPC_TSTR ServerPrincName, [RPC_C_AUTHN_LEVEL*] AuthnLevel, [RPC_C_AUTHN_SVC*] AuthnSvc, RPC_AUTH_IDENTITY_HANDLE* AuthIdentity, [RPC_C_AUTHZ*] AuthzSvc, unsigned long RpcQosVersion, RPC_SECURITY_QOS* SecurityQos)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "ServerPrincName", "AuthnLevel", "AuthnSvc", "AuthIdentity", "AuthzSvc", "RpcQosVersion", "SecurityQos"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcBindingInqAuthInfoExA(jitter):
+    rpcrt4_RpcBindingInqAuthInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingInqAuthInfoExW(jitter):
+    rpcrt4_RpcBindingInqAuthInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcBindingInqObject(jitter):
     """"
@@ -231,7 +273,7 @@ def rpcrt4_RpcBindingServerFromClient(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingSetAuthInfo(jitter):
+def rpcrt4_RpcBindingSetAuthInfo(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingSetAuthInfo(RPC_BINDING_HANDLE Binding, RPC_TSTR ServerPrincName, [RPC_C_AUTHN_LEVEL] AuthnLevel, [RPC_C_AUTHN_SVC] AuthnSvc, RPC_AUTH_IDENTITY_HANDLE AuthIdentity, unsigned long AuthzService)
     """"
@@ -239,13 +281,25 @@ def rpcrt4_RpcBindingSetAuthInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingSetAuthInfoEx(jitter):
+def rpcrt4_RpcBindingSetAuthInfoA(jitter):
+    rpcrt4_RpcBindingSetAuthInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingSetAuthInfoW(jitter):
+    rpcrt4_RpcBindingSetAuthInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcBindingSetAuthInfoEx(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingSetAuthInfoEx(RPC_BINDING_HANDLE Binding, RPC_TSTR ServerPrincName, [RPC_C_AUTHN_LEVEL] AuthnLevel, [RPC_C_AUTHN_SVC] AuthnSvc, RPC_AUTH_IDENTITY_HANDLE AuthIdentity, [RPC_C_AUTHZ] AuthzSvc, RPC_SECURITY_QOS* SecurityQOS)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "ServerPrincName", "AuthnLevel", "AuthnSvc", "AuthIdentity", "AuthzSvc", "SecurityQOS"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcBindingSetAuthInfoExA(jitter):
+    rpcrt4_RpcBindingSetAuthInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingSetAuthInfoExW(jitter):
+    rpcrt4_RpcBindingSetAuthInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcBindingSetObject(jitter):
     """"
@@ -263,13 +317,19 @@ def rpcrt4_RpcBindingSetOption(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcBindingToStringBinding(jitter):
+def rpcrt4_RpcBindingToStringBinding(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcBindingToStringBinding(RPC_BINDING_HANDLE Binding, RPC_TSTR* StringBinding)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "StringBinding"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcBindingToStringBindingA(jitter):
+    rpcrt4_RpcBindingToStringBinding(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcBindingToStringBindingW(jitter):
+    rpcrt4_RpcBindingToStringBinding(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcBindingUnbind(jitter):
     """"
@@ -303,7 +363,7 @@ def rpcrt4_RpcCancelThreadEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcCertGeneratePrincipalName(jitter):
+def rpcrt4_RpcCertGeneratePrincipalName(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] void RpcCertGeneratePrincipalName(PCCERT_CONTEXT Context, DWORD Flags, UCHAR** pBuffer)
     """"
@@ -311,7 +371,13 @@ def rpcrt4_RpcCertGeneratePrincipalName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcEpRegister(jitter):
+def rpcrt4_RpcCertGeneratePrincipalNameA(jitter):
+    rpcrt4_RpcCertGeneratePrincipalName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcCertGeneratePrincipalNameW(jitter):
+    rpcrt4_RpcCertGeneratePrincipalName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcEpRegister(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcEpRegister(RPC_IF_HANDLE IfSpec, RPC_BINDING_VECTOR* BindingVector, UUID_VECTOR* UuidVector, RPC_TSTR Annotation)
     """"
@@ -319,13 +385,25 @@ def rpcrt4_RpcEpRegister(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcEpRegisterNoReplace(jitter):
+def rpcrt4_RpcEpRegisterA(jitter):
+    rpcrt4_RpcEpRegister(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcEpRegisterW(jitter):
+    rpcrt4_RpcEpRegister(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcEpRegisterNoReplace(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcEpRegisterNoReplace(RPC_IF_HANDLE IfSpec, RPC_BINDING_VECTOR* BindingVector, UUID_VECTOR* UuidVector, RPC_TSTR Annotation)
     """"
     ret_ad, args = jitter.func_args_stdcall(["IfSpec", "BindingVector", "UuidVector", "Annotation"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcEpRegisterNoReplaceA(jitter):
+    rpcrt4_RpcEpRegisterNoReplace(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcEpRegisterNoReplaceW(jitter):
+    rpcrt4_RpcEpRegisterNoReplace(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcEpResolveBinding(jitter):
     """"
@@ -463,13 +541,19 @@ def rpcrt4_RpcMgmtEpEltInqDone(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcMgmtEpEltInqNext(jitter):
+def rpcrt4_RpcMgmtEpEltInqNext(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcMgmtEpEltInqNext(RPC_EP_INQ_HANDLE InquiryContext, RPC_IF_ID* IfId, RPC_BINDING_HANDLE* Binding, UUID* ObjectUuid, RPC_TSTR* Annotation)
     """"
     ret_ad, args = jitter.func_args_stdcall(["InquiryContext", "IfId", "Binding", "ObjectUuid", "Annotation"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcMgmtEpEltInqNextA(jitter):
+    rpcrt4_RpcMgmtEpEltInqNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcMgmtEpEltInqNextW(jitter):
+    rpcrt4_RpcMgmtEpEltInqNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcMgmtEpUnregister(jitter):
     """"
@@ -503,13 +587,19 @@ def rpcrt4_RpcMgmtInqIfIds(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcMgmtInqServerPrincName(jitter):
+def rpcrt4_RpcMgmtInqServerPrincName(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcMgmtInqServerPrincName(RPC_BINDING_HANDLE Binding, [RPC_C_AUTHN_SVC] AuthnSvc, RPC_TSTR* ServerPrincName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "AuthnSvc", "ServerPrincName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcMgmtInqServerPrincNameA(jitter):
+    rpcrt4_RpcMgmtInqServerPrincName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcMgmtInqServerPrincNameW(jitter):
+    rpcrt4_RpcMgmtInqServerPrincName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcMgmtInqStats(jitter):
     """"
@@ -583,7 +673,7 @@ def rpcrt4_RpcMgmtWaitServerListen(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcNetworkInqProtseqs(jitter):
+def rpcrt4_RpcNetworkInqProtseqs(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcNetworkInqProtseqs(RPC_PROTSEQ_VECTOR** ProtSeqVector)
     """"
@@ -591,7 +681,13 @@ def rpcrt4_RpcNetworkInqProtseqs(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcNetworkIsProtseqValid(jitter):
+def rpcrt4_RpcNetworkInqProtseqsA(jitter):
+    rpcrt4_RpcNetworkInqProtseqs(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcNetworkInqProtseqsW(jitter):
+    rpcrt4_RpcNetworkInqProtseqs(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcNetworkIsProtseqValid(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcNetworkIsProtseqValid(RPC_TSTR Protseq)
     """"
@@ -599,13 +695,25 @@ def rpcrt4_RpcNetworkIsProtseqValid(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcNsBindingInqEntryName(jitter):
+def rpcrt4_RpcNetworkIsProtseqValidA(jitter):
+    rpcrt4_RpcNetworkIsProtseqValid(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcNetworkIsProtseqValidW(jitter):
+    rpcrt4_RpcNetworkIsProtseqValid(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcNsBindingInqEntryName(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcNsBindingInqEntryName(RPC_BINDING_HANDLE Binding, unsigned long EntryNameSyntax, RPC_TSTR* EntryName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "EntryNameSyntax", "EntryName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcNsBindingInqEntryNameA(jitter):
+    rpcrt4_RpcNsBindingInqEntryName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcNsBindingInqEntryNameW(jitter):
+    rpcrt4_RpcNsBindingInqEntryName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcObjectInqType(jitter):
     """"
@@ -631,13 +739,19 @@ def rpcrt4_RpcObjectSetType(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcProtseqVectorFree(jitter):
+def rpcrt4_RpcProtseqVectorFree(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcProtseqVectorFree(RPC_PROTSEQ_VECTOR** ProtSeqVector)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ProtSeqVector"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcProtseqVectorFreeA(jitter):
+    rpcrt4_RpcProtseqVectorFree(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcProtseqVectorFreeW(jitter):
+    rpcrt4_RpcProtseqVectorFree(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcRevertToSelf(jitter):
     """"
@@ -663,7 +777,7 @@ def rpcrt4_RpcServerInqBindings(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerInqCallAttributes(jitter):
+def rpcrt4_RpcServerInqCallAttributes(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerInqCallAttributes(RPC_BINDING_HANDLE ClientBinding, void* RpcCallAttributes)
     """"
@@ -671,13 +785,25 @@ def rpcrt4_RpcServerInqCallAttributes(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerInqDefaultPrincName(jitter):
+def rpcrt4_RpcServerInqCallAttributesA(jitter):
+    rpcrt4_RpcServerInqCallAttributes(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerInqCallAttributesW(jitter):
+    rpcrt4_RpcServerInqCallAttributes(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcServerInqDefaultPrincName(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerInqDefaultPrincName([RPC_C_AUTHN_SVC] AuthnSvc, RPC_TSTR* PrincName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["AuthnSvc", "PrincName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcServerInqDefaultPrincNameA(jitter):
+    rpcrt4_RpcServerInqDefaultPrincName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerInqDefaultPrincNameW(jitter):
+    rpcrt4_RpcServerInqDefaultPrincName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcServerInqBindingHandle(jitter):
     """"
@@ -703,13 +829,19 @@ def rpcrt4_RpcServerListen(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerRegisterAuthInfo(jitter):
+def rpcrt4_RpcServerRegisterAuthInfo(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerRegisterAuthInfo(RPC_TSTR ServerPrincName, [RPC_C_AUTHN_SVC] AuthnSvc, RPC_AUTH_KEY_RETRIEVAL_FN GetKeyFn, void* Arg)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ServerPrincName", "AuthnSvc", "GetKeyFn", "Arg"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcServerRegisterAuthInfoA(jitter):
+    rpcrt4_RpcServerRegisterAuthInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerRegisterAuthInfoW(jitter):
+    rpcrt4_RpcServerRegisterAuthInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcServerRegisterIf(jitter):
     """"
@@ -807,7 +939,7 @@ def rpcrt4_RpcServerUseAllProtseqsIfEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerUseProtseq(jitter):
+def rpcrt4_RpcServerUseProtseq(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerUseProtseq(RPC_TSTR ProtSeq, unsigned int MaxCalls, void* SecurityDescriptor)
     """"
@@ -815,7 +947,13 @@ def rpcrt4_RpcServerUseProtseq(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerUseProtseqEx(jitter):
+def rpcrt4_RpcServerUseProtseqA(jitter):
+    rpcrt4_RpcServerUseProtseq(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqW(jitter):
+    rpcrt4_RpcServerUseProtseq(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqEx(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerUseProtseqEx(RPC_TSTR ProtSeq, unsigned int MaxCalls, void* SecurityDescriptor, PRPC_POLICY Policy)
     """"
@@ -823,7 +961,13 @@ def rpcrt4_RpcServerUseProtseqEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerUseProtseqEp(jitter):
+def rpcrt4_RpcServerUseProtseqExA(jitter):
+    rpcrt4_RpcServerUseProtseqEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqExW(jitter):
+    rpcrt4_RpcServerUseProtseqEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqEp(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerUseProtseqEp(RPC_TSTR Protseq, unsigned int MaxCalls, RPC_TSTR Endpoint, void* SecurityDescriptor)
     """"
@@ -831,7 +975,13 @@ def rpcrt4_RpcServerUseProtseqEp(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerUseProtseqEpEx(jitter):
+def rpcrt4_RpcServerUseProtseqEpA(jitter):
+    rpcrt4_RpcServerUseProtseqEp(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqEpW(jitter):
+    rpcrt4_RpcServerUseProtseqEp(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqEpEx(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerUseProtseqEpEx(RPC_TSTR Protseq, unsigned int MaxCalls, RPC_TSTR Endpoint, void* SecurityDescriptor, PRPC_POLICY Policy)
     """"
@@ -839,7 +989,13 @@ def rpcrt4_RpcServerUseProtseqEpEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerUseProtseqIf(jitter):
+def rpcrt4_RpcServerUseProtseqEpExA(jitter):
+    rpcrt4_RpcServerUseProtseqEpEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqEpExW(jitter):
+    rpcrt4_RpcServerUseProtseqEpEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqIf(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerUseProtseqIf(RPC_TSTR Protseq, unsigned int MaxCalls, RPC_IF_HANDLE IfSpec, void* SecurityDescriptor)
     """"
@@ -847,13 +1003,25 @@ def rpcrt4_RpcServerUseProtseqIf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerUseProtseqIfEx(jitter):
+def rpcrt4_RpcServerUseProtseqIfA(jitter):
+    rpcrt4_RpcServerUseProtseqIf(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqIfW(jitter):
+    rpcrt4_RpcServerUseProtseqIf(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqIfEx(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerUseProtseqIfEx(RPC_TSTR Protseq, unsigned int MaxCalls, RPC_IF_HANDLE IfSpec, void* SecurityDescriptor, PRPC_POLICY Policy)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Protseq", "MaxCalls", "IfSpec", "SecurityDescriptor", "Policy"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcServerUseProtseqIfExA(jitter):
+    rpcrt4_RpcServerUseProtseqIfEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerUseProtseqIfExW(jitter):
+    rpcrt4_RpcServerUseProtseqIfEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcSmAllocate(jitter):
     """"
@@ -1031,7 +1199,7 @@ def rpcrt4_RpcSsSwapClientAllocFree(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcStringBindingCompose(jitter):
+def rpcrt4_RpcStringBindingCompose(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcStringBindingCompose(TCHAR* ObjUuid, TCHAR* ProtSeq, TCHAR* NetworkAddr, TCHAR* EndPoint, TCHAR* Options, TCHAR** StringBinding)
     """"
@@ -1039,7 +1207,13 @@ def rpcrt4_RpcStringBindingCompose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcStringBindingParse(jitter):
+def rpcrt4_RpcStringBindingComposeA(jitter):
+    rpcrt4_RpcStringBindingCompose(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcStringBindingComposeW(jitter):
+    rpcrt4_RpcStringBindingCompose(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcStringBindingParse(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcStringBindingParse(TCHAR* StringBinding, TCHAR** ObjectUuid, TCHAR** ProtSeq, TCHAR** NetworkAddr, TCHAR** EndPoint, TCHAR** NetworkOptions)
     """"
@@ -1047,13 +1221,25 @@ def rpcrt4_RpcStringBindingParse(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcStringFree(jitter):
+def rpcrt4_RpcStringBindingParseA(jitter):
+    rpcrt4_RpcStringBindingParse(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcStringBindingParseW(jitter):
+    rpcrt4_RpcStringBindingParse(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_RpcStringFree(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcStringFree(RPC_TSTR* String)
     """"
     ret_ad, args = jitter.func_args_stdcall(["String"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcStringFreeA(jitter):
+    rpcrt4_RpcStringFree(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcStringFreeW(jitter):
+    rpcrt4_RpcStringFree(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcTestCancel(jitter):
     """"
@@ -1103,13 +1289,19 @@ def rpcrt4_RpcServerInterfaceGroupClose(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_RpcServerInterfaceGroupCreate(jitter):
+def rpcrt4_RpcServerInterfaceGroupCreate(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS RpcServerInterfaceGroupCreate(RPC_INTERFACE_TEMPLATE* Interfaces, unsigned long NumIfs, RPC_ENDPOINT_TEMPLATE* Endpoints, unsigned long NumEndpoints, unsigned long IdlePeriod, RPC_INTERFACE_GROUP_IDLE_CALLBACK_FN IdleCallbackFn, void* IdleCallbackContext, PRPC_INTERFACE_GROUP IfGroup)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Interfaces", "NumIfs", "Endpoints", "NumEndpoints", "IdlePeriod", "IdleCallbackFn", "IdleCallbackContext", "IfGroup"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_RpcServerInterfaceGroupCreateA(jitter):
+    rpcrt4_RpcServerInterfaceGroupCreate(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_RpcServerInterfaceGroupCreateW(jitter):
+    rpcrt4_RpcServerInterfaceGroupCreate(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_RpcServerInterfaceGroupDeactivate(jitter):
     """"
@@ -1191,13 +1383,19 @@ def rpcrt4_I_RpcBindingInqDynamicEndpoint(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_I_RpcBindingInqDynamicEndpoint(jitter):
+def rpcrt4_I_RpcBindingInqDynamicEndpoint(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS I_RpcBindingInqDynamicEndpoint(RPC_BINDING_HANDLE Binding, RPC_TSTR* DynamicEndpoint)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "DynamicEndpoint"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_I_RpcBindingInqDynamicEndpointA(jitter):
+    rpcrt4_I_RpcBindingInqDynamicEndpoint(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_I_RpcBindingInqDynamicEndpointW(jitter):
+    rpcrt4_I_RpcBindingInqDynamicEndpoint(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_I_RpcBindingInqMarshalledTargetInfo(jitter):
     """"
@@ -1383,13 +1581,19 @@ def rpcrt4_I_RpcNsBindingSetEntryName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_I_RpcNsBindingSetEntryName(jitter):
+def rpcrt4_I_RpcNsBindingSetEntryName(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS I_RpcNsBindingSetEntryName(RPC_BINDING_HANDLE Binding, unsigned long EntryNameSyntax, RPC_TSTR EntryName)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Binding", "EntryNameSyntax", "EntryName"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_I_RpcNsBindingSetEntryNameA(jitter):
+    rpcrt4_I_RpcNsBindingSetEntryName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_I_RpcNsBindingSetEntryNameW(jitter):
+    rpcrt4_I_RpcNsBindingSetEntryName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_I_RpcNsInterfaceExported(jitter):
     """"
@@ -1535,7 +1739,7 @@ def rpcrt4_I_RpcServerStartService(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_I_RpcServerUseProtseq2(jitter):
+def rpcrt4_I_RpcServerUseProtseq2(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS I_RpcServerUseProtseq2(RPC_TSTR NetworkAddress, RPC_TSTR Protseq, unsigned int MaxCalls, void* SecurityDescriptor, void* Policy)
     """"
@@ -1543,13 +1747,25 @@ def rpcrt4_I_RpcServerUseProtseq2(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_I_RpcServerUseProtseqEp2(jitter):
+def rpcrt4_I_RpcServerUseProtseq2A(jitter):
+    rpcrt4_I_RpcServerUseProtseq2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_I_RpcServerUseProtseq2W(jitter):
+    rpcrt4_I_RpcServerUseProtseq2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def rpcrt4_I_RpcServerUseProtseqEp2(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS I_RpcServerUseProtseqEp2(RPC_TSTR NetworkAddress, RPC_TSTR Protseq, unsigned int MaxCalls, RPC_TSTR Endpoint, void* SecurityDescriptor, void* Policy)
     """"
     ret_ad, args = jitter.func_args_stdcall(["NetworkAddress", "Protseq", "MaxCalls", "Endpoint", "SecurityDescriptor", "Policy"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_I_RpcServerUseProtseqEp2A(jitter):
+    rpcrt4_I_RpcServerUseProtseqEp2(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_I_RpcServerUseProtseqEp2W(jitter):
+    rpcrt4_I_RpcServerUseProtseqEp2(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_I_RpcSessionStrictContextHandle(jitter):
     """"
@@ -1655,13 +1871,19 @@ def rpcrt4_UuidEqual(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_UuidFromString(jitter):
+def rpcrt4_UuidFromString(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS UuidFromString(RPC_TSTR StringUuid, UUID* Uuid)
     """"
     ret_ad, args = jitter.func_args_stdcall(["StringUuid", "Uuid"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_UuidFromStringA(jitter):
+    rpcrt4_UuidFromString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_UuidFromStringW(jitter):
+    rpcrt4_UuidFromString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_UuidHash(jitter):
     """"
@@ -1679,13 +1901,19 @@ def rpcrt4_UuidIsNil(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def rpcrt4_UuidToString(jitter):
+def rpcrt4_UuidToString(jitter, get_str, set_str):
     """"
     [RpcRT4.dll] RPC_STATUS UuidToString(UUID* Uuid, RPC_TSTR* StringUuid)
     """"
     ret_ad, args = jitter.func_args_stdcall(["Uuid", "StringUuid"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def rpcrt4_UuidToStringA(jitter):
+    rpcrt4_UuidToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def rpcrt4_UuidToStringW(jitter):
+    rpcrt4_UuidToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def rpcrt4_CStdStubBuffer_AddRef(jitter):
     """"

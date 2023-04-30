@@ -87,13 +87,19 @@ def comctl32_CreateToolbarEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_CreatePropertySheetPage(jitter):
+def comctl32_CreatePropertySheetPage(jitter, get_str, set_str):
     """"
     [comctl32.dll] HPROPSHEETPAGE CreatePropertySheetPage(LPCPROPSHEETPAGE lppsp)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lppsp"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def comctl32_CreatePropertySheetPageA(jitter):
+    comctl32_CreatePropertySheetPage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_CreatePropertySheetPageW(jitter):
+    comctl32_CreatePropertySheetPage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def comctl32_DestroyPropertySheetPage(jitter):
     """"
@@ -103,7 +109,7 @@ def comctl32_DestroyPropertySheetPage(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_PropertySheet(jitter):
+def comctl32_PropertySheet(jitter, get_str, set_str):
     """"
     [comctl32.dll] INT_PTR PropertySheet(LPCPROPSHEETHEADER lppsph)
     """"
@@ -111,7 +117,13 @@ def comctl32_PropertySheet(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_CreateStatusWindow(jitter):
+def comctl32_PropertySheetA(jitter):
+    comctl32_PropertySheet(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_PropertySheetW(jitter):
+    comctl32_PropertySheet(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def comctl32_CreateStatusWindow(jitter, get_str, set_str):
     """"
     [comctl32.dll] HWND CreateStatusWindow(LONG style, LPCTSTR lpszText, HWND hwndParent, UINT wID)
     """"
@@ -119,13 +131,25 @@ def comctl32_CreateStatusWindow(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_DrawStatusText(jitter):
+def comctl32_CreateStatusWindowA(jitter):
+    comctl32_CreateStatusWindow(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_CreateStatusWindowW(jitter):
+    comctl32_CreateStatusWindow(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def comctl32_DrawStatusText(jitter, get_str, set_str):
     """"
     [comctl32.dll] void DrawStatusText(HDC hdc, LPCRECT lprc, LPCTSTR pszText, UINT uFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hdc", "lprc", "pszText", "uFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def comctl32_DrawStatusTextA(jitter):
+    comctl32_DrawStatusText(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_DrawStatusTextW(jitter):
+    comctl32_DrawStatusText(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def comctl32_MenuHelp(jitter):
     """"
@@ -519,7 +543,7 @@ def comctl32_ShowHideMenuCtl(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_Str_GetPtr(jitter):
+def comctl32_Str_GetPtr(jitter, get_str, set_str):
     """"
     [comctl32.dll] int Str_GetPtr(LPCTSTR pszSource, LPCSTR pszDest, int cchDest)
     """"
@@ -527,13 +551,25 @@ def comctl32_Str_GetPtr(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_Str_SetPtr(jitter):
+def comctl32_Str_GetPtrA(jitter):
+    comctl32_Str_GetPtr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_Str_GetPtrW(jitter):
+    comctl32_Str_GetPtr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def comctl32_Str_SetPtr(jitter, get_str, set_str):
     """"
     [comctl32.dll] BOOL Str_SetPtr(LPTSTR* ppszCurrent, LPCTSTR pszNew)
     """"
     ret_ad, args = jitter.func_args_stdcall(["ppszCurrent", "pszNew"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def comctl32_Str_SetPtrA(jitter):
+    comctl32_Str_SetPtr(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_Str_SetPtrW(jitter):
+    comctl32_Str_SetPtr(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def comctl32_DrawInsert(jitter):
     """"
@@ -847,13 +883,19 @@ def comctl32_ImageList_GetImageInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def comctl32_ImageList_LoadImage(jitter):
+def comctl32_ImageList_LoadImage(jitter, get_str, set_str):
     """"
     [comctl32.dll] HIMAGELIST ImageList_LoadImage(HINSTANCE hi, LPCTSTR lpbmp, int cx, int cGrow, COLORREF crMask, [ImageType] uType, [LRFlags] uFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hi", "lpbmp", "cx", "cGrow", "crMask", "uType", "uFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def comctl32_ImageList_LoadImageA(jitter):
+    comctl32_ImageList_LoadImage(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def comctl32_ImageList_LoadImageW(jitter):
+    comctl32_ImageList_LoadImage(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def comctl32_ImageList_Merge(jitter):
     """"

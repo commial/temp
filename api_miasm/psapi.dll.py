@@ -15,13 +15,19 @@ def psapi_EnumDeviceDrivers(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_EnumPageFiles(jitter):
+def psapi_EnumPageFiles(jitter, get_str, set_str):
     """"
     [Psapi.dll] BOOL EnumPageFiles(PENUM_PAGE_CALLBACK pCallbackRoutine, LPVOID lpContext)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pCallbackRoutine", "lpContext"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def psapi_EnumPageFilesA(jitter):
+    psapi_EnumPageFiles(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_EnumPageFilesW(jitter):
+    psapi_EnumPageFiles(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def psapi_EnumProcesses(jitter):
     """"
@@ -47,7 +53,7 @@ def psapi_EnumProcessModulesEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_GetDeviceDriverBaseName(jitter):
+def psapi_GetDeviceDriverBaseName(jitter, get_str, set_str):
     """"
     [Psapi.dll] DWORD GetDeviceDriverBaseName(LPVOID ImageBase, LPTSTR lpBaseName, DWORD nSize)
     """"
@@ -55,7 +61,13 @@ def psapi_GetDeviceDriverBaseName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_GetDeviceDriverFileName(jitter):
+def psapi_GetDeviceDriverBaseNameA(jitter):
+    psapi_GetDeviceDriverBaseName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_GetDeviceDriverBaseNameW(jitter):
+    psapi_GetDeviceDriverBaseName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def psapi_GetDeviceDriverFileName(jitter, get_str, set_str):
     """"
     [Psapi.dll] DWORD GetDeviceDriverFileName(LPVOID ImageBase, LPTSTR lpFilename, DWORD nSize)
     """"
@@ -63,7 +75,13 @@ def psapi_GetDeviceDriverFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_GetMappedFileName(jitter):
+def psapi_GetDeviceDriverFileNameA(jitter):
+    psapi_GetDeviceDriverFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_GetDeviceDriverFileNameW(jitter):
+    psapi_GetDeviceDriverFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def psapi_GetMappedFileName(jitter, get_str, set_str):
     """"
     [Psapi.dll] DWORD GetMappedFileName([ProcessHandle] hProcess, LPVOID lpv, LPTSTR lpFilename, DWORD nSize)
     """"
@@ -71,7 +89,13 @@ def psapi_GetMappedFileName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_GetModuleBaseName(jitter):
+def psapi_GetMappedFileNameA(jitter):
+    psapi_GetMappedFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_GetMappedFileNameW(jitter):
+    psapi_GetMappedFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def psapi_GetModuleBaseName(jitter, get_str, set_str):
     """"
     [Psapi.dll] DWORD GetModuleBaseName([ProcessHandle] hProcess, HMODULE hModule, LPTSTR lpBaseName, DWORD nSize)
     """"
@@ -79,13 +103,25 @@ def psapi_GetModuleBaseName(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_GetModuleFileNameEx(jitter):
+def psapi_GetModuleBaseNameA(jitter):
+    psapi_GetModuleBaseName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_GetModuleBaseNameW(jitter):
+    psapi_GetModuleBaseName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def psapi_GetModuleFileNameEx(jitter, get_str, set_str):
     """"
     [Psapi.dll] DWORD GetModuleFileNameEx([ProcessHandle] hProcess, HMODULE hModule, LPTSTR lpFilename, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "hModule", "lpFilename", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def psapi_GetModuleFileNameExA(jitter):
+    psapi_GetModuleFileNameEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_GetModuleFileNameExW(jitter):
+    psapi_GetModuleFileNameEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def psapi_GetModuleInformation(jitter):
     """"
@@ -103,13 +139,19 @@ def psapi_GetPerformanceInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def psapi_GetProcessImageFileName(jitter):
+def psapi_GetProcessImageFileName(jitter, get_str, set_str):
     """"
     [Psapi.dll] DWORD GetProcessImageFileName([ProcessHandle] hProcess, LPTSTR lpImageFileName, DWORD nSize)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "lpImageFileName", "nSize"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def psapi_GetProcessImageFileNameA(jitter):
+    psapi_GetProcessImageFileName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def psapi_GetProcessImageFileNameW(jitter):
+    psapi_GetProcessImageFileName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def psapi_GetProcessMemoryInfo(jitter):
     """"

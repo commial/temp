@@ -47,7 +47,7 @@ def ws2_32_getaddrinfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_FreeAddrInfoEx(jitter):
+def ws2_32_FreeAddrInfoEx(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] void FreeAddrInfoEx(PADDRINFOEX pAddrInfo)
     """"
@@ -55,13 +55,25 @@ def ws2_32_FreeAddrInfoEx(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_GetAddrInfoEx(jitter):
+def ws2_32_FreeAddrInfoExA(jitter):
+    ws2_32_FreeAddrInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_FreeAddrInfoExW(jitter):
+    ws2_32_FreeAddrInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ws2_32_GetAddrInfoEx(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [WSA_ERROR] GetAddrInfoEx(PCTSTR pName, PCTSTR pServiceName, [NameSpaceFlags] dwNameSpace, LPGUID lpNspId, const ADDRINFOEX* pHints, PADDRINFOEX* ppResult, struct timeval* timeout, LPOVERLAPPED lpOverlapped, LPLOOKUPSERVICE_COMPLETION_ROUTINE lpCompletionRoutine, LPHANDLE lpNameHandle)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pName", "pServiceName", "dwNameSpace", "lpNspId", "pHints", "ppResult", "timeout", "lpOverlapped", "lpCompletionRoutine", "lpNameHandle"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_GetAddrInfoExA(jitter):
+    ws2_32_GetAddrInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_GetAddrInfoExW(jitter):
+    ws2_32_GetAddrInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_FreeAddrInfoW(jitter):
     """"
@@ -311,13 +323,19 @@ def ws2_32_sendto(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_SetAddrInfoEx(jitter):
+def ws2_32_SetAddrInfoEx(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [WSA_ERROR] SetAddrInfoEx(PCTSTR pName, PCTSTR pServiceName, SOCKET_ADDRESS* pAddresses, DWORD dwAddressCount, LPBLOB lpBlob, DWORD dwFlags, [NameSpaceFlags] dwNameSpace, LPGUID lpNspId, struct timeval* timeout, LPOVERLAPPED lpOverlapped, LPLOOKUPSERVICE_COMPLETION_ROUTINE lpCompletionRoutine, LPHANDLE lpNameHandle)
     """"
     ret_ad, args = jitter.func_args_stdcall(["pName", "pServiceName", "pAddresses", "dwAddressCount", "lpBlob", "dwFlags", "dwNameSpace", "lpNspId", "timeout", "lpOverlapped", "lpCompletionRoutine", "lpNameHandle"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_SetAddrInfoExA(jitter):
+    ws2_32_SetAddrInfoEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_SetAddrInfoExW(jitter):
+    ws2_32_SetAddrInfoEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_setsockopt(jitter):
     """"
@@ -351,13 +369,19 @@ def ws2_32_WSAAccept(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAAddressToString(jitter):
+def ws2_32_WSAAddressToString(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAAddressToString(LPSOCKADDR lpsaAddress, DWORD dwAddressLength, LPWSAPROTOCOL_INFO lpProtocolInfo, LPTSTR lpszAddressString, LPDWORD lpdwAddressStringLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpsaAddress", "dwAddressLength", "lpProtocolInfo", "lpszAddressString", "lpdwAddressStringLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAAddressToStringA(jitter):
+    ws2_32_WSAAddressToString(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAAddressToStringW(jitter):
+    ws2_32_WSAAddressToString(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAAsyncGetHostByAddr(jitter):
     """"
@@ -455,13 +479,19 @@ def ws2_32_WSAConnectByList(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAConnectByName(jitter):
+def ws2_32_WSAConnectByName(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] BOOL WSAConnectByName(SOCKET s, LPSTR nodename, LPSTR servicename, LPDWORD LocalAddressLength, LPSOCKADDR LocalAddress, LPDWORD RemoteAddressLength, LPSOCKADDR RemoteAddress, const struct timeval* timeout, LPWSAOVERLAPPED Reserved)
     """"
     ret_ad, args = jitter.func_args_stdcall(["s", "nodename", "servicename", "LocalAddressLength", "LocalAddress", "RemoteAddressLength", "RemoteAddress", "timeout", "Reserved"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAConnectByNameA(jitter):
+    ws2_32_WSAConnectByName(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAConnectByNameW(jitter):
+    ws2_32_WSAConnectByName(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSACreateEvent(jitter):
     """"
@@ -471,7 +501,7 @@ def ws2_32_WSACreateEvent(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSADuplicateSocket(jitter):
+def ws2_32_WSADuplicateSocket(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-int] WSADuplicateSocket(SOCKET s, DWORD dwProcessId, LPWSAPROTOCOL_INFO lpProtocolInfo)
     """"
@@ -479,7 +509,13 @@ def ws2_32_WSADuplicateSocket(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAEnumNameSpaceProviders(jitter):
+def ws2_32_WSADuplicateSocketA(jitter):
+    ws2_32_WSADuplicateSocket(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSADuplicateSocketW(jitter):
+    ws2_32_WSADuplicateSocket(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ws2_32_WSAEnumNameSpaceProviders(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAEnumNameSpaceProviders(LPDWORD lpdwBufferLength, LPWSANAMESPACE_INFO lpnspBuffer)
     """"
@@ -487,13 +523,25 @@ def ws2_32_WSAEnumNameSpaceProviders(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAEnumNameSpaceProvidersEx(jitter):
+def ws2_32_WSAEnumNameSpaceProvidersA(jitter):
+    ws2_32_WSAEnumNameSpaceProviders(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAEnumNameSpaceProvidersW(jitter):
+    ws2_32_WSAEnumNameSpaceProviders(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ws2_32_WSAEnumNameSpaceProvidersEx(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAEnumNameSpaceProvidersEx(LPDWORD lpdwBufferLength, LPWSANAMESPACE_INFOEX lpnspBuffer)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpdwBufferLength", "lpnspBuffer"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAEnumNameSpaceProvidersExA(jitter):
+    ws2_32_WSAEnumNameSpaceProvidersEx(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAEnumNameSpaceProvidersExW(jitter):
+    ws2_32_WSAEnumNameSpaceProvidersEx(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAEnumNetworkEvents(jitter):
     """"
@@ -503,13 +551,19 @@ def ws2_32_WSAEnumNetworkEvents(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAEnumProtocols(jitter):
+def ws2_32_WSAEnumProtocols(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-int] WSAEnumProtocols(LPINT lpiProtocols, LPWSAPROTOCOL_INFO lpProtocolBuffer, LPDWORD lpdwBufferLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpiProtocols", "lpProtocolBuffer", "lpdwBufferLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAEnumProtocolsA(jitter):
+    ws2_32_WSAEnumProtocols(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAEnumProtocolsW(jitter):
+    ws2_32_WSAEnumProtocols(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAEventSelect(jitter):
     """"
@@ -535,7 +589,7 @@ def ws2_32_WSAGetOverlappedResult(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAGetServiceClassInfo(jitter):
+def ws2_32_WSAGetServiceClassInfo(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAGetServiceClassInfo(LPGUID lpProviderId, LPGUID lpServiceClassId, LPDWORD lpdwBufferLength, LPWSASERVICECLASSINFO lpServiceClassInfo)
     """"
@@ -543,13 +597,25 @@ def ws2_32_WSAGetServiceClassInfo(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAGetServiceClassNameByClassId(jitter):
+def ws2_32_WSAGetServiceClassInfoA(jitter):
+    ws2_32_WSAGetServiceClassInfo(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAGetServiceClassInfoW(jitter):
+    ws2_32_WSAGetServiceClassInfo(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ws2_32_WSAGetServiceClassNameByClassId(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAGetServiceClassNameByClassId(LPGUID lpServiceClassId, LPTSTR lpszServiceClassName, LPDWORD lpdwBufferLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpServiceClassId", "lpszServiceClassName", "lpdwBufferLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAGetServiceClassNameByClassIdA(jitter):
+    ws2_32_WSAGetServiceClassNameByClassId(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAGetServiceClassNameByClassIdW(jitter):
+    ws2_32_WSAGetServiceClassNameByClassId(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAHtonl(jitter):
     """"
@@ -567,13 +633,19 @@ def ws2_32_WSAHtons(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAInstallServiceClass(jitter):
+def ws2_32_WSAInstallServiceClass(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAInstallServiceClass(LPWSASERVICECLASSINFO lpServiceClassInfo)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpServiceClassInfo"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAInstallServiceClassA(jitter):
+    ws2_32_WSAInstallServiceClass(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAInstallServiceClassW(jitter):
+    ws2_32_WSAInstallServiceClass(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAIoctl(jitter):
     """"
@@ -591,13 +663,19 @@ def ws2_32_WSAJoinLeaf(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSALookupServiceBegin(jitter):
+def ws2_32_WSALookupServiceBegin(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSALookupServiceBegin(LPWSAQUERYSET lpqsRestrictions, [LookupServiceFlags] dwControlFlags, LPHANDLE lphLookup)
     """"
     ret_ad, args = jitter.func_args_stdcall(["lpqsRestrictions", "dwControlFlags", "lphLookup"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSALookupServiceBeginA(jitter):
+    ws2_32_WSALookupServiceBegin(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSALookupServiceBeginW(jitter):
+    ws2_32_WSALookupServiceBegin(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSALookupServiceEnd(jitter):
     """"
@@ -607,13 +685,19 @@ def ws2_32_WSALookupServiceEnd(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSALookupServiceNext(jitter):
+def ws2_32_WSALookupServiceNext(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSALookupServiceNext(HANDLE hLookup, [LookupServiceFlags] dwControlFlags, LPDWORD lpdwBufferLength, LPWSAQUERYSET lpqsResults)
     """"
     ret_ad, args = jitter.func_args_stdcall(["hLookup", "dwControlFlags", "lpdwBufferLength", "lpqsResults"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSALookupServiceNextA(jitter):
+    ws2_32_WSALookupServiceNext(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSALookupServiceNextW(jitter):
+    ws2_32_WSALookupServiceNext(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSANtohl(jitter):
     """"
@@ -735,7 +819,7 @@ def ws2_32_WSASetLastError(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSASetService(jitter):
+def ws2_32_WSASetService(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSASetService(LPWSAQUERYSET lpqsRegInfo, WSAESETSERVICEOP essOperation, DWORD dwControlFlags)
     """"
@@ -743,13 +827,25 @@ def ws2_32_WSASetService(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSASocket(jitter):
+def ws2_32_WSASetServiceA(jitter):
+    ws2_32_WSASetService(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSASetServiceW(jitter):
+    ws2_32_WSASetService(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
+
+def ws2_32_WSASocket(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] SOCKET WSASocket([AddressFamily] af, [SocketType] type, [SocketProtocol] protocol, LPWSAPROTOCOL_INFO lpProtocolInfo, GROUP g, [WsaFlags] dwFlags)
     """"
     ret_ad, args = jitter.func_args_stdcall(["af", "type", "protocol", "lpProtocolInfo", "g", "dwFlags"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSASocketA(jitter):
+    ws2_32_WSASocket(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSASocketW(jitter):
+    ws2_32_WSASocket(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAStartup(jitter):
     """"
@@ -759,13 +855,19 @@ def ws2_32_WSAStartup(jitter):
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
 
-def ws2_32_WSAStringToAddress(jitter):
+def ws2_32_WSAStringToAddress(jitter, get_str, set_str):
     """"
     [Ws2_32.dll] [SocketCode-INT] WSAStringToAddress(LPTSTR AddressString, [AddressFamily] AddressFamily, LPWSAPROTOCOL_INFO lpProtocolInfo, LPSOCKADDR lpAddress, LPINT lpAddressLength)
     """"
     ret_ad, args = jitter.func_args_stdcall(["AddressString", "AddressFamily", "lpProtocolInfo", "lpAddress", "lpAddressLength"])
     raise RuntimeError('API not implemented')
     jitter.func_ret_stdcall(ret_ad, ret_value)
+
+def ws2_32_WSAStringToAddressA(jitter):
+    ws2_32_WSAStringToAddress(jitter, lambda addr:get_win_str_a(jitter, addr), lambda addr,value: set_win_str_a(jitter, addr, value))
+
+def ws2_32_WSAStringToAddressW(jitter):
+    ws2_32_WSAStringToAddress(jitter, lambda addr:get_win_str_w(jitter, addr), lambda addr,value: set_win_str_w(jitter, addr, value))
 
 def ws2_32_WSAWaitForMultipleEvents(jitter):
     """"
