@@ -1,3 +1,4 @@
+###### Enums ######
 DECODING_SOURCE = {
     "DecodingSourceXMLFile": 0,
     "DecodingSourceWbem": 1,
@@ -188,6 +189,228 @@ TDH_CONTEXT_TYPE_INV = {
     2: "TDH_CONTEXT_WPP_GMT",
     3: "TDH_CONTEXT_POINTERSIZE",
 }
+
+###################
+
+###### Types ######
+TDH_HANDLE = HANDLE
+PTDH_HANDLE = Ptr("<I", TDH_HANDLE())
+PEVENT_HEADER_EXTENDED_DATA_ITEM = LPVOID
+
+class TRACE_PROVIDER_INFO(MemStruct):
+    fields = [
+        ("ProviderGuid", GUID()),
+        ("SchemaSource", ULONG()),
+        ("ProviderNameOffset", ULONG()),
+    ]
+
+TRACE_PROVIDER_INFO__ANYSIZE_ARRAY_ = Array(TRACE_PROVIDER_INFO, 1)
+
+class PROVIDER_ENUMERATION_INFO(MemStruct):
+    fields = [
+        ("NumberOfProviders", ULONG()),
+        ("Reserved", ULONG()),
+        ("TraceProviderInfoArray", TRACE_PROVIDER_INFO__ANYSIZE_ARRAY_()),
+    ]
+
+PPROVIDER_ENUMERATION_INFO = Ptr("<I", PROVIDER_ENUMERATION_INFO())
+DECODING_SOURCE = UINT
+TEMPLATE_FLAGS = UINT
+TDH_IN_TYPE = USHORT
+TDH_OUT_TYPE = USHORT
+PROPERTY_FLAGS = UINT
+
+class _EVENT_PROPERTY_INFO_u1_s1_(MemStruct):
+    fields = [
+        ("InType", TDH_IN_TYPE()),
+        ("OutType", TDH_OUT_TYPE()),
+        ("MapNameOffset", ULONG()),
+    ]
+
+
+class _EVENT_PROPERTY_INFO_u1_s2_(MemStruct):
+    fields = [
+        ("StructStartIndex", USHORT()),
+        ("NumOfStructMembers", USHORT()),
+        ("padding", ULONG()),
+    ]
+
+_EVENT_PROPERTY_INFO_u1_ = Union([
+    ("nonStructType", _EVENT_PROPERTY_INFO_u1_s1_),
+    ("structType", _EVENT_PROPERTY_INFO_u1_s2_),
+])
+_EVENT_PROPERTY_INFO_u2_ = Union([
+    ("count", USHORT),
+    ("countPropertyIndex", USHORT),
+])
+_EVENT_PROPERTY_INFO_u3_ = Union([
+    ("length", USHORT),
+    ("lengthPropertyIndex", USHORT),
+])
+
+class EVENT_PROPERTY_INFO(MemStruct):
+    fields = [
+        ("Flags", PROPERTY_FLAGS()),
+        ("NameOffset", ULONG()),
+        (None, _EVENT_PROPERTY_INFO_u1_()),
+        (None, _EVENT_PROPERTY_INFO_u2_()),
+        (None, _EVENT_PROPERTY_INFO_u3_()),
+        ("Reserved", ULONG()),
+    ]
+
+EVENT_PROPERTY_INFO__ANYSIZE_ARRAY_ = Array(EVENT_PROPERTY_INFO, 1)
+
+class PROVIDER_FILTER_INFO(MemStruct):
+    fields = [
+        ("Id", UCHAR()),
+        ("Version", UCHAR()),
+        ("MessageOffset", ULONG()),
+        ("Reserved", ULONG()),
+        ("PropertyCount", ULONG()),
+        ("EventPropertyInfoArray", EVENT_PROPERTY_INFO__ANYSIZE_ARRAY_()),
+    ]
+
+PPROVIDER_FILTER_INFO = Ptr("<I", PROVIDER_FILTER_INFO())
+PPROVIDER_FILTER_INFO_PTR = Ptr("<I", PPROVIDER_FILTER_INFO())
+
+class TRACE_EVENT_INFO(MemStruct):
+    fields = [
+        ("ProviderGuid", GUID()),
+        ("EventGuid", GUID()),
+        ("EventDescriptor", EVENT_DESCRIPTOR()),
+        ("DecodingSource", DECODING_SOURCE()),
+        ("ProviderNameOffset", ULONG()),
+        ("LevelNameOffset", ULONG()),
+        ("ChannelNameOffset", ULONG()),
+        ("KeywordsNameOffset", ULONG()),
+        ("TaskNameOffset", ULONG()),
+        ("OpcodeNameOffset", ULONG()),
+        ("EventMessageOffset", ULONG()),
+        ("ProviderMessageOffset", ULONG()),
+        ("BinaryXMLOffset", ULONG()),
+        ("BinaryXMLSize", ULONG()),
+        ("ActivityIDNameOffset", ULONG()),
+        ("RelatedActivityIDNameOffset", ULONG()),
+        ("PropertyCount", ULONG()),
+        ("TopLevelPropertyCount", ULONG()),
+        ("Flags", TEMPLATE_FLAGS()),
+        ("EventPropertyInfoArray", EVENT_PROPERTY_INFO__ANYSIZE_ARRAY_()),
+    ]
+
+PTRACE_EVENT_INFO = Ptr("<I", TRACE_EVENT_INFO())
+MAP_VALUETYPE = UINT
+MAP_FLAGS = UINT
+_EVENT_MAP_ENTRY_u_ = Union([
+    ("Value", ULONG),
+    ("InputOffset", ULONG),
+])
+
+class EVENT_MAP_ENTRY(MemStruct):
+    fields = [
+        ("OutputOffset", ULONG()),
+        (None, _EVENT_MAP_ENTRY_u_()),
+    ]
+
+EVENT_MAP_ENTRY__ANYSIZE_ARRAY_ = Array(EVENT_MAP_ENTRY, 1)
+_EVENT_MAP_INFO_u_ = Union([
+    ("MapEntryValueType", MAP_VALUETYPE),
+    ("FormatStringOffset", ULONG),
+])
+
+class EVENT_MAP_INFO(MemStruct):
+    fields = [
+        ("NameOffset", ULONG()),
+        ("Flag", MAP_FLAGS()),
+        ("EntryCount", ULONG()),
+        (None, _EVENT_MAP_INFO_u_()),
+        ("MapEntryArray", EVENT_MAP_ENTRY__ANYSIZE_ARRAY_()),
+    ]
+
+PEVENT_MAP_INFO = Ptr("<I", EVENT_MAP_INFO())
+EVENT_FIELD_TYPE = UINT
+
+class PROVIDER_FIELD_INFO(MemStruct):
+    fields = [
+        ("NameOffset", ULONG()),
+        ("DescriptionOffset", ULONG()),
+        ("Value", ULONGLONG()),
+    ]
+
+PROVIDER_FIELD_INFO__ANYSIZE_ARRAY_ = Array(PROVIDER_FIELD_INFO, 1)
+
+class PROVIDER_FIELD_INFOARRAY(MemStruct):
+    fields = [
+        ("NumberOfElements", ULONG()),
+        ("FieldType", EVENT_FIELD_TYPE()),
+        ("FieldInfoArray", PROVIDER_FIELD_INFO__ANYSIZE_ARRAY_()),
+    ]
+
+PPROVIDER_FIELD_INFOARRAY = Ptr("<I", PROVIDER_FIELD_INFOARRAY())
+TDH_CONTEXT_TYPE = UINT
+
+class TDH_CONTEXT(MemStruct):
+    fields = [
+        ("ParameterValue", ULONGLONG()),
+        ("ParameterType", TDH_CONTEXT_TYPE()),
+        ("ParameterSize", ULONG()),
+    ]
+
+PTDH_CONTEXT = Ptr("<I", TDH_CONTEXT())
+
+class PROPERTY_DATA_DESCRIPTOR(MemStruct):
+    fields = [
+        ("PropertyName", ULONGLONG()),
+        ("ArrayIndex", ULONG()),
+        ("Reserved", ULONG()),
+    ]
+
+PPROPERTY_DATA_DESCRIPTOR = Ptr("<I", PROPERTY_DATA_DESCRIPTOR())
+
+class _EVENT_HEADER_u_s_(MemStruct):
+    fields = [
+        ("KernelTime", ULONG()),
+        ("UserTime", ULONG()),
+    ]
+
+_EVENT_HEADER_u_ = Union([
+    (None, _EVENT_HEADER_u_s_),
+    ("ProcessorTime", ULONG64),
+])
+_EVENT_HEADER_FLAG_ = USHORT
+_EVENT_HEADER_PROPERTY_ = USHORT
+
+class EVENT_HEADER(MemStruct):
+    fields = [
+        ("Size", USHORT()),
+        ("HeaderType", USHORT()),
+        ("Flags", _EVENT_HEADER_FLAG_()),
+        ("EventProperty", _EVENT_HEADER_PROPERTY_()),
+        ("ThreadId", ULONG()),
+        ("ProcessId", ULONG()),
+        ("TimeStamp", LARGE_INTEGER()),
+        ("ProviderId", GUID()),
+        ("EventDescriptor", EVENT_DESCRIPTOR()),
+        (None, _EVENT_HEADER_u_()),
+        ("ActivityId", GUID()),
+    ]
+
+
+class EVENT_RECORD(MemStruct):
+    fields = [
+        ("EventHeader", EVENT_HEADER()),
+        ("BufferContext", ETW_BUFFER_CONTEXT()),
+        ("ExtendedDataCount", USHORT()),
+        ("UserDataLength", USHORT()),
+        ("ExtendedData", PEVENT_HEADER_EXTENDED_DATA_ITEM()),
+        ("UserData", PVOID()),
+        ("UserContext", PVOID()),
+    ]
+
+PEVENT_RECORD = Ptr("<I", EVENT_RECORD())
+
+###################
+
+###### Functions ######
 
 def tdh_TdhCloseDecodingHandle(jitter):
     """

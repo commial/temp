@@ -1,3 +1,25 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+LPWABOBJECT_PTR = IWABObject_PTR_PTR
+_WAB_PARAM_Flags_ = ULONG
+
+class WAB_PARAM(MemStruct):
+    fields = [
+        ("cbSize", ULONG()),
+        ("hwnd", HWND()),
+        ("szFileName", LPSTR()),
+        ("ulFlags", _WAB_PARAM_Flags_()),
+        ("guidPSExt", GUID()),
+    ]
+
+LPWAB_PARAM = Ptr("<I", WAB_PARAM())
+
+###################
+
+###### Functions ######
 
 def wab32_WABOpen(jitter):
     """

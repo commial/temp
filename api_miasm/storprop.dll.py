@@ -1,3 +1,13 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_ERROR_CODE|LONG_ = _ERROR_CODE_
+
+###################
+
+###### Functions ######
 
 def storprop_CdromDisableDigitalPlayback(jitter):
     """

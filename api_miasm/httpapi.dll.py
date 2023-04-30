@@ -1,3 +1,4 @@
+###### Enums ######
 HTTP_DATA_CHUNK_TYPE = {
     "HttpDataChunkFromMemory": 0,
     "HttpDataChunkFromFileHandle": 1,
@@ -128,6 +129,266 @@ HTTP_RESPONSE_INFO_TYPE_INV = {
     2: "HttpResponseInfoTypeQoSProperty",
     3: "HttpResponseInfoTypeChannelBind",
 }
+
+###################
+
+###### Types ######
+HTTPAPI_VERSION = UINT
+HTTP_OPAQUE_ID = ULONGLONG
+HTTP_REQUEST_ID = HTTP_OPAQUE_ID
+HTTP_CONNECTION_ID = HTTP_OPAQUE_ID
+HTTP_RAW_CONNECTION_ID = HTTP_OPAQUE_ID
+HTTP_SERVER_SESSION_ID = HTTP_OPAQUE_ID
+PHTTP_SERVER_SESSION_ID = Ptr("<I", HTTP_SERVER_SESSION_ID())
+HTTP_URL_GROUP_ID = HTTP_OPAQUE_ID
+PHTTP_URL_GROUP_ID = Ptr("<I", HTTP_URL_GROUP_ID())
+HTTP_URL_CONTEXT = ULONGLONG
+
+class HTTP_BYTE_RANGE(MemStruct):
+    fields = [
+        ("StartingOffset", ULARGE_INTEGER()),
+        ("Length", ULARGE_INTEGER()),
+    ]
+
+PHTTP_BYTE_RANGE = Ptr("<I", HTTP_BYTE_RANGE())
+HTTP_DATA_CHUNK_TYPE = UINT
+
+class _HTTP_DATA_CHUNK_u_s1_(MemStruct):
+    fields = [
+        # Length is `BufferLength`
+        ("pBuffer", PVOID()),
+        ("BufferLength", ULONG()),
+    ]
+
+
+class _HTTP_DATA_CHUNK_u_s2_(MemStruct):
+    fields = [
+        ("ByteRange", HTTP_BYTE_RANGE()),
+        ("FileHandle", HANDLE()),
+    ]
+
+
+class _HTTP_DATA_CHUNK_u_s3_(MemStruct):
+    fields = [
+        ("FragmentNameLength", USHORT()),
+        ("pFragmentName", PCWSTR()),
+    ]
+
+
+class _HTTP_DATA_CHUNK_u_s4_(MemStruct):
+    fields = [
+        ("ByteRange", HTTP_BYTE_RANGE()),
+        ("pFragmentName", PCWSTR()),
+    ]
+
+_HTTP_DATA_CHUNK_u_ = Union([
+    ("FromMemory", _HTTP_DATA_CHUNK_u_s1_),
+    ("FromFileHandle", _HTTP_DATA_CHUNK_u_s2_),
+    ("FromFragmentCache", _HTTP_DATA_CHUNK_u_s3_),
+    ("FromFragmentCacheEx", _HTTP_DATA_CHUNK_u_s4_),
+])
+
+class HTTP_DATA_CHUNK(MemStruct):
+    fields = [
+        ("DataChunkType", HTTP_DATA_CHUNK_TYPE()),
+        (None, _HTTP_DATA_CHUNK_u_()),
+    ]
+
+PHTTP_DATA_CHUNK = Ptr("<I", HTTP_DATA_CHUNK())
+HTTP_CACHE_POLICY_TYPE = UINT
+
+class HTTP_CACHE_POLICY(MemStruct):
+    fields = [
+        ("Policy", HTTP_CACHE_POLICY_TYPE()),
+        ("SecondsToLive", ULONG()),
+    ]
+
+PHTTP_CACHE_POLICY = Ptr("<I", HTTP_CACHE_POLICY())
+HTTP_LOG_DATA_TYPE = UINT
+
+class HTTP_LOG_DATA(MemStruct):
+    fields = [
+        ("Type", HTTP_LOG_DATA_TYPE()),
+    ]
+
+PHTTP_LOG_DATA = Ptr("<I", HTTP_LOG_DATA())
+HTTP_SERVICE_CONFIG_ID = UINT
+HTTP_SERVER_PROPERTY = UINT
+_HttpInitializeFlags_ = ULONG
+_HTTP_REQUEST_FLAG_ = ULONG
+
+class HTTP_VERSION(MemStruct):
+    fields = [
+        ("MajorVersion", USHORT()),
+        ("MinorVersion", USHORT()),
+    ]
+
+HTTP_VERB = UINT
+
+class HTTP_COOKED_URL(MemStruct):
+    fields = [
+        ("FullUrlLength", USHORT()),
+        ("HostLength", USHORT()),
+        ("AbsPathLength", USHORT()),
+        ("QueryStringLength", USHORT()),
+        ("pFullUrl", PCWSTR()),
+        ("pHost", PCWSTR()),
+        ("pAbsPath", PCWSTR()),
+        ("pQueryString", PCWSTR()),
+    ]
+
+
+class HTTP_TRANSPORT_ADDRESS(MemStruct):
+    fields = [
+        ("pRemoteAddress", PSOCKADDR()),
+        ("pLocalAddress", PSOCKADDR()),
+    ]
+
+
+class HTTP_UNKNOWN_HEADER(MemStruct):
+    fields = [
+        ("NameLength", USHORT()),
+        ("RawValueLength", USHORT()),
+        ("pName", PCSTR()),
+        ("pRawValue", PCSTR()),
+    ]
+
+PHTTP_UNKNOWN_HEADER = Ptr("<I", HTTP_UNKNOWN_HEADER())
+
+class HTTP_KNOWN_HEADER(MemStruct):
+    fields = [
+        ("RawValueLength", USHORT()),
+        ("pRawValue", PCSTR()),
+    ]
+
+HTTP_KNOWN_HEADER__HttpHeaderRequestMaximum_ = Array(HTTP_KNOWN_HEADER, 41)
+HTTP_KNOWN_HEADER__HttpHeaderResponseMaximum_ = Array(HTTP_KNOWN_HEADER, 30)
+
+class HTTP_REQUEST_HEADERS(MemStruct):
+    fields = [
+        ("UnknownHeaderCount", USHORT()),
+        ("pUnknownHeaders", PHTTP_UNKNOWN_HEADER()),
+        ("TrailerCount", USHORT()),
+        ("pTrailers", PHTTP_UNKNOWN_HEADER()),
+        ("KnownHeaders", HTTP_KNOWN_HEADER__HttpHeaderRequestMaximum_()),
+    ]
+
+
+class HTTP_SSL_CLIENT_CERT_INFO(MemStruct):
+    fields = [
+        ("CertFlags", _CERT_TRUST_Error_()),
+        ("CertEncodedSize", ULONG()),
+        ("pCertEncoded", PUCHAR()),
+        ("Token", HANDLE()),
+        ("CertDeniedByMapper", BOOLEAN()),
+    ]
+
+PHTTP_SSL_CLIENT_CERT_INFO = Ptr("<I", HTTP_SSL_CLIENT_CERT_INFO())
+
+class HTTP_SSL_INFO(MemStruct):
+    fields = [
+        ("ServerCertKeySize", USHORT()),
+        ("ConnectionKeySize", USHORT()),
+        ("ServerCertIssuerSize", ULONG()),
+        ("ServerCertSubjectSize", ULONG()),
+        ("pServerCertIssuer", PCSTR()),
+        ("pServerCertSubject", PCSTR()),
+        ("pClientCertInfo", PHTTP_SSL_CLIENT_CERT_INFO()),
+        ("SslClientCertNegotiated", ULONG()),
+    ]
+
+PHTTP_SSL_INFO = Ptr("<I", HTTP_SSL_INFO())
+
+class HTTP_REQUEST_V1(MemStruct):
+    fields = [
+        ("Flags", _HTTP_REQUEST_FLAG_()),
+        ("ConnectionId", HTTP_CONNECTION_ID()),
+        ("RequestId", HTTP_REQUEST_ID()),
+        ("UrlContext", HTTP_URL_CONTEXT()),
+        ("Version", HTTP_VERSION()),
+        ("Verb", HTTP_VERB()),
+        ("UnknownVerbLength", USHORT()),
+        ("RawUrlLength", USHORT()),
+        ("pUnknownVerb", PCSTR()),
+        ("pRawUrl", PCSTR()),
+        ("CookedUrl", HTTP_COOKED_URL()),
+        ("Address", HTTP_TRANSPORT_ADDRESS()),
+        ("Headers", HTTP_REQUEST_HEADERS()),
+        ("BytesReceived", ULONGLONG()),
+        ("EntityChunkCount", USHORT()),
+        ("pEntityChunks", PHTTP_DATA_CHUNK()),
+        ("RawConnectionId", HTTP_RAW_CONNECTION_ID()),
+        ("pSslInfo", PHTTP_SSL_INFO()),
+    ]
+
+HTTP_REQUEST_INFO_TYPE = UINT
+
+class HTTP_REQUEST_INFO(MemStruct):
+    fields = [
+        ("InfoType", HTTP_REQUEST_INFO_TYPE()),
+        ("InfoLength", ULONG()),
+        # Length is `InfoLength`
+        ("pInfo", PVOID()),
+    ]
+
+PHTTP_REQUEST_INFO = Ptr("<I", HTTP_REQUEST_INFO())
+
+class HTTP_REQUEST(MemStruct):
+    fields = [
+        (None, HTTP_REQUEST_V1()),
+        ("RequestInfoCount", USHORT()),
+        ("pRequestInfo", PHTTP_REQUEST_INFO()),
+    ]
+
+PHTTP_REQUEST = Ptr("<I", HTTP_REQUEST())
+_HTTP_RESPONSE_FLAG_ = ULONG
+
+class HTTP_RESPONSE_HEADERS(MemStruct):
+    fields = [
+        ("UnknownHeaderCount", USHORT()),
+        ("pUnknownHeaders", PHTTP_UNKNOWN_HEADER()),
+        ("TrailerCount", USHORT()),
+        ("pTrailers", PHTTP_UNKNOWN_HEADER()),
+        ("KnownHeaders", HTTP_KNOWN_HEADER__HttpHeaderResponseMaximum_()),
+    ]
+
+
+class HTTP_RESPONSE_V1(MemStruct):
+    fields = [
+        ("Flags", _HTTP_RESPONSE_FLAG_()),
+        ("Version", HTTP_VERSION()),
+        ("StatusCode", USHORT()),
+        ("ReasonLength", USHORT()),
+        ("pReason", PCSTR()),
+        ("Headers", HTTP_RESPONSE_HEADERS()),
+        ("EntityChunkCount", USHORT()),
+        ("pEntityChunks", PHTTP_DATA_CHUNK()),
+    ]
+
+HTTP_RESPONSE_INFO_TYPE = UINT
+
+class HTTP_RESPONSE_INFO(MemStruct):
+    fields = [
+        ("Type", HTTP_RESPONSE_INFO_TYPE()),
+        ("Length", ULONG()),
+        # Length is `Length`
+        ("pInfo", PVOID()),
+    ]
+
+PHTTP_RESPONSE_INFO = Ptr("<I", HTTP_RESPONSE_INFO())
+
+class HTTP_RESPONSE(MemStruct):
+    fields = [
+        (None, HTTP_RESPONSE_V1()),
+        ("ResponseInfoCount", USHORT()),
+        ("pResponseInfo", PHTTP_RESPONSE_INFO()),
+    ]
+
+PHTTP_RESPONSE = Ptr("<I", HTTP_RESPONSE())
+
+###################
+
+###### Functions ######
 
 def httpapi_HttpCreateHttpHandle(jitter):
     """

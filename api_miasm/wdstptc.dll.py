@@ -1,3 +1,4 @@
+###### Enums ######
 _WdsAuthLevel_ = {
     "WDS_TRANSPORTCLIENT_AUTH": 0x1,
     "WDS_TRANSPORTCLIENT_NO_AUTH": 0x2,
@@ -20,6 +21,33 @@ TRANSPORTCLIENT_CALLBACK_ID_INV = {
     3: "WDS_TRANSPORTCLIENT_RECEIVE_METADATA",
     4: "WDS_TRANSPORTCLIENT_SESSION_STARTEX",
 }
+
+###################
+
+###### Types ######
+_WdsAuthLevel_ = ULONG
+
+class WDS_TRANSPORTCLIENT_REQUEST(MemStruct):
+    fields = [
+        ("ulLength", ULONG()),
+        ("ulApiVersion", ULONG()),
+        ("ulAuthLevel", _WdsAuthLevel_()),
+        ("pwszServer", LPCWSTR()),
+        ("pwszNamespace", LPCWSTR()),
+        ("pwszObjectName", LPCWSTR()),
+        ("ulCacheSize", ULONG()),
+        ("ulProtocol", ULONG()),
+        # Length is `ulProtocolDataLength`
+        ("pvProtocolData", PVOID()),
+        ("ulProtocolDataLength", ULONG()),
+    ]
+
+PWDS_TRANSPORTCLIENT_REQUEST = Ptr("<I", WDS_TRANSPORTCLIENT_REQUEST())
+TRANSPORTCLIENT_CALLBACK_ID = UINT
+
+###################
+
+###### Functions ######
 
 def wdstptc_WdsTransportClientAddRefBuffer(jitter):
     """

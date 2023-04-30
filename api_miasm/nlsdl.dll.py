@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def nlsdl_DownlevelGetParentLocaleLCID(jitter):
     """

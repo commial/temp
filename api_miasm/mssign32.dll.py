@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def mssign32_SignerFreeSignerContext(jitter):
     """

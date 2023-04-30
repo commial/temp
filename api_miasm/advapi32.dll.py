@@ -1,3 +1,4 @@
+###### Enums ######
 WCT_OBJECT_TYPE = {
     "WctCriticalSectionType": 1,
     "WctSendMessageType": 2,
@@ -254,6 +255,418 @@ EVENT_INFO_CLASS = {
 EVENT_INFO_CLASS_INV = {
     0: "EventProviderBinaryTrackInfo",
 }
+
+###################
+
+###### Types ######
+TCHAR__HW_PROFILE_GUIDLEN_ = Array(TCHAR, 39)
+WCHAR__WCT_OBJNAME_LENGTH_ = Array(WCHAR, 128)
+_REG_ERROR_ = _ERROR_CODE_
+
+class HW_PROFILE_INFO(MemStruct):
+    fields = [
+        ("dwDockInfo", DWORD()),
+        ("szHwProfileGuid", TCHAR__HW_PROFILE_GUIDLEN_()),
+        ("szHwProfileName", TCHAR__MAX_PROFILE_LEN_()),
+    ]
+
+LPHW_PROFILE_INFO = Ptr("<I", HW_PROFILE_INFO())
+WCT_OBJECT_TYPE = UINT
+WCT_OBJECT_STATUS = UINT
+
+class _WAITCHAIN_NODE_INFO_u_s1_(MemStruct):
+    fields = [
+        ("ObjectName", WCHAR__WCT_OBJNAME_LENGTH_()),
+        ("Timeout", LARGE_INTEGER()),
+        ("Alertable", BOOL()),
+    ]
+
+
+class _WAITCHAIN_NODE_INFO_u_s2_(MemStruct):
+    fields = [
+        ("ProcessId", DWORD()),
+        ("ThreadId", DWORD()),
+        ("WaitTime", DWORD()),
+        ("ContextSwitches", DWORD()),
+    ]
+
+_WAITCHAIN_NODE_INFO_u_ = Union([
+    ("LockObject", _WAITCHAIN_NODE_INFO_u_s1_),
+    ("ThreadObject", _WAITCHAIN_NODE_INFO_u_s2_),
+])
+
+class WAITCHAIN_NODE_INFO(MemStruct):
+    fields = [
+        ("ObjectType", WCT_OBJECT_TYPE()),
+        ("ObjectStatus", WCT_OBJECT_STATUS()),
+        ("ObjectStatus", _WAITCHAIN_NODE_INFO_u_()),
+    ]
+
+PWAITCHAIN_NODE_INFO = Ptr("<I", WAITCHAIN_NODE_INFO())
+SC_ENUM_TYPE = UINT
+TRACE_INFO_CLASS = UINT
+TRACE_QUERY_INFO_CLASS = TRACE_INFO_CLASS
+PROG_INVOKE_SETTING = UINT
+TRUSTED_INFORMATION_CLASS = UINT
+_SEF_Flags_ = ULONG
+_SaferScopeId_ = DWORD
+_MandatoryPolicyFlags_ = DWORD
+_LogonFlags_ = DWORD
+_LogonType_ = DWORD
+_LogonProvider_ = DWORD
+_TreeSecAction_ = DWORD
+_CredGetTargetInfoFlags_ = DWORD
+_CredType_ = DWORD
+_CredEnumerateFlags_ = DWORD
+_CreateRestrictedTokenFlags_ = DWORD
+POLICY_INFORMATION_CLASS = UINT
+POLICY_DOMAIN_INFORMATION_CLASS = UINT
+
+class EFS_HASH_BLOB(MemStruct):
+    fields = [
+        ("cbData", DWORD()),
+        # Length is `cbData`
+        ("pbData", PBYTE()),
+    ]
+
+PEFS_HASH_BLOB = Ptr("<I", EFS_HASH_BLOB())
+
+class ENCRYPTION_CERTIFICATE_HASH(MemStruct):
+    fields = [
+        ("cbTotalLength", DWORD()),
+        ("pUserSid", SID_PTR()),
+        ("pHash", PEFS_HASH_BLOB()),
+        ("lpDisplayInformation", LPWSTR()),
+    ]
+
+PENCRYPTION_CERTIFICATE_HASH = Ptr("<I", ENCRYPTION_CERTIFICATE_HASH())
+PENCRYPTION_CERTIFICATE_HASH_PTR = Ptr("<I", PENCRYPTION_CERTIFICATE_HASH())
+
+class ENCRYPTION_CERTIFICATE_HASH_LIST(MemStruct):
+    fields = [
+        ("nCert_Hash", DWORD()),
+        ("pUsers", PENCRYPTION_CERTIFICATE_HASH_PTR()),
+    ]
+
+PENCRYPTION_CERTIFICATE_HASH_LIST = Ptr("<I", ENCRYPTION_CERTIFICATE_HASH_LIST())
+PENCRYPTION_CERTIFICATE_HASH_LIST_PTR = Ptr("<I", PENCRYPTION_CERTIFICATE_HASH_LIST())
+INSTALLSPECTYPE = UINT
+
+class _INSTALLSPEC_s1_(MemStruct):
+    fields = [
+        ("Name", WCHAR_PTR()),
+        ("GPOId", GUID()),
+    ]
+
+
+class _INSTALLSPEC_s2_(MemStruct):
+    fields = [
+        ("Clsid", GUID()),
+        ("ClsCtx", _CLSCTX_()),
+    ]
+
+INSTALLSPEC = Union([
+    ("AppName", _INSTALLSPEC_s1_),
+    ("FileExt", WCHAR_PTR),
+    ("ProgId", WCHAR_PTR),
+    ("COMClass", _INSTALLSPEC_s2_),
+])
+
+class INSTALLDATA(MemStruct):
+    fields = [
+        ("Type", INSTALLSPECTYPE()),
+        ("Spec", INSTALLSPEC()),
+    ]
+
+PINSTALLDATA = Ptr("<I", INSTALLDATA())
+PINSTALLDATA_PTR = Ptr("<I", PINSTALLDATA())
+
+class VALENT(MemStruct):
+    fields = [
+        ("ve_valuename", LPTSTR()),
+        ("ve_valuelen", DWORD()),
+        ("ve_valueptr", DWORD_PTR()),
+        ("ve_type", DWORD()),
+    ]
+
+PVALENT = Ptr("<I", VALENT())
+
+class EFS_CERTIFICATE_BLOB(MemStruct):
+    fields = [
+        ("dwCertEncodingType", DWORD()),
+        ("cbData", DWORD()),
+        # Length is `cbData`
+        ("pbData", PBYTE()),
+    ]
+
+PEFS_CERTIFICATE_BLOB = Ptr("<I", EFS_CERTIFICATE_BLOB())
+
+class ENCRYPTION_CERTIFICATE(MemStruct):
+    fields = [
+        ("cbTotalLength", DWORD()),
+        ("pUserSid", SID_PTR()),
+        ("pCertBlob", PEFS_CERTIFICATE_BLOB()),
+    ]
+
+PENCRYPTION_CERTIFICATE = Ptr("<I", ENCRYPTION_CERTIFICATE())
+PENCRYPTION_CERTIFICATE_PTR = Ptr("<I", PENCRYPTION_CERTIFICATE())
+
+class ENCRYPTION_CERTIFICATE_LIST(MemStruct):
+    fields = [
+        ("nUsers", DWORD()),
+        ("pUsers", PENCRYPTION_CERTIFICATE_PTR()),
+    ]
+
+PENCRYPTION_CERTIFICATE_LIST = Ptr("<I", ENCRYPTION_CERTIFICATE_LIST())
+_LocalState_ = DWORD
+
+class LOCALMANAGEDAPPLICATION(MemStruct):
+    fields = [
+        ("pszDeploymentName", LPWSTR()),
+        ("pszPolicyName", LPWSTR()),
+        ("pszProductId", LPWSTR()),
+        ("dwState", _LocalState_()),
+    ]
+
+PLOCALMANAGEDAPPLICATION = Ptr("<I", LOCALMANAGEDAPPLICATION())
+PLOCALMANAGEDAPPLICATION_PTR = Ptr("<I", PLOCALMANAGEDAPPLICATION())
+
+class MANAGEDAPPLICATION(MemStruct):
+    fields = [
+        ("pszPackageName", LPWSTR()),
+        ("pszPublisher", LPWSTR()),
+        ("dwVersionHi", DWORD()),
+        ("dwVersionLo", DWORD()),
+        ("dwRevision", DWORD()),
+        ("GpoId", GUID()),
+        ("pszPolicyName", LPWSTR()),
+        ("ProductId", GUID()),
+        ("Language", LANGID()),
+        ("pszOwner", LPWSTR()),
+        ("pszCompany", LPWSTR()),
+        ("pszComments", LPWSTR()),
+        ("pszContact", LPWSTR()),
+        ("pszSupportUrl", LPWSTR()),
+        ("dwPathType", DWORD()),
+        ("bInstalled", BOOL()),
+    ]
+
+PMANAGEDAPPLICATION = Ptr("<I", MANAGEDAPPLICATION())
+PMANAGEDAPPLICATION_PTR = Ptr("<I", PMANAGEDAPPLICATION())
+
+class PERF_COUNTERSET_INSTANCE(MemStruct):
+    fields = [
+        ("CounterSetGuid", GUID()),
+        ("dwSize", ULONG()),
+        ("InstanceId", ULONG()),
+        ("InstanceNameOffset", ULONG()),
+        ("InstanceNameSize", ULONG()),
+    ]
+
+PPERF_COUNTERSET_INSTANCE = Ptr("<I", PERF_COUNTERSET_INSTANCE())
+
+class PERF_COUNTERSET_INFO(MemStruct):
+    fields = [
+        ("CounterSetGuid", GUID()),
+        ("ProviderGuid", GUID()),
+        ("NumCounters", ULONG()),
+        ("InstanceType", ULONG()),
+    ]
+
+PPERF_COUNTERSET_INFO = Ptr("<I", PERF_COUNTERSET_INFO())
+PERFLIBREQUEST = LPVOID
+PERF_MEM_ALLOC = LPVOID
+PERF_MEM_FREE = LPVOID
+
+class PERF_PROVIDER_CONTEXT(MemStruct):
+    fields = [
+        ("ContextSize", DWORD()),
+        ("Reserved", DWORD()),
+        ("ControlCallback", PERFLIBREQUEST()),
+        ("MemAllocRoutine", PERF_MEM_ALLOC()),
+        ("MemFreeRoutine", PERF_MEM_FREE()),
+        ("pMemContext", LPVOID()),
+    ]
+
+PPERF_PROVIDER_CONTEXT = Ptr("<I", PERF_PROVIDER_CONTEXT())
+PEVENT_FILTER_DESCRIPTOR = LPVOID
+
+class ENABLE_TRACE_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("EnableProperty", ULONG()),
+        ("ControlFlags", ULONG()),
+        ("SourceId", GUID()),
+        ("EnableFilterDesc", PEVENT_FILTER_DESCRIPTOR()),
+    ]
+
+PENABLE_TRACE_PARAMETERS = Ptr("<I", ENABLE_TRACE_PARAMETERS())
+
+class TRACE_GUID_PROPERTIES(MemStruct):
+    fields = [
+        ("Guid", GUID()),
+        ("GuidType", ULONG()),
+        ("LoggerId", ULONG()),
+        ("EnableLevel", ULONG()),
+        ("EnableFlags", ULONG()),
+        ("IsEnable", BOOLEAN()),
+    ]
+
+PTRACE_GUID_PROPERTIES = Ptr("<I", TRACE_GUID_PROPERTIES())
+PTRACE_GUID_PROPERTIES_PTR = Ptr("<I", PTRACE_GUID_PROPERTIES())
+
+class TRACE_GUID_REGISTRATION(MemStruct):
+    fields = [
+        ("Guid", LPCGUID()),
+        ("RegHandle", HANDLE()),
+    ]
+
+PTRACE_GUID_REGISTRATION = Ptr("<I", TRACE_GUID_REGISTRATION())
+
+class INHERITED_FROM(MemStruct):
+    fields = [
+        ("GenerationGap", LONG()),
+        ("AncestorName", LPTSTR()),
+    ]
+
+PINHERITED_FROM = Ptr("<I", INHERITED_FROM())
+
+class FN_OBJECT_MGR_FUNCTS(MemStruct):
+    fields = [
+        ("Placeholder", ULONG()),
+    ]
+
+PFN_OBJECT_MGR_FUNCTS = Ptr("<I", FN_OBJECT_MGR_FUNCTS())
+
+class LSA_TRANSLATED_SID(MemStruct):
+    fields = [
+        ("Use", SID_NAME_USE()),
+        ("RelativeId", ULONG()),
+        ("DomainIndex", LONG()),
+    ]
+
+PLSA_TRANSLATED_SID = Ptr("<I", LSA_TRANSLATED_SID())
+PLSA_TRANSLATED_SID_PTR = Ptr("<I", PLSA_TRANSLATED_SID())
+
+class LSA_TRANSLATED_SID2(MemStruct):
+    fields = [
+        ("Use", SID_NAME_USE()),
+        ("Sid", PSID()),
+        ("DomainIndex", LONG()),
+        ("Flags", ULONG()),
+    ]
+
+PLSA_TRANSLATED_SID2 = Ptr("<I", LSA_TRANSLATED_SID2())
+PLSA_TRANSLATED_SID2_PTR = Ptr("<I", PLSA_TRANSLATED_SID2())
+
+class LSA_TRANSLATED_NAME(MemStruct):
+    fields = [
+        ("Use", SID_NAME_USE()),
+        ("Name", LSA_UNICODE_STRING()),
+        ("DomainIndex", LONG()),
+    ]
+
+PLSA_TRANSLATED_NAME = Ptr("<I", LSA_TRANSLATED_NAME())
+PLSA_TRANSLATED_NAME_PTR = Ptr("<I", PLSA_TRANSLATED_NAME())
+
+class TRUSTED_DOMAIN_INFORMATION_EX(MemStruct):
+    fields = [
+        ("Name", LSA_UNICODE_STRING()),
+        ("FlatName", LSA_UNICODE_STRING()),
+        ("Sid", PSID()),
+        ("TrustDirection", ULONG()),
+        ("TrustType", ULONG()),
+        ("TrustAttributes", ULONG()),
+    ]
+
+PTRUSTED_DOMAIN_INFORMATION_EX = Ptr("<I", TRUSTED_DOMAIN_INFORMATION_EX())
+_LsaAuthType_ = ULONG
+
+class LSA_AUTH_INFORMATION(MemStruct):
+    fields = [
+        ("LastUpdateTime", LARGE_INTEGER()),
+        ("AuthType", _LsaAuthType_()),
+        ("AuthInfoLength", ULONG()),
+        ("AuthInfo", PUCHAR()),
+    ]
+
+PLSA_AUTH_INFORMATION = Ptr("<I", LSA_AUTH_INFORMATION())
+
+class TRUSTED_DOMAIN_AUTH_INFORMATION(MemStruct):
+    fields = [
+        ("IncomingAuthInfos", ULONG()),
+        ("IncomingAuthenticationInformation", PLSA_AUTH_INFORMATION()),
+        ("IncomingPreviousAuthenticationInformation", PLSA_AUTH_INFORMATION()),
+        ("OutgoingAuthInfos", ULONG()),
+        ("OutgoingAuthenticationInformation", PLSA_AUTH_INFORMATION()),
+        ("OutgoingPreviousAuthenticationInformation", PLSA_AUTH_INFORMATION()),
+    ]
+
+PTRUSTED_DOMAIN_AUTH_INFORMATION = Ptr("<I", TRUSTED_DOMAIN_AUTH_INFORMATION())
+_TRACE_MESSAGE_FLAGS_ = ULONG
+_LSA_LOOKUP_FLAGS_ = ULONG
+PFE_EXPORT_FUNC = LPVOID
+PFE_IMPORT_FUNC = LPVOID
+LPHANDLER_FUNCTION = LPVOID
+LPHANDLER_FUNCTION_EX = LPVOID
+TRACEHANDLE = ULONG64
+PTRACEHANDLE = Ptr("<I", TRACEHANDLE())
+WMIDPREQUEST = LPVOID
+ENABLECALLBACK = LPVOID
+FN_PROGRESS = LPVOID
+const_PSID = LPVOID
+LSA_HANDLE = PVOID
+PLSA_HANDLE = Ptr("<I", LSA_HANDLE())
+PLSA_UNICODE_STRING_PTR = Ptr("<I", PLSA_UNICODE_STRING())
+LSA_ENUMERATION_HANDLE = ULONG
+PLSA_ENUMERATION_HANDLE = Ptr("<I", LSA_ENUMERATION_HANDLE())
+HWCT = LPVOID
+PWAITCHAINCALLBACK = LPVOID
+PCOGETCALLSTATE = LPVOID
+PCOGETACTIVATIONSTATE = LPVOID
+REGHANDLE = ULONGLONG
+PREGHANDLE = Ptr("<I", REGHANDLE())
+PLSA_OBJECT_ATTRIBUTES = Ptr("<I", OBJECT_ATTRIBUTES())
+_SHUTDOWN_FLAGS_ = DWORD
+_TOKEN_ACCESS_MASK_DWORD_ = _TOKEN_ACCESS_MASK_
+EVENT_INFO_CLASS = UINT
+
+class CENTRAL_ACCESS_POLICY_ENTRY(MemStruct):
+    fields = [
+        ("Name", LSA_UNICODE_STRING()),
+        ("Description", LSA_UNICODE_STRING()),
+        ("ChangeId", LSA_UNICODE_STRING()),
+        ("LengthAppliesTo", ULONG()),
+        ("AppliesTo", PUCHAR()),
+        ("LengthSD", ULONG()),
+        ("SD", PSECURITY_DESCRIPTOR()),
+        ("LengthStagedSD", ULONG()),
+        ("StagedSD", PSECURITY_DESCRIPTOR()),
+        ("Flags", ULONG()),
+    ]
+
+PCENTRAL_ACCESS_POLICY_ENTRY = Ptr("<I", CENTRAL_ACCESS_POLICY_ENTRY())
+PCENTRAL_ACCESS_POLICY_ENTRY_PTR = Ptr("<I", PCENTRAL_ACCESS_POLICY_ENTRY())
+
+class CENTRAL_ACCESS_POLICY(MemStruct):
+    fields = [
+        ("CAPID", PSID()),
+        ("Name", LSA_UNICODE_STRING()),
+        ("Description", LSA_UNICODE_STRING()),
+        ("ChangeId", LSA_UNICODE_STRING()),
+        ("Flags", ULONG()),
+        ("CAPECount", ULONG()),
+        ("CAPEs", PCENTRAL_ACCESS_POLICY_ENTRY_PTR()),
+    ]
+
+PCENTRAL_ACCESS_POLICY = Ptr("<I", CENTRAL_ACCESS_POLICY())
+PCENTRAL_ACCESS_POLICY_PTR = Ptr("<I", PCENTRAL_ACCESS_POLICY())
+_RegLoadAppKey_Options_ = DWORD
+_RTL_ENCRYPT_OPTION_FLAGS_ = ULONG
+
+###################
+
+###### Functions ######
 
 def advapi32_RegCloseKey(jitter):
     """

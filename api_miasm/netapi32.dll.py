@@ -1,3 +1,4 @@
+###### Enums ######
 NET_API_STATUS = {
     "NERR_Success": 0,
     "NERR_NetNotStarted": 2102,
@@ -754,6 +755,106 @@ DFS_NAMESPACE_VERSION_ORIGIN_INV = {
     1: "DFS_NAMESPACE_VERSION_ORIGIN_SERVER",
     2: "DFS_NAMESPACE_VERSION_ORIGIN_DOMAIN",
 }
+
+###################
+
+###### Types ######
+PZPWSTR_PTR = Ptr("<I", PWSTR())
+LMSTR = LPWSTR
+LMSTR___ = Ptr("<I", LMSTR())
+_DsDomainFlags_ = ULONG
+
+class DS_DOMAIN_TRUSTS(MemStruct):
+    fields = [
+        ("NetbiosDomainName", LPTSTR()),
+        ("DnsDomainName", LPTSTR()),
+        ("Flags", _DsDomainFlags_()),
+        ("ParentIndex", ULONG()),
+        ("TrustType", ULONG()),
+        ("TrustAttributes", ULONG()),
+        ("DomainSid", PSID()),
+        ("DomainGuid", GUID()),
+    ]
+
+PDS_DOMAIN_TRUSTS = Ptr("<I", DS_DOMAIN_TRUSTS())
+PDS_DOMAIN_TRUSTS_PTR = Ptr("<I", PDS_DOMAIN_TRUSTS())
+
+class DOMAIN_CONTROLLER_INFO(MemStruct):
+    fields = [
+        ("DomainControllerName", LPTSTR()),
+        ("DomainControllerAddress", LPTSTR()),
+        ("DomainControllerAddressType", ULONG()),
+        ("DomainGuid", GUID()),
+        ("DomainName", LPTSTR()),
+        ("DnsForestName", LPTSTR()),
+        ("Flags", ULONG()),
+        ("DcSiteName", LPTSTR()),
+        ("ClientSiteName", LPTSTR()),
+    ]
+
+PDOMAIN_CONTROLLER_INFO = Ptr("<I", DOMAIN_CONTROLLER_INFO())
+PDOMAIN_CONTROLLER_INFO_PTR = Ptr("<I", PDOMAIN_CONTROLLER_INFO())
+NET_API_STATUS = DWORD
+NET_COMPUTER_NAME_TYPE = UINT
+NETSETUP_NAME_TYPE = UINT
+NET_VALIDATE_PASSWORD_TYPE = LPVOID
+DSROLE_PRIMARY_DOMAIN_INFO_LEVEL = UINT
+_ServerType_ = DWORD
+NETSETUP_JOIN_STATUS = UINT
+PNETSETUP_JOIN_STATUS = Ptr("<I", NETSETUP_JOIN_STATUS())
+_NetUserGetLocalGroupsFlags_ = DWORD
+_DsGetDcNameFlags_ = ULONG
+_NETSETUP_PROVISION_OPTIONS_ = DWORD
+
+class NETSETUP_PROVISIONING_PARAMS(MemStruct):
+    fields = [
+        ("dwVersion", DWORD()),
+        ("lpDomain", LPCWSTR()),
+        ("lpMachineName", LPCWSTR()),
+        ("lpMachineAccountOU", LPCWSTR()),
+        ("lpDcName", LPCWSTR()),
+        ("dwProvisionOptions", _NETSETUP_PROVISION_OPTIONS_()),
+        ("aCertTemplateNames", LPCWSTR_PTR()),
+        ("cCertTemplateNames", DWORD()),
+        ("aMachinePolicyNames", LPCWSTR_PTR()),
+        ("cMachinePolicyNames", DWORD()),
+        ("aMachinePolicyPaths", LPCWSTR_PTR()),
+        ("cMachinePolicyPaths", DWORD()),
+    ]
+
+PNETSETUP_PROVISIONING_PARAMS = Ptr("<I", NETSETUP_PROVISIONING_PARAMS())
+_DFS_FLAG_ = DWORD
+_DFS_MOVE_FLAG_ = ULONG
+_DFS_REMOVE_FLAG_ = ULONG
+DFS_NAMESPACE_VERSION_ORIGIN = UINT
+_DFS_NAMESPACE_CAPABILITY_FLAG_ = ULONGLONG
+
+class DFS_SUPPORTED_NAMESPACE_VERSION_INFO(MemStruct):
+    fields = [
+        ("DomainDfsMajorVersion", ULONG()),
+        ("DomainDfsMinorVersion", ULONG()),
+        ("DomainDfsCapabilities", _DFS_NAMESPACE_CAPABILITY_FLAG_()),
+        ("StandaloneDfsMajorVersion", ULONG()),
+        ("StandaloneDfsMinorVersion", ULONG()),
+        ("StandaloneDfsCapabilities", _DFS_NAMESPACE_CAPABILITY_FLAG_()),
+    ]
+
+PDFS_SUPPORTED_NAMESPACE_VERSION_INFO = Ptr("<I", DFS_SUPPORTED_NAMESPACE_VERSION_INFO())
+PDFS_SUPPORTED_NAMESPACE_VERSION_INFO_PTR = Ptr("<I", PDFS_SUPPORTED_NAMESPACE_VERSION_INFO())
+
+class HLOG(MemStruct):
+    fields = [
+        ("time", DWORD()),
+        ("last_flags", DWORD()),
+        ("offset", DWORD()),
+        ("rec_offset", DWORD()),
+    ]
+
+LPHLOG = Ptr("<I", HLOG())
+
+###################
+
+###### Functions ######
 
 def netapi32_DsAddressToSiteNames(jitter, get_str, set_str):
     """

@@ -1,3 +1,96 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+IP_ADDR_FAMILY = unsigned_short
+IPNG_ADDRESS = Union([
+    ("IpAddrV4", DWORD),
+    ("IpAddrV6", BYTE__16_),
+])
+
+class MCAST_LEASE_REQUEST(MemStruct):
+    fields = [
+        ("LeaseStartTime", LONG()),
+        ("MaxLeaseStartTime", LONG()),
+        ("LeaseDuration", DWORD()),
+        ("MinLeaseDuration", DWORD()),
+        ("ServerAddress", IPNG_ADDRESS()),
+        ("MinAddrCount", WORD()),
+        ("AddrCount", WORD()),
+        ("pAddrBuf", PBYTE()),
+    ]
+
+PMCAST_LEASE_REQUEST = Ptr("<I", MCAST_LEASE_REQUEST())
+
+class MCAST_LEASE_RESPONSE(MemStruct):
+    fields = [
+        ("LeaseStartTime", LONG()),
+        ("LeaseEndTime", LONG()),
+        ("ServerAddress", IPNG_ADDRESS()),
+        ("AddrCount", WORD()),
+        ("pAddrBuf", PBYTE()),
+    ]
+
+PMCAST_LEASE_RESPONSE = Ptr("<I", MCAST_LEASE_RESPONSE())
+
+class MCAST_SCOPE_CTX(MemStruct):
+    fields = [
+        ("ScopeID", IPNG_ADDRESS()),
+        ("Interface", IPNG_ADDRESS()),
+        ("ServerID", IPNG_ADDRESS()),
+    ]
+
+PMCAST_SCOPE_CTX = Ptr("<I", MCAST_SCOPE_CTX())
+
+class MCAST_SCOPE_ENTRY(MemStruct):
+    fields = [
+        ("ScopeCtx", MCAST_SCOPE_CTX()),
+        ("LastAddr", IPNG_ADDRESS()),
+        ("TTL", DWORD()),
+        ("ScopeDesc", UNICODE_STRING()),
+    ]
+
+PMCAST_SCOPE_ENTRY = Ptr("<I", MCAST_SCOPE_ENTRY())
+
+class DHCPCAPI_CLASSID(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("Data", LPBYTE()),
+        ("nBytesData", ULONG()),
+    ]
+
+LPDHCPCAPI_CLASSID = Ptr("<I", DHCPCAPI_CLASSID())
+
+class DHCPAPI_PARAMS(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("OptionId", ULONG()),
+        ("IsVendor", BOOL()),
+        ("Data", LPBYTE()),
+        ("nBytesData", DWORD()),
+    ]
+
+LPDHCPCAPI_PARAMS = Ptr("<I", DHCPAPI_PARAMS())
+
+class DHCPCAPI_PARAMS_ARRAY(MemStruct):
+    fields = [
+        ("nParams", ULONG()),
+        ("Params", LPDHCPCAPI_PARAMS()),
+    ]
+
+
+class MCAST_CLIENT_UID(MemStruct):
+    fields = [
+        ("ClientUID", LPBYTE()),
+        ("ClientUIDLength", DWORD()),
+    ]
+
+LPMCAST_CLIENT_UID = Ptr("<I", MCAST_CLIENT_UID())
+
+###################
+
+###### Functions ######
 
 def dhcpcsvc_DhcpCApiCleanup(jitter):
     """

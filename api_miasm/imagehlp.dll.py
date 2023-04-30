@@ -1,3 +1,47 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+DIGEST_FUNCTION = LPVOID
+DIGEST_HANDLE = PVOID
+PIMAGEHLP_STATUS_ROUTINE = LPVOID
+PIMAGE_LOAD_CONFIG_DIRECTORY = Ptr("<I", IMAGE_LOAD_CONFIG_DIRECTORY())
+_WIN_CERT_TYPE_ = WORD
+
+class WIN_CERTIFICATE(MemStruct):
+    fields = [
+        ("dwLength", DWORD()),
+        ("wRevision", WORD()),
+        ("wCertificateType", _WIN_CERT_TYPE_()),
+        ("bCertificate", BYTE__ANYSIZE_ARRAY_()),
+    ]
+
+LPWIN_CERTIFICATE = Ptr("<I", WIN_CERTIFICATE())
+
+class LOADED_IMAGE(MemStruct):
+    fields = [
+        ("ModuleName", PSTR()),
+        ("hFile", HANDLE()),
+        ("MappedAddress", PUCHAR()),
+        ("FileHeader", PIMAGE_NT_HEADERS()),
+        ("LastRvaSection", PIMAGE_SECTION_HEADER()),
+        ("NumberOfSections", ULONG()),
+        ("Sections", PIMAGE_SECTION_HEADER()),
+        ("Characteristics", _IMAGE_FILE_CHARACTERISTICS_ULONG_()),
+        ("fSystemImage", BOOLEAN()),
+        ("fDOSImage", BOOLEAN()),
+        ("fReadOnly", BOOLEAN()),
+        ("Version", UCHAR()),
+        ("Links", LIST_ENTRY()),
+        ("SizeOfImage", ULONG()),
+    ]
+
+PLOADED_IMAGE = Ptr("<I", LOADED_IMAGE())
+
+###################
+
+###### Functions ######
 
 def imagehlp_GetImageConfigInformation(jitter):
     """

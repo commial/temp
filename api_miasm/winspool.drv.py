@@ -1,3 +1,4 @@
+###### Enums ######
 _DeviceCapability_ = {
     "DC_FIELDS": 1,
     "DC_PAPERS": 2,
@@ -154,6 +155,103 @@ PrintAsyncNotifyConversationStyle_INV = {
     0: "kBiDirectional",
     1: "kUniDirectional",
 }
+
+###################
+
+###### Types ######
+PCORE_PRINTER_DRIVER = LPVOID
+PrintAsyncNotificationType_PTR = GUID_PTR
+_PrinterNotifyType_ = WORD
+
+class _PRINTER_NOTIFY_INFO_DATA_u_s_(MemStruct):
+    fields = [
+        ("cbBuf", DWORD()),
+        ("pBuf", LPVOID()),
+    ]
+
+_PRINTER_NOTIFY_INFO_DATA_u_ = Union([
+    ("adwData", DWORD__2_),
+    ("Data", _PRINTER_NOTIFY_INFO_DATA_u_s_),
+])
+
+class PRINTER_NOTIFY_INFO_DATA(MemStruct):
+    fields = [
+        ("Type", _PrinterNotifyType_()),
+        ("Field", WORD()),
+        ("Reserved", DWORD()),
+        ("Id", DWORD()),
+        ("NotifyData", _PRINTER_NOTIFY_INFO_DATA_u_()),
+    ]
+
+PRINTER_NOTIFY_INFO_DATA__1_ = Array(PRINTER_NOTIFY_INFO_DATA, 1)
+_PRINTER_NOTIFY_INFO_FLAGS_ = DWORD
+
+class PRINTER_NOTIFY_INFO(MemStruct):
+    fields = [
+        ("Version", DWORD()),
+        ("Flags", _PRINTER_NOTIFY_INFO_FLAGS_()),
+        ("Count", DWORD()),
+        ("aData", PRINTER_NOTIFY_INFO_DATA__1_()),
+    ]
+
+PPRINTER_NOTIFY_INFO = Ptr("<I", PRINTER_NOTIFY_INFO())
+PRINTER_OPTION_FLAGS = DWORD
+
+class PRINTER_OPTIONS(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("dwFlags", PRINTER_OPTION_FLAGS()),
+    ]
+
+PPRINTER_OPTIONS = Ptr("<I", PRINTER_OPTIONS())
+_PRINTER_ACCESS_MASK_ = ACCESS_MASK
+
+class PRINTER_DEFAULTS(MemStruct):
+    fields = [
+        ("pDatatype", LPTSTR()),
+        ("pDevMode", LPDEVMODE()),
+        ("DesiredAccess", _PRINTER_ACCESS_MASK_()),
+    ]
+
+LPPRINTER_DEFAULTS = Ptr("<I", PRINTER_DEFAULTS())
+_DeviceCapability_ = WORD
+_EnumPrintersFlags_ = DWORD
+_DocumentMode_ = DWORD
+_PrinterChangeFlags_ = DWORD
+_PrinterChangeFlags_PTR_ = Ptr("<I", _PrinterChangeFlags_())
+_JobControl_ = DWORD
+_PrinterControl_ = DWORD
+EPrintXPSJobOperation = UINT
+EPrintXPSJobProgress = UINT
+PrintAsyncNotifyUserFilter = UINT
+PrintAsyncNotifyConversationStyle = UINT
+
+class PRINTER_NOTIFY_OPTIONS_TYPE(MemStruct):
+    fields = [
+        ("Type", _PrinterNotifyType_()),
+        ("Reserved0", WORD()),
+        ("Reserved1", DWORD()),
+        ("Reserved2", DWORD()),
+        ("Count", DWORD()),
+        ("pFields", PWORD()),
+    ]
+
+PPRINTER_NOTIFY_OPTIONS_TYPE = Ptr("<I", PRINTER_NOTIFY_OPTIONS_TYPE())
+_PrinterNotifyFlags_ = DWORD
+
+class PRINTER_NOTIFY_OPTIONS(MemStruct):
+    fields = [
+        ("Version", DWORD()),
+        ("Flags", _PrinterNotifyFlags_()),
+        ("Count", DWORD()),
+        ("pTypes", PPRINTER_NOTIFY_OPTIONS_TYPE()),
+    ]
+
+PPRINTER_NOTIFY_OPTIONS = Ptr("<I", PRINTER_NOTIFY_OPTIONS())
+
+###################
+
+###### Functions ######
 
 def winspool_AddJob(jitter, get_str, set_str):
     """

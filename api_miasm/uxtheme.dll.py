@@ -1,3 +1,4 @@
+###### Enums ######
 BP_ANIMATIONSTYLE = {
     "BPAS_NONE": 0,
     "BPAS_LINEAR": 1,
@@ -150,6 +151,105 @@ TA_TIMINGFUNCTION_TYPE_INV = {
     0: "TTFT_UNDEFINED",
     1: "TTFT_CUBIC_BEZIER",
 }
+
+###################
+
+###### Types ######
+HANIMATIONBUFFER = HANDLE
+HPAINTBUFFER = HANDLE
+DTT_CALLBACK_PROC = LPVOID
+INTLIST_PTR = LPVOID
+_BPPF_Flags_ = DWORD
+
+class BP_PAINTPARAMS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("dwFlags", _BPPF_Flags_()),
+        ("prcExclude", const_RECT_PTR()),
+        ("pBlendFunction", const_BLENDFUNCTION_PTR()),
+    ]
+
+BP_PAINTPARAMS_PTR = Ptr("<I", BP_PAINTPARAMS())
+BP_ANIMATIONSTYLE = UINT
+
+class BP_ANIMATIONPARAMS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("style", BP_ANIMATIONSTYLE()),
+        ("dwDuration", DWORD()),
+    ]
+
+BP_ANIMATIONPARAMS_PTR = Ptr("<I", BP_ANIMATIONPARAMS())
+_DTBG_Flags_ = DWORD
+
+class DTBGOPTS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", _DTBG_Flags_()),
+        ("rcClip", RECT()),
+    ]
+
+const_DTBGOPTS_PTR = Ptr("<I", DTBGOPTS())
+_DTT_Flags_ = DWORD
+TEXTSHADOWTYPE = int
+
+class DTTOPTS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", _DTT_Flags_()),
+        ("crText", COLORREF()),
+        ("crBorder", COLORREF()),
+        ("crShadow", COLORREF()),
+        ("iTextShadowType", TEXTSHADOWTYPE()),
+        ("ptShadowOffset", POINT()),
+        ("iBorderSize", int()),
+        ("iFontPropId", int()),
+        ("iColorPropId", int()),
+        ("iStateId", int()),
+        ("fApplyOverlay", BOOL()),
+        ("iGlowSize", int()),
+        ("pfnDrawTextCallback", DTT_CALLBACK_PROC()),
+        ("lParam", LPARAM()),
+    ]
+
+const_DTTOPTS_PTR = Ptr("<I", DTTOPTS())
+THEMESIZE = UINT
+PROPERTYORIGIN = UINT
+PROPERTYORIGIN_PTR = Ptr("<I", PROPERTYORIGIN())
+_EnableThemeDialogTextureFlags_ = DWORD
+_HitTestThemeBackgroundOptions_ = DWORD
+_HitTestReturnCode_ = WORD
+_HitTestReturnCode_PTR_ = Ptr("<I", _HitTestReturnCode_())
+_DrawThemeParentBackgroundFlags_ = DWORD
+BP_BUFFERFORMAT = DWORD
+WINDOWTHEMEATTRIBUTETYPE = DWORD
+TA_TRANSFORM_TYPE = UINT
+TA_PROPERTY = UINT
+TA_TRANSFORM_FLAG = UINT
+
+class TA_TRANSFORM(MemStruct):
+    fields = [
+        ("eTransformType", TA_TRANSFORM_TYPE()),
+        ("dwTimingFunctionId", DWORD()),
+        ("dwStartTime", DWORD()),
+        ("dwDurationTime", DWORD()),
+        ("eFlags", TA_TRANSFORM_FLAG()),
+    ]
+
+TA_TRANSFORM_PTR = Ptr("<I", TA_TRANSFORM())
+TA_TIMINGFUNCTION_TYPE = UINT
+
+class TA_TIMINGFUNCTION(MemStruct):
+    fields = [
+        ("eTimingFunctionType", TA_TIMINGFUNCTION_TYPE()),
+    ]
+
+TA_TIMINGFUNCTION_PTR = Ptr("<I", TA_TIMINGFUNCTION())
+
+###################
+
+###### Functions ######
 
 def uxtheme_BeginBufferedAnimation(jitter):
     """

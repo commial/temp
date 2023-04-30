@@ -1,3 +1,4 @@
+###### Enums ######
 _RASMDPAGE_ = {
     "RASMDPAGE_Status": 0,
     "RASMDPAGE_Summary": 1,
@@ -8,6 +9,79 @@ _RASMDPAGE__INV = {
     1: "RASMDPAGE_Summary",
     2: "RASMDPAGE_Preferences",
 }
+
+###################
+
+###### Types ######
+RASPBDLGFUNC = LPVOID
+_RASDDFLAG_ = DWORD
+
+class RASENTRYDLG(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hwndOwner", HWND()),
+        ("dwFlags", _RASDDFLAG_()),
+        ("xDlg", LONG()),
+        ("yDlg", LONG()),
+        ("szEntry", TCHAR__RAS_MaxEntryName_+_1_()),
+        ("dwError", DWORD()),
+        ("reserved", ULONG_PTR()),
+        ("reserved2", ULONG_PTR()),
+    ]
+
+LPRASENTRYDLG = Ptr("<I", RASENTRYDLG())
+_RASMDFLAG_ = DWORD
+_RASMDPAGE_ = DWORD
+
+class RASMONITORDLG(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hwndOwner", HWND()),
+        ("dwFlags", _RASMDFLAG_()),
+        ("dwStartPage", _RASMDPAGE_()),
+        ("xDlg", LONG()),
+        ("yDlg", LONG()),
+        ("dwError", DWORD()),
+        ("reserved", ULONG_PTR()),
+        ("reserved2", ULONG_PTR()),
+    ]
+
+LPRASMONITORDLG = Ptr("<I", RASMONITORDLG())
+
+class RASDIALDLG(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hwndOwner", HWND()),
+        ("dwFlags", DWORD()),
+        ("xDlg", LONG()),
+        ("yDlg", LONG()),
+        ("dwSubEntry", DWORD()),
+        ("dwError", DWORD()),
+        ("reserved", ULONG_PTR()),
+        ("reserved2", ULONG_PTR()),
+    ]
+
+LPRASDIALDLG = Ptr("<I", RASDIALDLG())
+
+class RASPBDLG(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hwndOwner", HWND()),
+        ("dwFlags", DWORD()),
+        ("xDlg", LONG()),
+        ("yDlg", LONG()),
+        ("dwCallbackId", ULONG_PTR()),
+        ("pCallback", RASPBDLGFUNC()),
+        ("dwError", DWORD()),
+        ("reserved", ULONG_PTR()),
+        ("reserved2", ULONG_PTR()),
+    ]
+
+LPRASPBDLG = Ptr("<I", RASPBDLG())
+
+###################
+
+###### Functions ######
 
 def rasdlg_RasDialDlg(jitter, get_str, set_str):
     """

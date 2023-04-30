@@ -1,3 +1,187 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+HACMSTREAM = HANDLE
+LPHACMSTREAM = Ptr("<I", HACMSTREAM())
+HACMOBJ = HANDLE
+HACMDRIVER = HANDLE
+LPHACMDRIVER = Ptr("<I", HACMDRIVER())
+HACMDRIVERID = HANDLE
+LPHACMDRIVERID = Ptr("<I", HACMDRIVERID())
+ACMDRIVERENUMCB = LPVOID
+ACMFILTERENUMCB = LPVOID
+ACMFILTERTAGENUMCB = LPVOID
+ACMFORMATENUMCB = LPVOID
+ACMFORMATTAGENUMCB = LPVOID
+ACMFORMATCHOOSEHOOKPROC = LPVOID
+ACMFILTERCHOOSEHOOKPROC = LPVOID
+TCHAR__ACMFORMATTAGDETAILS_FORMATTAG_CHARS_ = Array(TCHAR, 48)
+TCHAR__ACMFILTERTAGDETAILS_FILTERTAG_CHARS_ = Array(TCHAR, 48)
+TCHAR__ACMFORMATDETAILS_FORMAT_CHARS_ = Array(TCHAR, 128)
+TCHAR__ACMFILTERDETAILS_FILTER_CHARS_ = Array(TCHAR, 128)
+TCHAR__ACMDRIVERDETAILS_SHORTNAME_CHARS_ = Array(TCHAR, 32)
+TCHAR__ACMDRIVERDETAILS_LONGNAME_CHARS_ = Array(TCHAR, 128)
+TCHAR__ACMDRIVERDETAILS_COPYRIGHT_CHARS_ = Array(TCHAR, 80)
+TCHAR__ACMDRIVERDETAILS_LICENSING_CHARS_ = Array(TCHAR, 128)
+TCHAR__ACMDRIVERDETAILS_FEATURES_CHARS_ = Array(TCHAR, 512)
+
+class WAVEFILTER(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFilterTag", DWORD()),
+        ("fdwFilter", DWORD()),
+        ("dwReserved", DWORD__5_()),
+    ]
+
+LPWAVEFILTER = Ptr("<I", WAVEFILTER())
+_ACMDRIVERDETAILS_SUPPORTF_ = DWORD
+
+class ACMDRIVERDETAILS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("fccType", FOURCC()),
+        ("fccComp", FOURCC()),
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vdwACM", DWORD()),
+        ("vdwDriver", DWORD()),
+        ("fdwSupport", _ACMDRIVERDETAILS_SUPPORTF_()),
+        ("cFormatTags", DWORD()),
+        ("cFilterTags", DWORD()),
+        ("hicon", HICON()),
+        ("szShortName", TCHAR__ACMDRIVERDETAILS_SHORTNAME_CHARS_()),
+        ("szLongName", TCHAR__ACMDRIVERDETAILS_LONGNAME_CHARS_()),
+        ("szCopyright", TCHAR__ACMDRIVERDETAILS_COPYRIGHT_CHARS_()),
+        ("szLicensing", TCHAR__ACMDRIVERDETAILS_LICENSING_CHARS_()),
+        ("szFeatures", TCHAR__ACMDRIVERDETAILS_FEATURES_CHARS_()),
+    ]
+
+LPACMDRIVERDETAILS = Ptr("<I", ACMDRIVERDETAILS())
+
+class ACMFILTERDETAILS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFilterIndex", DWORD()),
+        ("dwFilterTag", DWORD()),
+        ("fdwSupport", _ACMDRIVERDETAILS_SUPPORTF_()),
+        ("pwfltr", LPWAVEFILTER()),
+        ("cbwfltr", DWORD()),
+        ("szFilter", TCHAR__ACMFILTERDETAILS_FILTER_CHARS_()),
+    ]
+
+LPACMFILTERDETAILS = Ptr("<I", ACMFILTERDETAILS())
+_ACMFILTERCHOOSE_STYLEF_ = DWORD
+_ACM_FILTERENUMF_ = DWORD
+
+class ACMFILTERCHOOSE(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("fdwStyle", _ACMFILTERCHOOSE_STYLEF_()),
+        ("hwndOwner", HWND()),
+        ("pwfltr", LPWAVEFILTER()),
+        ("cbwfltr", DWORD()),
+        ("pszTitle", LPCTSTR()),
+        ("szFilterTag", TCHAR__ACMFILTERTAGDETAILS_FILTERTAG_CHARS_()),
+        ("szFilter", TCHAR__ACMFILTERDETAILS_FILTER_CHARS_()),
+        ("pszName", LPTSTR()),
+        ("cchName", DWORD()),
+        ("fdwEnum", _ACM_FILTERENUMF_()),
+        ("pwfltrEnum", LPWAVEFILTER()),
+        ("hInstance", HINSTANCE()),
+        ("pszTemplateName", LPCTSTR()),
+        ("lCustData", LPARAM()),
+        ("pfnHook", ACMFILTERCHOOSEHOOKPROC()),
+    ]
+
+LPACMFILTERCHOOSE = Ptr("<I", ACMFILTERCHOOSE())
+
+class ACMFILTERTAGDETAILS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFilterTagIndex", DWORD()),
+        ("dwFilterTag", DWORD()),
+        ("cbFilterSize", DWORD()),
+        ("fdwSupport", _ACMDRIVERDETAILS_SUPPORTF_()),
+        ("cStandardFilters", DWORD()),
+        ("szFilterTag", TCHAR__ACMFILTERTAGDETAILS_FILTERTAG_CHARS_()),
+    ]
+
+LPACMFILTERTAGDETAILS = Ptr("<I", ACMFILTERTAGDETAILS())
+_ACMFORMATCHOOSE_STYLEF_ = DWORD
+_ACM_FORMATENUMF_ = DWORD
+
+class ACMFORMATCHOOSE(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("fdwStyle", _ACMFORMATCHOOSE_STYLEF_()),
+        ("hwndOwner", HWND()),
+        ("pwfx", LPWAVEFORMATEX()),
+        ("cbwfx", DWORD()),
+        ("pszTitle", LPCWSTR()),
+        ("szFormatTag", TCHAR__ACMFORMATTAGDETAILS_FORMATTAG_CHARS_()),
+        ("szFormat", TCHAR__ACMFORMATDETAILS_FORMAT_CHARS_()),
+        ("pszName", LPTSTR()),
+        ("cchName", DWORD()),
+        ("fdwEnum", _ACM_FORMATENUMF_()),
+        ("pwfxEnum", LPWAVEFORMATEX()),
+        ("hInstance", HINSTANCE()),
+        ("pszTemplateName", LPCTSTR()),
+        ("lCustData", LPARAM()),
+        ("pfnHook", ACMFORMATCHOOSEHOOKPROC()),
+    ]
+
+LPACMFORMATCHOOSE = Ptr("<I", ACMFORMATCHOOSE())
+
+class ACMFORMATDETAILS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFormatIndex", DWORD()),
+        ("dwFormatTag", DWORD()),
+        ("fdwSupport", _ACMDRIVERDETAILS_SUPPORTF_()),
+        ("pwfx", LPWAVEFORMATEX()),
+        ("cbwfx", DWORD()),
+        ("szFormat", TCHAR__ACMFORMATDETAILS_FORMAT_CHARS_()),
+    ]
+
+LPACMFORMATDETAILS = Ptr("<I", ACMFORMATDETAILS())
+
+class ACMFORMATTAGDETAILS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFormatTagIndex", DWORD()),
+        ("dwFormatTag", DWORD()),
+        ("cbFormatSize", DWORD()),
+        ("fdwSupport", _ACMDRIVERDETAILS_SUPPORTF_()),
+        ("cStandardFormats", DWORD()),
+        ("szFormatTag", TCHAR__ACMFORMATTAGDETAILS_FORMATTAG_CHARS_()),
+    ]
+
+LPACMFORMATTAGDETAILS = Ptr("<I", ACMFORMATTAGDETAILS())
+_ACMSTREAMHEADER_STATUSF_ = DWORD
+
+class ACMSTREAMHEADER(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("fdwStatus", _ACMSTREAMHEADER_STATUSF_()),
+        ("dwUser", DWORD_PTR()),
+        ("pbSrc", LPBYTE()),
+        ("cbSrcLength", DWORD()),
+        ("cbSrcLengthUsed", DWORD()),
+        ("dwSrcUser", DWORD_PTR()),
+        ("pbDst", LPBYTE()),
+        ("cbDstLength", DWORD()),
+        ("cbDstLengthUsed", DWORD()),
+        ("dwDstUser", DWORD_PTR()),
+        ("dwReservedDriver", DWORD___DRVRESERVED_()),
+    ]
+
+LPACMSTREAMHEADER = Ptr("<I", ACMSTREAMHEADER())
+
+###################
+
+###### Functions ######
 
 def msacm32_acmDriverAdd(jitter, get_str, set_str):
     """

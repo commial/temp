@@ -1,3 +1,86 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+STDAPI_(LONG) = LONG
+STDAPI_(ULONG) = ULONG
+STDAPI_(LPVOID) = LPVOID
+AVISAVECALLBACK = LPVOID
+PAVIFILE = IAVIFile_PTR
+PAVIFILE_PTR = Ptr("<I", PAVIFILE())
+PAVISTREAM = IAVIStream_PTR
+PAVISTREAM_PTR = Ptr("<I", PAVISTREAM())
+PGETFRAME = IGetFrame_PTR
+STDAPI_(PGETFRAME) = PGETFRAME
+_AVISTREAMINFO_FLAGS_ = DWORD
+
+class AVISTREAMINFO(MemStruct):
+    fields = [
+        ("fccType", FOURCC()),
+        ("fccHandler", DWORD()),
+        ("dwFlags", _AVISTREAMINFO_FLAGS_()),
+        ("dwCaps", DWORD()),
+        ("wPriority", WORD()),
+        ("wLanguage", WORD()),
+        ("dwScale", DWORD()),
+        ("dwRate", DWORD()),
+        ("dwStart", DWORD()),
+        ("dwLength", DWORD()),
+        ("dwInitialFrames", DWORD()),
+        ("dwSuggestedBufferSize", DWORD()),
+        ("dwQuality", DWORD()),
+        ("dwSampleSize", DWORD()),
+        ("rcFrame", RECT()),
+        ("dwEditCount", DWORD()),
+        ("dwFormatChangeCount", DWORD()),
+        ("szName", TCHAR__64_()),
+    ]
+
+AVISTREAMINFO_PTR = Ptr("<I", AVISTREAMINFO())
+_AVIFILEINFO_FLAGS_ = DWORD
+_AVIFILECAPS_ = DWORD
+
+class AVIFILEINFO(MemStruct):
+    fields = [
+        ("dwMaxBytesPerSec", DWORD()),
+        ("dwFlags", _AVIFILEINFO_FLAGS_()),
+        ("dwCaps", _AVIFILECAPS_()),
+        ("dwStreams", DWORD()),
+        ("dwSuggestedBufferSize", DWORD()),
+        ("dwWidth", DWORD()),
+        ("dwHeight", DWORD()),
+        ("dwScale", DWORD()),
+        ("dwRate", DWORD()),
+        ("dwLength", DWORD()),
+        ("dwEditCount", DWORD()),
+        ("szFileType", TCHAR__64_()),
+    ]
+
+AVIFILEINFO_PTR = Ptr("<I", AVIFILEINFO())
+
+class AVICOMPRESSOPTIONS(MemStruct):
+    fields = [
+        ("fccType", DWORD()),
+        ("fccHandler", DWORD()),
+        ("dwKeyFrameEvery", DWORD()),
+        ("dwQuality", DWORD()),
+        ("dwBytesPerSecond", DWORD()),
+        ("dwFlags", DWORD()),
+        ("lpFormat", LPVOID()),
+        ("cbFormat", DWORD()),
+        ("lpParms", LPVOID()),
+        ("cbParms", DWORD()),
+        ("dwInterleaveEvery", DWORD()),
+    ]
+
+AVICOMPRESSOPTIONS_PTR = Ptr("<I", AVICOMPRESSOPTIONS())
+LPAVICOMPRESSOPTIONS = Ptr("<I", AVICOMPRESSOPTIONS())
+LPAVICOMPRESSOPTIONS_PTR = Ptr("<I", LPAVICOMPRESSOPTIONS())
+
+###################
+
+###### Functions ######
 
 def avifil32_AVIBuildFilter(jitter, get_str, set_str):
     """

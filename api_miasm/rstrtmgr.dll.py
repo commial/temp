@@ -1,3 +1,4 @@
+###### Enums ######
 RM_FILTER_ACTION = {
     "RmInvalidFilterAction": 0,
     "RmNoRestart": 1,
@@ -26,6 +27,42 @@ RM_APP_TYPE_INV = {
     5: "RmConsole",
     1000: "RmCritical",
 }
+
+###################
+
+###### Types ######
+RM_WRITE_STATUS_CALLBACK = LPVOID
+const_WCHAR___ = WCHAR___
+WCHAR__CCH_RM_MAX_APP_NAME_+_1_ = Array(WCHAR, 256)
+WCHAR__CCH_RM_MAX_SVC_NAME_+_1_ = Array(WCHAR, 64)
+
+class RM_UNIQUE_PROCESS(MemStruct):
+    fields = [
+        ("dwProcessId", DWORD()),
+        ("ProcessStartTime", FILETIME()),
+    ]
+
+RM_UNIQUE_PROCESS_PTR = Ptr("<I", RM_UNIQUE_PROCESS())
+RM_UNIQUE_PROCESS___ = Ptr("<I", RM_UNIQUE_PROCESS())
+RM_FILTER_ACTION = UINT
+RM_APP_TYPE = UINT
+
+class RM_PROCESS_INFO(MemStruct):
+    fields = [
+        ("Process", RM_UNIQUE_PROCESS()),
+        ("strAppName", WCHAR__CCH_RM_MAX_APP_NAME_+_1_()),
+        ("strServiceShortName", WCHAR__CCH_RM_MAX_SVC_NAME_+_1_()),
+        ("ApplicationType", RM_APP_TYPE()),
+        ("AppStatus", ULONG()),
+        ("TSSessionId", DWORD()),
+        ("bRestartable", BOOL()),
+    ]
+
+RM_PROCESS_INFO___ = Ptr("<I", RM_PROCESS_INFO())
+
+###################
+
+###### Functions ######
 
 def rstrtmgr_RmAddFilter(jitter):
     """

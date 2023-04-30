@@ -1,3 +1,4 @@
+###### Enums ######
 RIO_CQ = {
     "RIO_INVALID_CQ": 0,
 }
@@ -24,6 +25,123 @@ RIO_NOTIFICATION_COMPLETION_TYPE_INV = {
     1: "RIO_EVENT_COMPLETION",
     2: "RIO_IOCP_COMPLETION",
 }
+
+###################
+
+###### Types ######
+LPSERVICE_CALLBACK_PROC = LPVOID
+_SERVICE_ADDRESS_FLAG_ = DWORD
+
+class SERVICE_ADDRESS(MemStruct):
+    fields = [
+        ("dwAddressType", _AddressFamily_()),
+        ("dwAddressFlags", _SERVICE_ADDRESS_FLAG_()),
+        ("dwAddressLength", DWORD()),
+        ("dwPrincipalLength", DWORD()),
+        # Length is `dwAddressLength`
+        ("lpAddress", BYTE_PTR()),
+        # Length is `dwPrincipalLength`
+        ("lpPrincipal", BYTE_PTR()),
+    ]
+
+SERVICE_ADDRESS__1_ = Array(SERVICE_ADDRESS, 1)
+
+class SERVICE_ADDRESSES(MemStruct):
+    fields = [
+        ("dwAddressCount", DWORD()),
+        ("Addresses", SERVICE_ADDRESS__1_()),
+    ]
+
+LPSERVICE_ADDRESSES = Ptr("<I", SERVICE_ADDRESSES())
+
+class SERVICE_ASYNC_INFO(MemStruct):
+    fields = [
+        ("lpServiceCallbackProc", LPSERVICE_CALLBACK_PROC()),
+        ("lParam", LPARAM()),
+        ("hAsyncTaskHandle", HANDLE()),
+    ]
+
+LPSERVICE_ASYNC_INFO = Ptr("<I", SERVICE_ASYNC_INFO())
+
+class SERVICE_INFO(MemStruct):
+    fields = [
+        ("lpServiceType", LPGUID()),
+        ("lpServiceName", LPTSTR()),
+        ("lpComment", LPTSTR()),
+        ("lpLocale", LPTSTR()),
+        ("dwDisplayHint", DWORD()),
+        ("dwVersion", DWORD()),
+        ("dwTime", DWORD()),
+        ("lpMachineName", LPTSTR()),
+        ("lpServiceAddress", LPSERVICE_ADDRESSES()),
+        ("ServiceSpecificInfo", BLOB()),
+    ]
+
+LPSERVICE_INFO = Ptr("<I", SERVICE_INFO())
+
+class TRANSMIT_FILE_BUFFERS(MemStruct):
+    fields = [
+        ("Head", LPVOID()),
+        ("HeadLength", DWORD()),
+        ("Tail", LPVOID()),
+        ("TailLength", DWORD()),
+    ]
+
+LPTRANSMIT_FILE_BUFFERS = Ptr("<I", TRANSMIT_FILE_BUFFERS())
+RIO_CQ = LPVOID
+RIO_RQ = LPVOID
+RIO_BUFFERID = LPVOID
+
+class RIORESULT(MemStruct):
+    fields = [
+        ("Status", LONG()),
+        ("BytesTransferred", ULONG()),
+        ("SocketContext", ULONGLONG()),
+        ("RequestContext", ULONGLONG()),
+    ]
+
+PRIORESULT = Ptr("<I", RIORESULT())
+
+class RIO_BUF(MemStruct):
+    fields = [
+        ("BufferId", RIO_BUFFERID()),
+        ("Offset", ULONG()),
+        ("Length", ULONG()),
+    ]
+
+PRIO_BUF = Ptr("<I", RIO_BUF())
+RIO_NOTIFICATION_COMPLETION_TYPE = UINT
+
+class _RIO_NOTIFICATION_COMPLETION_s1_(MemStruct):
+    fields = [
+        ("EventHandle", HANDLE()),
+        ("NotifyReset", BOOL()),
+    ]
+
+
+class _RIO_NOTIFICATION_COMPLETION_s2_(MemStruct):
+    fields = [
+        ("IocpHandle", HANDLE()),
+        ("CompletionKey", PVOID()),
+        ("Overlapped", PVOID()),
+    ]
+
+_RIO_NOTIFICATION_COMPLETION_u_ = Union([
+    ("Event", _RIO_NOTIFICATION_COMPLETION_s1_),
+    ("Iocp", _RIO_NOTIFICATION_COMPLETION_s2_),
+])
+
+class RIO_NOTIFICATION_COMPLETION(MemStruct):
+    fields = [
+        ("Type", RIO_NOTIFICATION_COMPLETION_TYPE()),
+        (None, _RIO_NOTIFICATION_COMPLETION_u_()),
+    ]
+
+RIO_NOTIFICATION_COMPLETION_PTR = Ptr("<I", RIO_NOTIFICATION_COMPLETION())
+
+###################
+
+###### Functions ######
 
 def mswsock_EnumProtocols(jitter, get_str, set_str):
     """

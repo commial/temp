@@ -1,3 +1,4 @@
+###### Enums ######
 WCM_PROPERTY = {
     "wcm_global_property_domain_policy": 0,
     "wcm_global_property_minimize_policy": 1,
@@ -30,6 +31,36 @@ WCM_MEDIA_TYPE_INV = {
     3: "wcm_media_mbn",
     4: "wcm_media_invalid",
 }
+
+###################
+
+###### Types ######
+WCHAR__WCM_MAX_PROFILE_NAME_ = Array(WCHAR, 256)
+WCM_PROPERTY = UINT
+WCM_MEDIA_TYPE = UINT
+
+class WCM_PROFILE_INFO(MemStruct):
+    fields = [
+        ("strProfileName", WCHAR__WCM_MAX_PROFILE_NAME_()),
+        ("AdapterGUID", GUID()),
+        ("Media", WCM_MEDIA_TYPE()),
+    ]
+
+WCM_PROFILE_INFO__1_ = Array(WCM_PROFILE_INFO, 1)
+
+class WCM_PROFILE_INFO_LIST(MemStruct):
+    fields = [
+        ("dwNumberOfItems", DWORD()),
+        ("ProfileInfo", WCM_PROFILE_INFO__1_()),
+    ]
+
+WCM_PROFILE_INFO_LIST_PTR = Ptr("<I", WCM_PROFILE_INFO_LIST())
+PWCM_PROFILE_INFO_LIST = Ptr("<I", WCM_PROFILE_INFO_LIST())
+PWCM_PROFILE_INFO_LIST_PTR = Ptr("<I", PWCM_PROFILE_INFO_LIST())
+
+###################
+
+###### Functions ######
 
 def wcmapi_WcmFreeMemory(jitter):
     """

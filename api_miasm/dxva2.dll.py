@@ -1,3 +1,4 @@
+###### Enums ######
 MC_COLOR_TEMPERATURE = {
     "MC_COLOR_TEMPERATURE_UNKNOWN": 0,
     "MC_COLOR_TEMPERATURE_4000K": 1,
@@ -86,6 +87,42 @@ MC_VCP_CODE_TYPE_INV = {
     0: "MC_MOMENTARY",
     1: "MC_SET_PARAMETER",
 }
+
+###################
+
+###### Types ######
+WCHAR__PHYSICAL_MONITOR_DESCRIPTION_SIZE_ = Array(WCHAR, 128)
+
+class PHYSICAL_MONITOR(MemStruct):
+    fields = [
+        ("hPhysicalMonitor", HANDLE()),
+        ("szPhysicalMonitorDescription", WCHAR__PHYSICAL_MONITOR_DESCRIPTION_SIZE_()),
+    ]
+
+LPPHYSICAL_MONITOR = Ptr("<I", PHYSICAL_MONITOR())
+MC_COLOR_TEMPERATURE = UINT
+LPMC_COLOR_TEMPERATURE = Ptr("<I", MC_COLOR_TEMPERATURE())
+MC_POSITION_TYPE = UINT
+MC_SIZE_TYPE = UINT
+MC_DRIVE_TYPE = UINT
+MC_GAIN_TYPE = UINT
+MC_DISPLAY_TECHNOLOGY_TYPE = UINT
+LPMC_DISPLAY_TECHNOLOGY_TYPE = Ptr("<I", MC_DISPLAY_TECHNOLOGY_TYPE())
+MC_VCP_CODE_TYPE = UINT
+LPMC_VCP_CODE_TYPE = Ptr("<I", MC_VCP_CODE_TYPE())
+
+class MC_TIMING_REPORT(MemStruct):
+    fields = [
+        ("dwHorizontalFrequencyInHZ", DWORD()),
+        ("dwVerticalFrequencyInHZ", DWORD()),
+        ("bTimingStatusByte", BYTE()),
+    ]
+
+LPMC_TIMING_REPORT = Ptr("<I", MC_TIMING_REPORT())
+
+###################
+
+###### Functions ######
 
 def dxva2_DegaussMonitor(jitter):
     """

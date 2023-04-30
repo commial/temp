@@ -1,3 +1,13 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_ApplyOptionFlags_ = ULONG
+
+###################
+
+###### Functions ######
 
 def mspatcha_ApplyPatchToFile(jitter, get_str, set_str):
     """

@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def shsvcs_CreateHardwareEventMoniker(jitter):
     """

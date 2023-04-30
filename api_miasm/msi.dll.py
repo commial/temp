@@ -1,3 +1,4 @@
+###### Enums ######
 MSIPATCHDATATYPE = {
     "MSIPATCH_DATATYPE_PATCHFILE": 0,
     "MSIPATCH_DATATYPE_XMLPATH": 1,
@@ -354,6 +355,80 @@ _MSI_PID__INV = {
     18: "PID_APPNAME",
     19: "PID_SECURITY",
 }
+
+###################
+
+###### Types ######
+MSIHANDLE = unsigned_long
+MSIHANDLE_PTR = Ptr("<I", MSIHANDLE())
+MSIHANDLE_PTR_PTR = Ptr("<I", MSIHANDLE_PTR())
+INSTALLUI_HANDLER = LPVOID
+PINSTALLUI_HANDLER_RECORD = LPVOID
+TCHAR__39_ = Array(TCHAR, 39)
+_MSI_ERROR_ = _ERROR_CODE_
+MSIPATCHDATATYPE = UINT
+
+class MSIPATCHSEQUENCEINFO(MemStruct):
+    fields = [
+        ("szPatchData", LPCTSTR()),
+        ("ePatchDataType", MSIPATCHDATATYPE()),
+        ("dwOrder", DWORD()),
+        ("uStatus", UINT()),
+    ]
+
+PMSIPATCHSEQUENCEINFO = Ptr("<I", MSIPATCHSEQUENCEINFO())
+
+class MSIFILEHASHINFO(MemStruct):
+    fields = [
+        ("dwFileHashInfoSize", ULONG()),
+        ("dwData", ULONG__4_()),
+    ]
+
+PMSIFILEHASHINFO = Ptr("<I", MSIFILEHASHINFO())
+USERINFOSTATE = int
+INSTALLUILEVEL = UINT
+MSIINSTALLCONTEXT = DWORD
+MSIINSTALLCONTEXT_PTR = Ptr("<I", MSIINSTALLCONTEXT())
+INSTALLSTATE = UINT
+INSTALLSTATE_PTR = Ptr("<I", INSTALLSTATE())
+_INSTALLSTATE-DWORD_ = INSTALLSTATE
+_INSTALLSTATE-DWORD_PTR_ = Ptr("<I", _INSTALLSTATE-DWORD_())
+_MsiInstallLevel_ = int
+_MsiReinstallMode_ = DWORD
+_MsiInstallMode_ = DWORD
+INSTALLTYPE = UINT
+_MsiInstallLogMode_ = DWORD
+_MsiInstallLogAttributes_ = DWORD
+_MsiArchFlags_ = DWORD
+_MsiAdOptions_ = DWORD
+_MsiSourceType_ = DWORD
+_MsiCode_ = DWORD
+_MsiAssemblyInfo_ = DWORD
+_MsiOpenPackageFlags_ = DWORD
+_MsiPatchState_ = DWORD
+_MsiHashFlags_ = DWORD
+_MsiTransactionAttributes_ = DWORD
+_MsiScriptFlags_ = DWORD
+_MsiInstallFeatureAttr_ = DWORD
+_MsiInstallFeatureAttr_PTR_ = Ptr("<I", _MsiInstallFeatureAttr_())
+_MsiTransactionState_ = DWORD
+MSIMODIFY = UINT
+MSICOLINFO = UINT
+MSICONDITION = UINT
+MSIDBERROR = UINT
+MSICOSTTREE = UINT
+INSTALLMESSAGE = UINT
+MSIRUNMODE = UINT
+MSIDBSTATE = UINT
+MSITRANSFORM_ERROR = UINT
+MSITRANSFORM_VALIDATE = UINT
+_MSI_PID_ = UINT
+_MSI_DATA_TYPE_ = VARTYPE
+_MSI_DATA_TYPE_PTR_ = Ptr("<I", _MSI_DATA_TYPE_())
+
+###################
+
+###### Functions ######
 
 def msi_MsiSetInternalUI(jitter):
     """

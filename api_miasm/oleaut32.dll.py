@@ -1,3 +1,4 @@
+###### Enums ######
 _OleLoadPictureExFlags_ = {
     "LP_DEFAULT": 0x00,
     "LP_MONOCHROME": 0x01,
@@ -20,6 +21,156 @@ REGKIND_INV = {
     1: "REGKIND_REGISTER",
     2: "REGKIND_NONE",
 }
+
+###################
+
+###### Types ######
+DECIMAL_PTR = LPVOID
+LPDECIMAL = LPVOID
+const_DECIMAL_PTR = LPVOID
+OLE_COLOR = DWORD
+LPBSTR = Ptr("<I", BSTR())
+SHORT_PTR = Ptr("<I", SHORT())
+
+class _PICTDESC_u_s1_(MemStruct):
+    fields = [
+        ("hbitmap", HBITMAP()),
+        ("hpal", HPALETTE()),
+    ]
+
+
+class _PICTDESC_u_s2_(MemStruct):
+    fields = [
+        ("hmeta", HMETAFILE()),
+        ("xExt", int()),
+        ("yExt", int()),
+    ]
+
+
+class _PICTDESC_u_s3_(MemStruct):
+    fields = [
+        ("hicon", HICON()),
+    ]
+
+
+class _PICTDESC_u_s4_(MemStruct):
+    fields = [
+        ("hemf", HENHMETAFILE()),
+    ]
+
+_PICTDESC_u_ = Union([
+    ("bmp", _PICTDESC_u_s1_),
+    ("wmf", _PICTDESC_u_s2_),
+    ("icon", _PICTDESC_u_s3_),
+    ("emf", _PICTDESC_u_s4_),
+])
+_PICTYPE_ = UINT
+
+class PICTDESC(MemStruct):
+    fields = [
+        ("cbSizeofstruct", UINT()),
+        ("picType", _PICTYPE_()),
+        (None, _PICTDESC_u_()),
+    ]
+
+LPPICTDESC = Ptr("<I", PICTDESC())
+
+class CY(MemStruct):
+    fields = [
+        ("Lo", unsigned_long()),
+        ("Hi", long()),
+    ]
+
+CY_PTR = Ptr("<I", CY())
+LPCY = Ptr("<I", CY())
+
+class FONTDESC(MemStruct):
+    fields = [
+        ("cbSizeofstruct", UINT()),
+        ("lpstrName", LPOLESTR()),
+        ("cySize", CY()),
+        ("sWeight", SHORT()),
+        ("sCharset", SHORT()),
+        ("fItalic", BOOL()),
+        ("fUnderline", BOOL()),
+        ("fStrikethrough", BOOL()),
+    ]
+
+LPFONTDESC = Ptr("<I", FONTDESC())
+
+class OCPFIPARAMS(MemStruct):
+    fields = [
+        ("cbStructSize", ULONG()),
+        ("hWndOwner", HWND()),
+        ("x", int()),
+        ("y", int()),
+        ("lpszCaption", LPCOLESTR()),
+        ("cObjects", ULONG()),
+        ("lplpUnk", LPUNKNOWN_PTR()),
+        ("cPages", ULONG()),
+        ("lpPages", CLSID_PTR()),
+        ("lcid", LCID()),
+        ("dispidInitialProperty", DISPID()),
+    ]
+
+LPOCPFIPARAMS = Ptr("<I", OCPFIPARAMS())
+_OleLoadPictureExFlags_ = DWORD
+REGKIND = UINT
+
+class UDATE(MemStruct):
+    fields = [
+        ("st", SYSTEMTIME()),
+        ("wDayOfYear", USHORT()),
+    ]
+
+UDATE_PTR = Ptr("<I", UDATE())
+_NUMPRS_FLAG_ = ULONG
+
+class NUMPARSE(MemStruct):
+    fields = [
+        ("cDig", INT()),
+        ("dwInFlags", _NUMPRS_FLAG_()),
+        ("dwOutFlags", _NUMPRS_FLAG_()),
+        ("cchUsed", INT()),
+        ("nBaseShift", INT()),
+        ("nPwr10", INT()),
+    ]
+
+NUMPARSE_PTR = Ptr("<I", NUMPARSE())
+
+class PARAMDATA(MemStruct):
+    fields = [
+        ("szName", OLECHAR_PTR()),
+        ("vt", VARTYPE()),
+    ]
+
+PARAMDATA_PTR = Ptr("<I", PARAMDATA())
+
+class METHODDATA(MemStruct):
+    fields = [
+        ("szName", OLECHAR_PTR()),
+        ("ppdata", PARAMDATA_PTR()),
+        ("dispid", DISPID()),
+        ("iMeth", UINT()),
+        ("cc", CALLCONV()),
+        ("cArgs", UINT()),
+        ("wFlags", _InvokeFlags_()),
+        ("vtReturn", VARTYPE()),
+    ]
+
+METHODDATA_PTR = Ptr("<I", METHODDATA())
+
+class INTERFACEDATA(MemStruct):
+    fields = [
+        ("pmethdata", METHODDATA_PTR()),
+        ("cMembers", UINT()),
+    ]
+
+INTERFACEDATA_PTR = Ptr("<I", INTERFACEDATA())
+
+###################
+
+###### Functions ######
 
 def oleaut32_OleIconToCursor(jitter):
     """

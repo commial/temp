@@ -1,3 +1,4 @@
+###### Enums ######
 EVT_CHANNEL_CONFIG_PROPERTY_ID = {
     "EvtChannelConfigEnabled": 0,
     "EvtChannelConfigIsolation": 1,
@@ -212,6 +213,34 @@ EVT_EVENT_METADATA_PROPERTY_ID_INV = {
     7: "EventMetadataEventMessageID",
     8: "EventMetadataEventTemplate",
 }
+
+###################
+
+###### Types ######
+PEVT_VARIANT = LPVOID
+EVT_HANDLE = HANDLE
+EVT_HANDLE_PTR = Ptr("<I", EVT_HANDLE())
+EVT_SUBSCRIBE_CALLBACK = LPVOID
+EVT_OBJECT_ARRAY_PROPERTY_HANDLE = HANDLE
+EVT_CHANNEL_CONFIG_PROPERTY_ID = UINT
+EVT_PUBLISHER_METADATA_PROPERTY_ID = UINT
+_EvtFormatMessageFlags_ = DWORD
+_EvtOpenFlags_ = DWORD
+EVT_LOG_PROPERTY_ID = UINT
+_EvtRenderFlags_ = DWORD
+_EvtQueryFlags_ = DWORD
+_EvtRenderContextFlags_ = DWORD
+EVT_QUERY_PROPERTY_ID = UINT
+_EvtSubscribeFlags_ = DWORD
+EVT_EVENT_PROPERTY_ID = UINT
+_EvtSeekFlags_ = DWORD
+_EvtExportLogFlags_ = DWORD
+EVT_LOGIN_CLASS = UINT
+EVT_EVENT_METADATA_PROPERTY_ID = UINT
+
+###################
+
+###### Functions ######
 
 def wevtapi_EvtOpenSession(jitter):
     """

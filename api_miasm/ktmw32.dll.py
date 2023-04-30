@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def ktmw32_CommitTransaction(jitter):
     """

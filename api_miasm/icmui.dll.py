@@ -1,3 +1,39 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PCMSCALLBACK = LPVOID
+_CMS_FLAGS_ = DWORD
+
+class COLORMATCHSETUP(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwVersion", DWORD()),
+        ("dwFlags", _CMS_FLAGS_()),
+        ("hwndOwner", HWND()),
+        ("pSourceName", PCTSTR()),
+        ("pDisplayName", PCTSTR()),
+        ("pPrinterName", PCTSTR()),
+        ("dwRenderIntent", DWORD()),
+        ("dwProofingIntent", DWORD()),
+        ("pMonitorProfile", PTSTR()),
+        ("ccMonitorProfile", DWORD()),
+        ("pPrinterProfile", PTSTR()),
+        ("ccPrinterProfile", DWORD()),
+        ("pTargetProfile", PTSTR()),
+        ("ccTargetProfile", DWORD()),
+        ("lpfnHook", DLGPROC()),
+        ("lParam", LPARAM()),
+        ("lpfnApplyCallback", PCMSCALLBACK()),
+        ("lParamApplyCallback", LPARAM()),
+    ]
+
+PCOLORMATCHSETUP = Ptr("<I", COLORMATCHSETUP())
+
+###################
+
+###### Functions ######
 
 def icmui_SetupColorMatching(jitter, get_str, set_str):
     """

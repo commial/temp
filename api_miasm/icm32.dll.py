@@ -1,3 +1,4 @@
+###### Enums ######
 COLORTYPE = {
     "COLOR_GRAY": 1,
     "COLOR_RGB": 2,
@@ -34,6 +35,27 @@ _CMS_DIRECTION__INV = {
     0: "CMS_FORWARD",
     1: "CMS_BACKWARD",
 }
+
+###################
+
+###### Types ######
+HCMTRANSFORM = HANDLE
+LPDEVCHARACTER = PVOID
+COLORTYPE = UINT
+
+class RGBTRIPLE(MemStruct):
+    fields = [
+        ("rgbtBlue", BYTE()),
+        ("rgbtGreen", BYTE()),
+        ("rgbtRed", BYTE()),
+    ]
+
+RGBTRIPLE_PTR = Ptr("<I", RGBTRIPLE())
+_CMS_DIRECTION_ = DWORD
+
+###################
+
+###### Functions ######
 
 def icm32_CMCheckColors(jitter):
     """

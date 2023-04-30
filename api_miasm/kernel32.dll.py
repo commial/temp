@@ -1,3 +1,4 @@
+###### Enums ######
 GEOID = {
     "Antigua and Barbuda": 0x2,
     "Afghanistan": 0x3,
@@ -1514,6 +1515,1380 @@ _MUI_FILETYPE__INV = {
     0x002: "MUI_FILETYPE_LANGUAGE_NEUTRAL_MAIN",
     0x004: "MUI_FILETYPE_LANGUAGE_NEUTRAL_MUI",
 }
+
+###################
+
+###### Types ######
+PKNONVOLATILE_CONTEXT_POINTERS = LPVOID
+LPCONTEXT = LPVOID
+PCONTEXT_EX = LPVOID
+PCONTEXT_EX_PTR = Ptr("<I", PCONTEXT_EX())
+LPCOMSTAT = LPVOID
+LPLDT_ENTRY = LPVOID
+PWOW64_LDT_ENTRY = LPVOID
+HLOCAL = HANDLE
+APPLICATION_RECOVERY_CALLBACK = LPVOID
+APPLICATION_RECOVERY_CALLBACK_PTR = Ptr("<I", APPLICATION_RECOVERY_CALLBACK())
+LPPROGRESS_ROUTINE = LPVOID
+LPOVERLAPPED_COMPLETION_ROUTINE = LPVOID
+PSECURE_MEMORY_CACHE_CALLBACK = LPVOID
+PTP_CALLBACK_INSTANCE = LPVOID
+PTP_IO = LPVOID
+PTP_POOL = LPVOID
+PTP_CLEANUP_GROUP = LPVOID
+PTP_CLEANUP_GROUP_CANCEL_CALLBACK = LPVOID
+PTP_TIMER = LPVOID
+PTP_WAIT = LPVOID
+PTP_WORK = LPVOID
+PTP_WIN32_IO_CALLBACK = LPVOID
+PTP_TIMER_CALLBACK = LPVOID
+PTP_WAIT_CALLBACK = LPVOID
+PTP_WORK_CALLBACK = LPVOID
+PTP_SIMPLE_CALLBACK = LPVOID
+LPFIBER_START_ROUTINE = LPVOID
+PFLS_CALLBACK_FUNCTION = LPVOID
+PUMS_CONTEXT = LPVOID
+PUMS_CONTEXT_PTR = Ptr("<I", PUMS_CONTEXT())
+PHANDLER_ROUTINE = LPVOID
+CALINFO_ENUMPROC = LPVOID
+CALINFO_ENUMPROCEX = LPVOID
+CALINFO_ENUMPROCEXEX = LPVOID
+DATEFMT_ENUMPROC = LPVOID
+DATEFMT_ENUMPROCEX = LPVOID
+DATEFMT_ENUMPROCEXEX = LPVOID
+LANGGROUPLOCALE_ENUMPROC = LPVOID
+CODEPAGE_ENUMPROC = LPVOID
+GEO_ENUMPROC = LPVOID
+LANGUAGEGROUP_ENUMPROC = LPVOID
+LOCALE_ENUMPROC = LPVOID
+LOCALE_ENUMPROCEX = LPVOID
+TIMEFMT_ENUMPROC = LPVOID
+TIMEFMT_ENUMPROCEX = LPVOID
+ENUMRESLANGPROC = LPVOID
+ENUMRESNAMEPROC = LPVOID
+ENUMRESTYPEPROC = LPVOID
+LPTOP_LEVEL_EXCEPTION_FILTER = LPVOID
+PGET_RUNTIME_FUNCTION_CALLBACK = LPVOID
+PAPCFUNC = LPVOID
+PSRWLOCK = LPVOID
+PCONDITION_VARIABLE = LPVOID
+LPINIT_ONCE = LPVOID
+PINIT_ONCE = LPINIT_ONCE
+PINIT_ONCE_FN = LPVOID
+WAITORTIMERCALLBACK = LPVOID
+PTIMERAPCROUTINE = LPVOID
+LPCRITICAL_SECTION = PRTL_CRITICAL_SECTION
+PCRITICAL_SECTION = PRTL_CRITICAL_SECTION
+TP_VERSION = DWORD
+ACTIVATION_CONTEXT_PTR = LPVOID
+DLL_DIRECTORY_COOKIE = PVOID
+PBAD_MEMORY_CALLBACK_ROUTINE = LPVOID
+VOID_volatile_PTR = VOID_PTR
+PCOPYFILE2_PROGRESS_ROUTINE = LPVOID
+const_UINT32 = UINT32
+PACKAGE_INFO_REFERENCE = LPVOID
+PACKAGE_INFO_REFERENCE_PTR = Ptr("<I", PACKAGE_INFO_REFERENCE())
+UILANGUAGE_ENUMPROC = LPVOID
+PDELAYLOAD_FAILURE_DLL_CALLBACK = LPVOID
+PDELAYLOAD_FAILURE_SYSTEM_ROUTINE = LPVOID
+BYTE__20_ = Array(BYTE, 20)
+BYTE__21_ = Array(BYTE, 21)
+BYTE__38_ = Array(BYTE, 38)
+BYTE__MAX_DEFAULTCHAR_ = Array(BYTE, 2)
+BYTE__MAX_LEADBYTES_ = Array(BYTE, 12)
+BYTE__WOW64_MAXIMUM_SUPPORTED_EXTENSION_ = Array(BYTE, 512)
+BYTE__WOW64_SIZE_OF_80387_REGISTERS_ = Array(BYTE, 80)
+WORD__3_ = Array(WORD, 3)
+ULONG_PTR__2_ = Array(ULONG_PTR, 2)
+COLORREF__16_ = Array(COLORREF, 16)
+ULONGLONG__2_ = Array(ULONGLONG, 2)
+TCHAR__MAX_MODULE_NAME32_+_1_ = Array(TCHAR, 256)
+_ERROR_CODE_LONG_ = _ERROR_CODE_
+_ConsoleAttribute_ = WORD
+_ConsoleAttribute_PTR_ = Ptr("<I", _ConsoleAttribute_())
+GEOID = UINT
+STREAM_INFO_LEVELS = UINT
+HFILE = UINT
+DEP_SYSTEM_POLICY_TYPE = UINT
+TP_CALLBACK_PRIORITY = UINT
+UMS_THREAD_INFO_CLASS = UINT
+GEOCLASS = UINT
+FILE_INFO_BY_HANDLE_CLASS = UINT
+MEMORY_RESOURCE_NOTIFICATION_TYPE = UINT
+HEAP_INFORMATION_CLASS = UINT
+LOGICAL_PROCESSOR_RELATIONSHIP = UINT
+CALDATETIME_DATEUNIT = UINT
+CALID = DWORD
+CALTYPE = DWORD
+LGRPID = DWORD
+GEOTYPE = DWORD
+LCTYPE = DWORD
+NLS_FUNCTION = DWORD
+EXECUTION_STATE = DWORD
+WER_REGISTER_FILE_TYPE = DWORD
+_CreationDisposition_ = DWORD
+_FILE_FLAGS_ = DWORD
+_FlagsAndAttributes_ = _FILE_FLAGS_
+_FormatMessageFlags_ = DWORD
+_ProcessorFeatureEnum_ = DWORD
+_CharacterTypeFlag_ = DWORD
+_LocalMemoryFlag_ = UINT
+_GlobalMemoryFlag_ = UINT
+_WideCharFlags_ = DWORD
+_MultiByteFlags_ = DWORD
+_MapAccessFlags_ = DWORD
+_ThreadCreationFlags_ = DWORD
+_LocaleEnumerationFlags_ = DWORD
+_EnumSystemLocalesExFlags_ = DWORD
+_CodePageEnumerationFlags_ = DWORD
+_NLS_STRING_COMPARE_FLAGS_ = DWORD
+_MappingFlags_ = DWORD
+_DeactivateActCtxFlags_ = DWORD
+_SEM_FLAGS_ = UINT
+_SEM_FLAGS_DWORD_ = _SEM_FLAGS_
+_SEM_FLAGS_DWORD_PTR_ = Ptr("<I", _SEM_FLAGS_DWORD_())
+_LOCALE_NOUSEROVERRIDE_FLAG_ = DWORD
+_DUPLICATE_HANDLE_FLAGS_ = DWORD
+_StandardAccessRights_ = DWORD
+_EventAccessRights_ = DWORD
+_MutexAccessRights_ = DWORD
+_SemaphoreAccessRights_ = DWORD
+_TimerAccessRights_ = DWORD
+_QueryActCtxFlags_ = DWORD
+_ActivationContextInfoClass_ = ULONG
+_RESOURCE_ENUM_FLAGS_ = DWORD
+_WorkItemFlags_ = ULONG
+_VerOperator_ = BYTE
+_ExceptionFlags_ = DWORD
+_NLS_DATE_FLAGS_ = DWORD
+_NLS_TIME_FLAGS_ = DWORD
+_StdHandle_ = DWORD
+_ConsoleModeFlags_ = DWORD
+_ConsoleModeFlags_PTR_ = Ptr("<I", _ConsoleModeFlags_())
+_HANDLE_FLAGS_ = DWORD
+_HANDLE_FLAGS_PTR_ = Ptr("<I", _HANDLE_FLAGS_())
+_PrivateNamespaceFlag_ = ULONG
+_GetFinalPathNameByHandleFlags_ = DWORD
+_LockFileFlags_ = DWORD
+_ProductType_ = DWORD
+_ProductType_PTR_ = Ptr("<I", _ProductType_())
+_MoveFileFlags_ = DWORD
+_LANGUAGE_GROUP_FLAGS_ = DWORD
+_ApplicationRestartFlags_ = DWORD
+_ProcessShutdownFlags_ = DWORD
+FINDEX_INFO_LEVELS = UINT
+FINDEX_SEARCH_OPS = UINT
+_FindFirstFileExFlags_ = DWORD
+_QueryFullProcessImageNameFlags_ = DWORD
+_WerFileFlags_ = DWORD
+_GetBinaryTypeResult_ = DWORD
+_GetBinaryTypeResult_PTR_ = Ptr("<I", _GetBinaryTypeResult_())
+_OpenFileFlags_ = UINT
+_PriorityClass_ = DWORD
+_ContinueStatusFlag_ = DWORD
+_lcreatAttribute_ = int
+_CreateSymbolicLinkFlags_ = DWORD
+_FileType_ = DWORD
+POWER_REQUEST_TYPE = UINT
+LATENCY_TIME = UINT
+COMPUTER_NAME_FORMAT = UINT
+
+class COORD(MemStruct):
+    fields = [
+        ("X", SHORT()),
+        ("Y", SHORT()),
+    ]
+
+PCOORD = Ptr("<I", COORD())
+
+class SMALL_RECT(MemStruct):
+    fields = [
+        ("Left", SHORT()),
+        ("Top", SHORT()),
+        ("Right", SHORT()),
+        ("Bottom", SHORT()),
+    ]
+
+PSMALL_RECT = Ptr("<I", SMALL_RECT())
+const_SMALL_RECT_PTR = Ptr("<I", SMALL_RECT())
+
+class CHAR_INFO(MemStruct):
+    fields = [
+        ("Char", SHORT()),
+        ("Attributes", _ConsoleAttribute_()),
+    ]
+
+PCHAR_INFO = Ptr("<I", CHAR_INFO())
+const_CHAR_INFO_PTR = Ptr("<I", CHAR_INFO())
+_HeapEntryFlags_ = DWORD
+
+class HEAPENTRY32(MemStruct):
+    fields = [
+        ("dwSize", SIZE_T()),
+        ("hHandle", HANDLE()),
+        ("dwAddress", ULONG_PTR()),
+        ("dwBlockSize", SIZE_T()),
+        ("dwFlags", _HeapEntryFlags_()),
+        ("dwLockCount", DWORD()),
+        ("dwResvd", DWORD()),
+        ("th32ProcessID", DWORD()),
+        ("th32HeapID", ULONG_PTR()),
+    ]
+
+LPHEAPENTRY32 = Ptr("<I", HEAPENTRY32())
+_HeapListFlags_ = DWORD
+
+class HEAPLIST32(MemStruct):
+    fields = [
+        ("dwSize", SIZE_T()),
+        ("th32ProcessID", DWORD()),
+        ("th32HeapID", ULONG_PTR()),
+        ("dwFlags", _HeapListFlags_()),
+    ]
+
+LPHEAPLIST32 = Ptr("<I", HEAPLIST32())
+
+class THREADENTRY32(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("cntUsage", DWORD()),
+        ("th32ThreadID", DWORD()),
+        ("th32OwnerProcessID", DWORD()),
+        ("tpBasePri", LONG()),
+        ("tpDeltaPri", LONG()),
+        ("dwFlags", DWORD()),
+    ]
+
+LPTHREADENTRY32 = Ptr("<I", THREADENTRY32())
+
+class BY_HANDLE_FILE_INFORMATION(MemStruct):
+    fields = [
+        ("dwFileAttributes", DWORD()),
+        ("ftCreationTime", FILETIME()),
+        ("ftLastAccessTime", FILETIME()),
+        ("ftLastWriteTime", FILETIME()),
+        ("dwVolumeSerialNumber", DWORD()),
+        ("nFileSizeHigh", DWORD()),
+        ("nFileSizeLow", DWORD()),
+        ("nNumberOfLinks", DWORD()),
+        ("nFileIndexHigh", DWORD()),
+        ("nFileIndexLow", DWORD()),
+    ]
+
+LPBY_HANDLE_FILE_INFORMATION = Ptr("<I", BY_HANDLE_FILE_INFORMATION())
+
+class OVERLAPPED_ENTRY(MemStruct):
+    fields = [
+        ("lpCompletionKey", ULONG_PTR()),
+        ("lpOverlapped", LPOVERLAPPED()),
+        ("Internal", ULONG_PTR()),
+        ("dwNumberOfBytesTransferred", DWORD()),
+    ]
+
+LPOVERLAPPED_ENTRY = Ptr("<I", OVERLAPPED_ENTRY())
+
+class MEMORYSTATUSEX(MemStruct):
+    fields = [
+        ("dwLength", DWORD()),
+        ("dwMemoryLoad", DWORD()),
+        ("ullTotalPhys", DWORDLONG()),
+        ("ullAvailPhys", DWORDLONG()),
+        ("ullTotalPageFile", DWORDLONG()),
+        ("ullAvailPageFile", DWORDLONG()),
+        ("ullTotalVirtual", DWORDLONG()),
+        ("ullAvailVirtual", DWORDLONG()),
+        ("ullAvailExtendedVirtual", DWORDLONG()),
+    ]
+
+LPMEMORYSTATUSEX = Ptr("<I", MEMORYSTATUSEX())
+
+class MEMORY_BASIC_INFORMATION(MemStruct):
+    fields = [
+        ("BaseAddress", PVOID()),
+        ("AllocationBase", PVOID()),
+        ("AllocationProtect", _MemoryProtection_()),
+        ("RegionSize", SIZE_T()),
+        ("State", _MemoryAllocationFlags_()),
+        ("Protect", _MemoryProtection_()),
+        ("Type", _MemoryType_()),
+    ]
+
+PMEMORY_BASIC_INFORMATION = Ptr("<I", MEMORY_BASIC_INFORMATION())
+
+class MEMORYSTATUS(MemStruct):
+    fields = [
+        ("dwLength", DWORD()),
+        ("dwMemoryLoad", DWORD()),
+        ("dwTotalPhys", SIZE_T()),
+        ("dwAvailPhys", SIZE_T()),
+        ("dwTotalPageFile", SIZE_T()),
+        ("dwAvailPageFile", SIZE_T()),
+        ("dwTotalVirtual", SIZE_T()),
+        ("dwAvailVirtual", SIZE_T()),
+    ]
+
+LPMEMORYSTATUS = Ptr("<I", MEMORYSTATUS())
+
+class IO_COUNTERS(MemStruct):
+    fields = [
+        ("ReadOperationCount", ULONGLONG()),
+        ("WriteOperationCount", ULONGLONG()),
+        ("OtherOperationCount", ULONGLONG()),
+        ("ReadTransferCount", ULONGLONG()),
+        ("WriteTransferCount", ULONGLONG()),
+        ("OtherTransferCount", ULONGLONG()),
+    ]
+
+PIO_COUNTERS = Ptr("<I", IO_COUNTERS())
+
+class SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION(MemStruct):
+    fields = [
+        ("CycleTime", DWORD64()),
+    ]
+
+PSYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION = Ptr("<I", SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION())
+
+class TP_POOL_STACK_INFORMATION(MemStruct):
+    fields = [
+        ("StackReserve", SIZE_T()),
+        ("StackCommit", SIZE_T()),
+    ]
+
+PTP_POOL_STACK_INFORMATION = Ptr("<I", TP_POOL_STACK_INFORMATION())
+PUMS_COMPLETION_LIST = LPVOID
+PUMS_COMPLETION_LIST_PTR = Ptr("<I", PUMS_COMPLETION_LIST())
+PUMS_SCHEDULER_ENTRY_POINT = Ptr("<I", PUMS_COMPLETION_LIST())
+
+class UMS_SCHEDULER_STARTUP_INFO(MemStruct):
+    fields = [
+        ("UmsVersion", ULONG()),
+        ("CompletionList", PUMS_COMPLETION_LIST()),
+        ("SchedulerProc", PUMS_SCHEDULER_ENTRY_POINT()),
+        ("SchedulerParam", PVOID()),
+    ]
+
+PUMS_SCHEDULER_STARTUP_INFO = Ptr("<I", UMS_SCHEDULER_STARTUP_INFO())
+
+class ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA(MemStruct):
+    fields = [
+        ("lpInformation", PVOID()),
+        ("lpSectionBase", PVOID()),
+        ("ulSectionLength", ULONG()),
+        ("lpSectionGlobalDataBase", PVOID()),
+        ("ulSectionGlobalDataLength", ULONG()),
+    ]
+
+
+class ACTCTX_SECTION_KEYED_DATA(MemStruct):
+    fields = [
+        ("cbSize", ULONG()),
+        ("ulDataFormatVersion", ULONG()),
+        ("lpData", PVOID()),
+        ("ulLength", ULONG()),
+        ("lpSectionGlobalData", PVOID()),
+        ("ulSectionGlobalDataLength", ULONG()),
+        ("lpSectionBase", PVOID()),
+        ("ulSectionTotalLength", ULONG()),
+        ("hActCtx", HANDLE()),
+        ("ulAssemblyRosterIndex", ULONG()),
+        ("ulFlags", ULONG()),
+        ("AssemblyMetadata", ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA()),
+    ]
+
+PACTCTX_SECTION_KEYED_DATA = Ptr("<I", ACTCTX_SECTION_KEYED_DATA())
+
+class COMMTIMEOUTS(MemStruct):
+    fields = [
+        ("ReadIntervalTimeout", DWORD()),
+        ("ReadTotalTimeoutMultiplier", DWORD()),
+        ("ReadTotalTimeoutConstant", DWORD()),
+        ("WriteTotalTimeoutMultiplier", DWORD()),
+        ("WriteTotalTimeoutConstant", DWORD()),
+    ]
+
+LPCOMMTIMEOUTS = Ptr("<I", COMMTIMEOUTS())
+
+class CONSOLE_CURSOR_INFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("bVisible", BOOL()),
+    ]
+
+PCONSOLE_CURSOR_INFO = Ptr("<I", CONSOLE_CURSOR_INFO())
+const_CONSOLE_CURSOR_INFO_PTR = Ptr("<I", CONSOLE_CURSOR_INFO())
+
+class CONSOLE_HISTORY_INFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("HistoryBufferSize", UINT()),
+        ("NumberOfHistoryBuffers", UINT()),
+        ("dwFlags", DWORD()),
+    ]
+
+PCONSOLE_HISTORY_INFO = Ptr("<I", CONSOLE_HISTORY_INFO())
+
+class CONSOLE_SCREEN_BUFFER_INFO(MemStruct):
+    fields = [
+        ("dwSize", COORD()),
+        ("dwCursorPosition", COORD()),
+        ("wAttributes", WORD()),
+        ("srWindow", SMALL_RECT()),
+        ("dwMaximumWindowSize", COORD()),
+    ]
+
+PCONSOLE_SCREEN_BUFFER_INFO = Ptr("<I", CONSOLE_SCREEN_BUFFER_INFO())
+
+class CONSOLE_SELECTION_INFO(MemStruct):
+    fields = [
+        ("dwFlags", DWORD()),
+        ("dwSelectionAnchor", COORD()),
+        ("srSelection", SMALL_RECT()),
+    ]
+
+PCONSOLE_SELECTION_INFO = Ptr("<I", CONSOLE_SELECTION_INFO())
+
+class CONSOLE_FONT_INFO(MemStruct):
+    fields = [
+        ("nFont", DWORD()),
+        ("dwFontSize", COORD()),
+    ]
+
+PCONSOLE_FONT_INFO = Ptr("<I", CONSOLE_FONT_INFO())
+
+class FRAME_POINTERS(MemStruct):
+    fields = [
+        ("MemoryStackFp", ULONGLONG()),
+        ("BackingStoreFp", ULONGLONG()),
+    ]
+
+PFRAME_POINTERS = Ptr("<I", FRAME_POINTERS())
+
+class RUNTIME_FUNCTION(MemStruct):
+    fields = [
+        ("BeginAddress", DWORD()),
+        ("EndAddress", DWORD()),
+        ("UnwindData", DWORD()),
+    ]
+
+PRUNTIME_FUNCTION = Ptr("<I", RUNTIME_FUNCTION())
+
+class CALDATETIME(MemStruct):
+    fields = [
+        ("CalId", CALID()),
+        ("Era", UINT()),
+        ("Year", UINT()),
+        ("Month", UINT()),
+        ("Day", UINT()),
+        ("DayOfWeek", UINT()),
+        ("Hour", UINT()),
+        ("Minute", UINT()),
+        ("Second", UINT()),
+        ("Tick", ULONG()),
+    ]
+
+LPCALDATETIME = Ptr("<I", CALDATETIME())
+const_LPCALDATETIME = LPCALDATETIME
+
+class NLSVERSIONINFO(MemStruct):
+    fields = [
+        ("dwNLSVersionInfoSize", DWORD()),
+        ("dwNLSVersion", DWORD()),
+        ("dwDefinedVersion", DWORD()),
+        ("dwEffectiveId", DWORD()),
+        ("guidCustomVersion", GUID()),
+    ]
+
+LPNLSVERSIONINFO = Ptr("<I", NLSVERSIONINFO())
+NLSVERSIONINFOEX = NLSVERSIONINFO
+LPNLSVERSIONINFOEX = Ptr("<I", NLSVERSIONINFOEX())
+
+class CURRENCYFMT(MemStruct):
+    fields = [
+        ("NumDigits", UINT()),
+        ("LeadingZero", UINT()),
+        ("Grouping", UINT()),
+        ("lpDecimalSep", LPTSTR()),
+        ("lpThousandSep", LPTSTR()),
+        ("NegativeOrder", UINT()),
+        ("PositiveOrder", UINT()),
+        ("lpCurrencySymbol", LPTSTR()),
+    ]
+
+const_CURRENCYFMT_PTR = Ptr("<I", CURRENCYFMT())
+
+class SYSTEM_POWER_STATUS(MemStruct):
+    fields = [
+        ("ACLineStatus", BYTE()),
+        ("BatteryFlag", BYTE()),
+        ("BatteryLifePercent", BYTE()),
+        ("Reserved1", BYTE()),
+        ("BatteryLifeTime", DWORD()),
+        ("BatteryFullLifeTime", DWORD()),
+    ]
+
+LPSYSTEM_POWER_STATUS = Ptr("<I", SYSTEM_POWER_STATUS())
+_PROCESSOR_TYPE_ = DWORD
+
+class SYSTEM_INFO(MemStruct):
+    fields = [
+        ("wProcessorArchitecture", _PROCESSOR_ARCHITECTURE_()),
+        ("wReserved", WORD()),
+        ("dwPageSize", DWORD()),
+        ("lpMinimumApplicationAddress", LPVOID()),
+        ("lpMaximumApplicationAddress", LPVOID()),
+        ("dwActiveProcessorMask", DWORD_PTR()),
+        ("dwNumberOfProcessors", DWORD()),
+        ("dwProcessorType", _PROCESSOR_TYPE_()),
+        ("dwAllocationGranularity", DWORD()),
+        ("wProcessorLevel", WORD()),
+        ("wProcessorRevision", WORD()),
+    ]
+
+LPSYSTEM_INFO = Ptr("<I", SYSTEM_INFO())
+_SET_LAST_ERROR_EX_TYPE_ = DWORD
+_DEBUG_EVENT_CODE_ = DWORD
+
+class EXCEPTION_DEBUG_INFO(MemStruct):
+    fields = [
+        ("ExceptionRecord", EXCEPTION_RECORD()),
+        ("dwFirstChance", DWORD()),
+    ]
+
+
+class CREATE_THREAD_DEBUG_INFO(MemStruct):
+    fields = [
+        ("hThread", HANDLE()),
+        ("lpThreadLocalBase", LPVOID()),
+        ("lpStartAddress", LPTHREAD_START_ROUTINE()),
+    ]
+
+
+class CREATE_PROCESS_DEBUG_INFO(MemStruct):
+    fields = [
+        ("hFile", HANDLE()),
+        ("hProcess", HANDLE()),
+        ("hThread", HANDLE()),
+        ("lpBaseOfImage", LPVOID()),
+        ("dwDebugInfoFileOffset", DWORD()),
+        ("nDebugInfoSize", DWORD()),
+        ("lpThreadLocalBase", LPVOID()),
+        ("lpStartAddress", LPTHREAD_START_ROUTINE()),
+        ("lpImageName", LPVOID()),
+        ("fUnicode", WORD()),
+    ]
+
+
+class EXIT_THREAD_DEBUG_INFO(MemStruct):
+    fields = [
+        ("dwExitCode", DWORD()),
+    ]
+
+
+class EXIT_PROCESS_DEBUG_INFO(MemStruct):
+    fields = [
+        ("dwExitCode", DWORD()),
+    ]
+
+
+class LOAD_DLL_DEBUG_INFO(MemStruct):
+    fields = [
+        ("hFile", HANDLE()),
+        ("lpBaseOfDll", LPVOID()),
+        ("dwDebugInfoFileOffset", DWORD()),
+        ("nDebugInfoSize", DWORD()),
+        ("lpImageName", LPVOID()),
+        ("fUnicode", WORD()),
+    ]
+
+
+class UNLOAD_DLL_DEBUG_INFO(MemStruct):
+    fields = [
+        ("lpBaseOfDll", LPVOID()),
+    ]
+
+
+class OUTPUT_DEBUG_STRING_INFO(MemStruct):
+    fields = [
+        ("lpDebugStringData", LPSTR()),
+        ("fUnicode", WORD()),
+        ("nDebugStringLength", WORD()),
+    ]
+
+
+class RIP_INFO(MemStruct):
+    fields = [
+        ("dwError", DWORD()),
+        ("dwType", _SET_LAST_ERROR_EX_TYPE_()),
+    ]
+
+_DEBUG_EVENT_u_ = Union([
+    ("Exception", EXCEPTION_DEBUG_INFO),
+    ("CreateThread", CREATE_THREAD_DEBUG_INFO),
+    ("CreateProcessInfo", CREATE_PROCESS_DEBUG_INFO),
+    ("ExitThread", EXIT_THREAD_DEBUG_INFO),
+    ("ExitProcess", EXIT_PROCESS_DEBUG_INFO),
+    ("LoadDll", LOAD_DLL_DEBUG_INFO),
+    ("UnloadDll", UNLOAD_DLL_DEBUG_INFO),
+    ("DebugString", OUTPUT_DEBUG_STRING_INFO),
+    ("RipInfo", RIP_INFO),
+])
+
+class DEBUG_EVENT(MemStruct):
+    fields = [
+        ("dwDebugEventCode", _DEBUG_EVENT_CODE_()),
+        ("dwProcessId", DWORD()),
+        ("dwThreadId", DWORD()),
+        ("u", _DEBUG_EVENT_u_()),
+    ]
+
+LPDEBUG_EVENT = Ptr("<I", DEBUG_EVENT())
+
+class WOW64_FLOATING_SAVE_AREA(MemStruct):
+    fields = [
+        ("ControlWord", DWORD()),
+        ("StatusWord", DWORD()),
+        ("TagWord", DWORD()),
+        ("ErrorOffset", DWORD()),
+        ("ErrorSelector", DWORD()),
+        ("DataOffset", DWORD()),
+        ("DataSelector", DWORD()),
+        ("RegisterArea", BYTE__WOW64_SIZE_OF_80387_REGISTERS_()),
+        ("Cr0NpxState", DWORD()),
+    ]
+
+_WOW64_CONTEXT_FLAGS_ = DWORD
+
+class WOW64_CONTEXT(MemStruct):
+    fields = [
+        ("ContextFlags", _WOW64_CONTEXT_FLAGS_()),
+        ("Dr0", DWORD()),
+        ("Dr1", DWORD()),
+        ("Dr2", DWORD()),
+        ("Dr3", DWORD()),
+        ("Dr6", DWORD()),
+        ("Dr7", DWORD()),
+        ("FloatSave", WOW64_FLOATING_SAVE_AREA()),
+        ("SegGs", DWORD()),
+        ("SegFs", DWORD()),
+        ("SegEs", DWORD()),
+        ("SegDs", DWORD()),
+        ("Edi", DWORD()),
+        ("Esi", DWORD()),
+        ("Ebx", DWORD()),
+        ("Edx", DWORD()),
+        ("Ecx", DWORD()),
+        ("Eax", DWORD()),
+        ("Ebp", DWORD()),
+        ("Eip", DWORD()),
+        ("SegCs", DWORD()),
+        ("EFlags", DWORD()),
+        ("Esp", DWORD()),
+        ("SegSs", DWORD()),
+        ("ExtendedRegisters", BYTE__WOW64_MAXIMUM_SUPPORTED_EXTENSION_()),
+    ]
+
+CONST_WOW64_CONTEXT_PTR = Ptr("<I", WOW64_CONTEXT())
+PWOW64_CONTEXT = Ptr("<I", WOW64_CONTEXT())
+
+class MODULEENTRY32(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("th32ModuleID", DWORD()),
+        ("th32ProcessID", DWORD()),
+        ("GlblcntUsage", DWORD()),
+        ("ProccntUsage", DWORD()),
+        ("modBaseAddr", BYTE_PTR()),
+        ("modBaseSize", DWORD()),
+        ("hModule", HMODULE()),
+        ("szModule", TCHAR__MAX_MODULE_NAME32_+_1_()),
+        ("szExePath", TCHAR__MAX_PATH_()),
+    ]
+
+LPMODULEENTRY32 = Ptr("<I", MODULEENTRY32())
+
+class PROCESSENTRY32(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("cntUsage", DWORD()),
+        ("th32ProcessID", DWORD()),
+        ("th32DefaultHeapID", ULONG_PTR()),
+        ("th32ModuleID", DWORD()),
+        ("cntThreads", DWORD()),
+        ("th32ParentProcessID", DWORD()),
+        ("pcPriClassBase", LONG()),
+        ("dwFlags", DWORD()),
+        ("szExeFile", TCHAR__MAX_PATH_()),
+    ]
+
+LPPROCESSENTRY32 = Ptr("<I", PROCESSENTRY32())
+FILE_ID_TYPE = UINT
+_FILE_ID_DESCRIPTOR_u_ = Union([
+    ("FileId", LARGE_INTEGER),
+    ("ObjectId", GUID),
+])
+
+class FILE_ID_DESCRIPTOR(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("Type", FILE_ID_TYPE()),
+        (None, _FILE_ID_DESCRIPTOR_u_()),
+    ]
+
+LPFILE_ID_DESCRIPTOR = Ptr("<I", FILE_ID_DESCRIPTOR())
+PROCESSOR_CACHE_TYPE = UINT
+_CACHE_ASSOCIATIVITY_ = BYTE
+
+class CACHE_DESCRIPTOR(MemStruct):
+    fields = [
+        ("Level", BYTE()),
+        ("Associativity", _CACHE_ASSOCIATIVITY_()),
+        ("LineSize", WORD()),
+        ("Size", DWORD()),
+        ("Type", PROCESSOR_CACHE_TYPE()),
+    ]
+
+
+class _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_u_s1_(MemStruct):
+    fields = [
+        ("Flags", BYTE()),
+    ]
+
+
+class _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_u_s2_(MemStruct):
+    fields = [
+        ("NodeNumber", DWORD()),
+    ]
+
+_SYSTEM_LOGICAL_PROCESSOR_INFORMATION_u_ = Union([
+    ("ProcessorCore", _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_u_s1_),
+    ("NumaNode", _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_u_s2_),
+    ("Cache", CACHE_DESCRIPTOR),
+    ("Reserved", ULONGLONG__2_),
+])
+
+class SYSTEM_LOGICAL_PROCESSOR_INFORMATION(MemStruct):
+    fields = [
+        ("ProcessorMask", ULONG_PTR()),
+        ("Relationship", LOGICAL_PROCESSOR_RELATIONSHIP()),
+        (None, _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_u_()),
+    ]
+
+PSYSTEM_LOGICAL_PROCESSOR_INFORMATION = Ptr("<I", SYSTEM_LOGICAL_PROCESSOR_INFORMATION())
+
+class GROUP_AFFINITY(MemStruct):
+    fields = [
+        ("Mask", KAFFINITY()),
+        ("Group", WORD()),
+        ("Reserved", WORD__3_()),
+    ]
+
+PGROUP_AFFINITY = Ptr("<I", GROUP_AFFINITY())
+const_GROUP_AFFINITY_PTR = Ptr("<I", GROUP_AFFINITY())
+GROUP_AFFINITY__ANYSIZE_ARRAY_ = Array(GROUP_AFFINITY, 1)
+
+class PROCESSOR_GROUP_INFO(MemStruct):
+    fields = [
+        ("MaximumProcessorCount", BYTE()),
+        ("ActiveProcessorCount", BYTE()),
+        ("Reserved", BYTE__38_()),
+        ("ActiveProcessorMask", KAFFINITY()),
+    ]
+
+PROCESSOR_GROUP_INFO__ANYSIZE_ARRAY_ = Array(PROCESSOR_GROUP_INFO, 1)
+
+class GROUP_RELATIONSHIP(MemStruct):
+    fields = [
+        ("MaximumGroupCount", WORD()),
+        ("ActiveGroupCount", WORD()),
+        ("Reserved", BYTE__20_()),
+        ("GroupInfo", PROCESSOR_GROUP_INFO__ANYSIZE_ARRAY_()),
+    ]
+
+
+class CACHE_RELATIONSHIP(MemStruct):
+    fields = [
+        ("Level", BYTE()),
+        ("Associativity", _CACHE_ASSOCIATIVITY_()),
+        ("LineSize", WORD()),
+        ("CacheSize", DWORD()),
+        ("Type", PROCESSOR_CACHE_TYPE()),
+        ("Reserved", BYTE__20_()),
+        ("GroupMask", GROUP_AFFINITY()),
+    ]
+
+
+class NUMA_NODE_RELATIONSHIP(MemStruct):
+    fields = [
+        ("NodeNumber", DWORD()),
+        ("Reserved", BYTE__20_()),
+        ("GroupMask", GROUP_AFFINITY()),
+    ]
+
+_PROCESSOR_RELATIONSHIP_FLAGS_ = BYTE
+
+class PROCESSOR_RELATIONSHIP(MemStruct):
+    fields = [
+        ("Flags", _PROCESSOR_RELATIONSHIP_FLAGS_()),
+        ("Reserved", BYTE__21_()),
+        ("GroupCount", WORD()),
+        ("GroupMask", GROUP_AFFINITY__ANYSIZE_ARRAY_()),
+    ]
+
+_SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_u_ = Union([
+    ("Processor", PROCESSOR_RELATIONSHIP),
+    ("NumaNode", NUMA_NODE_RELATIONSHIP),
+    ("Cache", CACHE_RELATIONSHIP),
+    ("Group", GROUP_RELATIONSHIP),
+])
+
+class SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX(MemStruct):
+    fields = [
+        ("Relationship", LOGICAL_PROCESSOR_RELATIONSHIP()),
+        ("Size", DWORD()),
+        (None, _SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_u_()),
+    ]
+
+PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX = Ptr("<I", SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX())
+_DCB_PARITY_ = BYTE
+_DCB_STOPBITS_ = BYTE
+
+class DCB(MemStruct):
+    fields = [
+        ("DCBlength", DWORD()),
+        ("BaudRate", DWORD()),
+        ("fDummy2", DWORD()),
+        ("wReserved", WORD()),
+        ("XonLim", WORD()),
+        ("XoffLim", WORD()),
+        ("ByteSize", BYTE()),
+        ("Parity", _DCB_PARITY_()),
+        ("StopBits", _DCB_STOPBITS_()),
+        ("XonChar", char()),
+        ("XoffChar", char()),
+        ("ErrorChar", char()),
+        ("EofChar", char()),
+        ("EvtChar", char()),
+        ("wReserved1", WORD()),
+    ]
+
+LPDCB = Ptr("<I", DCB())
+_SERIAL_PROVIDER_TYPE_ = DWORD
+_BAUD_FLAGS_ = DWORD
+_PROVIDER_SUB_TYPE_ = DWORD
+_PROVIDER_CAPABILITIES_ = DWORD
+_SETTABLE_PARAMS_ = DWORD
+_DATABITS_FLAGS_ = WORD
+_STOPBITS_PARITY_FLAGS_ = WORD
+_COMMPROP_SPEC_ = DWORD
+
+class COMMPROP(MemStruct):
+    fields = [
+        ("wPacketLength", WORD()),
+        ("wPacketVersion", WORD()),
+        ("dwServiceMask", _SERIAL_PROVIDER_TYPE_()),
+        ("dwReserved1", DWORD()),
+        ("dwMaxTxQueue", DWORD()),
+        ("dwMaxRxQueue", DWORD()),
+        ("dwMaxBaud", _BAUD_FLAGS_()),
+        ("dwProvSubType", _PROVIDER_SUB_TYPE_()),
+        ("dwProvCapabilities", _PROVIDER_CAPABILITIES_()),
+        ("dwSettableParams", _SETTABLE_PARAMS_()),
+        ("dwSettableBaud", _BAUD_FLAGS_()),
+        ("wSettableData", _DATABITS_FLAGS_()),
+        ("wSettableStopParity", _STOPBITS_PARITY_FLAGS_()),
+        ("dwCurrentTxQueue", DWORD()),
+        ("dwCurrentRxQueue", DWORD()),
+        ("dwProvSpec1", _COMMPROP_SPEC_()),
+        ("dwProvSpec2", DWORD()),
+        ("wcProvChar", WCHAR__1_()),
+    ]
+
+LPCOMMPROP = Ptr("<I", COMMPROP())
+
+class COMMCONFIG(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("wVersion", WORD()),
+        ("wReserved", WORD()),
+        ("dcb", DCB()),
+        ("dwProviderSubType", _PROVIDER_SUB_TYPE_()),
+        ("dwProviderOffset", DWORD()),
+        ("dwProviderSize", DWORD()),
+        ("wcProviderData", WCHAR__1_()),
+    ]
+
+LPCOMMCONFIG = Ptr("<I", COMMCONFIG())
+
+class CONSOLE_SCREEN_BUFFER_INFOEX(MemStruct):
+    fields = [
+        ("cbSize", ULONG()),
+        ("dwSize", COORD()),
+        ("dwCursorPosition", COORD()),
+        ("wAttributes", _ConsoleAttribute_()),
+        ("srWindow", SMALL_RECT()),
+        ("dwMaximumWindowSize", COORD()),
+        ("wPopupAttributes", WORD()),
+        ("bFullscreenSupported", BOOL()),
+        ("ColorTable", COLORREF__16_()),
+    ]
+
+PCONSOLE_SCREEN_BUFFER_INFOEX = Ptr("<I", CONSOLE_SCREEN_BUFFER_INFOEX())
+_FONT_FAMILY_ = UINT
+
+class CONSOLE_FONT_INFOEX(MemStruct):
+    fields = [
+        ("cbSize", ULONG()),
+        ("nFont", DWORD()),
+        ("dwFontSize", COORD()),
+        ("FontFamily", _FONT_FAMILY_()),
+        ("FontWeight", UINT()),
+        ("FaceName", WCHAR__LF_FACESIZE_()),
+    ]
+
+PCONSOLE_FONT_INFOEX = Ptr("<I", CONSOLE_FONT_INFOEX())
+_INPUT_RECORD_TYPE_ = WORD
+_KEY_EVENT_RECORD_u_ = Union([
+    ("UnicodeChar", WCHAR),
+    ("AsciiChar", CHAR),
+])
+_ControlKeyState_ = DWORD
+
+class KEY_EVENT_RECORD(MemStruct):
+    fields = [
+        ("bKeyDown", BOOL()),
+        ("wRepeatCount", WORD()),
+        ("wVirtualKeyCode", _VirtKeyCode_()),
+        ("wVirtualScanCode", WORD()),
+        ("uChar", _KEY_EVENT_RECORD_u_()),
+        ("dwControlKeyState", _ControlKeyState_()),
+    ]
+
+_MOUSE_EVENT_STATE_ = DWORD
+_MOUSE_EVENT_FLAGS_ = DWORD
+
+class MOUSE_EVENT_RECORD(MemStruct):
+    fields = [
+        ("dwMousePosition", COORD()),
+        ("dwButtonState", _MOUSE_EVENT_STATE_()),
+        ("dwControlKeyState", DWORD()),
+        ("dwEventFlags", _MOUSE_EVENT_FLAGS_()),
+    ]
+
+
+class WINDOW_BUFFER_SIZE_RECORD(MemStruct):
+    fields = [
+        ("dwSize", COORD()),
+    ]
+
+
+class MENU_EVENT_RECORD(MemStruct):
+    fields = [
+        ("dwCommandId", UINT()),
+    ]
+
+
+class FOCUS_EVENT_RECORD(MemStruct):
+    fields = [
+        ("bSetFocus", BOOL()),
+    ]
+
+_INPUT_RECORD_u_ = Union([
+    ("KeyEvent", KEY_EVENT_RECORD),
+    ("MouseEvent", MOUSE_EVENT_RECORD),
+    ("WindowBufferSizeEvent", WINDOW_BUFFER_SIZE_RECORD),
+    ("MenuEvent", MENU_EVENT_RECORD),
+    ("FocusEvent", FOCUS_EVENT_RECORD),
+])
+
+class INPUT_RECORD(MemStruct):
+    fields = [
+        ("EventType", _INPUT_RECORD_TYPE_()),
+        ("Event", _INPUT_RECORD_u_()),
+    ]
+
+PINPUT_RECORD = Ptr("<I", INPUT_RECORD())
+const_INPUT_RECORD_PTR = Ptr("<I", INPUT_RECORD())
+
+class UNWIND_HISTORY_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("ImageBase", DWORD64()),
+        ("FunctionEntry", PRUNTIME_FUNCTION()),
+    ]
+
+UNWIND_HISTORY_TABLE_ENTRY__UNWIND_HISTORY_TABLE_SIZE_ = Array(UNWIND_HISTORY_TABLE_ENTRY, 12)
+
+class UNWIND_HISTORY_TABLE(MemStruct):
+    fields = [
+        ("Count", DWORD()),
+        ("LocalHint", BYTE()),
+        ("GlobalHint", BYTE()),
+        ("Search", BYTE()),
+        ("Once", BYTE()),
+        ("LowAddress", DWORD64()),
+        ("HighAddress", DWORD64()),
+        ("Entry", UNWIND_HISTORY_TABLE_ENTRY__UNWIND_HISTORY_TABLE_SIZE_()),
+    ]
+
+PUNWIND_HISTORY_TABLE = Ptr("<I", UNWIND_HISTORY_TABLE())
+
+class CPINFOEX(MemStruct):
+    fields = [
+        ("MaxCharSize", UINT()),
+        ("DefaultChar", BYTE__MAX_DEFAULTCHAR_()),
+        ("LeadByte", BYTE__MAX_LEADBYTES_()),
+        ("UnicodeDefaultChar", WCHAR()),
+        ("CodePage", UINT()),
+        ("CodePageName", TCHAR__MAX_PATH_()),
+    ]
+
+LPCPINFOEX = Ptr("<I", CPINFOEX())
+
+class CPINFO(MemStruct):
+    fields = [
+        ("MaxCharSize", UINT()),
+        ("DefaultChar", BYTE__MAX_DEFAULTCHAR_()),
+        ("LeadByte", BYTE__MAX_LEADBYTES_()),
+    ]
+
+LPCPINFO = Ptr("<I", CPINFO())
+
+class _REASON_CONTEXT_u_s_(MemStruct):
+    fields = [
+        ("LocalizedReasonModule", HMODULE()),
+        ("LocalizedReasonId", ULONG()),
+        ("ReasonStringCount", ULONG()),
+        ("ReasonStrings", LPWSTR_PTR()),
+    ]
+
+_REASON_CONTEXT_u_ = Union([
+    ("Detailed", _REASON_CONTEXT_u_s_),
+    ("SimpleReasonString", LPWSTR),
+])
+_POWER_REQUEST_CONTEXT_FLAGS_ = DWORD
+
+class REASON_CONTEXT(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("Flags", _POWER_REQUEST_CONTEXT_FLAGS_()),
+        ("Reason", _REASON_CONTEXT_u_()),
+    ]
+
+PREASON_CONTEXT = Ptr("<I", REASON_CONTEXT())
+
+class DYNAMIC_TIME_ZONE_INFORMATION(MemStruct):
+    fields = [
+        ("Bias", LONG()),
+        ("StandardName", WCHAR__32_()),
+        ("StandardDate", SYSTEMTIME()),
+        ("StandardBias", LONG()),
+        ("DaylightName", WCHAR__32_()),
+        ("DaylightDate", SYSTEMTIME()),
+        ("DaylightBias", LONG()),
+        ("TimeZoneKeyName", WCHAR__128_()),
+        ("DynamicDaylightTimeDisabled", BOOLEAN()),
+    ]
+
+PDYNAMIC_TIME_ZONE_INFORMATION = Ptr("<I", DYNAMIC_TIME_ZONE_INFORMATION())
+const_DYNAMIC_TIME_ZONE_INFORMATION_PTR = Ptr("<I", DYNAMIC_TIME_ZONE_INFORMATION())
+_TP_CALLBACK_ENVIRON_V3_u_ = Union([
+    ("Flags", DWORD),
+])
+
+class TP_CALLBACK_ENVIRON_V3(MemStruct):
+    fields = [
+        ("Version", TP_VERSION()),
+        ("Pool", PTP_POOL()),
+        ("CleanupGroup", PTP_CLEANUP_GROUP()),
+        ("CleanupGroupCancelCallback", PTP_CLEANUP_GROUP_CANCEL_CALLBACK()),
+        ("RaceDll", PVOID()),
+        ("ActivationContext", ACTIVATION_CONTEXT_PTR()),
+        ("FinalizationCallback", PTP_SIMPLE_CALLBACK()),
+        ("u", _TP_CALLBACK_ENVIRON_V3_u_()),
+        ("CallbackPriority", TP_CALLBACK_PRIORITY()),
+        ("Size", DWORD()),
+    ]
+
+PTP_CALLBACK_ENVIRON = Ptr("<I", TP_CALLBACK_ENVIRON_V3())
+
+class _PROCESS_HEAP_ENTRY_u_s1_(MemStruct):
+    fields = [
+        ("hMem", HANDLE()),
+        ("dwReserved", DWORD__3_()),
+    ]
+
+
+class _PROCESS_HEAP_ENTRY_u_s2_(MemStruct):
+    fields = [
+        ("dwCommittedSize", DWORD()),
+        ("dwUnCommittedSize", DWORD()),
+        ("lpFirstBlock", LPVOID()),
+        ("lpLastBlock", LPVOID()),
+    ]
+
+_PROCESS_HEAP_ENTRY_u_ = Union([
+    ("Block", _PROCESS_HEAP_ENTRY_u_s1_),
+    ("Region", _PROCESS_HEAP_ENTRY_u_s2_),
+])
+_PROCESS_HEAP_FLAGS_ = WORD
+
+class PROCESS_HEAP_ENTRY(MemStruct):
+    fields = [
+        ("lpData", PVOID()),
+        ("cbData", DWORD()),
+        ("cbOverhead", BYTE()),
+        ("iRegionIndex", BYTE()),
+        ("wFlags", _PROCESS_HEAP_FLAGS_()),
+        (None, _PROCESS_HEAP_ENTRY_u_()),
+    ]
+
+LPPROCESS_HEAP_ENTRY = Ptr("<I", PROCESS_HEAP_ENTRY())
+HARDWARE_COUNTER_TYPE = UINT
+
+class HARDWARE_COUNTER_DATA(MemStruct):
+    fields = [
+        ("Type", HARDWARE_COUNTER_TYPE()),
+        ("Reserved", DWORD()),
+        ("Value", DWORD64()),
+    ]
+
+HARDWARE_COUNTER_DATA__MAX_HW_COUNTERS_ = Array(HARDWARE_COUNTER_DATA, 16)
+
+class PERFORMANCE_DATA(MemStruct):
+    fields = [
+        ("Size", WORD()),
+        ("Version", BYTE()),
+        ("HwCountersCount", BYTE()),
+        ("ContextSwitchCount", DWORD()),
+        ("WaitReasonBitMap", DWORD64()),
+        ("CycleTime", DWORD64()),
+        ("RetryCount", DWORD()),
+        ("Reserved", DWORD()),
+        ("HwCounters", HARDWARE_COUNTER_DATA__MAX_HW_COUNTERS_()),
+    ]
+
+PPERFORMANCE_DATA = Ptr("<I", PERFORMANCE_DATA())
+_DDD_FLAGS_ = DWORD
+_DRIVE_TYPE_ = UINT
+_FILE_SYSTEM_FLAGS_ = DWORD
+_LPFILE_SYSTEM_FLAGS_ = Ptr("<I", _FILE_SYSTEM_FLAGS_())
+_NMPWAIT_ = DWORD
+_PIPE_ACCESS_ = DWORD
+_PIPE_MODE_ = DWORD
+_PIPE_MODE_PTR_ = Ptr("<I", _PIPE_MODE_())
+_PIPE_STATE_ = DWORD
+_PIPE_STATE_PTR_ = Ptr("<I", _PIPE_STATE_())
+_PIPE_TYPE_ = DWORD
+_PIPE_TYPE_PTR_ = Ptr("<I", _PIPE_TYPE_())
+_GetModuleHandleExFlags_ = DWORD
+_LoadLibraryExFlags_ = DWORD
+_CreateToolhelp32SnapshotFlags_ = DWORD
+_LOAD_LIBRARY_SEARCH_FLAGS_ = DWORD
+_PROCESS_THREAD_HANDLE_ = _ProcessHandle_
+_COMM_EVENT_ = DWORD
+_COMM_EVENT_PTR_ = Ptr("<I", _COMM_EVENT_())
+_COMM_FUNCTION_ = DWORD
+_PURGE_FLAGS_ = DWORD
+_MODEM_STATUS_FLAGS_ = DWORD
+_MODEM_STATUS_FLAGS_PTR_ = Ptr("<I", _MODEM_STATUS_FLAGS_())
+_CTM_FLAGS_ = DWORD
+_LoadStringByReference_Flags_ = DWORD
+FIRMWARE_TYPE = UINT
+PFIRMWARE_TYPE = Ptr("<I", FIRMWARE_TYPE())
+_COPY_FILE_FLAGS_ = DWORD
+_COPY_FILE2_FLAGS_ = _COPY_FILE_FLAGS_
+
+class COPYFILE2_EXTENDED_PARAMETERS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwCopyFlags", _COPY_FILE2_FLAGS_()),
+        ("pfCancel", BOOL_PTR()),
+        ("pProgressRoutine", PCOPYFILE2_PROGRESS_ROUTINE()),
+        ("pvCallbackContext", PVOID()),
+    ]
+
+COPYFILE2_EXTENDED_PARAMETERS_PTR = Ptr("<I", COPYFILE2_EXTENDED_PARAMETERS())
+_SECURITY_QOS_FLAGS_ = DWORD
+
+class CREATEFILE2_EXTENDED_PARAMETERS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFileAttributes", _FileAttributes_()),
+        ("dwFileFlags", _FILE_FLAGS_()),
+        ("dwSecurityQosFlags", _SECURITY_QOS_FLAGS_()),
+        ("lpSecurityAttributes", LPSECURITY_ATTRIBUTES()),
+        ("hTemplateFile", HANDLE()),
+    ]
+
+LPCREATEFILE2_EXTENDED_PARAMETERS = Ptr("<I", CREATEFILE2_EXTENDED_PARAMETERS())
+
+class WIN32_MEMORY_RANGE_ENTRY(MemStruct):
+    fields = [
+        ("VirtualAddress", PVOID()),
+        ("NumberOfBytes", SIZE_T()),
+    ]
+
+PWIN32_MEMORY_RANGE_ENTRY = Ptr("<I", WIN32_MEMORY_RANGE_ENTRY())
+PROCESS_MITIGATION_POLICY = UINT
+
+class RTL_BARRIER(MemStruct):
+    fields = [
+        ("Reserved1", DWORD()),
+        ("Reserved2", DWORD()),
+        ("Reserved3", ULONG_PTR__2_()),
+        ("Reserved4", DWORD()),
+        ("Reserved5", DWORD()),
+    ]
+
+SYNCHRONIZATION_BARRIER = RTL_BARRIER
+LPSYNCHRONIZATION_BARRIER = Ptr("<I", SYNCHRONIZATION_BARRIER())
+THREAD_INFORMATION_CLASS = UINT
+PROCESS_INFORMATION_CLASS = UINT
+_CLAIM_SECURITY_ATTRIBUTE_TYPE_ = WORD
+_CLAIM_SECURITY_ATTRIBUTE_FLAGS_ = DWORD
+
+class CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE(MemStruct):
+    fields = [
+        ("Version", DWORD64()),
+        ("Name", PWSTR()),
+    ]
+
+PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE = Ptr("<I", CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE())
+
+class CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE(MemStruct):
+    fields = [
+        # Length is `ValueLength`
+        ("pValue", PVOID()),
+        ("ValueLength", DWORD()),
+    ]
+
+PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE = Ptr("<I", CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE())
+_CLAIM_SECURITY_ATTRIBUTE_V1_u_ = Union([
+    ("pInt64", PLONG64),
+    ("pUint64", PDWORD64),
+    ("ppString", PWSTR_PTR),
+    ("pFqbn", PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE),
+    ("pOctetString", PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE),
+])
+
+class CLAIM_SECURITY_ATTRIBUTE_V1(MemStruct):
+    fields = [
+        ("Name", PWSTR()),
+        ("ValueType", _CLAIM_SECURITY_ATTRIBUTE_TYPE_()),
+        ("Reserved", WORD()),
+        ("Flags", _CLAIM_SECURITY_ATTRIBUTE_FLAGS_()),
+        ("ValueCount", DWORD()),
+        ("Values", _CLAIM_SECURITY_ATTRIBUTE_V1_u_()),
+    ]
+
+PCLAIM_SECURITY_ATTRIBUTE_V1 = Ptr("<I", CLAIM_SECURITY_ATTRIBUTE_V1())
+_CLAIM_SECURITY_ATTRIBUTES_INFORMATION_u_ = Union([
+    ("pAttributeV1", PCLAIM_SECURITY_ATTRIBUTE_V1),
+])
+
+class CLAIM_SECURITY_ATTRIBUTES_INFORMATION(MemStruct):
+    fields = [
+        ("Version", WORD()),
+        ("Reserved", WORD()),
+        ("AttributeCount", DWORD()),
+        ("Attribute", _CLAIM_SECURITY_ATTRIBUTES_INFORMATION_u_()),
+    ]
+
+PCLAIM_SECURITY_ATTRIBUTES_INFORMATION = Ptr("<I", CLAIM_SECURITY_ATTRIBUTES_INFORMATION())
+_READ_THREAD_PROFILING_FLAGS_ = DWORD
+_THREAD_PROFILING_FLAGS_ = DWORD
+_WER_FAULT_REPORTING_FLAGS_ = DWORD
+_WER_FAULT_REPORTING_FLAGS_PTR_ = Ptr("<I", _WER_FAULT_REPORTING_FLAGS_())
+_FAIL_FAST_EXCEPTION_FLAGS_ = DWORD
+_CREATE_WAITABLE_TIMER_FLAGS_ = DWORD
+_SYNCHRONIZATION_BARRIER_FLAGS_ = DWORD
+_CREATE_MUTEX_FLAGS_ = DWORD
+_INIT_ONCE_FLAGS_ = DWORD
+_CREATE_EVENT_FLAGS_ = DWORD
+_CRITICAL_SECTION_FLAGS_ = DWORD
+_CONDITION_VARIABLE_FLAGS_ = ULONG
+_VERIFY_SCRIPTS_FLAGS_ = DWORD
+_LOCALE_NAME_FLAGS_ = DWORD
+_GET_STRING_SCRIPTS_FLAGS_ = DWORD
+_NLS_FIND_FLAGS_ = DWORD
+_NLS_STRING_FIND_FLAGS_ = _NLS_FIND_FLAGS_
+_CONSOLE_DISPLAY_MODE_ = DWORD
+_CONSOLE_FULLSCREEN_MODE_ = DWORD
+_CONSOLE_FULLSCREEN_MODE_PTR_ = Ptr("<I", _CONSOLE_FULLSCREEN_MODE_())
+_CONSOLE_TEXTMODE_FLAGS_ = DWORD
+_MUI_LANGUAGE_FORMAT_FLAGS_ = DWORD
+_EnumUILanguages_FLAGS_ = DWORD
+_GetFileMUIInfo_FLAGS_ = DWORD
+_GetFileMUIPath_FLAGS_ = DWORD
+_GetSystemPreferredUILanguages_FLAGS_ = DWORD
+_GetThreadPreferredUILanguages_FLAGS_ = DWORD
+_MUI_LANGUAGE_ATTRIBUTES_ = DWORD
+_MUI_LANGUAGE_ATTRIBUTES_PTR_ = Ptr("<I", _MUI_LANGUAGE_ATTRIBUTES_())
+_SetThreadPreferredUILanguages_FLAGS_ = DWORD
+_MUI_FILETYPE_ = DWORD
+
+class FILEMUIINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwVersion", DWORD()),
+        ("dwFileType", _MUI_FILETYPE_()),
+        ("pChecksum", BYTE__16_()),
+        ("pServiceChecksum", BYTE__16_()),
+        ("dwLanguageNameOffset", DWORD()),
+        ("dwTypeIDMainSize", DWORD()),
+        ("dwTypeIDMainOffset", DWORD()),
+        ("dwTypeNameMainOffset", DWORD()),
+        ("dwTypeIDMUISize", DWORD()),
+        ("dwTypeIDMUIOffset", DWORD()),
+        ("dwTypeNameMUIOffset", DWORD()),
+        ("abBuffer", BYTE__8_()),
+    ]
+
+PFILEMUIINFO = Ptr("<I", FILEMUIINFO())
+
+class HEAP_SUMMARY(MemStruct):
+    fields = [
+        ("cb", DWORD()),
+        ("cbAllocated", SIZE_T()),
+        ("cbCommitted", SIZE_T()),
+        ("cbReserved", SIZE_T()),
+        ("cbMaxReserve", SIZE_T()),
+    ]
+
+LPHEAP_SUMMARY = Ptr("<I", HEAP_SUMMARY())
+
+class UMS_SYSTEM_THREAD_INFORMATION(MemStruct):
+    fields = [
+        ("UmsVersion", ULONG()),
+        ("ThreadUmsFlags", ULONG()),
+    ]
+
+PUMS_SYSTEM_THREAD_INFORMATION = Ptr("<I", UMS_SYSTEM_THREAD_INFORMATION())
+_XSTATE_FEATURE_ = DWORD
+
+class IMAGE_DELAYLOAD_DESCRIPTOR(MemStruct):
+    fields = [
+        ("Attributes", DWORD()),
+        ("DllNameRVA", DWORD()),
+        ("ModuleHandleRVA", DWORD()),
+        ("ImportAddressTableRVA", DWORD()),
+        ("ImportNameTableRVA", DWORD()),
+        ("BoundImportAddressTableRVA", DWORD()),
+        ("UnloadInformationTableRVA", DWORD()),
+        ("TimeDateStamp", DWORD()),
+    ]
+
+PCIMAGE_DELAYLOAD_DESCRIPTOR = Ptr("<I", IMAGE_DELAYLOAD_DESCRIPTOR())
+
+class IMAGE_THUNK_DATA(MemStruct):
+    fields = [
+        ("u1", _IMAGE_THUNK_DATA_u_()),
+    ]
+
+PIMAGE_THUNK_DATA = Ptr("<I", IMAGE_THUNK_DATA())
+
+###################
+
+###### Functions ######
 
 def kernel32_CheckRemoteDebuggerPresent(jitter):
     """

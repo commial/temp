@@ -1,3 +1,4 @@
+###### Enums ######
 LDAP_RETCODE = {
     "LDAP_SUCCESS": 0x00,
     "LDAP_OPERATIONS_ERROR": 0x01,
@@ -128,6 +129,158 @@ LDAP_RETCODE_INV = {
     0x60: "LDAP_CLIENT_LOOP",
     0x61: "LDAP_REFERRAL_LIMIT_EXCEEDED",
 }
+
+###################
+
+###### Types ######
+PLDAPSearch = LPVOID
+PTCHAR_PTR = Ptr("<I", PTCHAR())
+PTCHAR_PTR_PTR = Ptr("<I", PTCHAR_PTR())
+UCHAR__25_ = Array(UCHAR, 25)
+UCHAR__41_ = Array(UCHAR, 41)
+
+class _LDAP_s_(MemStruct):
+    fields = [
+        ("sb_sd", UINT_PTR()),
+        ("Reserved1", UCHAR__41_()),
+        ("sb_naddr", ULONG_PTR()),
+        ("Reserved2", UCHAR__24_()),
+    ]
+
+
+class LDAP(MemStruct):
+    fields = [
+        ("ld_sb", _LDAP_s_()),
+        ("ld_host", PCHAR()),
+        ("ld_version", ULONG()),
+        ("ld_lberoptions", UCHAR()),
+        ("ld_deref", ULONG()),
+        ("ld_timelimit", ULONG()),
+        ("ld_sizelimit", ULONG()),
+        ("ld_errno", ULONG()),
+        ("ld_matched", PCHAR()),
+        ("ld_error", PCHAR()),
+        ("ld_msgid", ULONG()),
+        ("Reserved3", UCHAR__25_()),
+        ("ld_cldaptries", ULONG()),
+        ("ld_cldaptimeout", ULONG()),
+        ("ld_refhoplimit", ULONG()),
+        ("ld_options", ULONG()),
+    ]
+
+LDAP_PTR = Ptr("<I", LDAP())
+PLDAP = Ptr("<I", LDAP())
+
+class LDAPMessage(MemStruct):
+    fields = [
+        ("lm_msgid", ULONG()),
+        ("lm_msgtype", ULONG()),
+        ("lm_ber", PVOID()),
+        ("lm_chain", LPVOID()),
+        ("lm_next", LPVOID()),
+        ("lm_time", ULONG()),
+        ("Connection", PLDAP()),
+        ("Request", PVOID()),
+        ("lm_returncode", ULONG()),
+        ("lm_referral", USHORT()),
+        ("lm_chased", BOOLEAN()),
+        ("lm_eom", BOOLEAN()),
+        ("ConnectionReferenced", BOOLEAN()),
+    ]
+
+PLDAPMessage = Ptr("<I", LDAPMessage())
+LDAPMessage_PTR = Ptr("<I", LDAPMessage())
+LDAPMessage_PTR_PTR = Ptr("<I", LDAPMessage_PTR())
+
+class berval(MemStruct):
+    fields = [
+        ("bv_len", ULONG()),
+        ("bv_val", PCHAR()),
+    ]
+
+struct_berval = berval
+struct_berval_PTR = Ptr("<I", berval())
+struct_berval_PTR_PTR = Ptr("<I", struct_berval_PTR())
+BERVAL_PTR = Ptr("<I", berval())
+const_BERVAL_PTR = Ptr("<I", berval())
+PBERVAL = Ptr("<I", berval())
+PBERVAL_PTR = Ptr("<I", PBERVAL())
+
+class LDAPControl(MemStruct):
+    fields = [
+        ("ldctl_oid", PTCHAR()),
+        ("ldctl_value", struct_berval()),
+        ("ldctl_iscritical", BOOLEAN()),
+    ]
+
+LDAPControl_PTR = Ptr("<I", LDAPControl())
+LDAPControl_PTR_PTR = Ptr("<I", LDAPControl_PTR())
+PLDAPControl = Ptr("<I", LDAPControl())
+PLDAPControl_PTR = Ptr("<I", PLDAPControl())
+PLDAPControl_PTR_PTR = Ptr("<I", LDAPControl_PTR_PTR())
+
+class LDAP_TIMEVAL(MemStruct):
+    fields = [
+        ("tv_sec", LONG()),
+        ("tv_usec", LONG()),
+    ]
+
+LDAP_TIMEVAL_PTR = Ptr("<I", LDAP_TIMEVAL())
+struct_l_timeval = LDAP_TIMEVAL
+struct_l_timeval_PTR = Ptr("<I", struct_l_timeval())
+
+class LDAPSortKey(MemStruct):
+    fields = [
+        ("sk_attrtype", PTCHAR()),
+        ("sk_matchruleoid", PTCHAR()),
+        ("sk_reverseorder", BOOLEAN()),
+    ]
+
+PLDAPSortKey = Ptr("<I", LDAPSortKey())
+PLDAPSortKey_PTR = Ptr("<I", PLDAPSortKey())
+
+class LDAPVLVInfo(MemStruct):
+    fields = [
+        ("ldvlv_version", int()),
+        ("ldvlv_before_count", ULONG()),
+        ("ldvlv_after_count", ULONG()),
+        ("ldvlv_offset", ULONG()),
+        ("ldvlv_count", ULONG()),
+        ("ldvlv_attrvalue", PBERVAL()),
+        ("ldvlv_context", PBERVAL()),
+        ("ldvlv_extradata", VOID_PTR()),
+    ]
+
+LDAPVLVInfo_PTR = Ptr("<I", LDAPVLVInfo())
+
+class BerElement(MemStruct):
+    fields = [
+        ("opaque", PCHAR()),
+    ]
+
+BerElement_PTR = Ptr("<I", BerElement())
+BerElement_PTR_PTR = Ptr("<I", BerElement_PTR())
+LDAP_RETCODE = ULONG
+_LDAP_RETCODE_INT_ = LDAP_RETCODE
+_LDAP_MOD_OP_ = ULONG
+_LDAPMod_u_ = Union([
+    ("modv_strvals", PTCHAR_PTR),
+    ("modv_bvals", struct_berval_PTR_PTR),
+])
+
+class LDAPMod(MemStruct):
+    fields = [
+        ("mod_op", _LDAP_MOD_OP_()),
+        ("mod_type", PTCHAR()),
+        ("mod_vals", _LDAPMod_u_()),
+    ]
+
+LDAPMod_PTR = Ptr("<I", LDAPMod())
+LDAPMod_PTR___ = Ptr("<I", LDAPMod_PTR())
+
+###################
+
+###### Functions ######
 
 def wldap32_cldap_open(jitter):
     """

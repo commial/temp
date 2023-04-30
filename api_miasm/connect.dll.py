@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def connect_CreateVPNConnection(jitter):
     """

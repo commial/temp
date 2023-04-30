@@ -1,3 +1,31 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+MagImageScalingCallback = LPVOID
+float__3_ = Array(float, 3)
+float__5_ = Array(float, 5)
+float__3__3_ = Array(float__3_, 3)
+float__5__5_ = Array(float__5_, 5)
+
+class MAGCOLOREFFECT(MemStruct):
+    fields = [
+        ("transform", float__5__5_()),
+    ]
+
+PMAGCOLOREFFECT = Ptr("<I", MAGCOLOREFFECT())
+
+class MAGTRANSFORM(MemStruct):
+    fields = [
+        ("v", float__3__3_()),
+    ]
+
+PMAGTRANSFORM = Ptr("<I", MAGTRANSFORM())
+
+###################
+
+###### Functions ######
 
 def magnification_MagGetColorEffect(jitter):
     """

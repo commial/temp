@@ -1,3 +1,4 @@
+###### Enums ######
 AUDIT_PARAM_TYPE = {
     "APT_None": 1,
     "APT_String": 2,
@@ -88,6 +89,210 @@ AUTHZ_SID_OPERATION_INV = {
     3: "AUTHZ_SID_OPERATION_DELETE",
     4: "AUTHZ_SID_OPERATION_REPLACE",
 }
+
+###################
+
+###### Types ######
+AUTHZ_CLIENT_CONTEXT_HANDLE = HANDLE
+PAUTHZ_CLIENT_CONTEXT_HANDLE = Ptr("<I", AUTHZ_CLIENT_CONTEXT_HANDLE())
+AUTHZ_AUDIT_EVENT_HANDLE = HANDLE
+PAUTHZ_AUDIT_EVENT_HANDLE = Ptr("<I", AUTHZ_AUDIT_EVENT_HANDLE())
+AUTHZ_ACCESS_CHECK_RESULTS_HANDLE = HANDLE
+PAUTHZ_ACCESS_CHECK_RESULTS_HANDLE = Ptr("<I", AUTHZ_ACCESS_CHECK_RESULTS_HANDLE())
+AUTHZ_RESOURCE_MANAGER_HANDLE = HANDLE
+PAUTHZ_RESOURCE_MANAGER_HANDLE = Ptr("<I", AUTHZ_RESOURCE_MANAGER_HANDLE())
+PFN_AUTHZ_DYNAMIC_ACCESS_CHECK = LPVOID
+PFN_AUTHZ_COMPUTE_DYNAMIC_GROUPS = LPVOID
+PFN_AUTHZ_FREE_DYNAMIC_GROUPS = LPVOID
+AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE = HANDLE
+PAUTHZ_SECURITY_EVENT_PROVIDER_HANDLE = Ptr("<I", AUTHZ_SECURITY_EVENT_PROVIDER_HANDLE())
+AUTHZ_AUDIT_EVENT_TYPE_HANDLE = HANDLE
+AUTHZ_CAP_CHANGE_SUBSCRIPTION_HANDLE = HANDLE
+PAUTHZ_CAP_CHANGE_SUBSCRIPTION_HANDLE = Ptr("<I", AUTHZ_CAP_CHANGE_SUBSCRIPTION_HANDLE())
+BYTE___AUTHZ_SS_MAXSIZE_ = Array(BYTE, 128)
+AUDIT_PARAM_TYPE = UINT
+
+class AUDIT_OBJECT_TYPE(MemStruct):
+    fields = [
+        ("ObjectType", GUID()),
+        ("Flags", USHORT()),
+        ("Level", USHORT()),
+        ("AccessMask", ACCESS_MASK()),
+    ]
+
+AUDIT_OBJECT_TYPE_PTR = Ptr("<I", AUDIT_OBJECT_TYPE())
+
+class AUDIT_OBJECT_TYPES(MemStruct):
+    fields = [
+        ("Count", USHORT()),
+        ("Flags", USHORT()),
+        ("pObjectTypes", AUDIT_OBJECT_TYPE_PTR()),
+    ]
+
+AUDIT_OBJECT_TYPES_PTR = Ptr("<I", AUDIT_OBJECT_TYPES())
+
+class AUDIT_IP_ADDRESS(MemStruct):
+    fields = [
+        ("pIpAddress", BYTE___AUTHZ_SS_MAXSIZE_()),
+    ]
+
+AUDIT_IP_ADDRESS_PTR = Ptr("<I", AUDIT_IP_ADDRESS())
+_AUDIT_PARAM_u1_ = Union([
+    ("Data0", ULONG_PTR),
+    ("String", PWSTR),
+    ("u", ULONG_PTR),
+    ("psid", SID_PTR),
+    ("pguid", GUID_PTR),
+    ("LogonId_LowPart", ULONG),
+    ("pObjectTypes", AUDIT_OBJECT_TYPES_PTR),
+    ("pIpAddress", AUDIT_IP_ADDRESS_PTR),
+])
+_AUDIT_PARAM_u2_ = Union([
+    ("Data1", ULONG_PTR),
+    ("LogonId_HighPart", LONG),
+])
+
+class AUDIT_PARAM(MemStruct):
+    fields = [
+        ("Type", AUDIT_PARAM_TYPE()),
+        ("Length", ULONG()),
+        ("Flags", DWORD()),
+        (None, _AUDIT_PARAM_u1_()),
+        (None, _AUDIT_PARAM_u2_()),
+    ]
+
+AUDIT_PARAM_PTR = Ptr("<I", AUDIT_PARAM())
+_APF_TYPE_ = DWORD
+
+class AUDIT_PARAMS(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("Flags", _APF_TYPE_()),
+        ("Count", USHORT()),
+        ("Parameters", AUDIT_PARAM_PTR()),
+    ]
+
+PAUDIT_PARAMS = Ptr("<I", AUDIT_PARAMS())
+
+class AUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUE(MemStruct):
+    fields = [
+        ("Version", ULONG64()),
+        ("pName", PWSTR()),
+    ]
+
+PAUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUE = Ptr("<I", AUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUE())
+
+class AUTHZ_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE(MemStruct):
+    fields = [
+        ("pValue", PVOID()),
+        ("ValueLength", ULONG()),
+    ]
+
+PAUTHZ_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE = Ptr("<I", AUTHZ_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE())
+_AUTHZ_SECURITY_ATTRIBUTE_V1_u_ = Union([
+    ("pInt64", PLONG64),
+    ("pUint64", PULONG64),
+    ("ppString", PWSTR_PTR),
+    ("pFqbn", PAUTHZ_SECURITY_ATTRIBUTE_FQBN_VALUE),
+    ("pOctetString", PAUTHZ_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE),
+])
+_AUTHZ_SECURITY_ATTRIBUTE_ = ULONG
+
+class AUTHZ_SECURITY_ATTRIBUTE_V1(MemStruct):
+    fields = [
+        ("pName", PWSTR()),
+        ("ValueType", USHORT()),
+        ("Reserved", USHORT()),
+        ("Flags", _AUTHZ_SECURITY_ATTRIBUTE_()),
+        ("ValueCount", ULONG()),
+        ("Values", _AUTHZ_SECURITY_ATTRIBUTE_V1_u_()),
+    ]
+
+PAUTHZ_SECURITY_ATTRIBUTE_V1 = Ptr("<I", AUTHZ_SECURITY_ATTRIBUTE_V1())
+_AUTHZ_SECURITY_ATTRIBUTES_INFORMATION_u_ = Union([
+    ("pAttributeV1", PAUTHZ_SECURITY_ATTRIBUTE_V1),
+])
+
+class AUTHZ_SECURITY_ATTRIBUTES_INFORMATION(MemStruct):
+    fields = [
+        ("Version", USHORT()),
+        ("Reserved", USHORT()),
+        ("AttributeCount", ULONG()),
+        ("Attribute", _AUTHZ_SECURITY_ATTRIBUTES_INFORMATION_u_()),
+    ]
+
+PAUTHZ_SECURITY_ATTRIBUTES_INFORMATION = Ptr("<I", AUTHZ_SECURITY_ATTRIBUTES_INFORMATION())
+
+class AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET(MemStruct):
+    fields = [
+        ("szObjectTypeName", PWSTR()),
+        ("dwOffset", DWORD()),
+    ]
+
+AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET__ANYSIZE_ARRAY_ = Array(AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET, 1)
+_AuthzRegistrationFlags_ = DWORD
+
+class AUTHZ_SOURCE_SCHEMA_REGISTRATION(MemStruct):
+    fields = [
+        ("dwFlags", _AuthzRegistrationFlags_()),
+        ("szEventSourceName", PWSTR()),
+        ("szEventMessageFile", PWSTR()),
+        ("szEventSourceXmlSchemaFile", PWSTR()),
+        ("szEventAccessStringsFile", PWSTR()),
+        ("szExecutableImagePath", PWSTR()),
+        ("pProviderGuid", GUID_PTR()),
+        ("dwObjectTypeNameCount", DWORD()),
+        ("ObjectTypeNames", AUTHZ_REGISTRATION_OBJECT_TYPE_NAME_OFFSET__ANYSIZE_ARRAY_()),
+    ]
+
+PAUTHZ_SOURCE_SCHEMA_REGISTRATION = Ptr("<I", AUTHZ_SOURCE_SCHEMA_REGISTRATION())
+
+class AUTHZ_ACCESS_REQUEST(MemStruct):
+    fields = [
+        ("DesiredAccess", ACCESS_MASK()),
+        ("PrincipalSelfSid", PSID()),
+        ("ObjectTypeList", POBJECT_TYPE_LIST()),
+        ("ObjectTypeListLength", DWORD()),
+        ("OptionalArguments", PVOID()),
+    ]
+
+PAUTHZ_ACCESS_REQUEST = Ptr("<I", AUTHZ_ACCESS_REQUEST())
+
+class AUTHZ_ACCESS_REPLY(MemStruct):
+    fields = [
+        ("ResultListLength", DWORD()),
+        ("GrantedAccessMask", PACCESS_MASK()),
+        ("SaclEvaluationResults", PDWORD()),
+        ("Error", PDWORD()),
+    ]
+
+PAUTHZ_ACCESS_REPLY = Ptr("<I", AUTHZ_ACCESS_REPLY())
+AUTHZ_CONTEXT_INFORMATION_CLASS = UINT
+_AuthzInitRMFlags_ = DWORD
+_AuthzAccessCheckFlags_ = DWORD
+_AuthzInitContextFlags_ = DWORD
+AUTHZ_SECURITY_ATTRIBUTE_OPERATION = UINT
+PAUTHZ_SECURITY_ATTRIBUTE_OPERATION = Ptr("<I", AUTHZ_SECURITY_ATTRIBUTE_OPERATION())
+_AUTHZ_INITOBJAUDITEVENT_FLAGS_ = DWORD
+
+class AUTHZ_RPC_INIT_INFO_CLIENT(MemStruct):
+    fields = [
+        ("version", USHORT()),
+        ("ObjectUuid", PWSTR()),
+        ("ProtSeq", PWSTR()),
+        ("NetworkAddr", PWSTR()),
+        ("Endpoint", PWSTR()),
+        ("Options", PWSTR()),
+        ("ServerSpn", PWSTR()),
+    ]
+
+PAUTHZ_RPC_INIT_INFO_CLIENT = Ptr("<I", AUTHZ_RPC_INIT_INFO_CLIENT())
+AUTHZ_SID_OPERATION = UINT
+PAUTHZ_SID_OPERATION = Ptr("<I", AUTHZ_SID_OPERATION())
+
+###################
+
+###### Functions ######
 
 def authz_AuthzAccessCheck(jitter):
     """

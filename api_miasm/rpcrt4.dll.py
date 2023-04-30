@@ -1,3 +1,4 @@
+###### Enums ######
 _BindingOptions_ = {
     "RPC_C_OPT_BINDING_NONCAUSAL": 9,
     "RPC_C_OPT_MAX_OPTIONS": 17,
@@ -72,6 +73,296 @@ XLAT_SIDE_INV = {
     1: "XLAT_SERVER",
     2: "XLAT_CLIENT",
 }
+
+###################
+
+###### Types ######
+handle_t = LPVOID
+handle_t_PTR = Ptr("<I", handle_t())
+MIDL_ES_READ = LPVOID
+MIDL_ES_ALLOC = LPVOID
+MIDL_ES_WRITE = LPVOID
+RPC_INTERFACE_GROUP = LPVOID
+PRPC_INTERFACE_GROUP = Ptr("<I", RPC_INTERFACE_GROUP())
+RPC_INTERFACE_GROUP_IDLE_CALLBACK_FN = LPVOID
+const_IPSFactoryBufferVtbl_PTR = LPVOID
+const_PCInterfaceProxyVtblList_PTR = LPVOID
+const_PCInterfaceStubVtblList_PTR = LPVOID
+const_PCInterfaceName_PTR = const_char_PTR
+const_PIIDLookup = LPVOID
+const_IID_PTR_PTR = IID_PTR_PTR
+PFORMAT_STRING = LPBYTE
+NDR_RUNDOWN = LPVOID
+NDR_CCONTEXT = LPVOID
+NDR_CCONTEXT_PTR = Ptr("<I", NDR_CCONTEXT())
+RPC_FORWARD_FUNCTION_PTR = LPVOID
+RPC_ADDRESS_CHANGE_FN_PTR = LPVOID
+RPC_DISPATCH_FUNCTION_PTR = LPVOID
+I_RPC_MUTEX = LPVOID
+I_RPC_MUTEX_PTR = Ptr("<I", I_RPC_MUTEX())
+MIDL_STUB_MESSAGE_PTR = LPVOID
+PMIDL_STUB_MESSAGE = LPVOID
+PMIDL_STUB_DESC = LPVOID
+const_MIDL_STUB_DESC_PTR = LPVOID
+void_PTR__2_ = Array(void_PTR, 2)
+UINT_PTR__3_ = Array(UINT_PTR, 3)
+ULONG_PTR__5_ = Array(ULONG_PTR, 5)
+_BOOL|int_ = BOOL
+
+class NDR_USER_MARSHAL_INFO_LEVEL1(MemStruct):
+    fields = [
+        ("Buffer", void_PTR()),
+        ("BufferSize", unsigned_long()),
+        ("pfnAllocate", void_PTR()),
+        ("pfnFree", void_PTR()),
+        ("pRpcChannelBuffer", IRpcChannelBuffer_PTR()),
+        ("Reserved", ULONG_PTR__5_()),
+    ]
+
+_NDR_USER_MARSHAL_INFO_u_ = Union([
+    ("Level1", NDR_USER_MARSHAL_INFO_LEVEL1),
+])
+
+class NDR_USER_MARSHAL_INFO(MemStruct):
+    fields = [
+        ("InformationLevel", unsigned_long()),
+        (None, _NDR_USER_MARSHAL_INFO_u_()),
+    ]
+
+NDR_USER_MARSHAL_INFO_PTR = Ptr("<I", NDR_USER_MARSHAL_INFO())
+_BindingOptions_ = unsigned_long
+_InterfaceRegistrationFlags_ = unsigned_int
+MIDL_ES_CODE = UINT
+MIDL_ES_HANDLE_STYLE = unsigned_long
+
+class RPC_INTERFACE_TEMPLATE(MemStruct):
+    fields = [
+        ("Version", unsigned_long()),
+        ("IfSpec", RPC_IF_HANDLE()),
+        ("MgrTypeUuid", UUID_PTR()),
+        ("MgrEpv", RPC_MGR_EPV_PTR()),
+        ("Flags", unsigned_int()),
+        ("MaxCalls", unsigned_int()),
+        ("MaxRpcSize", unsigned_int()),
+        ("IfCallback", RPC_IF_CALLBACK_FN_PTR()),
+        ("UuidVector", UUID_VECTOR_PTR()),
+        ("Annotation", RPC_TSTR()),
+        ("SecurityDescriptor", void_PTR()),
+    ]
+
+RPC_INTERFACE_TEMPLATE_PTR = Ptr("<I", RPC_INTERFACE_TEMPLATE())
+
+class RPC_ENDPOINT_TEMPLATE(MemStruct):
+    fields = [
+        ("Version", unsigned_long()),
+        ("ProtSeq", RPC_TSTR()),
+        ("Endpoint", RPC_TSTR()),
+        ("SecurityDescriptor", void_PTR()),
+        ("Backlog", unsigned_long()),
+    ]
+
+RPC_ENDPOINT_TEMPLATE_PTR = Ptr("<I", RPC_ENDPOINT_TEMPLATE())
+CLIENT_CALL_RETURN = Union([
+    ("Pointer", void_PTR),
+    ("Simple", LONG_PTR),
+])
+
+class ProxyFileInfo(MemStruct):
+    fields = [
+        ("pProxyVtblList", const_PCInterfaceProxyVtblList_PTR()),
+        ("pStubVtblList", const_PCInterfaceStubVtblList_PTR()),
+        ("pNamesArray", const_PCInterfaceName_PTR()),
+        ("pDelegatedIIDs", const_IID_PTR_PTR()),
+        ("pIIDLookupRtn", const_PIIDLookup()),
+        ("TableSize", unsigned_short()),
+        ("TableVersion", unsigned_short()),
+        ("pAsyncIIDLookup", const_IID_PTR_PTR()),
+        ("Filler2", LONG_PTR()),
+        ("Filler3", LONG_PTR()),
+        ("Filler4", LONG_PTR()),
+    ]
+
+ProxyFileInfo_PTR = Ptr("<I", ProxyFileInfo())
+const_ProxyFileInfo_PTR_PTR = Ptr("<I", ProxyFileInfo_PTR())
+
+class CStdPSFactoryBuffer(MemStruct):
+    fields = [
+        ("lpVtbl", const_IPSFactoryBufferVtbl_PTR()),
+        ("RefCount", long()),
+        ("pProxyFileList", const_ProxyFileInfo_PTR_PTR()),
+        ("Filler1", long()),
+    ]
+
+CStdPSFactoryBuffer_PTR = Ptr("<I", CStdPSFactoryBuffer())
+
+class _NDR_SCONTEXT_s_(MemStruct):
+    fields = [
+        ("pad", void_PTR__2_()),
+        ("userContext", void_PTR()),
+    ]
+
+NDR_SCONTEXT = Ptr("<I", _NDR_SCONTEXT_s_())
+
+class RPC_MESSAGE(MemStruct):
+    fields = [
+        ("Handle", RPC_BINDING_HANDLE()),
+        ("DataRepresentation", unsigned_long()),
+        # Length is `BufferLength`
+        ("Buffer", void_PTR()),
+        ("BufferLength", unsigned_int()),
+        ("ProcNum", unsigned_int()),
+        ("TransferSyntax", PRPC_SYNTAX_IDENTIFIER()),
+        ("RpcInterfaceInformation", void_PTR()),
+        ("ReservedForRuntime", void_PTR()),
+        ("ManagerEpv", RPC_MGR_EPV_PTR()),
+        ("ImportContext", void_PTR()),
+        ("RpcFlags", unsigned_long()),
+    ]
+
+RPC_MESSAGE_PTR = Ptr("<I", RPC_MESSAGE())
+PRPC_MESSAGE = Ptr("<I", RPC_MESSAGE())
+
+class RPC_TRANSFER_SYNTAX(MemStruct):
+    fields = [
+        ("Uuid", UUID()),
+        ("VersMajor", unsigned_short()),
+        ("VersMinor", unsigned_short()),
+    ]
+
+RPC_TRANSFER_SYNTAX_PTR = Ptr("<I", RPC_TRANSFER_SYNTAX())
+
+class RPC_DISPATCH_TABLE(MemStruct):
+    fields = [
+        ("DispatchTableCount", unsigned_int()),
+        ("DispatchTable", RPC_DISPATCH_FUNCTION_PTR()),
+        ("Reserved", LONG_PTR()),
+    ]
+
+RPC_DISPATCH_TABLE_PTR = Ptr("<I", RPC_DISPATCH_TABLE())
+PRPC_DISPATCH_TABLE = Ptr("<I", RPC_DISPATCH_TABLE())
+
+class RPC_PROTSEQ_ENDPOINT(MemStruct):
+    fields = [
+        ("RpcProtocolSequence", unsigned_char_PTR()),
+        ("Endpoint", unsigned_char_PTR()),
+    ]
+
+PRPC_PROTSEQ_ENDPOINT = Ptr("<I", RPC_PROTSEQ_ENDPOINT())
+
+class RPC_SERVER_INTERFACE(MemStruct):
+    fields = [
+        ("Length", unsigned_int()),
+        ("InterfaceId", RPC_SYNTAX_IDENTIFIER()),
+        ("TransferSyntax", RPC_SYNTAX_IDENTIFIER()),
+        ("DispatchTable", PRPC_DISPATCH_TABLE()),
+        ("RpcProtseqEndpointCount", unsigned_int()),
+        ("RpcProtseqEndpoint", PRPC_PROTSEQ_ENDPOINT()),
+        ("DefaultManagerEpv", RPC_MGR_EPV_PTR()),
+        ("InterpreterInfo", void_const_PTR()),
+        ("Flags", unsigned_int()),
+    ]
+
+RPC_SERVER_INTERFACE_PTR = Ptr("<I", RPC_SERVER_INTERFACE())
+RPC_HTTP_REDIRECTOR_STAGE = UINT
+
+class RDR_CALLOUT_STATE(MemStruct):
+    fields = [
+        ("LastError", RPC_STATUS()),
+        ("LastEEInfo", void_PTR()),
+        ("LastCalledStage", RPC_HTTP_REDIRECTOR_STAGE()),
+        ("ServerName", unsigned_short_PTR()),
+        ("ServerPort", unsigned_short_PTR()),
+        ("RemoteUser", unsigned_short_PTR()),
+        ("AuthType", unsigned_short_PTR()),
+        ("ResourceTypePresent", unsigned_char()),
+        ("SessionIdPresent", unsigned_char()),
+        ("InterfacePresent", unsigned_char()),
+        ("ResourceType", UUID()),
+        ("SessionId", UUID()),
+        ("Interface", RPC_SYNTAX_IDENTIFIER()),
+        ("CertContext", void_PTR()),
+    ]
+
+RDR_CALLOUT_STATE_PTR = Ptr("<I", RDR_CALLOUT_STATE())
+
+class MIDL_TYPE_PICKLING_INFO(MemStruct):
+    fields = [
+        ("Version", unsigned_long()),
+        ("Flags", unsigned_long()),
+        ("Reserved", UINT_PTR__3_()),
+    ]
+
+const_MIDL_TYPE_PICKLING_INFO_PTR = Ptr("<I", MIDL_TYPE_PICKLING_INFO())
+_RPC_TRANSPORT_TYPE_ = unsigned_int
+_RPC_TRANSPORT_TYPE_PTR_ = Ptr("<I", _RPC_TRANSPORT_TYPE_())
+
+class MIDL_SYNTAX_INFO(MemStruct):
+    fields = [
+        ("TransferSyntax", RPC_SYNTAX_IDENTIFIER()),
+        ("DispatchTable", RPC_DISPATCH_TABLE_PTR()),
+        ("ProcString", PFORMAT_STRING()),
+        ("FmtStringOffset", const_unsigned_short_PTR()),
+        ("TypeString", PFORMAT_STRING()),
+        ("aUserMarshalQuadruple", const_void_PTR()),
+        ("pReserved1", ULONG_PTR()),
+        ("pReserved2", ULONG_PTR()),
+    ]
+
+PMIDL_SYNTAX_INFO = Ptr("<I", MIDL_SYNTAX_INFO())
+
+class MIDL_STUBLESS_PROXY_INFO(MemStruct):
+    fields = [
+        ("pStubDesc", PMIDL_STUB_DESC()),
+        ("ProcFormatString", PFORMAT_STRING()),
+        ("FormatStringOffset", const_unsigned_short_PTR()),
+        ("pTransferSyntax", PRPC_SYNTAX_IDENTIFIER()),
+        ("nCount", ULONG_PTR()),
+        ("pSyntaxInfo", PMIDL_SYNTAX_INFO()),
+    ]
+
+MIDL_STUBLESS_PROXY_INFO_PTR = Ptr("<I", MIDL_STUBLESS_PROXY_INFO())
+
+class FULL_PTR_TO_REFID_ELEMENT(MemStruct):
+    fields = [
+        ("Next", LPVOID()),
+        ("Pointer", void_PTR()),
+        ("RefId", unsigned_long()),
+        ("State", unsigned_char()),
+    ]
+
+PFULL_PTR_TO_REFID_ELEMENT = Ptr("<I", FULL_PTR_TO_REFID_ELEMENT())
+PFULL_PTR_TO_REFID_ELEMENT_PTR = Ptr("<I", PFULL_PTR_TO_REFID_ELEMENT())
+XLAT_SIDE = UINT
+
+class _FULL_PTR_XLAT_TABLES_s1_(MemStruct):
+    fields = [
+        ("XlatTable", void_PTR_PTR()),
+        ("StateTable", unsigned_char_PTR()),
+        ("NumberOfEntries", unsigned_long()),
+    ]
+
+
+class _FULL_PTR_XLAT_TABLES_s2_(MemStruct):
+    fields = [
+        ("XlatTable", PFULL_PTR_TO_REFID_ELEMENT_PTR()),
+        ("NumberOfBuckets", unsigned_long()),
+        ("HashMask", unsigned_long()),
+    ]
+
+
+class FULL_PTR_XLAT_TABLES(MemStruct):
+    fields = [
+        ("RefIdToPointer", _FULL_PTR_XLAT_TABLES_s1_()),
+        ("PointerToRefId", _FULL_PTR_XLAT_TABLES_s2_()),
+        ("NextRefId", unsigned_long()),
+        ("XlatSide", XLAT_SIDE()),
+    ]
+
+PFULL_PTR_XLAT_TABLES = Ptr("<I", FULL_PTR_XLAT_TABLES())
+
+###################
+
+###### Functions ######
 
 def rpcrt4_DceErrorInqText(jitter, get_str, set_str):
     """

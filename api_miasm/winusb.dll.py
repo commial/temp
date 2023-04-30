@@ -1,3 +1,4 @@
+###### Enums ######
 _USB_DESCRIPTOR_TYPE_ = {
     "USB_DEVICE_DESCRIPTOR_TYPE": 0x01,
     "USB_CONFIGURATION_DESCRIPTOR_TYPE": 0x02,
@@ -154,6 +155,80 @@ USBD_PIPE_TYPE_INV = {
     2: "UsbdPipeTypeBulk",
     3: "UsbdPipeTypeInterrupt",
 }
+
+###################
+
+###### Types ######
+WINUSB_INTERFACE_HANDLE = LPVOID
+PWINUSB_INTERFACE_HANDLE = Ptr("<I", WINUSB_INTERFACE_HANDLE())
+_USB_DESCRIPTOR_TYPE_ = UCHAR
+_USB_PIPE_POLICY_TYPE_ = ULONG
+_USB_POWER_POLICY_TYPE_ = ULONG
+_USB_INFORMATION_TYPE_ = ULONG
+_USB_REQUEST_ = UCHAR
+
+class WINUSB_SETUP_PACKET(MemStruct):
+    fields = [
+        ("RequestType", UCHAR()),
+        ("Request", _USB_REQUEST_()),
+        ("Value", USHORT()),
+        ("Index", USHORT()),
+        ("Length", USHORT()),
+    ]
+
+_USB_DEVICE_CLASS_ = UCHAR
+
+class USB_INTERFACE_DESCRIPTOR(MemStruct):
+    fields = [
+        ("bLength", UCHAR()),
+        ("bDescriptorType", _USB_DESCRIPTOR_TYPE_()),
+        ("bInterfaceNumber", UCHAR()),
+        ("bAlternateSetting", UCHAR()),
+        ("bNumEndpoints", UCHAR()),
+        ("bInterfaceClass", _USB_DEVICE_CLASS_()),
+        ("bInterfaceSubClass", UCHAR()),
+        ("bInterfaceProtocol", UCHAR()),
+        ("iInterface", UCHAR()),
+    ]
+
+PUSB_INTERFACE_DESCRIPTOR = Ptr("<I", USB_INTERFACE_DESCRIPTOR())
+USBD_PIPE_TYPE = UINT
+
+class WINUSB_PIPE_INFORMATION(MemStruct):
+    fields = [
+        ("PipeType", USBD_PIPE_TYPE()),
+        ("PipeId", UCHAR()),
+        ("MaximumPacketSize", USHORT()),
+        ("Interval", UCHAR()),
+    ]
+
+PWINUSB_PIPE_INFORMATION = Ptr("<I", WINUSB_PIPE_INFORMATION())
+
+class USB_COMMON_DESCRIPTOR(MemStruct):
+    fields = [
+        ("bLength", UCHAR()),
+        ("bDescriptorType", _USB_DESCRIPTOR_TYPE_()),
+    ]
+
+PUSB_COMMON_DESCRIPTOR = Ptr("<I", USB_COMMON_DESCRIPTOR())
+
+class USB_CONFIGURATION_DESCRIPTOR(MemStruct):
+    fields = [
+        ("bLength", UCHAR()),
+        ("bDescriptorType", _USB_DESCRIPTOR_TYPE_()),
+        ("wTotalLength", USHORT()),
+        ("bNumInterfaces", UCHAR()),
+        ("bConfigurationValue", UCHAR()),
+        ("iConfiguration", UCHAR()),
+        ("bmAttributes", UCHAR()),
+        ("MaxPower", UCHAR()),
+    ]
+
+PUSB_CONFIGURATION_DESCRIPTOR = Ptr("<I", USB_CONFIGURATION_DESCRIPTOR())
+
+###################
+
+###### Functions ######
 
 def winusb_WinUsb_AbortPipe(jitter):
     """

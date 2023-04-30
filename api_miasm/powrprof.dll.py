@@ -1,3 +1,4 @@
+###### Enums ######
 POWER_PLATFORM_ROLE = {
     "PlatformRoleUnspecified": 0,
     "PlatformRoleDesktop": 1,
@@ -28,6 +29,203 @@ _POWER_PLATFORM_ROLE_VERSION__INV = {
     0x00000001: "POWER_PLATFORM_ROLE_V1",
     0x00000002: "POWER_PLATFORM_ROLE_V2",
 }
+
+###################
+
+###### Types ######
+PWRSCHEMESENUMPROC = LPVOID
+BYTE__3_ = Array(BYTE, 3)
+_POWER_ACTION_ = DWORD
+_POWER_LEVEL_ = DWORD
+
+class POWER_ACTION_POLICY(MemStruct):
+    fields = [
+        ("Action", POWER_ACTION()),
+        ("Flags", _POWER_ACTION_()),
+        ("EventCode", _POWER_LEVEL_()),
+    ]
+
+
+class USER_POWER_POLICY(MemStruct):
+    fields = [
+        ("Revision", ULONG()),
+        ("IdleAc", POWER_ACTION_POLICY()),
+        ("IdleDc", POWER_ACTION_POLICY()),
+        ("IdleTimeoutAc", ULONG()),
+        ("IdleTimeoutDc", ULONG()),
+        ("IdleSensitivityAc", UCHAR()),
+        ("IdleSensitivityDc", UCHAR()),
+        ("ThrottlePolicyAc", UCHAR()),
+        ("ThrottlePolicyDc", UCHAR()),
+        ("MaxSleepAc", SYSTEM_POWER_STATE()),
+        ("MaxSleepDc", SYSTEM_POWER_STATE()),
+        ("Reserved", ULONG__2_()),
+        ("VideoTimeoutAc", ULONG()),
+        ("VideoTimeoutDc", ULONG()),
+        ("SpindownTimeoutAc", ULONG()),
+        ("SpindownTimeoutDc", ULONG()),
+        ("OptimizeForPowerAc", BOOLEAN()),
+        ("OptimizeForPowerDc", BOOLEAN()),
+        ("FanThrottleToleranceAc", UCHAR()),
+        ("FanThrottleToleranceDc", UCHAR()),
+        ("ForcedThrottleAc", UCHAR()),
+        ("ForcedThrottleDc", UCHAR()),
+    ]
+
+
+class MACHINE_POWER_POLICY(MemStruct):
+    fields = [
+        ("Revision", ULONG()),
+        ("MinSleepAc", SYSTEM_POWER_STATE()),
+        ("MinSleepDc", SYSTEM_POWER_STATE()),
+        ("ReducedLatencySleepAc", SYSTEM_POWER_STATE()),
+        ("ReducedLatencySleepDc", SYSTEM_POWER_STATE()),
+        ("DozeTimeoutAc", ULONG()),
+        ("DozeTimeoutDc", ULONG()),
+        ("DozeS4TimeoutAc", ULONG()),
+        ("DozeS4TimeoutDc", ULONG()),
+        ("MinThrottleAc", UCHAR()),
+        ("MinThrottleDc", UCHAR()),
+        ("pad1", UCHAR__2_()),
+        ("OverThrottledAc", POWER_ACTION_POLICY()),
+        ("OverThrottledDc", POWER_ACTION_POLICY()),
+    ]
+
+
+class POWER_POLICY(MemStruct):
+    fields = [
+        ("user", USER_POWER_POLICY()),
+        ("mach", MACHINE_POWER_POLICY()),
+    ]
+
+PPOWER_POLICY = Ptr("<I", POWER_POLICY())
+
+class SYSTEM_POWER_LEVEL(MemStruct):
+    fields = [
+        ("Enable", BOOLEAN()),
+        ("Spare", BYTE__3_()),
+        ("BatteryLevel", DWORD()),
+        ("PowerPolicy", POWER_ACTION_POLICY()),
+        ("MinSystemState", SYSTEM_POWER_STATE()),
+    ]
+
+SYSTEM_POWER_LEVEL__NUM_DISCHARGE_POLICIES_ = Array(SYSTEM_POWER_LEVEL, 4)
+
+class GLOBAL_USER_POWER_POLICY(MemStruct):
+    fields = [
+        ("Revision", ULONG()),
+        ("PowerButtonAc", POWER_ACTION_POLICY()),
+        ("PowerButtonDc", POWER_ACTION_POLICY()),
+        ("SleepButtonAc", POWER_ACTION_POLICY()),
+        ("SleepButtonDc", POWER_ACTION_POLICY()),
+        ("LidCloseAc", POWER_ACTION_POLICY()),
+        ("LidCloseDc", POWER_ACTION_POLICY()),
+        ("DischargePolicy", SYSTEM_POWER_LEVEL__NUM_DISCHARGE_POLICIES_()),
+        ("GlobalFlags", ULONG()),
+    ]
+
+
+class GLOBAL_MACHINE_POWER_POLICY(MemStruct):
+    fields = [
+        ("Revision", ULONG()),
+        ("LidOpenWakeAc", SYSTEM_POWER_STATE()),
+        ("LidOpenWakeDc", SYSTEM_POWER_STATE()),
+        ("BroadcastCapacityResolution", ULONG()),
+    ]
+
+
+class GLOBAL_POWER_POLICY(MemStruct):
+    fields = [
+        ("user", GLOBAL_USER_POWER_POLICY()),
+        ("mach", GLOBAL_MACHINE_POWER_POLICY()),
+    ]
+
+PGLOBAL_POWER_POLICY = Ptr("<I", GLOBAL_POWER_POLICY())
+
+class PROCESSOR_POWER_POLICY_INFO(MemStruct):
+    fields = [
+        ("TimeCheck", DWORD()),
+        ("DemoteLimit", DWORD()),
+        ("PromoteLimit", DWORD()),
+        ("DemotePercent", BYTE()),
+        ("PromotePercent", BYTE()),
+        ("Spare", BYTE__2_()),
+        ("Reserved", DWORD()),
+    ]
+
+PROCESSOR_POWER_POLICY_INFO__3_ = Array(PROCESSOR_POWER_POLICY_INFO, 3)
+
+class PROCESSOR_POWER_POLICY(MemStruct):
+    fields = [
+        ("Revision", DWORD()),
+        ("DynamicThrottle", BYTE()),
+        ("Spare", BYTE__3_()),
+        ("Reserved", DWORD()),
+        ("PolicyCount", DWORD()),
+        ("Policy", PROCESSOR_POWER_POLICY_INFO__3_()),
+    ]
+
+
+class MACHINE_PROCESSOR_POWER_POLICY(MemStruct):
+    fields = [
+        ("Revision", ULONG()),
+        ("ProcessorPolicyAc", PROCESSOR_POWER_POLICY()),
+        ("ProcessorPolicyDc", PROCESSOR_POWER_POLICY()),
+    ]
+
+PMACHINE_PROCESSOR_POWER_POLICY = Ptr("<I", MACHINE_PROCESSOR_POWER_POLICY())
+
+class BATTERY_REPORTING_SCALE(MemStruct):
+    fields = [
+        ("Granularity", DWORD()),
+        ("Capacity", DWORD()),
+    ]
+
+BATTERY_REPORTING_SCALE__3_ = Array(BATTERY_REPORTING_SCALE, 3)
+
+class SYSTEM_POWER_CAPABILITIES(MemStruct):
+    fields = [
+        ("PowerButtonPresent", BOOLEAN()),
+        ("SleepButtonPresent", BOOLEAN()),
+        ("LidPresent", BOOLEAN()),
+        ("SystemS1", BOOLEAN()),
+        ("SystemS2", BOOLEAN()),
+        ("SystemS3", BOOLEAN()),
+        ("SystemS4", BOOLEAN()),
+        ("SystemS5", BOOLEAN()),
+        ("HiberFilePresent", BOOLEAN()),
+        ("FullWake", BOOLEAN()),
+        ("VideoDimPresent", BOOLEAN()),
+        ("ApmPresent", BOOLEAN()),
+        ("UpsPresent", BOOLEAN()),
+        ("ThermalControl", BOOLEAN()),
+        ("ProcessorThrottle", BOOLEAN()),
+        ("ProcessorMinThrottle", BYTE()),
+        ("ProcessorMaxThrottle", BYTE()),
+        ("FastSystemS4", BOOLEAN()),
+        ("Hiberboot", BOOLEAN()),
+        ("WakeAlarmPresent", BOOLEAN()),
+        ("AoAc", BOOLEAN()),
+        ("DiskSpinDown", BOOLEAN()),
+        ("spare3", BYTE__8_()),
+        ("SystemBatteriesPresent", BOOLEAN()),
+        ("BatteriesAreShortTerm", BOOLEAN()),
+        ("BatteryScale", BATTERY_REPORTING_SCALE__3_()),
+        ("AcOnLineWake", SYSTEM_POWER_STATE()),
+        ("SoftLidWake", SYSTEM_POWER_STATE()),
+        ("RtcWake", SYSTEM_POWER_STATE()),
+        ("MinDeviceWakeState", SYSTEM_POWER_STATE()),
+        ("DefaultLowLatencyWake", SYSTEM_POWER_STATE()),
+    ]
+
+PSYSTEM_POWER_CAPABILITIES = Ptr("<I", SYSTEM_POWER_CAPABILITIES())
+POWER_PLATFORM_ROLE = UINT
+_POWER_PLATFORM_ROLE_VERSION_ = ULONG
+_DEVICEPOWER_FLAGS_ = ULONG
+
+###################
+
+###### Functions ######
 
 def powrprof_CallNtPowerInformation(jitter):
     """

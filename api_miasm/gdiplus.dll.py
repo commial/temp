@@ -1,3 +1,4 @@
+###### Enums ######
 _PropertyTagType_ = {
     "PropertyTagTypeByte": 1,
     "PropertyTagTypeASCII": 2,
@@ -716,6 +717,428 @@ _HotkeyPrefix__INV = {
     1: "HotkeyPrefixShow",
     2: "HotkeyPrefixHide",
 }
+
+###################
+
+###### Types ######
+LOGFONT_PTR = LPLOGFONT
+GDIPCONST_LOGFONT_PTR = LOGFONT_PTR
+GDIPCONST_GUID_PTR = GUID_PTR
+GDIPCONST_WCHAR_PTR = WCHAR_PTR
+REAL = float
+REAL_PTR = Ptr("<I", REAL())
+GDIPCONST_REAL_PTR = REAL_PTR
+GDIPCONST_UINT16_PTR = UINT16_PTR
+GDIPCONST_void_PTR = void_PTR
+GDIPCONST_BITMAPINFO_PTR = Ptr("<I", BITMAPINFO())
+GDIPCONST_CLSID_PTR = CLSID_PTR
+GDIPCONST_BYTE_PTR = BYTE_PTR
+GdiplusAbort_PTR = LPVOID
+DebugEventProc = LPVOID
+NotificationHookProc = LPVOID
+NotificationUnhookProc = LPVOID
+GetThumbnailImageAbort = LPVOID
+DrawImageAbort = LPVOID
+EnumerateMetafileProc = LPVOID
+GraphicsState = UINT
+GraphicsState_PTR = Ptr("<I", GraphicsState())
+GraphicsContainer = UINT
+GraphicsContainer_PTR = Ptr("<I", GraphicsContainer())
+ARGB = DWORD
+ARGB_PTR = Ptr("<I", ARGB())
+GDIPCONST_ARGB_PTR = ARGB_PTR
+GDIPCONST_EncoderParameters_PTR = Ptr("<I", EncoderParameters())
+ARGB__1_ = Array(ARGB, 1)
+REAL__5_ = Array(REAL, 5)
+REAL__5__5_ = Array(REAL__5_, 5)
+GpCachedBitmap_PTR = LPVOID
+GpCachedBitmap_PTR_PTR = Ptr("<I", GpCachedBitmap_PTR())
+GpPath_PTR = LPVOID
+GpPath_PTR_PTR = Ptr("<I", GpPath_PTR())
+GDIPCONST_GpPath_PTR = LPVOID
+GpPathIterator_PTR = LPVOID
+GpPathIterator_PTR_PTR = Ptr("<I", GpPathIterator_PTR())
+GpPathGradient_PTR = LPVOID
+GpPathGradient_PTR_PTR = Ptr("<I", GpPathGradient_PTR())
+GpFontFamily_PTR = LPVOID
+GpFontFamily_PTR_PTR = Ptr("<I", GpFontFamily_PTR())
+GDIPCONST_GpFontFamily_PTR = GpFontFamily_PTR
+GpFontFamily_PTR___ = Ptr("<I", GpFontFamily_PTR())
+GpPen_PTR = LPVOID
+GpPen_PTR_PTR = Ptr("<I", GpPen_PTR())
+GDIPCONST_GpPen_PTR = LPVOID
+GpGraphics_PTR = LPVOID
+GpGraphics_PTR_PTR = Ptr("<I", GpGraphics_PTR())
+GDIPCONST_GpGraphics_PTR = GpGraphics_PTR
+const_GpGraphics_PTR = GpGraphics_PTR
+GpRegion_PTR = LPVOID
+GpRegion_PTR_PTR = Ptr("<I", GpRegion_PTR())
+GpBrush_PTR = LPVOID
+GpBrush_PTR_PTR = Ptr("<I", GpBrush_PTR())
+GDIPCONST_GpBrush_PTR = GpBrush_PTR
+GpHatch_PTR = LPVOID
+GpHatch_PTR_PTR = Ptr("<I", GpHatch_PTR())
+GpImage_PTR = LPVOID
+GpImage_PTR_PTR = Ptr("<I", GpImage_PTR())
+GpTexture_PTR = LPVOID
+GpTexture_PTR_PTR = Ptr("<I", GpTexture_PTR())
+GpImageAttributes_PTR = LPVOID
+GpImageAttributes_PTR_PTR = Ptr("<I", GpImageAttributes_PTR())
+GDIPCONST_GpImageAttributes_PTR = GpImageAttributes_PTR
+GpSolidFill_PTR = LPVOID
+GpSolidFill_PTR_PTR = Ptr("<I", GpSolidFill_PTR())
+GpLineGradient_PTR = LPVOID
+GpLineGradient_PTR_PTR = Ptr("<I", GpLineGradient_PTR())
+GpCustomLineCap_PTR = LPVOID
+GpCustomLineCap_PTR_PTR = Ptr("<I", GpCustomLineCap_PTR())
+GpAdjustableArrowCap_PTR = LPVOID
+GpAdjustableArrowCap_PTR_PTR = Ptr("<I", GpAdjustableArrowCap_PTR())
+GpBitmap_PTR = LPVOID
+GpBitmap_PTR_PTR = Ptr("<I", GpBitmap_PTR())
+CGpEffect_PTR = LPVOID
+GpMetafile_PTR = LPVOID
+GpMetafile_PTR_PTR = Ptr("<I", GpMetafile_PTR())
+GDIPCONST_GpMetafile_PTR = GpMetafile_PTR
+GpFontCollection_PTR = LPVOID
+GpFontCollection_PTR_PTR = Ptr("<I", GpFontCollection_PTR())
+GpFont_PTR = LPVOID
+GpFont_PTR_PTR = Ptr("<I", GpFont_PTR())
+GDIPCONST_GpFont_PTR = GpFont_PTR
+GpStringFormat_PTR = LPVOID
+GpStringFormat_PTR_PTR = Ptr("<I", GpStringFormat_PTR())
+GDIPCONST_GpStringFormat_PTR = GpStringFormat_PTR
+GpMatrix_PTR = LPVOID
+GpMatrix_PTR_PTR = Ptr("<I", GpMatrix_PTR())
+GDIPCONST_GpMatrix_PTR = LPVOID
+_PropertyTagType_ = WORD
+
+class PropertyItem(MemStruct):
+    fields = [
+        ("id", PROPID()),
+        ("length", ULONG()),
+        ("type", _PropertyTagType_()),
+        # Length is `length`
+        ("value", VOID_PTR()),
+    ]
+
+PropertyItem_PTR = Ptr("<I", PropertyItem())
+GDIPCONST_PropertyItem_PTR = Ptr("<I", PropertyItem())
+
+class METAHEADER(MemStruct):
+    fields = [
+        ("mtType", WORD()),
+        ("mtHeaderSize", WORD()),
+        ("mtVersion", WORD()),
+        ("mtSize", DWORD()),
+        ("mtNoObjects", WORD()),
+        ("mtMaxRecord", DWORD()),
+        ("mtNoParameters", WORD()),
+    ]
+
+
+class ENHMETAHEADER3(MemStruct):
+    fields = [
+        ("iType", DWORD()),
+        ("nSize", DWORD()),
+        ("rclBounds", RECTL()),
+        ("rclFrame", RECTL()),
+        ("dSignature", DWORD()),
+        ("nVersion", DWORD()),
+        ("nBytes", DWORD()),
+        ("nRecords", DWORD()),
+        ("nHandles", WORD()),
+        ("sReserved", WORD()),
+        ("nDescription", DWORD()),
+        ("offDescription", DWORD()),
+        ("nPalEntries", DWORD()),
+        ("szlDevice", SIZEL()),
+        ("szlMillimeters", SIZEL()),
+    ]
+
+_MetafileHeader_u_ = Union([
+    ("WmfHeader", METAHEADER),
+    ("EmfHeader", ENHMETAHEADER3),
+])
+MetafileType = UINT
+_GDIP_EMFPLUSFLAGS_ = UINT
+
+class MetafileHeader(MemStruct):
+    fields = [
+        ("Type", MetafileType()),
+        ("Size", UINT()),
+        ("Version", UINT()),
+        ("EmfPlusFlags", _GDIP_EMFPLUSFLAGS_()),
+        ("DpiX", REAL()),
+        ("DpiY", REAL()),
+        ("X", INT()),
+        ("Y", INT()),
+        ("Width", INT()),
+        ("Height", INT()),
+        ("Height", _MetafileHeader_u_()),
+        ("EmfPlusHeaderSize", INT()),
+        ("LogicalDpiX", INT()),
+        ("LogicalDpiY", INT()),
+    ]
+
+MetafileHeader_PTR = Ptr("<I", MetafileHeader())
+
+class PWMFRect16(MemStruct):
+    fields = [
+        ("Left", INT16()),
+        ("Top", INT16()),
+        ("Right", INT16()),
+        ("Bottom", INT16()),
+    ]
+
+
+class WmfPlaceableFileHeader(MemStruct):
+    fields = [
+        ("Key", UINT32()),
+        ("Hmf", INT16()),
+        ("BoundingBox", PWMFRect16()),
+        ("Inch", INT16()),
+        ("Reserved", UINT32()),
+        ("Checksum", INT16()),
+    ]
+
+GDIPCONST_WmfPlaceableFileHeader_PTR = Ptr("<I", WmfPlaceableFileHeader())
+
+class BitmapData(MemStruct):
+    fields = [
+        ("Width", UINT()),
+        ("Height", UINT()),
+        ("Stride", INT()),
+        ("PixelFormat", PixelFormat()),
+        ("Scan0", VOID_PTR()),
+        ("Reserved", UINT_PTR()),
+    ]
+
+BitmapData_PTR = Ptr("<I", BitmapData())
+
+class Color(MemStruct):
+    fields = [
+        ("Argb", ARGB()),
+    ]
+
+
+class ColorMap(MemStruct):
+    fields = [
+        ("oldColor", Color()),
+        ("newColor", Color()),
+    ]
+
+GDIPCONST_ColorMap_PTR = Ptr("<I", ColorMap())
+
+class ColorMatrix(MemStruct):
+    fields = [
+        ("m", REAL__5__5_()),
+    ]
+
+GDIPCONST_ColorMatrix_PTR = Ptr("<I", ColorMatrix())
+
+class ImageItemData(MemStruct):
+    fields = [
+        ("Size", UINT()),
+        ("Position", UINT()),
+        # Length is `DescSize`
+        ("Desc", VOID_PTR()),
+        ("DescSize", UINT()),
+        # Length is `DataSize`
+        ("Data", VOID_PTR()),
+        ("DataSize", UINT()),
+        ("Cookie", UINT()),
+    ]
+
+ImageItemData_PTR = Ptr("<I", ImageItemData())
+PaletteFlags = UINT
+
+class ColorPalette(MemStruct):
+    fields = [
+        ("Flags", PaletteFlags()),
+        ("Count", UINT()),
+        ("Entries", ARGB__1_()),
+    ]
+
+ColorPalette_PTR = Ptr("<I", ColorPalette())
+GDIPCONST_ColorPalette_PTR = Ptr("<I", ColorPalette())
+
+class GdiplusStartupOutput(MemStruct):
+    fields = [
+        ("NotificationHook", NotificationHookProc()),
+        ("NotificationUnhook", NotificationUnhookProc()),
+    ]
+
+GdiplusStartupOutput_PTR = Ptr("<I", GdiplusStartupOutput())
+
+class GdiplusStartupInput(MemStruct):
+    fields = [
+        ("GdiplusVersion", UINT32()),
+        ("DebugEventCallback", DebugEventProc()),
+        ("SuppressBackgroundThread", BOOL()),
+        ("SuppressExternalCodecs", BOOL()),
+    ]
+
+const_GdiplusStartupInput_PTR = Ptr("<I", GdiplusStartupInput())
+ImageCodecFlags = DWORD
+
+class ImageCodecInfo(MemStruct):
+    fields = [
+        ("Clsid", CLSID()),
+        ("FormatID", GUID()),
+        ("CodecName", const_WCHAR_PTR()),
+        ("DllName", const_WCHAR_PTR()),
+        ("FormatDescription", const_WCHAR_PTR()),
+        ("FilenameExtension", const_WCHAR_PTR()),
+        ("MimeType", const_WCHAR_PTR()),
+        ("Flags", ImageCodecFlags()),
+        ("Version", DWORD()),
+        ("SigCount", DWORD()),
+        ("SigSize", DWORD()),
+        ("SigPattern", const_BYTE_PTR()),
+        ("SigMask", const_BYTE_PTR()),
+    ]
+
+ImageCodecInfo_PTR = Ptr("<I", ImageCodecInfo())
+
+class Point(MemStruct):
+    fields = [
+        ("X", INT()),
+        ("Y", INT()),
+    ]
+
+GDIPCONST_Point_PTR = Ptr("<I", Point())
+GpPoint_PTR = Ptr("<I", Point())
+GDIPCONST_GpPoint_PTR = Ptr("<I", Point())
+
+class PointF(MemStruct):
+    fields = [
+        ("X", REAL()),
+        ("Y", REAL()),
+    ]
+
+PointF_PTR = Ptr("<I", PointF())
+GDIPCONST_PointF_PTR = Ptr("<I", PointF())
+GpPointF_PTR = Ptr("<I", PointF())
+GDIPCONST_GpPointF_PTR = Ptr("<I", PointF())
+PathPointType = BYTE
+PathPointType_PTR = Ptr("<I", PathPointType())
+GDIPCONST_PathPointType_PTR = Ptr("<I", PathPointType())
+
+class PathData(MemStruct):
+    fields = [
+        ("Count", INT()),
+        ("Points", PointF_PTR()),
+        ("Types", PathPointType_PTR()),
+    ]
+
+GpPathData_PTR = Ptr("<I", PathData())
+
+class Rect(MemStruct):
+    fields = [
+        ("X", INT()),
+        ("Y", INT()),
+        ("Width", INT()),
+        ("Height", INT()),
+    ]
+
+GDIPCONST_Rect_PTR = Ptr("<I", Rect())
+GpRect_PTR = Ptr("<I", Rect())
+GDIPCONST_GpRect_PTR = Ptr("<I", Rect())
+
+class RectF(MemStruct):
+    fields = [
+        ("X", REAL()),
+        ("Y", REAL()),
+        ("Width", REAL()),
+        ("Height", REAL()),
+    ]
+
+RectF_PTR = Ptr("<I", RectF())
+GDIPCONST_RectF_PTR = Ptr("<I", RectF())
+GpRectF_PTR = Ptr("<I", RectF())
+GDIPCONST_GpRectF_PTR = Ptr("<I", RectF())
+
+class CharacterRange(MemStruct):
+    fields = [
+        ("First", INT()),
+        ("Length", INT()),
+    ]
+
+GDIPCONST_CharacterRange_PTR = Ptr("<I", CharacterRange())
+DitherType = UINT
+GpFillMode = UINT
+GpFillMode_PTR = Ptr("<I", GpFillMode())
+GpWrapMode = UINT
+GpWrapMode_PTR = Ptr("<I", GpWrapMode())
+GpPenAlignment = UINT
+GpPenAlignment_PTR = Ptr("<I", GpPenAlignment())
+PaletteType = UINT
+HistogramFormat = UINT
+ColorMatrixFlags = UINT
+ColorChannelFlags = UINT
+SmoothingMode = UINT
+SmoothingMode_PTR = Ptr("<I", SmoothingMode())
+StringAlignment = UINT
+StringAlignment_PTR = Ptr("<I", StringAlignment())
+WarpMode = UINT
+GpPenType = UINT
+GpPenType_PTR = Ptr("<I", GpPenType())
+GpDashStyle = UINT
+GpDashStyle_PTR = Ptr("<I", GpDashStyle())
+CustomLineCapType = UINT
+CustomLineCapType_PTR = Ptr("<I", CustomLineCapType())
+RotateFlipType = UINT
+GpFlushIntention = UINT
+PixelOffsetMode = UINT
+PixelOffsetMode_PTR = Ptr("<I", PixelOffsetMode())
+GpCoordinateSpace = UINT
+EmfType = UINT
+MetafileFrameUnit = UINT
+StringDigitSubstitute = UINT
+StringDigitSubstitute_PTR = Ptr("<I", StringDigitSubstitute())
+GpTestControlEnum = UINT
+CombineMode = UINT
+GpBrushType = UINT
+GpBrushType_PTR = Ptr("<I", GpBrushType())
+GpHatchStyle = UINT
+GpHatchStyle_PTR = Ptr("<I", GpHatchStyle())
+LinearGradientMode = UINT
+Unit = UINT
+Unit_PTR = Ptr("<I", Unit())
+GpUnit = Unit
+GpUnit_PTR = Ptr("<I", GpUnit())
+GpLineCap = UINT
+GpLineCap_PTR = Ptr("<I", GpLineCap())
+GpDashCap = UINT
+GpDashCap_PTR = Ptr("<I", GpDashCap())
+GpLineJoin = UINT
+GpLineJoin_PTR = Ptr("<I", GpLineJoin())
+GpMatrixOrder = UINT
+ImageType = UINT
+ImageType_PTR = Ptr("<I", ImageType())
+ColorAdjustType = UINT
+CompositingMode = UINT
+CompositingMode_PTR = Ptr("<I", CompositingMode())
+CompositingQuality = UINT
+CompositingQuality_PTR = Ptr("<I", CompositingQuality())
+TextRenderingHint = UINT
+TextRenderingHint_PTR = Ptr("<I", TextRenderingHint())
+StringTrimming = UINT
+StringTrimming_PTR = Ptr("<I", StringTrimming())
+EmfPlusRecordType = LPVOID
+GpStatus = UINT
+_FontStyle_ = INT
+_FontStyle_PTR_ = Ptr("<I", _FontStyle_())
+_StringFormatFlags_ = UINT
+_StringFormatFlags_PTR_ = Ptr("<I", _StringFormatFlags_())
+_ImageLockMode_ = UINT
+_HotkeyPrefix_ = INT
+_HotkeyPrefix_PTR_ = Ptr("<I", _HotkeyPrefix_())
+_DriverStringOptions_ = UINT
+
+###################
+
+###### Functions ######
 
 def gdiplus_GdiplusStartup(jitter):
     """

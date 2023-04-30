@@ -1,3 +1,4 @@
+###### Enums ######
 RASAPIVERSION = {
     "RASAPIVERSION_500": 1,
     "RASAPIVERSION_501": 2,
@@ -232,6 +233,399 @@ IsolationState_INV = {
     2: "isolationStateInProbation",
     3: "isolationStateRestrictedAccess",
 }
+
+###################
+
+###### Types ######
+ProbationTime = FILETIME
+ConnectionId = GUID
+ConnectionId_PTR = Ptr("<I", ConnectionId())
+RASIPV4ADDR = IN_ADDR
+RASIPV4ADDR_PTR = Ptr("<I", RASIPV4ADDR())
+RASIPV6ADDR = IN6_ADDR
+RASIPV6ADDR_PTR = Ptr("<I", RASIPV6ADDR())
+TCHAR__RAS_MaxDeviceType_+_1_ = Array(TCHAR, 17)
+TCHAR__RAS_MaxDeviceName_+_1_ = Array(TCHAR, 129)
+TCHAR__RAS_MaxPhoneNumber_+_1_ = Array(TCHAR, 129)
+TCHAR__RAS_MaxCallbackNumber_+_1_ = Array(TCHAR, 129)
+TCHAR__RAS_MaxAreaCode_+_1_ = Array(TCHAR, 11)
+TCHAR__RAS_MaxPadType_+_1_ = Array(TCHAR, 33)
+TCHAR__RAS_MaxX25Address_+_1_ = Array(TCHAR, 201)
+TCHAR__RAS_MaxFacilities_+_1_ = Array(TCHAR, 201)
+TCHAR__RAS_MaxUserData_+_1_ = Array(TCHAR, 201)
+TCHAR__RAS_MaxDnsSuffix_ = Array(TCHAR, 256)
+TCHAR__UNLEN_+_1_ = Array(TCHAR, 257)
+TCHAR__PWLEN_+_1_ = Array(TCHAR, 257)
+TCHAR__DNLEN_+_1_ = Array(TCHAR, 16)
+HRASCONN = HANDLE
+LPHRASCONN = Ptr("<I", HRASCONN())
+RASAPIVERSION = DWORD
+_RASTUNNELENDPOINT_u_ = Union([
+    ("ipv4", RASIPV4ADDR),
+    ("ipv6", RASIPV6ADDR),
+])
+_RASTUNNELENDPOINT_TYPE_ = DWORD
+
+class RASTUNNELENDPOINT(MemStruct):
+    fields = [
+        ("dwType", _RASTUNNELENDPOINT_TYPE_()),
+        (None, _RASTUNNELENDPOINT_u_()),
+    ]
+
+
+class RASDIALPARAMS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("szEntryName", TCHAR__RAS_MaxEntryName_+_1_()),
+        ("szPhoneNumber", TCHAR__RAS_MaxPhoneNumber_+_1_()),
+        ("szCallbackNumber", TCHAR__RAS_MaxCallbackNumber_+_1_()),
+        ("szUserName", TCHAR__UNLEN_+_1_()),
+        ("szPassword", TCHAR__PWLEN_+_1_()),
+        ("szDomain", TCHAR__DNLEN_+_1_()),
+        ("dwSubEntry", DWORD()),
+        ("dwCallbackId", ULONG_PTR()),
+        ("dwIfIndex", DWORD()),
+        ("szEncPassword", LPTSTR()),
+    ]
+
+LPRASDIALPARAMS = Ptr("<I", RASDIALPARAMS())
+_RASCONN_FLAGS_ = DWORD
+
+class RASCONN(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hrasconn", HRASCONN()),
+        ("szEntryName", TCHAR__RAS_MaxEntryName_+_1_()),
+        ("szDeviceType", TCHAR__RAS_MaxDeviceType_+_1_()),
+        ("szDeviceName", TCHAR__RAS_MaxDeviceName_+_1_()),
+        ("szPhonebook", TCHAR__MAX_PATH_()),
+        ("dwSubEntry", DWORD()),
+        ("guidEntry", GUID()),
+        ("dwFlags", _RASCONN_FLAGS_()),
+        ("luid", LUID()),
+        ("guidCorrelationId", GUID()),
+    ]
+
+LPRASCONN = Ptr("<I", RASCONN())
+
+class RASDEVINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("szDeviceType", TCHAR__RAS_MaxDeviceType_+_1_()),
+        ("szDeviceName", TCHAR__RAS_MaxDeviceName_+_1_()),
+    ]
+
+LPRASDEVINFO = Ptr("<I", RASDEVINFO())
+_RASENTRYNAME_FLAGS_ = DWORD
+
+class RASENTRYNAME(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("szEntryName", TCHAR__RAS_MaxEntryName_+_1_()),
+        ("dwFlags", _RASENTRYNAME_FLAGS_()),
+        ("szPhonebookPath", TCHAR__MAX_PATH_+_1_()),
+    ]
+
+LPRASENTRYNAME = Ptr("<I", RASENTRYNAME())
+
+class RASAUTODIALENTRY(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("dwDialingLocation", DWORD()),
+        ("szEntry", TCHAR__RAS_MaxEntryName_+_1_()),
+    ]
+
+LPRASAUTODIALENTRY = Ptr("<I", RASAUTODIALENTRY())
+RASCONNSTATE = UINT
+RASCONNSUBSTATE = UINT
+
+class RASCONNSTATUS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("rasconnstate", RASCONNSTATE()),
+        ("dwError", DWORD()),
+        ("szDeviceType", TCHAR__RAS_MaxDeviceType_+_1_()),
+        ("szDeviceName", TCHAR__RAS_MaxDeviceName_+_1_()),
+        ("szPhoneNumber", TCHAR__RAS_MaxPhoneNumber_+_1_()),
+        ("localEndPoint", RASTUNNELENDPOINT()),
+        ("remoteEndPoint", RASTUNNELENDPOINT()),
+        ("rasconnsubstate", RASCONNSUBSTATE()),
+    ]
+
+LPRASCONNSTATUS = Ptr("<I", RASCONNSTATUS())
+_RASCM_FLAGS_ = DWORD
+
+class RASCREDENTIALS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwMask", _RASCM_FLAGS_()),
+        ("szUserName", TCHAR__UNLEN_+_1_()),
+        ("szPassword", TCHAR__PWLEN_+_1_()),
+        ("szDomain", TCHAR__DNLEN_+_1_()),
+    ]
+
+LPRASCREDENTIALS = Ptr("<I", RASCREDENTIALS())
+
+class RASEAPUSERIDENTITY(MemStruct):
+    fields = [
+        ("szUserName", TCHAR__UNLEN_+_1_()),
+        ("dwSizeofEapInfo", DWORD()),
+        ("pbEapInfo", BYTE__1_()),
+    ]
+
+LPRASEAPUSERIDENTITY = Ptr("<I", RASEAPUSERIDENTITY())
+LPRASEAPUSERIDENTITY_PTR = Ptr("<I", LPRASEAPUSERIDENTITY())
+
+class RASIPADDR(MemStruct):
+    fields = [
+        ("a", BYTE()),
+        ("b", BYTE()),
+        ("c", BYTE()),
+        ("d", BYTE()),
+    ]
+
+_RASEO_FLAGS_ = DWORD
+_RASEO2_FLAGS_ = DWORD
+_RASNP_FLAGS_ = DWORD
+_RASFP_FLAGS_ = DWORD
+_RASEDM_ENUM_ = DWORD
+_RASET_ENUM_ = DWORD
+_RAS_ENCRYPTION_TYPE_ = DWORD
+_RAS_VPN_STRATEGY_ = DWORD
+
+class RASENTRY(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwfOptions", _RASEO_FLAGS_()),
+        ("dwCountryID", DWORD()),
+        ("dwCountryCode", DWORD()),
+        ("szAreaCode", TCHAR__RAS_MaxAreaCode_+_1_()),
+        ("szLocalPhoneNumber", TCHAR__RAS_MaxPhoneNumber_+_1_()),
+        ("dwAlternateOffset", DWORD()),
+        ("ipaddr", RASIPADDR()),
+        ("ipaddrDns", RASIPADDR()),
+        ("ipaddrDnsAlt", RASIPADDR()),
+        ("ipaddrWins", RASIPADDR()),
+        ("ipaddrWinsAlt", RASIPADDR()),
+        ("dwFrameSize", DWORD()),
+        ("dwfNetProtocols", _RASNP_FLAGS_()),
+        ("dwFramingProtocol", _RASFP_FLAGS_()),
+        ("szScript", TCHAR__MAX_PATH_()),
+        ("szAutodialDll", TCHAR__MAX_PATH_()),
+        ("szAutodialFunc", TCHAR__MAX_PATH_()),
+        ("szDeviceType", TCHAR__RAS_MaxDeviceType_+_1_()),
+        ("szDeviceName", TCHAR__RAS_MaxDeviceName_+_1_()),
+        ("szX25PadType", TCHAR__RAS_MaxPadType_+_1_()),
+        ("szX25Address", TCHAR__RAS_MaxX25Address_+_1_()),
+        ("szX25Facilities", TCHAR__RAS_MaxFacilities_+_1_()),
+        ("szX25UserData", TCHAR__RAS_MaxUserData_+_1_()),
+        ("dwChannels", DWORD()),
+        ("dwReserved1", DWORD()),
+        ("dwReserved2", DWORD()),
+        ("dwSubEntries", DWORD()),
+        ("dwDialMode", _RASEDM_ENUM_()),
+        ("dwDialExtraPercent", DWORD()),
+        ("dwDialExtraSampleSeconds", DWORD()),
+        ("dwHangUpExtraPercent", DWORD()),
+        ("dwHangUpExtraSampleSeconds", DWORD()),
+        ("dwIdleDisconnectSeconds", DWORD()),
+        ("dwType", _RASET_ENUM_()),
+        ("dwEncryptionType", _RAS_ENCRYPTION_TYPE_()),
+        ("dwCustomAuthKey", DWORD()),
+        ("guidId", GUID()),
+        ("szCustomDialDll", TCHAR__MAX_PATH_()),
+        ("dwVpnStrategy", _RAS_VPN_STRATEGY_()),
+        ("dwfOptions2", _RASEO2_FLAGS_()),
+        ("dwfOptions3", DWORD()),
+        ("szDnsSuffix", TCHAR__RAS_MaxDnsSuffix_()),
+        ("dwTcpWindowSize", DWORD()),
+        ("szPrerequisitePbk", TCHAR__MAX_PATH_()),
+        ("szPrerequisiteEntry", TCHAR__RAS_MaxEntryName_+_1_()),
+        ("dwRedialCount", DWORD()),
+        ("dwRedialPause", DWORD()),
+        ("ipv6addrDns", RASIPV6ADDR()),
+        ("ipv6addrDnsAlt", RASIPV6ADDR()),
+        ("dwIPv4InterfaceMetric", DWORD()),
+        ("dwIPv6InterfaceMetric", DWORD()),
+        ("ipv6addr", RASIPV6ADDR()),
+        ("dwIPv6PrefixLength", DWORD()),
+        ("dwNetworkOutageTime", DWORD()),
+    ]
+
+LPRASENTRY = Ptr("<I", RASENTRY())
+_RASIPO_OPTIONS_ = DWORD
+_RASLCPAP_ = DWORD
+_RASLCPAD_ = DWORD
+_RASLCPO_ = DWORD
+_RASCCPCA_ = DWORD
+_RASCCPO_ = DWORD
+
+class RASPPP_PROJECTION_INFO(MemStruct):
+    fields = [
+        ("dwIPv4NegotiationError", DWORD()),
+        ("ipv4Address", RASIPV4ADDR()),
+        ("ipv4ServerAddress", RASIPV4ADDR()),
+        ("dwIPv4Options", _RASIPO_OPTIONS_()),
+        ("dwIPv4ServerOptions", _RASIPO_OPTIONS_()),
+        ("dwIPv6NegotiationError", DWORD()),
+        ("bInterfaceIdentifier", BYTE__8_()),
+        ("bServerInterfaceIdentifier", BYTE__8_()),
+        ("fBundled", BOOL()),
+        ("fMultilink", BOOL()),
+        ("dwAuthenticationProtocol", _RASLCPAP_()),
+        ("dwAuthenticationData", _RASLCPAD_()),
+        ("dwServerAuthenticationProtocol", _RASLCPAP_()),
+        ("dwServerAuthenticationData", _RASLCPAD_()),
+        ("dwEapTypeId", DWORD()),
+        ("dwServerEapTypeId", DWORD()),
+        ("dwLcpOptions", _RASLCPO_()),
+        ("dwLcpServerOptions", _RASLCPO_()),
+        ("dwCcpError", DWORD()),
+        ("dwCcpCompressionAlgorithm", _RASCCPCA_()),
+        ("dwCcpServerCompressionAlgorithm", _RASCCPCA_()),
+        ("dwCcpOptions", _RASCCPO_()),
+        ("dwCcpServerOptions", _RASCCPO_()),
+    ]
+
+IPSEC_CIPHER_TYPE = UINT
+_RASIKEv2_FLAGS_ = DWORD
+_RASIKEv2_AUTH_ = DWORD
+
+class RASIKEV2_PROJECTION_INFO(MemStruct):
+    fields = [
+        ("dwIPv4NegotiationError", DWORD()),
+        ("ipv4Address", RASIPV4ADDR()),
+        ("ipv4ServerAddress", RASIPV4ADDR()),
+        ("dwIPv6NegotiationError", DWORD()),
+        ("ipv6Address", RASIPV6ADDR()),
+        ("ipv6ServerAddress", RASIPV6ADDR()),
+        ("dwPrefixLength", DWORD()),
+        ("dwAuthenticationProtocol", _RASIKEv2_AUTH_()),
+        ("dwEapTypeId", DWORD()),
+        ("dwFlags", _RASIKEv2_FLAGS_()),
+        ("dwEncryptionMethod", IPSEC_CIPHER_TYPE()),
+        ("numIPv4ServerAddresses", DWORD()),
+        ("ipv4ServerAddresses", RASIPV4ADDR_PTR()),
+        ("numIPv6ServerAddresses", DWORD()),
+        ("ipv6ServerAddresses", RASIPV6ADDR_PTR()),
+    ]
+
+_RAS_PROJECTION_INFO_u_ = Union([
+    ("ppp", RASPPP_PROJECTION_INFO),
+    ("ikev2", RASIKEV2_PROJECTION_INFO),
+])
+RASPROJECTION_INFO_TYPE = UINT
+
+class RAS_PROJECTION_INFO(MemStruct):
+    fields = [
+        ("version", RASAPIVERSION()),
+        ("type", RASPROJECTION_INFO_TYPE()),
+        (None, _RAS_PROJECTION_INFO_u_()),
+    ]
+
+PRAS_PROJECTION_INFO = Ptr("<I", RAS_PROJECTION_INFO())
+
+class RASSUBENTRY(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwfFlags", DWORD()),
+        ("szDeviceType", TCHAR__RAS_MaxDeviceType_+_1_()),
+        ("szDeviceName", TCHAR__RAS_MaxDeviceName_+_1_()),
+        ("szLocalPhoneNumber", TCHAR__RAS_MaxPhoneNumber_+_1_()),
+        ("dwAlternateOffset", DWORD()),
+    ]
+
+LPRASSUBENTRY = Ptr("<I", RASSUBENTRY())
+
+class RASUPDATECONN(MemStruct):
+    fields = [
+        ("version", RASAPIVERSION()),
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("dwIfIndex", DWORD()),
+        ("localEndPoint", RASTUNNELENDPOINT()),
+        ("remoteEndPoint", RASTUNNELENDPOINT()),
+    ]
+
+LPRASUPDATECONN = Ptr("<I", RASUPDATECONN())
+
+class RASEAPINFO(MemStruct):
+    fields = [
+        ("dwSizeofEapInfo", DWORD()),
+        ("pbEapInfo", BYTE_PTR()),
+    ]
+
+
+class RASDEVSPECIFICINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("pbDevSpecificInfo", BYTE_PTR()),
+    ]
+
+
+class RASDIALEXTENSIONS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwfOptions", DWORD()),
+        ("hwndParent", HWND()),
+        ("reserved", ULONG_PTR()),
+        ("reserved1", ULONG_PTR()),
+        ("RasEapInfo", RASEAPINFO()),
+        ("fSkipPppAuth", BOOL()),
+        ("RasDevSpecificInfo", RASDEVSPECIFICINFO()),
+    ]
+
+LPRASDIALEXTENSIONS = Ptr("<I", RASDIALEXTENSIONS())
+
+class RAS_STATS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwBytesXmited", DWORD()),
+        ("dwBytesRcved", DWORD()),
+        ("dwFramesXmited", DWORD()),
+        ("dwFramesRcved", DWORD()),
+        ("dwCrcErr", DWORD()),
+        ("dwTimeoutErr", DWORD()),
+        ("dwAlignmentErr", DWORD()),
+        ("dwHardwareOverrunErr", DWORD()),
+        ("dwFramingErr", DWORD()),
+        ("dwBufferOverrunErr", DWORD()),
+        ("dwCompressionRatioIn", DWORD()),
+        ("dwCompressionRatioOut", DWORD()),
+        ("dwBps", DWORD()),
+        ("dwConnectDuration", DWORD()),
+    ]
+
+RAS_STATS_PTR = Ptr("<I", RAS_STATS())
+
+class RASCTRYINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwCountryID", DWORD()),
+        ("dwNextCountryID", DWORD()),
+        ("dwCountryCode", DWORD()),
+        ("dwCountryNameOffset", DWORD()),
+    ]
+
+LPRASCTRYINFO = Ptr("<I", RASCTRYINFO())
+IsolationState = UINT
+
+class RASNAPSTATE(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("isolationState", IsolationState()),
+        ("probationTime", ProbationTime()),
+    ]
+
+LPRASNAPSTATE = Ptr("<I", RASNAPSTATE())
+_RasConnNotifyFlags_ = DWORD
+RASPROJECTION = DWORD
+
+###################
+
+###### Functions ######
 
 def rasapi32_RasClearConnectionStatistics(jitter):
     """

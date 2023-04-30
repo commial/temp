@@ -1,3 +1,4 @@
+###### Enums ######
 _PANOSE_FAMILY_ = {
     "PAN_ANY": 0,
     "PAN_NO_FIT": 1,
@@ -1116,6 +1117,427 @@ _POINT_TYPE__INV = {
     0x04: "PT_BEZIERTO",
     0x06: "PT_MOVETO",
 }
+
+###################
+
+###### Types ######
+HGDIOBJ = HANDLE
+GOBJENUMPROC = LPVOID
+FONTENUMPROC = LPVOID
+LINEDDAPROC = LPVOID
+ENHMFENUMPROC = LPVOID
+MFENUMPROC = LPVOID
+ABORTPROC = LPVOID
+HCOLORSPACE = HANDLE
+HTRANSFORM = HANDLE
+ICMENUMPROC = LPVOID
+WORD__1_ = Array(WORD, 1)
+HGDIOBJ__1_ = Array(HGDIOBJ, 1)
+LONG__MM_MAX_NUMAXES_ = Array(LONG, 16)
+TCHAR__LF_FULLFACESIZE_ = Array(TCHAR, 64)
+_FontCharset-int_ = _FontCharset_
+
+class ENUMLOGFONTEX(MemStruct):
+    fields = [
+        ("elfLogFont", LOGFONT()),
+        ("elfFullName", TCHAR__LF_FULLFACESIZE_()),
+        ("elfStyle", TCHAR__LF_FACESIZE_()),
+        ("elfScript", TCHAR__LF_FACESIZE_()),
+    ]
+
+
+class DESIGNVECTOR(MemStruct):
+    fields = [
+        ("dvReserved", DWORD()),
+        ("dvNumAxes", DWORD()),
+        ("dvValues", LONG__MM_MAX_NUMAXES_()),
+    ]
+
+
+class ENUMLOGFONTEXDV(MemStruct):
+    fields = [
+        ("elfEnumLogfontEx", ENUMLOGFONTEX()),
+        ("elfDesignVector", DESIGNVECTOR()),
+    ]
+
+const_ENUMLOGFONTEXDV_PTR = Ptr("<I", ENUMLOGFONTEXDV())
+
+class WCRANGE(MemStruct):
+    fields = [
+        ("wcLow", WCHAR()),
+        ("cGlyphs", USHORT()),
+    ]
+
+WCRANGE__1_ = Array(WCRANGE, 1)
+
+class GLYPHSET(MemStruct):
+    fields = [
+        ("cbThis", DWORD()),
+        ("flAccel", DWORD()),
+        ("cGlyphsSupported", DWORD()),
+        ("cRanges", DWORD()),
+        ("ranges", WCRANGE__1_()),
+    ]
+
+LPGLYPHSET = Ptr("<I", GLYPHSET())
+_OTM_SELECTION_ = UINT
+_PANOSE_FAMILY_ = BYTE
+_PANOSE_SERIF_ = BYTE
+_PANOSE_WEIGHT_ = BYTE
+_PANOSE_PROPORTION_ = BYTE
+_PANOSE_CONTRAST_ = BYTE
+_PANOSE_STROKE_ = BYTE
+_PANOSE_ARM_ = BYTE
+_PANOSE_LETTER_ = BYTE
+_PANOSE_MIDLINE_ = BYTE
+_PANOSE_XHEIGHT_ = BYTE
+
+class PANOSE(MemStruct):
+    fields = [
+        ("bFamilyType", _PANOSE_FAMILY_()),
+        ("bSerifStyle", _PANOSE_SERIF_()),
+        ("bWeight", _PANOSE_WEIGHT_()),
+        ("bProportion", _PANOSE_PROPORTION_()),
+        ("bContrast", _PANOSE_CONTRAST_()),
+        ("bStrokeVariation", _PANOSE_STROKE_()),
+        ("bArmStyle", _PANOSE_ARM_()),
+        ("bLetterform", _PANOSE_LETTER_()),
+        ("bMidline", _PANOSE_MIDLINE_()),
+        ("bXHeight", _PANOSE_XHEIGHT_()),
+    ]
+
+
+class OUTLINETEXTMETRIC(MemStruct):
+    fields = [
+        ("otmSize", UINT()),
+        ("otmTextMetrics", TEXTMETRIC()),
+        ("otmFiller", BYTE()),
+        ("otmPanoseNumber", PANOSE()),
+        ("otmfsSelection", _OTM_SELECTION_()),
+        ("otmfsType", UINT()),
+        ("otmsCharSlopeRise", int()),
+        ("otmsCharSlopeRun", int()),
+        ("otmItalicAngle", int()),
+        ("otmEMSquare", UINT()),
+        ("otmAscent", int()),
+        ("otmDescent", int()),
+        ("otmLineGap", UINT()),
+        ("otmsCapEmHeight", UINT()),
+        ("otmsXHeight", UINT()),
+        ("otmrcFontBox", RECT()),
+        ("otmMacAscent", int()),
+        ("otmMacDescent", int()),
+        ("otmMacLineGap", UINT()),
+        ("otmusMinimumPPEM", UINT()),
+        ("otmptSubscriptSize", POINT()),
+        ("otmptSubscriptOffset", POINT()),
+        ("otmptSuperscriptSize", POINT()),
+        ("otmptSuperscriptOffset", POINT()),
+        ("otmsStrikeoutSize", UINT()),
+        ("otmsStrikeoutPosition", int()),
+        ("otmsUnderscoreSize", int()),
+        ("otmsUnderscorePosition", int()),
+        ("otmpFamilyName", PSTR()),
+        ("otmpFaceName", PSTR()),
+        ("otmpStyleName", PSTR()),
+        ("otmpFullName", PSTR()),
+    ]
+
+LPOUTLINETEXTMETRIC = Ptr("<I", OUTLINETEXTMETRIC())
+
+class HANDLETABLE(MemStruct):
+    fields = [
+        ("objectHandle", HGDIOBJ__1_()),
+    ]
+
+LPHANDLETABLE = Ptr("<I", HANDLETABLE())
+_EMR_TYPE_ = DWORD
+
+class ENHMETARECORD(MemStruct):
+    fields = [
+        ("iType", _EMR_TYPE_()),
+        ("nSize", DWORD()),
+        ("dParm", DWORD__1_()),
+    ]
+
+const_ENHMETARECORD_PTR = Ptr("<I", ENHMETARECORD())
+
+class METARECORD(MemStruct):
+    fields = [
+        ("rdSize", DWORD()),
+        ("rdFunction", WORD()),
+        ("rdParm", WORD__1_()),
+    ]
+
+LPMETARECORD = Ptr("<I", METARECORD())
+
+class FONTSIGNATURE(MemStruct):
+    fields = [
+        ("fsUsb", DWORD__4_()),
+        ("fsCsb", DWORD__2_()),
+    ]
+
+LPFONTSIGNATURE = Ptr("<I", FONTSIGNATURE())
+
+class CHARSETINFO(MemStruct):
+    fields = [
+        ("ciCharset", UINT()),
+        ("ciACP", _CodePageEnum_()),
+        ("fs", FONTSIGNATURE()),
+    ]
+
+LPCHARSETINFO = Ptr("<I", CHARSETINFO())
+
+class BITMAP(MemStruct):
+    fields = [
+        ("bmType", LONG()),
+        ("bmWidth", LONG()),
+        ("bmHeight", LONG()),
+        ("bmWidthBytes", LONG()),
+        ("bmPlanes", WORD()),
+        ("bmBitsPixel", WORD()),
+        ("bmBits", LPVOID()),
+    ]
+
+const_BITMAP_PTR = Ptr("<I", BITMAP())
+
+class LOGBRUSH(MemStruct):
+    fields = [
+        ("lbStyle", UINT()),
+        ("lbColor", COLORREF()),
+        ("lbHatch", ULONG_PTR()),
+    ]
+
+const_LOGBRUSH_PTR = Ptr("<I", LOGBRUSH())
+
+class COLORADJUSTMENT(MemStruct):
+    fields = [
+        ("caSize", WORD()),
+        ("caFlags", WORD()),
+        ("caIlluminantIndex", WORD()),
+        ("caRedGamma", WORD()),
+        ("caGreenGamma", WORD()),
+        ("caBlueGamma", WORD()),
+        ("caReferenceBlack", WORD()),
+        ("caReferenceWhite", WORD()),
+        ("caContrast", SHORT()),
+        ("caBrightness", SHORT()),
+        ("caColorfulness", SHORT()),
+        ("caRedGreenTint", SHORT()),
+    ]
+
+LPCOLORADJUSTMENT = Ptr("<I", COLORADJUSTMENT())
+const_COLORADJUSTMENT_PTR = Ptr("<I", COLORADJUSTMENT())
+
+class XFORM(MemStruct):
+    fields = [
+        ("eM11", FLOAT()),
+        ("eM12", FLOAT()),
+        ("eM21", FLOAT()),
+        ("eM22", FLOAT()),
+        ("eDx", FLOAT()),
+        ("eDy", FLOAT()),
+    ]
+
+LPXFORM = Ptr("<I", XFORM())
+const_XFORM_PTR = Ptr("<I", XFORM())
+
+class ABCFLOAT(MemStruct):
+    fields = [
+        ("abcfA", FLOAT()),
+        ("abcfB", FLOAT()),
+        ("abcfC", FLOAT()),
+    ]
+
+LPABCFLOAT = Ptr("<I", ABCFLOAT())
+
+class GCP_RESULTS(MemStruct):
+    fields = [
+        ("lStructSize", DWORD()),
+        ("lpOutString", LPTSTR()),
+        ("lpOrder", UINT_PTR()),
+        ("lpDx", int_PTR()),
+        ("lpCaretPos", int_PTR()),
+        ("lpClass", LPSTR()),
+        ("lpGlyphs", LPWSTR()),
+        ("nGlyphs", UINT()),
+        ("nMaxFit", int()),
+    ]
+
+LPGCP_RESULTS = Ptr("<I", GCP_RESULTS())
+
+class GLYPHMETRICS(MemStruct):
+    fields = [
+        ("gmBlackBoxX", UINT()),
+        ("gmBlackBoxY", UINT()),
+        ("gmptGlyphOrigin", POINT()),
+        ("gmCellIncX", short()),
+        ("gmCellIncY", short()),
+    ]
+
+LPGLYPHMETRICS = Ptr("<I", GLYPHMETRICS())
+
+class FIXED(MemStruct):
+    fields = [
+        ("fract", WORD()),
+        ("value", short()),
+    ]
+
+
+class MAT2(MemStruct):
+    fields = [
+        ("eM11", FIXED()),
+        ("eM12", FIXED()),
+        ("eM21", FIXED()),
+        ("eM22", FIXED()),
+    ]
+
+const_MAT2_PTR = Ptr("<I", MAT2())
+
+class KERNINGPAIR(MemStruct):
+    fields = [
+        ("wFirst", WORD()),
+        ("wSecond", WORD()),
+        ("iKernAmount", int()),
+    ]
+
+LPKERNINGPAIR = Ptr("<I", KERNINGPAIR())
+
+class RASTERIZER_STATUS(MemStruct):
+    fields = [
+        ("nSize", short()),
+        ("wFlags", short()),
+        ("nLanguageID", short()),
+    ]
+
+LPRASTERIZER_STATUS = Ptr("<I", RASTERIZER_STATUS())
+
+class POLYTEXT(MemStruct):
+    fields = [
+        ("x", int()),
+        ("y", int()),
+        ("n", UINT()),
+        ("lpstr", LPCTSTR()),
+        ("uiFlags", UINT()),
+        ("rcl", RECT()),
+        ("pdx", int_PTR()),
+    ]
+
+const_POLYTEXT_PTR = Ptr("<I", POLYTEXT())
+
+class ENHMETAHEADER(MemStruct):
+    fields = [
+        ("iType", DWORD()),
+        ("nSize", DWORD()),
+        ("rclBounds", RECTL()),
+        ("rclFrame", RECTL()),
+        ("dSignature", DWORD()),
+        ("nVersion", DWORD()),
+        ("nBytes", DWORD()),
+        ("nRecords", DWORD()),
+        ("nHandles", WORD()),
+        ("sReserved", WORD()),
+        ("nDescription", DWORD()),
+        ("offDescription", DWORD()),
+        ("nPalEntries", DWORD()),
+        ("szlDevice", SIZEL()),
+        ("szlMillimeters", SIZEL()),
+        ("cbPixelFormat", DWORD()),
+        ("offPixelFormat", DWORD()),
+        ("bOpenGL", DWORD()),
+        ("szlMicrometers", SIZEL()),
+    ]
+
+LPENHMETAHEADER = Ptr("<I", ENHMETAHEADER())
+
+class METAFILEPICT(MemStruct):
+    fields = [
+        ("mm", LONG()),
+        ("xExt", LONG()),
+        ("yExt", LONG()),
+        ("hMF", HMETAFILE()),
+    ]
+
+const_METAFILEPICT_PTR = Ptr("<I", METAFILEPICT())
+
+class DOCINFO(MemStruct):
+    fields = [
+        ("cbSize", int()),
+        ("lpszDocName", LPCTSTR()),
+        ("lpszOutput", LPCTSTR()),
+        ("lpszDatatype", LPCTSTR()),
+        ("fwType", DWORD()),
+    ]
+
+const_DOCINFO_PTR = Ptr("<I", DOCINFO())
+
+class PIXELFORMATDESCRIPTOR(MemStruct):
+    fields = [
+        ("nSize", WORD()),
+        ("nVersion", WORD()),
+        ("dwFlags", DWORD()),
+        ("iPixelType", BYTE()),
+        ("cColorBits", BYTE()),
+        ("cRedBits", BYTE()),
+        ("cRedShift", BYTE()),
+        ("cGreenBits", BYTE()),
+        ("cGreenShift", BYTE()),
+        ("cBlueBits", BYTE()),
+        ("cBlueShift", BYTE()),
+        ("cAlphaBits", BYTE()),
+        ("cAlphaShift", BYTE()),
+        ("cAccumBits", BYTE()),
+        ("cAccumRedBits", BYTE()),
+        ("cAccumGreenBits", BYTE()),
+        ("cAccumBlueBits", BYTE()),
+        ("cAccumAlphaBits", BYTE()),
+        ("cDepthBits", BYTE()),
+        ("cStencilBits", BYTE()),
+        ("cAuxBuffers", BYTE()),
+        ("iLayerType", BYTE()),
+        ("bReserved", BYTE()),
+        ("dwLayerMask", DWORD()),
+        ("dwVisibleMask", DWORD()),
+        ("dwDamageMask", DWORD()),
+    ]
+
+LPPIXELFORMATDESCRIPTOR = Ptr("<I", PIXELFORMATDESCRIPTOR())
+const_PIXELFORMATDESCRIPTOR_PTR = Ptr("<I", PIXELFORMATDESCRIPTOR())
+_DeviceCapsEnum_ = int
+_RasterOperationEnum_ = DWORD
+_StretchModeEnum_ = int
+_RandomRgnEnum_ = INT
+_ColorUseEnum_ = UINT
+_CreateBitmapInitFlag_ = DWORD
+_ROP2ModeEnum_ = int
+_BkModeEnum_ = int
+_TextAlignFlag_ = UINT
+_RgnMode_ = int
+_TranslateCharsetInfoFlag_ = DWORD
+_ObjectType_ = UINT
+_MappingMode_ = int
+_LayoutFlags_ = DWORD
+_BoundsAccumulationFlags_ = UINT
+_ExtTextOutFlags_ = UINT
+_ModifyWorldTransformMode_ = DWORD
+_GetGlyphIndicesFlag_ = DWORD
+_PolyFillModes_ = int
+_GraphicsModes_ = int
+_HatchStyle_ = int
+_GdiEscapeFunction_ = int
+_GetGlyphOutlineFormat_ = UINT
+_STOCK_OBJECT_ = int
+_GCP_FLAGS_ = DWORD
+WCS_PROFILE_MANAGEMENT_SCOPE = UINT
+_CS_ACTION_ = DWORD
+_ICM_MODE_ = int
+_ICM_COMMAND_ = UINT
+_POINT_TYPE_ = BYTE
+_POINT_TYPE_PTR_ = Ptr("<I", _POINT_TYPE_())
+
+###################
+
+###### Functions ######
 
 def gdi32_BitBlt(jitter):
     """

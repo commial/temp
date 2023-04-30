@@ -1,3 +1,46 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PFNCMHOOKPROC = LPVOID
+PFNCMFILTERPROC = LPVOID
+
+class CERT_SELECT_STRUCT(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hwndParent", HWND()),
+        ("hInstance", HINSTANCE()),
+        ("pTemplateName", LPCTSTR()),
+        ("dwFlags", DWORD()),
+        ("szTitle", LPCTSTR()),
+        ("cCertStore", DWORD()),
+        ("arrayCertStore", HCERTSTORE_PTR()),
+        ("szPurposeOid", LPCTSTR()),
+        ("cCertContext", DWORD()),
+        ("arrayCertContext", PCCERT_CONTEXT_PTR()),
+        ("lCustData", LPARAM()),
+        ("pfnHook", PFNCMHOOKPROC()),
+        ("pfnFilter", PFNCMFILTERPROC()),
+        ("szHelpFileName", LPCTSTR()),
+        ("dwHelpId", DWORD()),
+        ("hprov", HCRYPTPROV()),
+    ]
+
+PCERT_SELECT_STRUCT = Ptr("<I", CERT_SELECT_STRUCT())
+
+class CTL_MODIFY_REQUEST(MemStruct):
+    fields = [
+        ("pccert", PCCERT_CONTEXT()),
+        ("dwOperation", DWORD()),
+        ("dwError", DWORD()),
+    ]
+
+PCTL_MODIFY_REQUEST = Ptr("<I", CTL_MODIFY_REQUEST())
+
+###################
+
+###### Functions ######
 
 def cryptdlg_CertSelectCertificate(jitter, get_str, set_str):
     """

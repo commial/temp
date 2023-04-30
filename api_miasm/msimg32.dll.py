@@ -1,3 +1,4 @@
+###### Enums ######
 _GradientFillMode_ = {
     "GRADIENT_FILL_RECT_H": 0x00000000,
     "GRADIENT_FILL_RECT_V": 0x00000001,
@@ -8,6 +9,28 @@ _GradientFillMode__INV = {
     0x00000001: "GRADIENT_FILL_RECT_V",
     0x00000002: "GRADIENT_FILL_TRIANGLE",
 }
+
+###################
+
+###### Types ######
+COLOR16 = USHORT
+
+class TRIVERTEX(MemStruct):
+    fields = [
+        ("x", LONG()),
+        ("y", LONG()),
+        ("Red", COLOR16()),
+        ("Green", COLOR16()),
+        ("Blue", COLOR16()),
+        ("Alpha", COLOR16()),
+    ]
+
+PTRIVERTEX = Ptr("<I", TRIVERTEX())
+_GradientFillMode_ = ULONG
+
+###################
+
+###### Functions ######
 
 def msimg32_AlphaBlend(jitter):
     """

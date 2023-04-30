@@ -1,3 +1,22 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+HCSBC = LPVOID
+HCSBC_PTR = Ptr("<I", HCSBC())
+
+class CSEDB_RSTMAP(MemStruct):
+    fields = [
+        ("pwszDatabaseName", WCHAR_PTR()),
+        ("pwszNewDatabaseName", WCHAR_PTR()),
+    ]
+
+CSEDB_RSTMAP___ = Ptr("<I", CSEDB_RSTMAP())
+
+###################
+
+###### Functions ######
 
 def certadm_CertSrvBackupClose(jitter):
     """

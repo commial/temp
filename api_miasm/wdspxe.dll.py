@@ -1,3 +1,4 @@
+###### Enums ######
 PXE_BOOT_ACTION = {
     "PXE_BA_NBP": 1,
     "PXE_BA_CUSTOM": 2,
@@ -54,6 +55,80 @@ PXE_CALLBACK_TYPE_INV = {
     1: "PXE_CALLBACK_SHUTDOWN",
     2: "PXE_CALLBACK_SERVICE_CONTROL",
 }
+
+###################
+
+###### Types ######
+BYTE__PXE_MAX_ADDRESS_ = Array(BYTE, 16)
+
+class PXE_PROVIDER(MemStruct):
+    fields = [
+        ("uSizeOfStruct", ULONG()),
+        ("pwszName", LPWSTR()),
+        ("pwszFilePath", LPWSTR()),
+        ("bIsCritical", BOOL()),
+        ("uIndex", ULONG()),
+    ]
+
+PPXE_PROVIDER = Ptr("<I", PXE_PROVIDER())
+PPXE_PROVIDER_PTR = Ptr("<I", PPXE_PROVIDER())
+_PXE_ADDRESS_u_ = Union([
+    ("bAddress", BYTE__PXE_MAX_ADDRESS_),
+    ("uIpAddress", ULONG),
+])
+_PXE_ADDR_FLAGS_ = ULONG
+
+class PXE_ADDRESS(MemStruct):
+    fields = [
+        ("uFlags", _PXE_ADDR_FLAGS_()),
+        (None, _PXE_ADDRESS_u_()),
+        ("uAddrLen", ULONG()),
+        ("uPort", USHORT()),
+    ]
+
+PXE_ADDRESS_PTR = Ptr("<I", PXE_ADDRESS())
+PXE_BOOT_ACTION = ULONG
+PXE_SEVERITY = ULONG
+PXE_GSI_TYPE = ULONG
+PXE_REG_INDEX = ULONG
+PXE_PROVIDER_ATTRIBUTE = ULONG
+PXE_CALLBACK_TYPE = ULONG
+
+class PXE_DHCPV6_OPTION(MemStruct):
+    fields = [
+        ("OptionCode", WORD()),
+        ("DataLength", WORD()),
+        ("Data", BYTE__1_()),
+    ]
+
+PXE_DHCPV6_OPTION__1_ = Array(PXE_DHCPV6_OPTION, 1)
+
+class PXE_DHCPV6_RELAY_MESSAGE(MemStruct):
+    fields = [
+        ("MessageType", BYTE()),
+        ("HopCount", BYTE()),
+        ("LinkAddress", BYTE__16_()),
+        ("PeerAddress", BYTE__16_()),
+        ("Options", PXE_DHCPV6_OPTION__1_()),
+    ]
+
+PPXE_DHCPV6_RELAY_MESSAGE = Ptr("<I", PXE_DHCPV6_RELAY_MESSAGE())
+
+class PXE_DHCPV6_NESTED_RELAY_MESSAGE(MemStruct):
+    fields = [
+        # Length is `cbRelayMessage`
+        ("pRelayMessage", PPXE_DHCPV6_RELAY_MESSAGE()),
+        ("cbRelayMessage", ULONG()),
+        # Length is `cbInterfaceIdOption`
+        ("pInterfaceIdOption", PVOID()),
+        ("cbInterfaceIdOption", WORD()),
+    ]
+
+PPXE_DHCPV6_NESTED_RELAY_MESSAGE = Ptr("<I", PXE_DHCPV6_NESTED_RELAY_MESSAGE())
+
+###################
+
+###### Functions ######
 
 def wdspxe_PxeAsyncRecvDone(jitter):
     """

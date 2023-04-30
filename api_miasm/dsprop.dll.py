@@ -1,3 +1,4 @@
+###### Enums ######
 ADSTYPE = {
     "ADSTYPE_INVALID": 0,
     "ADSTYPE_DN_STRING": 1,
@@ -60,6 +61,52 @@ ADSTYPE_INV = {
     27: "ADSTYPE_DN_WITH_BINARY",
     28: "ADSTYPE_DN_WITH_STRING",
 }
+
+###################
+
+###### Types ######
+PADSVALUE = LPVOID
+ADSTYPE = UINT
+
+class ADS_ATTR_INFO(MemStruct):
+    fields = [
+        ("pszAttrName", LPWSTR()),
+        ("dwControlCode", DWORD()),
+        ("dwADsType", ADSTYPE()),
+        ("pADsValues", PADSVALUE()),
+        ("dwNumValues", DWORD()),
+    ]
+
+PADS_ATTR_INFO = Ptr("<I", ADS_ATTR_INFO())
+const_PADS_ATTR_INFO = Ptr("<I", ADS_ATTR_INFO())
+
+class ADSPROPINITPARAMS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("hr", HRESULT()),
+        ("pDsObj", IDirectoryObject_PTR()),
+        ("pwzCN", LPWSTR()),
+        ("pWritableAttrs", PADS_ATTR_INFO()),
+    ]
+
+PADSPROPINITPARAMS = Ptr("<I", ADSPROPINITPARAMS())
+
+class ADSPROPERROR(MemStruct):
+    fields = [
+        ("hwndPage", HWND()),
+        ("pszPageTitle", PWSTR()),
+        ("pszObjPath", PWSTR()),
+        ("pszObjClass", PWSTR()),
+        ("hr", HRESULT()),
+        ("pszError", PWSTR()),
+    ]
+
+PADSPROPERROR = Ptr("<I", ADSPROPERROR())
+
+###################
+
+###### Functions ######
 
 def dsprop_ADsPropCheckIfWritable(jitter):
     """

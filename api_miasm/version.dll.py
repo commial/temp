@@ -1,3 +1,17 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_VFF_FLAGS_ = DWORD
+_VFF_RESULT_ = DWORD
+_VIF_FLAGS_ = DWORD
+_VIF_RESULT_ = DWORD
+_FILE_VER_GET_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def version_GetFileVersionInfo(jitter, get_str, set_str):
     """

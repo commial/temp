@@ -1,3 +1,4 @@
+###### Enums ######
 DOT11_BSS_TYPE = {
     "dot11_BSS_type_infrastructure": 1,
     "dot11_BSS_type_independent": 2,
@@ -426,6 +427,297 @@ WLAN_INTF_OPCODE_INV = {
     0x10000101: "wlan_intf_opcode_statistics",
     0x10000102: "wlan_intf_opcode_rssi",
 }
+
+###################
+
+###### Types ######
+WLAN_NOTIFICATION_CALLBACK = LPVOID
+WLAN_SIGNAL_QUALITY = ULONG
+WFD_OPEN_SESSION_COMPLETE_CALLBACK = LPVOID
+WCHAR__WLAN_MAX_NAME_LENGTH_ = Array(WCHAR, 256)
+UCHAR__DOT11_SSID_MAX_LENGTH_ = Array(UCHAR, 32)
+USHORT__DOT11_RATE_SET_MAX_LENGTH_ = Array(USHORT, 126)
+DOT11_MAC_ADDRESS = Array(UCHAR, 6)
+DOT11_MAC_ADDRESS__1_ = Array(DOT11_MAC_ADDRESS, 1)
+PDOT11_MAC_ADDRESS = Ptr("<I", DOT11_MAC_ADDRESS())
+_WlanProfileFlags_ = DWORD
+_WlanProfileFlags_PTR_ = Ptr("<I", _WlanProfileFlags_())
+DOT11_BSS_TYPE = UINT
+DOT11_PHY_TYPE = UINT
+DOT11_PHY_TYPE__WLAN_MAX_PHY_INDEX_ = Array(DOT11_PHY_TYPE, 64)
+DOT11_PHY_TYPE__WLAN_MAX_PHY_TYPE_NUMBER_ = Array(DOT11_PHY_TYPE, 8)
+
+class DOT11_SSID(MemStruct):
+    fields = [
+        ("uSSIDLength", ULONG()),
+        ("ucSSID", UCHAR__DOT11_SSID_MAX_LENGTH_()),
+    ]
+
+PDOT11_SSID = Ptr("<I", DOT11_SSID())
+const_PDOT11_SSID = Ptr("<I", DOT11_SSID())
+DOT11_AUTH_ALGORITHM = UINT
+DOT11_CIPHER_ALGORITHM = UINT
+_NDIS_OBJECT_TYPE_ = UCHAR
+
+class NDIS_OBJECT_HEADER(MemStruct):
+    fields = [
+        ("Type", _NDIS_OBJECT_TYPE_()),
+        ("Revision", UCHAR()),
+        ("Size", USHORT()),
+    ]
+
+
+class DOT11_BSSID_LIST(MemStruct):
+    fields = [
+        ("Header", NDIS_OBJECT_HEADER()),
+        ("uNumOfEntries", ULONG()),
+        ("uTotalNumOfEntries", ULONG()),
+        ("BSSIDs", DOT11_MAC_ADDRESS__1_()),
+    ]
+
+PDOT11_BSSID_LIST = Ptr("<I", DOT11_BSSID_LIST())
+WLAN_INTERFACE_STATE = UINT
+
+class WLAN_INTERFACE_INFO(MemStruct):
+    fields = [
+        ("InterfaceGuid", GUID()),
+        ("strInterfaceDescription", WCHAR__WLAN_MAX_NAME_LENGTH_()),
+        ("isState", WLAN_INTERFACE_STATE()),
+    ]
+
+WLAN_INTERFACE_INFO__1_ = Array(WLAN_INTERFACE_INFO, 1)
+
+class WLAN_INTERFACE_INFO_LIST(MemStruct):
+    fields = [
+        ("dwNumberOfItems", DWORD()),
+        ("dwIndex", DWORD()),
+        ("InterfaceInfo", WLAN_INTERFACE_INFO__1_()),
+    ]
+
+PWLAN_INTERFACE_INFO_LIST = Ptr("<I", WLAN_INTERFACE_INFO_LIST())
+PWLAN_INTERFACE_INFO_LIST_PTR = Ptr("<I", PWLAN_INTERFACE_INFO_LIST())
+
+class _WLAN_RAW_DATA_LIST_s_(MemStruct):
+    fields = [
+        ("dwDataOffset", DWORD()),
+        ("dwDataSize", DWORD()),
+    ]
+
+_WLAN_RAW_DATA_LIST_s__1__ = Array(_WLAN_RAW_DATA_LIST_s_, 1)
+
+class WLAN_RAW_DATA_LIST(MemStruct):
+    fields = [
+        ("dwTotalSize", DWORD()),
+        ("dwNumberOfItems", DWORD()),
+        ("DataList", _WLAN_RAW_DATA_LIST_s__1__()),
+    ]
+
+PWLAN_RAW_DATA_LIST = Ptr("<I", WLAN_RAW_DATA_LIST())
+const_PWLAN_RAW_DATA_LIST = Ptr("<I", WLAN_RAW_DATA_LIST())
+PWLAN_RAW_DATA_LIST_PTR = Ptr("<I", PWLAN_RAW_DATA_LIST())
+_WLAN_AVAILABLE_NETWORK_FLAGS_ = DWORD
+
+class WLAN_AVAILABLE_NETWORK(MemStruct):
+    fields = [
+        ("strProfileName", WCHAR__WLAN_MAX_NAME_LENGTH_()),
+        ("dot11Ssid", DOT11_SSID()),
+        ("dot11BssType", DOT11_BSS_TYPE()),
+        ("uNumberOfBssids", ULONG()),
+        ("bNetworkConnectable", BOOL()),
+        ("wlanNotConnectableReason", WLAN_REASON_CODE()),
+        ("uNumberOfPhyTypes", ULONG()),
+        ("dot11PhyTypes", DOT11_PHY_TYPE__WLAN_MAX_PHY_TYPE_NUMBER_()),
+        ("bMorePhyTypes", BOOL()),
+        ("wlanSignalQuality", WLAN_SIGNAL_QUALITY()),
+        ("bSecurityEnabled", BOOL()),
+        ("dot11DefaultAuthAlgorithm", DOT11_AUTH_ALGORITHM()),
+        ("dot11DefaultCipherAlgorithm", DOT11_CIPHER_ALGORITHM()),
+        ("dwFlags", _WLAN_AVAILABLE_NETWORK_FLAGS_()),
+        ("dwReserved", DWORD()),
+    ]
+
+WLAN_AVAILABLE_NETWORK__1_ = Array(WLAN_AVAILABLE_NETWORK, 1)
+
+class WLAN_AVAILABLE_NETWORK_LIST(MemStruct):
+    fields = [
+        ("dwNumberOfItems", DWORD()),
+        ("dwIndex", DWORD()),
+        ("Network", WLAN_AVAILABLE_NETWORK__1_()),
+    ]
+
+PWLAN_AVAILABLE_NETWORK_LIST = Ptr("<I", WLAN_AVAILABLE_NETWORK_LIST())
+PWLAN_AVAILABLE_NETWORK_LIST_PTR = Ptr("<I", PWLAN_AVAILABLE_NETWORK_LIST())
+
+class DOT11_NETWORK(MemStruct):
+    fields = [
+        ("dot11Ssid", DOT11_SSID()),
+        ("dot11BssType", DOT11_BSS_TYPE()),
+    ]
+
+DOT11_NETWORK__1_ = Array(DOT11_NETWORK, 1)
+
+class DOT11_NETWORK_LIST(MemStruct):
+    fields = [
+        ("dwNumberOfItems", DWORD()),
+        ("dwIndex", DWORD()),
+        ("Network", DOT11_NETWORK__1_()),
+    ]
+
+const_PDOT11_NETWORK_LIST = Ptr("<I", DOT11_NETWORK_LIST())
+PDOT11_NETWORK_LIST = Ptr("<I", DOT11_NETWORK_LIST())
+PDOT11_NETWORK_LIST_PTR = Ptr("<I", PDOT11_NETWORK_LIST())
+WLAN_INTERFACE_TYPE = UINT
+
+class WLAN_INTERFACE_CAPABILITY(MemStruct):
+    fields = [
+        ("interfaceType", WLAN_INTERFACE_TYPE()),
+        ("bDot11DSupported", BOOL()),
+        ("dwMaxDesiredSsidListSize", DWORD()),
+        ("dwMaxDesiredBssidListSize", DWORD()),
+        ("dwNumberOfSupportedPhys", DWORD()),
+        ("dot11PhyTypes", DOT11_PHY_TYPE__WLAN_MAX_PHY_INDEX_()),
+    ]
+
+PWLAN_INTERFACE_CAPABILITY = Ptr("<I", WLAN_INTERFACE_CAPABILITY())
+PWLAN_INTERFACE_CAPABILITY_PTR = Ptr("<I", PWLAN_INTERFACE_CAPABILITY())
+
+class WLAN_RATE_SET(MemStruct):
+    fields = [
+        ("uRateSetLength", ULONG()),
+        ("usRateSet", USHORT__DOT11_RATE_SET_MAX_LENGTH_()),
+    ]
+
+
+class WLAN_BSS_ENTRY(MemStruct):
+    fields = [
+        ("dot11Ssid", DOT11_SSID()),
+        ("uPhyId", ULONG()),
+        ("dot11Bssid", DOT11_MAC_ADDRESS()),
+        ("dot11BssType", DOT11_BSS_TYPE()),
+        ("dot11BssPhyType", DOT11_PHY_TYPE()),
+        ("lRssi", LONG()),
+        ("uLinkQuality", ULONG()),
+        ("bInRegDomain", BOOLEAN()),
+        ("usBeaconPeriod", USHORT()),
+        ("ullTimestamp", ULONGLONG()),
+        ("ullHostTimestamp", ULONGLONG()),
+        ("usCapabilityInformation", USHORT()),
+        ("ulChCenterFrequency", ULONG()),
+        ("wlanRateSet", WLAN_RATE_SET()),
+        ("ulIeOffset", ULONG()),
+        ("ulIeSize", ULONG()),
+    ]
+
+WLAN_BSS_ENTRY__1_ = Array(WLAN_BSS_ENTRY, 1)
+
+class WLAN_BSS_LIST(MemStruct):
+    fields = [
+        ("dwTotalSize", DWORD()),
+        ("dwNumberOfItems", DWORD()),
+        ("wlanBssEntries", WLAN_BSS_ENTRY__1_()),
+    ]
+
+PWLAN_BSS_LIST = Ptr("<I", WLAN_BSS_LIST())
+PWLAN_BSS_LIST_PTR = Ptr("<I", PWLAN_BSS_LIST())
+
+class WLAN_PROFILE_INFO(MemStruct):
+    fields = [
+        ("strProfileName", WCHAR__WLAN_MAX_NAME_LENGTH_()),
+        ("dwFlags", _WlanProfileFlags_()),
+    ]
+
+WLAN_PROFILE_INFO__1_ = Array(WLAN_PROFILE_INFO, 1)
+
+class WLAN_PROFILE_INFO_LIST(MemStruct):
+    fields = [
+        ("dwNumberOfItems", DWORD()),
+        ("dwIndex", DWORD()),
+        ("ProfileInfo", WLAN_PROFILE_INFO__1_()),
+    ]
+
+PWLAN_PROFILE_INFO_LIST = Ptr("<I", WLAN_PROFILE_INFO_LIST())
+PWLAN_PROFILE_INFO_LIST_PTR = Ptr("<I", PWLAN_PROFILE_INFO_LIST())
+WLAN_HOSTED_NETWORK_STATE = UINT
+WLAN_HOSTED_NETWORK_PEER_AUTH_STATE = UINT
+
+class WLAN_HOSTED_NETWORK_PEER_STATE(MemStruct):
+    fields = [
+        ("PeerMacAddress", DOT11_MAC_ADDRESS()),
+        ("PeerAuthState", WLAN_HOSTED_NETWORK_PEER_AUTH_STATE()),
+    ]
+
+WLAN_HOSTED_NETWORK_PEER_STATE__1_ = Array(WLAN_HOSTED_NETWORK_PEER_STATE, 1)
+
+class WLAN_HOSTED_NETWORK_STATUS(MemStruct):
+    fields = [
+        ("HostedNetworkState", WLAN_HOSTED_NETWORK_STATE()),
+        ("IPDeviceID", GUID()),
+        ("wlanHostedNetworkBSSID", DOT11_MAC_ADDRESS()),
+        ("dot11PhyType", DOT11_PHY_TYPE()),
+        ("ulChannelFrequency", ULONG()),
+        ("dwNumberOfPeers", DWORD()),
+        ("PeerList", WLAN_HOSTED_NETWORK_PEER_STATE__1_()),
+    ]
+
+PWLAN_HOSTED_NETWORK_STATUS = Ptr("<I", WLAN_HOSTED_NETWORK_STATUS())
+PWLAN_HOSTED_NETWORK_STATUS_PTR = Ptr("<I", PWLAN_HOSTED_NETWORK_STATUS())
+
+class WLAN_RAW_DATA(MemStruct):
+    fields = [
+        ("dwDataSize", DWORD()),
+        ("DataBlob", BYTE__1_()),
+    ]
+
+const_PWLAN_RAW_DATA = Ptr("<I", WLAN_RAW_DATA())
+WLAN_CONNECTION_MODE = UINT
+_WlanConnectionFlags_ = DWORD
+
+class WLAN_CONNECTION_PARAMETERS(MemStruct):
+    fields = [
+        ("wlanConnectionMode", WLAN_CONNECTION_MODE()),
+        ("strProfile", LPCWSTR()),
+        ("pDot11Ssid", PDOT11_SSID()),
+        ("pDesiredBssidList", PDOT11_BSSID_LIST()),
+        ("dot11BssType", DOT11_BSS_TYPE()),
+        ("dwFlags", _WlanConnectionFlags_()),
+    ]
+
+const_PWLAN_CONNECTION_PARAMETERS = Ptr("<I", WLAN_CONNECTION_PARAMETERS())
+WLAN_OPCODE_VALUE_TYPE = UINT
+PWLAN_OPCODE_VALUE_TYPE = Ptr("<I", WLAN_OPCODE_VALUE_TYPE())
+PWLAN_OPCODE_VALUE_TYPE_PTR = Ptr("<I", PWLAN_OPCODE_VALUE_TYPE())
+WLAN_FILTER_LIST_TYPE = UINT
+WLAN_SECURABLE_OBJECT = UINT
+WLAN_HOSTED_NETWORK_REASON = UINT
+PWLAN_HOSTED_NETWORK_REASON = Ptr("<I", WLAN_HOSTED_NETWORK_REASON())
+WLAN_HOSTED_NETWORK_OPCODE = UINT
+WLAN_IHV_CONTROL_TYPE = UINT
+WLAN_AUTOCONF_OPCODE = UINT
+WLAN_INTF_OPCODE = UINT
+_WlanNotificationSource_ = DWORD
+_WlanNotificationSource_PTR_ = Ptr("<I", _WlanNotificationSource_())
+_WlanAvailableFlags_ = DWORD
+_WlanAccess_ = DWORD
+_WlanAccess_PTR_ = Ptr("<I", _WlanAccess_())
+
+class EAP_TYPE(MemStruct):
+    fields = [
+        ("type", BYTE()),
+        ("dwVendorId", DWORD()),
+        ("dwVendorType", DWORD()),
+    ]
+
+
+class EAP_METHOD_TYPE(MemStruct):
+    fields = [
+        ("eapType", EAP_TYPE()),
+        ("dwAuthorId", DWORD()),
+    ]
+
+
+###################
+
+###### Functions ######
 
 def wlanapi_WlanAllocateMemory(jitter):
     """

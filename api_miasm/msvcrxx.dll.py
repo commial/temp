@@ -1,3 +1,4 @@
+###### Enums ######
 _HFILE = {
     "_CRTDBG_INVALID_HFILE": -1,
     "_CRTDBG_HFILE_ERROR": -2,
@@ -570,6 +571,487 @@ _size_t_INT_MAX_ = {
 _size_t_INT_MAX__INV = {
     0x7FFFFFFF: "INT_MAX",
 }
+
+###################
+
+###### Types ######
+_locale_t = LPVOID
+_CrtMemState_PTR = LPVOID
+const__CrtMemState_PTR = LPVOID
+struct__stati64_PTR = LPVOID
+struct__finddata_t_PTR = LPVOID
+struct__finddatai64_t_PTR = LPVOID
+struct__wfinddata_t_PTR = LPVOID
+struct__wfinddatai64_t_PTR = LPVOID
+unsigned = unsigned_int
+unsigned_PTR = Ptr("<I", unsigned())
+long_int = long
+FILE_PTR = LPVOID
+FILE_PTR_PTR = Ptr("<I", FILE_PTR())
+const_unsigned_char_PTR = Ptr("<I", unsigned_char())
+wint_t = unsigned_short
+_CRT_ALLOC_HOOK = LPVOID
+_CRT_DUMP_CLIENT = LPVOID
+_CRT_REPORT_HOOK = LPVOID
+_CRT_REPORT_HOOKW = LPVOID
+_se_translator_function = LPVOID
+terminate_function = LPVOID
+unexpected_function = LPVOID
+intptr_t = INT_PTR
+__time32_t = long
+__time32_t_PTR = Ptr("<I", __time32_t())
+const___time32_t_PTR = Ptr("<I", __time32_t())
+__time64_t = __int64
+__time64_t_PTR = Ptr("<I", __time64_t())
+const___time64_t_PTR = Ptr("<I", __time64_t())
+wchar = WCHAR
+const_wchar_PTR = Ptr("<I", wchar())
+_PNH = LPVOID
+uintptr_t = UINT_PTR
+_onexit_t = LPVOID
+clock_t = long
+char_PTR_PTR_PTR = Ptr("<I", char_PTR_PTR())
+wchar_t_PTR_PTR_PTR = Ptr("<I", wchar_t_PTR_PTR())
+_PVFV = LPVOID
+_PVFV_PTR = Ptr("<I", _PVFV())
+_PVFV_PTR_PTR = Ptr("<I", _PVFV_PTR())
+mbstate_t = int
+mbstate_t_PTR = Ptr("<I", mbstate_t())
+const_unsigned_short_PTR = Ptr("<I", unsigned_short())
+_HANDLE_MATH_ERROR = LPVOID
+_invalid_parameter_handler = LPVOID
+PEXCEPTION_REGISTRATION = LPVOID
+EHExceptionRecord_PTR = LPVOID
+EHRegistrationNode_PTR = LPVOID
+DispatcherContext_PTR = LPVOID
+_dev_t = unsigned_int
+_ino_t = unsigned_short
+_off_t = long
+_fsize_t = unsigned_long
+fpos_t = __int64
+fpos_t_PTR = Ptr("<I", fpos_t())
+const_fpos_t_PTR = Ptr("<I", fpos_t())
+_purecall_handler = LPVOID
+struct__EXCEPTION_POINTERS_PTR = Ptr("<I", EXCEPTION_POINTERS())
+wchar_t__260_ = Array(wchar_t, 260)
+unsigned_char_10_ = Array(unsigned_char, 10)
+_HFILE = void_PTR
+errno_t = int
+
+class struct__diskfree_t(MemStruct):
+    fields = [
+        ("total_clusters", unsigned()),
+        ("avail_clusters", unsigned()),
+        ("sectors_per_cluster", unsigned()),
+        ("bytes_per_sector", unsigned()),
+    ]
+
+struct__diskfree_t_PTR = Ptr("<I", struct__diskfree_t())
+
+class _startupinfo(MemStruct):
+    fields = [
+        ("newmode", int()),
+    ]
+
+_startupinfo_PTR = Ptr("<I", _startupinfo())
+EXCEPTION_DISPOSITION = UINT
+_SIGNAL_ = int
+_SIGNAL_FUNC_ = LPVOID
+_C_APP_TYPE_ = int
+_ST_MODE_ = unsigned_short
+
+class struct__stat(MemStruct):
+    fields = [
+        ("st_dev", _dev_t()),
+        ("st_ino", _ino_t()),
+        ("st_mode", _ST_MODE_()),
+        ("st_nlink", short()),
+        ("st_uid", short()),
+        ("st_gid", short()),
+        ("st_rdev", _dev_t()),
+        ("st_size", _off_t()),
+        ("st_atime", time_t()),
+        ("st_mtime", time_t()),
+        ("st_ctime", time_t()),
+    ]
+
+struct__stat_PTR = Ptr("<I", struct__stat())
+
+class struct__stat32(MemStruct):
+    fields = [
+        ("st_dev", _dev_t()),
+        ("st_ino", _ino_t()),
+        ("st_mode", _ST_MODE_()),
+        ("st_nlink", short()),
+        ("st_uid", short()),
+        ("st_gid", short()),
+        ("st_rdev", _dev_t()),
+        ("st_size", _off_t()),
+        ("st_atime", __time32_t()),
+        ("st_mtime", __time32_t()),
+        ("st_ctime", __time32_t()),
+    ]
+
+struct__stat32_PTR = Ptr("<I", struct__stat32())
+
+class struct__stat64(MemStruct):
+    fields = [
+        ("st_dev", _dev_t()),
+        ("st_ino", _ino_t()),
+        ("st_mode", _ST_MODE_()),
+        ("st_nlink", short()),
+        ("st_uid", short()),
+        ("st_gid", short()),
+        ("st_rdev", _dev_t()),
+        ("st_size", __int64()),
+        ("st_atime", __time64_t()),
+        ("st_mtime", __time64_t()),
+        ("st_ctime", __time64_t()),
+    ]
+
+struct__stat64_PTR = Ptr("<I", struct__stat64())
+
+class struct__stat32i64(MemStruct):
+    fields = [
+        ("st_dev", _dev_t()),
+        ("st_ino", _ino_t()),
+        ("st_mode", _ST_MODE_()),
+        ("st_nlink", short()),
+        ("st_uid", short()),
+        ("st_gid", short()),
+        ("st_rdev", _dev_t()),
+        ("st_size", __int64()),
+        ("st_atime", __time32_t()),
+        ("st_mtime", __time32_t()),
+        ("st_ctime", __time32_t()),
+    ]
+
+struct__stat32i64_PTR = Ptr("<I", struct__stat32i64())
+
+class struct__stat64i32(MemStruct):
+    fields = [
+        ("st_dev", _dev_t()),
+        ("st_ino", _ino_t()),
+        ("st_mode", _ST_MODE_()),
+        ("st_nlink", short()),
+        ("st_uid", short()),
+        ("st_gid", short()),
+        ("st_rdev", _dev_t()),
+        ("st_size", _off_t()),
+        ("st_atime", __time64_t()),
+        ("st_mtime", __time64_t()),
+        ("st_ctime", __time64_t()),
+    ]
+
+struct__stat64i32_PTR = Ptr("<I", struct__stat64i32())
+
+class struct__complex(MemStruct):
+    fields = [
+        ("x", double()),
+        ("y", double()),
+    ]
+
+
+class _CRT_DOUBLE(MemStruct):
+    fields = [
+        ("x", double()),
+    ]
+
+_CRT_DOUBLE_PTR = Ptr("<I", _CRT_DOUBLE())
+
+class _CRT_FLOAT(MemStruct):
+    fields = [
+        ("f", float()),
+    ]
+
+_CRT_FLOAT_PTR = Ptr("<I", _CRT_FLOAT())
+
+class struct_tm(MemStruct):
+    fields = [
+        ("tm_sec", int()),
+        ("tm_min", int()),
+        ("tm_hour", int()),
+        ("tm_mday", int()),
+        ("tm_mon", int()),
+        ("tm_year", int()),
+        ("tm_wday", int()),
+        ("tm_yday", int()),
+        ("tm_isdst", int()),
+    ]
+
+struct_tm_PTR = Ptr("<I", struct_tm())
+const_struct_tm_PTR = Ptr("<I", struct_tm())
+_HEAP_RESULT_ = int
+_HEAP_USE_FLAG_ = int
+
+class _HEAPINFO(MemStruct):
+    fields = [
+        ("_pentry", int_PTR()),
+        ("_size", size_t()),
+        ("_useflag", _HEAP_USE_FLAG_()),
+    ]
+
+_HEAPINFO_PTR = Ptr("<I", _HEAPINFO())
+
+class struct__timeb(MemStruct):
+    fields = [
+        ("time", time_t()),
+        ("millitm", unsigned_short()),
+        ("timezone", short()),
+        ("dstflag", short()),
+    ]
+
+struct__timeb_PTR = Ptr("<I", struct__timeb())
+
+class struct___timeb32(MemStruct):
+    fields = [
+        ("time", __time32_t()),
+        ("millitm", unsigned_short()),
+        ("timezone", short()),
+        ("dstflag", short()),
+    ]
+
+struct___timeb32_PTR = Ptr("<I", struct___timeb32())
+
+class struct___timeb64(MemStruct):
+    fields = [
+        ("time", __time64_t()),
+        ("millitm", unsigned_short()),
+        ("timezone", short()),
+        ("dstflag", short()),
+    ]
+
+struct___timeb64_PTR = Ptr("<I", struct___timeb64())
+
+class struct__utimbuf(MemStruct):
+    fields = [
+        ("actime", time_t()),
+        ("modtime", time_t()),
+    ]
+
+struct__utimbuf_PTR = Ptr("<I", struct__utimbuf())
+
+class struct___utimbuf32(MemStruct):
+    fields = [
+        ("actime", __time32_t()),
+        ("modtime", __time32_t()),
+    ]
+
+struct___utimbuf32_PTR = Ptr("<I", struct___utimbuf32())
+
+class struct___utimbuf64(MemStruct):
+    fields = [
+        ("actime", __time64_t()),
+        ("modtime", __time64_t()),
+    ]
+
+struct___utimbuf64_PTR = Ptr("<I", struct___utimbuf64())
+_FINDDATA_ATTRIB_ = unsigned
+
+class struct__finddata32_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time32_t()),
+        ("time_access", __time32_t()),
+        ("time_write", __time32_t()),
+        ("size", _fsize_t()),
+        ("name", char__260_()),
+    ]
+
+struct__finddata32_t_PTR = Ptr("<I", struct__finddata32_t())
+
+class struct__finddata32i64_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time32_t()),
+        ("time_access", __time32_t()),
+        ("time_write", __time32_t()),
+        ("size", __int64()),
+        ("name", char__260_()),
+    ]
+
+struct__finddata32i64_t_PTR = Ptr("<I", struct__finddata32i64_t())
+
+class struct__finddata64i32_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time64_t()),
+        ("time_access", __time64_t()),
+        ("time_write", __time64_t()),
+        ("size", _fsize_t()),
+        ("name", char__260_()),
+    ]
+
+struct__finddata64i32_t_PTR = Ptr("<I", struct__finddata64i32_t())
+
+class struct___finddata64_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time64_t()),
+        ("time_access", __time64_t()),
+        ("time_write", __time64_t()),
+        ("size", __int64()),
+        ("name", char__260_()),
+    ]
+
+struct___finddata64_t_PTR = Ptr("<I", struct___finddata64_t())
+
+class struct__wfinddata32_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time32_t()),
+        ("time_access", __time32_t()),
+        ("time_write", __time32_t()),
+        ("size", _fsize_t()),
+        ("name", wchar_t__260_()),
+    ]
+
+struct__wfinddata32_t_PTR = Ptr("<I", struct__wfinddata32_t())
+
+class struct__wfinddata32i64_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time32_t()),
+        ("time_access", __time32_t()),
+        ("time_write", __time32_t()),
+        ("size", __int64()),
+        ("name", wchar_t__260_()),
+    ]
+
+struct__wfinddata32i64_t_PTR = Ptr("<I", struct__wfinddata32i64_t())
+
+class struct__wfinddata64i32_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time64_t()),
+        ("time_access", __time64_t()),
+        ("time_write", __time64_t()),
+        ("size", _fsize_t()),
+        ("name", wchar_t__260_()),
+    ]
+
+struct__wfinddata64i32_t_PTR = Ptr("<I", struct__wfinddata64i32_t())
+
+class struct__wfinddata64_t(MemStruct):
+    fields = [
+        ("attrib", _FINDDATA_ATTRIB_()),
+        ("time_create", __time64_t()),
+        ("time_access", __time64_t()),
+        ("time_write", __time64_t()),
+        ("size", __int64()),
+        ("name", wchar_t__260_()),
+    ]
+
+struct__wfinddata64_t_PTR = Ptr("<I", struct__wfinddata64_t())
+wctype_t = unsigned_short
+_ctype_t = wctype_t
+_exception_type_ = int
+
+class struct__exception(MemStruct):
+    fields = [
+        ("type", _exception_type_()),
+        ("name", char_PTR()),
+        ("arg1", double()),
+        ("arg2", double()),
+        ("retval", double()),
+    ]
+
+struct__exception_PTR = Ptr("<I", struct__exception())
+
+class div_t(MemStruct):
+    fields = [
+        ("quot", int()),
+        ("rem", int()),
+    ]
+
+
+class ldiv_t(MemStruct):
+    fields = [
+        ("quot", long()),
+        ("rem", long()),
+    ]
+
+
+class _LDOUBLE(MemStruct):
+    fields = [
+        ("ld", unsigned_char_10_()),
+    ]
+
+_LDOUBLE_PTR = Ptr("<I", _LDOUBLE())
+_lconv_val_ = UINT8
+
+class struct_lconv(MemStruct):
+    fields = [
+        ("decimal_point", char_PTR()),
+        ("thousands_sep", char_PTR()),
+        ("grouping", char_PTR()),
+        ("int_curr_symbol", char_PTR()),
+        ("currency_symbol", char_PTR()),
+        ("mon_decimal_point", char_PTR()),
+        ("mon_thousands_sep", char_PTR()),
+        ("mon_grouping", char_PTR()),
+        ("positive_sign", char_PTR()),
+        ("negative_sign", char_PTR()),
+        ("int_frac_digits", _lconv_val_()),
+        ("frac_digits", _lconv_val_()),
+        ("p_cs_precedes", _lconv_val_()),
+        ("p_sep_by_space", _lconv_val_()),
+        ("n_cs_precedes", _lconv_val_()),
+        ("n_sep_by_space", _lconv_val_()),
+        ("p_sign_posn", _lconv_val_()),
+        ("n_sign_posn", _lconv_val_()),
+        ("_W_decimal_point", wchar_t_PTR()),
+        ("_W_thousands_sep", wchar_t_PTR()),
+        ("_W_int_curr_symbol", wchar_t_PTR()),
+        ("_W_currency_symbol", wchar_t_PTR()),
+        ("_W_mon_decimal_point", wchar_t_PTR()),
+        ("_W_mon_thousands_sep", wchar_t_PTR()),
+        ("_W_positive_sign", wchar_t_PTR()),
+        ("_W_negative_sign", wchar_t_PTR()),
+    ]
+
+struct_lconv_PTR = Ptr("<I", struct_lconv())
+_LOCK_NUM_ = int
+_output_format_ = unsigned_int
+_compare_function_ = LPVOID
+_compare_s_function_ = LPVOID
+_open_flag_ = unsigned_int
+_share_flag_ = unsigned_int
+_perm_mode_ = unsigned_int
+_perm_mode_PTR_ = Ptr("<I", _perm_mode_())
+_byte_type_ = int
+_CRT_REPORT_TYPE_ = int
+_CRTDBG_FLAG_ = unsigned_int
+_CRT_RPTHOOK_MODE_ = int
+_CRTDBG_MODE_ = unsigned_int
+_DBG_BLOCK_TYPE_ = int
+_set_error_mode_ = int
+_disposition_type_ = int
+_xcpt_num_ = unsigned_long
+_xcpt_action_ = int
+__LK_MODE_ = int
+__SW_FLOAT_ = unsigned_int
+_control_bits_ = unsigned_int
+_control_mask_ = unsigned_int
+__FPCLASS_ = unsigned_int
+_file_translation_mode_ = int
+_file_translation_mode_PTR_ = Ptr("<I", _file_translation_mode_())
+_RET_EOF_ = int
+_RET_WEOF_ = wint_t
+_RET_WEOF_INT_ = int
+_buffer_mode_ = int
+_locale_category_ = int
+_thread_locale_type_ = int
+__MB_CP_TYPE_ = int
+_thread_initflag_ = unsigned
+_spawn_mode_ = int
+__NLSCMPERROR_ = int
+_size_t_INT_MAX_ = size_t
+_abort_flag_ = unsigned_int
+
+###################
+
+###### Functions ######
 
 def msvcrxx__memccpy(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 SECURITY_LOGON_TYPE = {
     "UndefinedLogonType": 0,
     "Interactive": 2,
@@ -202,6 +203,123 @@ _SecContextAttr__INV = {
     0x66: "SECPKG_ATTR_SUPPORTED_SIGNATURES",
     128: "SECPKG_ATTR_SUBJECT_SECURITY_ATTRIBUTES",
 }
+
+###################
+
+###### Types ######
+SEC_CHAR_PTR = CHAR_PTR
+SEC_WCHAR_PTR = WCHAR_PTR
+SEC_TCHAR_PTR = TCHAR_PTR
+void_SEC_FAR_PTR = LPVOID
+SECURITY_STRING = UNICODE_STRING
+PSECURITY_STRING = Ptr("<I", SECURITY_STRING())
+LSA_STRING = STRING
+PLSA_STRING = Ptr("<I", LSA_STRING())
+TimeStamp = LARGE_INTEGER
+PTimeStamp = Ptr("<I", TimeStamp())
+SEC_GET_KEY_FN = LPVOID
+PSecurityFunctionTable = LPVOID
+SECURITY_LOGON_TYPE = DWORD
+
+class LSA_LAST_INTER_LOGON_INFO(MemStruct):
+    fields = [
+        ("LastSuccessfulLogon", LARGE_INTEGER()),
+        ("LastFailedLogon", LARGE_INTEGER()),
+        ("FailedAttemptCountSinceLastSuccessfulLogon", ULONG()),
+    ]
+
+
+class SECURITY_LOGON_SESSION_DATA(MemStruct):
+    fields = [
+        ("Size", ULONG()),
+        ("LogonId", LUID()),
+        ("UserName", LSA_UNICODE_STRING()),
+        ("LogonDomain", LSA_UNICODE_STRING()),
+        ("AuthenticationPackage", LSA_UNICODE_STRING()),
+        ("LogonType", SECURITY_LOGON_TYPE()),
+        ("Session", ULONG()),
+        ("Sid", PSID()),
+        ("LogonTime", LARGE_INTEGER()),
+        ("LogonServer", LSA_UNICODE_STRING()),
+        ("DnsDomainName", LSA_UNICODE_STRING()),
+        ("Upn", LSA_UNICODE_STRING()),
+        ("UserFlags", ULONG()),
+        ("LastLogonInfo", LSA_LAST_INTER_LOGON_INFO()),
+        ("LogonScript", LSA_UNICODE_STRING()),
+        ("ProfilePath", LSA_UNICODE_STRING()),
+        ("HomeDirectory", LSA_UNICODE_STRING()),
+        ("HomeDirectoryDrive", LSA_UNICODE_STRING()),
+        ("LogoffTime", LARGE_INTEGER()),
+        ("KickOffTime", LARGE_INTEGER()),
+        ("PasswordLastSet", LARGE_INTEGER()),
+        ("PasswordCanChange", LARGE_INTEGER()),
+        ("PasswordMustChange", LARGE_INTEGER()),
+    ]
+
+PSECURITY_LOGON_SESSION_DATA = Ptr("<I", SECURITY_LOGON_SESSION_DATA())
+PSECURITY_LOGON_SESSION_DATA_PTR = Ptr("<I", PSECURITY_LOGON_SESSION_DATA())
+
+class SecPkgInfo(MemStruct):
+    fields = [
+        ("fCapabilities", unsigned_long()),
+        ("wVersion", unsigned_short()),
+        ("wRPCID", unsigned_short()),
+        ("cbMaxToken", unsigned_long()),
+        ("Name", SEC_TCHAR_PTR()),
+        ("Comment", SEC_TCHAR_PTR()),
+    ]
+
+PSecPkgInfo = Ptr("<I", SecPkgInfo())
+PSecPkgInfo_PTR = Ptr("<I", PSecPkgInfo())
+
+class SecBuffer(MemStruct):
+    fields = [
+        ("cbBuffer", unsigned_long()),
+        ("BufferType", unsigned_long()),
+        ("pvBuffer", void_SEC_FAR_PTR()),
+    ]
+
+PSecBuffer = Ptr("<I", SecBuffer())
+CredHandle = SecHandle
+PCredHandle = Ptr("<I", CredHandle())
+
+class SecBufferDesc(MemStruct):
+    fields = [
+        ("ulVersion", unsigned_long()),
+        ("cBuffers", unsigned_long()),
+        ("pBuffers", PSecBuffer()),
+    ]
+
+PSecBufferDesc = Ptr("<I", SecBufferDesc())
+
+class SECURITY_PACKAGE_OPTIONS(MemStruct):
+    fields = [
+        ("Size", unsigned_long()),
+        ("Type", unsigned_long()),
+        ("Flags", unsigned_long()),
+        ("SignatureSize", unsigned_long()),
+        ("Signature", void_PTR()),
+    ]
+
+PSECURITY_PACKAGE_OPTIONS = Ptr("<I", SECURITY_PACKAGE_OPTIONS())
+EXTENDED_NAME_FORMAT = UINT
+POLICY_NOTIFICATION_INFORMATION_CLASS = UINT
+LSA_OPERATIONAL_MODE = ULONG
+PLSA_OPERATIONAL_MODE = Ptr("<I", LSA_OPERATIONAL_MODE())
+_SecCredentialUse_ = DWORD
+_InitializeSecurityContextRequestFlags_ = unsigned_long
+_InitializeSecurityContextRetFlags_ = ULONG
+_InitializeSecurityContextRetFlags_PTR_ = Ptr("<I", _InitializeSecurityContextRetFlags_())
+_InitializeSecurityContextRetFlags-unsigned-long_ = Ptr("<I", _InitializeSecurityContextRetFlags_())
+_InitializeSecurityContextRetFlags-unsigned-long_PTR_ = Ptr("<I", _InitializeSecurityContextRetFlags-unsigned-long_())
+_AcceptSecurityContextRequestFlags_ = unsigned_long
+_AcceptSecurityContextRetFlags_ = unsigned_long
+_AcceptSecurityContextRetFlags_PTR_ = Ptr("<I", _AcceptSecurityContextRetFlags_())
+_SecContextAttr_ = ULONG
+
+###################
+
+###### Functions ######
 
 def secur32_GetComputerObjectName(jitter, get_str, set_str):
     """

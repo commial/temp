@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def comdlg32_ChooseColor(jitter, get_str, set_str):
     """

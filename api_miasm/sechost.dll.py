@@ -1,3 +1,4 @@
+###### Enums ######
 LSA_LOOKUP_DOMAIN_INFO_CLASS = {
     "AccountDomainInformation": 5,
     "DnsDomainInformation": 12,
@@ -6,6 +7,17 @@ LSA_LOOKUP_DOMAIN_INFO_CLASS_INV = {
     5: "AccountDomainInformation",
     12: "DnsDomainInformation",
 }
+
+###################
+
+###### Types ######
+LSA_LOOKUP_HANDLE = PVOID
+PLSA_LOOKUP_HANDLE = Ptr("<I", LSA_LOOKUP_HANDLE())
+LSA_LOOKUP_DOMAIN_INFO_CLASS = UINT
+
+###################
+
+###### Functions ######
 
 def sechost_LookupAccountNameLocal(jitter, get_str, set_str):
     """

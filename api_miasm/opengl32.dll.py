@@ -1,3 +1,62 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+HGLRC = HANDLE
+PROC = LPVOID
+
+class LAYERPLANEDESCRIPTOR(MemStruct):
+    fields = [
+        ("nSize", WORD()),
+        ("nVersion", WORD()),
+        ("dwFlags", DWORD()),
+        ("iPixelType", BYTE()),
+        ("cColorBits", BYTE()),
+        ("cRedBits", BYTE()),
+        ("cRedShift", BYTE()),
+        ("cGreenBits", BYTE()),
+        ("cGreenShift", BYTE()),
+        ("cBlueBits", BYTE()),
+        ("cBlueShift", BYTE()),
+        ("cAlphaBits", BYTE()),
+        ("cAlphaShift", BYTE()),
+        ("cAccumBits", BYTE()),
+        ("cAccumRedBits", BYTE()),
+        ("cAccumGreenBits", BYTE()),
+        ("cAccumBlueBits", BYTE()),
+        ("cAccumAlphaBits", BYTE()),
+        ("cDepthBits", BYTE()),
+        ("cStencilBits", BYTE()),
+        ("cAuxBuffers", BYTE()),
+        ("iLayerPlane", BYTE()),
+        ("bReserved", BYTE()),
+        ("crTransparent", COLORREF()),
+    ]
+
+LPLAYERPLANEDESCRIPTOR = Ptr("<I", LAYERPLANEDESCRIPTOR())
+
+class POINTFLOAT(MemStruct):
+    fields = [
+        ("x", FLOAT()),
+        ("y", FLOAT()),
+    ]
+
+
+class GLYPHMETRICSFLOAT(MemStruct):
+    fields = [
+        ("gmfBlackBoxX", FLOAT()),
+        ("gmfBlackBoxY", FLOAT()),
+        ("gmfptGlyphOrigin", POINTFLOAT()),
+        ("gmfCellIncX", FLOAT()),
+        ("gmfCellIncY", FLOAT()),
+    ]
+
+LPGLYPHMETRICSFLOAT = Ptr("<I", GLYPHMETRICSFLOAT())
+
+###################
+
+###### Functions ######
 
 def opengl32_wglCreateContext(jitter):
     """

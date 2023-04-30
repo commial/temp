@@ -1,3 +1,4 @@
+###### Enums ######
 _INPUT_Type_ = {
     "INPUT_MOUSE": 0,
     "INPUT_KEYBOARD": 1,
@@ -1124,6 +1125,863 @@ _MSGFLT_ACTION__INV = {
     1: "MSGFLT_ALLOW",
     2: "MSGFLT_DISALLOW",
 }
+
+###################
+
+###### Types ######
+PMENUBARINFO = LPVOID
+WNDPROC = LPVOID
+MSGBOXCALLBACK = LPVOID
+HDESK = HANDLE
+SENDASYNCPROC = LPVOID
+WNDENUMPROC = LPVOID
+HDEVNOTIFY = PVOID
+HCONV = HANDLE
+HDDEDATA = HANDLE
+HSZ = HANDLE
+HCONVLIST = HANDLE
+PFNCALLBACK = LPVOID
+HHOOK = HANDLE
+HOOKPROC = LPVOID
+CONST_MENUTEMPLATE_PTR = LPVOID
+MONITORENUMPROC = LPVOID
+DRAWSTATEPROC = LPVOID
+GRAYSTRINGPROC = LPVOID
+HRAWINPUT = HANDLE
+TIMERPROC = LPVOID
+PROPENUMPROC = LPVOID
+PROPENUMPROCEX = LPVOID
+WINSTAENUMPROC = LPVOID
+DESKTOPENUMPROC = LPVOID
+WINEVENTPROC = LPVOID
+HWINSTA = HANDLE
+HWINEVENTHOOK = HANDLE
+HTOUCHINPUT = HANDLE
+HGESTUREINFO = HANDLE
+HINTERACTIONCONTEXT = HANDLE
+HINTERACTIONCONTEXT_PTR = Ptr("<I", HINTERACTIONCONTEXT())
+INTERACTION_CONTEXT_OUTPUT_CALLBACK = LPVOID
+PDEVICE_NOTIFY_CALLBACK_ROUTINE = LPVOID
+DWORD__CCHILDREN_TITLEBAR_+_1_ = Array(DWORD, 6)
+DWORD__CCHILDREN_SCROLLBAR_+_1_ = Array(DWORD, 6)
+BYTE__32_ = Array(BYTE, 32)
+WCHAR__POINTER_DEVICE_PRODUCT_STRING_MAX_ = Array(WCHAR, 520)
+
+class TITLEBARINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("rcTitleBar", RECT()),
+        ("rgstate", DWORD__CCHILDREN_TITLEBAR_+_1_()),
+    ]
+
+PTITLEBARINFO = Ptr("<I", TITLEBARINFO())
+_DISPLAY_DEVICE_STATE_ = DWORD
+
+class DISPLAY_DEVICE(MemStruct):
+    fields = [
+        ("cb", DWORD()),
+        ("DeviceName", TCHAR__32_()),
+        ("DeviceString", TCHAR__128_()),
+        ("StateFlags", _DISPLAY_DEVICE_STATE_()),
+        ("DeviceID", TCHAR__128_()),
+        ("DeviceKey", TCHAR__128_()),
+    ]
+
+PDISPLAY_DEVICE = Ptr("<I", DISPLAY_DEVICE())
+
+class ICONINFOEX(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("fIcon", BOOL()),
+        ("xHotspot", DWORD()),
+        ("yHotspot", DWORD()),
+        ("hbmMask", HBITMAP()),
+        ("hbmColor", HBITMAP()),
+        ("wResID", WORD()),
+        ("szModName", TCHAR__MAX_PATH_()),
+        ("szResName", TCHAR__MAX_PATH_()),
+    ]
+
+PICONINFOEX = Ptr("<I", ICONINFOEX())
+
+class PAINTSTRUCT(MemStruct):
+    fields = [
+        ("hdc", HDC()),
+        ("fErase", BOOL()),
+        ("rcPaint", RECT()),
+        ("fRestore", BOOL()),
+        ("fIncUpdate", BOOL()),
+        ("rgbReserved", BYTE__32_()),
+    ]
+
+LPPAINTSTRUCT = Ptr("<I", PAINTSTRUCT())
+const_PAINTSTRUCT_PTR = Ptr("<I", PAINTSTRUCT())
+
+class SCROLLBARINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("rcScrollBar", RECT()),
+        ("dxyLineButton", int()),
+        ("xyThumbTop", int()),
+        ("xyThumbBottom", int()),
+        ("reserved", int()),
+        ("rgstate", DWORD__CCHILDREN_SCROLLBAR_+_1_()),
+    ]
+
+PSCROLLBARINFO = Ptr("<I", SCROLLBARINFO())
+_MOUSEINPUT_Data_ = DWORD
+_MOUSEEVENTF_ = DWORD
+
+class MOUSEINPUT(MemStruct):
+    fields = [
+        ("dx", LONG()),
+        ("dy", LONG()),
+        ("mouseData", _MOUSEINPUT_Data_()),
+        ("dwFlags", _MOUSEEVENTF_()),
+        ("time", DWORD()),
+        ("dwExtraInfo", ULONG_PTR()),
+    ]
+
+_KEYEVENTF_ = DWORD
+
+class KEYBDINPUT(MemStruct):
+    fields = [
+        ("wVk", _VirtKeyCode_()),
+        ("wScan", WORD()),
+        ("dwFlags", _KEYEVENTF_()),
+        ("time", DWORD()),
+        ("dwExtraInfo", ULONG_PTR()),
+    ]
+
+
+class HARDWAREINPUT(MemStruct):
+    fields = [
+        ("uMsg", DWORD()),
+        ("wParamL", WORD()),
+        ("wParamH", WORD()),
+    ]
+
+_INPUT_u_ = Union([
+    ("mi", MOUSEINPUT),
+    ("ki", KEYBDINPUT),
+    ("hi", HARDWAREINPUT),
+])
+_INPUT_Type_ = DWORD
+
+class INPUT(MemStruct):
+    fields = [
+        ("type", _INPUT_Type_()),
+        (None, _INPUT_u_()),
+    ]
+
+LPINPUT = Ptr("<I", INPUT())
+_WindowStyle_ = DWORD
+_WindowExStyle_ = DWORD
+_DialogStyle_ = DWORD
+
+class DLGTEMPLATE(MemStruct):
+    fields = [
+        ("style", _DialogStyle_()),
+        ("dwExtendedStyle", _WindowExStyle_()),
+        ("cdit", WORD()),
+        ("x", short()),
+        ("y", short()),
+        ("cx", short()),
+        ("cy", short()),
+    ]
+
+LPCDLGTEMPLATE = Ptr("<I", DLGTEMPLATE())
+
+class MSGBOXPARAMS(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("hwndOwner", HWND()),
+        ("hInstance", HINSTANCE()),
+        ("lpszText", LPCTSTR()),
+        ("lpszCaption", LPCTSTR()),
+        ("dwStyle", DWORD()),
+        ("lpszIcon", LPCTSTR()),
+        ("dwContextHelpId", DWORD_PTR()),
+        ("lpfnMsgBoxCallback", MSGBOXCALLBACK()),
+        ("dwLanguageId", DWORD()),
+    ]
+
+const_LPMSGBOXPARAMS = Ptr("<I", MSGBOXPARAMS())
+
+class BSMINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("hdesk", HDESK()),
+        ("hwnd", HWND()),
+        ("luid", LUID()),
+    ]
+
+PBSMINFO = Ptr("<I", BSMINFO())
+_MSGFLTINFO_ = DWORD
+
+class CHANGEFILTERSTRUCT(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("ExtStatus", _MSGFLTINFO_()),
+    ]
+
+PCHANGEFILTERSTRUCT = Ptr("<I", CHANGEFILTERSTRUCT())
+
+class ALTTABINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("cItems", int()),
+        ("cColumns", int()),
+        ("cRows", int()),
+        ("iColFocus", int()),
+        ("iRowFocus", int()),
+        ("cxItem", int()),
+        ("cyItem", int()),
+        ("ptStart", POINT()),
+    ]
+
+PALTTABINFO = Ptr("<I", ALTTABINFO())
+_GUITHREADINFO_Flags_ = DWORD
+
+class GUITHREADINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("flags", _GUITHREADINFO_Flags_()),
+        ("hwndActive", HWND()),
+        ("hwndFocus", HWND()),
+        ("hwndCapture", HWND()),
+        ("hwndMenuOwner", HWND()),
+        ("hwndMoveSize", HWND()),
+        ("hwndCaret", HWND()),
+        ("rcCaret", RECT()),
+    ]
+
+LPGUITHREADINFO = Ptr("<I", GUITHREADINFO())
+
+class WINDOWINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("rcWindow", RECT()),
+        ("rcClient", RECT()),
+        ("dwStyle", _WindowStyle_()),
+        ("dwExStyle", _WindowExStyle_()),
+        ("dwWindowStatus", DWORD()),
+        ("cxWindowBorders", UINT()),
+        ("cyWindowBorders", UINT()),
+        ("atomWindowType", ATOM()),
+        ("wCreatorVersion", WORD()),
+    ]
+
+PWINDOWINFO = Ptr("<I", WINDOWINFO())
+_WPF_Flags_ = UINT
+
+class WINDOWPLACEMENT(MemStruct):
+    fields = [
+        ("length", UINT()),
+        ("flags", _WPF_Flags_()),
+        ("showCmd", UINT()),
+        ("ptMinPosition", POINT()),
+        ("ptMaxPosition", POINT()),
+        ("rcNormalPosition", RECT()),
+    ]
+
+WINDOWPLACEMENT_PTR = Ptr("<I", WINDOWPLACEMENT())
+
+class UPDATELAYEREDWINDOWINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hdcDst", HDC()),
+        ("pptDst", const_POINT_PTR()),
+        ("psize", const_SIZE_PTR()),
+        ("hdcSrc", HDC()),
+        ("pptSrc", const_POINT_PTR()),
+        ("crKey", COLORREF()),
+        ("pblend", const_BLENDFUNCTION_PTR()),
+        ("dwFlags", DWORD()),
+        ("prcDirty", const_RECT_PTR()),
+    ]
+
+const_UPDATELAYEREDWINDOWINFO_PTR = Ptr("<I", UPDATELAYEREDWINDOWINFO())
+
+class COMBOBOXINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("rcItem", RECT()),
+        ("rcButton", RECT()),
+        ("stateButton", DWORD()),
+        ("hwndCombo", HWND()),
+        ("hwndItem", HWND()),
+        ("hwndList", HWND()),
+    ]
+
+PCOMBOBOXINFO = Ptr("<I", COMBOBOXINFO())
+_CursorFlags_ = DWORD
+
+class CURSORINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("flags", _CursorFlags_()),
+        ("hCursor", HCURSOR()),
+        ("ptScreenPos", POINT()),
+    ]
+
+PCURSORINFO = Ptr("<I", CURSORINFO())
+
+class CONVCONTEXT(MemStruct):
+    fields = [
+        ("cb", UINT()),
+        ("wFlags", UINT()),
+        ("wCountryID", UINT()),
+        ("iCodePage", _CODE_PAGE|int_()),
+        ("dwLangID", DWORD()),
+        ("dwSecurity", DWORD()),
+        ("qos", SECURITY_QUALITY_OF_SERVICE()),
+    ]
+
+PCONVCONTEXT = Ptr("<I", CONVCONTEXT())
+_CONVINFO_XTYP_ = UINT
+_CONVINFO_STATUS_ = UINT
+_CONVINFO_STATE_ = UINT
+
+class CONVINFO(MemStruct):
+    fields = [
+        ("cb", DWORD()),
+        ("hUser", DWORD_PTR()),
+        ("hConvPartner", HCONV()),
+        ("hszSvcPartner", HSZ()),
+        ("hszServiceReq", HSZ()),
+        ("hszTopic", HSZ()),
+        ("hszItem", HSZ()),
+        ("wFmt", UINT()),
+        ("wType", _CONVINFO_XTYP_()),
+        ("wStatus", _CONVINFO_STATUS_()),
+        ("wConvst", _CONVINFO_STATE_()),
+        ("wLastError", UINT()),
+        ("hConvList", HCONVLIST()),
+        ("ConvCtxt", CONVCONTEXT()),
+        ("hwnd", HWND()),
+        ("hwndPartner", HWND()),
+    ]
+
+PCONVINFO = Ptr("<I", CONVINFO())
+_FLASHWINFO_Flags_ = DWORD
+
+class FLASHWINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("hwnd", HWND()),
+        ("dwFlags", _FLASHWINFO_Flags_()),
+        ("uCount", UINT()),
+        ("dwTimeout", DWORD()),
+    ]
+
+PFLASHWINFO = Ptr("<I", FLASHWINFO())
+
+class ICONINFO(MemStruct):
+    fields = [
+        ("fIcon", BOOL()),
+        ("xHotspot", DWORD()),
+        ("yHotspot", DWORD()),
+        ("hbmMask", HBITMAP()),
+        ("hbmColor", HBITMAP()),
+    ]
+
+PICONINFO = Ptr("<I", ICONINFO())
+_ACCEL_Flags_ = BYTE
+
+class ACCEL(MemStruct):
+    fields = [
+        ("fVirt", _ACCEL_Flags_()),
+        ("key", _VirtKeyCode_()),
+        ("cmd", WORD()),
+    ]
+
+LPACCEL = Ptr("<I", ACCEL())
+
+class LASTINPUTINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("dwTime", DWORD()),
+    ]
+
+PLASTINPUTINFO = Ptr("<I", LASTINPUTINFO())
+_MENUINFO_Mask_ = DWORD
+_MENUINFO_Style_ = DWORD
+
+class MENUINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("fMask", _MENUINFO_Mask_()),
+        ("dwStyle", _MENUINFO_Style_()),
+        ("cyMax", UINT()),
+        ("hbrBack", HBRUSH()),
+        ("dwContextHelpID", DWORD()),
+        ("dwMenuData", ULONG_PTR()),
+    ]
+
+LPCMENUINFO = Ptr("<I", MENUINFO())
+_MENUITEMINFO_MASK_ = UINT
+_MENUITEM_TYPE_ = UINT
+_MENUITEM_STATE_ = UINT
+_HBMMENU_ = HBITMAP
+
+class MENUITEMINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("fMask", _MENUITEMINFO_MASK_()),
+        ("fType", _MENUITEM_TYPE_()),
+        ("fState", _MENUITEM_STATE_()),
+        ("wID", UINT()),
+        ("hSubMenu", HMENU()),
+        ("hbmpChecked", HBITMAP()),
+        ("hbmpUnchecked", HBITMAP()),
+        ("dwItemData", ULONG_PTR()),
+        ("dwTypeData", LPTSTR()),
+        ("cch", UINT()),
+        ("hbmpItem", _HBMMENU_()),
+    ]
+
+LPMENUITEMINFO = Ptr("<I", MENUITEMINFO())
+LPCMENUITEMINFO = Ptr("<I", MENUITEMINFO())
+
+class TPMPARAMS(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("rcExclude", RECT()),
+    ]
+
+LPTPMPARAMS = Ptr("<I", TPMPARAMS())
+
+class MOUSEMOVEPOINT(MemStruct):
+    fields = [
+        ("x", int()),
+        ("y", int()),
+        ("time", DWORD()),
+        ("dwExtraInfo", ULONG_PTR()),
+    ]
+
+LPMOUSEMOVEPOINT = Ptr("<I", MOUSEMOVEPOINT())
+
+class MONITORINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("rcMonitor", RECT()),
+        ("rcWork", RECT()),
+        ("dwFlags", _MONITORINFO_Flags_()),
+    ]
+
+LPMONITORINFO = Ptr("<I", MONITORINFO())
+_RAWINPUTDEVICE_Flags_ = DWORD
+
+class RAWINPUTDEVICE(MemStruct):
+    fields = [
+        ("usUsagePage", USHORT()),
+        ("usUsage", USHORT()),
+        ("dwFlags", _RAWINPUTDEVICE_Flags_()),
+        ("hwndTarget", HWND()),
+    ]
+
+PRAWINPUTDEVICE = Ptr("<I", RAWINPUTDEVICE())
+PCRAWINPUTDEVICE = Ptr("<I", RAWINPUTDEVICE())
+_RIM_TYPE_ = DWORD
+
+class RAWINPUTDEVICELIST(MemStruct):
+    fields = [
+        ("hDevice", HANDLE()),
+        ("dwType", _RIM_TYPE_()),
+    ]
+
+PRAWINPUTDEVICELIST = Ptr("<I", RAWINPUTDEVICELIST())
+_ClassStyle_ = UINT
+
+class WNDCLASS(MemStruct):
+    fields = [
+        ("style", _ClassStyle_()),
+        ("lpfnWndProc", WNDPROC()),
+        ("cbClsExtra", int()),
+        ("cbWndExtra", int()),
+        ("hInstance", HINSTANCE()),
+        ("hIcon", HICON()),
+        ("hCursor", HCURSOR()),
+        ("hbrBackground", HBRUSH()),
+        ("lpszMenuName", LPCTSTR()),
+        ("lpszClassName", LPCTSTR()),
+    ]
+
+LPWNDCLASS = Ptr("<I", WNDCLASS())
+CONST_WNDCLASS_PTR = Ptr("<I", WNDCLASS())
+
+class WNDCLASSEX(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("style", _ClassStyle_()),
+        ("lpfnWndProc", WNDPROC()),
+        ("cbClsExtra", int()),
+        ("cbWndExtra", int()),
+        ("hInstance", HINSTANCE()),
+        ("hIcon", HICON()),
+        ("hCursor", HCURSOR()),
+        ("hbrBackground", HBRUSH()),
+        ("lpszMenuName", LPCTSTR()),
+        ("lpszClassName", LPCTSTR()),
+        ("hIconSm", HICON()),
+    ]
+
+LPWNDCLASSEX = Ptr("<I", WNDCLASSEX())
+CONST_WNDCLASSEX_PTR = Ptr("<I", WNDCLASSEX())
+_WindowLongIndex_ = int
+_ClassLongIndex_ = int
+_SystemMetricIndex_ = int
+_PeekMessageFlag_ = UINT
+_QueueStatusFlag_ = DWORD
+_WindowMessageFilterEnum_ = DWORD
+_UserObjectInformationEnum_ = int
+_GetAncestorEnum_ = UINT
+_GetWindowEnum_ = UINT
+_DCExFlags_ = DWORD
+_EnumDisplayDevicesFlags_ = DWORD
+_WinEventFlags_ = UINT
+_RedrawWindowFlags_ = UINT
+_AnimateWindowFlags_ = DWORD
+_SetWindowPosFlags_ = UINT
+_SendMessageTimeoutFlags_ = UINT
+_DrawIconFlags_ = UINT
+_ObjectIdEnum_ = LONG
+_DrawStateFlags_ = UINT
+_MenuCommandPosFlag_ = UINT
+_InsertMenuFlags_ = UINT
+_EnableMenuItemFlag_ = UINT
+_EnableMenuItemResult_ = int
+_CheckMenuItemFlag_ = UINT
+_ClipboardFormat_ = UINT
+_HwndInsertAfterEnum_ = HWND
+_WindowsHook_ = int
+_MsgWaitForMultipleObjectsFlags_ = DWORD
+_KeyboardLayoutHandle_ = HKL
+_KeyboardLayoutFlags_ = UINT
+_MonitorFlags_ = DWORD
+_ScrollWindowFlags_ = UINT
+_EnumDisplaySettingsEnum_ = DWORD
+_ButtonState_ = UINT
+_LayeredWindowAttribute_ = DWORD
+_LayeredWindowAttribute_PTR_ = Ptr("<I", _LayeredWindowAttribute_())
+_UpdateLayeredWindowFlags_ = DWORD
+_MapVirtualKeyType_ = UINT
+_DesktopFlags_ = DWORD
+_DESKTOP_ACCESS_MASK_ = ACCESS_MASK
+_WindowStationAccessRights_ = DWORD
+_CreateWindowStationFlags_ = DWORD
+_LockSetForegroundWindowCode_ = UINT
+_DeviceNotificationFlags_ = DWORD
+_TrackPopupMenuFlags_ = UINT
+_GetMenuDefaultItemFlags_ = UINT
+_LoadImageString/LPCTSTR_ = LPCTSTR
+_LoadBitmapString/LPCTSTR_ = LPCTSTR
+_LoadCursorString/LPCTSTR_ = LPCTSTR
+_LoadIconString/LPCTSTR_ = LPCTSTR
+_CursorId_ = DWORD
+_WindowRegion_ = int
+_TOUCHINPUT_Flags_ = DWORD
+_TOUCHINPUT_Mask_ = DWORD
+
+class TOUCHINPUT(MemStruct):
+    fields = [
+        ("x", LONG()),
+        ("y", LONG()),
+        ("hSource", HANDLE()),
+        ("dwID", DWORD()),
+        ("dwFlags", _TOUCHINPUT_Flags_()),
+        ("dwMask", _TOUCHINPUT_Mask_()),
+        ("dwTime", DWORD()),
+        ("dwExtraInfo", ULONG_PTR()),
+        ("cxContact", DWORD()),
+        ("cyContact", DWORD()),
+    ]
+
+PTOUCHINPUT = Ptr("<I", TOUCHINPUT())
+_GestureId_ = DWORD
+
+class GESTURECONFIG(MemStruct):
+    fields = [
+        ("dwID", _GestureId_()),
+        ("dwWant", DWORD()),
+        ("dwBlock", DWORD()),
+    ]
+
+PGESTURECONFIG = Ptr("<I", GESTURECONFIG())
+
+class POINTS(MemStruct):
+    fields = [
+        ("x", SHORT()),
+        ("y", SHORT()),
+    ]
+
+_GESTUREINFO_Flags_ = DWORD
+
+class GESTUREINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("dwFlags", _GESTUREINFO_Flags_()),
+        ("dwID", DWORD()),
+        ("hwndTarget", HWND()),
+        ("ptsLocation", POINTS()),
+        ("dwInstanceID", DWORD()),
+        ("dwSequenceID", DWORD()),
+        ("ullArguments", ULONGLONG()),
+        ("cbExtraArgs", UINT()),
+    ]
+
+PGESTUREINFO = Ptr("<I", GESTUREINFO())
+
+class RAWINPUTHEADER(MemStruct):
+    fields = [
+        ("dwType", _RIM_TYPE_()),
+        ("dwSize", DWORD()),
+        ("hDevice", HANDLE()),
+        ("wParam", WPARAM()),
+    ]
+
+_RAWMOUSE_STATE_ = USHORT
+
+class _RAWMOUSE_u_s_(MemStruct):
+    fields = [
+        ("usButtonFlags", _RAWMOUSE_STATE_()),
+        ("usButtonData", USHORT()),
+    ]
+
+_RAWMOUSE_u_ = Union([
+    ("ulButtons", ULONG),
+    (None, _RAWMOUSE_u_s_),
+])
+_RAWMOUSE_FLAGS_ = USHORT
+
+class RAWMOUSE(MemStruct):
+    fields = [
+        ("usFlags", _RAWMOUSE_FLAGS_()),
+        (None, _RAWMOUSE_u_()),
+        ("ulRawButtons", ULONG()),
+        ("lLastX", LONG()),
+        ("lLastY", LONG()),
+        ("ulExtraInformation", ULONG()),
+    ]
+
+_RAWKEYBOARD_FLAGS_ = USHORT
+
+class RAWKEYBOARD(MemStruct):
+    fields = [
+        ("MakeCode", USHORT()),
+        ("Flags", _RAWKEYBOARD_FLAGS_()),
+        ("Reserved", USHORT()),
+        ("VKey", _VirtKeyCode_()),
+        ("Message", _WinMsg_()),
+        ("ExtraInformation", ULONG()),
+    ]
+
+
+class RAWHID(MemStruct):
+    fields = [
+        ("dwSizeHid", DWORD()),
+        ("dwCount", DWORD()),
+        ("bRawData", BYTE__1_()),
+    ]
+
+_RAWINPUT_u_ = Union([
+    ("mouse", RAWMOUSE),
+    ("keyboard", RAWKEYBOARD),
+    ("hid", RAWHID),
+])
+
+class RAWINPUT(MemStruct):
+    fields = [
+        ("header", RAWINPUTHEADER()),
+        ("data", _RAWINPUT_u_()),
+    ]
+
+PRAWINPUT = Ptr("<I", RAWINPUT())
+PRAWINPUT_PTR = Ptr("<I", PRAWINPUT())
+_CreateWindow_CW_ = int
+
+class WINCOMPATTRDATA(MemStruct):
+    fields = [
+        ("attribute", _DwmWindowAttr_()),
+        # Length is `dataSize`
+        ("pData", PVOID()),
+        ("dataSize", ULONG()),
+    ]
+
+WINCOMPATTRDATA_PTR = Ptr("<I", WINCOMPATTRDATA())
+_TOUCH_FEEDBACK_MODE_ = UINT
+POINTER_INPUT_TYPE = DWORD
+POINTER_INPUT_TYPE_PTR = Ptr("<I", POINTER_INPUT_TYPE())
+POINTER_FLAGS = UINT32
+_POINTER_MOD_FLAGS_ = DWORD
+POINTER_BUTTON_CHANGE_TYPE = UINT
+
+class POINTER_INFO(MemStruct):
+    fields = [
+        ("pointerType", POINTER_INPUT_TYPE()),
+        ("pointerId", UINT32()),
+        ("frameId", UINT32()),
+        ("pointerFlags", POINTER_FLAGS()),
+        ("sourceDevice", HANDLE()),
+        ("hwndTarget", HWND()),
+        ("ptPixelLocation", POINT()),
+        ("ptHimetricLocation", POINT()),
+        ("ptPixelLocationRaw", POINT()),
+        ("ptHimetricLocationRaw", POINT()),
+        ("dwTime", DWORD()),
+        ("historyCount", UINT32()),
+        ("InputData", INT32()),
+        ("dwKeyStates", DWORD()),
+        ("PerformanceCount", UINT64()),
+        ("ButtonChangeType", POINTER_BUTTON_CHANGE_TYPE()),
+    ]
+
+POINTER_INFO_PTR = Ptr("<I", POINTER_INFO())
+const_POINTER_INFO_PTR = Ptr("<I", POINTER_INFO())
+TOUCH_FLAGS = UINT32
+TOUCH_MASK = UINT32
+
+class POINTER_TOUCH_INFO(MemStruct):
+    fields = [
+        ("pointerInfo", POINTER_INFO()),
+        ("touchFlags", TOUCH_FLAGS()),
+        ("touchMask", TOUCH_MASK()),
+        ("rcContact", RECT()),
+        ("rcContactRaw", RECT()),
+        ("orientation", UINT32()),
+        ("pressure", UINT32()),
+    ]
+
+POINTER_TOUCH_INFO_PTR = Ptr("<I", POINTER_TOUCH_INFO())
+const_POINTER_TOUCH_INFO_PTR = Ptr("<I", POINTER_TOUCH_INFO())
+CROSS_SLIDE_THRESHOLD = UINT
+INERTIA_PARAMETER = UINT
+INTERACTION_STATE = UINT
+INTERACTION_STATE_PTR = Ptr("<I", INTERACTION_STATE())
+INTERACTION_CONTEXT_PROPERTY = UINT
+
+class CROSS_SLIDE_PARAMETER(MemStruct):
+    fields = [
+        ("threshold", CROSS_SLIDE_THRESHOLD()),
+        ("distance", float()),
+    ]
+
+CROSS_SLIDE_PARAMETER_PTR = Ptr("<I", CROSS_SLIDE_PARAMETER())
+MOUSE_WHEEL_PARAMETER = UINT
+INTERACTION_ID = UINT
+INTERACTION_CONFIGURATION_FLAGS = UINT
+
+class INTERACTION_CONTEXT_CONFIGURATION(MemStruct):
+    fields = [
+        ("interactionId", INTERACTION_ID()),
+        ("enable", INTERACTION_CONFIGURATION_FLAGS()),
+    ]
+
+INTERACTION_CONTEXT_CONFIGURATION_PTR = Ptr("<I", INTERACTION_CONTEXT_CONFIGURATION())
+const_INTERACTION_CONTEXT_CONFIGURATION_PTR = Ptr("<I", INTERACTION_CONTEXT_CONFIGURATION())
+PEN_FLAGS = UINT32
+PEN_MASK = UINT32
+
+class POINTER_PEN_INFO(MemStruct):
+    fields = [
+        ("pointerInfo", POINTER_INFO()),
+        ("penFlags", PEN_FLAGS()),
+        ("penMask", PEN_MASK()),
+        ("pressure", UINT32()),
+        ("rotation", UINT32()),
+        ("tiltX", INT32()),
+        ("tiltY", INT32()),
+    ]
+
+POINTER_PEN_INFO_PTR = Ptr("<I", POINTER_PEN_INFO())
+
+class TOUCH_HIT_TESTING_INPUT(MemStruct):
+    fields = [
+        ("pointerId", UINT32()),
+        ("point", POINT()),
+        ("boundingBox", RECT()),
+        ("nonOccludedBoundingBox", RECT()),
+        ("orientation", UINT32()),
+    ]
+
+const_TOUCH_HIT_TESTING_INPUT_PTR = Ptr("<I", TOUCH_HIT_TESTING_INPUT())
+
+class TOUCH_HIT_TESTING_PROXIMITY_EVALUATION(MemStruct):
+    fields = [
+        ("score", UINT16()),
+        ("adjustedPoint", POINT()),
+    ]
+
+TOUCH_HIT_TESTING_PROXIMITY_EVALUATION_PTR = Ptr("<I", TOUCH_HIT_TESTING_PROXIMITY_EVALUATION())
+const_TOUCH_HIT_TESTING_PROXIMITY_EVALUATION_PTR = Ptr("<I", TOUCH_HIT_TESTING_PROXIMITY_EVALUATION())
+INPUT_MESSAGE_DEVICE_TYPE = UINT
+INPUT_MESSAGE_ORIGIN_ID = UINT
+
+class INPUT_MESSAGE_SOURCE(MemStruct):
+    fields = [
+        ("deviceType", INPUT_MESSAGE_DEVICE_TYPE()),
+        ("originId", INPUT_MESSAGE_ORIGIN_ID()),
+    ]
+
+INPUT_MESSAGE_SOURCE_PTR = Ptr("<I", INPUT_MESSAGE_SOURCE())
+POINTER_DEVICE_TYPE = UINT
+
+class POINTER_DEVICE_INFO(MemStruct):
+    fields = [
+        ("displayOrientation", DWORD()),
+        ("device", HANDLE()),
+        ("pointerDeviceType", POINTER_DEVICE_TYPE()),
+        ("monitor", HMONITOR()),
+        ("startingCursorId", ULONG()),
+        ("maxActiveContacts", USHORT()),
+        ("productString", WCHAR__POINTER_DEVICE_PRODUCT_STRING_MAX_()),
+    ]
+
+POINTER_DEVICE_INFO_PTR = Ptr("<I", POINTER_DEVICE_INFO())
+POINTER_DEVICE_CURSOR_TYPE = UINT
+
+class POINTER_DEVICE_CURSOR_INFO(MemStruct):
+    fields = [
+        ("cursorId", UINT32()),
+        ("cursor", POINTER_DEVICE_CURSOR_TYPE()),
+    ]
+
+POINTER_DEVICE_CURSOR_INFO_PTR = Ptr("<I", POINTER_DEVICE_CURSOR_INFO())
+
+class POINTER_DEVICE_PROPERTY(MemStruct):
+    fields = [
+        ("logicalMin", INT32()),
+        ("logicalMax", INT32()),
+        ("physicalMin", INT32()),
+        ("physicalMax", INT32()),
+        ("unit", UINT32()),
+        ("unitExponent", UINT32()),
+        ("usagePageId", USHORT()),
+        ("usageId", USHORT()),
+    ]
+
+POINTER_DEVICE_PROPERTY_PTR = Ptr("<I", POINTER_DEVICE_PROPERTY())
+_TIMERV_COALESCING_ = ULONG
+FEEDBACK_TYPE = UINT
+
+class DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS(MemStruct):
+    fields = [
+        ("Callback", PDEVICE_NOTIFY_CALLBACK_ROUTINE()),
+        ("Context", PVOID()),
+    ]
+
+PDEVICE_NOTIFY_SUBSCRIBE_PARAMETERS = Ptr("<I", DEVICE_NOTIFY_SUBSCRIBE_PARAMETERS())
+_DDE_INITIALIZE_FLAGS_ = DWORD
+_MSGFLT_ACTION_ = DWORD
+_CWP_FLAGS_ = UINT
+_MDITILE_TILE_ = UINT
+_MDITILE_CASCADE_ = UINT
+_GWFS_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def user32_CreateDialogIndirectParam(jitter, get_str, set_str):
     """

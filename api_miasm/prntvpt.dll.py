@@ -1,3 +1,4 @@
+###### Enums ######
 EDefaultDevmodeType = {
     "kUserDefaultDevmode": 0,
     "kPrinterDefaultDevmode": 1,
@@ -16,6 +17,18 @@ EPrintTicketScope_INV = {
     1: "kPTDocumentScope",
     3: "kPTJobScope",
 }
+
+###################
+
+###### Types ######
+HPTPROVIDER = HANDLE
+HPTPROVIDER_PTR = Ptr("<I", HPTPROVIDER())
+EDefaultDevmodeType = UINT
+EPrintTicketScope = UINT
+
+###################
+
+###### Functions ######
 
 def prntvpt_PTConvertPrintTicketToDevMode(jitter):
     """

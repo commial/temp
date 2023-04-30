@@ -1,3 +1,4 @@
+###### Enums ######
 _SCardScope_ = {
     "SCARD_SCOPE_USER": 0,
     "SCARD_SCOPE_TERMINAL": 1,
@@ -16,6 +17,48 @@ _SCARD_AUDIT_CHV__INV = {
     0x0: "SCARD_AUDIT_CHV_FAILURE",
     0x1: "SCARD_AUDIT_CHV_SUCCESS",
 }
+
+###################
+
+###### Types ######
+BYTE__36_ = Array(BYTE, 36)
+_SCARD_STATE_ = DWORD
+
+class SCARD_READERSTATE(MemStruct):
+    fields = [
+        ("szReader", LPCTSTR()),
+        ("pvUserData", LPVOID()),
+        ("dwCurrentState", _SCARD_STATE_()),
+        ("dwEventState", _SCARD_STATE_()),
+        ("cbAtr", DWORD()),
+        ("rgbAtr", BYTE__36_()),
+    ]
+
+LPSCARD_READERSTATE = Ptr("<I", SCARD_READERSTATE())
+
+class SCARD_ATRMASK(MemStruct):
+    fields = [
+        ("cbAtr", DWORD()),
+        ("rgbAtr", BYTE__36_()),
+        ("rgbMask", BYTE__36_()),
+    ]
+
+LPSCARD_ATRMASK = Ptr("<I", SCARD_ATRMASK())
+
+class SCARD_IO_REQUEST(MemStruct):
+    fields = [
+        ("dwProtocol", DWORD()),
+        ("cbPciLength", DWORD()),
+    ]
+
+LPSCARD_IO_REQUEST = Ptr("<I", SCARD_IO_REQUEST())
+LPCSCARD_IO_REQUEST = Ptr("<I", SCARD_IO_REQUEST())
+_SCardScope_ = DWORD
+_SCARD_AUDIT_CHV_ = DWORD
+
+###################
+
+###### Functions ######
 
 def winscard_SCardAccessStartedEvent(jitter):
     """

@@ -1,3 +1,14 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PX509Certificate = LPVOID
+PX509Certificate_PTR = Ptr("<I", PX509Certificate())
+
+###################
+
+###### Functions ######
 
 def schannel_SslCrackCertificate(jitter):
     """

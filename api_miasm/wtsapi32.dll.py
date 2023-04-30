@@ -1,3 +1,4 @@
+###### Enums ######
 WTS_CONNECTSTATE_CLASS = {
     "WTSActive": 0,
     "WTSConnected": 1,
@@ -146,6 +147,109 @@ WTS_TYPE_CLASS_INV = {
     1: "WTSTypeProcessInfoLevel1",
     2: "WTSTypeSessionInfoLevel1",
 }
+
+###################
+
+###### Types ######
+TCHAR__WTS_COMMENT_LENGTH_+_1_ = Array(TCHAR, 61)
+TCHAR__USERNAME_LENGTH_+_1_ = Array(TCHAR, 21)
+TCHAR__DOMAIN_LENGTH_+_1_ = Array(TCHAR, 18)
+WTSLISTENERNAME = Array(TCHAR, 33)
+PWTSLISTENERNAME = Ptr("<I", WTSLISTENERNAME())
+
+class WTS_PROCESS_INFO(MemStruct):
+    fields = [
+        ("SessionId", DWORD()),
+        ("ProcessId", DWORD()),
+        ("pProcessName", LPTSTR()),
+        ("pUserSid", PSID()),
+    ]
+
+PWTS_PROCESS_INFO = Ptr("<I", WTS_PROCESS_INFO())
+PWTS_PROCESS_INFO_PTR = Ptr("<I", PWTS_PROCESS_INFO())
+WTS_CONNECTSTATE_CLASS = UINT
+
+class WTS_SESSION_INFO(MemStruct):
+    fields = [
+        ("SessionId", DWORD()),
+        ("pWinStationName", LPTSTR()),
+        ("State", WTS_CONNECTSTATE_CLASS()),
+    ]
+
+PWTS_SESSION_INFO = Ptr("<I", WTS_SESSION_INFO())
+PWTS_SESSION_INFO_PTR = Ptr("<I", PWTS_SESSION_INFO())
+WTS_INFO_CLASS = UINT
+WTS_CONFIG_CLASS = UINT
+WTS_VIRTUAL_CLASS = UINT
+_ConsoleNotificationFlags_ = DWORD
+_WtsServerHandle_ = HANDLE
+_WtsEventFlags_ = DWORD
+_WtsEventFlags_PTR_ = Ptr("<I", _WtsEventFlags_())
+
+class WTSLISTENERCONFIG(MemStruct):
+    fields = [
+        ("version", ULONG()),
+        ("fEnableListener", ULONG()),
+        ("MaxConnectionCount", ULONG()),
+        ("fPromptForPassword", ULONG()),
+        ("fInheritColorDepth", ULONG()),
+        ("ColorDepth", ULONG()),
+        ("fInheritBrokenTimeoutSettings", ULONG()),
+        ("BrokenTimeoutSettings", ULONG()),
+        ("fDisablePrinterRedirection", ULONG()),
+        ("fDisableDriveRedirection", ULONG()),
+        ("fDisableComPortRedirection", ULONG()),
+        ("fDisableLPTPortRedirection", ULONG()),
+        ("fDisableClipboardRedirection", ULONG()),
+        ("fDisableAudioRedirection", ULONG()),
+        ("fDisablePNPRedirection", ULONG()),
+        ("fDisableDefaultMainClientPrinter", ULONG()),
+        ("LanAdapter", ULONG()),
+        ("PortNumber", ULONG()),
+        ("fInheritShadowSettings", ULONG()),
+        ("ShadowSettings", ULONG()),
+        ("TimeoutSettingsConnection", ULONG()),
+        ("TimeoutSettingsDisconnection", ULONG()),
+        ("TimeoutSettingsIdle", ULONG()),
+        ("SecurityLayer", ULONG()),
+        ("MinEncryptionLevel", ULONG()),
+        ("UserAuthentication", ULONG()),
+        ("Comment", TCHAR__WTS_COMMENT_LENGTH_+_1_()),
+        ("LogonUserName", TCHAR__USERNAME_LENGTH_+_1_()),
+        ("LogonDomain", TCHAR__DOMAIN_LENGTH_+_1_()),
+        ("WorkDirectory", TCHAR__MAX_PATH_+_1_()),
+        ("InitialProgram", TCHAR__MAX_PATH_+_1_()),
+    ]
+
+PWTSLISTENERCONFIG = Ptr("<I", WTSLISTENERCONFIG())
+WTS_TYPE_CLASS = UINT
+
+class WTS_SERVER_INFO(MemStruct):
+    fields = [
+        ("pServerName", LPTSTR()),
+    ]
+
+PWTS_SERVER_INFO = Ptr("<I", WTS_SERVER_INFO())
+PWTS_SERVER_INFO_PTR = Ptr("<I", PWTS_SERVER_INFO())
+
+class WTS_SESSION_INFO_1(MemStruct):
+    fields = [
+        ("ExecEnvId", DWORD()),
+        ("State", WTS_CONNECTSTATE_CLASS()),
+        ("SessionId", DWORD()),
+        ("pSessionName", LPTSTR()),
+        ("pHostName", LPTSTR()),
+        ("pUserName", LPTSTR()),
+        ("pDomainName", LPTSTR()),
+        ("pFarmName", LPTSTR()),
+    ]
+
+PWTS_SESSION_INFO_1 = Ptr("<I", WTS_SESSION_INFO_1())
+PWTS_SESSION_INFO_1_PTR = Ptr("<I", PWTS_SESSION_INFO_1())
+
+###################
+
+###### Functions ######
 
 def wtsapi32_WTSCloseServer(jitter):
     """

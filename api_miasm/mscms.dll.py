@@ -1,3 +1,4 @@
+###### Enums ######
 COLORPROFILETYPE = {
     "CPT_ICC": 0,
     "CPT_DMP": 1,
@@ -44,6 +45,55 @@ _PROFILE_ACCESS__INV = {
     1: "PROFILE_READ",
     2: "PROFILE_READWRITE",
 }
+
+###################
+
+###### Types ######
+TAGTYPE = DWORD
+PTAGTYPE = Ptr("<I", TAGTYPE())
+BYTE__44_ = Array(BYTE, 44)
+COLORPROFILETYPE = UINT
+COLORPROFILESUBTYPE = UINT
+
+class PROFILEHEADER(MemStruct):
+    fields = [
+        ("phSize", DWORD()),
+        ("phCMMType", DWORD()),
+        ("phVersion", DWORD()),
+        ("phClass", _PROFILE_CLASS_()),
+        ("phDataColorSpace", _COLOR_SPACE_()),
+        ("phConnectionSpace", _CONNECTION_SPACE_()),
+        ("phDateTime", DWORD__3_()),
+        ("phSignature", DWORD()),
+        ("phPlatform", DWORD()),
+        ("phProfileFlags", _PROFILE_FLAG_()),
+        ("phManufacturer", DWORD()),
+        ("phModel", DWORD()),
+        ("phAttributes", DWORD__2_()),
+        ("phRenderingIntent", _RENDERING_INTENT_()),
+        ("phIlluminant", CIEXYZ()),
+        ("phCreator", DWORD()),
+        ("phReserved", BYTE__44_()),
+    ]
+
+PPROFILEHEADER = Ptr("<I", PROFILEHEADER())
+_PROFILE_TYPE_ = DWORD
+
+class PROFILE(MemStruct):
+    fields = [
+        ("dwType", _PROFILE_TYPE_()),
+        # Length is `cbDataSize`
+        ("pProfileData", PVOID()),
+        ("cbDataSize", DWORD()),
+    ]
+
+PPROFILE = Ptr("<I", PROFILE())
+_PROFILE_ACCESS_ = DWORD
+_WCS_OPEN_PROFILE_FLAG_ = DWORD
+
+###################
+
+###### Functions ######
 
 def mscms_CheckBitmapBits(jitter):
     """

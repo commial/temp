@@ -1,3 +1,4 @@
+###### Enums ######
 _SslContentType_ = {
     "CT_CHANGE_CIPHER_SPEC": 20,
     "CT_ALERT": 21,
@@ -10,6 +11,84 @@ _SslContentType__INV = {
     22: "CT_HANDSHAKE",
     23: "CT_APPLICATIONDATA",
 }
+
+###################
+
+###### Types ######
+NCRYPT_HANDLE = ULONG_PTR
+NCRYPT_PROV_HANDLE = ULONG_PTR
+NCRYPT_PROV_HANDLE_PTR = Ptr("<I", NCRYPT_PROV_HANDLE())
+NCRYPT_SECRET_HANDLE = ULONG_PTR
+NCRYPT_SECRET_HANDLE_PTR = Ptr("<I", NCRYPT_SECRET_HANDLE())
+NCRYPT_HASH_HANDLE = ULONG_PTR
+NCRYPT_HASH_HANDLE_PTR = Ptr("<I", NCRYPT_HASH_HANDLE())
+NCryptBufferDesc = BCryptBufferDesc
+NCryptBufferDesc_PTR = Ptr("<I", NCryptBufferDesc())
+PNCryptBufferDesc = Ptr("<I", NCryptBufferDesc())
+NCRYPT_DESCRIPTOR_HANDLE = HANDLE
+NCRYPT_DESCRIPTOR_HANDLE_PTR = Ptr("<I", NCRYPT_DESCRIPTOR_HANDLE())
+PFN_NCRYPT_ALLOC = LPVOID
+PFN_NCRYPT_FREE = LPVOID
+NCRYPT_STREAM_HANDLE = HANDLE
+NCRYPT_STREAM_HANDLE_PTR = Ptr("<I", NCRYPT_STREAM_HANDLE())
+PFNCryptStreamOutputCallback = LPVOID
+WCHAR_NCRYPT_SSL_MAX_NAME_SIZE_ = WCHAR_PTR
+NCRYPT_SSL_CIPHER_SUITE_PTR = LPVOID
+NCRYPT_SSL_CIPHER_SUITE_PTR_PTR = Ptr("<I", NCRYPT_SSL_CIPHER_SUITE_PTR())
+NCRYPT_SSL_CIPHER_LENGTHS_PTR = LPVOID
+
+class NCryptAlgorithmName(MemStruct):
+    fields = [
+        ("pszName", LPWSTR()),
+        ("dwClass", DWORD()),
+        ("dwAlgOperations", DWORD()),
+        ("dwFlags", DWORD()),
+    ]
+
+NCryptAlgorithmName_PTR = Ptr("<I", NCryptAlgorithmName())
+NCryptAlgorithmName_PTR_PTR = Ptr("<I", NCryptAlgorithmName_PTR())
+
+class NCryptKeyName(MemStruct):
+    fields = [
+        ("pszName", LPWSTR()),
+        ("pszAlgid", LPWSTR()),
+        ("dwLegacyKeySpec", DWORD()),
+        ("dwFlags", DWORD()),
+    ]
+
+NCryptKeyName_PTR = Ptr("<I", NCryptKeyName())
+NCryptKeyName_PTR_PTR = Ptr("<I", NCryptKeyName_PTR())
+
+class NCryptProviderName(MemStruct):
+    fields = [
+        ("pszName", LPWSTR()),
+        ("pszComment", LPWSTR()),
+    ]
+
+NCryptProviderName_PTR = Ptr("<I", NCryptProviderName())
+NCryptProviderName_PTR_PTR = Ptr("<I", NCryptProviderName_PTR())
+_SslContentType_ = DWORD
+
+class NCRYPT_ALLOC_PARA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("pfnAlloc", PFN_NCRYPT_ALLOC()),
+        ("pfnFree", PFN_NCRYPT_FREE()),
+    ]
+
+const_NCRYPT_ALLOC_PARA_PTR = Ptr("<I", NCRYPT_ALLOC_PARA())
+
+class NCRYPT_PROTECT_STREAM_INFO(MemStruct):
+    fields = [
+        ("pfnStreamOutput", PFNCryptStreamOutputCallback()),
+        ("pvCallbackCtxt", void_PTR()),
+    ]
+
+NCRYPT_PROTECT_STREAM_INFO_PTR = Ptr("<I", NCRYPT_PROTECT_STREAM_INFO())
+
+###################
+
+###### Functions ######
 
 def ncrypt_NCryptCreatePersistedKey(jitter):
     """

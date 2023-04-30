@@ -1,3 +1,20 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+class TXF_ID(MemStruct):
+    fields = [
+        ("LowPart", LONGLONG()),
+        ("HighPart", LONGLONG()),
+    ]
+
+PTXF_ID = Ptr("<I", TXF_ID())
+
+###################
+
+###### Functions ######
 
 def txfw32_TxfLogCreateFileReadContext(jitter):
     """

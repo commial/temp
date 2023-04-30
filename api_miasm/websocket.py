@@ -1,3 +1,4 @@
+###### Enums ######
 WEB_SOCKET_ACTION = {
     "WEB_SOCKET_NO_ACTION": 0,
     "WEB_SOCKET_SEND_TO_NETWORK_ACTION": 1,
@@ -86,6 +87,67 @@ WEB_SOCKET_PROPERTY_TYPE_INV = {
     5: "WEB_SOCKET_KEEPALIVE_INTERVAL_PROPERTY_TYPE",
     6: "WEB_SOCKET_SUPPORTED_VERSIONS_PROPERTY_TYPE",
 }
+
+###################
+
+###### Types ######
+WEB_SOCKET_HANDLE = HANDLE
+WEB_SOCKET_HANDLE_PTR = Ptr("<I", WEB_SOCKET_HANDLE())
+WEB_SOCKET_ACTION = UINT
+WEB_SOCKET_ACTION_PTR = Ptr("<I", WEB_SOCKET_ACTION())
+WEB_SOCKET_ACTION_QUEUE = UINT
+WEB_SOCKET_BUFFER_TYPE = UINT
+WEB_SOCKET_BUFFER_TYPE_PTR = Ptr("<I", WEB_SOCKET_BUFFER_TYPE())
+WEB_SOCKET_CLOSE_STATUS = USHORT
+WEB_SOCKET_PROPERTY_TYPE = UINT
+
+class _WEB_SOCKET_BUFFER_s1_(MemStruct):
+    fields = [
+        # Length is `ulBufferLength`
+        ("pbBuffer", PBYTE()),
+        ("ulBufferLength", ULONG()),
+    ]
+
+
+class _WEB_SOCKET_BUFFER_s2_(MemStruct):
+    fields = [
+        # Length is `ulReasonLength`
+        ("pbReason", PBYTE()),
+        ("ulReasonLength", ULONG()),
+        ("usStatus", WEB_SOCKET_CLOSE_STATUS()),
+    ]
+
+WEB_SOCKET_BUFFER = Union([
+    ("Data", _WEB_SOCKET_BUFFER_s1_),
+    ("CloseStatus", _WEB_SOCKET_BUFFER_s2_),
+])
+WEB_SOCKET_BUFFER_PTR = Ptr("<I", WEB_SOCKET_BUFFER())
+
+class WEB_SOCKET_HTTP_HEADER(MemStruct):
+    fields = [
+        ("pcName", PCHAR()),
+        ("ulNameLength", ULONG()),
+        ("pcValue", PCHAR()),
+        ("ulValueLength", ULONG()),
+    ]
+
+PWEB_SOCKET_HTTP_HEADER = Ptr("<I", WEB_SOCKET_HTTP_HEADER())
+PWEB_SOCKET_HTTP_HEADER_PTR = Ptr("<I", PWEB_SOCKET_HTTP_HEADER())
+const_PWEB_SOCKET_HTTP_HEADER = Ptr("<I", WEB_SOCKET_HTTP_HEADER())
+
+class WEB_SOCKET_PROPERTY(MemStruct):
+    fields = [
+        ("Type", WEB_SOCKET_PROPERTY_TYPE()),
+        # Length is `ulValueSize`
+        ("pvValue", PVOID()),
+        ("ulValueSize", ULONG()),
+    ]
+
+const_PWEB_SOCKET_PROPERTY = Ptr("<I", WEB_SOCKET_PROPERTY())
+
+###################
+
+###### Functions ######
 
 def websocket_WebSocketAbortHandle(jitter):
     """

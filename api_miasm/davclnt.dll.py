@@ -1,3 +1,14 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PFNDAVAUTHCALLBACK = LPVOID
+OPAQUE_HANDLE = DWORD
+
+###################
+
+###### Functions ######
 
 def davclnt_DavCancelConnectionsToServer(jitter):
     """

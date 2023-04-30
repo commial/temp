@@ -1,3 +1,21 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+class IELAUNCHURLINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("dwCreationFlags", DWORD()),
+        ("dwLaunchOptionFlags", DWORD()),
+    ]
+
+LPIELAUNCHURLINFO = Ptr("<I", IELAUNCHURLINFO())
+
+###################
+
+###### Functions ######
 
 def ieframe_IECancelSaveFile(jitter):
     """

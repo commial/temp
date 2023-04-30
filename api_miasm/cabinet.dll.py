@@ -1,3 +1,4 @@
+###### Enums ######
 FCIERROR = {
     "FCIERR_NONE": 0,
     "FCIERR_OPEN_SRC": 1,
@@ -60,6 +61,126 @@ COMPRESS_INFORMATION_CLASS_INV = {
     1: "COMPRESS_INFORMATION_CLASS_BLOCK_SIZE",
     2: "COMPRESS_INFORMATION_CLASS_LEVEL",
 }
+
+###################
+
+###### Types ######
+HFCI = void_PTR
+PFNFCIGETNEXTCABINET = LPVOID
+PFNFCISTATUS = LPVOID
+PFNFCIGETOPENINFO = LPVOID
+PFNFCIFILEPLACED = LPVOID
+PFNFCIALLOC = LPVOID
+PFNFCIFREE = LPVOID
+PFNFCIOPEN = LPVOID
+PFNFCIREAD = LPVOID
+PFNFCIWRITE = LPVOID
+PFNFCICLOSE = LPVOID
+PFNFCISEEK = LPVOID
+PFNFCIDELETE = LPVOID
+PFNFCIGETTEMPFILE = LPVOID
+HFDI = void_PTR
+PFNFDINOTIFY = LPVOID
+PFNFDIDECRYPT = LPVOID
+PFNALLOC = LPVOID
+PFNFREE = LPVOID
+PFNOPEN = LPVOID
+PFNREAD = LPVOID
+PFNWRITE = LPVOID
+PFNCLOSE = LPVOID
+PFNSEEK = LPVOID
+HFILELIST = void_PTR
+COMPRESSOR_HANDLE = HANDLE
+PCOMPRESSOR_HANDLE = Ptr("<I", COMPRESSOR_HANDLE())
+DECOMPRESSOR_HANDLE = COMPRESSOR_HANDLE
+PDECOMPRESSOR_HANDLE = Ptr("<I", DECOMPRESSOR_HANDLE())
+PFN_COMPRESS_ALLOCATE = LPVOID
+PFN_COMPRESS_FREE = LPVOID
+char__CB_MAX_DISK_NAME_ = Array(char, 256)
+char__CB_MAX_CABINET_NAME_ = Array(char, 256)
+char__CB_MAX_CAB_PATH_ = Array(char, 256)
+int__cMAX_CAB_FILE_OPEN_ = Array(int, 2)
+char__cbMAX_LINE__PTR_2_ = Array(char, 512)
+TCOMP = USHORT
+FCIERROR = int
+FDIERROR = int
+
+class _ERF_FCI_(MemStruct):
+    fields = [
+        ("erfOper", FCIERROR()),
+        ("erfType", int()),
+        ("fError", BOOL()),
+    ]
+
+_PERF_FCI_ = Ptr("<I", _ERF_FCI_())
+
+class _ERF_FDI_(MemStruct):
+    fields = [
+        ("erfOper", FDIERROR()),
+        ("erfType", int()),
+        ("fError", BOOL()),
+    ]
+
+_PERF_FDI_ = Ptr("<I", _ERF_FDI_())
+
+class CCAB(MemStruct):
+    fields = [
+        ("cb", ULONG()),
+        ("cbFolderThresh", ULONG()),
+        ("cbReserveCFHeader", UINT()),
+        ("cbReserveCFFolder", UINT()),
+        ("cbReserveCFData", UINT()),
+        ("iCab", int()),
+        ("iDisk", int()),
+        ("fFailOnIncompressible", int()),
+        ("setID", USHORT()),
+        ("szDisk", char__CB_MAX_DISK_NAME_()),
+        ("szCab", char__CB_MAX_CABINET_NAME_()),
+        ("szCabPath", char__CB_MAX_CAB_PATH_()),
+    ]
+
+PCCAB = Ptr("<I", CCAB())
+
+class FDICABINETINFO(MemStruct):
+    fields = [
+        ("cbCabinet", long()),
+        ("cFolders", USHORT()),
+        ("cFiles", USHORT()),
+        ("setID", USHORT()),
+        ("iCabinet", USHORT()),
+        ("fReserve", BOOL()),
+        ("hasprev", BOOL()),
+        ("hasnext", BOOL()),
+    ]
+
+PFDICABINETINFO = Ptr("<I", FDICABINETINFO())
+PSESSION = LPVOID
+
+class CABINETDLLVERSIONINFO(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwReserved1", DWORD()),
+        ("dwReserved2", DWORD()),
+        ("dwFileVersionMS", DWORD()),
+        ("dwFileVersionLS", DWORD()),
+    ]
+
+PCABINETDLLVERSIONINFO = Ptr("<I", CABINETDLLVERSIONINFO())
+_COMPRESS_ALGORITHM_ = DWORD
+COMPRESS_INFORMATION_CLASS = UINT
+
+class COMPRESS_ALLOCATION_ROUTINES(MemStruct):
+    fields = [
+        ("Allocate", PFN_COMPRESS_ALLOCATE()),
+        ("Free", PFN_COMPRESS_FREE()),
+        ("UserContext", PVOID()),
+    ]
+
+PCOMPRESS_ALLOCATION_ROUTINES = Ptr("<I", COMPRESS_ALLOCATION_ROUTINES())
+
+###################
+
+###### Functions ######
 
 def cabinet_FCIAddFile(jitter):
     """

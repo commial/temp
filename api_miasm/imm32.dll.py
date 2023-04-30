@@ -1,3 +1,4 @@
+###### Enums ######
 _IME_CAND_ = {
     "IME_CAND_UNKNOWN": 0x0000,
     "IME_CAND_READ": 0x0001,
@@ -66,6 +67,80 @@ _ImmGetPropertyIndex__INV = {
     0x00000014: "IGP_SETCOMPSTR",
     0x00000018: "IGP_SELECT",
 }
+
+###################
+
+###### Types ######
+HIMC = HANDLE
+IMCENUMPROC = LPVOID
+REGISTERWORDENUMPROC = LPVOID
+TCHAR__IMEMENUITEM_STRING_SIZE_ = Array(TCHAR, 80)
+TCHAR__STYLE_DESCRIPTION_SIZE_ = Array(TCHAR, 32)
+
+class STYLEBUF(MemStruct):
+    fields = [
+        ("dwStyle", DWORD()),
+        ("szDescription", TCHAR__STYLE_DESCRIPTION_SIZE_()),
+    ]
+
+LPSTYLEBUF = Ptr("<I", STYLEBUF())
+_IMFT_ = UINT
+_IMFS_ = UINT
+
+class IMEMENUITEMINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("fType", _IMFT_()),
+        ("fState", _IMFS_()),
+        ("wID", UINT()),
+        ("hbmpChecked", HBITMAP()),
+        ("hbmpUnchecked", HBITMAP()),
+        ("dwItemData", DWORD()),
+        ("szString", TCHAR__IMEMENUITEM_STRING_SIZE_()),
+        ("hbmpItem", HBITMAP()),
+    ]
+
+LPIMEMENUITEMINFO = Ptr("<I", IMEMENUITEMINFO())
+_IME_CAND_ = DWORD
+
+class CANDIDATELIST(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwStyle", _IME_CAND_()),
+        ("dwCount", DWORD()),
+        ("dwSelection", DWORD()),
+        ("dwPageStart", DWORD()),
+        ("dwPageSize", DWORD()),
+        ("dwOffset", DWORD__1_()),
+    ]
+
+LPCANDIDATELIST = Ptr("<I", CANDIDATELIST())
+
+class CANDIDATEFORM(MemStruct):
+    fields = [
+        ("dwIndex", DWORD()),
+        ("dwStyle", DWORD()),
+        ("ptCurrentPos", POINT()),
+        ("rcArea", RECT()),
+    ]
+
+LPCANDIDATEFORM = Ptr("<I", CANDIDATEFORM())
+
+class COMPOSITIONFORM(MemStruct):
+    fields = [
+        ("dwStyle", DWORD()),
+        ("ptCurrentPos", POINT()),
+        ("rcArea", RECT()),
+    ]
+
+LPCOMPOSITIONFORM = Ptr("<I", COMPOSITIONFORM())
+_ImmNotifyAction_ = DWORD
+_CompositionString_ = DWORD
+_ImmGetPropertyIndex_ = DWORD
+
+###################
+
+###### Functions ######
 
 def imm32_ImmAssociateContext(jitter):
     """

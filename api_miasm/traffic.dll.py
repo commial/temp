@@ -1,3 +1,4 @@
+###### Enums ######
 _QOS_OBJECT_HDR_TYPE_ = {
     "QOS_OBJECT_END_OF_LIST": 2001,
     "QOS_OBJECT_SD_MODE": 2002,
@@ -20,6 +21,108 @@ _QOS_OBJECT_HDR_TYPE__INV = {
     1003: "RSVP_OBJECT_POLICY_INFO",
     1004: "RSVP_OBJECT_FILTERSPEC_LIST",
 }
+
+###################
+
+###### Types ######
+TCI_NOTIFY_HANDLER = LPVOID
+TCI_ADD_FLOW_COMPLETE_HANDLER = LPVOID
+TCI_MOD_FLOW_COMPLETE_HANDLER = LPVOID
+TCI_DEL_FLOW_COMPLETE_HANDLER = LPVOID
+WCHAR__MAX_STRING_LENGTH_ = Array(WCHAR, 256)
+
+class TC_GEN_FILTER(MemStruct):
+    fields = [
+        ("AddressType", USHORT()),
+        ("PatternSize", ULONG()),
+        # Length is `PatternSize`
+        ("Pattern", PVOID()),
+        # Length is `PatternSize`
+        ("Mask", PVOID()),
+    ]
+
+PTC_GEN_FILTER = Ptr("<I", TC_GEN_FILTER())
+TC_GEN_FILTER__1_ = Array(TC_GEN_FILTER, 1)
+
+class NETWORK_ADDRESS(MemStruct):
+    fields = [
+        ("AddressLength", USHORT()),
+        ("AddressType", USHORT()),
+        ("Address", UCHAR__1_()),
+    ]
+
+NETWORK_ADDRESS__1_ = Array(NETWORK_ADDRESS, 1)
+
+class NETWORK_ADDRESS_LIST(MemStruct):
+    fields = [
+        ("AddressCount", LONG()),
+        ("AddressType", USHORT()),
+        ("Address", NETWORK_ADDRESS__1_()),
+    ]
+
+
+class ADDRESS_LIST_DESCRIPTOR(MemStruct):
+    fields = [
+        ("MediaType", ULONG()),
+        ("AddressList", NETWORK_ADDRESS_LIST()),
+    ]
+
+
+class TC_IFC_DESCRIPTOR(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("pInterfaceName", LPWSTR()),
+        ("pInterfaceID", LPWSTR()),
+        ("AddressListDesc", ADDRESS_LIST_DESCRIPTOR()),
+    ]
+
+PTC_IFC_DESCRIPTOR = Ptr("<I", TC_IFC_DESCRIPTOR())
+_QOS_OBJECT_HDR_TYPE_ = ULONG
+
+class QOS_OBJECT_HDR(MemStruct):
+    fields = [
+        ("ObjectType", _QOS_OBJECT_HDR_TYPE_()),
+        ("ObjectLength", ULONG()),
+    ]
+
+QOS_OBJECT_HDR__1_ = Array(QOS_OBJECT_HDR, 1)
+
+class TC_GEN_FLOW(MemStruct):
+    fields = [
+        ("SendingFlowspec", FLOWSPEC()),
+        ("ReceivingFlowspec", FLOWSPEC()),
+        ("TcObjectsLength", ULONG()),
+        ("TcObjects", QOS_OBJECT_HDR__1_()),
+    ]
+
+PTC_GEN_FLOW = Ptr("<I", TC_GEN_FLOW())
+
+class ENUMERATION_BUFFER(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("OwnerProcessId", ULONG()),
+        ("FlowNameLength", USHORT()),
+        ("FlowName", WCHAR__MAX_STRING_LENGTH_()),
+        ("pFlow", PTC_GEN_FLOW()),
+        ("NumberOfFilters", ULONG()),
+        ("GenericFilter", TC_GEN_FILTER__1_()),
+    ]
+
+PENUMERATION_BUFFER = Ptr("<I", ENUMERATION_BUFFER())
+
+class TCI_CLIENT_FUNC_LIST(MemStruct):
+    fields = [
+        ("ClNotifyHandler", TCI_NOTIFY_HANDLER()),
+        ("ClAddFlowCompleteHandler", TCI_ADD_FLOW_COMPLETE_HANDLER()),
+        ("ClModifyFlowCompleteHandler", TCI_MOD_FLOW_COMPLETE_HANDLER()),
+        ("ClDeleteFlowCompleteHandler", TCI_DEL_FLOW_COMPLETE_HANDLER()),
+    ]
+
+PTCI_CLIENT_FUNC_LIST = Ptr("<I", TCI_CLIENT_FUNC_LIST())
+
+###################
+
+###### Functions ######
 
 def traffic_TcAddFilter(jitter):
     """

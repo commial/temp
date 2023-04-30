@@ -1,3 +1,4 @@
+###### Enums ######
 _WSDXML_NODE_TYPE_ = {
     "ElementType": 0,
     "TextType": 1,
@@ -30,6 +31,137 @@ WSD_CONFIG_PARAM_TYPE_INV = {
     9: "WSD_CONFIG_HOSTING_ADDRESSES",
     10: "WSD_CONFIG_DEVICE_ADDRESSES",
 }
+
+###################
+
+###### Types ######
+
+class WSD_LOCALIZED_STRING(MemStruct):
+    fields = [
+        ("lang", const_WCHAR_PTR()),
+        ("String", const_WCHAR_PTR()),
+    ]
+
+WSD_LOCALIZED_STRING_PTR = Ptr("<I", WSD_LOCALIZED_STRING())
+
+class WSD_LOCALIZED_STRING_LIST(MemStruct):
+    fields = [
+        ("Next", LPVOID()),
+        ("Element", WSD_LOCALIZED_STRING_PTR()),
+    ]
+
+WSD_LOCALIZED_STRING_LIST_PTR = Ptr("<I", WSD_LOCALIZED_STRING_LIST())
+
+class WSDXML_NAMESPACE(MemStruct):
+    fields = [
+        ("Uri", const_WCHAR_PTR()),
+        ("PreferredPrefix", const_WCHAR_PTR()),
+        ("Names", LPVOID()),
+        ("NamesCount", WORD()),
+        ("Encoding", WORD()),
+    ]
+
+WSDXML_NAMESPACE_PTR = Ptr("<I", WSDXML_NAMESPACE())
+
+class WSDXML_NAME(MemStruct):
+    fields = [
+        ("Space", WSDXML_NAMESPACE_PTR()),
+        ("LocalName", WCHAR_PTR()),
+    ]
+
+WSDXML_NAME_PTR = Ptr("<I", WSDXML_NAME())
+WSDXML_NAME_PTR_PTR = Ptr("<I", WSDXML_NAME_PTR())
+
+class WSD_SOAP_FAULT_SUBCODE(MemStruct):
+    fields = [
+        ("Value", WSDXML_NAME_PTR()),
+        ("Subcode", LPVOID()),
+    ]
+
+WSD_SOAP_FAULT_SUBCODE_PTR = Ptr("<I", WSD_SOAP_FAULT_SUBCODE())
+_WSDXML_NODE_TYPE_ = UINT
+
+class WSDXML_NODE(MemStruct):
+    fields = [
+        ("Type", _WSDXML_NODE_TYPE_()),
+        ("Parent", LPVOID()),
+        ("Next", LPVOID()),
+    ]
+
+WSDXML_NODE_PTR = Ptr("<I", WSDXML_NODE())
+
+class WSDXML_ATTRIBUTE(MemStruct):
+    fields = [
+        ("Element", LPVOID()),
+        ("Next", LPVOID()),
+        ("Name", WSDXML_NAME_PTR()),
+        ("Value", WCHAR_PTR()),
+    ]
+
+WSDXML_ATTRIBUTE_PTR = Ptr("<I", WSDXML_ATTRIBUTE())
+
+class WSDXML_PREFIX_MAPPING(MemStruct):
+    fields = [
+        ("Refs", DWORD()),
+        ("Next", LPVOID()),
+        ("Space", WSDXML_NAMESPACE_PTR()),
+        ("Prefix", WCHAR_PTR()),
+    ]
+
+WSDXML_PREFIX_MAPPING_PTR = Ptr("<I", WSDXML_PREFIX_MAPPING())
+
+class WSDXML_ELEMENT(MemStruct):
+    fields = [
+        ("Node", WSDXML_NODE()),
+        ("Name", WSDXML_NAME_PTR()),
+        ("FirstAttribute", WSDXML_ATTRIBUTE_PTR()),
+        ("FirstChild", WSDXML_NODE_PTR()),
+        ("PrefixMappings", WSDXML_PREFIX_MAPPING_PTR()),
+    ]
+
+WSDXML_ELEMENT_PTR = Ptr("<I", WSDXML_ELEMENT())
+WSDXML_ELEMENT_PTR_PTR = Ptr("<I", WSDXML_ELEMENT_PTR())
+WSD_CONFIG_PARAM_TYPE = UINT
+
+class WSD_CONFIG_PARAM(MemStruct):
+    fields = [
+        ("configParamType", WSD_CONFIG_PARAM_TYPE()),
+        ("pConfigData", PVOID()),
+        ("dwConfigDataSize", DWORD()),
+    ]
+
+WSD_CONFIG_PARAM_PTR = Ptr("<I", WSD_CONFIG_PARAM())
+
+class WSD_SOAP_FAULT_CODE(MemStruct):
+    fields = [
+        ("Value", WSDXML_NAME_PTR()),
+        ("Subcode", WSD_SOAP_FAULT_SUBCODE_PTR()),
+    ]
+
+WSD_SOAP_FAULT_CODE_PTR = Ptr("<I", WSD_SOAP_FAULT_CODE())
+
+class WSD_SOAP_FAULT_REASON(MemStruct):
+    fields = [
+        ("Text", WSD_LOCALIZED_STRING_LIST_PTR()),
+    ]
+
+WSD_SOAP_FAULT_REASON_PTR = Ptr("<I", WSD_SOAP_FAULT_REASON())
+
+class WSD_SOAP_FAULT(MemStruct):
+    fields = [
+        ("Code", WSD_SOAP_FAULT_CODE_PTR()),
+        ("Reason", WSD_SOAP_FAULT_REASON_PTR()),
+        ("Node", const_WCHAR_PTR()),
+        ("Role", const_WCHAR_PTR()),
+        ("Detail", WSDXML_ELEMENT_PTR()),
+    ]
+
+WSD_SOAP_FAULT_PTR = Ptr("<I", WSD_SOAP_FAULT())
+WSD_SOAP_FAULT_PTR_PTR = Ptr("<I", WSD_SOAP_FAULT_PTR())
+
+###################
+
+###### Functions ######
 
 def wsdapi_WSDAllocateLinkedMemory(jitter):
     """

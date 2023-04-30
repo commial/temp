@@ -1,3 +1,4 @@
+###### Enums ######
 _WsaIoctl_ = {
     "SIO_ASSOCIATE_HANDLE": 0x88000001,
     "SIO_ENABLE_CIRCULAR_QUEUEING": 0x28000002,
@@ -44,6 +45,18 @@ _WsaIoctl__INV = {
     0x8800001a: "SIO_RESERVED_1",
     0x88000021: "SIO_RESERVED_2",
 }
+
+###################
+
+###### Types ######
+_WSA_ERROR_ = _ERROR_CODE_
+_LookupServiceFlags_ = DWORD
+_WsaFlags_ = DWORD
+_WsaIoctl_ = DWORD
+
+###################
+
+###### Functions ######
 
 def ws2_32_accept(jitter):
     """

@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def mstask_GetNetScheduleAccountInformation(jitter):
     """

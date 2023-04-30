@@ -1,3 +1,4 @@
+###### Enums ######
 DWM_SOURCE_FRAME_SAMPLING = {
     "DWM_SOURCE_FRAME_SAMPLING_POINT": 0,
     "DWM_SOURCE_FRAME_SAMPLING_COVERAGE": 1,
@@ -40,6 +41,125 @@ DWMTRANSITION_OWNEDWINDOW_TARGET_INV = {
     -1: "DWMTRANSITION_OWNEDWINDOW_NULL",
     0: "DWMTRANSITION_OWNEDWINDOW_REPOSITION",
 }
+
+###################
+
+###### Types ######
+DWM_FRAME_COUNT = ULONGLONG
+QPC_TIME = ULONGLONG
+HTHUMBNAIL = HANDLE
+PHTHUMBNAIL = Ptr("<I", HTHUMBNAIL())
+_DWM_BLURBEHIND_Flags_ = DWORD
+
+class DWM_BLURBEHIND(MemStruct):
+    fields = [
+        ("dwFlags", _DWM_BLURBEHIND_Flags_()),
+        ("fEnable", BOOL()),
+        ("hRgnBlur", HRGN()),
+        ("fTransitionOnMaximized", BOOL()),
+    ]
+
+const_DWM_BLURBEHIND_PTR = Ptr("<I", DWM_BLURBEHIND())
+
+class UNSIGNED_RATIO(MemStruct):
+    fields = [
+        ("uiNumerator", UINT32()),
+        ("uiDenominator", UINT32()),
+    ]
+
+
+class DWM_TIMING_INFO(MemStruct):
+    fields = [
+        ("cbSize", UINT32()),
+        ("rateRefresh", UNSIGNED_RATIO()),
+        ("qpcRefreshPeriod", QPC_TIME()),
+        ("rateCompose", UNSIGNED_RATIO()),
+        ("qpcVBlank", QPC_TIME()),
+        ("cRefresh", DWM_FRAME_COUNT()),
+        ("cDXRefresh", UINT()),
+        ("qpcCompose", QPC_TIME()),
+        ("cFrame", DWM_FRAME_COUNT()),
+        ("cDXPresent", UINT()),
+        ("cRefreshFrame", DWM_FRAME_COUNT()),
+        ("cFrameSubmitted", DWM_FRAME_COUNT()),
+        ("cDXPresentSubmitted", UINT()),
+        ("cFrameConfirmed", DWM_FRAME_COUNT()),
+        ("cDXPresentConfirmed", UINT()),
+        ("cRefreshConfirmed", DWM_FRAME_COUNT()),
+        ("cDXRefreshConfirmed", UINT()),
+        ("cFramesLate", DWM_FRAME_COUNT()),
+        ("cFramesOutstanding", UINT()),
+        ("cFrameDisplayed", DWM_FRAME_COUNT()),
+        ("qpcFrameDisplayed", QPC_TIME()),
+        ("cRefreshFrameDisplayed", DWM_FRAME_COUNT()),
+        ("cFrameComplete", DWM_FRAME_COUNT()),
+        ("qpcFrameComplete", QPC_TIME()),
+        ("cFramePending", DWM_FRAME_COUNT()),
+        ("qpcFramePending", QPC_TIME()),
+        ("cFramesDisplayed", DWM_FRAME_COUNT()),
+        ("cFramesComplete", DWM_FRAME_COUNT()),
+        ("cFramesPending", DWM_FRAME_COUNT()),
+        ("cFramesAvailable", DWM_FRAME_COUNT()),
+        ("cFramesDropped", DWM_FRAME_COUNT()),
+        ("cFramesMissed", DWM_FRAME_COUNT()),
+        ("cRefreshNextDisplayed", DWM_FRAME_COUNT()),
+        ("cRefreshNextPresented", DWM_FRAME_COUNT()),
+        ("cRefreshesDisplayed", DWM_FRAME_COUNT()),
+        ("cRefreshesPresented", DWM_FRAME_COUNT()),
+        ("cRefreshStarted", DWM_FRAME_COUNT()),
+        ("cPixelsReceived", ULONGLONG()),
+        ("cPixelsDrawn", ULONGLONG()),
+        ("cBuffersEmpty", DWM_FRAME_COUNT()),
+    ]
+
+DWM_TIMING_INFO_PTR = Ptr("<I", DWM_TIMING_INFO())
+
+class MilMatrix3x2D(MemStruct):
+    fields = [
+        ("S_11", DOUBLE()),
+        ("S_12", DOUBLE()),
+        ("S_21", DOUBLE()),
+        ("S_22", DOUBLE()),
+        ("DX", DOUBLE()),
+        ("DY", DOUBLE()),
+    ]
+
+MilMatrix3x2D_PTR = Ptr("<I", MilMatrix3x2D())
+DWM_SOURCE_FRAME_SAMPLING = UINT
+
+class DWM_PRESENT_PARAMETERS(MemStruct):
+    fields = [
+        ("cbSize", UINT32()),
+        ("fQueue", BOOL()),
+        ("cRefreshStart", DWM_FRAME_COUNT()),
+        ("cBuffer", UINT()),
+        ("fUseSourceRate", BOOL()),
+        ("rateSource", UNSIGNED_RATIO()),
+        ("cRefreshesPerFrame", UINT()),
+        ("eSampling", DWM_SOURCE_FRAME_SAMPLING()),
+    ]
+
+DWM_PRESENT_PARAMETERS_PTR = Ptr("<I", DWM_PRESENT_PARAMETERS())
+_DWM_TNP_ = DWORD
+
+class DWM_THUMBNAIL_PROPERTIES(MemStruct):
+    fields = [
+        ("dwFlags", _DWM_TNP_()),
+        ("rcDestination", RECT()),
+        ("rcSource", RECT()),
+        ("opacity", BYTE()),
+        ("fVisible", BOOL()),
+        ("fSourceClientAreaOnly", BOOL()),
+    ]
+
+const_DWM_THUMBNAIL_PROPERTIES_PTR = Ptr("<I", DWM_THUMBNAIL_PROPERTIES())
+GESTURE_TYPE = UINT
+DWM_SHOWCONTACT = UINT
+DWMTRANSITION_OWNEDWINDOW_TARGET = UINT
+
+###################
+
+###### Functions ######
 
 def dwmapi_DwmAttachMilContent(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 BSOS_OPTIONS = {
     "BSOS_DEFAULT": 0,
     "BSOS_PREFERDESTINATIONSTREAM": 1,
@@ -22,6 +23,17 @@ DISPLAY_DEVICE_TYPE_INV = {
     0: "DEVICE_PRIMARY",
     1: "DEVICE_IMMERSIVE",
 }
+
+###################
+
+###### Types ######
+BSOS_OPTIONS = UINT
+FileAccessMode = DWORD
+DISPLAY_DEVICE_TYPE = UINT
+
+###################
+
+###### Functions ######
 
 def shcore_CreateRandomAccessStreamOnFile(jitter):
     """

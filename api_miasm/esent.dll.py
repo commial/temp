@@ -1,3 +1,4 @@
+###### Enums ######
 JET_SESID = {
     "NULL": 0,
     "JET_sesidNil": -1,
@@ -1062,6 +1063,588 @@ JET_RELOP_INV = {
     7: "JET_relopBitmaskEqualsZero",
     8: "JET_relopBitmaskNotEqualsZero",
 }
+
+###################
+
+###### Types ######
+JET_GRBIT = unsigned_long
+const_JET_GRBIT = JET_GRBIT
+JET_PCSTR = LPCTSTR
+JET_PSTR = LPCTSTR
+JET_API_PTR = UINT_PTR
+JET_API_PTR_PTR = Ptr("<I", JET_API_PTR())
+JET_COLUMNID = unsigned_long
+JET_COLUMNID_PTR = Ptr("<I", JET_COLUMNID())
+const_JET_COLUMNID_PTR_const = Ptr("<I", JET_COLUMNID())
+JET_HANDLE = JET_API_PTR
+JET_HANDLE_PTR = Ptr("<I", JET_HANDLE())
+JET_PFNSTATUS = LPVOID
+JET_CALLBACK = LPVOID
+JET_CBTYP = unsigned_long
+JET_OBJTYP = unsigned_long
+JET_OSSNAPID = JET_API_PTR
+JET_OSSNAPID_PTR = Ptr("<I", JET_OSSNAPID())
+const_JET_OSSNAPID = JET_OSSNAPID
+JET_PFNREALLOC = LPVOID
+JET_COLTYP = unsigned_long
+const_TCHAR_PTR = TCHAR_PTR
+unsigned_long_PTR_const = unsigned_long_PTR
+const_unsigned_long_PTR = unsigned_long_PTR
+TCHAR__JET_BASE_NAME_LENGTH_+_1_ = Array(TCHAR, 4)
+char__JET_MAX_COMPUTERNAME_LENGTH_+_1_ = Array(char, 16)
+JET_SESID = JET_API_PTR
+JET_SESID_PTR = Ptr("<I", JET_SESID())
+JET_INSTANCE = JET_API_PTR
+JET_INSTANCE_PTR = Ptr("<I", JET_INSTANCE())
+JET_TABLEID = JET_API_PTR
+JET_TABLEID_PTR = Ptr("<I", JET_TABLEID())
+JET_LS = JET_API_PTR
+JET_LS_PTR = Ptr("<I", JET_LS())
+_JET_param_ = unsigned_long
+JET_DBID = unsigned_long
+JET_DBID_PTR = Ptr("<I", JET_DBID())
+JET_INDEXID_PTR = Ptr("<I", JET_INDEXID())
+JET_ERR = long
+
+class JET_SPACEHINTS(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("ulInitialDensity", unsigned_long()),
+        ("cbInitial", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        ("ulMaintDensity", unsigned_long()),
+        ("ulGrowth", unsigned_long()),
+        ("cbMinExtent", unsigned_long()),
+        ("cbMaxExtent", unsigned_long()),
+    ]
+
+JET_SPACEHINTS_PTR = Ptr("<I", JET_SPACEHINTS())
+_JET_UNICODEINDEX_FLAGS_ = unsigned_long
+
+class JET_UNICODEINDEX(MemStruct):
+    fields = [
+        ("lcid", unsigned_long()),
+        ("dwMapFlags", _JET_UNICODEINDEX_FLAGS_()),
+    ]
+
+JET_UNICODEINDEX_PTR = Ptr("<I", JET_UNICODEINDEX())
+
+class JET_UNICODEINDEX2(MemStruct):
+    fields = [
+        ("szLocaleName", WCHAR_PTR()),
+        ("dwMapFlags", _JET_UNICODEINDEX_FLAGS_()),
+    ]
+
+JET_UNICODEINDEX2_PTR = Ptr("<I", JET_UNICODEINDEX2())
+
+class JET_COLUMNDEF(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("columnid", JET_COLUMNID()),
+        ("coltyp", JET_COLTYP()),
+        ("wCountry", unsigned_short()),
+        ("langid", unsigned_short()),
+        ("cp", unsigned_short()),
+        ("wCollate", unsigned_short()),
+        ("cbMax", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+    ]
+
+const_JET_COLUMNDEF_PTR = Ptr("<I", JET_COLUMNDEF())
+
+class JET_CONVERT(MemStruct):
+    fields = [
+        ("szOldDll", TCHAR_PTR()),
+        ("fFlags", unsigned_long()),
+    ]
+
+JET_CONVERT_PTR = Ptr("<I", JET_CONVERT())
+_JET_INDEXCREATE_u1_ = Union([
+    ("lcid", unsigned_long),
+    ("pidxunicode", JET_UNICODEINDEX_PTR),
+])
+
+class JET_TUPLELIMITS(MemStruct):
+    fields = [
+        ("chLengthMin", unsigned_long()),
+        ("chLengthMax", unsigned_long()),
+        ("chToIndexMax", unsigned_long()),
+        ("cchIncrement", unsigned_long()),
+        ("ichStart", unsigned_long()),
+    ]
+
+JET_TUPLELIMITS_PTR = Ptr("<I", JET_TUPLELIMITS())
+_JET_INDEXCREATE_u2_ = Union([
+    ("cbVarSegMac", unsigned_long),
+    ("ptuplelimits", JET_TUPLELIMITS_PTR),
+])
+
+class JET_CONDITIONALCOLUMN(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szColumnName", TCHAR_PTR()),
+        ("grbit", JET_GRBIT()),
+    ]
+
+JET_CONDITIONALCOLUMN_PTR = Ptr("<I", JET_CONDITIONALCOLUMN())
+
+class JET_INDEXCREATE(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szIndexName", TCHAR_PTR()),
+        ("szKey", TCHAR_PTR()),
+        ("cbKey", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        ("ulDensity", unsigned_long()),
+        (None, _JET_INDEXCREATE_u1_()),
+        (None, _JET_INDEXCREATE_u2_()),
+        ("rgconditionalcolumn", JET_CONDITIONALCOLUMN_PTR()),
+        ("cConditionalColumn", unsigned_long()),
+        ("err", JET_ERR()),
+        ("cbKeyMost", unsigned_long()),
+    ]
+
+JET_INDEXCREATE_PTR = Ptr("<I", JET_INDEXCREATE())
+
+class JET_INDEXCREATE2(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szIndexName", TCHAR_PTR()),
+        ("szKey", TCHAR_PTR()),
+        ("cbKey", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        ("ulDensity", unsigned_long()),
+        (None, _JET_INDEXCREATE_u1_()),
+        (None, _JET_INDEXCREATE_u2_()),
+        ("rgconditionalcolumn", JET_CONDITIONALCOLUMN_PTR()),
+        ("cConditionalColumn", unsigned_long()),
+        ("err", JET_ERR()),
+        ("cbKeyMost", unsigned_long()),
+        ("pSpacehints", JET_SPACEHINTS_PTR()),
+    ]
+
+JET_INDEXCREATE2_PTR = Ptr("<I", JET_INDEXCREATE2())
+
+class JET_COLUMNCREATE(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szColumnName", TCHAR_PTR()),
+        ("coltyp", JET_COLTYP()),
+        ("cbMax", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        # Length is `cbDefault`
+        ("pvDefault", void_PTR()),
+        ("cbDefault", unsigned_long()),
+        ("cp", unsigned_long()),
+        ("columnid", JET_COLUMNID()),
+        ("err", JET_ERR()),
+    ]
+
+JET_COLUMNCREATE_PTR = Ptr("<I", JET_COLUMNCREATE())
+
+class JET_TABLECREATE(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szTableName", TCHAR_PTR()),
+        ("szTemplateTableName", TCHAR_PTR()),
+        ("ulPages", unsigned_long()),
+        ("ulDensity", unsigned_long()),
+        ("rgcolumncreate", JET_COLUMNCREATE_PTR()),
+        ("cColumns", unsigned_long()),
+        ("rgindexcreate", JET_INDEXCREATE_PTR()),
+        ("cIndexes", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        ("tableid", JET_TABLEID()),
+        ("cCreated", unsigned_long()),
+    ]
+
+JET_TABLECREATE_PTR = Ptr("<I", JET_TABLECREATE())
+
+class JET_TABLECREATE2(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szTableName", TCHAR_PTR()),
+        ("szTemplateTableName", TCHAR_PTR()),
+        ("ulPages", unsigned_long()),
+        ("ulDensity", unsigned_long()),
+        ("rgcolumncreate", JET_COLUMNCREATE_PTR()),
+        ("cColumns", unsigned_long()),
+        ("rgindexcreate", JET_INDEXCREATE_PTR()),
+        ("cIndexes", unsigned_long()),
+        ("szCallback", TCHAR_PTR()),
+        ("cbtyp", JET_CBTYP()),
+        ("grbit", JET_GRBIT()),
+        ("tableid", JET_TABLEID()),
+        ("cCreated", unsigned_long()),
+    ]
+
+JET_TABLECREATE2_PTR = Ptr("<I", JET_TABLECREATE2())
+
+class JET_SETSYSPARAM(MemStruct):
+    fields = [
+        ("paramid", _JET_param_()),
+        ("lParam", JET_API_PTR()),
+        ("sz", const_TCHAR_PTR()),
+        ("err", JET_ERR()),
+    ]
+
+JET_SETSYSPARAM_PTR = Ptr("<I", JET_SETSYSPARAM())
+
+class JET_ENUMCOLUMNID(MemStruct):
+    fields = [
+        ("columnid", JET_COLUMNID()),
+        ("ctagSequence", unsigned_long()),
+        ("rgtagSequence", unsigned_long_PTR()),
+    ]
+
+JET_ENUMCOLUMNID_PTR = Ptr("<I", JET_ENUMCOLUMNID())
+
+class JET_ENUMCOLUMNVALUE(MemStruct):
+    fields = [
+        ("itagSequence", unsigned_long()),
+        ("err", JET_ERR()),
+        ("cbData", unsigned_long()),
+        # Length is `cbData`
+        ("pvData", void_PTR()),
+    ]
+
+JET_ENUMCOLUMNVALUE_PTR = Ptr("<I", JET_ENUMCOLUMNVALUE())
+
+class _JET_ENUMCOLUMN_u_s1_(MemStruct):
+    fields = [
+        ("cEnumColumnValue", unsigned_long()),
+        ("rgEnumColumnValue", JET_ENUMCOLUMNVALUE_PTR()),
+    ]
+
+
+class _JET_ENUMCOLUMN_u_s2_(MemStruct):
+    fields = [
+        ("cbData", unsigned_long()),
+        # Length is `cbData`
+        ("pvData", void_PTR()),
+    ]
+
+_JET_ENUMCOLUMN_u_ = Union([
+    (None, _JET_ENUMCOLUMN_u_s1_),
+    (None, _JET_ENUMCOLUMN_u_s2_),
+])
+
+class JET_ENUMCOLUMN(MemStruct):
+    fields = [
+        ("columnid", JET_COLUMNID()),
+        ("err", JET_ERR()),
+        (None, _JET_ENUMCOLUMN_u_()),
+    ]
+
+JET_ENUMCOLUMN_PTR = Ptr("<I", JET_ENUMCOLUMN())
+JET_ENUMCOLUMN_PTR_PTR = Ptr("<I", JET_ENUMCOLUMN_PTR())
+
+class JET_LOGINFO(MemStruct):
+    fields = [
+        ("cbSize", unsigned_long()),
+        ("ulGenLow", unsigned_long()),
+        ("ulGenHigh", unsigned_long()),
+        ("szBaseName", TCHAR__JET_BASE_NAME_LENGTH_+_1_()),
+    ]
+
+JET_LOGINFO_PTR = Ptr("<I", JET_LOGINFO())
+
+class JET_INSTANCE_INFO(MemStruct):
+    fields = [
+        ("hInstanceId", JET_INSTANCE()),
+        ("szInstanceName", TCHAR_PTR()),
+        ("cDatabases", JET_API_PTR()),
+        ("szDatabaseFileName", TCHAR_PTR_PTR()),
+        ("szDatabaseDisplayName", TCHAR_PTR_PTR()),
+        ("szDatabaseSLVFileName", TCHAR_PTR_PTR()),
+    ]
+
+JET_INSTANCE_INFO_PTR = Ptr("<I", JET_INSTANCE_INFO())
+JET_INSTANCE_INFO_PTR_PTR = Ptr("<I", JET_INSTANCE_INFO_PTR())
+
+class JET_RECPOS(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("centriesLT", unsigned_long()),
+        ("centriesInRange", unsigned_long()),
+        ("centriesTotal", unsigned_long()),
+    ]
+
+JET_RECPOS_PTR = Ptr("<I", JET_RECPOS())
+
+class JET_RECSIZE(MemStruct):
+    fields = [
+        ("cbData", unsigned___int64()),
+        ("cbLongValueData", unsigned___int64()),
+        ("cbOverhead", unsigned___int64()),
+        ("cbLongValueOverhead", unsigned___int64()),
+        ("cNonTaggedColumns", unsigned___int64()),
+        ("cTaggedColumns", unsigned___int64()),
+        ("cLongValues", unsigned___int64()),
+        ("cMultiValues", unsigned___int64()),
+    ]
+
+JET_RECSIZE_PTR = Ptr("<I", JET_RECSIZE())
+
+class JET_RSTMAP(MemStruct):
+    fields = [
+        ("szDatabaseName", TCHAR_PTR()),
+        ("szNewDatabaseName", TCHAR_PTR()),
+    ]
+
+JET_RSTMAP_PTR = Ptr("<I", JET_RSTMAP())
+
+class JET_LGPOS(MemStruct):
+    fields = [
+        ("ib", unsigned_short()),
+        ("isec", unsigned_short()),
+        ("lGeneration", long()),
+    ]
+
+
+class JET_LOGTIME(MemStruct):
+    fields = [
+        ("bSeconds", char()),
+        ("bMinutes", char()),
+        ("bHours", char()),
+        ("bDay", char()),
+        ("bMonth", char()),
+        ("bYear", char()),
+        ("bFiller1", char()),
+        ("bFiller2", char()),
+    ]
+
+
+class JET_RSTINFO(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("rgrstmap", JET_RSTMAP_PTR()),
+        ("crstmap", long()),
+        ("lgposStop", JET_LGPOS()),
+        ("logtimeStop", JET_LOGTIME()),
+        ("pfnStatus", JET_PFNSTATUS()),
+    ]
+
+JET_RSTINFO_PTR = Ptr("<I", JET_RSTINFO())
+
+class JET_INDEXRANGE(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("tableid", JET_TABLEID()),
+        ("grbit", JET_GRBIT()),
+    ]
+
+JET_INDEXRANGE_PTR = Ptr("<I", JET_INDEXRANGE())
+
+class JET_RECORDLIST(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("tableid", JET_TABLEID()),
+        ("cRecord", unsigned_long()),
+        ("columnidBookmark", JET_COLUMNID()),
+    ]
+
+JET_RECORDLIST_PTR = Ptr("<I", JET_RECORDLIST())
+
+class JET_OPENTEMPORARYTABLE(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("prgcolumndef", const_JET_COLUMNDEF_PTR()),
+        ("ccolumn", unsigned_long()),
+        ("pidxunicode", JET_UNICODEINDEX_PTR()),
+        ("grbit", JET_GRBIT()),
+        ("prgcolumnid", JET_COLUMNID_PTR()),
+        ("cbKeyMost", unsigned_long()),
+        ("cbVarSegMac", unsigned_long()),
+        ("tableid", JET_TABLEID()),
+    ]
+
+JET_OPENTEMPORARYTABLE_PTR = Ptr("<I", JET_OPENTEMPORARYTABLE())
+
+class JET_OPENTEMPORARYTABLE2(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("prgcolumndef", const_JET_COLUMNDEF_PTR()),
+        ("ccolumn", unsigned_long()),
+        ("pidxunicode", JET_UNICODEINDEX2_PTR()),
+        ("grbit", JET_GRBIT()),
+        ("prgcolumnid", JET_COLUMNID_PTR()),
+        ("cbKeyMost", unsigned_long()),
+        ("cbVarSegMac", unsigned_long()),
+        ("tableid", JET_TABLEID()),
+    ]
+
+JET_OPENTEMPORARYTABLE2_PTR = Ptr("<I", JET_OPENTEMPORARYTABLE2())
+
+class JET_RETINFO(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("ibLongValue", unsigned_long()),
+        ("itagSequence", unsigned_long()),
+        ("columnidNextTagged", JET_COLUMNID()),
+    ]
+
+JET_RETINFO_PTR = Ptr("<I", JET_RETINFO())
+
+class JET_RETRIEVECOLUMN(MemStruct):
+    fields = [
+        ("columnid", JET_COLUMNID()),
+        ("pvData", void_PTR()),
+        ("cbData", unsigned_long()),
+        ("cbActual", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        ("ibLongValue", unsigned_long()),
+        ("itagSequence", unsigned_long()),
+        ("columnidNextTagged", JET_COLUMNID()),
+        ("err", JET_ERR()),
+    ]
+
+JET_RETRIEVECOLUMN_PTR = Ptr("<I", JET_RETRIEVECOLUMN())
+
+class JET_SETINFO(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("ibLongValue", unsigned_long()),
+        ("itagSequence", unsigned_long()),
+    ]
+
+JET_SETINFO_PTR = Ptr("<I", JET_SETINFO())
+
+class JET_SETCOLUMN(MemStruct):
+    fields = [
+        ("columnid", JET_COLUMNID()),
+        # Length is `cbData`
+        ("pvData", const_void_PTR()),
+        ("cbData", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+        ("ibLongValue", unsigned_long()),
+        ("itagSequence", unsigned_long()),
+        ("err", JET_ERR()),
+    ]
+
+JET_SETCOLUMN_PTR = Ptr("<I", JET_SETCOLUMN())
+_JetMoveRow_ = long
+_JetMoveFlags_ = JET_GRBIT
+_JetMakeKeyFlags_ = JET_GRBIT
+_JetSeekFlags_ = JET_GRBIT
+_JetCommitTransactionFlags_ = JET_GRBIT
+_JetSetIndexRangeFlags_ = JET_GRBIT
+_JetGetLockFlags_ = JET_GRBIT
+_JetGotoSecondaryIndexBookmarkFlags_ = JET_GRBIT
+_JetCreateIndexFlags_ = JET_GRBIT
+_JetOpenTableFlags_ = JET_GRBIT
+_JetOpenTempTableFlags_ = JET_GRBIT
+_JetSetColumnFlags_ = JET_GRBIT
+_JetBackupFlags_ = JET_GRBIT
+_JetOpenDatabaseFlags_ = JET_GRBIT
+_JetDetachDatabase2Flags_ = JET_GRBIT
+_JetCreateDatabaseFlags_ = JET_GRBIT
+_JetBeginTransaction2Flags_ = JET_GRBIT
+_JetCompactFlags_ = JET_GRBIT
+_JetDefragmentFlags_ = JET_GRBIT
+_JetEndExternalBackupInstance2Flags_ = JET_GRBIT
+_JetEnumerateColumnsFlags_ = JET_GRBIT
+_JetEscrowUpdateFlags_ = JET_GRBIT
+_JetGetLSFlags_ = JET_GRBIT
+_JetIdleFlags_ = JET_GRBIT
+_JetInitFlags_ = JET_GRBIT
+_JetTerm2Flags_ = JET_GRBIT
+_JetRetrieveColumnFlags_ = JET_GRBIT
+_JetRollbackFlags_ = JET_GRBIT
+_JetSetCurrentIndexFlags_ = JET_GRBIT
+_JetUpdateFlags_ = JET_GRBIT
+_JetPrepareUpdateOption_ = unsigned_long
+
+class JET_SIGNATURE(MemStruct):
+    fields = [
+        ("ulRandom", unsigned_long()),
+        ("logtimeCreate", JET_LOGTIME()),
+        ("szComputerName", char__JET_MAX_COMPUTERNAME_LENGTH_+_1_()),
+    ]
+
+
+class JET_COMMIT_ID(MemStruct):
+    fields = [
+        ("signLog", JET_SIGNATURE()),
+        ("reserved", int()),
+        ("commitId", __int64()),
+    ]
+
+JET_COMMIT_ID_PTR = Ptr("<I", JET_COMMIT_ID())
+
+class JET_TABLECREATE3(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("szTableName", TCHAR_PTR()),
+        ("szTemplateTableName", TCHAR_PTR()),
+        ("ulPages", unsigned_long()),
+        ("ulDensity", unsigned_long()),
+        ("rgcolumncreate", JET_COLUMNCREATE_PTR()),
+        ("cColumns", unsigned_long()),
+        ("rgindexcreate", JET_INDEXCREATE2_PTR()),
+        ("cIndexes", unsigned_long()),
+        ("szCallback", TCHAR_PTR()),
+        ("cbtyp", JET_CBTYP()),
+        ("grbit", JET_GRBIT()),
+        ("pSeqSpacehints", JET_SPACEHINTS_PTR()),
+        ("pLVSpacehints", JET_SPACEHINTS_PTR()),
+        ("cbSeparateLV", unsigned_long()),
+        ("tableid", JET_TABLEID()),
+        ("cCreated", unsigned_long()),
+    ]
+
+JET_TABLECREATE3_PTR = Ptr("<I", JET_TABLECREATE3())
+
+class JET_RECSIZE2(MemStruct):
+    fields = [
+        ("cbData", unsigned___int64()),
+        ("cbLongValueData", unsigned___int64()),
+        ("cbOverhead", unsigned___int64()),
+        ("cbLongValueOverhead", unsigned___int64()),
+        ("cNonTaggedColumns", unsigned___int64()),
+        ("cTaggedColumns", unsigned___int64()),
+        ("cLongValues", unsigned___int64()),
+        ("cMultiValues", unsigned___int64()),
+        ("cCompressedColumns", unsigned___int64()),
+        ("cbDataCompressed", unsigned___int64()),
+        ("cbLongValueDataCompressed", unsigned___int64()),
+    ]
+
+JET_RECSIZE2_PTR = Ptr("<I", JET_RECSIZE2())
+JET_RELOP = UINT
+
+class JET_INDEX_COLUMN(MemStruct):
+    fields = [
+        ("columnid", JET_COLUMNID()),
+        ("relop", JET_RELOP()),
+        ("pv", void_PTR()),
+        ("cb", unsigned_long()),
+        ("grbit", JET_GRBIT()),
+    ]
+
+JET_INDEX_COLUMN_PTR = Ptr("<I", JET_INDEX_COLUMN())
+
+class JET_INDEX_RANGE(MemStruct):
+    fields = [
+        ("rgStartColumns", JET_INDEX_COLUMN_PTR()),
+        ("cStartColumns", unsigned_long()),
+        ("rgEndColumns", JET_INDEX_COLUMN_PTR()),
+        ("cEndColumns", unsigned_long()),
+    ]
+
+const_JET_INDEX_RANGE_PTR_const = Ptr("<I", JET_INDEX_RANGE())
+unsigned_char__12_ = Array(unsigned_char, 12)
+
+class JET_INDEXID(MemStruct):
+    fields = [
+        ("cbStruct", unsigned_long()),
+        ("rgbIndexId", unsigned_char__12_()),
+    ]
+
+
+###################
+
+###### Functions ######
 
 def esent_JetAddColumn(jitter, get_str, set_str):
     """

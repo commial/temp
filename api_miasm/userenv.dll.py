@@ -1,3 +1,4 @@
+###### Enums ######
 GPO_LINK = {
     "GPLinkUnknown": 0,
     "GPLinkMachine": 1,
@@ -26,6 +27,70 @@ SETTINGSTATUS_INV = {
     3: "RSOPFailed",
     4: "RSOPSubsettingFailed",
 }
+
+###################
+
+###### Types ######
+REFGPEXTENSIONID = GUID_PTR
+ASYNCCOMPLETIONHANDLE = UINT_PTR
+PRSOPTOKEN = PVOID
+TCHAR__50_ = Array(TCHAR, 50)
+GPO_LINK = UINT
+_GPO_FLAG_ = DWORD
+
+class GROUP_POLICY_OBJECT(MemStruct):
+    fields = [
+        ("dwOptions", _GPO_FLAG_()),
+        ("dwVersion", DWORD()),
+        ("lpDSPath", LPTSTR()),
+        ("lpFileSysPath", LPTSTR()),
+        ("lpDisplayName", LPTSTR()),
+        ("szGPOName", TCHAR__50_()),
+        ("GPOLink", GPO_LINK()),
+        ("lParam", LPARAM()),
+        ("pNext", LPVOID()),
+        ("pPrev", LPVOID()),
+        ("lpExtensions", LPTSTR()),
+        ("lParam2", LPARAM()),
+        ("lpLink", LPTSTR()),
+    ]
+
+PGROUP_POLICY_OBJECT = Ptr("<I", GROUP_POLICY_OBJECT())
+PGROUP_POLICY_OBJECT_PTR = Ptr("<I", PGROUP_POLICY_OBJECT())
+SETTINGSTATUS = UINT
+
+class POLICYSETTINGSTATUSINFO(MemStruct):
+    fields = [
+        ("szKey", LPWSTR()),
+        ("szEventSource", LPWSTR()),
+        ("szEventLogName", LPWSTR()),
+        ("dwEventID", DWORD()),
+        ("dwErrorCode", DWORD()),
+        ("status", SETTINGSTATUS()),
+        ("timeLogged", SYSTEMTIME()),
+    ]
+
+POLICYSETTINGSTATUSINFO_PTR = Ptr("<I", POLICYSETTINGSTATUSINFO())
+
+class PROFILEINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("lpUserName", LPTSTR()),
+        ("lpProfilePath", LPTSTR()),
+        ("lpDefaultPath", LPTSTR()),
+        ("lpServerName", LPTSTR()),
+        ("lpPolicyPath", LPTSTR()),
+        ("hProfile", HANDLE()),
+    ]
+
+LPPROFILEINFO = Ptr("<I", PROFILEINFO())
+_ProfileType_ = DWORD
+_ProfileType_PTR_ = Ptr("<I", _ProfileType_())
+
+###################
+
+###### Functions ######
 
 def userenv_EnterCriticalPolicySection(jitter):
     """

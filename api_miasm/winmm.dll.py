@@ -1,3 +1,4 @@
+###### Enums ######
 _AUXCAPS_TECH_ = {
     "AUXCAPS_CDAUDIO": 1,
     "AUXCAPS_AUXIN": 2,
@@ -334,6 +335,420 @@ _SND_FLAGS__INV = {
     0x00100000: "SND_RING",
     0x00200000: "SND_SYSTEM",
 }
+
+###################
+
+###### Types ######
+MCIDEVICEID = UINT
+YIELDPROC = LPVOID
+HMIDI = HANDLE
+HMIDIOUT = HANDLE
+LPHMIDIOUT = Ptr("<I", HMIDIOUT())
+HMIDIIN = HANDLE
+LPHMIDIIN = Ptr("<I", HMIDIIN())
+HMIDISTRM = HANDLE
+LPHMIDISTRM = Ptr("<I", HMIDISTRM())
+HMIXER = HANDLE
+LPHMIXER = Ptr("<I", HMIXER())
+HMIXEROBJ = HMIXER
+HMMIO = HANDLE
+LPMMIOPROC = LPVOID
+HPSTR = LPVOID
+HWAVEIN = HANDLE
+LPHWAVEIN = Ptr("<I", HWAVEIN())
+HWAVEOUT = HANDLE
+LPHWAVEOUT = Ptr("<I", HWAVEOUT())
+LPTIMECALLBACK = LPVOID
+MMVERSION = UINT
+HDRVR = HANDLE
+DRIVERMSGPROC = LPVOID
+LPTASKCALLBACK = LPVOID
+DWORD__6_ = Array(DWORD, 6)
+DWORD_PTR__8_ = Array(DWORD_PTR, 8)
+TCHAR__MAXPNAMELEN_ = Array(TCHAR, 32)
+TCHAR__MIXER_SHORT_NAME_CHARS_ = Array(TCHAR, 16)
+TCHAR__MIXER_LONG_NAME_CHARS_ = Array(TCHAR, 64)
+TCHAR__MAX_JOYSTICKOEMVXDNAME_ = Array(TCHAR, 260)
+_WAVE_FORMAT_ = DWORD
+_AUXCAPS_TECH_ = WORD
+_AUXCAPS_SUPPORT_ = DWORD
+
+class AUXCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("wTechnology", _AUXCAPS_TECH_()),
+        ("wReserved1", WORD()),
+        ("dwSupport", _AUXCAPS_SUPPORT_()),
+    ]
+
+LPAUXCAPS = Ptr("<I", AUXCAPS())
+_JOYCAPS_FLAGS_ = UINT
+
+class JOYCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("wXmin", UINT()),
+        ("wXmax", UINT()),
+        ("wYmin", UINT()),
+        ("wYmax", UINT()),
+        ("wZmin", UINT()),
+        ("wZmax", UINT()),
+        ("wNumButtons", UINT()),
+        ("wPeriodMin", UINT()),
+        ("wPeriodMax", UINT()),
+        ("wRmin", UINT()),
+        ("wRmax", UINT()),
+        ("wUmin", UINT()),
+        ("wUmax", UINT()),
+        ("wVmin", UINT()),
+        ("wVmax", UINT()),
+        ("wCaps", _JOYCAPS_FLAGS_()),
+        ("wMaxAxes", UINT()),
+        ("wNumAxes", UINT()),
+        ("wMaxButtons", UINT()),
+        ("szRegKey", TCHAR__MAXPNAMELEN_()),
+        ("szOEMVxD", TCHAR__MAX_JOYSTICKOEMVXDNAME_()),
+    ]
+
+LPJOYCAPS = Ptr("<I", JOYCAPS())
+_MIDIHDR_FLAGS_ = DWORD
+
+class MIDIHDR(MemStruct):
+    fields = [
+        ("lpData", LPVOID()),
+        ("dwBufferLength", DWORD()),
+        ("dwBytesRecorded", DWORD()),
+        ("dwUser", DWORD_PTR()),
+        ("dwFlags", _MIDIHDR_FLAGS_()),
+        ("lpNext", LPVOID()),
+        ("reserved", DWORD_PTR()),
+        ("dwOffset", DWORD()),
+        ("dwReserved", DWORD_PTR__8_()),
+    ]
+
+LPMIDIHDR = Ptr("<I", MIDIHDR())
+
+class MIDIINCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("dwSupport", DWORD()),
+    ]
+
+LPMIDIINCAPS = Ptr("<I", MIDIINCAPS())
+_MIDIOUTCAPS_TECH_ = WORD
+_MIDICAPS_FLAGS_ = DWORD
+
+class MIDIOUTCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("wTechnology", _MIDIOUTCAPS_TECH_()),
+        ("wVoices", WORD()),
+        ("wNotes", WORD()),
+        ("wChannelMask", WORD()),
+        ("dwSupport", _MIDICAPS_FLAGS_()),
+    ]
+
+LPMIDIOUTCAPS = Ptr("<I", MIDIOUTCAPS())
+_MIXERCONTROLDETAILS_u_ = Union([
+    ("hwndOwner", HWND),
+    ("cMultipleItems", DWORD),
+])
+
+class MIXERCONTROLDETAILS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwControlID", DWORD()),
+        ("cChannels", DWORD()),
+        (None, _MIXERCONTROLDETAILS_u_()),
+        ("cbDetails", DWORD()),
+        ("paDetails", LPVOID()),
+    ]
+
+LPMIXERCONTROLDETAILS = Ptr("<I", MIXERCONTROLDETAILS())
+
+class MIXERCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("fdwSupport", DWORD()),
+        ("cDestinations", DWORD()),
+    ]
+
+LPMIXERCAPS = Ptr("<I", MIXERCAPS())
+_MIXERLINECONTROLS_u_ = Union([
+    ("dwControlID", DWORD),
+    ("dwControlType", DWORD),
+])
+
+class _MIXERCONTROL_u1_s1_(MemStruct):
+    fields = [
+        ("lMinimum", LONG()),
+        ("lMaximum", LONG()),
+    ]
+
+
+class _MIXERCONTROL_u1_s2_(MemStruct):
+    fields = [
+        ("dwMinimum", DWORD()),
+        ("dwMaximum", DWORD()),
+    ]
+
+_MIXERCONTROL_u1_ = Union([
+    (None, _MIXERCONTROL_u1_s1_),
+    (None, _MIXERCONTROL_u1_s2_),
+    ("dwReserved", DWORD__6_),
+])
+_MIXERCONTROL_u2_ = Union([
+    ("cSteps", DWORD),
+    ("cbCustomData", DWORD),
+    ("dwReserved", DWORD__6_),
+])
+_MIXERCONTROL_CT_CLASS_ = DWORD
+_MIXERCONTROL_CONTROLF_ = DWORD
+
+class MIXERCONTROL(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwControlID", DWORD()),
+        ("dwControlType", _MIXERCONTROL_CT_CLASS_()),
+        ("fdwControl", _MIXERCONTROL_CONTROLF_()),
+        ("cMultipleItems", DWORD()),
+        ("szShortName", TCHAR__MIXER_SHORT_NAME_CHARS_()),
+        ("szName", TCHAR__MIXER_LONG_NAME_CHARS_()),
+        ("Bounds", _MIXERCONTROL_u1_()),
+        ("Metrics", _MIXERCONTROL_u2_()),
+    ]
+
+LPMIXERCONTROL = Ptr("<I", MIXERCONTROL())
+
+class MIXERLINECONTROLS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwLineID", DWORD()),
+        (None, _MIXERLINECONTROLS_u_()),
+        ("cControls", DWORD()),
+        ("cbmxctrl", DWORD()),
+        ("pamxctrl", LPMIXERCONTROL()),
+    ]
+
+LPMIXERLINECONTROLS = Ptr("<I", MIXERLINECONTROLS())
+_MIXERLINE_LINEF_ = DWORD
+_MIXERLINE_COMPONENTTYPE_ = DWORD
+_MIXERLINE_TARGETTYPE_ = DWORD
+
+class _MIXERLINE_s_(MemStruct):
+    fields = [
+        ("dwType", _MIXERLINE_TARGETTYPE_()),
+        ("dwDeviceID", DWORD()),
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+    ]
+
+
+class MIXERLINE(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwDestination", DWORD()),
+        ("dwSource", DWORD()),
+        ("dwLineID", DWORD()),
+        ("fdwLine", _MIXERLINE_LINEF_()),
+        ("dwUser", DWORD_PTR()),
+        ("dwComponentType", _MIXERLINE_COMPONENTTYPE_()),
+        ("cChannels", DWORD()),
+        ("cConnections", DWORD()),
+        ("cControls", DWORD()),
+        ("szShortName", TCHAR__MIXER_SHORT_NAME_CHARS_()),
+        ("szName", TCHAR__MIXER_LONG_NAME_CHARS_()),
+        ("Target", _MIXERLINE_s_()),
+    ]
+
+LPMIXERLINE = Ptr("<I", MIXERLINE())
+_MMIOINFO_FLAGS_ = DWORD
+
+class MMIOINFO(MemStruct):
+    fields = [
+        ("dwFlags", _MMIOINFO_FLAGS_()),
+        ("fccIOProc", FOURCC()),
+        ("pIOProc", LPMMIOPROC()),
+        ("wErrorRet", MMRESULT()),
+        ("htask", HTASK()),
+        ("cchBuffer", LONG()),
+        ("pchBuffer", HPSTR()),
+        ("pchNext", HPSTR()),
+        ("pchEndRead", HPSTR()),
+        ("pchEndWrite", HPSTR()),
+        ("lBufOffset", LONG()),
+        ("lDiskOffset", LONG()),
+        ("adwInfo", DWORD__3_()),
+        ("dwReserved1", DWORD()),
+        ("dwReserved2", DWORD()),
+        ("hmmio", HMMIO()),
+    ]
+
+LPMMIOINFO = Ptr("<I", MMIOINFO())
+const_LPMMIOINFO = Ptr("<I", MMIOINFO())
+_WHDR_FLAGS_ = DWORD
+
+class WAVEHDR(MemStruct):
+    fields = [
+        ("lpData", LPVOID()),
+        ("dwBufferLength", DWORD()),
+        ("dwBytesRecorded", DWORD()),
+        ("dwUser", DWORD_PTR()),
+        ("dwFlags", _WHDR_FLAGS_()),
+        ("dwLoops", DWORD()),
+        ("lpNext", LPVOID()),
+        ("reserved", DWORD_PTR()),
+    ]
+
+LPWAVEHDR = Ptr("<I", WAVEHDR())
+
+class WAVEINCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("dwFormats", _WAVE_FORMAT_()),
+        ("wChannels", WORD()),
+        ("wReserved1", WORD()),
+    ]
+
+LPWAVEINCAPS = Ptr("<I", WAVEINCAPS())
+_WAVEOUTCAPS_SUPPORT_ = DWORD
+
+class WAVEOUTCAPS(MemStruct):
+    fields = [
+        ("wMid", WORD()),
+        ("wPid", WORD()),
+        ("vDriverVersion", MMVERSION()),
+        ("szPname", TCHAR__MAXPNAMELEN_()),
+        ("dwFormats", _WAVE_FORMAT_()),
+        ("wChannels", WORD()),
+        ("wReserved1", WORD()),
+        ("dwSupport", _WAVEOUTCAPS_SUPPORT_()),
+    ]
+
+LPWAVEOUTCAPS = Ptr("<I", WAVEOUTCAPS())
+_JoyButton_ = UINT
+
+class JOYINFO(MemStruct):
+    fields = [
+        ("wXpos", UINT()),
+        ("wYpos", UINT()),
+        ("wZpos", UINT()),
+        ("wButtons", _JoyButton_()),
+    ]
+
+LPJOYINFO = Ptr("<I", JOYINFO())
+_JoyPov_ = DWORD
+_JoyButtonAll_ = DWORD
+_JOYINFOEX_Flags_ = DWORD
+
+class JOYINFOEX(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", _JOYINFOEX_Flags_()),
+        ("dwXpos", DWORD()),
+        ("dwYpos", DWORD()),
+        ("dwZpos", DWORD()),
+        ("dwRpos", DWORD()),
+        ("dwUpos", DWORD()),
+        ("dwVpos", DWORD()),
+        ("dwButtons", _JoyButtonAll_()),
+        ("dwButtonNumber", DWORD()),
+        ("dwPOV", _JoyPov_()),
+        ("dwReserved1", DWORD()),
+        ("dwReserved2", DWORD()),
+    ]
+
+LPJOYINFOEX = Ptr("<I", JOYINFOEX())
+_MMCKINFO_Flags_ = DWORD
+
+class MMCKINFO(MemStruct):
+    fields = [
+        ("ckid", FOURCC()),
+        ("cksize", DWORD()),
+        ("fccType", FOURCC()),
+        ("dwDataOffset", DWORD()),
+        ("dwFlags", _MMCKINFO_Flags_()),
+    ]
+
+LPMMCKINFO = Ptr("<I", MMCKINFO())
+
+class TIMECAPS(MemStruct):
+    fields = [
+        ("wPeriodMin", UINT()),
+        ("wPeriodMax", UINT()),
+    ]
+
+LPTIMECAPS = Ptr("<I", TIMECAPS())
+MCIERROR = DWORD
+_waveInOutOpenFlags_ = DWORD
+_midiInOutOpenFlags_ = DWORD
+_mmioInstallIOProcFlags_ = DWORD
+_mmioCloseFlags_ = UINT
+_mmioFlushFlags_ = UINT
+_mmioStringToFOURCCFlags_ = UINT
+_mmioDescendFlags_ = UINT
+_mmioCreateChunkFlags_ = UINT
+_mmioSeekOffset_ = int
+
+class _MMTIME_u_s1_(MemStruct):
+    fields = [
+        ("hour", BYTE()),
+        ("min", BYTE()),
+        ("sec", BYTE()),
+        ("frame", BYTE()),
+        ("fps", BYTE()),
+        ("dummy", BYTE()),
+        ("pad", BYTE__2_()),
+    ]
+
+
+class _MMTIME_u_s2_(MemStruct):
+    fields = [
+        ("songptrpos", DWORD()),
+    ]
+
+_MMTIME_u_ = Union([
+    ("ms", DWORD),
+    ("sample", DWORD),
+    ("cb", DWORD),
+    ("ticks", DWORD),
+    ("smpte", _MMTIME_u_s1_),
+    ("midi", _MMTIME_u_s2_),
+])
+_MMTIME_TYPE_ = UINT
+
+class MMTIME(MemStruct):
+    fields = [
+        ("wType", _MMTIME_TYPE_()),
+        ("u", _MMTIME_u_()),
+    ]
+
+LPMMTIME = Ptr("<I", MMTIME())
+_SND_FLAGS_ = DWORD
+_DCB_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def winmm_auxGetDevCaps(jitter, get_str, set_str):
     """

@@ -1,3 +1,13 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_IDLECALLBACK = LPVOID
+
+###################
+
+###### Functions ######
 
 def msidle_BeginIdleDetection(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 InputScope = {
     "IS_DEFAULT": 0,
     "IS_URL": 1,
@@ -112,6 +113,16 @@ InputScope_INV = {
     -4: "IS_XML",
     -5: "IS_ENUMSTRING",
 }
+
+###################
+
+###### Types ######
+InputScope = UINT
+const_InputScope_PTR = Ptr("<I", InputScope())
+
+###################
+
+###### Functions ######
 
 def msctf_SetInputScope(jitter):
     """

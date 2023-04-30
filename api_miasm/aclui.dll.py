@@ -1,3 +1,4 @@
+###### Enums ######
 SI_PAGE_TYPE = {
     "SI_PAGE_PERM": 0,
     "SI_PAGE_ADVPERM": 1,
@@ -14,6 +15,15 @@ SI_PAGE_TYPE_INV = {
     4: "SI_PAGE_EFFECTIVE",
     5: "SI_PAGE_TAKEOWNERSHIP",
 }
+
+###################
+
+###### Types ######
+SI_PAGE_TYPE = UINT
+
+###################
+
+###### Functions ######
 
 def aclui_CreateSecurityPage(jitter):
     """

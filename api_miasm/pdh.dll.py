@@ -1,3 +1,4 @@
+###### Enums ######
 PDH_STATUS = {
     "PDH_CSTATUS_NO_MACHINE": 0x800007D0,
     "PDH_CSTATUS_NO_INSTANCE": 0x800007D1,
@@ -226,6 +227,158 @@ _PerfDetailLevel__INV = {
     300: "PERF_DETAIL_EXPERT",
     400: "PERF_DETAIL_WIZARD",
 }
+
+###################
+
+###### Types ######
+PPDH_BROWSE_DLG_CONFIG = LPVOID
+PDH_HQUERY = HANDLE
+PDH_HQUERY_PTR = Ptr("<I", PDH_HQUERY())
+PDH_HCOUNTER = HANDLE
+PDH_HCOUNTER_PTR = Ptr("<I", PDH_HCOUNTER())
+PDH_HLOG = HANDLE
+PDH_HLOG_PTR = Ptr("<I", PDH_HLOG())
+volatile_DWORD = DWORD
+PDH_STATUS = _ERROR_CODE_
+_PDH_CSTATUS_ = DWORD
+_PDH_LOG_TYPE_ = DWORD
+_PDH_LOG_TYPE_PTR_ = Ptr("<I", _PDH_LOG_TYPE_())
+
+class _PDH_COUNTER_INFO_u_s_(MemStruct):
+    fields = [
+        ("szMachineName", LPTSTR()),
+        ("szObjectName", LPTSTR()),
+        ("szInstanceName", LPTSTR()),
+        ("szParentInstance", LPTSTR()),
+        ("dwInstanceIndex", DWORD()),
+        ("szCounterName", LPTSTR()),
+    ]
+
+
+class PDH_DATA_ITEM_PATH_ELEMENTS(MemStruct):
+    fields = [
+        ("szMachineName", LPTSTR()),
+        ("ObjectGUID", GUID()),
+        ("dwItemId", DWORD()),
+        ("szInstanceName", LPTSTR()),
+    ]
+
+
+class PDH_COUNTER_PATH_ELEMENTS(MemStruct):
+    fields = [
+        ("szMachineName", LPTSTR()),
+        ("szObjectName", LPTSTR()),
+        ("szInstanceName", LPTSTR()),
+        ("szParentInstance", LPTSTR()),
+        ("dwInstanceIndex", DWORD()),
+        ("szCounterName", LPTSTR()),
+    ]
+
+PDH_COUNTER_PATH_ELEMENTS_PTR = Ptr("<I", PDH_COUNTER_PATH_ELEMENTS())
+_PDH_COUNTER_INFO_u_ = Union([
+    ("DataItemPath", PDH_DATA_ITEM_PATH_ELEMENTS),
+    ("CounterPath", PDH_COUNTER_PATH_ELEMENTS),
+    (None, _PDH_COUNTER_INFO_u_s_),
+])
+
+class PDH_COUNTER_INFO(MemStruct):
+    fields = [
+        ("dwLength", DWORD()),
+        ("dwType", DWORD()),
+        ("CVersion", DWORD()),
+        ("CStatus", _PDH_CSTATUS_()),
+        ("lScale", LONG()),
+        ("lDefaultScale", LONG()),
+        ("dwUserData", DWORD_PTR()),
+        ("dwQueryUserData", DWORD_PTR()),
+        ("szFullPath", LPTSTR()),
+        (None, _PDH_COUNTER_INFO_u_()),
+        ("szExplainText", LPTSTR()),
+        ("DataBuffer", DWORD__1_()),
+    ]
+
+PPDH_COUNTER_INFO = Ptr("<I", PDH_COUNTER_INFO())
+_PDH_FMT_COUNTERVALUE_u_ = Union([
+    ("longValue", LONG),
+    ("doubleValue", double),
+    ("largeValue", LONGLONG),
+    ("AnsiStringValue", LPCSTR),
+    ("WideStringValue", LPCWSTR),
+])
+
+class PDH_FMT_COUNTERVALUE(MemStruct):
+    fields = [
+        ("CStatus", _PDH_CSTATUS_()),
+        (None, _PDH_FMT_COUNTERVALUE_u_()),
+    ]
+
+PPDH_FMT_COUNTERVALUE = Ptr("<I", PDH_FMT_COUNTERVALUE())
+
+class PDH_FMT_COUNTERVALUE_ITEM(MemStruct):
+    fields = [
+        ("szName", LPTSTR()),
+        ("FmtValue", PDH_FMT_COUNTERVALUE()),
+    ]
+
+PPDH_FMT_COUNTERVALUE_ITEM = Ptr("<I", PDH_FMT_COUNTERVALUE_ITEM())
+
+class PDH_STATISTICS(MemStruct):
+    fields = [
+        ("dwFormat", DWORD()),
+        ("count", DWORD()),
+        ("min", PDH_FMT_COUNTERVALUE()),
+        ("max", PDH_FMT_COUNTERVALUE()),
+        ("mean", PDH_FMT_COUNTERVALUE()),
+    ]
+
+PPDH_STATISTICS = Ptr("<I", PDH_STATISTICS())
+
+class PDH_RAW_COUNTER(MemStruct):
+    fields = [
+        ("CStatus", _PDH_CSTATUS_()),
+        ("TimeStamp", FILETIME()),
+        ("FirstValue", LONGLONG()),
+        ("SecondValue", LONGLONG()),
+        ("MultiCount", DWORD()),
+    ]
+
+PPDH_RAW_COUNTER = Ptr("<I", PDH_RAW_COUNTER())
+
+class PDH_RAW_COUNTER_ITEM(MemStruct):
+    fields = [
+        ("szName", LPTSTR()),
+        ("RawValue", PDH_RAW_COUNTER()),
+    ]
+
+PPDH_RAW_COUNTER_ITEM = Ptr("<I", PDH_RAW_COUNTER_ITEM())
+
+class PDH_RAW_LOG_RECORD(MemStruct):
+    fields = [
+        ("dwStructureSize", DWORD()),
+        ("dwRecordType", _PDH_LOG_TYPE_()),
+        ("dwItems", DWORD()),
+        ("RawBytes", UCHAR__1_()),
+    ]
+
+PPDH_RAW_LOG_RECORD = Ptr("<I", PDH_RAW_LOG_RECORD())
+
+class PDH_TIME_INFO(MemStruct):
+    fields = [
+        ("StartTime", LONGLONG()),
+        ("EndTime", LONGLONG()),
+        ("SampleCount", DWORD()),
+    ]
+
+PPDH_TIME_INFO = Ptr("<I", PDH_TIME_INFO())
+_PdhFormatFlags_ = DWORD
+_PerfDetailLevel_ = DWORD
+_PdhExpandFlags_ = DWORD
+_PdhPathFlags_ = DWORD
+_PdhOpenLogFlags_ = DWORD
+
+###################
+
+###### Functions ######
 
 def pdh_PdhAddCounter(jitter, get_str, set_str):
     """

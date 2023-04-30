@@ -1,3 +1,13 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_CreateAsmNameObjFlags_ = DWORD
+
+###################
+
+###### Functions ######
 
 def sxs_CreateAssemblyCache(jitter):
     """

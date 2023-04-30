@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def windows.ui.xaml_CreateXamlUIPresenter(jitter):
     """

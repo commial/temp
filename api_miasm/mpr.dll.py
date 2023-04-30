@@ -1,3 +1,4 @@
+###### Enums ######
 _ResourceScope_ = {
     "RESOURCE_CONNECTED": 0x00000001,
     "RESOURCE_GLOBALNET": 0x00000002,
@@ -48,6 +49,82 @@ _RESOURCEDISPLAYTYPE__INV = {
     0x0000000A: "RESOURCEDISPLAYTYPE_TREE",
     0x0000000B: "RESOURCEDISPLAYTYPE_NDSCONTAINER",
 }
+
+###################
+
+###### Types ######
+
+class NETCONNECTINFOSTRUCT(MemStruct):
+    fields = [
+        ("cbStructure", DWORD()),
+        ("dwFlags", DWORD()),
+        ("dwSpeed", DWORD()),
+        ("dwDelay", DWORD()),
+        ("dwOptDataSize", DWORD()),
+    ]
+
+LPNETCONNECTINFOSTRUCT = Ptr("<I", NETCONNECTINFOSTRUCT())
+
+class DISCDLGSTRUCT(MemStruct):
+    fields = [
+        ("cbStructure", DWORD()),
+        ("hwndOwner", HWND()),
+        ("lpLocalName", LPTSTR()),
+        ("lpRemoteName", LPTSTR()),
+        ("dwFlags", DWORD()),
+    ]
+
+LPDISCDLGSTRUCT = Ptr("<I", DISCDLGSTRUCT())
+
+class NETINFOSTRUCT(MemStruct):
+    fields = [
+        ("cbStructure", DWORD()),
+        ("dwProviderVersion", DWORD()),
+        ("dwStatus", DWORD()),
+        ("dwCharacteristics", DWORD()),
+        ("dwHandle", ULONG_PTR()),
+        ("wNetType", WORD()),
+        ("dwPrinters", DWORD()),
+        ("dwDrives", DWORD()),
+    ]
+
+LPNETINFOSTRUCT = Ptr("<I", NETINFOSTRUCT())
+_ResourceScope_ = DWORD
+_RESOURCETYPE_ = DWORD
+_RESOURCEUSAGE_ = DWORD
+_UniversalInfoLevel_ = DWORD
+_ConnectFlags_ = DWORD
+_RESOURCEDISPLAYTYPE_ = DWORD
+
+class NETRESOURCE(MemStruct):
+    fields = [
+        ("dwScope", _ResourceScope_()),
+        ("dwType", _RESOURCETYPE_()),
+        ("dwDisplayType", _RESOURCEDISPLAYTYPE_()),
+        ("dwUsage", _RESOURCEUSAGE_()),
+        ("lpLocalName", LPTSTR()),
+        ("lpRemoteName", LPTSTR()),
+        ("lpComment", LPTSTR()),
+        ("lpProvider", LPTSTR()),
+    ]
+
+LPNETRESOURCE = Ptr("<I", NETRESOURCE())
+_CONNDLG_ = DWORD
+
+class CONNECTDLGSTRUCT(MemStruct):
+    fields = [
+        ("cbStructure", DWORD()),
+        ("hwndOwner", HWND()),
+        ("lpConnRes", LPNETRESOURCE()),
+        ("dwFlags", _CONNDLG_()),
+        ("dwDevNum", DWORD()),
+    ]
+
+LPCONNECTDLGSTRUCT = Ptr("<I", CONNECTDLGSTRUCT())
+
+###################
+
+###### Functions ######
 
 def mpr_WNetSetLastError(jitter, get_str, set_str):
     """

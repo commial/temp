@@ -1,3 +1,4 @@
+###### Enums ######
 CONFIGRET = {
     "CR_SUCCESS": 0x00000000,
     "CR_DEFAULT": 0x00000001,
@@ -392,6 +393,131 @@ CM_NOTIFY_FILTER_TYPE_INV = {
     1: "CM_NOTIFY_FILTER_TYPE_DEVICEHANDLE",
     2: "CM_NOTIFY_FILTER_TYPE_DEVICEINSTANCE",
 }
+
+###################
+
+###### Types ######
+DEVINSTID = TCHAR_PTR
+LOG_CONF = DWORD_PTR
+PLOG_CONF = Ptr("<I", LOG_CONF())
+DEVINST = DWORD
+PDEVINST = Ptr("<I", DWORD())
+RES_DES = DWORD_PTR
+PRES_DES = Ptr("<I", RES_DES())
+HMACHINE = HANDLE
+PHMACHINE = Ptr("<I", HMACHINE())
+CONFLICT_LIST = ULONG_PTR
+PCONFLICT_LIST = Ptr("<I", CONFLICT_LIST())
+RANGE_LIST = DWORD_PTR
+PRANGE_LIST = Ptr("<I", RANGE_LIST())
+DEVNODE = DWORD
+RANGE_ELEMENT = DWORD_PTR
+PRANGE_ELEMENT = Ptr("<I", RANGE_ELEMENT())
+PCM_NOTIFY_CALLBACK = LPVOID
+HCMNOTIFICATION = HANDLE
+PHCMNOTIFICATION = Ptr("<I", HCMNOTIFICATION())
+WCHAR__MAX_DEVICE_ID_LEN_ = Array(WCHAR, 200)
+PRIORITY = ULONG
+PPRIORITY = Ptr("<I", PRIORITY())
+RESOURCEID = ULONG
+PRESOURCEID = Ptr("<I", RESOURCEID())
+CONFIGRET = DWORD
+_CM_CDMASK_ = ULONG
+_CM_CDFLAGS_ = ULONG
+
+class CONFLICT_DETAILS(MemStruct):
+    fields = [
+        ("CD_ulSize", ULONG()),
+        ("CD_ulMask", _CM_CDMASK_()),
+        ("CD_dnDevInst", DEVINST()),
+        ("CD_rdResDes", RES_DES()),
+        ("CD_ulFlags", _CM_CDFLAGS_()),
+        ("CD_szDescription", TCHAR__MAX_PATH_()),
+    ]
+
+PCONFLICT_DETAILS = Ptr("<I", CONFLICT_DETAILS())
+_CM_Locate_DevNode_Flags_ = ULONG
+_CsConfigFlags_ = ULONG
+_CsConfigFlags_PTR_ = Ptr("<I", _CsConfigFlags_())
+_LogicalConfigFlags_ = ULONG
+_CmProblemNumber_ = ULONG
+_CmProblemNumber_PTR_ = Ptr("<I", _CmProblemNumber_())
+PPNP_VETO_TYPE = UINT
+_CM_ADD_RANGE_FLAGS_ = ULONG
+_CM_ADD_ID_FLAGS_ = ULONG
+_CM_ENUMERATE_CLASSES_FLAGS_ = ULONG
+_CM_DRP_ = ULONG
+_CM_CRP_ = ULONG
+_CM_GETIDLIST_FLAGS_ = ULONG
+_CM_GET_DEVICE_INTERFACE_LIST_FLAGS_ = ULONG
+_CM_REENUMERATE_FLAGS_ = ULONG
+_CM_SET_DEVNODE_PROBLEM_FLAGS_ = ULONG
+_CM_SETUP_DEVNODE_FLAGS_ = ULONG
+_CM_CREATE_DEVNODE_FLAGS_ = ULONG
+_CM_DELETE_CLASS_FLAGS_ = ULONG
+_CM_DISABLE_FLAGS_ = ULONG
+_CM_CLASS_PROPERTY_FLAGS_ = ULONG
+_CM_CUSTOMDEVPROP_FLAGS_ = ULONG
+REGDISPOSITION = UINT
+_CM_OPEN_CLASS_KEY_FLAGS_ = ULONG
+_CM_REGISTRY_FLAGS_ = ULONG
+_CM_QUERY_ARBITRATOR_FLAGS_ = ULONG
+_CM_REGISTER_DEVICE_DRIVER_FLAGS_ = ULONG
+_CM_DETECT_FLAGS_ = ULONG
+_CM_SET_HW_PROF_FLAGS_ = ULONG
+_CM_REMOVE_FLAGS_ = ULONG
+_CM_HWPI_FLAGS_ = DWORD
+
+class HWPROFILEINFO(MemStruct):
+    fields = [
+        ("HWPI_ulHWProfile", ULONG()),
+        ("HWPI_szFriendlyName", TCHAR__MAX_PROFILE_LEN_()),
+        ("HWPI_dwFlags", _CM_HWPI_FLAGS_()),
+    ]
+
+PHWPROFILEINFO = Ptr("<I", HWPROFILEINFO())
+CM_NOTIFY_FILTER_TYPE = UINT
+_CM_NOTIFY_FILTER_FLAGS_ = DWORD
+
+class _CM_NOTIFY_FILTER_u_s1_(MemStruct):
+    fields = [
+        ("ClassGuid", GUID()),
+    ]
+
+
+class _CM_NOTIFY_FILTER_u_s2_(MemStruct):
+    fields = [
+        ("hTarget", HANDLE()),
+    ]
+
+
+class _CM_NOTIFY_FILTER_u_s3_(MemStruct):
+    fields = [
+        ("InstanceId", WCHAR__MAX_DEVICE_ID_LEN_()),
+    ]
+
+_CM_NOTIFY_FILTER_u_ = Union([
+    ("DeviceInterface", _CM_NOTIFY_FILTER_u_s1_),
+    ("DeviceHandle", _CM_NOTIFY_FILTER_u_s2_),
+    ("DeviceInstance", _CM_NOTIFY_FILTER_u_s3_),
+])
+
+class CM_NOTIFY_FILTER(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("Flags", _CM_NOTIFY_FILTER_FLAGS_()),
+        ("FilterType", CM_NOTIFY_FILTER_TYPE()),
+        ("Reserved", DWORD()),
+        ("u", _CM_NOTIFY_FILTER_u_()),
+    ]
+
+PCM_NOTIFY_FILTER = Ptr("<I", CM_NOTIFY_FILTER())
+_DN_FLAGS_ = ULONG
+_DN_FLAGS_PTR_ = Ptr("<I", _DN_FLAGS_())
+
+###################
+
+###### Functions ######
 
 def cfgmgr32_CM_Add_Empty_Log_Conf(jitter):
     """

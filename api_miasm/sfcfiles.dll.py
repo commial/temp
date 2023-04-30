@@ -1,3 +1,21 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+class PPROTECT_FILE_ENTRY(MemStruct):
+    fields = [
+        ("SourceFileName", PWSTR()),
+        ("FileName", PWSTR()),
+        ("InfName", PWSTR()),
+    ]
+
+PPROTECT_FILE_ENTRY_PTR = Ptr("<I", PPROTECT_FILE_ENTRY())
+
+###################
+
+###### Functions ######
 
 def sfcfiles_SfcGetFiles(jitter):
     """

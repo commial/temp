@@ -1,3 +1,4 @@
+###### Enums ######
 ASSOCCLASS = {
     "ASSOCCLASS_SHELL_KEY": 0,
     "ASSOCCLASS_PROGID_KEY": 1,
@@ -280,6 +281,299 @@ SHARD_INV = {
     0x00000007: "SHARD_APPIDINFOLINK",
     0x00000008: "SHARD_SHELLITEM",
 }
+
+###################
+
+###### Types ######
+RESTRICTIONS = UINT
+LPSHELLSTATE = LPVOID
+LPSHELLFLAGSTATE = LPVOID
+CABINETSTATE_PTR = LPVOID
+FARPROC16 = LPVOID
+LPFNDFMCALLBACK = LPVOID
+HDROP = HANDLE
+HPSXA = HANDLE
+LPFNADDPROPSHEETPAGE = LPVOID
+LPFNVIEWCALLBACK = LPVOID
+PFNASYNCICONTASKBALLBACK = LPVOID
+PROPVARIANT__ = Ptr("<I", PROPVARIANT())
+HKEY___ = Ptr("<I", HKEY())
+TCHAR__80_ = Array(TCHAR, 80)
+POINT__NUM_POINTS_ = Array(POINT, 3)
+DWORD__NUM_POINTS_ = Array(DWORD, 3)
+
+class AUTO_SCROLL_DATA(MemStruct):
+    fields = [
+        ("iNextSample", int()),
+        ("dwLastScroll", DWORD()),
+        ("bFull", BOOL()),
+        ("pts", POINT__NUM_POINTS_()),
+        ("dwTimes", DWORD__NUM_POINTS_()),
+    ]
+
+AUTO_SCROLL_DATA_PTR = Ptr("<I", AUTO_SCROLL_DATA())
+_BROWSEINFO_FLAG_ = UINT
+
+class BROWSEINFO(MemStruct):
+    fields = [
+        ("hwndOwner", HWND()),
+        ("pidlRoot", PCIDLIST_ABSOLUTE()),
+        ("pszDisplayName", LPTSTR()),
+        ("lpszTitle", LPCTSTR()),
+        ("ulFlags", _BROWSEINFO_FLAG_()),
+        ("lpfn", BFFCALLBACK()),
+        ("lParam", LPARAM()),
+        ("iImage", int()),
+    ]
+
+LPBROWSEINFO = Ptr("<I", BROWSEINFO())
+_NOTIFYICONDATA_u_ = Union([
+    ("uTimeout", UINT),
+    ("uVersion", UINT),
+])
+_NOTIFYICON_FLAG_ = UINT
+_NOTIFYICON_STATE_ = DWORD
+_NOTIFYICON_INFO_FLAG_ = DWORD
+
+class NOTIFYICONDATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hWnd", HWND()),
+        ("uID", UINT()),
+        ("uFlags", _NOTIFYICON_FLAG_()),
+        ("uCallbackMessage", UINT()),
+        ("hIcon", HICON()),
+        ("szTip", TCHAR__128_()),
+        ("dwState", _NOTIFYICON_STATE_()),
+        ("dwStateMask", _NOTIFYICON_STATE_()),
+        ("szInfo", TCHAR__256_()),
+        (None, _NOTIFYICONDATA_u_()),
+        ("szInfoTitle", TCHAR__64_()),
+        ("dwInfoFlags", _NOTIFYICON_INFO_FLAG_()),
+        ("guidItem", GUID()),
+        ("hBalloonIcon", HICON()),
+    ]
+
+PNOTIFYICONDATA = Ptr("<I", NOTIFYICONDATA())
+_SFGAOF_DWORD_ = SFGAOF
+_SFGAOF_DWORD_PTR_ = Ptr("<I", _SFGAOF_DWORD_())
+
+class SHFILEINFO(MemStruct):
+    fields = [
+        ("hIcon", HICON()),
+        ("iIcon", int()),
+        ("dwAttributes", _SFGAOF_DWORD_()),
+        ("szDisplayName", TCHAR__MAX_PATH_()),
+        ("szTypeName", TCHAR__80_()),
+    ]
+
+SHFILEINFO_PTR = Ptr("<I", SHFILEINFO())
+_SHFOLDERCUSTOMSETTINGS_MASK_ = DWORD
+
+class SHFOLDERCUSTOMSETTINGS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwMask", _SHFOLDERCUSTOMSETTINGS_MASK_()),
+        ("pvid", SHELLVIEWID_PTR()),
+        ("pszWebViewTemplate", LPWSTR()),
+        ("cchWebViewTemplate", DWORD()),
+        ("pszWebViewTemplateVersion", LPWSTR()),
+        ("pszInfoTip", LPWSTR()),
+        ("cchInfoTip", DWORD()),
+        ("pclsid", CLSID_PTR()),
+        ("dwFlags", DWORD()),
+        ("pszIconFile", LPWSTR()),
+        ("cchIconFile", DWORD()),
+        ("iIconIndex", int()),
+        ("pszLogo", LPWSTR()),
+        ("cchLogo", DWORD()),
+    ]
+
+LPSHFOLDERCUSTOMSETTINGS = Ptr("<I", SHFOLDERCUSTOMSETTINGS())
+
+class SHSTOCKICONINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hIcon", HICON()),
+        ("iSysImageIndex", int()),
+        ("iIcon", int()),
+        ("szPath", WCHAR__MAX_PATH_()),
+    ]
+
+SHSTOCKICONINFO_PTR = Ptr("<I", SHSTOCKICONINFO())
+OPEN_AS_INFO_FLAGS = UINT
+
+class OPENASINFO(MemStruct):
+    fields = [
+        ("pcszFile", LPCWSTR()),
+        ("pcszClass", LPCWSTR()),
+        ("oaifInFlags", OPEN_AS_INFO_FLAGS()),
+    ]
+
+const_OPENASINFO_PTR = Ptr("<I", OPENASINFO())
+ASSOCCLASS = UINT
+
+class ASSOCIATIONELEMENT(MemStruct):
+    fields = [
+        ("ac", ASSOCCLASS()),
+        ("hkClass", HKEY()),
+        ("pszClass", PCWSTR()),
+    ]
+
+const_ASSOCIATIONELEMENT_PTR = Ptr("<I", ASSOCIATIONELEMENT())
+
+class SHChangeNotifyEntry(MemStruct):
+    fields = [
+        ("pidl", PCIDLIST_ABSOLUTE()),
+        ("fRecursive", BOOL()),
+    ]
+
+SHChangeNotifyEntry_PTR = Ptr("<I", SHChangeNotifyEntry())
+const_SHChangeNotifyEntry_PTR = Ptr("<I", SHChangeNotifyEntry())
+
+class APPBARDATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hWnd", HWND()),
+        ("uCallbackMessage", UINT()),
+        ("uEdge", UINT()),
+        ("rc", RECT()),
+        ("lParam", LPARAM()),
+    ]
+
+PAPPBARDATA = Ptr("<I", APPBARDATA())
+
+class DEFCONTEXTMENU(MemStruct):
+    fields = [
+        ("hwnd", HWND()),
+        ("pcmcb", IContextMenuCB_PTR()),
+        ("pidlFolder", PCIDLIST_ABSOLUTE()),
+        ("psf", IShellFolder_PTR()),
+        ("cidl", UINT()),
+        ("apidl", PCUITEMID_CHILD_ARRAY()),
+        ("punkAssociationInfo", IUnknown_PTR()),
+        ("cKeys", UINT()),
+        ("aKeys", const_HKEY_PTR()),
+    ]
+
+const_DEFCONTEXTMENU_PTR = Ptr("<I", DEFCONTEXTMENU())
+
+class SHCREATEPROCESSINFOW(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("fMask", _SEE_MASK_()),
+        ("hwnd", HWND()),
+        ("pszFile", LPCWSTR()),
+        ("pszParameters", LPCWSTR()),
+        ("pszCurrentDirectory", LPCWSTR()),
+        ("hUserToken", HANDLE()),
+        ("lpProcessAttributes", LPSECURITY_ATTRIBUTES()),
+        ("lpThreadAttributes", LPSECURITY_ATTRIBUTES()),
+        ("bInheritHandles", BOOL()),
+        ("dwCreationFlags", _CreateProcessFlags_()),
+        ("lpStartupInfo", LPSTARTUPINFOW()),
+        ("lpProcessInformation", LPPROCESS_INFORMATION()),
+    ]
+
+PSHCREATEPROCESSINFOW = Ptr("<I", SHCREATEPROCESSINFOW())
+
+class CSFV(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("pshf", IShellFolder_PTR()),
+        ("psvOuter", IShellView_PTR()),
+        ("pidl", PCIDLIST_ABSOLUTE()),
+        ("lEvents", LONG()),
+        ("pfnCallback", LPFNVIEWCALLBACK()),
+        ("fvm", FOLDERVIEWMODE()),
+    ]
+
+LPCSFV = Ptr("<I", CSFV())
+
+class SFV_CREATE(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("pshf", IShellFolder_PTR()),
+        ("psvOuter", IShellView_PTR()),
+        ("psfvcb", IShellFolderViewCB_PTR()),
+    ]
+
+const_SFV_CREATE_PTR = Ptr("<I", SFV_CREATE())
+
+class NOTIFYICONIDENTIFIER(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hWnd", HWND()),
+        ("uID", UINT()),
+        ("guidItem", GUID()),
+    ]
+
+const_NOTIFYICONIDENTIFIER_PTR = Ptr("<I", NOTIFYICONIDENTIFIER())
+
+class SHFILEOPSTRUCT(MemStruct):
+    fields = [
+        ("hwnd", HWND()),
+        ("wFunc", UINT()),
+        ("pFrom", LPCTSTR()),
+        ("pTo", LPCTSTR()),
+        ("fFlags", FILEOP_FLAGS()),
+        ("fAnyOperationsAborted", BOOL()),
+        ("hNameMappings", LPVOID()),
+        ("lpszProgressTitle", LPCTSTR()),
+    ]
+
+LPSHFILEOPSTRUCT = Ptr("<I", SHFILEOPSTRUCT())
+
+class SHQUERYRBINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("i64Size", DWORDLONG()),
+        ("i64NumItems", DWORDLONG()),
+    ]
+
+LPSHQUERYRBINFO = Ptr("<I", SHQUERYRBINFO())
+_SHGetDataFromIDListFormats_ = int
+_SHGetFolderPathFlags_ = DWORD
+_ShellChangeNotifyEvent_ = ULONG
+_ShellChangeNotifyFlag_ = UINT
+ASSOC_FILTER = UINT
+SCNRT_STATUS = UINT
+DATAOBJ_GET_ITEM_FLAGS = DWORD
+GPFIDL_FLAGS = UINT
+SHSTOCKICONID = UINT
+QUERY_USER_NOTIFICATION_STATE = UINT
+QUERY_USER_NOTIFICATION_STATE_PTR = Ptr("<I", QUERY_USER_NOTIFICATION_STATE())
+LIBRARYMANAGEDIALOGOPTIONS = UINT
+_RunFileDlgFlags_ = UINT
+_NUMBERFMT_FLAGS_ = DWORD
+_SGUPP_FLAGS_ = DWORD
+_SECL_FLAGS_ = DWORD
+
+class CLASSPIDL(MemStruct):
+    fields = [
+        ("hwnd", HWND()),
+        ("hData", HANDLE()),
+        ("hPrinterIcon", HICON()),
+    ]
+
+CLASSPIDL_PTR = Ptr("<I", CLASSPIDL())
+_SSF_FLAGS_ = DWORD
+_SHGNLI_FLAGS_ = UINT
+SHARD = UINT
+_SHGFI_FLAGS_ = UINT
+_SHGSI_FLAGS_ = UINT
+_SHUpdateImage_FLAGS_ = UINT
+_SHDefExtractIcon_FLAGS_ = UINT
+_MERGE_MENU_FLAGS_ = ULONG
+_PPCF_FLAGS_ = DWORD
+_PRF_FLAGS_ = UINT
+_SHERB_FLAGS_ = DWORD
+_OFASI_FLAGS_ = DWORD
+_SHPPFW_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def shell32_DuplicateIcon(jitter):
     """

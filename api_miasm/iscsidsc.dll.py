@@ -1,3 +1,4 @@
+###### Enums ######
 ISCSI_AUTH_TYPES = {
     "ISCSI_NO_AUTH_TYPE": 0,
     "ISCSI_CHAP_AUTH_TYPE": 1,
@@ -400,6 +401,231 @@ IKE_IDENTIFICATION_PAYLOAD_TYPE_INV = {
     3: "ID_USER_FQDN",
     5: "ID_IPV6_ADDR",
 }
+
+###################
+
+###### Types ######
+TCHAR__MAX_ISCSI_PORTAL_NAME_LEN_ = Array(TCHAR, 256)
+TCHAR__MAX_ISCSI_PORTAL_ADDRESS_LEN_ = Array(TCHAR, 256)
+TCHAR__MAX_ISCSI_HBANAME_LEN_ = Array(TCHAR, 256)
+TCHAR__MAX_ISCSI_NAME_LEN_+_1_ = Array(TCHAR, 224)
+UCHAR__6_ = Array(UCHAR, 6)
+
+class ISCSI_UNIQUE_SESSION_ID(MemStruct):
+    fields = [
+        ("AdapterUnique", ULONGLONG()),
+        ("AdapterSpecific", ULONGLONG()),
+    ]
+
+PISCSI_UNIQUE_SESSION_ID = Ptr("<I", ISCSI_UNIQUE_SESSION_ID())
+PISCSI_UNIQUE_SESSION_ID_PTR = Ptr("<I", PISCSI_UNIQUE_SESSION_ID())
+ISCSI_UNIQUE_CONNECTION_ID = ISCSI_UNIQUE_SESSION_ID
+PISCSI_UNIQUE_CONNECTION_ID = Ptr("<I", ISCSI_UNIQUE_CONNECTION_ID())
+ISCSI_LOGIN_OPTIONS_INFO_SPECIFIED = ULONG
+ISCSI_LOGIN_FLAGS = ULONG
+ISCSI_AUTH_TYPES = UINT32
+ISCSI_DIGEST_TYPES = UINT
+
+class ISCSI_LOGIN_OPTIONS(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("InformationSpecified", ISCSI_LOGIN_OPTIONS_INFO_SPECIFIED()),
+        ("LoginFlags", ISCSI_LOGIN_FLAGS()),
+        ("AuthType", ISCSI_AUTH_TYPES()),
+        ("HeaderDigest", ISCSI_DIGEST_TYPES()),
+        ("DataDigest", ISCSI_DIGEST_TYPES()),
+        ("MaximumConnections", ULONG()),
+        ("DefaultTime2Wait", ULONG()),
+        ("DefaultTime2Retain", ULONG()),
+        ("UsernameLength", ULONG()),
+        ("PasswordLength", ULONG()),
+        # Length is `UsernameLength`
+        ("Username", PUCHAR()),
+        # Length is `PasswordLength`
+        ("Password", PUCHAR()),
+    ]
+
+PISCSI_LOGIN_OPTIONS = Ptr("<I", ISCSI_LOGIN_OPTIONS())
+
+class ISCSI_VERSION_INFO(MemStruct):
+    fields = [
+        ("MajorVersion", ULONG()),
+        ("MinorVersion", ULONG()),
+        ("BuildNumber", ULONG()),
+    ]
+
+PISCSI_VERSION_INFO = Ptr("<I", ISCSI_VERSION_INFO())
+ISDSC_STATUS = _ERROR_CODE_
+ISCSI_SECURITY_FLAGS = UINT64
+ISCSI_TARGET_FLAGS = UINT
+
+class ISCSI_TARGET_PORTAL_INFO_EX(MemStruct):
+    fields = [
+        ("InitiatorName", TCHAR__MAX_ISCSI_HBANAME_LEN_()),
+        ("InitiatorPortNumber", ULONG()),
+        ("SymbolicName", TCHAR__MAX_ISCSI_PORTAL_NAME_LEN_()),
+        ("Address", TCHAR__MAX_ISCSI_PORTAL_ADDRESS_LEN_()),
+        ("Socket", USHORT()),
+        ("SecurityFlags", ISCSI_SECURITY_FLAGS()),
+        ("LoginOptions", ISCSI_LOGIN_OPTIONS()),
+    ]
+
+PISCSI_TARGET_PORTAL_INFO_EX = Ptr("<I", ISCSI_TARGET_PORTAL_INFO_EX())
+TARGET_INFORMATION_CLASS = UINT
+
+class SCSI_LUN_LIST(MemStruct):
+    fields = [
+        ("OSLUN", ULONG()),
+        ("TargetLUN", ULONGLONG()),
+    ]
+
+PSCSI_LUN_LIST = Ptr("<I", SCSI_LUN_LIST())
+
+class ISCSI_TARGET_MAPPING(MemStruct):
+    fields = [
+        ("InitiatorName", TCHAR__MAX_ISCSI_HBANAME_LEN_()),
+        ("TargetName", TCHAR__MAX_ISCSI_NAME_LEN_+_1_()),
+        ("OSDeviceName", TCHAR__MAX_PATH_()),
+        ("SessionId", ISCSI_UNIQUE_SESSION_ID()),
+        ("OSBusNumber", ULONG()),
+        ("OSTargetNumber", ULONG()),
+        ("LUNCount", ULONG()),
+        ("LUNList", PSCSI_LUN_LIST()),
+    ]
+
+PISCSI_TARGET_MAPPING = Ptr("<I", ISCSI_TARGET_MAPPING())
+
+class SCSI_ADDRESS(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("PortNumber", UCHAR()),
+        ("PathId", UCHAR()),
+        ("TargetId", UCHAR()),
+        ("Lun", UCHAR()),
+    ]
+
+DEVICE_TYPE = DWORD
+
+class STORAGE_DEVICE_NUMBER(MemStruct):
+    fields = [
+        ("DeviceType", DEVICE_TYPE()),
+        ("DeviceNumber", DWORD()),
+        ("PartitionNumber", DWORD()),
+    ]
+
+
+class ISCSI_DEVICE_ON_SESSION(MemStruct):
+    fields = [
+        ("InitiatorName", TCHAR__MAX_ISCSI_HBANAME_LEN_()),
+        ("TargetName", TCHAR__MAX_ISCSI_NAME_LEN_+_1_()),
+        ("ScsiAddress", SCSI_ADDRESS()),
+        ("DeviceInterfaceType", GUID()),
+        ("DeviceInterfaceName", TCHAR__MAX_PATH_()),
+        ("LegacyName", TCHAR__MAX_PATH_()),
+        ("StorageDeviceNumber", STORAGE_DEVICE_NUMBER()),
+        ("DeviceInstance", DWORD()),
+    ]
+
+PISCSI_DEVICE_ON_SESSION = Ptr("<I", ISCSI_DEVICE_ON_SESSION())
+
+class ISCSI_TARGET_PORTAL(MemStruct):
+    fields = [
+        ("SymbolicName", TCHAR__MAX_ISCSI_PORTAL_NAME_LEN_()),
+        ("Address", TCHAR__MAX_ISCSI_PORTAL_ADDRESS_LEN_()),
+        ("Socket", USHORT()),
+    ]
+
+PISCSI_TARGET_PORTAL = Ptr("<I", ISCSI_TARGET_PORTAL())
+ISCSI_TARGET_PORTAL__1_ = Array(ISCSI_TARGET_PORTAL, 1)
+
+class ISCSI_TARGET_PORTAL_GROUP(MemStruct):
+    fields = [
+        ("Count", ULONG()),
+        ("Portals", ISCSI_TARGET_PORTAL__1_()),
+    ]
+
+PISCSI_TARGET_PORTAL_GROUP = Ptr("<I", ISCSI_TARGET_PORTAL_GROUP())
+
+class ISCSI_TARGET_PORTAL_INFO(MemStruct):
+    fields = [
+        ("InitiatorName", TCHAR__MAX_ISCSI_HBANAME_LEN_()),
+        ("InitiatorPortNumber", ULONG()),
+        ("SymbolicName", TCHAR__MAX_ISCSI_PORTAL_NAME_LEN_()),
+        ("Address", TCHAR__MAX_ISCSI_PORTAL_ADDRESS_LEN_()),
+        ("Socket", USHORT()),
+    ]
+
+PISCSI_TARGET_PORTAL_INFO = Ptr("<I", ISCSI_TARGET_PORTAL_INFO())
+
+class ISCSI_CONNECTION_INFO(MemStruct):
+    fields = [
+        ("ConnectionId", ISCSI_UNIQUE_CONNECTION_ID()),
+        ("InitiatorAddress", PTCHAR()),
+        ("TargetAddress", PTCHAR()),
+        ("InitiatorSocket", USHORT()),
+        ("TargetSocket", USHORT()),
+        ("CID", UCHAR__2_()),
+    ]
+
+PISCSI_CONNECTION_INFO = Ptr("<I", ISCSI_CONNECTION_INFO())
+
+class ISCSI_SESSION_INFO(MemStruct):
+    fields = [
+        ("SessionId", ISCSI_UNIQUE_SESSION_ID()),
+        ("InitiatorName", PTCHAR()),
+        ("TargetNodeName", PTCHAR()),
+        ("TargetName", PTCHAR()),
+        ("ISID", UCHAR__6_()),
+        ("TSID", UCHAR__2_()),
+        ("ConnectionCount", ULONG()),
+        ("Connections", PISCSI_CONNECTION_INFO()),
+    ]
+
+PISCSI_SESSION_INFO = Ptr("<I", ISCSI_SESSION_INFO())
+
+class PERSISTENT_ISCSI_LOGIN_INFO(MemStruct):
+    fields = [
+        ("TargetName", TCHAR__MAX_ISCSI_NAME_LEN_+_1_()),
+        ("IsInformationalSession", BOOLEAN()),
+        ("InitiatorInstance", TCHAR__MAX_ISCSI_HBANAME_LEN_()),
+        ("InitiatorPortNumber", ULONG()),
+        ("TargetPortal", ISCSI_TARGET_PORTAL()),
+        ("SecurityFlags", ISCSI_SECURITY_FLAGS()),
+        ("Mappings", PISCSI_TARGET_MAPPING()),
+        ("LoginOptions", ISCSI_LOGIN_OPTIONS()),
+    ]
+
+PPERSISTENT_ISCSI_LOGIN_INFO = Ptr("<I", PERSISTENT_ISCSI_LOGIN_INFO())
+IKE_AUTHENTICATION_METHOD = UINT
+IKE_IDENTIFICATION_PAYLOAD_TYPE = UCHAR
+
+class IKE_AUTHENTICATION_PRESHARED_KEY(MemStruct):
+    fields = [
+        ("SecurityFlags", ISCSI_SECURITY_FLAGS()),
+        ("IdType", IKE_IDENTIFICATION_PAYLOAD_TYPE()),
+        ("IdLengthInBytes", ULONG()),
+        # Length is `IdLengthInBytes`
+        ("Id", PUCHAR()),
+        ("KeyLengthInBytes", ULONG()),
+        # Length is `KeyLengthInBytes`
+        ("Key", PUCHAR()),
+    ]
+
+_IKE_AUTHENTICATION_INFORMATION_u_ = Union([
+    ("PsKey", IKE_AUTHENTICATION_PRESHARED_KEY),
+])
+
+class IKE_AUTHENTICATION_INFORMATION(MemStruct):
+    fields = [
+        ("AuthMethod", IKE_AUTHENTICATION_METHOD()),
+        ("AuthMethod", _IKE_AUTHENTICATION_INFORMATION_u_()),
+    ]
+
+PIKE_AUTHENTICATION_INFORMATION = Ptr("<I", IKE_AUTHENTICATION_INFORMATION())
+
+###################
+
+###### Functions ######
 
 def iscsidsc_AddISNSServer(jitter, get_str, set_str):
     """

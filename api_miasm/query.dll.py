@@ -1,3 +1,51 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+DBCOMMANDOP = WORD
+TCHAR_const_PTR = TCHAR_PTR
+WCHAR_const_PTR_const_PTR = WCHAR_PTR_PTR
+PROPVARIANT_const_PTR = PROPVARIANT_PTR
+DBCOMMANDTREE_PTR = LPVOID
+DBCOMMANDTREE_PTR_PTR = Ptr("<I", DBCOMMANDTREE_PTR())
+DBCOMMANDTREE_const_PTR = DBCOMMANDTREE_PTR
+DBCOMMANDTREE_const_PTR_const_PTR = DBCOMMANDTREE_PTR_PTR
+
+class CIPROPERTYDEF(MemStruct):
+    fields = [
+        ("wcsFriendlyName", LPWSTR()),
+        ("dbType", DWORD()),
+        ("dbCol", DBID()),
+    ]
+
+CIPROPERTYDEF_PTR = Ptr("<I", CIPROPERTYDEF())
+CIPROPERTYDEF_const_PTR = Ptr("<I", CIPROPERTYDEF())
+
+class CI_STATE(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("cWordList", DWORD()),
+        ("cPersistentIndex", DWORD()),
+        ("cQueries", DWORD()),
+        ("cDocuments", DWORD()),
+        ("cFreshTest", DWORD()),
+        ("dwMergeProgress", DWORD()),
+        ("eState", DWORD()),
+        ("cFilteredDocuments", DWORD()),
+        ("cTotalDocuments", DWORD()),
+        ("cPendingScans", DWORD()),
+        ("dwIndexSize", DWORD()),
+        ("cUniqueKeys", DWORD()),
+        ("cSecQDocuments", DWORD()),
+        ("dwPropCacheSize", DWORD()),
+    ]
+
+CI_STATE_PTR = Ptr("<I", CI_STATE())
+
+###################
+
+###### Functions ######
 
 def query_CIState(jitter):
     """

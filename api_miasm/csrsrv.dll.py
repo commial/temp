@@ -1,3 +1,19 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PCSR_THREAD = LPVOID
+PCSR_THREAD_PTR = Ptr("<I", PCSR_THREAD())
+PCSR_API_MESSAGE = LPVOID
+PCSR_NT_SESSION = LPVOID
+PCSR_PROCESS = LPVOID
+PCSR_PROCESS_PTR = Ptr("<I", PCSR_PROCESS())
+CSR_WAIT_FUNCTION = LPVOID
+
+###################
+
+###### Functions ######
 
 def csrsrv_CsrAddStaticServerThread(jitter):
     """

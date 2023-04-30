@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def fwpuclnt_WSADeleteSocketPeerTargetName(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 StatusCode = {
     "STATUS_NO_ERROR": 0,
     "STATUS_UNSPECIFIED_FAILURE": 1,
@@ -10,6 +11,69 @@ StatusCode_INV = {
     3: "STATUS_NO_BINDING",
     6: "STATUS_NOPREFIX_AVAIL",
 }
+
+###################
+
+###### Types ######
+
+class DHCPV6CAPI_CLASSID(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("Data", LPBYTE()),
+        ("nBytesData", ULONG()),
+    ]
+
+LPDHCPV6CAPI_CLASSID = Ptr("<I", DHCPV6CAPI_CLASSID())
+
+class DHCPV6CAPI_PARAMS(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("OptionId", ULONG()),
+        ("IsVendor", BOOL()),
+        ("Data", LPBYTE()),
+        ("nBytesData", DWORD()),
+    ]
+
+LPDHCPV6CAPI_PARAMS = Ptr("<I", DHCPV6CAPI_PARAMS())
+
+class DHCPV6CAPI_PARAMS_ARRAY(MemStruct):
+    fields = [
+        ("nParams", ULONG()),
+        ("Params", LPDHCPV6CAPI_PARAMS()),
+    ]
+
+StatusCode = UINT
+
+class DHCPV6Prefix(MemStruct):
+    fields = [
+        ("prefix", UCHAR__16_()),
+        ("prefixLength", DWORD()),
+        ("preferredLifeTime", DWORD()),
+        ("validLifeTime", DWORD()),
+        ("status", StatusCode()),
+    ]
+
+LPDHCPV6Prefix = Ptr("<I", DHCPV6Prefix())
+
+class DHCPV6PrefixLeaseInformation(MemStruct):
+    fields = [
+        ("nPrefixes", DWORD()),
+        ("prefixArray", LPDHCPV6Prefix()),
+        ("iaid", DWORD()),
+        ("T1", time_t()),
+        ("T2", time_t()),
+        ("MaxLeaseExpirationTime", time_t()),
+        ("LastRenewalTime", time_t()),
+        ("status", StatusCode()),
+        ("ServerId", LPBYTE()),
+        ("ServerIdLen", DWORD()),
+    ]
+
+LPDHCPV6PrefixLeaseInformation = Ptr("<I", DHCPV6PrefixLeaseInformation())
+
+###################
+
+###### Functions ######
 
 def dhcpcsvc6_Dhcpv6CApiCleanup(jitter):
     """

@@ -1,3 +1,14 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+NORM_FORM = LPVOID
+_IdnFlags_ = DWORD
+
+###################
+
+###### Functions ######
 
 def normaliz_IdnToAscii(jitter):
     """

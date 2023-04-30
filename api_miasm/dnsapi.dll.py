@@ -1,3 +1,4 @@
+###### Enums ######
 DNS_PROXY_INFORMATION_TYPE = {
     "DNS_PROXY_INFORMATION_DIRECT": 0,
     "DNS_PROXY_INFORMATION_DEFAULT_SETTINGS": 1,
@@ -208,6 +209,98 @@ DNS_CHARSET_INV = {
     2: "DnsCharSetUtf8",
     3: "DnsCharSetAnsi",
 }
+
+###################
+
+###### Types ######
+PDNS_MESSAGE_BUFFER = LPVOID
+PDNS_RECORD = PVOID
+PDNS_RECORD_PTR = Ptr("<I", PDNS_RECORD())
+DNS_STATUS = _ERROR_CODE_
+DNS_PROXY_COMPLETION_ROUTINE = LPVOID
+PDNS_QUERY_COMPLETION_ROUTINE = LPVOID
+DWORD__8_ = Array(DWORD, 8)
+CHAR__DNS_ADDR_MAX_SOCKADDR_LENGTH_ = Array(CHAR, 32)
+_ADDRESS_FAMILY_WORD_ = ADDRESS_FAMILY
+DNS_PROXY_INFORMATION_TYPE = UINT
+
+class DNS_PROXY_INFORMATION(MemStruct):
+    fields = [
+        ("version", ULONG()),
+        ("proxyInformationType", DNS_PROXY_INFORMATION_TYPE()),
+        ("proxyName", PWSTR()),
+    ]
+
+DNS_PROXY_INFORMATION_PTR = Ptr("<I", DNS_PROXY_INFORMATION())
+DNS_FREE_TYPE = UINT
+_DnsRecordType_ = WORD
+_DnsQueryOptions_ = DWORD
+_DNS_QUERY_OPTIONS_64_ = ULONG64
+DNS_NAME_FORMAT = UINT
+DNS_CONFIG_TYPE = UINT
+_DnsConfigFlags_ = DWORD
+_DnsUpdateFlags_ = DWORD
+DNS_CHARSET = UINT
+
+class DNS_ADDR(MemStruct):
+    fields = [
+        ("MaxSa", CHAR__DNS_ADDR_MAX_SOCKADDR_LENGTH_()),
+        ("DnsAddrUserDword", DWORD__8_()),
+    ]
+
+DNS_ADDR___ = Array(DNS_ADDR, 1)
+
+class DNS_ADDR_ARRAY(MemStruct):
+    fields = [
+        ("MaxCount", DWORD()),
+        ("AddrCount", DWORD()),
+        ("Tag", DWORD()),
+        ("Family", _ADDRESS_FAMILY_WORD_()),
+        ("WordReserved", WORD()),
+        ("Flags", DWORD()),
+        ("MatchFlag", DWORD()),
+        ("Reserved1", DWORD()),
+        ("Reserved2", DWORD()),
+        ("AddrArray", DNS_ADDR___()),
+    ]
+
+PDNS_ADDR_ARRAY = Ptr("<I", DNS_ADDR_ARRAY())
+
+class DNS_QUERY_REQUEST(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("QueryName", PCWSTR()),
+        ("QueryType", _DnsRecordType_()),
+        ("QueryOptions", _DNS_QUERY_OPTIONS_64_()),
+        ("pDnsServerList", PDNS_ADDR_ARRAY()),
+        ("InterfaceIndex", ULONG()),
+        ("pQueryCompletionCallback", PDNS_QUERY_COMPLETION_ROUTINE()),
+        ("pQueryContext", PVOID()),
+    ]
+
+PDNS_QUERY_REQUEST = Ptr("<I", DNS_QUERY_REQUEST())
+
+class DNS_QUERY_RESULT(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("QueryStatus", DNS_STATUS()),
+        ("QueryOptions", _DNS_QUERY_OPTIONS_64_()),
+        ("pQueryRecords", PDNS_RECORD()),
+        ("Reserved", PVOID()),
+    ]
+
+PDNS_QUERY_RESULT = Ptr("<I", DNS_QUERY_RESULT())
+
+class DNS_QUERY_CANCEL(MemStruct):
+    fields = [
+        ("Reserved", CHAR__32_()),
+    ]
+
+PDNS_QUERY_CANCEL = Ptr("<I", DNS_QUERY_CANCEL())
+
+###################
+
+###### Functions ######
 
 def dnsapi_DnsAcquireContextHandle_(jitter, get_str, set_str):
     """

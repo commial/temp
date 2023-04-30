@@ -1,3 +1,4 @@
+###### Enums ######
 _ICMessage_ = {
     "ICM_COMPRESS_GET_FORMAT": 0x00004004,
     "ICM_COMPRESS_GET_SIZE": 0x00004005,
@@ -126,6 +127,71 @@ _ICERR__INV = {
     -200: "ICERR_BADBITDEPTH",
     -201: "ICERR_BADIMAGESIZE",
 }
+
+###################
+
+###### Types ######
+HIC = HANDLE
+HDRAWDIB = HANDLE
+WCHAR__16_ = Array(WCHAR, 16)
+
+class DRAWDIBTIME(MemStruct):
+    fields = [
+        ("timeCount", LONG()),
+        ("timeDraw", LONG()),
+        ("timeDecompress", LONG()),
+        ("timeDither", LONG()),
+        ("timeStretch", LONG()),
+        ("timeBlt", LONG()),
+        ("timeSetDIBits", LONG()),
+    ]
+
+LPDRAWDIBTIME = Ptr("<I", DRAWDIBTIME())
+
+class COMPVARS(MemStruct):
+    fields = [
+        ("cbSize", LONG()),
+        ("dwFlags", DWORD()),
+        ("hic", HIC()),
+        ("fccType", DWORD()),
+        ("fccHandler", DWORD()),
+        ("lpbiIn", LPBITMAPINFO()),
+        ("lpbiOut", LPBITMAPINFO()),
+        ("lpBitsOut", LPVOID()),
+        ("lpBitsPrev", LPVOID()),
+        ("lFrame", LONG()),
+        ("lKey", LONG()),
+        ("lDataRate", LONG()),
+        ("lQ", LONG()),
+        ("lKeyCount", LONG()),
+        ("lpState", LPVOID()),
+        ("cbState", LONG()),
+    ]
+
+PCOMPVARS = Ptr("<I", COMPVARS())
+_VIDCF_ = DWORD
+
+class ICINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("fccType", FOURCC()),
+        ("fccHandler", DWORD()),
+        ("dwFlags", _VIDCF_()),
+        ("dwVersion", DWORD()),
+        ("dwVersionICM", DWORD()),
+        ("szName", WCHAR__16_()),
+        ("szDescription", WCHAR__128_()),
+        ("szDriver", WCHAR__128_()),
+    ]
+
+ICINFO_PTR = Ptr("<I", ICINFO())
+_ICOpenFlags_ = UINT
+_ICMessage_ = UINT
+_ICERR_ = DWORD
+
+###################
+
+###### Functions ######
 
 def msvfw32_DrawDibOpen(jitter):
     """

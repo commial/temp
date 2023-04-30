@@ -1,3 +1,4 @@
+###### Enums ######
 SHREGENUM_FLAGS = {
     "SHREGENUM_DEFAULT": 0x00000000,
     "SHREGENUM_HKCU": 0x00000001,
@@ -158,6 +159,49 @@ SHGLOBALCOUNTER_INV = {
     55: "GLOBALCOUNTER_APPSFOLDER_FILETYPEASSOCIATION_COUNTER",
     56: "GLOBALCOUNTER_USERINFOCHANGED",
 }
+
+###################
+
+###### Types ######
+HUSKEY = HANDLE
+PHUSKEY = Ptr("<I", HUSKEY())
+const_LPCTSTR_PTR = Ptr("<I", LPCTSTR())
+LSTATUS = _ERROR_CODE_
+SHREGENUM_FLAGS = UINT
+SHREGDEL_FLAGS = UINT
+_ShRegSetFlags_ = UINT
+SHCT_FLAGS = DWORD
+STIF_FLAGS = UINT
+SFBS_FLAGS = UINT
+SRRF = UINT
+
+class QITAB(MemStruct):
+    fields = [
+        ("piid", const_IID_PTR()),
+        ("dwOffset", int()),
+    ]
+
+LPCQITAB = Ptr("<I", QITAB())
+URLIS = UINT
+
+class PARSEDURL(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("pszProtocol", LPCTSTR()),
+        ("cchProtocol", UINT()),
+        ("pszSuffix", LPCTSTR()),
+        ("cchSuffix", UINT()),
+        ("nScheme", URL_SCHEME()),
+    ]
+
+PARSEDURL_PTR = Ptr("<I", PARSEDURL())
+SHGLOBALCOUNTER = UINT
+const_SHGLOBALCOUNTER = SHGLOBALCOUNTER
+_URL_APPLY_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def shlwapi_SHAllocShared(jitter):
     """

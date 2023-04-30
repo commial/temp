@@ -1,3 +1,118 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+QUEUEHANDLE = HANDLE
+QUEUEHANDLE_PTR = Ptr("<I", QUEUEHANDLE())
+QUEUEPROPID = PROPID
+QUEUEPROPID_PTR = Ptr("<I", QUEUEPROPID())
+QMPROPID = PROPID
+QMPROPID_PTR = Ptr("<I", QMPROPID())
+MGMTPROPID = PROPID
+MGMTPROPID_PTR = Ptr("<I", MGMTPROPID())
+MSGPROPID = PROPID
+MSGPROPID_PTR = Ptr("<I", MSGPROPID())
+PMQRECEIVECALLBACK = LPVOID
+MQPROPVARIANT = PROPVARIANT
+MQPROPVARIANT_PTR = Ptr("<I", MQPROPVARIANT())
+MQPROPVARIANT__ = Ptr("<I", MQPROPVARIANT())
+_MQPR_Rel_ = ULONG
+
+class MQPROPERTYRESTRICTION(MemStruct):
+    fields = [
+        ("rel", _MQPR_Rel_()),
+        ("prop", PROPID()),
+        ("prval", MQPROPVARIANT()),
+    ]
+
+MQPROPERTYRESTRICTION_PTR = Ptr("<I", MQPROPERTYRESTRICTION())
+
+class MQQUEUEPROPS(MemStruct):
+    fields = [
+        ("cProp", DWORD()),
+        ("aPropID", QUEUEPROPID_PTR()),
+        ("aPropVar", MQPROPVARIANT_PTR()),
+        ("aStatus", HRESULT_PTR()),
+    ]
+
+MQQUEUEPROPS_PTR = Ptr("<I", MQQUEUEPROPS())
+
+class MQQMPROPS(MemStruct):
+    fields = [
+        ("cProp", DWORD()),
+        ("aPropID", QMPROPID_PTR()),
+        ("aPropVar", MQPROPVARIANT_PTR()),
+        ("aStatus", HRESULT_PTR()),
+    ]
+
+MQQMPROPS_PTR = Ptr("<I", MQQMPROPS())
+
+class MQPRIVATEPROPS(MemStruct):
+    fields = [
+        ("cProp", DWORD()),
+        ("aPropID", QMPROPID_PTR()),
+        ("aPropVar", MQPROPVARIANT_PTR()),
+        ("aStatus", HRESULT_PTR()),
+    ]
+
+MQPRIVATEPROPS_PTR = Ptr("<I", MQPRIVATEPROPS())
+
+class MQRESTRICTION(MemStruct):
+    fields = [
+        ("cRes", ULONG()),
+        ("paPropRes", MQPROPERTYRESTRICTION_PTR()),
+    ]
+
+MQRESTRICTION_PTR = Ptr("<I", MQRESTRICTION())
+
+class MQCOLUMNSET(MemStruct):
+    fields = [
+        ("cCol", ULONG()),
+        ("aCol", PROPID_PTR()),
+    ]
+
+MQCOLUMNSET_PTR = Ptr("<I", MQCOLUMNSET())
+
+class MQSORTKEY(MemStruct):
+    fields = [
+        ("propColumn", PROPID()),
+        ("dwOrder", ULONG()),
+    ]
+
+MQSORTKEY_PTR = Ptr("<I", MQSORTKEY())
+
+class MQSORTSET(MemStruct):
+    fields = [
+        ("cCol", ULONG()),
+        ("aCol", MQSORTKEY_PTR()),
+    ]
+
+MQSORTSET_PTR = Ptr("<I", MQSORTSET())
+
+class MQMGMTPROPS(MemStruct):
+    fields = [
+        ("cProp", DWORD()),
+        ("aPropID", MGMTPROPID_PTR()),
+        ("aPropVar", MQPROPVARIANT_PTR()),
+        ("aStatus", HRESULT_PTR()),
+    ]
+
+MQMGMTPROPS_PTR = Ptr("<I", MQMGMTPROPS())
+
+class MQMSGPROPS(MemStruct):
+    fields = [
+        ("cProp", DWORD()),
+        ("aPropID", MSGPROPID_PTR()),
+        ("aPropVar", MQPROPVARIANT_PTR()),
+        ("aStatus", HRESULT_PTR()),
+    ]
+
+MQMSGPROPS_PTR = Ptr("<I", MQMSGPROPS())
+
+###################
+
+###### Functions ######
 
 def mqrt_MQADsPathToFormatName(jitter):
     """

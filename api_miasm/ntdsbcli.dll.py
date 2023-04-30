@@ -1,3 +1,16 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+HBC = LPVOID
+HBC_PTR = Ptr("<I", HBC())
+_NtdsBackupType_ = ULONG
+_NtdsRestoreType_ = ULONG
+
+###################
+
+###### Functions ######
 
 def ntdsbcli_DsBackupClose(jitter):
     """

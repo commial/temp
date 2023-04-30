@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def odbccp32_SQLConfigDataSource(jitter, get_str, set_str):
     """

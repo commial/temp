@@ -1,3 +1,23 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PFN_WdsCliTraceFunction = LPVOID
+PFN_WdsCliCallback = LPVOID
+
+class WDS_CLI_CRED(MemStruct):
+    fields = [
+        ("pwszUserName", PCWSTR()),
+        ("pwszDomain", PCWSTR()),
+        ("pwszPassword", PCWSTR()),
+    ]
+
+PWDS_CLI_CRED = Ptr("<I", WDS_CLI_CRED())
+
+###################
+
+###### Functions ######
 
 def wdsclientapi_WdsCliAuthorizeSession(jitter):
     """

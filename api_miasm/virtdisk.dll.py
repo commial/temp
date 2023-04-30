@@ -1,3 +1,4 @@
+###### Enums ######
 MERGE_VIRTUAL_DISK_VERSION = {
     "MERGE_VIRTUAL_DISK_VERSION_UNSPECIFIED": 0,
     "MERGE_VIRTUAL_DISK_VERSION_1": 1,
@@ -72,6 +73,241 @@ RESIZE_VIRTUAL_DISK_VERSION_INV = {
     0: "RESIZE_VIRTUAL_DISK_VERSION_UNSPECIFIED",
     1: "RESIZE_VIRTUAL_DISK_VERSION_1",
 }
+
+###################
+
+###### Types ######
+PSTORAGE_DEPENDENCY_INFO = LPVOID
+PGET_VIRTUAL_DISK_INFO = LPVOID
+MERGE_VIRTUAL_DISK_VERSION = UINT
+_VirtMergeDepth_ = ULONG
+
+class _MERGE_VIRTUAL_DISK_PARAMETERS_u_s1_(MemStruct):
+    fields = [
+        ("MergeDepth", _VirtMergeDepth_()),
+    ]
+
+
+class _MERGE_VIRTUAL_DISK_PARAMETERS_u_s2_(MemStruct):
+    fields = [
+        ("MergeSourceDepth", _VirtMergeDepth_()),
+        ("MergeTargetDepth", _VirtMergeDepth_()),
+    ]
+
+_MERGE_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _MERGE_VIRTUAL_DISK_PARAMETERS_u_s1_),
+    ("Version2", _MERGE_VIRTUAL_DISK_PARAMETERS_u_s2_),
+])
+
+class MERGE_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", MERGE_VIRTUAL_DISK_VERSION()),
+        (None, _MERGE_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PMERGE_VIRTUAL_DISK_PARAMETERS = Ptr("<I", MERGE_VIRTUAL_DISK_PARAMETERS())
+SET_VIRTUAL_DISK_INFO_VERSION = UINT
+_SET_VIRTUAL_DISK_INFO_u_ = Union([
+    ("ParentFilePath", PCWSTR),
+    ("UniqueIdentifier", GUID),
+])
+
+class SET_VIRTUAL_DISK_INFO(MemStruct):
+    fields = [
+        ("Version", SET_VIRTUAL_DISK_INFO_VERSION()),
+        (None, _SET_VIRTUAL_DISK_INFO_u_()),
+    ]
+
+PSET_VIRTUAL_DISK_INFO = Ptr("<I", SET_VIRTUAL_DISK_INFO())
+CREATE_VIRTUAL_DISK_VERSION = UINT
+OPEN_VIRTUAL_DISK_FLAG = UINT
+
+class VIRTUAL_STORAGE_TYPE(MemStruct):
+    fields = [
+        ("DeviceId", ULONG()),
+        ("VendorId", GUID()),
+    ]
+
+PVIRTUAL_STORAGE_TYPE = Ptr("<I", VIRTUAL_STORAGE_TYPE())
+
+class _CREATE_VIRTUAL_DISK_PARAMETERS_u_s1_(MemStruct):
+    fields = [
+        ("UniqueId", GUID()),
+        ("MaximumSize", ULONGLONG()),
+        ("BlockSizeInBytes", ULONG()),
+        ("SectorSizeInBytes", ULONG()),
+        ("ParentPath", PCWSTR()),
+        ("SourcePath", PCWSTR()),
+    ]
+
+
+class _CREATE_VIRTUAL_DISK_PARAMETERS_u_s2_(MemStruct):
+    fields = [
+        ("UniqueId", GUID()),
+        ("MaximumSize", ULONGLONG()),
+        ("BlockSizeInBytes", ULONG()),
+        ("SectorSizeInBytes", ULONG()),
+        ("PhysicalSectorSizeInBytes", ULONG()),
+        ("ParentPath", PCWSTR()),
+        ("SourcePath", PCWSTR()),
+        ("OpenFlags", OPEN_VIRTUAL_DISK_FLAG()),
+        ("ParentVirtualStorageType", VIRTUAL_STORAGE_TYPE()),
+        ("SourceVirtualStorageType", VIRTUAL_STORAGE_TYPE()),
+        ("ResiliencyGuid", GUID()),
+    ]
+
+_CREATE_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _CREATE_VIRTUAL_DISK_PARAMETERS_u_s1_),
+    ("Version2", _CREATE_VIRTUAL_DISK_PARAMETERS_u_s2_),
+])
+
+class CREATE_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", CREATE_VIRTUAL_DISK_VERSION()),
+        (None, _CREATE_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PCREATE_VIRTUAL_DISK_PARAMETERS = Ptr("<I", CREATE_VIRTUAL_DISK_PARAMETERS())
+OPEN_VIRTUAL_DISK_VERSION = UINT
+
+class _OPEN_VIRTUAL_DISK_PARAMETERS_u_s1_(MemStruct):
+    fields = [
+        ("RWDepth", ULONG()),
+    ]
+
+
+class _OPEN_VIRTUAL_DISK_PARAMETERS_u_s2_(MemStruct):
+    fields = [
+        ("GetInfoOnly", BOOL()),
+        ("ReadOnly", BOOL()),
+        ("ResiliencyGuid", GUID()),
+    ]
+
+_OPEN_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _OPEN_VIRTUAL_DISK_PARAMETERS_u_s1_),
+    ("Version2", _OPEN_VIRTUAL_DISK_PARAMETERS_u_s2_),
+])
+
+class OPEN_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", OPEN_VIRTUAL_DISK_VERSION()),
+        (None, _OPEN_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+POPEN_VIRTUAL_DISK_PARAMETERS = Ptr("<I", OPEN_VIRTUAL_DISK_PARAMETERS())
+EXPAND_VIRTUAL_DISK_VERSION = UINT
+
+class _EXPAND_VIRTUAL_DISK_PARAMETERS_u_s_(MemStruct):
+    fields = [
+        ("NewSize", ULONGLONG()),
+    ]
+
+_EXPAND_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _EXPAND_VIRTUAL_DISK_PARAMETERS_u_s_),
+])
+
+class EXPAND_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", EXPAND_VIRTUAL_DISK_VERSION()),
+        (None, _EXPAND_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PEXPAND_VIRTUAL_DISK_PARAMETERS = Ptr("<I", EXPAND_VIRTUAL_DISK_PARAMETERS())
+COMPACT_VIRTUAL_DISK_VERSION = UINT
+
+class _COMPACT_VIRTUAL_DISK_PARAMETERS_u_s_(MemStruct):
+    fields = [
+        ("Reserved", ULONG()),
+    ]
+
+_COMPACT_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _COMPACT_VIRTUAL_DISK_PARAMETERS_u_s_),
+])
+
+class COMPACT_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", COMPACT_VIRTUAL_DISK_VERSION()),
+        (None, _COMPACT_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PCOMPACT_VIRTUAL_DISK_PARAMETERS = Ptr("<I", COMPACT_VIRTUAL_DISK_PARAMETERS())
+ATTACH_VIRTUAL_DISK_VERSION = UINT
+
+class _ATTACH_VIRTUAL_DISK_PARAMETERS_u_s_(MemStruct):
+    fields = [
+        ("Reserved", ULONG()),
+    ]
+
+_ATTACH_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _ATTACH_VIRTUAL_DISK_PARAMETERS_u_s_),
+])
+
+class ATTACH_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", ATTACH_VIRTUAL_DISK_VERSION()),
+        (None, _ATTACH_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PATTACH_VIRTUAL_DISK_PARAMETERS = Ptr("<I", ATTACH_VIRTUAL_DISK_PARAMETERS())
+
+class VIRTUAL_DISK_PROGRESS(MemStruct):
+    fields = [
+        ("OperationStatus", DWORD()),
+        ("CurrentValue", ULONGLONG()),
+        ("CompletionValue", ULONGLONG()),
+    ]
+
+PVIRTUAL_DISK_PROGRESS = Ptr("<I", VIRTUAL_DISK_PROGRESS())
+ATTACH_VIRTUAL_DISK_FLAG = UINT
+COMPACT_VIRTUAL_DISK_FLAG = UINT
+DETACH_VIRTUAL_DISK_FLAG = UINT
+EXPAND_VIRTUAL_DISK_FLAG = UINT
+GET_STORAGE_DEPENDENCY_FLAG = UINT
+MERGE_VIRTUAL_DISK_FLAG = UINT
+CREATE_VIRTUAL_DISK_FLAG = UINT
+VIRTUAL_DISK_ACCESS_MASK = UINT
+MIRROR_VIRTUAL_DISK_FLAG = UINT
+RESIZE_VIRTUAL_DISK_FLAG = UINT
+MIRROR_VIRTUAL_DISK_VERSION = UINT
+RESIZE_VIRTUAL_DISK_VERSION = UINT
+
+class _MIRROR_VIRTUAL_DISK_PARAMETERS_s_(MemStruct):
+    fields = [
+        ("MirrorVirtualDiskPath", PCWSTR()),
+    ]
+
+_MIRROR_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _MIRROR_VIRTUAL_DISK_PARAMETERS_s_),
+])
+
+class MIRROR_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", MIRROR_VIRTUAL_DISK_VERSION()),
+        (None, _MIRROR_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PMIRROR_VIRTUAL_DISK_PARAMETERS = Ptr("<I", MIRROR_VIRTUAL_DISK_PARAMETERS())
+
+class _RESIZE_VIRTUAL_DISK_PARAMETERS_s_(MemStruct):
+    fields = [
+        ("NewSize", ULONGLONG()),
+    ]
+
+_RESIZE_VIRTUAL_DISK_PARAMETERS_u_ = Union([
+    ("Version1", _RESIZE_VIRTUAL_DISK_PARAMETERS_s_),
+])
+
+class RESIZE_VIRTUAL_DISK_PARAMETERS(MemStruct):
+    fields = [
+        ("Version", RESIZE_VIRTUAL_DISK_VERSION()),
+        (None, _RESIZE_VIRTUAL_DISK_PARAMETERS_u_()),
+    ]
+
+PRESIZE_VIRTUAL_DISK_PARAMETERS = Ptr("<I", RESIZE_VIRTUAL_DISK_PARAMETERS())
+
+###################
+
+###### Functions ######
 
 def virtdisk_AddVirtualDiskParent(jitter):
     """

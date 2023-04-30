@@ -1,3 +1,4 @@
+###### Enums ######
 FILE_RISK_LEVEL = {
     "FRL_NO_OPINION": 0,
     "FRL_LOW": 1,
@@ -12,6 +13,16 @@ FILE_RISK_LEVEL_INV = {
     3: "FRL_HIGH",
     4: "FRL_BLOCK",
 }
+
+###################
+
+###### Types ######
+FILE_RISK_LEVEL = UINT
+FILE_RISK_LEVEL_PTR = Ptr("<I", FILE_RISK_LEVEL())
+
+###################
+
+###### Functions ######
 
 def winshfhc_EstimateFileRiskLevel(jitter):
     """

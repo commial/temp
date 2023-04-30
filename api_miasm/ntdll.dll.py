@@ -1,3 +1,4 @@
+###### Enums ######
 KPROFILE_SOURCE = {
     "ProfileTime": 0,
     "ProfileAlignmentFixup": 1,
@@ -996,6 +997,1362 @@ _HASH_STRING_ALGORITHM__INV = {
     1: "HASH_STRING_ALGORITHM_X65599",
     0xffffffff: "HASH_STRING_ALGORITHM_INVALID",
 }
+
+###################
+
+###### Types ######
+CSR_API_MESSAGE_PTR = LPVOID
+PPLUGPLAY_EVENT_BLOCK = LPVOID
+PDBGUI_WAIT_STATE_CHANGE = LPVOID
+PIO_RESOURCE_DESCRIPTOR = LPVOID
+PCM_PARTIAL_RESOURCE_DESCRIPTOR = LPVOID
+PRTL_BALANCED_NODE = LPVOID
+PRTL_TRACE_DATABASE = LPVOID
+PRTL_TRACE_BLOCK = LPVOID
+PRTL_TRACE_BLOCK_PTR = Ptr("<I", PRTL_TRACE_BLOCK())
+PRTL_TRACE_ENUM = LPVOID
+RTL_ATOM = USHORT
+PRTL_ATOM = Ptr("<I", RTL_ATOM())
+CSHORT = short
+CLONG = ULONG
+PCCH = CHAR_PTR
+PCH = CHAR_PTR
+PCSZ = char_PTR
+PTHREAD_START_ROUTINE = LPVOID
+WORKERCALLBACKFUNC = LPVOID
+WAITORTIMERCALLBACKFUNC = LPVOID
+LPC_SIZE_T = SIZE_T
+LPC_PVOID = PVOID
+LPC_HANDLE = HANDLE
+PTIMER_APC_ROUTINE = LPVOID
+PHEAP_ENUMERATION_ROUTINE = LPVOID
+PRTL_HEAP_COMMIT_ROUTINE = LPVOID
+PRTL_AVL_COMPARE_ROUTINE = LPVOID
+PRTL_AVL_ALLOCATE_ROUTINE = LPVOID
+PRTL_AVL_FREE_ROUTINE = LPVOID
+PRTL_SECURE_MEMORY_CACHE_CALLBACK = LPVOID
+PRTL_QUERY_REGISTRY_ROUTINE = LPVOID
+PRTL_GENERIC_COMPARE_ROUTINE = LPVOID
+PRTL_GENERIC_ALLOCATE_ROUTINE = LPVOID
+PRTL_GENERIC_FREE_ROUTINE = LPVOID
+PEXCEPTION_ROUTINE = LPVOID
+HANDLE___ = Ptr("<I", HANDLE())
+PRTL_TRACE_HASH_FUNCTION = LPVOID
+PLDR_DLL_NOTIFICATION_FUNCTION = LPVOID
+PWCH = PWCHAR
+PCWCH = PWCHAR
+CCHAR = UINT8
+PRTL_RUN_ONCE_INIT_FN = LPVOID
+PRTL_AVL_MATCH_FUNCTION = LPVOID
+LOGICAL = BOOL
+PRTL_BARRIER = LPVOID
+PRTLP_CURDIR_REF = LPVOID
+SID_HASH_ENTRY = ULONG_PTR
+PLDR_CALLBACK = LPVOID
+SIZE_T__2_ = Array(SIZE_T, 2)
+UCHAR__32_ = Array(UCHAR, 32)
+UCHAR__36_ = Array(UCHAR, 36)
+UCHAR__MAXIMUM_LEADBYTES_ = Array(UCHAR, 12)
+WCHAR__4_ = Array(WCHAR, 4)
+WCHAR__8_ = Array(WCHAR, 8)
+WCHAR__261_ = Array(WCHAR, 261)
+ULONG__ANYSIZE_ARRAY_ = Array(ULONG, 1)
+ULONG__3_ = Array(ULONG, 3)
+ULONG__5_ = Array(ULONG, 5)
+ULONG__26_ = Array(ULONG, 26)
+ULONG__32_ = Array(ULONG, 32)
+ULONG__GDI_BATCH_BUFFER_SIZE_ = Array(ULONG, 310)
+PVOID__2_ = Array(PVOID, 2)
+PVOID__4_ = Array(PVOID, 4)
+PVOID__9_ = Array(PVOID, 9)
+PVOID__11_ = Array(PVOID, 11)
+PVOID__16_ = Array(PVOID, 16)
+PVOID__54_ = Array(PVOID, 54)
+PVOID__64_ = Array(PVOID, 64)
+PVOID__233_ = Array(PVOID, 233)
+ULONG_PTR__1_ = Array(ULONG_PTR, 1)
+ULONG_PTR__29_ = Array(ULONG_PTR, 29)
+ULONG_PTR__62_ = Array(ULONG_PTR, 62)
+GUID__1_ = Array(GUID, 1)
+SID_HASH_ENTRY__SID_HASH_SIZE_ = Array(SID_HASH_ENTRY, 32)
+_NTSTATUS_ULONG_ = NTSTATUS
+_RTL_DEBUG_QUERY_FLAGS_ = ULONG
+
+class CURDIR(MemStruct):
+    fields = [
+        ("DosPath", UNICODE_STRING()),
+        ("Handle", HANDLE()),
+    ]
+
+CURDIR_PTR = Ptr("<I", CURDIR())
+
+class CSR_CAPTURE_BUFFER(MemStruct):
+    fields = [
+        ("Size", ULONG()),
+        ("PreviousCaptureBuffer", LPVOID()),
+        ("PointerCount", ULONG()),
+        ("BufferEnd", ULONG_PTR()),
+        ("PointerArray", ULONG_PTR__1_()),
+    ]
+
+CSR_CAPTURE_BUFFER_PTR = Ptr("<I", CSR_CAPTURE_BUFFER())
+_LDRP_FLAGS_ = ULONG
+
+class _LDR_DATA_TABLE_ENTRY_u1_s_(MemStruct):
+    fields = [
+        ("SectionPointer", PVOID()),
+        ("CheckSum", ULONG()),
+    ]
+
+_LDR_DATA_TABLE_ENTRY_u1_ = Union([
+    ("HashLinks", LIST_ENTRY),
+    (None, _LDR_DATA_TABLE_ENTRY_u1_s_),
+])
+_LDR_DATA_TABLE_ENTRY_u2_ = Union([
+    ("TimeDateStamp", ULONG),
+    ("LoadedImports", PVOID),
+])
+
+class LDR_DATA_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("InLoadOrderLinks", LIST_ENTRY()),
+        ("InMemoryOrderModuleList", LIST_ENTRY()),
+        ("InInitializationOrderModuleList", LIST_ENTRY()),
+        ("DllBase", PVOID()),
+        ("EntryPoint", PVOID()),
+        ("SizeOfImage", ULONG()),
+        ("FullDllName", UNICODE_STRING()),
+        ("BaseDllName", UNICODE_STRING()),
+        ("Flags", _LDRP_FLAGS_()),
+        ("LoadCount", USHORT()),
+        ("TlsIndex", USHORT()),
+        (None, _LDR_DATA_TABLE_ENTRY_u1_()),
+        (None, _LDR_DATA_TABLE_ENTRY_u2_()),
+        ("EntryPointActivationContext", PVOID()),
+        ("PatchInformation", PVOID()),
+    ]
+
+PLDR_DATA_TABLE_ENTRY = Ptr("<I", LDR_DATA_TABLE_ENTRY())
+PLDR_DATA_TABLE_ENTRY_PTR = Ptr("<I", PLDR_DATA_TABLE_ENTRY())
+
+class IMAGE_BASE_RELOCATION(MemStruct):
+    fields = [
+        ("VirtualAddress", ULONG()),
+        ("SizeOfBlock", ULONG()),
+    ]
+
+PIMAGE_BASE_RELOCATION = Ptr("<I", IMAGE_BASE_RELOCATION())
+KPROFILE_SOURCE = UINT
+
+class RTL_DRIVE_LETTER_CURDIR(MemStruct):
+    fields = [
+        ("Flags", USHORT()),
+        ("Length", USHORT()),
+        ("TimeStamp", ULONG()),
+        ("DosPath", UNICODE_STRING()),
+    ]
+
+RTL_DRIVE_LETTER_CURDIR__32_ = Array(RTL_DRIVE_LETTER_CURDIR, 32)
+_RTL_USER_PROCESS_PARAMETERS_FLAGS_ = ULONG
+
+class RTL_USER_PROCESS_PARAMETERS(MemStruct):
+    fields = [
+        ("MaximumLength", ULONG()),
+        ("Length", ULONG()),
+        ("Flags", _RTL_USER_PROCESS_PARAMETERS_FLAGS_()),
+        ("DebugFlags", ULONG()),
+        ("ConsoleHandle", HANDLE()),
+        ("ConsoleFlags", ULONG()),
+        ("StandardInput", HANDLE()),
+        ("StandardOutput", HANDLE()),
+        ("StandardError", HANDLE()),
+        ("CurrentDirectory", CURDIR()),
+        ("DllPath", UNICODE_STRING()),
+        ("ImagePathName", UNICODE_STRING()),
+        ("CommandLine", UNICODE_STRING()),
+        ("Environment", PWSTR()),
+        ("StartingX", ULONG()),
+        ("StartingY", ULONG()),
+        ("CountX", ULONG()),
+        ("CountY", ULONG()),
+        ("CountCharsX", ULONG()),
+        ("CountCharsY", ULONG()),
+        ("FillAttribute", ULONG()),
+        ("WindowFlags", _STARTUPINFO_Flags_()),
+        ("ShowWindowFlags", _ShowWindowCmd_()),
+        ("WindowTitle", UNICODE_STRING()),
+        ("DesktopInfo", UNICODE_STRING()),
+        ("ShellInfo", UNICODE_STRING()),
+        ("RuntimeData", UNICODE_STRING()),
+        ("CurrentDirectories", RTL_DRIVE_LETTER_CURDIR__32_()),
+    ]
+
+RTL_USER_PROCESS_PARAMETERS_PTR = Ptr("<I", RTL_USER_PROCESS_PARAMETERS())
+PRTL_USER_PROCESS_PARAMETERS = Ptr("<I", RTL_USER_PROCESS_PARAMETERS())
+PRTL_USER_PROCESS_PARAMETERS_PTR = Ptr("<I", PRTL_USER_PROCESS_PARAMETERS())
+
+class SECTION_IMAGE_INFORMATION(MemStruct):
+    fields = [
+        ("TransferAddress", PVOID()),
+        ("ZeroBits", ULONG()),
+        ("MaximumStackSize", SIZE_T()),
+        ("CommittedStackSize", SIZE_T()),
+        ("SubSystemType", _IMAGE_SUBSYSTEM_ULONG_()),
+        ("SubSystemMinorVersion", WORD()),
+        ("SubSystemMajorVersion", WORD()),
+        ("GpValue", ULONG()),
+        ("ImageCharacteristics", _IMAGE_FILE_CHARACTERISTICS_()),
+        ("DllCharacteristics", _IMAGE_FILE_MACHINE_()),
+        ("Machine", WORD()),
+        ("ImageContainsCode", BOOLEAN()),
+        ("ImageFlags", UCHAR()),
+        ("LoaderFlags", ULONG()),
+        ("ImageFileSize", ULONG()),
+        ("CheckSum", ULONG()),
+    ]
+
+
+class RTL_USER_PROCESS_INFORMATION(MemStruct):
+    fields = [
+        ("Size", ULONG()),
+        ("ProcessHandle", HANDLE()),
+        ("ThreadHandle", HANDLE()),
+        ("ClientId", CLIENT_ID()),
+        ("ImageInformation", SECTION_IMAGE_INFORMATION()),
+    ]
+
+PRTL_USER_PROCESS_INFORMATION = Ptr("<I", RTL_USER_PROCESS_INFORMATION())
+
+class _INITIAL_TEB_s_(MemStruct):
+    fields = [
+        ("OldStackBase", PVOID()),
+        ("OldStackLimit", PVOID()),
+    ]
+
+
+class INITIAL_TEB(MemStruct):
+    fields = [
+        ("OldInitialTeb", _INITIAL_TEB_s_()),
+        ("StackBase", PVOID()),
+        ("StackLimit", PVOID()),
+        ("StackAllocationBase", PVOID()),
+    ]
+
+PINITIAL_TEB = Ptr("<I", INITIAL_TEB())
+RTL_PATH_TYPE = UINT
+RTL_PATH_TYPE_PTR = Ptr("<I", RTL_PATH_TYPE())
+
+class RTL_PROCESS_VERIFIER_OPTIONS(MemStruct):
+    fields = [
+        ("SizeStruct", ULONG()),
+        ("Option", ULONG()),
+        ("OptionData", UCHAR__1_()),
+    ]
+
+PRTL_PROCESS_VERIFIER_OPTIONS = Ptr("<I", RTL_PROCESS_VERIFIER_OPTIONS())
+
+class RTL_PROCESS_LOCK_INFORMATION(MemStruct):
+    fields = [
+        ("Address", PVOID()),
+        ("Type", USHORT()),
+        ("CreatorBackTraceIndex", USHORT()),
+        ("OwnerThreadId", ULONG()),
+        ("ActiveCount", ULONG()),
+        ("ContentionCount", ULONG()),
+        ("EntryCount", ULONG()),
+        ("RecursionCount", ULONG()),
+        ("NumberOfSharedWaiters", ULONG()),
+        ("NumberOfExclusiveWaiters", ULONG()),
+    ]
+
+RTL_PROCESS_LOCK_INFORMATION__1_ = Array(RTL_PROCESS_LOCK_INFORMATION, 1)
+
+class RTL_PROCESS_LOCKS(MemStruct):
+    fields = [
+        ("NumberOfLocks", ULONG()),
+        ("Locks", RTL_PROCESS_LOCK_INFORMATION__1_()),
+    ]
+
+PRTL_PROCESS_LOCKS = Ptr("<I", RTL_PROCESS_LOCKS())
+
+class RTL_HEAP_INFORMATION(MemStruct):
+    fields = [
+        ("BaseAddress", PVOID()),
+        ("Flags", ULONG()),
+        ("EntryOverhead", USHORT()),
+        ("CreatorBackTraceIndex", USHORT()),
+        ("BytesAllocated", ULONG()),
+        ("BytesCommitted", ULONG()),
+        ("NumberOfTags", ULONG()),
+        ("NumberOfEntries", ULONG()),
+        ("NumberOfPseudoTags", ULONG()),
+        ("PseudoTagGranularity", ULONG()),
+        ("Reserved", ULONG__4_()),
+        ("Tags", PVOID()),
+        ("Entries", PVOID()),
+    ]
+
+RTL_HEAP_INFORMATION__1_ = Array(RTL_HEAP_INFORMATION, 1)
+
+class RTL_PROCESS_HEAPS(MemStruct):
+    fields = [
+        ("NumberOfHeaps", ULONG()),
+        ("Heaps", RTL_HEAP_INFORMATION__1_()),
+    ]
+
+PRTL_PROCESS_HEAPS = Ptr("<I", RTL_PROCESS_HEAPS())
+
+class RTL_PROCESS_BACKTRACE_INFORMATION(MemStruct):
+    fields = [
+        ("SymbolicBackTrace", PVOID()),
+        ("TraceCount", ULONG()),
+        ("Index", USHORT()),
+        ("Depth", USHORT()),
+        ("BackTrace", PVOID__16_()),
+    ]
+
+RTL_PROCESS_BACKTRACE_INFORMATION__1_ = Array(RTL_PROCESS_BACKTRACE_INFORMATION, 1)
+
+class RTL_PROCESS_BACKTRACES(MemStruct):
+    fields = [
+        ("CommittedMemory", ULONG()),
+        ("ReservedMemory", ULONG()),
+        ("NumberOfBackTraceLookups", ULONG()),
+        ("NumberOfBackTraces", ULONG()),
+        ("BackTraces", RTL_PROCESS_BACKTRACE_INFORMATION__1_()),
+    ]
+
+PRTL_PROCESS_BACKTRACES = Ptr("<I", RTL_PROCESS_BACKTRACES())
+
+class RTL_PROCESS_MODULE_INFORMATION(MemStruct):
+    fields = [
+        ("Section", ULONG()),
+        ("MappedBase", PVOID()),
+        ("ImageBase", PVOID()),
+        ("ImageSize", ULONG()),
+        ("Flags", ULONG()),
+        ("LoadOrderIndex", USHORT()),
+        ("InitOrderIndex", USHORT()),
+        ("LoadCount", USHORT()),
+        ("OffsetToFileName", USHORT()),
+        ("FullPathName", CHAR__256_()),
+    ]
+
+RTL_PROCESS_MODULE_INFORMATION__1_ = Array(RTL_PROCESS_MODULE_INFORMATION, 1)
+
+class RTL_PROCESS_MODULES(MemStruct):
+    fields = [
+        ("NumberOfModules", ULONG()),
+        ("Modules", RTL_PROCESS_MODULE_INFORMATION__1_()),
+    ]
+
+PRTL_PROCESS_MODULES = Ptr("<I", RTL_PROCESS_MODULES())
+
+class RTL_PROCESS_MODULE_INFORMATION_EX(MemStruct):
+    fields = [
+        ("NextOffset", ULONG()),
+        ("BaseInfo", RTL_PROCESS_MODULE_INFORMATION()),
+        ("ImageCheckSum", ULONG()),
+        ("TimeDateStamp", ULONG()),
+        ("DefaultBase", PVOID()),
+    ]
+
+PRTL_PROCESS_MODULE_INFORMATION_EX = Ptr("<I", RTL_PROCESS_MODULE_INFORMATION_EX())
+_RTL_DEBUG_INFORMATION_u_ = Union([
+    ("Modules", PRTL_PROCESS_MODULES),
+    ("ModulesEx", PRTL_PROCESS_MODULE_INFORMATION_EX),
+])
+
+class RTL_DEBUG_INFORMATION(MemStruct):
+    fields = [
+        ("SectionHandleClient", HANDLE()),
+        ("ViewBaseClient", PVOID()),
+        ("ViewBaseTarget", PVOID()),
+        ("ViewBaseDelta", ULONG()),
+        ("EventPairClient", HANDLE()),
+        ("EventPairTarget", PVOID()),
+        ("TargetProcessId", HANDLE()),
+        ("TargetThreadHandle", HANDLE()),
+        ("Flags", _RTL_DEBUG_QUERY_FLAGS_()),
+        ("OffsetFree", ULONG_PTR()),
+        ("CommitSize", ULONG_PTR()),
+        ("ViewSize", ULONG_PTR()),
+        (None, _RTL_DEBUG_INFORMATION_u_()),
+        ("BackTraces", PRTL_PROCESS_BACKTRACES()),
+        ("Heaps", PRTL_PROCESS_HEAPS()),
+        ("Locks", PRTL_PROCESS_LOCKS()),
+        ("SpecificHeap", HANDLE()),
+        ("TargetProcessHandle", HANDLE()),
+        ("VerifierOptions", PRTL_PROCESS_VERIFIER_OPTIONS()),
+        ("ProcessHeap", HANDLE()),
+        ("CriticalSectionHandle", HANDLE()),
+        ("CriticalSectionOwnerThread", HANDLE()),
+        ("Reserved", PVOID__4_()),
+    ]
+
+PRTL_DEBUG_INFORMATION = Ptr("<I", RTL_DEBUG_INFORMATION())
+
+class RTL_BITMAP(MemStruct):
+    fields = [
+        ("SizeOfBitMap", ULONG()),
+        ("Buffer", PULONG()),
+    ]
+
+PRTL_BITMAP = Ptr("<I", RTL_BITMAP())
+
+class RTL_RANGE_LIST(MemStruct):
+    fields = [
+        ("ListHead", LIST_ENTRY()),
+        ("Flags", ULONG()),
+        ("Count", ULONG()),
+        ("Stamp", ULONG()),
+    ]
+
+PRTL_RANGE_LIST = Ptr("<I", RTL_RANGE_LIST())
+_LPVOID|PRTL_SPLAY_LINKS_ = LPVOID
+
+class RTL_SPLAY_LINKS(MemStruct):
+    fields = [
+        ("Parent", _LPVOID|PRTL_SPLAY_LINKS_()),
+        ("LeftChild", _LPVOID|PRTL_SPLAY_LINKS_()),
+        ("RightChild", _LPVOID|PRTL_SPLAY_LINKS_()),
+    ]
+
+PRTL_SPLAY_LINKS = Ptr("<I", RTL_SPLAY_LINKS())
+PRTL_SPLAY_LINKS_PTR = Ptr("<I", PRTL_SPLAY_LINKS())
+
+class RTL_GENERIC_TABLE(MemStruct):
+    fields = [
+        ("TableRoot", PRTL_SPLAY_LINKS()),
+        ("InsertOrderList", LIST_ENTRY()),
+        ("OrderedPointer", PLIST_ENTRY()),
+        ("WhichOrderedElement", ULONG()),
+        ("NumberGenericTableElements", ULONG()),
+        ("CompareRoutine", PRTL_GENERIC_COMPARE_ROUTINE()),
+        ("AllocateRoutine", PRTL_GENERIC_ALLOCATE_ROUTINE()),
+        ("FreeRoutine", PRTL_GENERIC_FREE_ROUTINE()),
+        ("TableContext", PVOID()),
+    ]
+
+PRTL_GENERIC_TABLE = Ptr("<I", RTL_GENERIC_TABLE())
+TABLE_SEARCH_RESULT = UINT
+TABLE_SEARCH_RESULT_PTR = Ptr("<I", TABLE_SEARCH_RESULT())
+RTL_HANDLE_TABLE_ENTRY = Union([
+    ("Flags", ULONG),
+    ("NextFree", LPVOID),
+])
+PRTL_HANDLE_TABLE_ENTRY = Ptr("<I", RTL_HANDLE_TABLE_ENTRY())
+PRTL_HANDLE_TABLE_ENTRY_PTR = Ptr("<I", PRTL_HANDLE_TABLE_ENTRY())
+
+class RTL_HANDLE_TABLE(MemStruct):
+    fields = [
+        ("MaximumNumberOfHandles", ULONG()),
+        ("SizeOfHandleTableEntry", ULONG()),
+        ("Reserved", ULONG__2_()),
+        ("FreeHandles", PRTL_HANDLE_TABLE_ENTRY()),
+        ("CommittedHandles", PRTL_HANDLE_TABLE_ENTRY()),
+        ("UnCommittedHandles", PRTL_HANDLE_TABLE_ENTRY()),
+        ("MaxReservedHandles", PRTL_HANDLE_TABLE_ENTRY()),
+    ]
+
+PRTL_HANDLE_TABLE = Ptr("<I", RTL_HANDLE_TABLE())
+
+class RTL_MESSAGE_RESOURCE_ENTRY(MemStruct):
+    fields = [
+        ("Length", USHORT()),
+        ("Flags", USHORT()),
+        ("Text", CHAR__1_()),
+    ]
+
+PRTL_MESSAGE_RESOURCE_ENTRY = Ptr("<I", RTL_MESSAGE_RESOURCE_ENTRY())
+PRTL_MESSAGE_RESOURCE_ENTRY_PTR = Ptr("<I", PRTL_MESSAGE_RESOURCE_ENTRY())
+_RTL_QUERY_REGISTRY_FLAGS_ = ULONG
+
+class RTL_QUERY_REGISTRY_TABLE(MemStruct):
+    fields = [
+        ("QueryRoutine", PRTL_QUERY_REGISTRY_ROUTINE()),
+        ("Flags", _RTL_QUERY_REGISTRY_FLAGS_()),
+        ("Name", PWSTR()),
+        ("EntryContext", PVOID()),
+        ("DefaultType", ULONG()),
+        ("DefaultData", PVOID()),
+        ("DefaultLength", ULONG()),
+    ]
+
+PRTL_QUERY_REGISTRY_TABLE = Ptr("<I", RTL_QUERY_REGISTRY_TABLE())
+
+class CPTABLEINFO(MemStruct):
+    fields = [
+        ("CodePage", USHORT()),
+        ("MaximumCharacterSize", USHORT()),
+        ("DefaultChar", USHORT()),
+        ("UniDefaultChar", USHORT()),
+        ("TransDefaultChar", USHORT()),
+        ("TransUniDefaultChar", USHORT()),
+        ("DBCSCodePage", USHORT()),
+        ("LeadByte", UCHAR__MAXIMUM_LEADBYTES_()),
+        ("MultiByteTable", PUSHORT()),
+        ("WideCharTable", PVOID()),
+        ("DBCSRanges", PUSHORT()),
+        ("DBCSOffsets", PUSHORT()),
+    ]
+
+PCPTABLEINFO = Ptr("<I", CPTABLEINFO())
+
+class NLSTABLEINFO(MemStruct):
+    fields = [
+        ("OemTableInfo", CPTABLEINFO()),
+        ("AnsiTableInfo", CPTABLEINFO()),
+        ("UpperCaseTable", PUSHORT()),
+        ("LowerCaseTable", PUSHORT()),
+    ]
+
+PNLSTABLEINFO = Ptr("<I", NLSTABLEINFO())
+
+class RTL_SYSTEM_TIME(MemStruct):
+    fields = [
+        ("wYear", WORD()),
+        ("wMonth", WORD()),
+        ("wDayOfWeek", WORD()),
+        ("wDay", WORD()),
+        ("wHour", WORD()),
+        ("wMinute", WORD()),
+        ("wSecond", WORD()),
+        ("wMilliseconds", WORD()),
+    ]
+
+
+class RTL_TIME_ZONE_INFORMATION(MemStruct):
+    fields = [
+        ("Bias", LONG()),
+        ("StandardName", WCHAR__32_()),
+        ("StandardDate", RTL_SYSTEM_TIME()),
+        ("StandardBias", LONG()),
+        ("DaylightName", WCHAR__32_()),
+        ("DaylightDate", RTL_SYSTEM_TIME()),
+        ("DaylightBias", LONG()),
+    ]
+
+PRTL_TIME_ZONE_INFORMATION = Ptr("<I", RTL_TIME_ZONE_INFORMATION())
+
+class TIME_FIELDS(MemStruct):
+    fields = [
+        ("Year", CSHORT()),
+        ("Month", CSHORT()),
+        ("Day", CSHORT()),
+        ("Hour", CSHORT()),
+        ("Minute", CSHORT()),
+        ("Second", CSHORT()),
+        ("Milliseconds", CSHORT()),
+        ("Weekday", CSHORT()),
+    ]
+
+PTIME_FIELDS = Ptr("<I", TIME_FIELDS())
+NT_PRODUCT_TYPE = UINT
+PNT_PRODUCT_TYPE = Ptr("<I", NT_PRODUCT_TYPE())
+
+class RTL_BALANCED_LINKS(MemStruct):
+    fields = [
+        ("Parent", LPVOID()),
+        ("LeftChild", LPVOID()),
+        ("RightChild", LPVOID()),
+        ("Balance", CHAR()),
+        ("Reserved", UCHAR__3_()),
+    ]
+
+PRTL_BALANCED_LINKS = Ptr("<I", RTL_BALANCED_LINKS())
+
+class RTL_AVL_TABLE(MemStruct):
+    fields = [
+        ("BalancedRoot", RTL_BALANCED_LINKS()),
+        ("OrderedPointer", PVOID()),
+        ("WhichOrderedElement", ULONG()),
+        ("NumberGenericTableElements", ULONG()),
+        ("DepthOfTree", ULONG()),
+        ("RestartKey", PRTL_BALANCED_LINKS()),
+        ("DeleteCount", ULONG()),
+        ("CompareRoutine", PRTL_AVL_COMPARE_ROUTINE()),
+        ("AllocateRoutine", PRTL_AVL_ALLOCATE_ROUTINE()),
+        ("FreeRoutine", PRTL_AVL_FREE_ROUTINE()),
+        ("TableContext", PVOID()),
+    ]
+
+PRTL_AVL_TABLE = Ptr("<I", RTL_AVL_TABLE())
+
+class COMPRESSED_DATA_INFO(MemStruct):
+    fields = [
+        ("CompressionFormatAndEngine", USHORT()),
+        ("CompressionUnitShift", UCHAR()),
+        ("ChunkShift", UCHAR()),
+        ("ClusterShift", UCHAR()),
+        ("Reserved", UCHAR()),
+        ("NumberOfChunks", USHORT()),
+        ("CompressedChunkSizes", ULONG__ANYSIZE_ARRAY_()),
+    ]
+
+PCOMPRESSED_DATA_INFO = Ptr("<I", COMPRESSED_DATA_INFO())
+
+class GENERATE_NAME_CONTEXT(MemStruct):
+    fields = [
+        ("Checksum", USHORT()),
+        ("CheckSumInserted", BOOLEAN()),
+        ("NameLength", UCHAR()),
+        ("NameBuffer", WCHAR__8_()),
+        ("ExtensionLength", ULONG()),
+        ("ExtensionBuffer", WCHAR__4_()),
+        ("LastIndexValue", ULONG()),
+    ]
+
+PGENERATE_NAME_CONTEXT = Ptr("<I", GENERATE_NAME_CONTEXT())
+
+class RTL_HEAP_PARAMETERS(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("SegmentReserve", SIZE_T()),
+        ("SegmentCommit", SIZE_T()),
+        ("DeCommitFreeBlockThreshold", SIZE_T()),
+        ("DeCommitTotalFreeThreshold", SIZE_T()),
+        ("MaximumAllocationSize", SIZE_T()),
+        ("VirtualMemoryThreshold", SIZE_T()),
+        ("InitialCommit", SIZE_T()),
+        ("InitialReserve", SIZE_T()),
+        ("CommitRoutine", PRTL_HEAP_COMMIT_ROUTINE()),
+        ("Reserved", SIZE_T__2_()),
+    ]
+
+PRTL_HEAP_PARAMETERS = Ptr("<I", RTL_HEAP_PARAMETERS())
+
+class RTL_HEAP_TAG_INFO(MemStruct):
+    fields = [
+        ("NumberOfAllocations", ULONG()),
+        ("NumberOfFrees", ULONG()),
+        ("BytesAllocated", ULONG()),
+    ]
+
+PRTL_HEAP_TAG_INFO = Ptr("<I", RTL_HEAP_TAG_INFO())
+
+class RTL_HEAP_USAGE_ENTRY(MemStruct):
+    fields = [
+        ("Next", LPVOID()),
+    ]
+
+PRTL_HEAP_USAGE_ENTRY = Ptr("<I", RTL_HEAP_USAGE_ENTRY())
+
+class RTL_HEAP_USAGE(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("BytesAllocated", ULONG()),
+        ("BytesCommitted", ULONG()),
+        ("BytesReserved", ULONG()),
+        ("BytesReservedMaximum", ULONG()),
+        ("Entries", PRTL_HEAP_USAGE_ENTRY()),
+        ("AddedEntries", PRTL_HEAP_USAGE_ENTRY()),
+        ("RemovedEntries", PRTL_HEAP_USAGE_ENTRY()),
+        ("Reserved", UCHAR__32_()),
+    ]
+
+PRTL_HEAP_USAGE = Ptr("<I", RTL_HEAP_USAGE())
+_IO_STATUS_BLOCK_u_ = Union([
+    ("Status", NTSTATUS),
+    ("Pointer", PVOID),
+])
+
+class IO_STATUS_BLOCK(MemStruct):
+    fields = [
+        (None, _IO_STATUS_BLOCK_u_()),
+        ("Information", ULONG_PTR()),
+    ]
+
+PIO_STATUS_BLOCK = Ptr("<I", IO_STATUS_BLOCK())
+
+class KEY_VALUE_ENTRY(MemStruct):
+    fields = [
+        ("ValueName", PUNICODE_STRING()),
+        ("DataLength", ULONG()),
+        ("DataOffset", ULONG()),
+        ("Type", ULONG()),
+    ]
+
+PKEY_VALUE_ENTRY = Ptr("<I", KEY_VALUE_ENTRY())
+
+class EFI_DRIVER_ENTRY(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("Length", ULONG()),
+        ("Id", ULONG()),
+        ("Attributes", ULONG()),
+        ("FriendlyNameOffset", ULONG()),
+        ("DriverFilePathOffset", ULONG()),
+    ]
+
+PEFI_DRIVER_ENTRY = Ptr("<I", EFI_DRIVER_ENTRY())
+_FILE_ATTRIBUTES_ULONG_ = _FileAttributes_
+
+class FILE_BASIC_INFORMATION(MemStruct):
+    fields = [
+        ("CreationTime", LARGE_INTEGER()),
+        ("LastAccessTime", LARGE_INTEGER()),
+        ("LastWriteTime", LARGE_INTEGER()),
+        ("ChangeTime", LARGE_INTEGER()),
+        ("FileAttributes", _FILE_ATTRIBUTES_ULONG_()),
+    ]
+
+PFILE_BASIC_INFORMATION = Ptr("<I", FILE_BASIC_INFORMATION())
+
+class FILE_NETWORK_OPEN_INFORMATION(MemStruct):
+    fields = [
+        ("CreationTime", LARGE_INTEGER()),
+        ("LastAccessTime", LARGE_INTEGER()),
+        ("LastWriteTime", LARGE_INTEGER()),
+        ("ChangeTime", LARGE_INTEGER()),
+        ("AllocationSize", LARGE_INTEGER()),
+        ("EndOfFile", LARGE_INTEGER()),
+        ("FileAttributes", ULONG()),
+    ]
+
+PFILE_NETWORK_OPEN_INFORMATION = Ptr("<I", FILE_NETWORK_OPEN_INFORMATION())
+
+class BOOT_ENTRY(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("Length", ULONG()),
+        ("Id", ULONG()),
+        ("Attributes", ULONG()),
+        ("FriendlyNameOffset", ULONG()),
+        ("BootFilePathOffset", ULONG()),
+        ("OsOptionsLength", ULONG()),
+        ("OsOptions", CHAR__1_()),
+    ]
+
+PBOOT_ENTRY = Ptr("<I", BOOT_ENTRY())
+
+class BOOT_OPTIONS(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("Length", ULONG()),
+        ("Timeout", ULONG()),
+        ("CurrentBootEntryId", ULONG()),
+        ("NextBootEntryId", ULONG()),
+        ("HeadlessRedirection", WCHAR__1_()),
+    ]
+
+PBOOT_OPTIONS = Ptr("<I", BOOT_OPTIONS())
+
+class FILE_PATH(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("Length", ULONG()),
+        ("Type", ULONG()),
+        ("FilePath", CHAR__1_()),
+    ]
+
+PFILE_PATH = Ptr("<I", FILE_PATH())
+
+class LDR_RESOURCE_INFO(MemStruct):
+    fields = [
+        ("Type", ULONG_PTR()),
+        ("Name", ULONG_PTR()),
+        ("Language", ULONG()),
+    ]
+
+PLDR_RESOURCE_INFO = Ptr("<I", LDR_RESOURCE_INFO())
+
+class PORT_VIEW(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("SectionHandle", LPC_HANDLE()),
+        ("SectionOffset", ULONG()),
+        ("ViewSize", LPC_SIZE_T()),
+        ("ViewBase", LPC_PVOID()),
+        ("ViewRemoteBase", LPC_PVOID()),
+    ]
+
+PPORT_VIEW = Ptr("<I", PORT_VIEW())
+
+class REMOTE_PORT_VIEW(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("ViewSize", LPC_SIZE_T()),
+        ("ViewBase", LPC_PVOID()),
+    ]
+
+PREMOTE_PORT_VIEW = Ptr("<I", REMOTE_PORT_VIEW())
+
+class JOB_SET_ARRAY(MemStruct):
+    fields = [
+        ("JobHandle", HANDLE()),
+        ("MemberLevel", DWORD()),
+        ("Flags", DWORD()),
+    ]
+
+PJOB_SET_ARRAY = Ptr("<I", JOB_SET_ARRAY())
+
+class TOKEN_USER(MemStruct):
+    fields = [
+        ("User", SID_AND_ATTRIBUTES()),
+    ]
+
+PTOKEN_USER = Ptr("<I", TOKEN_USER())
+
+class TOKEN_OWNER(MemStruct):
+    fields = [
+        ("Owner", PSID()),
+    ]
+
+PTOKEN_OWNER = Ptr("<I", TOKEN_OWNER())
+
+class TOKEN_PRIMARY_GROUP(MemStruct):
+    fields = [
+        ("PrimaryGroup", PSID()),
+    ]
+
+PTOKEN_PRIMARY_GROUP = Ptr("<I", TOKEN_PRIMARY_GROUP())
+
+class TOKEN_DEFAULT_DACL(MemStruct):
+    fields = [
+        ("DefaultDacl", PACL()),
+    ]
+
+PTOKEN_DEFAULT_DACL = Ptr("<I", TOKEN_DEFAULT_DACL())
+
+class IMAGE_RESOURCE_DATA_ENTRY(MemStruct):
+    fields = [
+        ("OffsetToData", DWORD()),
+        ("Size", DWORD()),
+        ("CodePage", _CodePageEnum_()),
+        ("Reserved", DWORD()),
+    ]
+
+PIMAGE_RESOURCE_DATA_ENTRY = Ptr("<I", IMAGE_RESOURCE_DATA_ENTRY())
+PIMAGE_RESOURCE_DATA_ENTRY_PTR = Ptr("<I", PIMAGE_RESOURCE_DATA_ENTRY())
+
+class IMAGE_RESOURCE_DIRECTORY(MemStruct):
+    fields = [
+        ("Characteristics", DWORD()),
+        ("TimeDateStamp", DWORD()),
+        ("MajorVersion", WORD()),
+        ("MinorVersion", WORD()),
+        ("NumberOfNamedEntries", WORD()),
+        ("NumberOfIdEntries", WORD()),
+    ]
+
+PIMAGE_RESOURCE_DIRECTORY = Ptr("<I", IMAGE_RESOURCE_DIRECTORY())
+PIMAGE_RESOURCE_DIRECTORY_PTR = Ptr("<I", PIMAGE_RESOURCE_DIRECTORY())
+KEY_INFORMATION_CLASS = UINT
+KEY_VALUE_INFORMATION_CLASS = UINT
+PLUGPLAY_CONTROL_CLASS = UINT
+KEY_SET_INFORMATION_CLASS = UINT
+DEBUGOBJECTINFOCLASS = UINT
+TIMER_TYPE = UINT
+EVENT_INFORMATION_CLASS = UINT
+ATOM_INFORMATION_CLASS = UINT
+MUTANT_INFORMATION_CLASS = UINT
+SEMAPHORE_INFORMATION_CLASS = UINT
+TIMER_INFORMATION_CLASS = UINT
+SHUTDOWN_ACTION = UINT
+FILE_INFORMATION_CLASS = UINT
+IO_COMPLETION_INFORMATION_CLASS = UINT
+FS_INFORMATION_CLASS = UINT
+SYSDBG_COMMAND = UINT
+PORT_INFORMATION_CLASS = UINT
+SECTION_INHERIT = UINT
+SECTION_INFORMATION_CLASS = UINT
+MEMORY_INFORMATION_CLASS = UINT
+OBJECT_INFORMATION_CLASS = UINT
+WAIT_TYPE = UINT
+APPHELPCACHESERVICECLASS = UINT
+SYSTEM_INFORMATION_CLASS = UINT
+_NtCreateDisposition_ = ULONG
+_NtCreateOptions_ = ULONG
+
+class PEB_LDR_DATA(MemStruct):
+    fields = [
+        ("Length", ULONG()),
+        ("Initialized", BOOLEAN()),
+        ("SsHandle", HANDLE()),
+        ("InLoadOrderModuleList", LIST_ENTRY()),
+        ("InMemoryOrderModuleList", LIST_ENTRY()),
+        ("InInitializationOrderModuleList", LIST_ENTRY()),
+        ("EntryInProgress", PVOID()),
+        ("ShutdownInProgress", BOOLEAN()),
+        ("ShutdownThreadId", HANDLE()),
+    ]
+
+PPEB_LDR_DATA = Ptr("<I", PEB_LDR_DATA())
+_PEB_u1_ = Union([
+    ("CrossProcessFlags", ULONG),
+    ("EnvironmentUpdateCount", ULONG),
+])
+_PEB_u2_ = Union([
+    ("KernelCallbackTable", PVOID),
+    ("UserSharedInfoPtr", PVOID),
+])
+
+class PEB(MemStruct):
+    fields = [
+        ("InheritedAddressSpace", BOOLEAN()),
+        ("ReadImageFileExecOptions", BOOLEAN()),
+        ("BeingDebugged", BOOLEAN()),
+        ("BitField", BOOLEAN()),
+        ("Mutant", HANDLE()),
+        ("ImageBaseAddress", HMODULE()),
+        ("Ldr", PPEB_LDR_DATA()),
+        ("ProcessParameters", RTL_USER_PROCESS_PARAMETERS_PTR()),
+        ("SubSystemData", PVOID()),
+        ("ProcessHeap", HANDLE()),
+        ("FastPebLock", PRTL_CRITICAL_SECTION()),
+        ("AtlThunkSListPtr", PVOID()),
+        ("IFEOKey", PVOID()),
+        (None, _PEB_u1_()),
+        (None, _PEB_u2_()),
+        ("SystemReserved", ULONG__1_()),
+        ("AtlThunkSListPtr32", ULONG()),
+        ("ApiSetMap", PVOID()),
+        ("TlsExpansionCounter", ULONG()),
+        ("TlsBitmap", PRTL_BITMAP()),
+        ("TlsBitmapBits", ULONG__2_()),
+        ("ReadOnlySharedMemoryBase", PVOID()),
+        ("HotpatchInformation", PVOID()),
+        ("ReadOnlyStaticServerData", PVOID_PTR()),
+        ("AnsiCodePageData", PVOID()),
+        ("OemCodePageData", PVOID()),
+        ("UnicodeCaseTableData", PVOID()),
+        ("NumberOfProcessors", ULONG()),
+        ("NtGlobalFlag", ULONG()),
+        ("CriticalSectionTimeout", LARGE_INTEGER()),
+        ("HeapSegmentReserve", SIZE_T()),
+        ("HeapSegmentCommit", SIZE_T()),
+        ("HeapDeCommitTotalFreeThreshold", SIZE_T()),
+        ("HeapDeCommitFreeBlockThreshold", SIZE_T()),
+        ("NumberOfHeaps", ULONG()),
+        ("MaximumNumberOfHeaps", ULONG()),
+        ("ProcessHeaps", PVOID_PTR()),
+        ("GdiSharedHandleTable", PVOID()),
+        ("ProcessStarterHelper", PVOID()),
+        ("GdiDCAttributeList", ULONG()),
+        ("LoaderLock", PRTL_CRITICAL_SECTION()),
+        ("OSMajorVersion", ULONG()),
+        ("OSMinorVersion", ULONG()),
+        ("OSBuildNumber", USHORT()),
+        ("OSCSDVersion", USHORT()),
+        ("OSPlatformId", ULONG()),
+        ("ImageSubsystem", _IMAGE_SUBSYSTEM_ULONG_()),
+        ("ImageSubsystemMajorVersion", ULONG()),
+        ("ImageSubsystemMinorVersion", ULONG()),
+        ("ImageProcessAffinityMask", ULONG_PTR()),
+        ("GdiHandleBuffer", GDI_HANDLE_BUFFER()),
+        ("PostProcessInitRoutine", PVOID()),
+        ("TlsExpansionBitmap", PRTL_BITMAP()),
+        ("TlsExpansionBitmapBits", ULONG__32_()),
+        ("SessionId", ULONG()),
+        ("AppCompatFlags", ULARGE_INTEGER()),
+        ("AppCompatFlagsUser", ULARGE_INTEGER()),
+        ("pShimData", PVOID()),
+        ("AppCompatInfo", PVOID()),
+        ("CSDVersion", UNICODE_STRING()),
+        ("ActivationContextData", PVOID()),
+        ("ProcessAssemblyStorageMap", PVOID()),
+        ("SystemDefaultActivationContextData", PVOID()),
+        ("SystemAssemblyStorageMap", PVOID()),
+        ("MinimumStackCommit", SIZE_T()),
+        ("FlsCallback", PVOID_PTR()),
+        ("FlsListHead", LIST_ENTRY()),
+        ("FlsBitmap", PVOID()),
+        ("FlsBitmapBits", ULONG__4_()),
+        ("FlsHighIndex", ULONG()),
+        ("WerRegistrationData", PVOID()),
+        ("WerShipAssertPtr", PVOID()),
+        ("pContextData", PVOID()),
+        ("pImageHeaderHash", PVOID()),
+        ("TracingFlags", ULONG()),
+    ]
+
+PPEB = Ptr("<I", PEB())
+
+class EXCEPTION_REGISTRATION_RECORD(MemStruct):
+    fields = [
+        ("Next", LPVOID()),
+        ("Handler", PEXCEPTION_ROUTINE()),
+    ]
+
+EXCEPTION_REGISTRATION_RECORD_PTR = Ptr("<I", EXCEPTION_REGISTRATION_RECORD())
+_NT_TIB_u_ = Union([
+    ("FiberData", PVOID),
+    ("Version", DWORD),
+])
+
+class NT_TIB(MemStruct):
+    fields = [
+        ("ExceptionList", EXCEPTION_REGISTRATION_RECORD_PTR()),
+        ("StackBase", PVOID()),
+        ("StackLimit", PVOID()),
+        ("SubSystemTib", PVOID()),
+        (None, _NT_TIB_u_()),
+        ("ArbitraryUserPointer", PVOID()),
+        ("Self", LPVOID()),
+    ]
+
+
+class GDI_TEB_BATCH(MemStruct):
+    fields = [
+        ("Offset", ULONG()),
+        ("HDC", HANDLE()),
+        ("Buffer", ULONG__GDI_BATCH_BUFFER_SIZE_()),
+    ]
+
+
+class TEB_ACTIVE_FRAME_CONTEXT(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("FrameName", PSTR()),
+    ]
+
+PTEB_ACTIVE_FRAME_CONTEXT = Ptr("<I", TEB_ACTIVE_FRAME_CONTEXT())
+
+class TEB_ACTIVE_FRAME(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("Previous", LPVOID()),
+        ("Context", PTEB_ACTIVE_FRAME_CONTEXT()),
+    ]
+
+PTEB_ACTIVE_FRAME = Ptr("<I", TEB_ACTIVE_FRAME())
+
+class _TEB_u1_s_(MemStruct):
+    fields = [
+        ("ReservedPad0", UCHAR()),
+        ("ReservedPad2", UCHAR()),
+        ("ReservedPad2", UCHAR()),
+        ("IdealProcessor", UCHAR()),
+    ]
+
+_TEB_u1_ = Union([
+    ("CurrentIdealProcessor", PROCESSOR_NUMBER),
+    ("IdealProcessorValue", ULONG),
+    (None, _TEB_u1_s_),
+])
+PTEB = Ptr("<I", TEB())
+PTEB_PTR = Ptr("<I", PTEB())
+
+class RTL_ATOM_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("HashLink", LPVOID()),
+        ("HandleIndex", USHORT()),
+        ("Atom", USHORT()),
+        ("ReferenceCount", USHORT()),
+        ("Flags", UCHAR()),
+        ("NameLength", UCHAR()),
+        ("Name", WCHAR__1_()),
+    ]
+
+PRTL_ATOM_TABLE_ENTRY = Ptr("<I", RTL_ATOM_TABLE_ENTRY())
+PRTL_ATOM_TABLE_ENTRY__1_ = Array(PRTL_ATOM_TABLE_ENTRY, 1)
+
+class RTL_ATOM_TABLE(MemStruct):
+    fields = [
+        ("Signature", ULONG()),
+        ("CriticalSection", RTL_CRITICAL_SECTION()),
+        ("RtlHandleTable", RTL_HANDLE_TABLE()),
+        ("NumberOfBuckets", ULONG()),
+        ("Buckets", PRTL_ATOM_TABLE_ENTRY__1_()),
+    ]
+
+PRTL_ATOM_TABLE = Ptr("<I", RTL_ATOM_TABLE())
+PRTL_ATOM_TABLE_PTR = Ptr("<I", PRTL_ATOM_TABLE())
+LPC_TYPE = USHORT
+
+class PORT_MESSAGE(MemStruct):
+    fields = [
+        ("DataSize", USHORT()),
+        ("MessageSize", USHORT()),
+        ("MessageType", LPC_TYPE()),
+        ("VirtualRangesOffset", USHORT()),
+        ("ClientId", CLIENT_ID()),
+        ("MessageId", ULONG()),
+        ("SectionSize", ULONG()),
+    ]
+
+PPORT_MESSAGE = Ptr("<I", PORT_MESSAGE())
+_ElevationFlags_ = DWORD
+_ElevationFlags_PTR_ = Ptr("<I", _ElevationFlags_())
+
+class THREADEX_DATA(MemStruct):
+    fields = [
+        ("cbSize", SIZE_T()),
+        ("Unknown1", UINT_PTR()),
+        ("cbClientId", SIZE_T()),
+        ("ClientId", PCLIENT_ID()),
+        ("Unknown2", UINT_PTR()),
+        ("Unknown3", UINT_PTR()),
+        ("cbppTEB", SIZE_T()),
+        ("ppTeb", PTEB_PTR()),
+        ("Unknown4", UINT_PTR()),
+    ]
+
+PTHREADEX_DATA = Ptr("<I", THREADEX_DATA())
+_REG_NOTIFY_CHANGE_FLAGS_ = ULONG
+
+class RTL_UNLOAD_EVENT_TRACE(MemStruct):
+    fields = [
+        ("BaseAddress", PVOID()),
+        ("SizeOfImage", SIZE_T()),
+        ("Sequence", ULONG()),
+        ("TimeDateStamp", ULONG()),
+        ("CheckSum", ULONG()),
+        ("ImageName", WCHAR__32_()),
+    ]
+
+RTL_UNLOAD_EVENT_TRACE__RTL_UNLOAD_EVENT_TRACE_NUMBER_ = Array(RTL_UNLOAD_EVENT_TRACE, 64)
+_LDR_LOCK_LOADER_LOCK_FLAG_ = ULONG
+_LDR_UNLOCK_LOADER_LOCK_FLAG_ = ULONG
+_LDR_LOCK_LOADER_LOCK_DISPOSITION_ = ULONG
+_LDR_LOCK_LOADER_LOCK_DISPOSITION_PTR_ = Ptr("<I", _LDR_LOCK_LOADER_LOCK_DISPOSITION_())
+_LDR_ADDREF_DLL_FLAGS_ = ULONG
+_LDR_GET_DLL_HANDLE_EX_FLAGS_ = ULONG
+_NT_WAIT_RESULT_ = NTSTATUS
+_REGISTRY_ACCESS_MASK_ = REGSAM
+_EVENT_ACCESS_MASK_ = ACCESS_MASK
+_SEMAPHORE_ACCESS_MASK_ = ACCESS_MASK
+_MUTANT_ACCESS_MASK_ = ACCESS_MASK
+_IO_COMPLETION_ACCESS_MASK_ = ACCESS_MASK
+_SECTION_ACCESS_MASK_ = ACCESS_MASK
+_DIRECTORY_ACCESS_MASK_ = ACCESS_MASK
+_DEBUG_OBJECT_ACCESS_MASK_ = ACCESS_MASK
+_PIPE_ACCESS_MASK_ = ACCESS_MASK
+_SECTION_ALLOCATION_ = ULONG
+_RTL_APE_FLAGS_ = ULONG
+
+class RTL_BUFFER(MemStruct):
+    fields = [
+        ("Buffer", PUCHAR()),
+        ("StaticBuffer", PUCHAR()),
+        ("Size", SIZE_T()),
+        ("StaticSize", SIZE_T()),
+        ("ReservedForAllocatedSize", SIZE_T()),
+        ("ReservedForIMalloc", PVOID()),
+    ]
+
+PRTL_BUFFER = Ptr("<I", RTL_BUFFER())
+
+class RTL_UNICODE_STRING_BUFFER(MemStruct):
+    fields = [
+        ("String", UNICODE_STRING()),
+        ("ByteBuffer", RTL_BUFFER()),
+        ("MinimumStaticBufferForTerminalNul", UCHAR__2_()),
+    ]
+
+PRTL_UNICODE_STRING_BUFFER = Ptr("<I", RTL_UNICODE_STRING_BUFFER())
+_FLUSH_FLAGS_ = ULONG
+TRANSACTIONMANAGER_INFORMATION_CLASS = UINT
+TRANSACTION_INFORMATION_CLASS = UINT
+ENLISTMENT_INFORMATION_CLASS = UINT
+RESOURCEMANAGER_INFORMATION_CLASS = UINT
+KTMOBJECT_TYPE = UINT
+
+class KTMOBJECT_CURSOR(MemStruct):
+    fields = [
+        ("LastQuery", GUID()),
+        ("ObjectIdCount", ULONG()),
+        ("ObjectIds", GUID__1_()),
+    ]
+
+PKTMOBJECT_CURSOR = Ptr("<I", KTMOBJECT_CURSOR())
+
+class RTL_RUN_ONCE(MemStruct):
+    fields = [
+        ("Ptr", PVOID()),
+    ]
+
+PRTL_RUN_ONCE = Ptr("<I", RTL_RUN_ONCE())
+
+class RTL_BITMAP_RUN(MemStruct):
+    fields = [
+        ("StartingIndex", ULONG()),
+        ("NumberOfBits", ULONG()),
+    ]
+
+PRTL_BITMAP_RUN = Ptr("<I", RTL_BITMAP_RUN())
+_XSTATE_MASK_ULONG64_ = _XSTATE_MASK_
+_RTL_RESOURCE_FLAG_ = ULONG
+
+class RTL_RESOURCE(MemStruct):
+    fields = [
+        ("CriticalSection", RTL_CRITICAL_SECTION()),
+        ("SharedSemaphore", HANDLE()),
+        ("NumberOfWaitingShared", ULONG()),
+        ("ExclusiveSemaphore", HANDLE()),
+        ("NumberOfWaitingExclusive", ULONG()),
+        ("NumberOfActive", LONG()),
+        ("ExclusiveOwnerThread", HANDLE()),
+        ("Flags", _RTL_RESOURCE_FLAG_()),
+        ("DebugInfo", PRTL_RESOURCE_DEBUG()),
+    ]
+
+PRTL_RESOURCE = Ptr("<I", RTL_RESOURCE())
+
+class RTL_RB_TREE(MemStruct):
+    fields = [
+        ("Root", PRTL_BALANCED_NODE()),
+        ("Min", PRTL_BALANCED_NODE()),
+    ]
+
+PRTL_RB_TREE = Ptr("<I", RTL_RB_TREE())
+
+class RTL_DYNAMIC_HASH_TABLE(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("Shift", ULONG()),
+        ("TableSize", ULONG()),
+        ("Pivot", ULONG()),
+        ("DivisorMask", ULONG()),
+        ("NumEntries", ULONG()),
+        ("NonEmptyBuckets", ULONG()),
+        ("NumEnumerators", ULONG()),
+        ("Directory", PVOID()),
+    ]
+
+PRTL_DYNAMIC_HASH_TABLE = Ptr("<I", RTL_DYNAMIC_HASH_TABLE())
+PRTL_DYNAMIC_HASH_TABLE_PTR = Ptr("<I", PRTL_DYNAMIC_HASH_TABLE())
+
+class RTL_DYNAMIC_HASH_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("Linkage", LIST_ENTRY()),
+        ("Signature", ULONG_PTR()),
+    ]
+
+PRTL_DYNAMIC_HASH_TABLE_ENTRY = Ptr("<I", RTL_DYNAMIC_HASH_TABLE_ENTRY())
+
+class RTL_DYNAMIC_HASH_TABLE_CONTEXT(MemStruct):
+    fields = [
+        ("ChainHead", PLIST_ENTRY()),
+        ("PrevLinkage", PLIST_ENTRY()),
+        ("Signature", ULONG_PTR()),
+    ]
+
+PRTL_DYNAMIC_HASH_TABLE_CONTEXT = Ptr("<I", RTL_DYNAMIC_HASH_TABLE_CONTEXT())
+
+class RTL_DYNAMIC_HASH_TABLE_ENUMERATOR(MemStruct):
+    fields = [
+        ("HashEntry", RTL_DYNAMIC_HASH_TABLE_ENTRY()),
+        ("ChainHead", PLIST_ENTRY()),
+        ("BucketIndex", ULONG()),
+    ]
+
+PRTL_DYNAMIC_HASH_TABLE_ENUMERATOR = Ptr("<I", RTL_DYNAMIC_HASH_TABLE_ENUMERATOR())
+
+class RTL_SRWLOCK(MemStruct):
+    fields = [
+        ("Ptr", PVOID()),
+    ]
+
+PRTL_SRWLOCK = Ptr("<I", RTL_SRWLOCK())
+
+class RTL_CONDITION_VARIABLE(MemStruct):
+    fields = [
+        ("Ptr", PVOID()),
+    ]
+
+PRTL_CONDITION_VARIABLE = Ptr("<I", RTL_CONDITION_VARIABLE())
+
+class PREFIX_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("NodeTypeCode", CSHORT()),
+        ("NameLength", CSHORT()),
+        ("NextPrefixTree", LPVOID()),
+        ("Links", RTL_SPLAY_LINKS()),
+        ("Prefix", PSTRING()),
+    ]
+
+PPREFIX_TABLE_ENTRY = Ptr("<I", PREFIX_TABLE_ENTRY())
+
+class PREFIX_TABLE(MemStruct):
+    fields = [
+        ("NodeTypeCode", CSHORT()),
+        ("NameLength", CSHORT()),
+        ("NextPrefixTree", PPREFIX_TABLE_ENTRY()),
+    ]
+
+PPREFIX_TABLE = Ptr("<I", PREFIX_TABLE())
+
+class RTLP_PROCESS_REFLECTION_REFLECTION_INFORMATION(MemStruct):
+    fields = [
+        ("ReflectionProcessHandle", HANDLE()),
+        ("ReflectionThreadHandle", HANDLE()),
+        ("ReflectionClientId", CLIENT_ID()),
+    ]
+
+PRTLP_PROCESS_REFLECTION_REFLECTION_INFORMATION = Ptr("<I", RTLP_PROCESS_REFLECTION_REFLECTION_INFORMATION())
+
+class RTL_RELATIVE_NAME_U(MemStruct):
+    fields = [
+        ("RelativeName", UNICODE_STRING()),
+        ("ContainingDirectory", HANDLE()),
+        ("CurDirRef", PRTLP_CURDIR_REF()),
+    ]
+
+PRTL_RELATIVE_NAME_U = Ptr("<I", RTL_RELATIVE_NAME_U())
+
+class PARSE_MESSAGE_CONTEXT(MemStruct):
+    fields = [
+        ("fFlags", ULONG()),
+        ("cwSavColumn", ULONG()),
+        ("iwSrc", SIZE_T()),
+        ("iwDst", SIZE_T()),
+        ("iwDstSpace", SIZE_T()),
+        ("lpvArgStart", va_list()),
+    ]
+
+PPARSE_MESSAGE_CONTEXT = Ptr("<I", PARSE_MESSAGE_CONTEXT())
+
+class UNICODE_PREFIX_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("NodeTypeCode", CSHORT()),
+        ("NameLength", CSHORT()),
+        ("NextPrefixTree", LPVOID()),
+        ("CaseMatch", LPVOID()),
+        ("Links", RTL_SPLAY_LINKS()),
+        ("Prefix", PUNICODE_STRING()),
+    ]
+
+PUNICODE_PREFIX_TABLE_ENTRY = Ptr("<I", UNICODE_PREFIX_TABLE_ENTRY())
+
+class UNICODE_PREFIX_TABLE(MemStruct):
+    fields = [
+        ("NodeTypeCode", CSHORT()),
+        ("NameLength", CSHORT()),
+        ("NextPrefixTree", PUNICODE_PREFIX_TABLE_ENTRY()),
+        ("LastNextEntry", PUNICODE_PREFIX_TABLE_ENTRY()),
+    ]
+
+PUNICODE_PREFIX_TABLE = Ptr("<I", UNICODE_PREFIX_TABLE())
+
+class SID_AND_ATTRIBUTES_HASH(MemStruct):
+    fields = [
+        ("SidCount", DWORD()),
+        ("SidAttr", PSID_AND_ATTRIBUTES()),
+        ("Hash", SID_HASH_ENTRY__SID_HASH_SIZE_()),
+    ]
+
+PSID_AND_ATTRIBUTES_HASH = Ptr("<I", SID_AND_ATTRIBUTES_HASH())
+_RTL_DUPLICATE_UNICODE_STRING_FLAGS_ = ULONG
+_HASH_STRING_ALGORITHM_ = ULONG
+_RTL_FIND_CHAR_IN_UNICODE_STRING_FLAGS_ = ULONG
+_RTL_CLONE_PROCESS_FLAGS_ = ULONG
+_RTL_IMAGE_NT_HEADER_EX_FLAGS_ = ULONG
+_RTL_CREATE_ENVIRONMENT_EX_FLAGS_ = ULONG
+_RTL_DOS_SEARCH_PATH_FLAG_ = ULONG
+_RTL_ERRORMODE_FLAGS_ = ULONG
+_RTL_ERRORMODE_FLAGS_PTR_ = Ptr("<I", _RTL_ERRORMODE_FLAGS_())
+_RTL_ACQUIRE_PRIVILEGE_FLAGS_ = ULONG
+_RTL_REGISTRY_RELATIVE_TO_ = ULONG
+_RTL_RUN_ONCE_FLAGS_ = ULONG
+_ACE_FLAGS_ULONG_ = _AceFlags_
+_IMAGE_FILE_CHARACTERISTICS_SHORT_ = _IMAGE_FILE_CHARACTERISTICS_
+_IMAGE_FILE_CHARACTERISTICS_SHORT_PTR_ = Ptr("<I", _IMAGE_FILE_CHARACTERISTICS_SHORT_())
+
+###################
+
+###### Functions ######
 
 def ntdll_NtClearEvent(jitter):
     """

@@ -1,3 +1,15 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+PFNREADOBJECTSECURITY = LPVOID
+PFNWRITEOBJECTSECURITY = LPVOID
+_DSSI_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def dssec_DSCreateSecurityPage(jitter):
     """

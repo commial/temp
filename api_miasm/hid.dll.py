@@ -1,3 +1,4 @@
+###### Enums ######
 _HIDP_STATUS_ = {
     "HIDP_STATUS_SUCCESS": 0x00110000,
     "HIDP_STATUS_NULL": 0x80110001,
@@ -58,6 +59,248 @@ HIDP_KEYBOARD_DIRECTION_INV = {
     0: "HidP_Keyboard_Break",
     1: "HidP_Keyboard_Make",
 }
+
+###################
+
+###### Types ######
+USAGE = USHORT
+PUSAGE = Ptr("<I", USAGE())
+PHIDP_INSERT_SCANCODES = Ptr("<I", LPVOID())
+PHIDP_PREPARSED_DATA = LPVOID
+PHIDP_PREPARSED_DATA_PTR = Ptr("<I", PHIDP_PREPARSED_DATA())
+PDRIVER_OBJECT = LPVOID
+ULONG__10_ = Array(ULONG, 10)
+USHORT__5_ = Array(USHORT, 5)
+USHORT__17_ = Array(USHORT, 17)
+_HIDP_STATUS_ = UINT
+HIDP_REPORT_TYPE = UINT
+HIDP_KEYBOARD_DIRECTION = UINT
+
+class HIDD_ATTRIBUTES(MemStruct):
+    fields = [
+        ("Size", ULONG()),
+        ("VendorID", USHORT()),
+        ("ProductID", USHORT()),
+        ("VersionNumber", USHORT()),
+    ]
+
+PHIDD_ATTRIBUTES = Ptr("<I", HIDD_ATTRIBUTES())
+
+class HIDP_LINK_COLLECTION_NODE(MemStruct):
+    fields = [
+        ("LinkUsage", USAGE()),
+        ("LinkUsagePage", USAGE()),
+        ("Parent", USHORT()),
+        ("NumberOfChildren", USHORT()),
+        ("NextSibling", USHORT()),
+        ("FirstChild", USHORT()),
+        ("Reserved", ULONG()),
+        ("UserContext", PVOID()),
+    ]
+
+PHIDP_LINK_COLLECTION_NODE = Ptr("<I", HIDP_LINK_COLLECTION_NODE())
+
+class USAGE_AND_PAGE(MemStruct):
+    fields = [
+        ("Usage", USAGE()),
+        ("UsagePage", USAGE()),
+    ]
+
+PUSAGE_AND_PAGE = Ptr("<I", USAGE_AND_PAGE())
+
+class HID_MINIDRIVER_REGISTRATION(MemStruct):
+    fields = [
+        ("Revision", ULONG()),
+        ("DriverObject", PDRIVER_OBJECT()),
+        ("RegistryPath", PUNICODE_STRING()),
+        ("DeviceExtensionSize", ULONG()),
+        ("DevicesArePolled", BOOLEAN()),
+        ("Reserved", UCHAR__3_()),
+    ]
+
+PHID_MINIDRIVER_REGISTRATION = Ptr("<I", HID_MINIDRIVER_REGISTRATION())
+
+class HIDP_UNKNOWN_TOKEN(MemStruct):
+    fields = [
+        ("Token", UCHAR()),
+        ("Reserved", UCHAR__3_()),
+        ("BitField", ULONG()),
+    ]
+
+PHIDP_UNKNOWN_TOKEN = Ptr("<I", HIDP_UNKNOWN_TOKEN())
+
+class HIDP_EXTENDED_ATTRIBUTES(MemStruct):
+    fields = [
+        ("NumGlobalUnknowns", UCHAR()),
+        ("Reserved", UCHAR__3_()),
+        ("GlobalUnknowns", PHIDP_UNKNOWN_TOKEN()),
+        ("Data", ULONG__1_()),
+    ]
+
+PHIDP_EXTENDED_ATTRIBUTES = Ptr("<I", HIDP_EXTENDED_ATTRIBUTES())
+_HIDP_DATA_u_ = Union([
+    ("RawValue", ULONG),
+    ("On", BOOLEAN),
+])
+
+class HIDP_DATA(MemStruct):
+    fields = [
+        ("DataIndex", USHORT()),
+        ("Reserved", USHORT()),
+        (None, _HIDP_DATA_u_()),
+    ]
+
+PHIDP_DATA = Ptr("<I", HIDP_DATA())
+
+class HIDP_CAPS(MemStruct):
+    fields = [
+        ("Usage", USAGE()),
+        ("UsagePage", USAGE()),
+        ("InputReportByteLength", USHORT()),
+        ("OutputReportByteLength", USHORT()),
+        ("FeatureReportByteLength", USHORT()),
+        ("Reserved", USHORT__17_()),
+        ("NumberLinkCollectionNodes", USHORT()),
+        ("NumberInputButtonCaps", USHORT()),
+        ("NumberInputValueCaps", USHORT()),
+        ("NumberInputDataIndices", USHORT()),
+        ("NumberOutputButtonCaps", USHORT()),
+        ("NumberOutputValueCaps", USHORT()),
+        ("NumberOutputDataIndices", USHORT()),
+        ("NumberFeatureButtonCaps", USHORT()),
+        ("NumberFeatureValueCaps", USHORT()),
+        ("NumberFeatureDataIndices", USHORT()),
+    ]
+
+PHIDP_CAPS = Ptr("<I", HIDP_CAPS())
+
+class _HIDP_BUTTON_CAPS_s1_(MemStruct):
+    fields = [
+        ("UsageMin", USAGE()),
+        ("UsageMax", USAGE()),
+        ("StringMin", USHORT()),
+        ("StringMax", USHORT()),
+        ("DesignatorMin", USHORT()),
+        ("DesignatorMax", USHORT()),
+        ("DataIndexMin", USHORT()),
+        ("DataIndexMax", USHORT()),
+    ]
+
+
+class _HIDP_BUTTON_CAPS_s2_(MemStruct):
+    fields = [
+        ("Usage", USAGE()),
+        ("Reserved1", USAGE()),
+        ("StringIndex", USHORT()),
+        ("Reserved2", USHORT()),
+        ("DesignatorIndex", USHORT()),
+        ("Reserved3", USHORT()),
+        ("DataIndex", USHORT()),
+        ("Reserved4", USHORT()),
+    ]
+
+_HIDP_BUTTON_CAPS_u_ = Union([
+    ("Range", _HIDP_BUTTON_CAPS_s1_),
+    ("NotRange", _HIDP_BUTTON_CAPS_s2_),
+])
+
+class HIDP_BUTTON_CAPS(MemStruct):
+    fields = [
+        ("UsagePage", USAGE()),
+        ("ReportID", UCHAR()),
+        ("IsAlias", BOOLEAN()),
+        ("BitField", USHORT()),
+        ("LinkCollection", USHORT()),
+        ("LinkUsage", USAGE()),
+        ("LinkUsagePage", USAGE()),
+        ("IsRange", BOOLEAN()),
+        ("IsStringRange", BOOLEAN()),
+        ("IsDesignatorRange", BOOLEAN()),
+        ("IsAbsolute", BOOLEAN()),
+        ("Reserved", ULONG__10_()),
+        (None, _HIDP_BUTTON_CAPS_u_()),
+    ]
+
+PHIDP_BUTTON_CAPS = Ptr("<I", HIDP_BUTTON_CAPS())
+
+class _HIDP_VALUE_CAPS_s1_(MemStruct):
+    fields = [
+        ("UsageMin", USAGE()),
+        ("UsageMax", USAGE()),
+        ("StringMin", USHORT()),
+        ("StringMax", USHORT()),
+        ("DesignatorMin", USHORT()),
+        ("DesignatorMax", USHORT()),
+        ("DataIndexMin", USHORT()),
+        ("DataIndexMax", USHORT()),
+    ]
+
+
+class _HIDP_VALUE_CAPS_s2_(MemStruct):
+    fields = [
+        ("Usage", USAGE()),
+        ("Reserved1", USAGE()),
+        ("StringIndex", USHORT()),
+        ("Reserved2", USHORT()),
+        ("DesignatorIndex", USHORT()),
+        ("Reserved3", USHORT()),
+        ("DataIndex", USHORT()),
+        ("Reserved4", USHORT()),
+    ]
+
+_HIDP_VALUE_CAPS_u_ = Union([
+    ("Range", _HIDP_VALUE_CAPS_s1_),
+    ("NotRange", _HIDP_VALUE_CAPS_s2_),
+])
+
+class HIDP_VALUE_CAPS(MemStruct):
+    fields = [
+        ("UsagePage", USAGE()),
+        ("ReportID", UCHAR()),
+        ("IsAlias", BOOLEAN()),
+        ("BitField", USHORT()),
+        ("LinkCollection", USHORT()),
+        ("LinkUsage", USAGE()),
+        ("LinkUsagePage", USAGE()),
+        ("IsRange", BOOLEAN()),
+        ("IsStringRange", BOOLEAN()),
+        ("IsDesignatorRange", BOOLEAN()),
+        ("IsAbsolute", BOOLEAN()),
+        ("HasNull", BOOLEAN()),
+        ("Reserved", UCHAR()),
+        ("BitSize", USHORT()),
+        ("ReportCount", USHORT()),
+        ("Reserved2", USHORT__5_()),
+        ("UnitsExp", ULONG()),
+        ("Units", ULONG()),
+        ("LogicalMin", LONG()),
+        ("LogicalMax", LONG()),
+        ("PhysicalMin", LONG()),
+        ("PhysicalMax", LONG()),
+        (None, _HIDP_VALUE_CAPS_u_()),
+    ]
+
+PHIDP_VALUE_CAPS = Ptr("<I", HIDP_VALUE_CAPS())
+
+class HIDP_KEYBOARD_MODIFIER_STATE(MemStruct):
+    fields = [
+        ("ul", ULONG()),
+    ]
+
+PHIDP_KEYBOARD_MODIFIER_STATE = Ptr("<I", HIDP_KEYBOARD_MODIFIER_STATE())
+
+class HIDD_CONFIGURATION(MemStruct):
+    fields = [
+        ("cookie", PVOID()),
+        ("size", ULONG()),
+        ("RingBufferSize", ULONG()),
+    ]
+
+PHIDD_CONFIGURATION = Ptr("<I", HIDD_CONFIGURATION())
+
+###################
+
+###### Functions ######
 
 def hid_HidD_FlushQueue(jitter):
     """

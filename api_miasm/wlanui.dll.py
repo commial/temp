@@ -1,3 +1,4 @@
+###### Enums ######
 WL_DISPLAY_PAGES = {
     "WLConnectionPage": 0,
     "WLSecurityPage": 1,
@@ -8,6 +9,15 @@ WL_DISPLAY_PAGES_INV = {
     1: "WLSecurityPage",
     2: "WLAdvPage",
 }
+
+###################
+
+###### Types ######
+WL_DISPLAY_PAGES = UINT
+
+###################
+
+###### Functions ######
 
 def wlanui_WlanUIEditProfile(jitter):
     """

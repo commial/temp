@@ -1,9 +1,19 @@
+###### Enums ######
 SendToMode = {
     "SEND_TO_FAX_RECIPIENT_ATTACHMENT": 0,
 }
 SendToMode_INV = {
     0: "SEND_TO_FAX_RECIPIENT_ATTACHMENT",
 }
+
+###################
+
+###### Types ######
+SendToMode = UINT
+
+###################
+
+###### Functions ######
 
 def fxsutility_CanSendToFaxRecipient(jitter):
     """

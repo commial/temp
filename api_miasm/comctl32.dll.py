@@ -1,3 +1,4 @@
+###### Enums ######
 _WSB_Prop_ = {
     "WSB_PROP_CYVSCROLL": 0x00000001,
     "WSB_PROP_CXHSCROLL": 0x00000002,
@@ -36,6 +37,164 @@ _ILP_Flags__INV = {
     0: "ILP_NORMAL",
     1: "ILP_DOWNLEVEL",
 }
+
+###################
+
+###### Types ######
+HDPA = LPVOID
+HDPA_PTR = Ptr("<I", HDPA())
+const_HDPA = HDPA
+SUBCLASSPROC = LPVOID
+PFNDPAENUMCALLBACK = LPVOID
+PFNDPASTREAM = LPVOID
+PFNDPACOMPARE = LPVOID
+PFNDPAMERGE = LPVOID
+HDSA = LPVOID
+PFNDSAENUMCALLBACK = LPVOID
+PFNDAENUMCALLBACK = LPVOID
+PFNDAENUMCALLBACK_PTR = Ptr("<I", PFNDAENUMCALLBACK())
+PFNDACOMPARE = LPVOID
+PFTASKDIALOGCALLBACK = LPVOID
+PFNREADERSCROLL = LPVOID
+PFNREADERTRANSLATEDISPATCH = LPVOID
+LPCTBBUTTON = Ptr("<I", TBBUTTON())
+_ReaderModeFlag_ = DWORD
+
+class READERMODEINFO(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("hwnd", HWND()),
+        ("fFlags", _ReaderModeFlag_()),
+        ("prc", LPRECT()),
+        ("pfnScroll", PFNREADERSCROLL()),
+        ("pfnTranslatedDispatch", PFNREADERTRANSLATEDISPATCH()),
+        ("lParam", LPARAM()),
+    ]
+
+PREADERMODEINFO = Ptr("<I", READERMODEINFO())
+TASKDIALOG_COMMON_BUTTON_FLAGS = UINT
+_ILD_Flags_ = UINT
+_ILC_Flags_ = UINT
+_WSB_Prop_ = UINT
+_ILP_Flags_ = DWORD
+_TBStyle_ = DWORD
+_UDStyle_ = DWORD
+_MruFlags_ = UINT
+MRUCMPPROC = LPVOID
+
+class MRUINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("uMax", UINT()),
+        ("fFlags", _MruFlags_()),
+        ("hKey", HKEY()),
+        ("lpszSubKey", LPCWSTR()),
+        ("lpfnCompare", MRUCMPPROC()),
+    ]
+
+LPMRUINFO = Ptr("<I", MRUINFO())
+
+class COLORMAP(MemStruct):
+    fields = [
+        ("from", COLORREF()),
+        ("to", COLORREF()),
+    ]
+
+LPCOLORMAP = Ptr("<I", COLORMAP())
+_IccFlags_ = DWORD
+
+class INITCOMMONCONTROLSEX(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwICC", _IccFlags_()),
+    ]
+
+const_LPINITCOMMONCONTROLSEX = Ptr("<I", INITCOMMONCONTROLSEX())
+
+class IMAGELISTDRAWPARAMS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("himl", HIMAGELIST()),
+        ("i", int()),
+        ("hdcDst", HDC()),
+        ("x", int()),
+        ("y", int()),
+        ("cx", int()),
+        ("cy", int()),
+        ("xBitmap", int()),
+        ("yBitmap", int()),
+        ("rgbBk", COLORREF()),
+        ("rgbFg", COLORREF()),
+        ("fStyle", UINT()),
+        ("dwRop", DWORD()),
+        ("fState", DWORD()),
+        ("Frame", DWORD()),
+        ("crEffect", COLORREF()),
+    ]
+
+IMAGELISTDRAWPARAMS_PTR = Ptr("<I", IMAGELISTDRAWPARAMS())
+
+class IMAGEINFO(MemStruct):
+    fields = [
+        ("hbmImage", HBITMAP()),
+        ("hbmMask", HBITMAP()),
+        ("Unused1", int()),
+        ("Unused2", int()),
+        ("rcImage", RECT()),
+    ]
+
+IMAGEINFO_PTR = Ptr("<I", IMAGEINFO())
+TASKDIALOG_FLAGS = UINT
+
+class TASKDIALOG_BUTTON(MemStruct):
+    fields = [
+        ("nButtonID", int()),
+        ("pszButtonText", PCWSTR()),
+    ]
+
+const_TASKDIALOG_BUTTON_PTR = Ptr("<I", TASKDIALOG_BUTTON())
+_TASKDIALOGCONFIG_u1_ = Union([
+    ("hMainIcon", HICON),
+    ("pszMainIcon", PCWSTR),
+])
+_TASKDIALOGCONFIG_u2_ = Union([
+    ("hFooterIcon", HICON),
+    ("pszFooterIcon", PCWSTR),
+])
+
+class TASKDIALOGCONFIG(MemStruct):
+    fields = [
+        ("cbSize", UINT()),
+        ("hwndParent", HWND()),
+        ("hInstance", HINSTANCE()),
+        ("dwFlags", TASKDIALOG_FLAGS()),
+        ("dwCommonButtons", TASKDIALOG_COMMON_BUTTON_FLAGS()),
+        ("pszWindowTitle", PCWSTR()),
+        (None, _TASKDIALOGCONFIG_u1_()),
+        ("pszMainInstruction", PCWSTR()),
+        ("pszContent", PCWSTR()),
+        ("cButtons", UINT()),
+        ("pButtons", const_TASKDIALOG_BUTTON_PTR()),
+        ("nDefaultButton", int()),
+        ("cRadioButtons", UINT()),
+        ("pRadioButtons", const_TASKDIALOG_BUTTON_PTR()),
+        ("nDefaultRadioButton", int()),
+        ("pszVerificationText", PCWSTR()),
+        ("pszExpandedInformation", PCWSTR()),
+        ("pszExpandedControlText", PCWSTR()),
+        ("pszCollapsedControlText", PCWSTR()),
+        (None, _TASKDIALOGCONFIG_u2_()),
+        ("pszFooter", PCWSTR()),
+        ("pfCallback", PFTASKDIALOGCALLBACK()),
+        ("lpCallbackData", LONG_PTR()),
+        ("cxWidth", UINT()),
+    ]
+
+const_TASKDIALOGCONFIG_PTR = Ptr("<I", TASKDIALOGCONFIG())
+
+###################
+
+###### Functions ######
 
 def comctl32__TrackMouseEvent(jitter):
     """

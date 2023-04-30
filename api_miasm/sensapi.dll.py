@@ -1,3 +1,24 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+class QOCINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("dwInSpeed", DWORD()),
+        ("dwOutSpeed", DWORD()),
+    ]
+
+LPQOCINFO = Ptr("<I", QOCINFO())
+_NetworkAliveFlags_ = DWORD
+_NetworkAliveFlags_PTR_ = Ptr("<I", _NetworkAliveFlags_())
+
+###################
+
+###### Functions ######
 
 def sensapi_IsDestinationReachable(jitter, get_str, set_str):
     """

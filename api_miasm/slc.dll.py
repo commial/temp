@@ -1,3 +1,4 @@
+###### Enums ######
 SLDATATYPE = {
     "SL_DATA_NONE": 0,
     "SL_DATA_SZ": 1,
@@ -66,6 +67,45 @@ SL_ACTIVATION_TYPE_INV = {
     0: "SL_ACTIVATION_TYPE_DEFAULT",
     1: "SL_ACTIVATION_TYPE_ACTIVE_DIRECTORY",
 }
+
+###################
+
+###### Types ######
+HSLC = PVOID
+HSLC_PTR = Ptr("<I", HSLC())
+HSLP = PVOID
+HSLP_PTR = Ptr("<I", HSLP())
+SLDATATYPE = UINT
+SLDATATYPE_PTR = Ptr("<I", SLDATATYPE())
+SLIDTYPE = UINT
+SLREFERRALTYPE = UINT
+SLLICENSINGSTATUS = UINT
+
+class SL_LICENSING_STATUS(MemStruct):
+    fields = [
+        ("SkuId", SLID()),
+        ("eStatus", SLLICENSINGSTATUS()),
+        ("dwGraceTime", DWORD()),
+        ("dwTotalGraceDays", DWORD()),
+        ("hrReason", HRESULT()),
+        ("qwValidityExpiration", UINT64()),
+    ]
+
+SL_LICENSING_STATUS_PTR = Ptr("<I", SL_LICENSING_STATUS())
+SL_LICENSING_STATUS_PTR_PTR = Ptr("<I", SL_LICENSING_STATUS_PTR())
+SL_ACTIVATION_TYPE = UINT
+
+class SL_ACTIVATION_INFO_HEADER(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("type", SL_ACTIVATION_TYPE()),
+    ]
+
+const_SL_ACTIVATION_INFO_HEADER_PTR = Ptr("<I", SL_ACTIVATION_INFO_HEADER())
+
+###################
+
+###### Functions ######
 
 def slc_SLActivateProduct(jitter):
     """

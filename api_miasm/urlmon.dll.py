@@ -1,3 +1,4 @@
+###### Enums ######
 INTERNETFEATURELIST = {
     "FEATURE_OBJECT_CACHING": 0,
     "FEATURE_ZONE_ELEVATION": 1,
@@ -80,6 +81,21 @@ _UrlMkSessionOption__INV = {
     0x10000008: "URLMON_OPTION_USE_BINDSTRINGCREDS",
     0x10000010: "URLMON_OPTION_USE_BROWSERAPPSDOCUMENTS",
 }
+
+###################
+
+###### Types ######
+_Uri_ENCODING_FLAGS_ = DWORD
+INTERNETFEATURELIST = UINT
+_GetFeatureFlag_ = DWORD
+_UrlFlags_ = DWORD
+PSUACTION = UINT
+_UrlMkSessionOption_ = DWORD
+_FIEF_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def urlmon_CreateFormatEnumerator(jitter):
     """

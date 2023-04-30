@@ -1,3 +1,4 @@
+###### Enums ######
 _HttpOpenAccessType_ = {
     "WINHTTP_ACCESS_TYPE_DEFAULT_PROXY": 0,
     "WINHTTP_ACCESS_TYPE_NO_PROXY": 1,
@@ -168,6 +169,44 @@ WINHTTP_WEB_SOCKET_CLOSE_STATUS_INV = {
     1011: "WINHTTP_WEB_SOCKET_SERVER_ERROR_CLOSE_STATUS",
     1015: "WINHTTP_WEB_SOCKET_SECURE_HANDSHAKE_ERROR_CLOSE_STATUS",
 }
+
+###################
+
+###### Types ######
+_CallbackNotificationFlags_ = DWORD
+_HttpOpenAccessType_ = DWORD
+_WinHttpOpenFlags_ = DWORD
+_WinHttpOpenRequestFlags_ = DWORD
+_WinHttpOption_ = DWORD
+_WinHttpAddReqFlag_ = DWORD
+_WinHttpQueryLevelFlags_ = DWORD
+
+class WINHTTP_PROXY_RESULT_ENTRY(MemStruct):
+    fields = [
+        ("fProxy", BOOL()),
+        ("fBypass", BOOL()),
+        ("ProxyScheme", INTERNET_SCHEME()),
+        ("pwszProxy", PWSTR()),
+        ("ProxyPort", INTERNET_PORT()),
+    ]
+
+WINHTTP_PROXY_RESULT_ENTRY_PTR = Ptr("<I", WINHTTP_PROXY_RESULT_ENTRY())
+
+class WINHTTP_PROXY_RESULT(MemStruct):
+    fields = [
+        ("cEntries", DWORD()),
+        ("pEntries", WINHTTP_PROXY_RESULT_ENTRY_PTR()),
+    ]
+
+WINHTTP_PROXY_RESULT_PTR = Ptr("<I", WINHTTP_PROXY_RESULT())
+WINHTTP_WEB_SOCKET_BUFFER_TYPE = UINT
+WINHTTP_WEB_SOCKET_BUFFER_TYPE_PTR = Ptr("<I", WINHTTP_WEB_SOCKET_BUFFER_TYPE())
+WINHTTP_WEB_SOCKET_CLOSE_STATUS = USHORT
+WINHTTP_WEB_SOCKET_CLOSE_STATUS_PTR = Ptr("<I", WINHTTP_WEB_SOCKET_CLOSE_STATUS())
+
+###################
+
+###### Functions ######
 
 def winhttp_WinHttpAddRequestHeaders(jitter):
     """

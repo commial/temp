@@ -1,3 +1,4 @@
+###### Enums ######
 NETISO_ERROR_TYPE = {
     "NETISO_ERROR_TYPE_NONE": 0x00,
     "NETISO_ERROR_TYPE_PRIVATE_NETWORK": 0x01,
@@ -10,6 +11,47 @@ NETISO_ERROR_TYPE_INV = {
     0x02: "NETISO_ERROR_TYPE_INTERNET_CLIENT",
     0x03: "NETISO_ERROR_TYPE_INTERNET_CLIENT_SERVER",
 }
+
+###################
+
+###### Types ######
+PAC_CHANGES_CALLBACK_FN = LPVOID
+NETISO_ERROR_TYPE = UINT
+NETISO_ERROR_TYPE_PTR = Ptr("<I", NETISO_ERROR_TYPE())
+
+class INET_FIREWALL_AC_CAPABILITIES(MemStruct):
+    fields = [
+        ("count", DWORD()),
+        ("capabilities", SID_AND_ATTRIBUTES_PTR()),
+    ]
+
+
+class INET_FIREWALL_AC_BINARIES(MemStruct):
+    fields = [
+        ("count", DWORD()),
+        ("binaries", LPWSTR_PTR()),
+    ]
+
+
+class INET_FIREWALL_APP_CONTAINER(MemStruct):
+    fields = [
+        ("appContainerSid", SID_PTR()),
+        ("userSid", SID_PTR()),
+        ("appContainerName", LPWSTR()),
+        ("displayName", LPWSTR()),
+        ("description", LPWSTR()),
+        ("capabilities", INET_FIREWALL_AC_CAPABILITIES()),
+        ("binaries", INET_FIREWALL_AC_BINARIES()),
+        ("workingDirectory", LPWSTR()),
+        ("packageFullName", LPWSTR()),
+    ]
+
+PINET_FIREWALL_APP_CONTAINER = Ptr("<I", INET_FIREWALL_APP_CONTAINER())
+PINET_FIREWALL_APP_CONTAINER_PTR = Ptr("<I", PINET_FIREWALL_APP_CONTAINER())
+
+###################
+
+###### Functions ######
 
 def api-ms-win-net-isolation-l1_NetworkIsolationDiagnoseConnectFailureAndGetInfo(jitter):
     """

@@ -1,3 +1,247 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+LPFNOLEUIHOOK = LPVOID
+LPOLEUILINKCONTAINER = LPVOID
+LPOLEUIOBJINFO = LPVOID
+LPOLEUILINKINFO = LPVOID
+_ChangeIconFlag_ = DWORD
+
+class OLEUICHANGEICON(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", _ChangeIconFlag_()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("hMetaPict", HGLOBAL()),
+        ("clsid", CLSID()),
+        ("szIconExe", TCHAR__MAX_PATH_()),
+        ("cchIconExe", int()),
+    ]
+
+LPOLEUICHANGEICON = Ptr("<I", OLEUICHANGEICON())
+_PasteSpecialFlag_ = DWORD
+OLEUIPASTEFLAG = DWORD
+
+class OLEUIPASTEENTRY(MemStruct):
+    fields = [
+        ("fmtetc", FORMATETC()),
+        ("lpstrFormatName", LPCTSTR()),
+        ("lpstrResultText", LPCTSTR()),
+        ("dwFlags", OLEUIPASTEFLAG()),
+        ("dwScratchSpace", DWORD()),
+    ]
+
+LPOLEUIPASTEENTRY = Ptr("<I", OLEUIPASTEENTRY())
+
+class OLEUIPASTESPECIAL(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", _PasteSpecialFlag_()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("lpSrcDataObj", LPDATAOBJECT()),
+        ("arrPasteEntries", LPOLEUIPASTEENTRY()),
+        ("cPasteEntries", int()),
+        ("arrLinkTypes", UINT_PTR()),
+        ("cLinkTypes", int()),
+        ("cClsidExclude", UINT()),
+        ("lpClsidExclude", LPCLSID()),
+        ("nSelectedIndex", int()),
+        ("fLink", BOOL()),
+        ("hMetaPict", HGLOBAL()),
+        ("sizel", SIZEL()),
+    ]
+
+LPOLEUIPASTESPECIAL = Ptr("<I", OLEUIPASTESPECIAL())
+_ObjectPropFlags_ = DWORD
+
+class OLEUIGNRLPROPS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", DWORD()),
+        ("dwReserved1", DWORD__2_()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("dwReserved2", DWORD__3_()),
+        ("lpOP", LPVOID()),
+    ]
+
+LPOLEUIGNRLPROPS = Ptr("<I", OLEUIGNRLPROPS())
+_ViewPropsFlags_ = DWORD
+
+class OLEUIVIEWPROPS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", _ViewPropsFlags_()),
+        ("dwReserved1", DWORD__2_()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("dwReserved2", DWORD__3_()),
+        ("lpOP", LPVOID()),
+        ("nScaleMin", int()),
+        ("nScaleMax", int()),
+    ]
+
+LPOLEUIVIEWPROPS = Ptr("<I", OLEUIVIEWPROPS())
+
+class OLEUILINKPROPS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", DWORD()),
+        ("dwReserved1", DWORD__2_()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("dwReserved2", DWORD__3_()),
+        ("lpOP", LPVOID()),
+    ]
+
+LPOLEUILINKPROPS = Ptr("<I", OLEUILINKPROPS())
+
+class OLEUIOBJECTPROPS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", _ObjectPropFlags_()),
+        ("lpPS", LPPROPSHEETHEADER()),
+        ("dwObject", DWORD()),
+        ("lpObjInfo", LPOLEUIOBJINFO()),
+        ("dwLink", DWORD()),
+        ("lpLinkInfo", LPOLEUILINKINFO()),
+        ("lpGP", LPOLEUIGNRLPROPS()),
+        ("lpVP", LPOLEUIVIEWPROPS()),
+        ("lpLP", LPOLEUILINKPROPS()),
+    ]
+
+LPOLEUIOBJECTPROPS = Ptr("<I", OLEUIOBJECTPROPS())
+_ChangeSourceFlags_ = DWORD
+
+class OLEUICHANGESOURCE(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", _ChangeSourceFlags_()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("lpOFN", OPENFILENAME_PTR()),
+        ("dwReserved1", DWORD__4_()),
+        ("lpOleUILinkContainer", LPOLEUILINKCONTAINER()),
+        ("dwLink", DWORD()),
+        ("lpszDisplayName", LPTSTR()),
+        ("nFileLength", ULONG()),
+        ("lpszFrom", LPTSTR()),
+        ("lpszTo", LPSTR()),
+    ]
+
+LPOLEUICHANGESOURCE = Ptr("<I", OLEUICHANGESOURCE())
+
+class OLEUIBUSY(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", DWORD()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("hTask", HTASK()),
+        ("lphWndDialog", HWND_PTR()),
+    ]
+
+LPOLEUIBUSY = Ptr("<I", OLEUIBUSY())
+
+class OLEUICONVERT(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", DWORD()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("clsid", CLSID()),
+        ("clsidConvertDefault", CLSID()),
+        ("clsidActivateDefault", CLSID()),
+        ("clsidNew", CLSID()),
+        ("dvAspect", DWORD()),
+        ("wFormat", WORD()),
+        ("fIsLinkedObject", BOOL()),
+        ("hMetaPict", HGLOBAL()),
+        ("lpszUserType", LPTSTR()),
+        ("fObjectsIconChanged", BOOL()),
+        ("lpszDefLabel", LPTSTR()),
+        ("cClsidExclude", UINT()),
+        ("lpClsidExclude", LPCLSID()),
+    ]
+
+LPOLEUICONVERT = Ptr("<I", OLEUICONVERT())
+
+class OLEUIEDITLINKS(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", DWORD()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("lpOleUILinkContainer", LPOLEUILINKCONTAINER()),
+    ]
+
+LPOLEUIEDITLINKS = Ptr("<I", OLEUIEDITLINKS())
+
+class OLEUIINSERTOBJECT(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("dwFlags", DWORD()),
+        ("hWndOwner", HWND()),
+        ("lpszCaption", LPCTSTR()),
+        ("lpfnHook", LPFNOLEUIHOOK()),
+        ("lCustData", LPARAM()),
+        ("hInstance", HINSTANCE()),
+        ("lpszTemplate", LPCTSTR()),
+        ("hResource", HRSRC()),
+        ("clsid", CLSID()),
+        ("lpszFile", LPTSTR()),
+        ("cchFile", UINT()),
+        ("cClsidExclude", UINT()),
+        ("lpClsidExclude", LPCLSID()),
+        ("iid", IID()),
+        ("oleRender", DWORD()),
+        ("lpFormatEtc", LPFORMATETC()),
+        ("lpIOleClientSite", LPOLECLIENTSITE()),
+        ("lpIStorage", LPSTORAGE()),
+        ("ppvObj", LPVOID_PTR()),
+        ("sc", SCODE()),
+        ("hMetaPict", HGLOBAL()),
+    ]
+
+LPOLEUIINSERTOBJECT = Ptr("<I", OLEUIINSERTOBJECT())
+
+###################
+
+###### Functions ######
 
 def oledlg_OleUIAddVerbMenu(jitter, get_str, set_str):
     """

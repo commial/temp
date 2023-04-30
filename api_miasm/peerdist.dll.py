@@ -1,3 +1,4 @@
+###### Enums ######
 PEERDIST_STATUS = {
     "PEERDIST_STATUS_DISABLED": 0,
     "PEERDIST_STATUS_UNAVAILABLE": 1,
@@ -14,6 +15,59 @@ PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS = {
 PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS_INV = {
     0: "PeerDistClientBasicInfo",
 }
+
+###################
+
+###### Types ######
+PEERDIST_INSTANCE_HANDLE = HANDLE
+PPEERDIST_INSTANCE_HANDLE = Ptr("<I", PEERDIST_INSTANCE_HANDLE())
+PEERDIST_CONTENT_HANDLE = HANDLE
+PPEERDIST_CONTENT_HANDLE = Ptr("<I", PEERDIST_CONTENT_HANDLE())
+PEERDIST_CONTENTINFO_HANDLE = HANDLE
+PPEERDIST_CONTENTINFO_HANDLE = Ptr("<I", PEERDIST_CONTENTINFO_HANDLE())
+PEERDIST_STREAM_HANDLE = HANDLE
+PEERDIST_STATUS = UINT
+PEERDIST_STATUS_PTR = Ptr("<I", PEERDIST_STATUS())
+PEERDIST_CLIENT_INFO_BY_HANDLE_CLASS = UINT
+
+class PEERDIST_STATUS_INFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("status", PEERDIST_STATUS()),
+        ("dwMinVer", DWORD()),
+        ("dwMaxVer", DWORD()),
+    ]
+
+PEERDIST_STATUS_INFO_PTR = Ptr("<I", PEERDIST_STATUS_INFO())
+
+class PEERDIST_CONTENT_TAG(MemStruct):
+    fields = [
+        ("Data", BYTE__16_()),
+    ]
+
+PCPEERDIST_CONTENT_TAG = Ptr("<I", PEERDIST_CONTENT_TAG())
+
+class PEERDIST_PUBLICATION_OPTIONS(MemStruct):
+    fields = [
+        ("dwVersion", DWORD()),
+        ("dwFlags", DWORD()),
+    ]
+
+PCPEERDIST_PUBLICATION_OPTIONS = Ptr("<I", PEERDIST_PUBLICATION_OPTIONS())
+
+class PEERDIST_RETRIEVAL_OPTIONS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("dwContentInfoMinVersion", DWORD()),
+        ("dwContentInfoMaxVersion", DWORD()),
+        ("dwReserved", DWORD()),
+    ]
+
+PEERDIST_RETRIEVAL_OPTIONS_PTR = Ptr("<I", PEERDIST_RETRIEVAL_OPTIONS())
+
+###################
+
+###### Functions ######
 
 def peerdist_PeerDistStartup(jitter):
     """

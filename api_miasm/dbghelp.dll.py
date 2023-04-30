@@ -1,3 +1,4 @@
+###### Enums ######
 IMAGEHLP_SYMBOL_TYPE_INFO = {
     "TI_GET_SYMTAG": 0,
     "TI_GET_SYMNAME": 1,
@@ -128,6 +129,518 @@ _IMAGE_DEBUG_TYPE__INV = {
     10: "IMAGE_DEBUG_TYPE_RESERVED10",
     11: "IMAGE_DEBUG_TYPE_CLSID",
 }
+
+###################
+
+###### Types ######
+PFPO_DATA = LPVOID
+RVA = DWORD
+PENUMDIRTREE_CALLBACK = LPVOID
+PENUMLOADED_MODULES_CALLBACK = LPVOID
+PENUMLOADED_MODULES_CALLBACK64 = LPVOID
+PENUMLOADED_MODULES_CALLBACKW64 = LPVOID
+PFIND_DEBUG_FILE_CALLBACK = LPVOID
+PFIND_EXE_FILE_CALLBACK = LPVOID
+PREAD_PROCESS_MEMORY_ROUTINE = LPVOID
+PREAD_PROCESS_MEMORY_ROUTINE64 = LPVOID
+PFUNCTION_TABLE_ACCESS_ROUTINE = LPVOID
+PFUNCTION_TABLE_ACCESS_ROUTINE64 = LPVOID
+PGET_MODULE_BASE_ROUTINE = LPVOID
+PGET_MODULE_BASE_ROUTINE64 = LPVOID
+PTRANSLATE_ADDRESS_ROUTINE = LPVOID
+PTRANSLATE_ADDRESS_ROUTINE64 = LPVOID
+PSYM_ENUMLINES_CALLBACK = LPVOID
+PSYM_ENUMPROCESSES_CALLBACK = LPVOID
+PSYM_ENUMSOURCEFILES_CALLBACK = LPVOID
+PSYM_ENUMERATESYMBOLS_CALLBACK = LPVOID
+PFINDFILEINPATHCALLBACK = LPVOID
+PSYMBOL_REGISTERED_CALLBACK = LPVOID
+PSYMBOL_REGISTERED_CALLBACK64 = LPVOID
+PSYMBOL_REGISTERED_CALLBACKW64 = LPVOID
+PSYMBOL_FUNCENTRY_CALLBACK = LPVOID
+PSYMBOL_FUNCENTRY_CALLBACK64 = LPVOID
+PSYM_ENUMSYMBOLS_CALLBACK = LPVOID
+PSYM_ENUMSYMBOLS_CALLBACK64 = LPVOID
+PSYM_ENUMSYMBOLS_CALLBACKW64 = LPVOID
+MINIDUMP_CALLBACK_ROUTINE = LPVOID
+PIMAGEHLP_CONTEXT = LPVOID
+PSYM_ENUMMODULES_CALLBACK = LPVOID
+PSYM_ENUMMODULES_CALLBACK64 = LPVOID
+PSYM_ENUMMODULES_CALLBACKW64 = LPVOID
+PENUMSOURCEFILETOKENSCALLBACK = LPVOID
+DWORD64__3_ = Array(DWORD64, 3)
+DWORD64__4_ = Array(DWORD64, 4)
+DWORD64__5_ = Array(DWORD64, 5)
+ULONG64__5_ = Array(ULONG64, 5)
+TCHAR__1_ = Array(TCHAR, 1)
+CHAR__MAX_PATH__PTR_3_ = Array(CHAR, 780)
+TCHAR__MAX_PATH__PTR_3_ = Array(TCHAR, 780)
+WCHAR__MAX_PATH__PTR_3_ = Array(WCHAR, 780)
+
+class API_VERSION(MemStruct):
+    fields = [
+        ("MajorVersion", USHORT()),
+        ("MinorVersion", USHORT()),
+        ("Revision", USHORT()),
+        ("Reserved", USHORT()),
+    ]
+
+LPAPI_VERSION = Ptr("<I", API_VERSION())
+
+class IMAGEHLP_LINE(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("Key", PVOID()),
+        ("LineNumber", DWORD()),
+        ("FileName", PTSTR()),
+        ("Address", DWORD()),
+    ]
+
+PIMAGEHLP_LINE = Ptr("<I", IMAGEHLP_LINE())
+
+class IMAGEHLP_LINE64(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("Key", PVOID()),
+        ("LineNumber", DWORD()),
+        ("FileName", PCHAR()),
+        ("Address", DWORD64()),
+    ]
+
+PIMAGEHLP_LINE64 = Ptr("<I", IMAGEHLP_LINE64())
+
+class IMAGEHLP_LINEW64(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("Key", PVOID()),
+        ("LineNumber", DWORD()),
+        ("FileName", PWSTR()),
+        ("Address", DWORD64()),
+    ]
+
+PIMAGEHLP_LINEW64 = Ptr("<I", IMAGEHLP_LINEW64())
+
+class OMAP(MemStruct):
+    fields = [
+        ("rva", ULONG()),
+        ("rvaTo", ULONG()),
+    ]
+
+POMAP = Ptr("<I", OMAP())
+POMAP_PTR = Ptr("<I", POMAP())
+IMAGEHLP_SYMBOL_TYPE_INFO = UINT
+IMAGEHLP_SYMBOL_TYPE_INFO_PTR = Ptr("<I", IMAGEHLP_SYMBOL_TYPE_INFO())
+
+class IMAGEHLP_GET_TYPE_INFO_PARAMS(MemStruct):
+    fields = [
+        ("SizeOfStruct", ULONG()),
+        ("Flags", ULONG()),
+        ("NumIds", ULONG()),
+        ("TypeIds", PULONG()),
+        ("TagFilter", ULONG64()),
+        ("NumReqs", ULONG()),
+        ("ReqKinds", IMAGEHLP_SYMBOL_TYPE_INFO_PTR()),
+        ("ReqOffsets", PULONG_PTR()),
+        ("ReqSizes", PULONG()),
+        ("ReqStride", ULONG_PTR()),
+        ("BufferSize", ULONG_PTR()),
+        ("Buffer", PVOID()),
+        ("EntriesMatched", ULONG()),
+        ("EntriesFilled", ULONG()),
+        ("TagsFound", ULONG64()),
+        ("AllReqsValid", ULONG64()),
+        ("NumReqsValid", ULONG()),
+        ("ReqsValid", PULONG64()),
+    ]
+
+PIMAGEHLP_GET_TYPE_INFO_PARAMS = Ptr("<I", IMAGEHLP_GET_TYPE_INFO_PARAMS())
+
+class MODLOAD_DATA(MemStruct):
+    fields = [
+        ("ssize", DWORD()),
+        ("ssig", DWORD()),
+        ("data", PVOID()),
+        ("size", DWORD()),
+        ("flags", DWORD()),
+    ]
+
+PMODLOAD_DATA = Ptr("<I", MODLOAD_DATA())
+
+class MINIDUMP_LOCATION_DESCRIPTOR(MemStruct):
+    fields = [
+        ("DataSize", ULONG32()),
+        ("Rva", RVA()),
+    ]
+
+
+class MINIDUMP_DIRECTORY(MemStruct):
+    fields = [
+        ("StreamType", ULONG32()),
+        ("Location", MINIDUMP_LOCATION_DESCRIPTOR()),
+    ]
+
+PMINIDUMP_DIRECTORY = Ptr("<I", MINIDUMP_DIRECTORY())
+PMINIDUMP_DIRECTORY_PTR = Ptr("<I", PMINIDUMP_DIRECTORY())
+
+class MINIDUMP_EXCEPTION_INFORMATION(MemStruct):
+    fields = [
+        ("ThreadId", DWORD()),
+        ("ExceptionPointers", PEXCEPTION_POINTERS()),
+        ("ClientPointers", BOOL()),
+    ]
+
+PMINIDUMP_EXCEPTION_INFORMATION = Ptr("<I", MINIDUMP_EXCEPTION_INFORMATION())
+
+class MINIDUMP_USER_STREAM(MemStruct):
+    fields = [
+        ("Type", ULONG32()),
+        ("BufferSize", ULONG()),
+        ("Buffer", PVOID()),
+    ]
+
+PMINIDUMP_USER_STREAM = Ptr("<I", MINIDUMP_USER_STREAM())
+
+class MINIDUMP_USER_STREAM_INFORMATION(MemStruct):
+    fields = [
+        ("UserStreamCount", ULONG()),
+        ("UserStreamArray", PMINIDUMP_USER_STREAM()),
+    ]
+
+PMINIDUMP_USER_STREAM_INFORMATION = Ptr("<I", MINIDUMP_USER_STREAM_INFORMATION())
+
+class MINIDUMP_CALLBACK_INFORMATION(MemStruct):
+    fields = [
+        ("CallbackRoutine", MINIDUMP_CALLBACK_ROUTINE()),
+        ("CallbackParam", PVOID()),
+    ]
+
+PMINIDUMP_CALLBACK_INFORMATION = Ptr("<I", MINIDUMP_CALLBACK_INFORMATION())
+SYM_TYPE = UINT
+
+class IMAGEHLP_MODULE(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("BaseOfImage", DWORD()),
+        ("ImageSize", DWORD()),
+        ("TimeDateStamp", DWORD()),
+        ("CheckSum", DWORD()),
+        ("NumSyms", DWORD()),
+        ("SymType", SYM_TYPE()),
+        ("ModuleName", TCHAR__32_()),
+        ("ImageName", TCHAR__256_()),
+        ("LoadedImageName", TCHAR__256_()),
+    ]
+
+PIMAGEHLP_MODULE = Ptr("<I", IMAGEHLP_MODULE())
+
+class IMAGEHLP_MODULE64(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("BaseOfImage", DWORD64()),
+        ("ImageSize", DWORD()),
+        ("TimeDateStamp", DWORD()),
+        ("CheckSum", DWORD()),
+        ("NumSyms", DWORD()),
+        ("SymType", SYM_TYPE()),
+        ("ModuleName", CHAR__32_()),
+        ("ImageName", CHAR__256_()),
+        ("LoadedImageName", CHAR__256_()),
+        ("LoadedPdbName", CHAR__256_()),
+        ("CVSig", DWORD()),
+        ("CVData", CHAR__MAX_PATH__PTR_3_()),
+        ("PdbSig", DWORD()),
+        ("PdbSig70", GUID()),
+        ("PdbAge", DWORD()),
+        ("PdbUnmatched", BOOL()),
+        ("DbgUnmatched", BOOL()),
+        ("LineNumbers", BOOL()),
+        ("GlobalSymbols", BOOL()),
+        ("TypeInfo", BOOL()),
+        ("SourceIndexed", BOOL()),
+        ("Publics", BOOL()),
+        ("MachineType", _IMAGE_FILE_MACHINE_()),
+        ("Reserved", DWORD()),
+    ]
+
+PIMAGEHLP_MODULE64 = Ptr("<I", IMAGEHLP_MODULE64())
+
+class IMAGEHLP_MODULEW64(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("BaseOfImage", DWORD64()),
+        ("ImageSize", DWORD()),
+        ("TimeDateStamp", DWORD()),
+        ("CheckSum", DWORD()),
+        ("NumSyms", DWORD()),
+        ("SymType", SYM_TYPE()),
+        ("ModuleName", WCHAR__32_()),
+        ("ImageName", WCHAR__256_()),
+        ("LoadedImageName", WCHAR__256_()),
+        ("LoadedPdbName", WCHAR__256_()),
+        ("CVSig", DWORD()),
+        ("CVData", WCHAR__MAX_PATH__PTR_3_()),
+        ("PdbSig", DWORD()),
+        ("PdbSig70", GUID()),
+        ("PdbAge", DWORD()),
+        ("PdbUnmatched", BOOL()),
+        ("DbgUnmatched", BOOL()),
+        ("LineNumbers", BOOL()),
+        ("GlobalSymbols", BOOL()),
+        ("TypeInfo", BOOL()),
+        ("SourceIndexed", BOOL()),
+        ("Publics", BOOL()),
+        ("MachineType", _IMAGE_FILE_MACHINE_()),
+        ("Reserved", DWORD()),
+    ]
+
+PIMAGEHLP_MODULEW64 = Ptr("<I", IMAGEHLP_MODULEW64())
+ADDRESS_MODE = UINT
+
+class ADDRESS(MemStruct):
+    fields = [
+        ("Offset", DWORD()),
+        ("Segment", WORD()),
+        ("Mode", ADDRESS_MODE()),
+    ]
+
+
+class ADDRESS64(MemStruct):
+    fields = [
+        ("Offset", DWORD64()),
+        ("Segment", WORD()),
+        ("Mode", ADDRESS_MODE()),
+    ]
+
+
+class KDHELP(MemStruct):
+    fields = [
+        ("Thread", DWORD()),
+        ("ThCallbackStack", DWORD()),
+        ("NextCallback", DWORD()),
+        ("FramePointer", DWORD()),
+        ("KiCallUserMode", DWORD()),
+        ("KeUserCallbackDispatcher", DWORD()),
+        ("SystemRangeStart", DWORD()),
+        ("ThCallbackBStore", DWORD()),
+        ("KiUserExceptionDispatcher", DWORD()),
+        ("StackBase", DWORD()),
+        ("StackLimit", DWORD()),
+        ("Reserved", DWORD__5_()),
+    ]
+
+
+class KDHELP64(MemStruct):
+    fields = [
+        ("Thread", DWORD64()),
+        ("ThCallbackStack", DWORD()),
+        ("ThCallbackBStore", DWORD()),
+        ("NextCallback", DWORD()),
+        ("FramePointer", DWORD()),
+        ("KiCallUserMode", DWORD64()),
+        ("KeUserCallbackDispatcher", DWORD64()),
+        ("SystemRangeStart", DWORD64()),
+        ("KiUserExceptionDispatcher", DWORD64()),
+        ("StackBase", DWORD64()),
+        ("StackLimit", DWORD64()),
+        ("Reserved", DWORD64__5_()),
+    ]
+
+
+class STACKFRAME(MemStruct):
+    fields = [
+        ("AddrPC", ADDRESS()),
+        ("AddrReturn", ADDRESS()),
+        ("AddrFrame", ADDRESS()),
+        ("AddrStack", ADDRESS()),
+        ("FuncTableEntry", PVOID()),
+        ("Params", DWORD__4_()),
+        ("Far", BOOL()),
+        ("Virtual", BOOL()),
+        ("Reserved", DWORD__3_()),
+        ("KdHelp", KDHELP()),
+        ("AddrBStore", ADDRESS()),
+    ]
+
+LPSTACKFRAME = Ptr("<I", STACKFRAME())
+
+class STACKFRAME64(MemStruct):
+    fields = [
+        ("AddrPC", ADDRESS64()),
+        ("AddrReturn", ADDRESS64()),
+        ("AddrFrame", ADDRESS64()),
+        ("AddrStack", ADDRESS64()),
+        ("AddrBStore", ADDRESS64()),
+        ("FuncTableEntry", PVOID()),
+        ("Params", DWORD64__4_()),
+        ("Far", BOOL()),
+        ("Virtual", BOOL()),
+        ("Reserved", DWORD64__3_()),
+        ("KdHelp", KDHELP64()),
+    ]
+
+LPSTACKFRAME64 = Ptr("<I", STACKFRAME64())
+
+class IMAGEHLP_STACK_FRAME(MemStruct):
+    fields = [
+        ("InstructionOffset", ULONG64()),
+        ("ReturnOffset", ULONG64()),
+        ("FrameOffset", ULONG64()),
+        ("StackOffset", ULONG64()),
+        ("BackingStoreOffset", ULONG64()),
+        ("FuncTableEntry", ULONG64()),
+        ("Params", ULONG64__4_()),
+        ("Reserved", ULONG64__5_()),
+        ("Virtual", BOOL()),
+        ("Reserved2", ULONG()),
+    ]
+
+PIMAGEHLP_STACK_FRAME = Ptr("<I", IMAGEHLP_STACK_FRAME())
+_SYMFLAG_ = ULONG
+
+class SYMBOL_INFO(MemStruct):
+    fields = [
+        ("SizeOfStruct", ULONG()),
+        ("TypeIndex", ULONG()),
+        ("Reserved", ULONG64__2_()),
+        ("Index", ULONG()),
+        ("Size", ULONG()),
+        ("ModBase", ULONG64()),
+        ("Flags", _SYMFLAG_()),
+        ("Value", ULONG64()),
+        ("Address", ULONG64()),
+        ("Register", ULONG()),
+        ("Scope", ULONG()),
+        ("Tag", _SymTagEnum_ULONG_()),
+        ("NameLen", ULONG()),
+        ("MaxNameLen", ULONG()),
+        ("Name", TCHAR__1_()),
+    ]
+
+PSYMBOL_INFO = Ptr("<I", SYMBOL_INFO())
+
+class IMAGEHLP_SYMBOL(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("Address", DWORD()),
+        ("Size", DWORD()),
+        ("Flags", DWORD()),
+        ("MaxNameLength", DWORD()),
+        ("Name", CHAR__1_()),
+    ]
+
+PIMAGEHLP_SYMBOL = Ptr("<I", IMAGEHLP_SYMBOL())
+
+class IMAGEHLP_SYMBOL64(MemStruct):
+    fields = [
+        ("SizeOfStruct", DWORD()),
+        ("Address", DWORD64()),
+        ("Size", DWORD()),
+        ("Flags", DWORD()),
+        ("MaxNameLength", DWORD()),
+        ("Name", TCHAR__1_()),
+    ]
+
+PIMAGEHLP_SYMBOL64 = Ptr("<I", IMAGEHLP_SYMBOL64())
+
+class SYMSRV_INDEX_INFO(MemStruct):
+    fields = [
+        ("sizeofstruct", DWORD()),
+        ("file", TCHAR__MAX_PATH_+_1_()),
+        ("stripped", BOOL()),
+        ("timestamp", DWORD()),
+        ("size", DWORD()),
+        ("dbgfile", TCHAR__MAX_PATH_+_1_()),
+        ("pdbfile", TCHAR__MAX_PATH_+_1_()),
+        ("guid", GUID()),
+        ("sig", DWORD()),
+        ("age", DWORD()),
+    ]
+
+PSYMSRV_INDEX_INFO = Ptr("<I", SYMSRV_INDEX_INFO())
+
+class IMAGE_FUNCTION_ENTRY(MemStruct):
+    fields = [
+        ("StartingAddress", DWORD()),
+        ("EndingAddress", DWORD()),
+        ("EndOfPrologue", DWORD()),
+    ]
+
+PIMAGE_FUNCTION_ENTRY = Ptr("<I", IMAGE_FUNCTION_ENTRY())
+
+class IMAGE_COFF_SYMBOLS_HEADER(MemStruct):
+    fields = [
+        ("NumberOfSymbols", DWORD()),
+        ("LvaToFirstSymbol", DWORD()),
+        ("NumberOfLinenumbers", DWORD()),
+        ("LvaToFirstLinenumber", DWORD()),
+        ("RvaToFirstByteOfCode", DWORD()),
+        ("RvaToLastByteOfCode", DWORD()),
+        ("RvaToFirstByteOfData", DWORD()),
+        ("RvaToLastByteOfData", DWORD()),
+    ]
+
+PIMAGE_COFF_SYMBOLS_HEADER = Ptr("<I", IMAGE_COFF_SYMBOLS_HEADER())
+_IMAGE_DEBUG_TYPE_ = DWORD
+
+class IMAGE_DEBUG_DIRECTORY(MemStruct):
+    fields = [
+        ("Characteristics", DWORD()),
+        ("TimeDateStamp", DWORD()),
+        ("MajorVersion", WORD()),
+        ("MinorVersion", WORD()),
+        ("Type", _IMAGE_DEBUG_TYPE_()),
+        ("SizeOfData", DWORD()),
+        ("AddressOfRawData", DWORD()),
+        ("PointerToRawData", DWORD()),
+    ]
+
+PIMAGE_DEBUG_DIRECTORY = Ptr("<I", IMAGE_DEBUG_DIRECTORY())
+
+class IMAGE_DEBUG_INFORMATION(MemStruct):
+    fields = [
+        ("List", LIST_ENTRY()),
+        ("ReservedSize", DWORD()),
+        ("ReservedMappedBase", PVOID()),
+        ("ReservedMachine", USHORT()),
+        ("ReservedCharacteristics", USHORT()),
+        ("ReservedCheckSum", DWORD()),
+        ("ImageBase", DWORD()),
+        ("SizeOfImage", DWORD()),
+        ("ReservedNumberOfSections", DWORD()),
+        ("ReservedSections", PIMAGE_SECTION_HEADER()),
+        ("ReservedExportedNamesSize", DWORD()),
+        ("ReservedExportedNames", PSTR()),
+        ("ReservedNumberOfFunctionTableEntries", DWORD()),
+        ("ReservedFunctionTableEntries", PIMAGE_FUNCTION_ENTRY()),
+        ("ReservedLowestFunctionStartingAddress", DWORD()),
+        ("ReservedHighestFunctionEndingAddress", DWORD()),
+        ("ReservedNumberOfFpoTableEntries", DWORD()),
+        ("ReservedFpoTableEntries", PFPO_DATA()),
+        ("SizeOfCoffSymbols", DWORD()),
+        ("CoffSymbols", PIMAGE_COFF_SYMBOLS_HEADER()),
+        ("ReservedSizeOfCodeViewSymbols", DWORD()),
+        ("ReservedCodeViewSymbols", PVOID()),
+        ("ImageFilePath", PSTR()),
+        ("ImageFileName", PSTR()),
+        ("ReservedDebugFilePath", PSTR()),
+        ("ReservedTimeDateStamp", DWORD()),
+        ("ReservedRomImage", BOOL()),
+        ("ReservedDebugDirectory", PIMAGE_DEBUG_DIRECTORY()),
+        ("ReservedNumberOfDebugDirectories", DWORD()),
+        ("ReservedOriginalFunctionTableBaseAddress", DWORD()),
+        ("Reserved", DWORD__2_()),
+    ]
+
+PIMAGE_DEBUG_INFORMATION = Ptr("<I", IMAGE_DEBUG_INFORMATION())
+_UNDNAME_FLAGS_ = DWORD
+_ESLFLAG_ = DWORD
+_SSRVOPT_ = DWORD
+_SYMSEARCH_FLAGS_ = DWORD
+_SYMOPT_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def dbghelp_EnumDirTree(jitter, get_str, set_str):
     """

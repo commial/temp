@@ -1,3 +1,57 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_CredUIFlags_ = DWORD
+
+class CREDUI_INFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hwndParent", HWND()),
+        ("pszMessageText", PCTSTR()),
+        ("pszCaptionText", PCTSTR()),
+        ("hbmBanner", HBITMAP()),
+    ]
+
+PCREDUI_INFO = Ptr("<I", CREDUI_INFO())
+
+class SEC_WINNT_CREDUI_CONTEXT_VECTOR(MemStruct):
+    fields = [
+        ("CredUIContextArrayOffset", ULONG()),
+        ("CredUIContextCount", USHORT()),
+    ]
+
+PSEC_WINNT_CREDUI_CONTEXT_VECTOR = Ptr("<I", SEC_WINNT_CREDUI_CONTEXT_VECTOR())
+PSEC_WINNT_CREDUI_CONTEXT_VECTOR_PTR = Ptr("<I", PSEC_WINNT_CREDUI_CONTEXT_VECTOR())
+
+class CREDUI_INFOW(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("hwndParent", HWND()),
+        ("pszMessageText", PCWSTR()),
+        ("pszCaptionText", PCWSTR()),
+        ("hbmBanner", HBITMAP()),
+    ]
+
+PCREDUI_INFOW = Ptr("<I", CREDUI_INFOW())
+
+class SEC_WINNT_CREDUI_CONTEXT(MemStruct):
+    fields = [
+        ("cbHeaderLength", USHORT()),
+        ("CredUIContextHandle", HANDLE()),
+        ("UIInfo", PCREDUI_INFOW()),
+        ("dwAuthError", ULONG()),
+        ("pInputAuthIdentity", PSEC_WINNT_AUTH_IDENTITY_OPAQUE()),
+        ("TargetName", PUNICODE_STRING()),
+    ]
+
+PSEC_WINNT_CREDUI_CONTEXT = Ptr("<I", SEC_WINNT_CREDUI_CONTEXT())
+PSEC_WINNT_CREDUI_CONTEXT_PTR = Ptr("<I", PSEC_WINNT_CREDUI_CONTEXT())
+
+###################
+
+###### Functions ######
 
 def credui_CredUICmdLinePromptForCredentials(jitter, get_str, set_str):
     """

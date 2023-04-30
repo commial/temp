@@ -1,3 +1,33 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+class DSBROWSEINFO(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("hwndOwner", HWND()),
+        ("pszCaption", LPCTSTR()),
+        ("pszTitle", LPCTSTR()),
+        ("pszRoot", LPCWSTR()),
+        ("pszPath", LPWSTR()),
+        ("cchPath", ULONG()),
+        ("dwFlags", DWORD()),
+        ("pfnCallback", BFFCALLBACK()),
+        ("lParam", LPARAM()),
+        ("dwReturnFormat", DWORD()),
+        ("pUserName", LPCWSTR()),
+        ("pPassword", LPCWSTR()),
+        ("pszObjectClass", LPWSTR()),
+        ("cchObjectClass", ULONG()),
+    ]
+
+PDSBROWSEINFO = Ptr("<I", DSBROWSEINFO())
+
+###################
+
+###### Functions ######
 
 def dsuiext_DsBrowseForContainer(jitter, get_str, set_str):
     """

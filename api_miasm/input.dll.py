@@ -1,3 +1,39 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_LOTP_TYPE_ = DWORD
+
+class LAYOUTORTIPPROFILE(MemStruct):
+    fields = [
+        ("dwProfileType", _LOTP_TYPE_()),
+        ("langid", LANGID()),
+        ("clsid", CLSID()),
+        ("guidProfile", GUID()),
+        ("catid", GUID()),
+        ("dwSubstituteLayout", DWORD()),
+        ("dwFlags", DWORD()),
+        ("szId", WCHAR__MAX_PATH_()),
+    ]
+
+LAYOUTORTIPPROFILE_PTR = Ptr("<I", LAYOUTORTIPPROFILE())
+_LAYOUTORTIP_Flags_ = DWORD
+
+class LAYOUTORTIP(MemStruct):
+    fields = [
+        ("dwFlags", _LAYOUTORTIP_Flags_()),
+        ("szId", WCHAR__MAX_PATH_()),
+        ("szName", WCHAR__MAX_PATH_()),
+    ]
+
+LAYOUTORTIP_PTR = Ptr("<I", LAYOUTORTIP())
+_IlotFlags_ = DWORD
+_SdlotFlags_ = DWORD
+
+###################
+
+###### Functions ######
 
 def input_EnumEnabledLayoutOrTip(jitter):
     """

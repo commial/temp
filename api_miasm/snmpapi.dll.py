@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def snmpapi_SnmpSvcGetUptime(jitter):
     """

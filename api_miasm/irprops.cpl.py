@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def irprops_BluetoothAuthenticateDevice(jitter):
     """

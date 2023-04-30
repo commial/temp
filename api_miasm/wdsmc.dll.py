@@ -1,3 +1,4 @@
+###### Enums ######
 TRANSPORTPROVIDER_CALLBACK_ID = {
     "WDS_TRANSPORTPROVIDER_CREATE_INSTANCE": 0,
     "WDS_TRANSPORTPROVIDER_COMPARE_CONTENT": 1,
@@ -42,6 +43,16 @@ WDS_MC_SEVERITY_INV = {
     0x00080000: "WDS_MC_TRACE_ERROR",
     0x00100000: "WDS_MC_TRACE_FATAL",
 }
+
+###################
+
+###### Types ######
+TRANSPORTPROVIDER_CALLBACK_ID = UINT
+WDS_MC_SEVERITY = UINT
+
+###################
+
+###### Functions ######
 
 def wdsmc_WdsTransportServerAllocateBuffer(jitter):
     """

@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def mspatchc_CreatePatchFile(jitter, get_str, set_str):
     """

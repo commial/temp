@@ -1,3 +1,4 @@
+###### Enums ######
 EC_SUBSCRIPTION_PROPERTY_ID = {
     "EcSubscriptionEnabled": 0,
     "EcSubscriptionEventSources": 1,
@@ -72,6 +73,39 @@ EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID_INV = {
     4: "EcSubscriptionRunTimeStatusNextRetryTime",
     5: "EcSubscriptionRunTimeStatusInfoIdEND",
 }
+
+###################
+
+###### Types ######
+EC_HANDLE = HANDLE
+EC_OBJECT_ARRAY_PROPERTY_HANDLE = HANDLE
+EC_SUBSCRIPTION_PROPERTY_ID = UINT
+EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID = UINT
+_EC_VARIANT_u_ = Union([
+    ("BooleanVal", BOOL),
+    ("UInt32Val", UINT32),
+    ("DateTimeVal", ULONGLONG),
+    ("StringVal", LPCWSTR),
+    ("BinaryVal", PBYTE),
+    ("BooleanArr", BOOL_PTR),
+    ("Int32Arr", INT32_PTR),
+    ("StringArr", LPWSTR_PTR),
+    ("PropertyHandleVal", EC_OBJECT_ARRAY_PROPERTY_HANDLE),
+])
+EC_VARIANT_TYPE = DWORD
+
+class EC_VARIANT(MemStruct):
+    fields = [
+        (None, _EC_VARIANT_u_()),
+        ("Count", DWORD()),
+        ("Type", EC_VARIANT_TYPE()),
+    ]
+
+PEC_VARIANT = Ptr("<I", EC_VARIANT())
+
+###################
+
+###### Functions ######
 
 def wecapi_EcClose(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 _DLLMAIN_REASON_ = {
     "DLL_PROCESS_ATTACH": 1,
     "DLL_THREAD_ATTACH": 2,
@@ -44,6 +45,38 @@ _CPL_MSG__INV = {
     10: "CPL_STARTWPARMSW",
     200: "CPL_SETUP",
 }
+
+###################
+
+###### Types ######
+_DLLMAIN_REASON_ = DWORD
+
+class ORPC_INIT_ARGS(MemStruct):
+    fields = [
+        ("lpIntfOrpcDebug", IOrpcDebugNotify_PTR()),
+        ("pvPSN", void_PTR()),
+        ("dwReserved1", DWORD_PTR()),
+        ("dwReserved2", DWORD_PTR()),
+    ]
+
+LPORPC_INIT_ARGS = Ptr("<I", ORPC_INIT_ARGS())
+_DLLVER_PLATFORM_ = DWORD
+
+class DLLVERSIONINFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("dwMajorVersion", DWORD()),
+        ("dwMinorVersion", DWORD()),
+        ("dwBuildNumber", DWORD()),
+        ("dwPlatformID", _DLLVER_PLATFORM_()),
+    ]
+
+DLLVERSIONINFO_PTR = Ptr("<I", DLLVERSIONINFO())
+_CPL_MSG_ = UINT
+
+###################
+
+###### Functions ######
 
 def *_DllMain(jitter):
     """

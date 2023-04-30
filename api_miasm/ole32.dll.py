@@ -1,3 +1,4 @@
+###### Enums ######
 STGFMT = {
     "STGFMT_STORAGE": 0,
     "STGFMT_NATIVE": 1,
@@ -24,6 +25,105 @@ OLERENDER_INV = {
     2: "OLERENDER_FORMAT",
     3: "OLERENDER_ASIS",
 }
+
+###################
+
+###### Types ######
+PMessageDispatcher = IMessageDispatcher_PTR
+IMemoryAllocator_PTR = LPVOID
+LPENUMFORMATETC_PTR = IEnumFORMATETC_PTR_PTR
+LPENUMOLEVERB_PTR = IEnumOLEVERB_PTR_PTR
+LPPERSISTSTORAGE = IPersistStorage_PTR
+LPPERSISTSTREAM = IPersistStream_PTR
+LPOLEINPLACEFRAME = IOleInPlaceFrame_PTR
+LPOLEINPLACEACTIVEOBJECT = IOleInPlaceActiveObject_PTR
+LPDROPTARGET = IDropTarget_PTR
+LPDATAADVISEHOLDER = IDataAdviseHolder_PTR
+LPDATAADVISEHOLDER_PTR = Ptr("<I", LPDATAADVISEHOLDER())
+LPOLEADVISEHOLDER = IOleAdviseHolder_PTR
+LPOLEADVISEHOLDER_PTR = Ptr("<I", LPOLEADVISEHOLDER())
+LPDROPSOURCE = IDropSource_PTR
+LPINITIALIZESPY = IInitializeSpy_PTR
+LPMALLOCSPY = IMallocSpy_PTR
+LPMESSAGEFILTER = IMessageFilter_PTR
+LPMESSAGEFILTER_PTR = Ptr("<I", LPMESSAGEFILTER())
+LPSURROGATE = ISurrogate_PTR
+LPRUNNINGOBJECTTABLE = IRunningObjectTable_PTR
+LPRUNNINGOBJECTTABLE_PTR = Ptr("<I", LPRUNNINGOBJECTTABLE())
+LPMARSHAL = IMarshal_PTR
+LPMARSHAL_PTR = Ptr("<I", LPMARSHAL())
+LPOLESTREAM = LPVOID
+CO_MTA_USAGE_COOKIE = HANDLE
+CO_MTA_USAGE_COOKIE_PTR = Ptr("<I", CO_MTA_USAGE_COOKIE())
+
+class STGOPTIONS(MemStruct):
+    fields = [
+        ("usVersion", USHORT()),
+        ("reserved", USHORT()),
+        ("ulSectorSize", ULONG()),
+        ("pwcsTemplateFile", const_WCHAR_PTR()),
+    ]
+
+STGOPTIONS_PTR = Ptr("<I", STGOPTIONS())
+
+class COAUTHIDENTITY(MemStruct):
+    fields = [
+        # Length is `UserLength`
+        ("User", USHORT_PTR()),
+        ("UserLength", ULONG()),
+        # Length is `DomainLength`
+        ("Domain", USHORT_PTR()),
+        ("DomainLength", ULONG()),
+        # Length is `PasswordLength`
+        ("Password", USHORT_PTR()),
+        ("PasswordLength", ULONG()),
+        ("Flags", ULONG()),
+    ]
+
+COAUTHIDENTITY_PTR = Ptr("<I", COAUTHIDENTITY())
+
+class COAUTHINFO(MemStruct):
+    fields = [
+        ("dwAuthnSvc", DWORD()),
+        ("dwAuthzSvc", DWORD()),
+        ("pwszServerPrincName", LPWSTR()),
+        ("dwAuthnLevel", DWORD()),
+        ("dwImpersonationLevel", DWORD()),
+        ("pAuthIdentityData", COAUTHIDENTITY_PTR()),
+        ("dwCapabilities", DWORD()),
+    ]
+
+COAUTHINFO_PTR = Ptr("<I", COAUTHINFO())
+
+class COSERVERINFO(MemStruct):
+    fields = [
+        ("dwReserved1", DWORD()),
+        ("pwszName", LPWSTR()),
+        ("pAuthInfo", COAUTHINFO_PTR()),
+        ("dwReserved2", DWORD()),
+    ]
+
+COSERVERINFO_PTR = Ptr("<I", COSERVERINFO())
+
+class SOLE_AUTHENTICATION_SERVICE(MemStruct):
+    fields = [
+        ("dwAuthnSvc", DWORD()),
+        ("dwAuthzSvc", DWORD()),
+        ("pPrincipalName", OLECHAR_PTR()),
+        ("hr", HRESULT()),
+    ]
+
+SOLE_AUTHENTICATION_SERVICE_PTR = Ptr("<I", SOLE_AUTHENTICATION_SERVICE())
+SOLE_AUTHENTICATION_SERVICE_PTR_PTR = Ptr("<I", SOLE_AUTHENTICATION_SERVICE_PTR())
+EOLE_AUTHENTICATION_CAPABILITIES = DWORD
+REGCLS = DWORD
+STGFMT = DWORD
+OLERENDER = DWORD
+_ASYNC_MODE_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def ole32_BindMoniker(jitter):
     """

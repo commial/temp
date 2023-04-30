@@ -1,3 +1,154 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+SCRIPT_CACHE = LPVOID
+SCRIPT_CACHE_PTR = Ptr("<I", SCRIPT_CACHE())
+SCRIPT_STRING_ANALYSIS = LPVOID
+SCRIPT_STRING_ANALYSIS_PTR = Ptr("<I", SCRIPT_STRING_ANALYSIS())
+OPENTYPE_TAG = ULONG
+OPENTYPE_TAG_PTR = Ptr("<I", OPENTYPE_TAG())
+
+class SCRIPT_DIGITSUBSTITUTE(MemStruct):
+    fields = [
+        ("Bitfield1", DWORD()),
+        ("Bitfield2", DWORD()),
+        ("dwReserved", DWORD()),
+    ]
+
+SCRIPT_DIGITSUBSTITUTE_PTR = Ptr("<I", SCRIPT_DIGITSUBSTITUTE())
+const_SCRIPT_DIGITSUBSTITUTE_PTR = Ptr("<I", SCRIPT_DIGITSUBSTITUTE())
+
+class SCRIPT_PROPERTIES(MemStruct):
+    fields = [
+        ("Bitfield1", DWORD()),
+        ("Bitfield2", DWORD()),
+    ]
+
+const_SCRIPT_PROPERTIES_PTR = Ptr("<I", SCRIPT_PROPERTIES())
+const_SCRIPT_PROPERTIES_PTR_PTR = Ptr("<I", const_SCRIPT_PROPERTIES_PTR())
+const_SCRIPT_PROPERTIES_PTR_PTR_PTR = Ptr("<I", const_SCRIPT_PROPERTIES_PTR_PTR())
+
+class SCRIPT_LOGATTR(MemStruct):
+    fields = [
+        ("Bitfield", BYTE()),
+    ]
+
+SCRIPT_LOGATTR_PTR = Ptr("<I", SCRIPT_LOGATTR())
+const_SCRIPT_LOGATTR_PTR = Ptr("<I", SCRIPT_LOGATTR())
+
+class SCRIPT_CHARPROP(MemStruct):
+    fields = [
+        ("Bitfield", WORD()),
+    ]
+
+SCRIPT_CHARPROP_PTR = Ptr("<I", SCRIPT_CHARPROP())
+
+class SCRIPT_STATE(MemStruct):
+    fields = [
+        ("Bitfield", WORD()),
+    ]
+
+SCRIPT_STATE_PTR = Ptr("<I", SCRIPT_STATE())
+const_SCRIPT_STATE_PTR = Ptr("<I", SCRIPT_STATE())
+
+class SCRIPT_ANALYSIS(MemStruct):
+    fields = [
+        ("Bitfield", WORD()),
+        ("s", SCRIPT_STATE()),
+    ]
+
+SCRIPT_ANALYSIS_PTR = Ptr("<I", SCRIPT_ANALYSIS())
+const_SCRIPT_ANALYSIS_PTR = Ptr("<I", SCRIPT_ANALYSIS())
+
+class SCRIPT_ITEM(MemStruct):
+    fields = [
+        ("iCharPos", int()),
+        ("a", SCRIPT_ANALYSIS()),
+    ]
+
+SCRIPT_ITEM_PTR = Ptr("<I", SCRIPT_ITEM())
+
+class SCRIPT_VISATTR(MemStruct):
+    fields = [
+        ("Bitfield", WORD()),
+    ]
+
+SCRIPT_VISATTR_PTR = Ptr("<I", SCRIPT_VISATTR())
+const_SCRIPT_VISATTR_PTR = Ptr("<I", SCRIPT_VISATTR())
+
+class SCRIPT_CONTROL(MemStruct):
+    fields = [
+        ("Bitfield", DWORD()),
+    ]
+
+SCRIPT_CONTROL_PTR = Ptr("<I", SCRIPT_CONTROL())
+const_SCRIPT_CONTROL_PTR = Ptr("<I", SCRIPT_CONTROL())
+
+class SCRIPT_GLYPHPROP(MemStruct):
+    fields = [
+        ("sva", SCRIPT_VISATTR()),
+        ("reserved", WORD()),
+    ]
+
+SCRIPT_GLYPHPROP_PTR = Ptr("<I", SCRIPT_GLYPHPROP())
+const_SCRIPT_GLYPHPROP_PTR = Ptr("<I", SCRIPT_GLYPHPROP())
+
+class SCRIPT_FONTPROPERTIES(MemStruct):
+    fields = [
+        ("cBytes", int()),
+        ("wgBlank", WORD()),
+        ("wgDefault", WORD()),
+        ("wgInvalid", WORD()),
+        ("wgKashida", WORD()),
+        ("iKashidaWidth", int()),
+    ]
+
+SCRIPT_FONTPROPERTIES_PTR = Ptr("<I", SCRIPT_FONTPROPERTIES())
+
+class GOFFSET(MemStruct):
+    fields = [
+        ("du", LONG()),
+        ("dv", LONG()),
+    ]
+
+GOFFSET_PTR = Ptr("<I", GOFFSET())
+const_GOFFSET_PTR = Ptr("<I", GOFFSET())
+
+class OPENTYPE_FEATURE_RECORD(MemStruct):
+    fields = [
+        ("tagFeature", OPENTYPE_TAG()),
+        ("lParameter", LONG()),
+    ]
+
+OPENTYPE_FEATURE_RECORD_PTR = Ptr("<I", OPENTYPE_FEATURE_RECORD())
+
+class TEXTRANGE_PROPERTIES(MemStruct):
+    fields = [
+        ("potfRecords", OPENTYPE_FEATURE_RECORD_PTR()),
+        ("cotfRecords", int()),
+    ]
+
+TEXTRANGE_PROPERTIES_PTR = Ptr("<I", TEXTRANGE_PROPERTIES())
+TEXTRANGE_PROPERTIES_PTR_PTR = Ptr("<I", TEXTRANGE_PROPERTIES_PTR())
+
+class SCRIPT_TABDEF(MemStruct):
+    fields = [
+        ("cTabStops", int()),
+        ("iScale", int()),
+        ("pTabStops", int_PTR()),
+        ("iTabOrigin", int()),
+    ]
+
+SCRIPT_TABDEF_PTR = Ptr("<I", SCRIPT_TABDEF())
+_SGCM_FLAGS_ = DWORD
+_SIC_FLAGS_ = DWORD
+_SSA_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def usp10_ScriptApplyDigitSubstitution(jitter):
     """

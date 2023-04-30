@@ -1,3 +1,14 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_WDSBP_PK_TYPE_ = BYTE
+_WDSBP_PK_TYPE_PTR_ = Ptr("<I", _WDSBP_PK_TYPE_())
+
+###################
+
+###### Functions ######
 
 def wdsbp_WdsBpAddOption(jitter):
     """

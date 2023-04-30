@@ -1,3 +1,4 @@
+###### Enums ######
 _ScheduleType_ = {
     "SCHEDULE_INTERVAL": 0,
     "SCHEDULE_BANDWIDTH": 1,
@@ -116,6 +117,94 @@ DS_SPN_WRITE_OP_INV = {
     1: "DS_SPN_REPLACE_SPN_OP",
     2: "DS_SPN_DELETE_SPN_OP",
 }
+
+###################
+
+###### Types ######
+LPCWCH_PTR = WCHAR_PTR_PTR
+_ScheduleType_ = DWORD
+
+class SCHEDULE_HEADER(MemStruct):
+    fields = [
+        ("Type", _ScheduleType_()),
+        ("Offset", ULONG()),
+    ]
+
+SCHEDULE_HEADER__1_ = Array(SCHEDULE_HEADER, 1)
+
+class SCHEDULE(MemStruct):
+    fields = [
+        ("Size", ULONG()),
+        ("Bandwidth", ULONG()),
+        ("NumberOfSchedules", ULONG()),
+        ("Schedules", SCHEDULE_HEADER__1_()),
+    ]
+
+const_PSCHEDULE = Ptr("<I", SCHEDULE())
+
+class DS_NAME_RESULT_ITEM(MemStruct):
+    fields = [
+        ("status", DWORD()),
+        ("pDomain", LPTSTR()),
+        ("pName", LPTSTR()),
+    ]
+
+PDS_NAME_RESULT_ITEM = Ptr("<I", DS_NAME_RESULT_ITEM())
+
+class DS_NAME_RESULT(MemStruct):
+    fields = [
+        ("cItems", DWORD()),
+        ("rItems", PDS_NAME_RESULT_ITEM()),
+    ]
+
+DS_NAME_RESULT_PTR = Ptr("<I", DS_NAME_RESULT())
+PDS_NAME_RESULT = Ptr("<I", DS_NAME_RESULT())
+PDS_NAME_RESULT_PTR = Ptr("<I", PDS_NAME_RESULT())
+
+class DS_SCHEMA_GUID_MAP(MemStruct):
+    fields = [
+        ("guid", GUID()),
+        ("guidType", DWORD()),
+        ("pName", LPTSTR()),
+    ]
+
+DS_SCHEMA_GUID_MAP_PTR = Ptr("<I", DS_SCHEMA_GUID_MAP())
+PDS_SCHEMA_GUID_MAP = Ptr("<I", DS_SCHEMA_GUID_MAP())
+DS_SCHEMA_GUID_MAP_PTR_PTR = Ptr("<I", DS_SCHEMA_GUID_MAP_PTR())
+
+class DS_SITE_COST_INFO(MemStruct):
+    fields = [
+        ("errorCode", DWORD()),
+        ("cost", DWORD()),
+    ]
+
+PDS_SITE_COST_INFO = Ptr("<I", DS_SITE_COST_INFO())
+PDS_SITE_COST_INFO_PTR = Ptr("<I", PDS_SITE_COST_INFO())
+DS_REPSYNCALL_ERROR = UINT
+
+class DS_REPSYNCALL_ERRINFO(MemStruct):
+    fields = [
+        ("pszSvrId", LPTSTR()),
+        ("error", DS_REPSYNCALL_ERROR()),
+        ("dwWin32Err", DWORD()),
+        ("pszSrcId", LPTSTR()),
+    ]
+
+PDS_REPSYNCALL_ERRINFO = Ptr("<I", DS_REPSYNCALL_ERRINFO())
+PDS_REPSYNCALL_ERRINFO_PTR = Ptr("<I", PDS_REPSYNCALL_ERRINFO())
+PDS_REPSYNCALL_ERRINFO_PTR_PTR = Ptr("<I", PDS_REPSYNCALL_ERRINFO_PTR())
+DS_NAME_FLAGS = DWORD
+DS_NAME_FORMAT = UINT
+DS_MANGLE_FOR = UINT
+DS_MANGLE_FOR_PTR = Ptr("<I", DS_MANGLE_FOR())
+DS_SPN_NAME_TYPE = UINT
+DS_KCC_TASKID = UINT
+DS_REPL_INFO_TYPE = UINT
+DS_SPN_WRITE_OP = UINT
+
+###################
+
+###### Functions ######
 
 def ntdsapi_DsAddSidHistory(jitter, get_str, set_str):
     """

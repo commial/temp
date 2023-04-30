@@ -1,3 +1,20 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+class PROTECTED_FILE_DATA(MemStruct):
+    fields = [
+        ("FileName", WCHAR__MAX_PATH_()),
+        ("FileNumber", DWORD()),
+    ]
+
+PPROTECTED_FILE_DATA = Ptr("<I", PROTECTED_FILE_DATA())
+
+###################
+
+###### Functions ######
 
 def sfc_SfcIsFileProtected(jitter):
     """

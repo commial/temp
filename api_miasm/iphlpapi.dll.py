@@ -1,3 +1,4 @@
+###### Enums ######
 IFTYPE = {
     "IF_TYPE_OTHER": 1,
     "IF_TYPE_REGULAR_1822": 2,
@@ -918,6 +919,995 @@ UDP_TABLE_CLASS_INV = {
     1: "UDP_TABLE_OWNER_PID",
     2: "UDP_TABLE_OWNER_MODULE",
 }
+
+###################
+
+###### Types ######
+PIP_ADAPTER_ADDRESSES = LPVOID
+NET_IFINDEX = ULONG
+PNET_IFINDEX = Ptr("<I", NET_IFINDEX())
+IF_INDEX = NET_IFINDEX
+IPMask = ULONG
+const_CHAR_PTR = CHAR_PTR
+PTEREDO_PORT_CHANGE_CALLBACK = LPVOID
+PUNICAST_IPADDRESS_CHANGE_CALLBACK = LPVOID
+PIPFORWARD_CHANGE_CALLBACK = LPVOID
+PIPINTERFACE_CHANGE_CALLBACK = LPVOID
+PSTABLE_UNICAST_IPADDRESS_TABLE_CALLBACK = LPVOID
+NET_IF_NETWORK_GUID = GUID
+NETIO_STATUS = _ERROR_CODE_
+NETIOAPI_API = NETIO_STATUS
+IP_STATUS = ULONG
+char__16_ = Array(char, 16)
+char__MAX_HOSTNAME_LEN_+_4_ = Array(char, 132)
+char__MAX_DOMAIN_NAME_LEN_+_4_ = Array(char, 132)
+char__MAX_SCOPE_ID_LEN_+_4_ = Array(char, 260)
+char__MAX_ADAPTER_NAME_LENGTH_+_4_ = Array(char, 260)
+char__MAX_ADAPTER_DESCRIPTION_LENGTH_+_4_ = Array(char, 132)
+CHAR__8_ = Array(CHAR, 8)
+WCHAR__6_ = Array(WCHAR, 6)
+WCHAR__MAX_ADAPTER_NAME_ = Array(WCHAR, 128)
+WCHAR__IF_MAX_STRING_SIZE_+_1_ = Array(WCHAR, 257)
+WCHAR__DNS_MAX_NAME_BUFFER_LENGTH_ = Array(WCHAR, 256)
+WCHAR__MAX_INTERFACE_NAME_LEN_ = Array(WCHAR, 256)
+UCHAR__MAXLEN_PHYSADDR_ = Array(UCHAR, 8)
+UCHAR__MAXLEN_IFDESCR_ = Array(UCHAR, 256)
+UCHAR__IF_MAX_PHYS_ADDRESS_LENGTH_ = Array(UCHAR, 32)
+BYTE__MAX_ADAPTER_ADDRESS_LENGTH_ = Array(BYTE, 8)
+ULONG__ScopeLevelCount_ = Array(ULONG, 16)
+DWORD__256_ = Array(DWORD, 256)
+ULONGLONG__TCPIP_OWNING_MODULE_SIZE_ = Array(ULONGLONG, 16)
+IFTYPE = ULONG
+
+class SCOPE_ID(MemStruct):
+    fields = [
+        ("Value", ULONG()),
+    ]
+
+MIB_TCP_STATE = UINT
+TCP_CONNECTION_OFFLOAD_STATE = UINT
+
+class SOCKADDR_IN(MemStruct):
+    fields = [
+        ("sin_family", ADDRESS_FAMILY()),
+        ("sin_port", USHORT()),
+        ("sin_addr", IN_ADDR()),
+        ("sin_zero", CHAR__8_()),
+    ]
+
+
+class struct_sockaddr_in6(MemStruct):
+    fields = [
+        ("sin6_family", ADDRESS_FAMILY()),
+        ("sin6_port", USHORT()),
+        ("sin6_flowinfo", ULONG()),
+        ("sin6_addr", IN6_ADDR()),
+        ("sin6_scope_id", ULONG()),
+    ]
+
+struct_sockaddr_in6_PTR = Ptr("<I", struct_sockaddr_in6())
+SOCKADDR_IN6 = struct_sockaddr_in6
+PSOCKADDR_IN6 = Ptr("<I", SOCKADDR_IN6())
+const_PSOCKADDR_IN6 = Ptr("<I", SOCKADDR_IN6())
+NET_LUID = Union([
+    ("Value", ULONG64),
+])
+NET_LUID_PTR = Ptr("<I", NET_LUID())
+PNET_LUID = Ptr("<I", NET_LUID())
+const_NET_LUID_PTR = Ptr("<I", NET_LUID())
+
+class IP_ADDRESS_STRING(MemStruct):
+    fields = [
+        ("String", char__16_()),
+    ]
+
+IP_MASK_STRING = IP_ADDRESS_STRING
+
+class IP_ADDR_STRING(MemStruct):
+    fields = [
+        ("Next", LPVOID()),
+        ("IpAddress", IP_ADDRESS_STRING()),
+        ("IpMask", IP_MASK_STRING()),
+        ("Context", DWORD()),
+    ]
+
+PIP_ADDR_STRING = Ptr("<I", IP_ADDR_STRING())
+NL_ROUTE_PROTOCOL = UINT
+MIB_IPFORWARD_PROTO = NL_ROUTE_PROTOCOL
+NL_ROUTE_ORIGIN = UINT
+SOCKADDR_INET = Union([
+    ("Ipv4", SOCKADDR_IN),
+    ("Ipv6", SOCKADDR_IN6),
+    ("si_family", ADDRESS_FAMILY),
+])
+SOCKADDR_INET_PTR = Ptr("<I", SOCKADDR_INET())
+const_SOCKADDR_INET_PTR = Ptr("<I", SOCKADDR_INET())
+
+class IP_ADDRESS_PREFIX(MemStruct):
+    fields = [
+        ("Prefix", SOCKADDR_INET()),
+        ("PrefixLength", UINT8()),
+    ]
+
+_MIB_IF_TYPE_ = IFTYPE
+
+class IP_ADAPTER_INFO(MemStruct):
+    fields = [
+        ("Next", LPVOID()),
+        ("ComboIndex", DWORD()),
+        ("AdapterName", char__MAX_ADAPTER_NAME_LENGTH_+_4_()),
+        ("Description", char__MAX_ADAPTER_DESCRIPTION_LENGTH_+_4_()),
+        ("AddressLength", UINT()),
+        ("Address", BYTE__MAX_ADAPTER_ADDRESS_LENGTH_()),
+        ("Index", DWORD()),
+        ("Type", _MIB_IF_TYPE_()),
+        ("DhcpEnabled", UINT()),
+        ("CurrentIpAddress", PIP_ADDR_STRING()),
+        ("IpAddressList", IP_ADDR_STRING()),
+        ("GatewayList", IP_ADDR_STRING()),
+        ("DhcpServer", IP_ADDR_STRING()),
+        ("HaveWins", BOOL()),
+        ("PrimaryWinsServer", IP_ADDR_STRING()),
+        ("SecondaryWinsServer", IP_ADDR_STRING()),
+        ("LeaseObtained", time_t()),
+        ("LeaseExpires", time_t()),
+    ]
+
+PIP_ADAPTER_INFO = Ptr("<I", IP_ADAPTER_INFO())
+
+class IP_PER_ADAPTER_INFO(MemStruct):
+    fields = [
+        ("AutoconfigEnabled", UINT()),
+        ("AutoconfigActive", UINT()),
+        ("CurrentDnsServer", PIP_ADDR_STRING()),
+        ("DnsServerList", IP_ADDR_STRING()),
+    ]
+
+PIP_PER_ADAPTER_INFO = Ptr("<I", IP_PER_ADAPTER_INFO())
+
+class IP_UNIDIRECTIONAL_ADAPTER_ADDRESS(MemStruct):
+    fields = [
+        ("NumAdapters", ULONG()),
+        ("Address", IPAddr__1_()),
+    ]
+
+PIP_UNIDIRECTIONAL_ADAPTER_ADDRESS = Ptr("<I", IP_UNIDIRECTIONAL_ADAPTER_ADDRESS())
+MIB_IPNET_TYPE = UINT
+
+class MIB_IPNETROW(MemStruct):
+    fields = [
+        ("dwIndex", IF_INDEX()),
+        ("dwPhysAddrLen", DWORD()),
+        ("bPhysAddr", UCHAR__MAXLEN_PHYSADDR_()),
+        ("dwAddr", DWORD()),
+        ("Type", MIB_IPNET_TYPE()),
+    ]
+
+PMIB_IPNETROW = Ptr("<I", MIB_IPNETROW())
+MIB_IPNETROW__ANY_SIZE_ = Array(MIB_IPNETROW, 1)
+
+class MIB_IPNETTABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_IPNETROW__ANY_SIZE_()),
+    ]
+
+PMIB_IPNETTABLE = Ptr("<I", MIB_IPNETTABLE())
+
+class MIB_IFSTACK_ROW(MemStruct):
+    fields = [
+        ("HigherLayerInterfaceIndex", NET_IFINDEX()),
+        ("LowerLayerInterfaceIndex", NET_IFINDEX()),
+    ]
+
+MIB_IFSTACK_ROW__ANY_SIZE_ = Array(MIB_IFSTACK_ROW, 1)
+
+class MIB_IFSTACK_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_IFSTACK_ROW__ANY_SIZE_()),
+    ]
+
+PMIB_IFSTACK_TABLE = Ptr("<I", MIB_IFSTACK_TABLE())
+PMIB_IFSTACK_TABLE_PTR = Ptr("<I", PMIB_IFSTACK_TABLE())
+INTERNAL_IF_OPER_STATUS = UINT
+
+class MIB_IFROW(MemStruct):
+    fields = [
+        ("wszName", WCHAR__MAX_INTERFACE_NAME_LEN_()),
+        ("dwIndex", IF_INDEX()),
+        ("dwType", IFTYPE()),
+        ("dwMtu", DWORD()),
+        ("dwSpeed", DWORD()),
+        ("dwPhysAddrLen", DWORD()),
+        ("bPhysAddr", UCHAR__MAXLEN_PHYSADDR_()),
+        ("dwAdminStatus", DWORD()),
+        ("dwOperStatus", INTERNAL_IF_OPER_STATUS()),
+        ("dwLastChange", DWORD()),
+        ("dwInOctets", DWORD()),
+        ("dwInUcastPkts", DWORD()),
+        ("dwInNUcastPkts", DWORD()),
+        ("dwInDiscards", DWORD()),
+        ("dwInErrors", DWORD()),
+        ("dwInUnknownProtos", DWORD()),
+        ("dwOutOctets", DWORD()),
+        ("dwOutUcastPkts", DWORD()),
+        ("dwOutNUcastPkts", DWORD()),
+        ("dwOutDiscards", DWORD()),
+        ("dwOutErrors", DWORD()),
+        ("dwOutQLen", DWORD()),
+        ("dwDescrLen", DWORD()),
+        ("bDescr", UCHAR__MAXLEN_IFDESCR_()),
+    ]
+
+PMIB_IFROW = Ptr("<I", MIB_IFROW())
+MIB_IFROW__ANY_SIZE_ = Array(MIB_IFROW, 1)
+
+class MIB_IFTABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_IFROW__ANY_SIZE_()),
+    ]
+
+PMIB_IFTABLE = Ptr("<I", MIB_IFTABLE())
+
+class _MIB_IF_ROW2_s_(MemStruct):
+    fields = [
+        ("Flags", BOOLEAN()),
+    ]
+
+TUNNEL_TYPE = UINT
+NDIS_MEDIUM = UINT
+NDIS_PHYSICAL_MEDIUM = UINT
+NET_IF_ACCESS_TYPE = UINT
+NET_IF_DIRECTION_TYPE = UINT
+IF_OPER_STATUS = UINT
+NET_IF_ADMIN_STATUS = UINT
+NET_IF_MEDIA_CONNECT_STATE = UINT
+NET_IF_CONNECTION_TYPE = UINT
+
+class MIB_IF_ROW2(MemStruct):
+    fields = [
+        ("InterfaceLuid", NET_LUID()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("InterfaceGuid", GUID()),
+        ("Alias", WCHAR__IF_MAX_STRING_SIZE_+_1_()),
+        ("Description", WCHAR__IF_MAX_STRING_SIZE_+_1_()),
+        ("PhysicalAddressLength", ULONG()),
+        ("PhysicalAddress", UCHAR__IF_MAX_PHYS_ADDRESS_LENGTH_()),
+        ("PermanentPhysicalAddress", UCHAR__IF_MAX_PHYS_ADDRESS_LENGTH_()),
+        ("Mtu", ULONG()),
+        ("Type", IFTYPE()),
+        ("TunnelType", TUNNEL_TYPE()),
+        ("MediaType", NDIS_MEDIUM()),
+        ("PhysicalMediumType", NDIS_PHYSICAL_MEDIUM()),
+        ("AccessType", NET_IF_ACCESS_TYPE()),
+        ("DirectionType", NET_IF_DIRECTION_TYPE()),
+        ("InterfaceAndOperStatusFlags", _MIB_IF_ROW2_s_()),
+        ("OperStatus", IF_OPER_STATUS()),
+        ("AdminStatus", NET_IF_ADMIN_STATUS()),
+        ("MediaConnectState", NET_IF_MEDIA_CONNECT_STATE()),
+        ("NetworkGuid", NET_IF_NETWORK_GUID()),
+        ("ConnectionType", NET_IF_CONNECTION_TYPE()),
+        ("TransmitLinkSpeed", ULONG64()),
+        ("ReceiveLinkSpeed", ULONG64()),
+        ("InOctets", ULONG64()),
+        ("InUcastPkts", ULONG64()),
+        ("InNUcastPkts", ULONG64()),
+        ("InDiscards", ULONG64()),
+        ("InErrors", ULONG64()),
+        ("InUnknownProtos", ULONG64()),
+        ("InUcastOctets", ULONG64()),
+        ("InMulticastOctets", ULONG64()),
+        ("InBroadcastOctets", ULONG64()),
+        ("OutOctets", ULONG64()),
+        ("OutUcastPkts", ULONG64()),
+        ("OutNUcastPkts", ULONG64()),
+        ("OutDiscards", ULONG64()),
+        ("OutErrors", ULONG64()),
+        ("OutUcastOctets", ULONG64()),
+        ("OutMulticastOctets", ULONG64()),
+        ("OutBroadcastOctets", ULONG64()),
+        ("OutQLen", ULONG64()),
+    ]
+
+PMIB_IF_ROW2 = Ptr("<I", MIB_IF_ROW2())
+MIB_IF_ROW2__ANY_SIZE_ = Array(MIB_IF_ROW2, 1)
+
+class MIB_IF_TABLE2(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_IF_ROW2__ANY_SIZE_()),
+    ]
+
+PMIB_IF_TABLE2 = Ptr("<I", MIB_IF_TABLE2())
+PMIB_IF_TABLE2_PTR = Ptr("<I", PMIB_IF_TABLE2())
+
+class IP_ADAPTER_INDEX_MAP(MemStruct):
+    fields = [
+        ("Index", ULONG()),
+        ("Name", WCHAR__MAX_ADAPTER_NAME_()),
+    ]
+
+PIP_ADAPTER_INDEX_MAP = Ptr("<I", IP_ADAPTER_INDEX_MAP())
+IP_ADAPTER_INDEX_MAP__1_ = Array(IP_ADAPTER_INDEX_MAP, 1)
+
+class IP_INTERFACE_INFO(MemStruct):
+    fields = [
+        ("NumAdapters", LONG()),
+        ("Adapter", IP_ADAPTER_INDEX_MAP__1_()),
+    ]
+
+PIP_INTERFACE_INFO = Ptr("<I", IP_INTERFACE_INFO())
+
+class MIB_INVERTEDIFSTACK_ROW(MemStruct):
+    fields = [
+        ("LowerLayerInterfaceIndex", NET_IFINDEX()),
+        ("HigherLayerInterfaceIndex", NET_IFINDEX()),
+    ]
+
+MIB_INVERTEDIFSTACK_ROW__ANY_SIZE_ = Array(MIB_INVERTEDIFSTACK_ROW, 1)
+
+class MIB_INVERTEDIFSTACK_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_INVERTEDIFSTACK_ROW__ANY_SIZE_()),
+    ]
+
+PMIB_INVERTEDIFSTACK_TABLE = Ptr("<I", MIB_INVERTEDIFSTACK_TABLE())
+PMIB_INVERTEDIFSTACK_TABLE_PTR = Ptr("<I", PMIB_INVERTEDIFSTACK_TABLE())
+NL_ROUTER_DISCOVERY_BEHAVIOR = UINT
+NL_LINK_LOCAL_ADDRESS_BEHAVIOR = UINT
+
+class NL_INTERFACE_OFFLOAD_ROD(MemStruct):
+    fields = [
+        ("Value", BOOLEAN()),
+    ]
+
+
+class MIB_IPINTERFACE_ROW(MemStruct):
+    fields = [
+        ("Family", ADDRESS_FAMILY()),
+        ("InterfaceLuid", NET_LUID()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("MaxReassemblySize", ULONG()),
+        ("InterfaceIdentifier", ULONG64()),
+        ("MinRouterAdvertisementInterval", ULONG()),
+        ("MaxRouterAdvertisementInterval", ULONG()),
+        ("AdvertisingEnabled", BOOLEAN()),
+        ("ForwardingEnabled", BOOLEAN()),
+        ("WeakHostSend", BOOLEAN()),
+        ("WeakHostReceive", BOOLEAN()),
+        ("UseAutomaticMetric", BOOLEAN()),
+        ("UseNeighborUnreachabilityDetection", BOOLEAN()),
+        ("ManagedAddressConfigurationSupported", BOOLEAN()),
+        ("OtherStatefulConfigurationSupported", BOOLEAN()),
+        ("AdvertiseDefaultRoute", BOOLEAN()),
+        ("RouterDiscoveryBehavior", NL_ROUTER_DISCOVERY_BEHAVIOR()),
+        ("DadTransmits", ULONG()),
+        ("BaseReachableTime", ULONG()),
+        ("RetransmitTime", ULONG()),
+        ("PathMtuDiscoveryTimeout", ULONG()),
+        ("LinkLocalAddressBehavior", NL_LINK_LOCAL_ADDRESS_BEHAVIOR()),
+        ("LinkLocalAddressTimeout", ULONG()),
+        ("ZoneIndices", ULONG__ScopeLevelCount_()),
+        ("SitePrefixLength", ULONG()),
+        ("Metric", ULONG()),
+        ("NlMtu", ULONG()),
+        ("Connected", BOOLEAN()),
+        ("SupportsWakeUpPatterns", BOOLEAN()),
+        ("SupportsNeighborDiscovery", BOOLEAN()),
+        ("SupportsRouterDiscovery", BOOLEAN()),
+        ("ReachableTime", ULONG()),
+        ("TransmitOffload", NL_INTERFACE_OFFLOAD_ROD()),
+        ("ReceiveOffload", NL_INTERFACE_OFFLOAD_ROD()),
+        ("DisableDefaultRoutes", BOOLEAN()),
+    ]
+
+PMIB_IPINTERFACE_ROW = Ptr("<I", MIB_IPINTERFACE_ROW())
+MIB_IPINTERFACE_ROW__ANY_SIZE_ = Array(MIB_IPINTERFACE_ROW, 1)
+
+class MIB_IPINTERFACE_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_IPINTERFACE_ROW__ANY_SIZE_()),
+    ]
+
+PMIB_IPINTERFACE_TABLE = Ptr("<I", MIB_IPINTERFACE_TABLE())
+PMIB_IPINTERFACE_TABLE_PTR = Ptr("<I", PMIB_IPINTERFACE_TABLE())
+
+class MIBICMPSTATS(MemStruct):
+    fields = [
+        ("dwMsgs", DWORD()),
+        ("dwErrors", DWORD()),
+        ("dwDestUnreachs", DWORD()),
+        ("dwTimeExcds", DWORD()),
+        ("dwParmProbs", DWORD()),
+        ("dwSrcQuenchs", DWORD()),
+        ("dwRedirects", DWORD()),
+        ("dwEchos", DWORD()),
+        ("dwEchoReps", DWORD()),
+        ("dwTimestamps", DWORD()),
+        ("dwTimestampReps", DWORD()),
+        ("dwAddrMasks", DWORD()),
+        ("dwAddrMaskReps", DWORD()),
+    ]
+
+
+class MIBICMPINFO(MemStruct):
+    fields = [
+        ("icmpInStats", MIBICMPSTATS()),
+        ("icmpOutStats", MIBICMPSTATS()),
+    ]
+
+
+class MIB_ICMP(MemStruct):
+    fields = [
+        ("stats", MIBICMPINFO()),
+    ]
+
+PMIB_ICMP = Ptr("<I", MIB_ICMP())
+MIB_IPSTATS_FORWARDING = UINT
+
+class MIB_IPSTATS(MemStruct):
+    fields = [
+        ("Forwarding", MIB_IPSTATS_FORWARDING()),
+        ("dwDefaultTTL", DWORD()),
+        ("dwInReceives", DWORD()),
+        ("dwInHdrErrors", DWORD()),
+        ("dwInAddrErrors", DWORD()),
+        ("dwForwDatagrams", DWORD()),
+        ("dwInUnknownProtos", DWORD()),
+        ("dwInDiscards", DWORD()),
+        ("dwInDelivers", DWORD()),
+        ("dwOutRequests", DWORD()),
+        ("dwRoutingDiscards", DWORD()),
+        ("dwOutDiscards", DWORD()),
+        ("dwOutNoRoutes", DWORD()),
+        ("dwReasmTimeout", DWORD()),
+        ("dwReasmReqds", DWORD()),
+        ("dwReasmOks", DWORD()),
+        ("dwReasmFails", DWORD()),
+        ("dwFragOks", DWORD()),
+        ("dwFragFails", DWORD()),
+        ("dwFragCreates", DWORD()),
+        ("dwNumIf", DWORD()),
+        ("dwNumAddr", DWORD()),
+        ("dwNumRoutes", DWORD()),
+    ]
+
+PMIB_IPSTATS = Ptr("<I", MIB_IPSTATS())
+
+class MIB_ANYCASTIPADDRESS_ROW(MemStruct):
+    fields = [
+        ("Address", SOCKADDR_INET()),
+        ("InterfaceLuid", NET_LUID()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("ScopeId", SCOPE_ID()),
+    ]
+
+PMIB_ANYCASTIPADDRESS_ROW = Ptr("<I", MIB_ANYCASTIPADDRESS_ROW())
+const_MIB_ANYCASTIPADDRESS_ROW_PTR = Ptr("<I", MIB_ANYCASTIPADDRESS_ROW())
+MIB_ANYCASTIPADDRESS_ROW__ANY_SIZE_ = Array(MIB_ANYCASTIPADDRESS_ROW, 1)
+
+class MIB_ANYCASTIPADDRESS_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_ANYCASTIPADDRESS_ROW__ANY_SIZE_()),
+    ]
+
+PMIB_ANYCASTIPADDRESS_TABLE = Ptr("<I", MIB_ANYCASTIPADDRESS_TABLE())
+PMIB_ANYCASTIPADDRESS_TABLE_PTR = Ptr("<I", PMIB_ANYCASTIPADDRESS_TABLE())
+_MIB_IPADDR_TYPE_ = unsigned_short
+
+class MIB_IPADDRROW(MemStruct):
+    fields = [
+        ("dwAddr", DWORD()),
+        ("dwIndex", IF_INDEX()),
+        ("dwMask", DWORD()),
+        ("dwBCastAddr", DWORD()),
+        ("dwReasmSize", DWORD()),
+        ("unused1", unsigned_short()),
+        ("wType", _MIB_IPADDR_TYPE_()),
+    ]
+
+MIB_IPADDRROW__ANY_SIZE_ = Array(MIB_IPADDRROW, 1)
+
+class MIB_IPADDRTABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_IPADDRROW__ANY_SIZE_()),
+    ]
+
+PMIB_IPADDRTABLE = Ptr("<I", MIB_IPADDRTABLE())
+
+class MIB_MULTICASTIPADDRESS_ROW(MemStruct):
+    fields = [
+        ("Address", SOCKADDR_INET()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("InterfaceLuid", NET_LUID()),
+        ("ScopeId", SCOPE_ID()),
+    ]
+
+PMIB_MULTICASTIPADDRESS_ROW = Ptr("<I", MIB_MULTICASTIPADDRESS_ROW())
+MIB_MULTICASTIPADDRESS_ROW__ANY_SIZE_ = Array(MIB_MULTICASTIPADDRESS_ROW, 1)
+
+class MIB_MULTICASTIPADDRESS_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_MULTICASTIPADDRESS_ROW__ANY_SIZE_()),
+    ]
+
+PMIB_MULTICASTIPADDRESS_TABLE = Ptr("<I", MIB_MULTICASTIPADDRESS_TABLE())
+PMIB_MULTICASTIPADDRESS_TABLE_PTR = Ptr("<I", PMIB_MULTICASTIPADDRESS_TABLE())
+NL_PREFIX_ORIGIN = UINT
+NL_SUFFIX_ORIGIN = UINT
+NL_DAD_STATE = UINT
+
+class MIB_UNICASTIPADDRESS_ROW(MemStruct):
+    fields = [
+        ("Address", SOCKADDR_INET()),
+        ("InterfaceLuid", NET_LUID()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("PrefixOrigin", NL_PREFIX_ORIGIN()),
+        ("SuffixOrigin", NL_SUFFIX_ORIGIN()),
+        ("ValidLifetime", ULONG()),
+        ("PreferredLifetime", ULONG()),
+        ("OnLinkPrefixLength", UINT8()),
+        ("SkipAsSource", BOOLEAN()),
+        ("DadState", NL_DAD_STATE()),
+        ("ScopeId", SCOPE_ID()),
+        ("CreationTimeStamp", LARGE_INTEGER()),
+    ]
+
+PMIB_UNICASTIPADDRESS_ROW = Ptr("<I", MIB_UNICASTIPADDRESS_ROW())
+const_MIB_UNICASTIPADDRESS_ROW_PTR = Ptr("<I", MIB_UNICASTIPADDRESS_ROW())
+MIB_UNICASTIPADDRESS_ROW__ANY_SIZE_ = Array(MIB_UNICASTIPADDRESS_ROW, 1)
+
+class MIB_UNICASTIPADDRESS_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_UNICASTIPADDRESS_ROW__ANY_SIZE_()),
+    ]
+
+PMIB_UNICASTIPADDRESS_TABLE = Ptr("<I", MIB_UNICASTIPADDRESS_TABLE())
+PMIB_UNICASTIPADDRESS_TABLE_PTR = Ptr("<I", PMIB_UNICASTIPADDRESS_TABLE())
+_MIB_ReachabilityTime_ = Union([
+    ("LastReachable", ULONG),
+    ("LastUnreachable", ULONG),
+])
+NL_NEIGHBOR_STATE = UINT
+
+class MIB_IPNET_ROW2(MemStruct):
+    fields = [
+        ("Address", SOCKADDR_INET()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("InterfaceLuid", NET_LUID()),
+        ("PhysicalAddress", UCHAR__IF_MAX_PHYS_ADDRESS_LENGTH_()),
+        ("PhysicalAddressLength", ULONG()),
+        ("State", NL_NEIGHBOR_STATE()),
+        ("Flags", UCHAR()),
+        ("ReachabilityTime", _MIB_ReachabilityTime_()),
+    ]
+
+const_MIB_IPNET_ROW2_PTR = Ptr("<I", MIB_IPNET_ROW2())
+PMIB_IPNET_ROW2 = Ptr("<I", MIB_IPNET_ROW2())
+MIB_IPNET_ROW2__ANY_SIZE_ = Array(MIB_IPNET_ROW2, 1)
+
+class MIB_IPNET_TABLE2(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_IPNET_ROW2__ANY_SIZE_()),
+    ]
+
+PMIB_IPNET_TABLE2 = Ptr("<I", MIB_IPNET_TABLE2())
+PMIB_IPNET_TABLE2_PTR = Ptr("<I", PMIB_IPNET_TABLE2())
+
+class MIB_IPPATH_ROW(MemStruct):
+    fields = [
+        ("Source", SOCKADDR_INET()),
+        ("Destination", SOCKADDR_INET()),
+        ("InterfaceLuid", NET_LUID()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("CurrentNextHop", SOCKADDR_INET()),
+        ("PathMtu", ULONG()),
+        ("RttMean", ULONG()),
+        ("RttDeviation", ULONG()),
+        (None, _MIB_ReachabilityTime_()),
+        ("IsReachable", BOOLEAN()),
+        ("LinkTransmitSpeed", ULONG64()),
+        ("LinkReceiveSpeed", ULONG64()),
+    ]
+
+PMIB_IPPATH_ROW = Ptr("<I", MIB_IPPATH_ROW())
+MIB_IPPATH_ROW__ANY_SIZE_ = Array(MIB_IPPATH_ROW, 1)
+
+class MIB_IPPATH_TABLE(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_IPPATH_ROW__ANY_SIZE_()),
+    ]
+
+MIB_IPPATH_TABLE_PTR = Ptr("<I", MIB_IPPATH_TABLE())
+MIB_IPFORWARD_TYPE = UINT
+
+class MIB_IPFORWARDROW(MemStruct):
+    fields = [
+        ("dwForwardDest", DWORD()),
+        ("dwForwardMask", DWORD()),
+        ("dwForwardPolicy", DWORD()),
+        ("dwForwardNextHop", DWORD()),
+        ("dwForwardIfIndex", IF_INDEX()),
+        ("ForwardType", MIB_IPFORWARD_TYPE()),
+        ("ForwardProto", MIB_IPFORWARD_PROTO()),
+        ("dwForwardAge", DWORD()),
+        ("dwForwardNextHopAS", DWORD()),
+        ("dwForwardMetric1", DWORD()),
+        ("dwForwardMetric2", DWORD()),
+        ("dwForwardMetric3", DWORD()),
+        ("dwForwardMetric4", DWORD()),
+        ("dwForwardMetric5", DWORD()),
+    ]
+
+PMIB_IPFORWARDROW = Ptr("<I", MIB_IPFORWARDROW())
+MIB_IPFORWARDROW__ANY_SIZE_ = Array(MIB_IPFORWARDROW, 1)
+
+class MIB_IPFORWARDTABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_IPFORWARDROW__ANY_SIZE_()),
+    ]
+
+PMIB_IPFORWARDTABLE = Ptr("<I", MIB_IPFORWARDTABLE())
+
+class MIB_IPFORWARD_ROW2(MemStruct):
+    fields = [
+        ("InterfaceLuid", NET_LUID()),
+        ("InterfaceIndex", NET_IFINDEX()),
+        ("DestinationPrefix", IP_ADDRESS_PREFIX()),
+        ("NextHop", SOCKADDR_INET()),
+        ("SitePrefixLength", UCHAR()),
+        ("ValidLifetime", ULONG()),
+        ("PreferredLifetime", ULONG()),
+        ("Metric", ULONG()),
+        ("Protocol", NL_ROUTE_PROTOCOL()),
+        ("Loopback", BOOLEAN()),
+        ("AutoconfigureAddress", BOOLEAN()),
+        ("Publish", BOOLEAN()),
+        ("Immortal", BOOLEAN()),
+        ("Age", ULONG()),
+        ("Origin", NL_ROUTE_ORIGIN()),
+    ]
+
+PMIB_IPFORWARD_ROW2 = Ptr("<I", MIB_IPFORWARD_ROW2())
+const_MIB_IPFORWARD_ROW2_PTR = Ptr("<I", MIB_IPFORWARD_ROW2())
+MIB_IPFORWARD_ROW2__ANY_SIZE_ = Array(MIB_IPFORWARD_ROW2, 1)
+
+class MIB_IPFORWARD_TABLE2(MemStruct):
+    fields = [
+        ("NumEntries", ULONG()),
+        ("Table", MIB_IPFORWARD_ROW2__ANY_SIZE_()),
+    ]
+
+PMIB_IPFORWARD_TABLE2 = Ptr("<I", MIB_IPFORWARD_TABLE2())
+PMIB_IPFORWARD_TABLE2_PTR = Ptr("<I", PMIB_IPFORWARD_TABLE2())
+
+class SOCKADDR_IN6_PAIR(MemStruct):
+    fields = [
+        ("SourceAddress", PSOCKADDR_IN6()),
+        ("DestinationAddress", PSOCKADDR_IN6()),
+    ]
+
+PSOCKADDR_IN6_PAIR = Ptr("<I", SOCKADDR_IN6_PAIR())
+PSOCKADDR_IN6_PAIR_PTR = Ptr("<I", PSOCKADDR_IN6_PAIR())
+NET_ADDRESS_FORMAT = UINT
+
+class _NET_ADDRESS_INFO_u_s_(MemStruct):
+    fields = [
+        ("Address", WCHAR__DNS_MAX_NAME_BUFFER_LENGTH_()),
+        ("Port", WCHAR__6_()),
+    ]
+
+_NET_ADDRESS_INFO_u_ = Union([
+    ("NamedAddress", _NET_ADDRESS_INFO_u_s_),
+    ("Ipv4Address", SOCKADDR_IN),
+    ("Ipv6Address", SOCKADDR_IN6),
+    ("IpAddress", SOCKADDR),
+])
+
+class NET_ADDRESS_INFO(MemStruct):
+    fields = [
+        ("Format", NET_ADDRESS_FORMAT()),
+        (None, _NET_ADDRESS_INFO_u_()),
+    ]
+
+PNET_ADDRESS_INFO = Ptr("<I", NET_ADDRESS_INFO())
+_FIXED_INFO_NODETYPE_ = UINT
+
+class FIXED_INFO(MemStruct):
+    fields = [
+        ("HostName", char__MAX_HOSTNAME_LEN_+_4_()),
+        ("DomainName", char__MAX_DOMAIN_NAME_LEN_+_4_()),
+        ("CurrentDnsServer", PIP_ADDR_STRING()),
+        ("DnsServerList", IP_ADDR_STRING()),
+        ("NodeType", _FIXED_INFO_NODETYPE_()),
+        ("ScopeId", char__MAX_SCOPE_ID_LEN_+_4_()),
+        ("EnableRouting", UINT()),
+        ("EnableProxy", UINT()),
+        ("EnableDns", UINT()),
+    ]
+
+PFIXED_INFO = Ptr("<I", FIXED_INFO())
+
+class MIB_TCP6ROW_OWNER_MODULE(MemStruct):
+    fields = [
+        ("ucLocalAddr", UCHAR__16_()),
+        ("dwLocalScopeId", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("ucRemoteAddr", UCHAR__16_()),
+        ("dwRemoteScopeId", DWORD()),
+        ("dwRemotePort", DWORD()),
+        ("dwState", MIB_TCP_STATE()),
+        ("dwOwningPid", DWORD()),
+        ("liCreateTimestamp", LARGE_INTEGER()),
+        ("OwningModuleInfo", ULONGLONG__TCPIP_OWNING_MODULE_SIZE_()),
+    ]
+
+PMIB_TCP6ROW_OWNER_MODULE = Ptr("<I", MIB_TCP6ROW_OWNER_MODULE())
+
+class MIB_TCPROW_OWNER_MODULE(MemStruct):
+    fields = [
+        ("dwState", MIB_TCP_STATE()),
+        ("dwLocalAddr", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("dwRemoteAddr", DWORD()),
+        ("dwRemotePort", DWORD()),
+        ("dwOwningPid", DWORD()),
+        ("liCreateTimestamp", LARGE_INTEGER()),
+        ("OwningModuleInfo", ULONGLONG__TCPIP_OWNING_MODULE_SIZE_()),
+    ]
+
+PMIB_TCPROW_OWNER_MODULE = Ptr("<I", MIB_TCPROW_OWNER_MODULE())
+
+class MIB_UDP6ROW_OWNER_MODULE(MemStruct):
+    fields = [
+        ("ucLocalAddr", UCHAR__16_()),
+        ("dwLocalScopeId", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("dwOwningPid", DWORD()),
+        ("liCreateTimestamp", LARGE_INTEGER()),
+        ("dwFlags", int()),
+        ("OwningModuleInfo", ULONGLONG__TCPIP_OWNING_MODULE_SIZE_()),
+    ]
+
+PMIB_UDP6ROW_OWNER_MODULE = Ptr("<I", MIB_UDP6ROW_OWNER_MODULE())
+
+class MIB_UDPROW_OWNER_MODULE(MemStruct):
+    fields = [
+        ("dwLocalAddr", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("dwOwningPid", DWORD()),
+        ("liCreateTimestamp", LARGE_INTEGER()),
+        ("dwFlags", int()),
+        ("OwningModuleInfo", ULONGLONG__TCPIP_OWNING_MODULE_SIZE_()),
+    ]
+
+PMIB_UDPROW_OWNER_MODULE = Ptr("<I", MIB_UDPROW_OWNER_MODULE())
+TCP_RTO_ALGORITHM = UINT
+
+class MIB_TCPSTATS(MemStruct):
+    fields = [
+        ("RtoAlgorithm", TCP_RTO_ALGORITHM()),
+        ("dwRtoMin", DWORD()),
+        ("dwRtoMax", DWORD()),
+        ("dwMaxConn", DWORD()),
+        ("dwActiveOpens", DWORD()),
+        ("dwPassiveOpens", DWORD()),
+        ("dwAttemptFails", DWORD()),
+        ("dwEstabResets", DWORD()),
+        ("dwCurrEstab", DWORD()),
+        ("dwInSegs", DWORD()),
+        ("dwOutSegs", DWORD()),
+        ("dwRetransSegs", DWORD()),
+        ("dwInErrs", DWORD()),
+        ("dwOutRsts", DWORD()),
+        ("dwNumConns", DWORD()),
+    ]
+
+PMIB_TCPSTATS = Ptr("<I", MIB_TCPSTATS())
+
+class MIB_TCP6ROW(MemStruct):
+    fields = [
+        ("State", MIB_TCP_STATE()),
+        ("LocalAddr", IN6_ADDR()),
+        ("dwLocalScopeId", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("RemoteAddr", IN6_ADDR()),
+        ("dwRemoteScopeId", DWORD()),
+        ("dwRemotePort", DWORD()),
+    ]
+
+PMIB_TCP6ROW = Ptr("<I", MIB_TCP6ROW())
+MIB_TCP6ROW__ANY_SIZE_ = Array(MIB_TCP6ROW, 1)
+
+class MIB_TCP6TABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_TCP6ROW__ANY_SIZE_()),
+    ]
+
+PMIB_TCP6TABLE = Ptr("<I", MIB_TCP6TABLE())
+
+class MIB_TCP6ROW2(MemStruct):
+    fields = [
+        ("LocalAddr", IN6_ADDR()),
+        ("dwLocalScopeId", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("RemoteAddr", IN6_ADDR()),
+        ("dwRemoteScopeId", DWORD()),
+        ("dwRemotePort", DWORD()),
+        ("State", MIB_TCP_STATE()),
+        ("dwOwningPid", DWORD()),
+        ("dwOffloadState", TCP_CONNECTION_OFFLOAD_STATE()),
+    ]
+
+MIB_TCP6ROW2__ANY_SIZE_ = Array(MIB_TCP6ROW2, 1)
+
+class MIB_TCP6TABLE2(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_TCP6ROW2__ANY_SIZE_()),
+    ]
+
+PMIB_TCP6TABLE2 = Ptr("<I", MIB_TCP6TABLE2())
+
+class MIB_TCPROW(MemStruct):
+    fields = [
+        ("State", MIB_TCP_STATE()),
+        ("dwLocalAddr", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("dwRemoteAddr", DWORD()),
+        ("dwRemotePort", DWORD()),
+    ]
+
+PMIB_TCPROW = Ptr("<I", MIB_TCPROW())
+MIB_TCPROW__ANY_SIZE_ = Array(MIB_TCPROW, 1)
+
+class MIB_TCPTABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_TCPROW__ANY_SIZE_()),
+    ]
+
+PMIB_TCPTABLE = Ptr("<I", MIB_TCPTABLE())
+
+class MIB_TCPROW2(MemStruct):
+    fields = [
+        ("dwState", MIB_TCP_STATE()),
+        ("dwLocalAddr", DWORD()),
+        ("dwLocalPort", DWORD()),
+        ("dwRemoteAddr", DWORD()),
+        ("dwRemotePort", DWORD()),
+        ("dwOwningPid", DWORD()),
+        ("dwOffloadState", TCP_CONNECTION_OFFLOAD_STATE()),
+    ]
+
+MIB_TCPROW2__ANY_SIZE_ = Array(MIB_TCPROW2, 1)
+
+class MIB_TCPTABLE2(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_TCPROW2__ANY_SIZE_()),
+    ]
+
+PMIB_TCPTABLE2 = Ptr("<I", MIB_TCPTABLE2())
+
+class MIB_UDP6ROW(MemStruct):
+    fields = [
+        ("dwLocalAddr", IN6_ADDR()),
+        ("dwLocalScopeId", DWORD()),
+        ("dwLocalPort", DWORD()),
+    ]
+
+MIB_UDP6ROW__ANY_SIZE_ = Array(MIB_UDP6ROW, 1)
+
+class MIB_UDP6TABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_UDP6ROW__ANY_SIZE_()),
+    ]
+
+PMIB_UDP6TABLE = Ptr("<I", MIB_UDP6TABLE())
+
+class MIB_UDPSTATS(MemStruct):
+    fields = [
+        ("dwInDatagrams", DWORD()),
+        ("dwNoPorts", DWORD()),
+        ("dwInErrors", DWORD()),
+        ("dwOutDatagrams", DWORD()),
+        ("dwNumAddrs", DWORD()),
+    ]
+
+PMIB_UDPSTATS = Ptr("<I", MIB_UDPSTATS())
+
+class MIB_UDPROW(MemStruct):
+    fields = [
+        ("dwLocalAddr", DWORD()),
+        ("dwLocalPort", DWORD()),
+    ]
+
+MIB_UDPROW__ANY_SIZE_ = Array(MIB_UDPROW, 1)
+
+class MIB_UDPTABLE(MemStruct):
+    fields = [
+        ("dwNumEntries", DWORD()),
+        ("table", MIB_UDPROW__ANY_SIZE_()),
+    ]
+
+PMIB_UDPTABLE = Ptr("<I", MIB_UDPTABLE())
+TCPIP_OWNER_MODULE_INFO_CLASS = UINT
+TCP_ESTATS_TYPE = UINT
+MIB_IF_TABLE_LEVEL = UINT
+TCP_TABLE_CLASS = UINT
+UDP_TABLE_CLASS = UINT
+_GetAdaptersAddressesFlags_ = ULONG
+
+class NL_BANDWIDTH_INFORMATION(MemStruct):
+    fields = [
+        ("Bandwidth", ULONG64()),
+        ("Instability", ULONG64()),
+        ("BandwidthPeaked", BOOLEAN()),
+    ]
+
+
+class MIB_IP_NETWORK_CONNECTION_BANDWIDTH_ESTIMATES(MemStruct):
+    fields = [
+        ("InboundBandwidthInformation", NL_BANDWIDTH_INFORMATION()),
+        ("OutboundBandwidthInformation", NL_BANDWIDTH_INFORMATION()),
+    ]
+
+PMIB_IP_NETWORK_CONNECTION_BANDWIDTH_ESTIMATES = Ptr("<I", MIB_IP_NETWORK_CONNECTION_BANDWIDTH_ESTIMATES())
+
+class IP_ADAPTER_ORDER_MAP(MemStruct):
+    fields = [
+        ("NumAdapters", ULONG()),
+        ("AdapterOrder", ULONG__1_()),
+    ]
+
+PIP_ADAPTER_ORDER_MAP = Ptr("<I", IP_ADAPTER_ORDER_MAP())
+
+class IP_INTERFACE_NAME_INFO(MemStruct):
+    fields = [
+        ("Index", ULONG()),
+        ("MediaType", ULONG()),
+        ("ConnectionType", UCHAR()),
+        ("AccessType", UCHAR()),
+        ("DeviceGuid", GUID()),
+        ("InterfaceGuid", GUID()),
+    ]
+
+IP_INTERFACE_NAME_INFO_PTR = Ptr("<I", IP_INTERFACE_NAME_INFO())
+IP_INTERFACE_NAME_INFO_PTR_PTR = Ptr("<I", IP_INTERFACE_NAME_INFO_PTR())
+
+class MIBICMPSTATS_EX(MemStruct):
+    fields = [
+        ("dwMsgs", DWORD()),
+        ("dwErrors", DWORD()),
+        ("rgdwTypeCount", DWORD__256_()),
+    ]
+
+
+class MIB_ICMP_EX(MemStruct):
+    fields = [
+        ("icmpInStats", MIBICMPSTATS_EX()),
+        ("icmpOutStats", MIBICMPSTATS_EX()),
+    ]
+
+PMIB_ICMP_EX = Ptr("<I", MIB_ICMP_EX())
+
+###################
+
+###### Functions ######
 
 def iphlpapi_GetAdapterIndex(jitter):
     """

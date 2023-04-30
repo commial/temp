@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def idndl_DownlevelGetLocaleScripts(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 DI_FUNCTION = {
     "DIF_SELECTDEVICE": 0x00000001,
     "DIF_INSTALLDEVICE": 0x00000002,
@@ -204,6 +205,216 @@ SetupFileLogInfo_INV = {
     3: "SetupFileLogDiskDescription",
     4: "SetupFileLogOtherInfo",
 }
+
+###################
+
+###### Types ######
+HDSKSPC = PVOID
+HINF = PVOID
+HSPFILEQ = PVOID
+PSP_FILE_CALLBACK = LPVOID
+HSPFILELOG = PVOID
+PSP_DETSIG_CMPPROC = LPVOID
+SP_LOG_TOKEN = DWORDLONG
+TCHAR__SP_MAX_MACHINENAME_LENGTH_ = Array(TCHAR, 263)
+HPROPSHEETPAGE__MAX_INSTALLWIZARD_DYNAPAGES_ = Array(HPROPSHEETPAGE, 20)
+_InfStyle_ = DWORD
+
+class SP_INF_INFORMATION(MemStruct):
+    fields = [
+        ("InfStyle", _InfStyle_()),
+        ("InfCount", DWORD()),
+        ("VersionData", BYTE__ANYSIZE_ARRAY_()),
+    ]
+
+PSP_INF_INFORMATION = Ptr("<I", SP_INF_INFORMATION())
+
+class SP_ALTPLATFORM_INFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("Platform", _VER_PLATFORM_()),
+        ("MajorVersion", DWORD()),
+        ("MinorVersion", DWORD()),
+        ("ProcessorArchitecture", _PROCESSOR_ARCHITECTURE_()),
+        ("Flags", WORD()),
+        ("FirstValidatedMajorVersion", DWORD()),
+        ("FirstValidatedMinorVersion", DWORD()),
+    ]
+
+PSP_ALTPLATFORM_INFO = Ptr("<I", SP_ALTPLATFORM_INFO())
+
+class SP_ORIGINAL_FILE_INFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("OriginalInfName", TCHAR__MAX_PATH_()),
+        ("OriginalCatalogName", TCHAR__MAX_PATH_()),
+    ]
+
+PSP_ORIGINAL_FILE_INFO = Ptr("<I", SP_ORIGINAL_FILE_INFO())
+
+class SP_INF_SIGNER_INFO(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("CatalogFile", TCHAR__MAX_PATH_()),
+        ("DigitalSigner", TCHAR__MAX_PATH_()),
+        ("DigitalSignerVersion", TCHAR__MAX_PATH_()),
+        ("SignerScore", DWORD()),
+    ]
+
+PSP_INF_SIGNER_INFO = Ptr("<I", SP_INF_SIGNER_INFO())
+
+class SP_DEVINFO_LIST_DETAIL_DATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("ClassGuid", GUID()),
+        ("RemoteMachineHandle", HANDLE()),
+        ("RemoteMachineName", TCHAR__SP_MAX_MACHINENAME_LENGTH_()),
+    ]
+
+PSP_DEVINFO_LIST_DETAIL_DATA = Ptr("<I", SP_DEVINFO_LIST_DETAIL_DATA())
+_DI_FLAGS_ = DWORD
+_DI_FLAGSEX_ = DWORD
+
+class SP_DEVINSTALL_PARAMS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("Flags", _DI_FLAGS_()),
+        ("FlagsEx", _DI_FLAGSEX_()),
+        ("hwndParent", HWND()),
+        ("InstallMsgHandler", PSP_FILE_CALLBACK()),
+        ("InstallMsgHandlerContext", PVOID()),
+        ("FileQueue", HSPFILEQ()),
+        ("ClassInstallReserved", ULONG_PTR()),
+        ("Reserved", DWORD()),
+        ("DriverPath", TCHAR__MAX_PATH_()),
+    ]
+
+PSP_DEVINSTALL_PARAMS = Ptr("<I", SP_DEVINSTALL_PARAMS())
+
+class SP_DEVICE_INTERFACE_DETAIL_DATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("DevicePath", TCHAR__ANYSIZE_ARRAY_()),
+    ]
+
+PSP_DEVICE_INTERFACE_DETAIL_DATA = Ptr("<I", SP_DEVICE_INTERFACE_DETAIL_DATA())
+
+class SP_DRVINFO_DETAIL_DATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("InfDate", FILETIME()),
+        ("CompatIDsOffset", DWORD()),
+        ("CompatIDsLength", DWORD()),
+        ("Reserved", ULONG_PTR()),
+        ("SectionName", TCHAR__LINE_LEN_()),
+        ("InfFileName", TCHAR__MAX_PATH_()),
+        ("DrvDescription", TCHAR__LINE_LEN_()),
+        ("HardwareID", TCHAR__ANYSIZE_ARRAY_()),
+    ]
+
+PSP_DRVINFO_DETAIL_DATA = Ptr("<I", SP_DRVINFO_DETAIL_DATA())
+
+class INFCONTEXT(MemStruct):
+    fields = [
+        ("Inf", PVOID()),
+        ("CurrentInf", PVOID()),
+        ("Section", UINT()),
+        ("Line", UINT()),
+    ]
+
+PINFCONTEXT = Ptr("<I", INFCONTEXT())
+
+class SP_FILE_COPY_PARAMS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("QueueHandle", HSPFILEQ()),
+        ("SourceRootPath", PCTSTR()),
+        ("SourcePath", PCTSTR()),
+        ("SourceFilename", PCTSTR()),
+        ("SourceDescription", PCTSTR()),
+        ("SourceTagfile", PCTSTR()),
+        ("TargetDirectory", PCTSTR()),
+        ("TargetFilename", PCTSTR()),
+        ("CopyStyle", DWORD()),
+        ("LayoutInf", HINF()),
+        ("SecurityDescriptor", PCTSTR()),
+    ]
+
+PSP_FILE_COPY_PARAMS = Ptr("<I", SP_FILE_COPY_PARAMS())
+
+class SP_DEVICE_INTERFACE_DATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("InterfaceClassGuid", GUID()),
+        ("Flags", DWORD()),
+        ("Reserved", ULONG_PTR()),
+    ]
+
+PSP_DEVICE_INTERFACE_DATA = Ptr("<I", SP_DEVICE_INTERFACE_DATA())
+
+class SP_CLASSIMAGELIST_DATA(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("ImageList", HIMAGELIST()),
+        ("Reserved", ULONG_PTR()),
+    ]
+
+PSP_CLASSIMAGELIST_DATA = Ptr("<I", SP_CLASSIMAGELIST_DATA())
+DI_FUNCTION = UINT
+
+class SP_CLASSINSTALL_HEADER(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("InstallFunction", DI_FUNCTION()),
+    ]
+
+PSP_CLASSINSTALL_HEADER = Ptr("<I", SP_CLASSINSTALL_HEADER())
+
+class SP_DRVINSTALL_PARAMS(MemStruct):
+    fields = [
+        ("cbSize", DWORD()),
+        ("Rank", DWORD()),
+        ("Flags", DWORD()),
+        ("PrivateData", DWORD_PTR()),
+        ("Reserved", DWORD()),
+    ]
+
+PSP_DRVINSTALL_PARAMS = Ptr("<I", SP_DRVINSTALL_PARAMS())
+_DeviceInfoGetFlags_ = DWORD
+_OpenDeviceInterfaceFlags_ = DWORD
+_OpenDeviceInfoFlags_ = DWORD
+_GetCustomDevicePropertyFlags_ = DWORD
+_DeviceInfoScope_ = DWORD
+_DeviceInfoKeyType_ = DWORD
+_SetupDiBuildClassInfoListFlags_ = DWORD
+_DiClassPropertyFlags_ = DWORD
+_DiGetClassDevPropertySheetsType_ = DWORD
+_SetupDiCreateDeviceInfoFlags_ = DWORD
+_SetupDeviceRegistryProperty_ = DWORD
+LogSeverity = DWORD
+SetupFileLogInfo = UINT
+_SPDSL_FLAGS_ = UINT
+_SPINST_FLAGS_ = UINT
+_NDW_FLAGS_ = DWORD
+_DYNAWIZ_FLAGS_ = DWORD
+
+class SP_INSTALLWIZARD_DATA(MemStruct):
+    fields = [
+        ("ClassInstallHeader", SP_CLASSINSTALL_HEADER()),
+        ("Flags", _NDW_FLAGS_()),
+        ("DynamicPages", HPROPSHEETPAGE__MAX_INSTALLWIZARD_DYNAPAGES_()),
+        ("NumDynamicPages", DWORD()),
+        ("DynamicPageFlags", _DYNAWIZ_FLAGS_()),
+        ("PrivateFlags", DWORD()),
+        ("PrivateData", LPARAM()),
+        ("hwndWizardDlg", HWND()),
+    ]
+
+PSP_INSTALLWIZARD_DATA = Ptr("<I", SP_INSTALLWIZARD_DATA())
+
+###################
+
+###### Functions ######
 
 def setupapi_InstallHinfSection(jitter, get_str, set_str):
     """

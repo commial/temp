@@ -1,3 +1,4 @@
+###### Enums ######
 _CryptConfigTable_ = {
     "CRYPT_LOCAL": 0x00000001,
     "CRYPT_DOMAIN": 0x00000002,
@@ -48,6 +49,160 @@ _CryptMode__INV = {
     0x00000003: "CRYPT_MM",
     0x00000004: "CRYPT_ANY",
 }
+
+###################
+
+###### Types ######
+BCRYPT_HANDLE = LPVOID
+BCRYPT_ALG_HANDLE = LPVOID
+BCRYPT_ALG_HANDLE_PTR = Ptr("<I", BCRYPT_ALG_HANDLE())
+BCRYPT_HASH_HANDLE = LPVOID
+BCRYPT_HASH_HANDLE_PTR = Ptr("<I", BCRYPT_HASH_HANDLE())
+BCRYPT_SECRET_HANDLE = LPVOID
+BCRYPT_SECRET_HANDLE_PTR = Ptr("<I", BCRYPT_SECRET_HANDLE())
+
+class CRYPT_CONTEXT_CONFIG(MemStruct):
+    fields = [
+        ("dwFlags", ULONG()),
+        ("dwReserved", ULONG()),
+    ]
+
+PCRYPT_CONTEXT_CONFIG = Ptr("<I", CRYPT_CONTEXT_CONFIG())
+PCRYPT_CONTEXT_CONFIG_PTR = Ptr("<I", PCRYPT_CONTEXT_CONFIG())
+PCRYPT_CONTEXT_FUNCTION_CONFIG = Ptr("<I", CRYPT_CONTEXT_CONFIG())
+PCRYPT_CONTEXT_FUNCTION_CONFIG_PTR = Ptr("<I", PCRYPT_CONTEXT_FUNCTION_CONFIG())
+
+class BCRYPT_ALGORITHM_IDENTIFIER(MemStruct):
+    fields = [
+        ("pszName", LPWSTR()),
+        ("dwClass", ULONG()),
+        ("dwFlags", ULONG()),
+    ]
+
+BCRYPT_ALGORITHM_IDENTIFIER_PTR = Ptr("<I", BCRYPT_ALGORITHM_IDENTIFIER())
+BCRYPT_ALGORITHM_IDENTIFIER_PTR_PTR = Ptr("<I", BCRYPT_ALGORITHM_IDENTIFIER_PTR())
+
+class CRYPT_CONTEXT_FUNCTION_PROVIDERS(MemStruct):
+    fields = [
+        ("cProviders", ULONG()),
+        ("rgpszProviders", PWSTR_PTR()),
+    ]
+
+PCRYPT_CONTEXT_FUNCTION_PROVIDERS = Ptr("<I", CRYPT_CONTEXT_FUNCTION_PROVIDERS())
+PCRYPT_CONTEXT_FUNCTION_PROVIDERS_PTR = Ptr("<I", PCRYPT_CONTEXT_FUNCTION_PROVIDERS())
+
+class CRYPT_CONTEXT_FUNCTIONS(MemStruct):
+    fields = [
+        ("cFunctions", ULONG()),
+        ("rgpszFunctions", PWSTR_PTR()),
+    ]
+
+PCRYPT_CONTEXT_FUNCTIONS = Ptr("<I", CRYPT_CONTEXT_FUNCTIONS())
+PCRYPT_CONTEXT_FUNCTIONS_PTR = Ptr("<I", PCRYPT_CONTEXT_FUNCTIONS())
+
+class CRYPT_CONTEXTS(MemStruct):
+    fields = [
+        ("cContexts", ULONG()),
+        ("rgpszContexts", PWSTR_PTR()),
+    ]
+
+PCRYPT_CONTEXTS = Ptr("<I", CRYPT_CONTEXTS())
+PCRYPT_CONTEXTS_PTR = Ptr("<I", PCRYPT_CONTEXTS())
+
+class BCRYPT_PROVIDER_NAME(MemStruct):
+    fields = [
+        ("pszProviderName", LPWSTR()),
+    ]
+
+BCRYPT_PROVIDER_NAME_PTR = Ptr("<I", BCRYPT_PROVIDER_NAME())
+BCRYPT_PROVIDER_NAME_PTR_PTR = Ptr("<I", BCRYPT_PROVIDER_NAME_PTR())
+CRYPT_PROVIDERS = CRYPT_CONTEXT_FUNCTION_PROVIDERS
+PCRYPT_PROVIDERS = Ptr("<I", CRYPT_PROVIDERS())
+PCRYPT_PROVIDERS_PTR = Ptr("<I", PCRYPT_PROVIDERS())
+
+class CRYPT_INTERFACE_REG(MemStruct):
+    fields = [
+        ("dwInterface", ULONG()),
+        ("dwFlags", ULONG()),
+        ("cFunctions", ULONG()),
+        ("rgpszFunctions", PWSTR_PTR()),
+    ]
+
+PCRYPT_INTERFACE_REG = Ptr("<I", CRYPT_INTERFACE_REG())
+PCRYPT_INTERFACE_REG_PTR = Ptr("<I", PCRYPT_INTERFACE_REG())
+
+class CRYPT_IMAGE_REG(MemStruct):
+    fields = [
+        ("pszImage", PWSTR()),
+        ("cInterfaces", ULONG()),
+        ("rgpInterfaces", PCRYPT_INTERFACE_REG_PTR()),
+    ]
+
+PCRYPT_IMAGE_REG = Ptr("<I", CRYPT_IMAGE_REG())
+
+class CRYPT_PROVIDER_REG(MemStruct):
+    fields = [
+        ("cAliases", ULONG()),
+        ("rgpszAliases", PWSTR_PTR()),
+        ("pUM", PCRYPT_IMAGE_REG()),
+        ("pKM", PCRYPT_IMAGE_REG()),
+    ]
+
+PCRYPT_PROVIDER_REG = Ptr("<I", CRYPT_PROVIDER_REG())
+PCRYPT_PROVIDER_REG_PTR = Ptr("<I", PCRYPT_PROVIDER_REG())
+
+class CRYPT_PROPERTY_REF(MemStruct):
+    fields = [
+        ("pszProperty", PWSTR()),
+        ("cbValue", ULONG()),
+        ("pbValue", PUCHAR()),
+    ]
+
+PCRYPT_PROPERTY_REF = Ptr("<I", CRYPT_PROPERTY_REF())
+PCRYPT_PROPERTY_REF_PTR = Ptr("<I", PCRYPT_PROPERTY_REF())
+
+class CRYPT_IMAGE_REF(MemStruct):
+    fields = [
+        ("pszImage", PWSTR()),
+        ("dwFlags", ULONG()),
+    ]
+
+PCRYPT_IMAGE_REF = Ptr("<I", CRYPT_IMAGE_REF())
+
+class CRYPT_PROVIDER_REF(MemStruct):
+    fields = [
+        ("dwInterface", ULONG()),
+        ("pszFunction", PWSTR()),
+        ("pszProvider", PWSTR()),
+        ("cProperties", ULONG()),
+        ("rgpProperties", PCRYPT_PROPERTY_REF_PTR()),
+        ("pUM", PCRYPT_IMAGE_REF()),
+        ("pKM", PCRYPT_IMAGE_REF()),
+    ]
+
+PCRYPT_PROVIDER_REF = Ptr("<I", CRYPT_PROVIDER_REF())
+PCRYPT_PROVIDER_REF_PTR = Ptr("<I", PCRYPT_PROVIDER_REF())
+
+class CRYPT_PROVIDER_REFS(MemStruct):
+    fields = [
+        ("cProviders", ULONG()),
+        ("rgpProviders", PCRYPT_PROVIDER_REF_PTR()),
+    ]
+
+PCRYPT_PROVIDER_REFS = Ptr("<I", CRYPT_PROVIDER_REFS())
+PCRYPT_PROVIDER_REFS_PTR = Ptr("<I", PCRYPT_PROVIDER_REFS())
+_CryptConfigTable_ = ULONG
+_CryptInterface_ = ULONG
+_CryptPriority_ = ULONG
+_CryptOperation_ = ULONG
+_CryptMode_ = ULONG
+_CryptEnumFlags_ = ULONG
+_CryptDeriveKeyFlags_ = ULONG
+_BCryptOpenAlgorithmProviderFlags_ = ULONG
+
+###################
+
+###### Functions ######
 
 def bcrypt_BCryptAddContextFunction(jitter):
     """

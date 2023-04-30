@@ -1,3 +1,13 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+_OpenFlags_ = WORD
+
+###################
+
+###### Functions ######
 
 def lz32_GetExpandedName(jitter, get_str, set_str):
     """

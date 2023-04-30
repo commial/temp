@@ -1,3 +1,4 @@
+###### Enums ######
 CLFS_RECORD_TYPE = {
     "ClfsNullRecord": 0x00,
     "ClfsDataRecord": 0x01,
@@ -88,6 +89,210 @@ _CREATE_LOG_FLAGS_ATTRIBUTES__INV = {
     0x00000020: "FILE_ATTRIBUTE_ARCHIVE",
     0x40000000: "FILE_FLAG_OVERLAPPED",
 }
+
+###################
+
+###### Types ######
+PCLFS_SCAN_CONTEXT = LPVOID
+PFILE = LPVOID
+CLFS_PRINT_RECORD_ROUTINE = LPVOID
+CLFS_BLOCK_ALLOCATION = LPVOID
+CLFS_BLOCK_DEALLOCATION = LPVOID
+CLFS_CONTAINER_ID = ULONG
+CLFS_LOG_ARCHIVE_CONTEXT = LPVOID
+PCLFS_LOG_ARCHIVE_CONTEXT = Ptr("<I", CLFS_LOG_ARCHIVE_CONTEXT())
+LONGLONG___ = Ptr("<I", LONGLONG())
+PLOG_TAIL_ADVANCE_CALLBACK = LPVOID
+PLOG_FULL_HANDLER_CALLBACK = LPVOID
+PLOG_UNPINNED_CALLBACK = LPVOID
+WCHAR__CLFS_MAX_CONTAINER_INFO_ = Array(WCHAR, 256)
+CLFS_CONTAINER_STATE = UINT32
+
+class CLS_CONTAINER_INFORMATION(MemStruct):
+    fields = [
+        ("FileAttributes", ULONG()),
+        ("CreationTime", ULONGLONG()),
+        ("LastAccessTime", ULONGLONG()),
+        ("LastWriteTime", ULONGLONG()),
+        ("ContainerSize", LONGLONG()),
+        ("FileNameActualLength", ULONG()),
+        ("FileNameLength", ULONG()),
+        ("FileName", WCHAR__CLFS_MAX_CONTAINER_INFO_()),
+        ("State", CLFS_CONTAINER_STATE()),
+        ("PhysicalContainerId", CLFS_CONTAINER_ID()),
+        ("LogicalContainerId", CLFS_CONTAINER_ID()),
+    ]
+
+
+class CLFS_ARCHIVE_DESCRIPTOR(MemStruct):
+    fields = [
+        ("coffLow", ULONGLONG()),
+        ("coffHigh", ULONGLONG()),
+        ("infoContainer", CLS_CONTAINER_INFORMATION()),
+    ]
+
+CLFS_ARCHIVE_DESCRIPTOR___ = Ptr("<I", CLFS_ARCHIVE_DESCRIPTOR())
+CLFS_RECORD_TYPE = UINT8
+PCLFS_RECORD_TYPE = Ptr("<I", CLFS_RECORD_TYPE())
+CLFS_IOSTATS_CLASS = UINT
+CLFS_CONTEXT_MODE = UINT
+CLFS_SCAN_MODE = UINT8
+CLFS_LOG_ARCHIVE_MODE = UINT
+
+class CLS_LSN(MemStruct):
+    fields = [
+        ("Internal", ULONGLONG()),
+    ]
+
+CLFS_LSN = CLS_LSN
+PCLFS_LSN = Ptr("<I", CLFS_LSN())
+const_PCLFS_LSN = PCLFS_LSN
+const_CLFS_LSN_PTR = PCLFS_LSN
+
+class CLFS_WRITE_ENTRY(MemStruct):
+    fields = [
+        ("Buffer", PVOID()),
+        ("ByteLength", ULONG()),
+    ]
+
+PCLFS_WRITE_ENTRY = Ptr("<I", CLFS_WRITE_ENTRY())
+
+class CLFS_INFORMATION(MemStruct):
+    fields = [
+        ("TotalAvailable", LONGLONG()),
+        ("CurrentAvailable", LONGLONG()),
+        ("TotalReservation", LONGLONG()),
+        ("BaseFileSize", ULONGLONG()),
+        ("ContainerSize", ULONGLONG()),
+        ("TotalContainers", ULONG()),
+        ("FreeContainers", ULONG()),
+        ("TotalClients", ULONG()),
+        ("Attributes", ULONG()),
+        ("FlushThreshold", ULONG()),
+        ("SectorSize", ULONG()),
+        ("MinArchiveTailLsn", CLS_LSN()),
+        ("BaseLsn", CLS_LSN()),
+        ("LastFlushedLsn", CLS_LSN()),
+        ("LastLsn", CLS_LSN()),
+        ("RestartLsn", CLS_LSN()),
+        ("Identity", GUID()),
+    ]
+
+PCLFS_INFORMATION = Ptr("<I", CLFS_INFORMATION())
+CLFS_MGMT_POLICY_TYPE = UINT
+
+class _CLFS_MGMT_POLICY_u_s1_(MemStruct):
+    fields = [
+        ("Containers", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s2_(MemStruct):
+    fields = [
+        ("Containers", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s3_(MemStruct):
+    fields = [
+        ("SizeInBytes", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s4_(MemStruct):
+    fields = [
+        ("AbsoluteGrowthInContainers", ULONG()),
+        ("RelativeGrowthPercentage", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s5_(MemStruct):
+    fields = [
+        ("MinimumAvailablePercentage", ULONG()),
+        ("MinimumAvailableContainers", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s6_(MemStruct):
+    fields = [
+        ("Percentage", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s7_(MemStruct):
+    fields = [
+        ("Enabled", ULONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s8_(MemStruct):
+    fields = [
+        ("PrefixLengthInBytes", USHORT()),
+        ("PrefixString", WCHAR__1_()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s9_(MemStruct):
+    fields = [
+        ("NextContainerSuffix", ULONGLONG()),
+    ]
+
+
+class _CLFS_MGMT_POLICY_u_s10_(MemStruct):
+    fields = [
+        ("ExtensionLengthInBytes", USHORT()),
+        ("ExtensionString", WCHAR__1_()),
+    ]
+
+_CLFS_MGMT_POLICY_u_ = Union([
+    ("MaximumSize", _CLFS_MGMT_POLICY_u_s1_),
+    ("MinimumSize", _CLFS_MGMT_POLICY_u_s2_),
+    ("NewContainerSize", _CLFS_MGMT_POLICY_u_s3_),
+    ("GrowthRate", _CLFS_MGMT_POLICY_u_s4_),
+    ("LogTail", _CLFS_MGMT_POLICY_u_s5_),
+    ("AutoShrink", _CLFS_MGMT_POLICY_u_s6_),
+    ("AutoGrow", _CLFS_MGMT_POLICY_u_s7_),
+    ("NewContainerPrefix", _CLFS_MGMT_POLICY_u_s8_),
+    ("NewContainerSuffix", _CLFS_MGMT_POLICY_u_s9_),
+    ("NewContainerExtension", _CLFS_MGMT_POLICY_u_s10_),
+])
+
+class CLFS_MGMT_POLICY(MemStruct):
+    fields = [
+        ("Version", ULONG()),
+        ("LengthInBytes", ULONG()),
+        ("PolicyFlags", ULONG()),
+        ("PolicyType", CLFS_MGMT_POLICY_TYPE()),
+        ("PolicyParameters", _CLFS_MGMT_POLICY_u_()),
+    ]
+
+PCLFS_MGMT_POLICY = Ptr("<I", CLFS_MGMT_POLICY())
+CLFS_MGMT_NOTIFICATION_TYPE = UINT
+
+class CLFS_MGMT_NOTIFICATION(MemStruct):
+    fields = [
+        ("Notification", CLFS_MGMT_NOTIFICATION_TYPE()),
+        ("Lsn", CLFS_LSN()),
+        ("LogIsPinned", USHORT()),
+    ]
+
+PCLFS_MGMT_NOTIFICATION = Ptr("<I", CLFS_MGMT_NOTIFICATION())
+
+class LOG_MANAGEMENT_CALLBACKS(MemStruct):
+    fields = [
+        ("CallbackContext", PVOID()),
+        ("AdvanceTailCallback", PLOG_TAIL_ADVANCE_CALLBACK()),
+        ("LogFullHandlerCallback", PLOG_FULL_HANDLER_CALLBACK()),
+        ("LogUnpinnedCallback", PLOG_UNPINNED_CALLBACK()),
+    ]
+
+PLOG_MANAGEMENT_CALLBACKS = Ptr("<I", LOG_MANAGEMENT_CALLBACKS())
+_CREATE_LOG_DISPOSITION_ = ULONG
+_CREATE_LOG_FLAGS_ATTRIBUTES_ = ULONG
+
+###################
+
+###### Functions ######
 
 def clfsw32_AlignReservedLog(jitter):
     """

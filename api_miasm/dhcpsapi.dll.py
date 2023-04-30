@@ -1,3 +1,4 @@
+###### Enums ######
 DHCP_OPTION_DATA_TYPE = {
     "DhcpByteOption": 0,
     "DhcpWordOption": 1,
@@ -254,6 +255,1267 @@ DHCP_FAILOVER_SERVER_INV = {
     0: "PrimaryServer",
     1: "SecondaryServer",
 }
+
+###################
+
+###### Types ######
+DHCP_CONST_WCHAR_PTR = WCHAR_PTR
+DHCP_IP_ADDRESS = DWORD
+LPDHCP_IP_ADDRESS = Ptr("<I", DHCP_IP_ADDRESS())
+DHCP_IP_MASK = DWORD
+DHCP_OPTION_ID = DWORD
+DHCP_CONST_DHCP_IP_ADDRESS = DHCP_IP_ADDRESS
+DHCP_CONST_LPWSTR = LPWSTR
+DHCP_RESUME_HANDLE = DWORD
+DHCP_RESUME_HANDLE_PTR = Ptr("<I", DHCP_RESUME_HANDLE())
+DHCP_CONST_BOOL = BOOL
+BYTE__MAX_PATTERN_LENGTH_ = Array(BYTE, 255)
+_DHCP_FIELDS_TO_SET_ = DWORD
+_DHCP_SERVER_USE_RPC_FLAGS_ = DWORD
+_DHCP_DEBUG_FLAGS_ = DWORD
+_CLIENT_TYPE_FLAGS_ = BYTE
+_V5_ADDRESS_STATE_ = BYTE
+_FILTER_STATUS_FLAGS_ = DWORD
+
+class DHCP_ADDR_PATTERN(MemStruct):
+    fields = [
+        ("MatchHWType", BOOL()),
+        ("HWType", BYTE()),
+        ("IsWildcard", BOOL()),
+        ("Length", BYTE()),
+        ("Pattern", BYTE__MAX_PATTERN_LENGTH_()),
+    ]
+
+DHCP_ADDR_PATTERN_PTR = Ptr("<I", DHCP_ADDR_PATTERN())
+LPDHCP_ADDR_PATTERN = Ptr("<I", DHCP_ADDR_PATTERN())
+
+class DHCP_IPV6_ADDRESS(MemStruct):
+    fields = [
+        ("HighOrderBits", ULONGLONG()),
+        ("LowOrderBits", ULONGLONG()),
+    ]
+
+LPDHCP_IPV6_ADDRESS = Ptr("<I", DHCP_IPV6_ADDRESS())
+
+class DHCP_IP_RANGE_V6(MemStruct):
+    fields = [
+        ("StartAddress", DHCP_IPV6_ADDRESS()),
+        ("EndAddress", DHCP_IPV6_ADDRESS()),
+    ]
+
+DHCP_IP_RANGE_V6_PTR = Ptr("<I", DHCP_IP_RANGE_V6())
+
+class DHCP_BINARY_DATA(MemStruct):
+    fields = [
+        ("DataLength", DWORD()),
+        # Length is `DataLength`
+        ("Data", BYTE_PTR()),
+    ]
+
+DHCP_CLIENT_UID = DHCP_BINARY_DATA
+DHCP_CLIENT_UID_PTR = Ptr("<I", DHCP_CLIENT_UID())
+
+class DHCP_IP_RESERVATION_V6(MemStruct):
+    fields = [
+        ("ReservedIpAddress", DHCP_IPV6_ADDRESS()),
+        ("ReservedForClient", DHCP_CLIENT_UID_PTR()),
+        ("InterfaceId", DWORD()),
+    ]
+
+DHCP_IP_RESERVATION_V6_PTR = Ptr("<I", DHCP_IP_RESERVATION_V6())
+
+class DHCP_IP_RANGE(MemStruct):
+    fields = [
+        ("StartAddress", DHCP_IP_ADDRESS()),
+        ("EndAddress", DHCP_IP_ADDRESS()),
+    ]
+
+DHCP_IP_RANGE_PTR = Ptr("<I", DHCP_IP_RANGE())
+LPDHCP_IP_RANGE = Ptr("<I", DHCP_IP_RANGE())
+DHCP_OPTION_DATA_TYPE = UINT
+
+class DWORD_DWORD(MemStruct):
+    fields = [
+        ("DWord1", DWORD()),
+        ("DWord2", DWORD()),
+    ]
+
+DHCP_OPTION_ELEMENT_UNION = Union([
+    ("ByteOption", BYTE),
+    ("WordOption", WORD),
+    ("DWordOption", DWORD),
+    ("DWordDWordOption", DWORD_DWORD),
+    ("IpAddressOption", DHCP_IP_ADDRESS),
+    ("StringDataOption", LPWSTR),
+    ("BinaryDataOption", DHCP_BINARY_DATA),
+    ("EncapsulatedDataOption", DHCP_BINARY_DATA),
+    ("Ipv6AddressDataOption", LPWSTR),
+])
+
+class DHCP_OPTION_DATA_ELEMENT(MemStruct):
+    fields = [
+        ("OptionType", DHCP_OPTION_DATA_TYPE()),
+        ("Element", DHCP_OPTION_ELEMENT_UNION()),
+    ]
+
+LPDHCP_OPTION_DATA_ELEMENT = Ptr("<I", DHCP_OPTION_DATA_ELEMENT())
+
+class DHCP_BOOTP_IP_RANGE(MemStruct):
+    fields = [
+        ("StartAddress", DHCP_IP_ADDRESS()),
+        ("EndAddress", DHCP_IP_ADDRESS()),
+        ("BootpAllocated", ULONG()),
+        ("MaxBootpAllowed", ULONG()),
+    ]
+
+DHCP_BOOTP_IP_RANGE_PTR = Ptr("<I", DHCP_BOOTP_IP_RANGE())
+
+class DHCP_HOST_INFO(MemStruct):
+    fields = [
+        ("IpAddress", DHCP_IP_ADDRESS()),
+        ("NetBiosName", LPWSTR()),
+        ("HostName", LPWSTR()),
+    ]
+
+DHCP_HOST_INFO_PTR = Ptr("<I", DHCP_HOST_INFO())
+
+class DHCP_IP_CLUSTER(MemStruct):
+    fields = [
+        ("ClusterAddress", DHCP_IP_ADDRESS()),
+        ("ClusterMask", DWORD()),
+    ]
+
+DHCP_IP_CLUSTER_PTR = Ptr("<I", DHCP_IP_CLUSTER())
+
+class DHCP_IP_RESERVATION_V4(MemStruct):
+    fields = [
+        ("ReservedIpAddress", DHCP_IP_ADDRESS()),
+        ("ReservedForClient", DHCP_CLIENT_UID_PTR()),
+        ("bAllowedClientTypes", _CLIENT_TYPE_FLAGS_()),
+    ]
+
+DHCP_IP_RESERVATION_V4_PTR = Ptr("<I", DHCP_IP_RESERVATION_V4())
+DHCP_SUBNET_ELEMENT_UNION_V5 = Union([
+    ("IpRange", DHCP_BOOTP_IP_RANGE_PTR),
+    ("SecondaryHost", DHCP_HOST_INFO_PTR),
+    ("ReservedIp", DHCP_IP_RESERVATION_V4_PTR),
+    ("ExcludeIpRange", DHCP_IP_RANGE_PTR),
+    ("IpUsedCluster", DHCP_IP_CLUSTER_PTR),
+])
+DHCP_SUBNET_ELEMENT_TYPE = UINT
+
+class DHCP_SUBNET_ELEMENT_DATA_V5(MemStruct):
+    fields = [
+        ("ElementType", DHCP_SUBNET_ELEMENT_TYPE()),
+        ("Element", DHCP_SUBNET_ELEMENT_UNION_V5()),
+    ]
+
+DHCP_CONST_DHCP_SUBNET_ELEMENT_DATA_V5_PTR = Ptr("<I", DHCP_SUBNET_ELEMENT_DATA_V5())
+DHCP_SEARCH_INFO_TYPE = UINT
+DHCP_CLIENT_SEARCH_UNION = Union([
+    ("ClientIpAddress", DHCP_IP_ADDRESS),
+    ("ClientHardwareAddress", DHCP_CLIENT_UID),
+    ("ClientName", LPWSTR),
+])
+
+class DHCP_SEARCH_INFO(MemStruct):
+    fields = [
+        ("SearchType", DHCP_SEARCH_INFO_TYPE()),
+        ("SearchInfo", DHCP_CLIENT_SEARCH_UNION()),
+    ]
+
+LPDHCP_SEARCH_INFO = Ptr("<I", DHCP_SEARCH_INFO())
+DHCP_CONST_DHCP_SEARCH_INFO_PTR = Ptr("<I", DHCP_SEARCH_INFO())
+
+class DHCP_RESERVED_SCOPE(MemStruct):
+    fields = [
+        ("ReservedIpAddress", DHCP_IP_ADDRESS()),
+        ("ReservedIpSubnetAddress", DHCP_IP_ADDRESS()),
+    ]
+
+DHCP_OPTION_SCOPE_UNION = Union([
+    ("DefaultScopeInfo", PVOID),
+    ("GlobalScopeInfo", PVOID),
+    ("SubnetScopeInfo", DHCP_IP_ADDRESS),
+    ("ReservedScopeInfo", DHCP_RESERVED_SCOPE),
+    ("MScopeInfo", LPWSTR),
+])
+DHCP_OPTION_SCOPE_TYPE = UINT
+
+class DHCP_OPTION_SCOPE_INFO(MemStruct):
+    fields = [
+        ("ScopeType", DHCP_OPTION_SCOPE_TYPE()),
+        ("ScopeInfo", DHCP_OPTION_SCOPE_UNION()),
+    ]
+
+LPDHCP_OPTION_SCOPE_INFO = Ptr("<I", DHCP_OPTION_SCOPE_INFO())
+DHCP_CONST_DHCP_OPTION_SCOPE_INFO_PTR = Ptr("<I", DHCP_OPTION_SCOPE_INFO())
+
+class DHCP_OPTION_DATA(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_OPTION_DATA_ELEMENT()),
+    ]
+
+LPDHCP_OPTION_DATA = Ptr("<I", DHCP_OPTION_DATA())
+DHCP_CONST_DHCP_OPTION_DATA_PTR = Ptr("<I", DHCP_OPTION_DATA())
+
+class DHCP_OPTION_VALUE(MemStruct):
+    fields = [
+        ("OptionID", DHCP_OPTION_ID()),
+        ("Value", DHCP_OPTION_DATA()),
+    ]
+
+DHCP_OPTION_VALUE_PTR = Ptr("<I", DHCP_OPTION_VALUE())
+LPDHCP_OPTION_VALUE = Ptr("<I", DHCP_OPTION_VALUE())
+LPDHCP_OPTION_VALUE_PTR = Ptr("<I", LPDHCP_OPTION_VALUE())
+
+class DHCP_OPTION_VALUE_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Values", LPDHCP_OPTION_VALUE()),
+    ]
+
+LPDHCP_OPTION_VALUE_ARRAY = Ptr("<I", DHCP_OPTION_VALUE_ARRAY())
+LPDHCP_OPTION_VALUE_ARRAY_PTR = Ptr("<I", LPDHCP_OPTION_VALUE_ARRAY())
+DHCP_CONST_DHCP_OPTION_VALUE_ARRAY_PTR = Ptr("<I", DHCP_OPTION_VALUE_ARRAY())
+
+class _DHCP_ALL_OPTION_VALUES_s_(MemStruct):
+    fields = [
+        ("ClassName", LPWSTR()),
+        ("VendorName", LPWSTR()),
+        ("IsVendor", BOOL()),
+        ("OptionsArray", LPDHCP_OPTION_VALUE_ARRAY()),
+    ]
+
+_DHCP_ALL_OPTION_VALUES_s_PTR_ = Ptr("<I", _DHCP_ALL_OPTION_VALUES_s_())
+
+class DHCP_ALL_OPTION_VALUES(MemStruct):
+    fields = [
+        ("Flags", DWORD()),
+        ("NumElements", DWORD()),
+        ("Options", _DHCP_ALL_OPTION_VALUES_s_PTR_()),
+    ]
+
+LPDHCP_ALL_OPTION_VALUES_PTR = Ptr("<I", DHCP_ALL_OPTION_VALUES())
+
+class DHCP_IP_RESERVATION(MemStruct):
+    fields = [
+        ("ReservedIpAddress", DHCP_IP_ADDRESS()),
+        ("ReservedForClient", DHCP_CLIENT_UID_PTR()),
+    ]
+
+DHCP_IP_RESERVATION_PTR = Ptr("<I", DHCP_IP_RESERVATION())
+DHCP_SUBNET_ELEMENT_UNION = Union([
+    ("IpRange", DHCP_IP_RANGE_PTR),
+    ("SecondaryHost", DHCP_HOST_INFO_PTR),
+    ("ReservedIp", DHCP_IP_RESERVATION_PTR),
+    ("ExcludeIpRange", DHCP_IP_RANGE_PTR),
+    ("IpUsedCluster", DHCP_IP_CLUSTER_PTR),
+])
+
+class DHCP_SUBNET_ELEMENT_DATA(MemStruct):
+    fields = [
+        ("ElementType", DHCP_SUBNET_ELEMENT_TYPE()),
+        ("Element", DHCP_SUBNET_ELEMENT_UNION()),
+    ]
+
+LPDHCP_SUBNET_ELEMENT_DATA = Ptr("<I", DHCP_SUBNET_ELEMENT_DATA())
+DHCP_CONST_DHCP_SUBNET_ELEMENT_DATA_PTR = Ptr("<I", DHCP_SUBNET_ELEMENT_DATA())
+DHCP_SUBNET_ELEMENT_TYPE_V6 = UINT
+DHCP_SUBNET_ELEMENT_UNION_V6 = Union([
+    ("IpRange", DHCP_IP_RANGE_V6_PTR),
+    ("ReservedIp", DHCP_IP_RESERVATION_V6_PTR),
+    ("ExcludeIpRange", DHCP_IP_RANGE_V6_PTR),
+])
+
+class DHCP_SUBNET_ELEMENT_DATA_V6(MemStruct):
+    fields = [
+        ("ElementType", DHCP_SUBNET_ELEMENT_TYPE_V6()),
+        ("Element", DHCP_SUBNET_ELEMENT_UNION_V6()),
+    ]
+
+LPDHCP_SUBNET_ELEMENT_DATA_V6 = Ptr("<I", DHCP_SUBNET_ELEMENT_DATA_V6())
+DHCP_SEARCH_INFO_TYPE_V6 = UINT
+DHCP_CLIENT_SEARCH_UNION_V6 = Union([
+    ("ClientIpAddress", DHCP_IPV6_ADDRESS),
+    ("ClientDUID", DHCP_CLIENT_UID),
+    ("ClientName", LPWSTR),
+])
+
+class DHCP_SEARCH_INFO_V6(MemStruct):
+    fields = [
+        ("SearchType", DHCP_SEARCH_INFO_TYPE_V6()),
+        ("SearchInfo", DHCP_CLIENT_SEARCH_UNION_V6()),
+    ]
+
+LPDHCP_SEARCH_INFO_V6 = Ptr("<I", DHCP_SEARCH_INFO_V6())
+DHCP_CONST_DHCP_SEARCH_INFO_V6_PTR = Ptr("<I", DHCP_SEARCH_INFO_V6())
+
+class DHCP_RESERVED_SCOPE6(MemStruct):
+    fields = [
+        ("ReservedIpAddress", DHCP_IPV6_ADDRESS()),
+        ("ReservedIpSubnetAddress", DHCP_IPV6_ADDRESS()),
+    ]
+
+DHCP_OPTION_SCOPE_TYPE6 = UINT
+DHCP_OPTION_SCOPE_UNION6 = Union([
+    ("DefaultScopeInfo", PVOID),
+    ("SubnetScopeInfo", DHCP_IPV6_ADDRESS),
+    ("ReservedScopeInfo", DHCP_RESERVED_SCOPE6),
+])
+
+class DHCP_OPTION_SCOPE_INFO6(MemStruct):
+    fields = [
+        ("ScopeType", DHCP_OPTION_SCOPE_TYPE6()),
+        ("ScopeInfo", DHCP_OPTION_SCOPE_UNION6()),
+    ]
+
+LPDHCP_OPTION_SCOPE_INFO6 = Ptr("<I", DHCP_OPTION_SCOPE_INFO6())
+LPDHCP_OPTION_SCOPE_INFO6_PTR = Ptr("<I", LPDHCP_OPTION_SCOPE_INFO6())
+DHCP_OPTION_TYPE = UINT
+
+class DHCP_OPTION(MemStruct):
+    fields = [
+        ("OptionID", DHCP_OPTION_ID()),
+        ("OptionName", LPWSTR()),
+        ("OptionComment", LPWSTR()),
+        ("DefaultValue", DHCP_OPTION_DATA()),
+        ("OptionType", DHCP_OPTION_TYPE()),
+    ]
+
+LPDHCP_OPTION = Ptr("<I", DHCP_OPTION())
+LPDHCP_OPTION_PTR = Ptr("<I", LPDHCP_OPTION())
+DHCP_CONST_DHCP_OPTION_PTR = Ptr("<I", DHCP_OPTION())
+
+class DHCP_OPTION_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Options", LPDHCP_OPTION()),
+    ]
+
+LPDHCP_OPTION_ARRAY = Ptr("<I", DHCP_OPTION_ARRAY())
+LPDHCP_OPTION_ARRAY_PTR = Ptr("<I", LPDHCP_OPTION_ARRAY())
+
+class _DHCP_ALL_OPTIONS_s_(MemStruct):
+    fields = [
+        ("Option", DHCP_OPTION()),
+        ("VendorName", LPWSTR()),
+        ("ClassName", LPWSTR()),
+    ]
+
+_DHCP_ALL_OPTIONS_s_PTR_ = Ptr("<I", _DHCP_ALL_OPTIONS_s_())
+
+class DHCP_ALL_OPTIONS(MemStruct):
+    fields = [
+        ("Flags", DWORD()),
+        ("NonVendorOptions", LPDHCP_OPTION_ARRAY()),
+        ("NumVendorOptions", DWORD()),
+        ("VendorOptions", _DHCP_ALL_OPTIONS_s_PTR_()),
+    ]
+
+LPDHCP_ALL_OPTIONS = Ptr("<I", DHCP_ALL_OPTIONS())
+LPDHCP_ALL_OPTIONS_PTR = Ptr("<I", LPDHCP_ALL_OPTIONS())
+DHCP_FILTER_LIST_TYPE = UINT
+
+class DHCP_FILTER_ADD_INFO(MemStruct):
+    fields = [
+        ("AddrPatt", DHCP_ADDR_PATTERN()),
+        ("Comment", LPWSTR()),
+        ("ListType", DHCP_FILTER_LIST_TYPE()),
+    ]
+
+DHCP_FILTER_ADD_INFO_PTR = Ptr("<I", DHCP_FILTER_ADD_INFO())
+
+class DHCP_FILTER_RECORD(MemStruct):
+    fields = [
+        ("AddrPatt", DHCP_ADDR_PATTERN()),
+        ("Comment", LPWSTR()),
+    ]
+
+LPDHCP_FILTER_RECORD = Ptr("<I", DHCP_FILTER_RECORD())
+
+class DATE_TIME(MemStruct):
+    fields = [
+        ("dwLowDateTime", DWORD()),
+        ("dwHighDateTime", DWORD()),
+    ]
+
+
+class DHCP_CLASS_INFO(MemStruct):
+    fields = [
+        ("ClassName", LPWSTR()),
+        ("ClassComment", LPWSTR()),
+        ("ClassDataLength", DWORD()),
+        ("IsVendor", BOOL()),
+        ("Flags", DWORD()),
+        ("ClassData", LPBYTE()),
+    ]
+
+LPDHCP_CLASS_INFO = Ptr("<I", DHCP_CLASS_INFO())
+LPDHCP_CLASS_INFO_PTR = Ptr("<I", LPDHCP_CLASS_INFO())
+
+class DHCP_CLIENT_INFO(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+    ]
+
+DHCP_CONST_DHCP_CLIENT_INFO_PTR = Ptr("<I", DHCP_CLIENT_INFO())
+LPDHCP_CLIENT_INFO = Ptr("<I", DHCP_CLIENT_INFO())
+LPDHCP_CLIENT_INFO_PTR = Ptr("<I", LPDHCP_CLIENT_INFO())
+
+class DHCP_CLIENT_INFO_V4(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+        ("bClientType", _CLIENT_TYPE_FLAGS_()),
+    ]
+
+DHCP_CONST_DHCP_CLIENT_INFO_V4_PTR = Ptr("<I", DHCP_CLIENT_INFO_V4())
+LPDHCP_CLIENT_INFO_V4_PTR = Ptr("<I", DHCP_CLIENT_INFO_V4())
+QuarantineStatus = UINT
+
+class DHCP_CLIENT_INFO_VQ(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+        ("bClientType", _CLIENT_TYPE_FLAGS_()),
+        ("AddressState", _V5_ADDRESS_STATE_()),
+        ("Status", QuarantineStatus()),
+        ("ProbationEnds", DATE_TIME()),
+        ("QuarantineCapable", BOOL()),
+    ]
+
+LPDHCP_CLIENT_INFO_VQ = Ptr("<I", DHCP_CLIENT_INFO_VQ())
+LPDHCP_CLIENT_INFO_VQ_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_VQ())
+DHCP_SUBNET_STATE = UINT
+
+class DHCP_SUBNET_INFO(MemStruct):
+    fields = [
+        ("SubnetAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("SubnetName", LPWSTR()),
+        ("SubnetComment", LPWSTR()),
+        ("PrimaryHost", DHCP_HOST_INFO()),
+        ("SubnetState", DHCP_SUBNET_STATE()),
+    ]
+
+DHCP_CONST_DHCP_SUBNET_INFO_PTR = Ptr("<I", DHCP_SUBNET_INFO())
+LPDHCP_SUBNET_INFO = Ptr("<I", DHCP_SUBNET_INFO())
+LPDHCP_SUBNET_INFO_PTR = Ptr("<I", LPDHCP_SUBNET_INFO())
+
+class DHCP_SUBNET_INFO_VQ(MemStruct):
+    fields = [
+        ("SubnetAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("SubnetName", LPWSTR()),
+        ("SubnetComment", LPWSTR()),
+        ("PrimaryHost", DHCP_HOST_INFO()),
+        ("SubnetState", DHCP_SUBNET_STATE()),
+        ("QuarantineOn", DWORD()),
+        ("Reserved1", DWORD()),
+        ("Reserved2", DWORD()),
+        ("Reserved3", INT64()),
+        ("Reserved4", INT64()),
+    ]
+
+DHCP_CONST_DHCP_SUBNET_INFO_VQ_PTR = Ptr("<I", DHCP_SUBNET_INFO_VQ())
+LPDHCP_SUBNET_INFO_VQ = Ptr("<I", DHCP_SUBNET_INFO_VQ())
+LPDHCP_SUBNET_INFO_VQ_PTR = Ptr("<I", LPDHCP_SUBNET_INFO_VQ())
+DHCP_FORCE_FLAG = UINT
+
+class DHCP_CLASS_INFO_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Classes", LPDHCP_CLASS_INFO()),
+    ]
+
+LPDHCP_CLASS_INFO_ARRAY = Ptr("<I", DHCP_CLASS_INFO_ARRAY())
+LPDHCP_CLASS_INFO_ARRAY_PTR = Ptr("<I", LPDHCP_CLASS_INFO_ARRAY())
+
+class DHCP_FILTER_ENUM_INFO(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("pEnumRecords", LPDHCP_FILTER_RECORD()),
+    ]
+
+LPDHCP_FILTER_ENUM_INFO = Ptr("<I", DHCP_FILTER_ENUM_INFO())
+LPDHCP_FILTER_ENUM_INFO_PTR = Ptr("<I", LPDHCP_FILTER_ENUM_INFO())
+
+class DHCPDS_SERVER(MemStruct):
+    fields = [
+        ("Version", DWORD()),
+        ("ServerName", LPWSTR()),
+        ("ServerAddress", DWORD()),
+        ("Flags", DWORD()),
+        ("State", DWORD()),
+        ("DsLocation", LPWSTR()),
+        ("DsLocType", DWORD()),
+    ]
+
+LPDHCPDS_SERVER = Ptr("<I", DHCPDS_SERVER())
+LPDHCP_SERVER_INFO = Ptr("<I", DHCPDS_SERVER())
+
+class DHCPDS_SERVERS(MemStruct):
+    fields = [
+        ("Flags", DWORD()),
+        ("NumElements", DWORD()),
+        ("Servers", LPDHCPDS_SERVER()),
+    ]
+
+LPDHCP_SERVER_INFO_ARRAY = Ptr("<I", DHCPDS_SERVERS())
+LPDHCP_SERVER_INFO_ARRAY_PTR = Ptr("<I", LPDHCP_SERVER_INFO_ARRAY())
+
+class DHCP_CLIENT_INFO_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_INFO_PTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_ARRAY = Ptr("<I", DHCP_CLIENT_INFO_ARRAY())
+LPDHCP_CLIENT_INFO_ARRAY_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_ARRAY())
+
+class DHCP_CLIENT_INFO_V5(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+        ("bClientType", _CLIENT_TYPE_FLAGS_()),
+        ("AddressState", _V5_ADDRESS_STATE_()),
+    ]
+
+LPDHCP_CLIENT_INFO_V5 = Ptr("<I", DHCP_CLIENT_INFO_V5())
+LPDHCP_CLIENT_INFO_V5_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_V5())
+
+class DHCP_CLIENT_INFO_ARRAY_V5(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_INFO_V5_PTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_ARRAY_V5 = Ptr("<I", DHCP_CLIENT_INFO_ARRAY_V5())
+LPDHCP_CLIENT_INFO_ARRAY_V5_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_ARRAY_V5())
+
+class DHCP_CLIENT_INFO_ARRAY_VQ(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_INFO_VQ_PTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_ARRAY_VQ = Ptr("<I", DHCP_CLIENT_INFO_ARRAY_VQ())
+LPDHCP_CLIENT_INFO_ARRAY_VQ_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_ARRAY_VQ())
+
+class DHCP_CLIENT_FILTER_STATUS_INFO(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+        ("bClientType", _CLIENT_TYPE_FLAGS_()),
+        ("AddressState", _V5_ADDRESS_STATE_()),
+        ("Status", QuarantineStatus()),
+        ("ProbationEnds", DATE_TIME()),
+        ("QuarantineCapable", BOOL()),
+        ("FilterStatus", _FILTER_STATUS_FLAGS_()),
+    ]
+
+LPDHCP_CLIENT_FILTER_STATUS_INFO = Ptr("<I", DHCP_CLIENT_FILTER_STATUS_INFO())
+LPDHCP_CLIENT_FILTER_STATUS_INFO_PTR = Ptr("<I", LPDHCP_CLIENT_FILTER_STATUS_INFO())
+
+class DHCP_CLIENT_FILTER_STATUS_INFO_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_FILTER_STATUS_INFO_PTR()),
+    ]
+
+LPDHCP_CLIENT_FILTER_STATUS_INFO_ARRAY = Ptr("<I", DHCP_CLIENT_FILTER_STATUS_INFO_ARRAY())
+LPDHCP_CLIENT_FILTER_STATUS_INFO_ARRAY_PTR = Ptr("<I", LPDHCP_CLIENT_FILTER_STATUS_INFO_ARRAY())
+
+class DHCP_SUBNET_ELEMENT_INFO_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_SUBNET_ELEMENT_DATA()),
+    ]
+
+LPDHCP_SUBNET_ELEMENT_INFO_ARRAY = Ptr("<I", DHCP_SUBNET_ELEMENT_INFO_ARRAY())
+LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_PTR = Ptr("<I", LPDHCP_SUBNET_ELEMENT_INFO_ARRAY())
+
+class DHCP_IP_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_IP_ADDRESS()),
+    ]
+
+LPDHCP_IP_ARRAY = Ptr("<I", DHCP_IP_ARRAY())
+LPDHCP_IP_ARRAY_PTR = Ptr("<I", LPDHCP_IP_ARRAY())
+
+class DHCP_FILTER_GLOBAL_INFO(MemStruct):
+    fields = [
+        ("EnforceAllowList", BOOL()),
+        ("EnforceDenyList", BOOL()),
+    ]
+
+DHCP_FILTER_GLOBAL_INFO_PTR = Ptr("<I", DHCP_FILTER_GLOBAL_INFO())
+
+class SCOPE_MIB_INFO_V5(MemStruct):
+    fields = [
+        ("Subnet", DHCP_IP_ADDRESS()),
+        ("NumAddressesInuse", DWORD()),
+        ("NumAddressesFree", DWORD()),
+        ("NumPendingOffers", DWORD()),
+    ]
+
+LPSCOPE_MIB_INFO_V5 = Ptr("<I", SCOPE_MIB_INFO_V5())
+
+class DHCP_MIB_INFO_V5(MemStruct):
+    fields = [
+        ("Discovers", DWORD()),
+        ("Offers", DWORD()),
+        ("Requests", DWORD()),
+        ("Acks", DWORD()),
+        ("Naks", DWORD()),
+        ("Declines", DWORD()),
+        ("Releases", DWORD()),
+        ("ServerStartTime", DATE_TIME()),
+        ("QtnNumLeases", DWORD()),
+        ("QtnPctQtnLeases", DWORD()),
+        ("QtnProbationLeases", DWORD()),
+        ("QtnNonQtnLeases", DWORD()),
+        ("QtnExemptLeases", DWORD()),
+        ("QtnCapableClients", DWORD()),
+        ("QtnIASErrors", DWORD()),
+        ("DelayedOffers", DWORD()),
+        ("ScopesWithDelayedOffers", DWORD()),
+        ("Scopes", DWORD()),
+        ("ScopeInfo", LPSCOPE_MIB_INFO_V5()),
+    ]
+
+LPDHCP_MIB_INFO_V5 = Ptr("<I", DHCP_MIB_INFO_V5())
+LPDHCP_MIB_INFO_V5_PTR = Ptr("<I", LPDHCP_MIB_INFO_V5())
+
+class DHCP_BIND_ELEMENT(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("fBoundToDHCPServer", BOOL()),
+        ("AdapterPrimaryAddress", DHCP_IP_ADDRESS()),
+        ("AdapterSubnetAddress", DHCP_IP_ADDRESS()),
+        ("IfDescription", LPWSTR()),
+        ("IfIdSize", ULONG()),
+        ("IfId", LPBYTE()),
+    ]
+
+LPDHCP_BIND_ELEMENT = Ptr("<I", DHCP_BIND_ELEMENT())
+
+class DHCP_BIND_ELEMENT_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_BIND_ELEMENT()),
+    ]
+
+LPDHCP_BIND_ELEMENT_ARRAY = Ptr("<I", DHCP_BIND_ELEMENT_ARRAY())
+LPDHCP_BIND_ELEMENT_ARRAY_PTR = Ptr("<I", LPDHCP_BIND_ELEMENT_ARRAY())
+
+class DHCP_SUPER_SCOPE_TABLE_ENTRY(MemStruct):
+    fields = [
+        ("SubnetAddress", DHCP_IP_ADDRESS()),
+        ("SuperScopeNumber", DWORD()),
+        ("NextInSuperScope", DWORD()),
+        ("SuperScopeName", LPWSTR()),
+    ]
+
+LPDHCP_SUPER_SCOPE_TABLE = Ptr("<I", DHCP_SUPER_SCOPE_TABLE_ENTRY())
+LPDHCP_SUPER_SCOPE_TABLE_PTR = Ptr("<I", LPDHCP_SUPER_SCOPE_TABLE())
+
+class DHCP_SERVER_CONFIG_INFO_VQ(MemStruct):
+    fields = [
+        ("APIProtocolSupport", _DHCP_SERVER_USE_RPC_FLAGS_()),
+        ("DatabaseName", LPWSTR()),
+        ("DatabasePath", LPWSTR()),
+        ("BackupPath", LPWSTR()),
+        ("BackupInterval", DWORD()),
+        ("DatabaseLoggingFlag", DWORD()),
+        ("RestoreFlag", DWORD()),
+        ("DatabaseCleanupInterval", DWORD()),
+        ("DebugFlag", _DHCP_DEBUG_FLAGS_()),
+        ("dwPingRetries", DWORD()),
+        ("cbBootTableString", DWORD()),
+        ("wszBootTableString", WCHAR_PTR()),
+        ("fAuditLog", BOOL()),
+        ("QuarantineOn", BOOL()),
+        ("QuarDefFail", DWORD()),
+        ("QuarRuntimeStatus", BOOL()),
+    ]
+
+LPDHCP_SERVER_CONFIG_INFO_VQ = Ptr("<I", DHCP_SERVER_CONFIG_INFO_VQ())
+LPDHCP_SERVER_CONFIG_INFO_VQ_PTR = Ptr("<I", LPDHCP_SERVER_CONFIG_INFO_VQ())
+
+class DHCP_SERVER_CONFIG_INFO_V4(MemStruct):
+    fields = [
+        ("APIProtocolSupport", _DHCP_SERVER_USE_RPC_FLAGS_()),
+        ("DatabaseName", LPWSTR()),
+        ("DatabasePath", LPWSTR()),
+        ("BackupPath", LPWSTR()),
+        ("BackupInterval", DWORD()),
+        ("DatabaseLoggingFlag", DWORD()),
+        ("RestoreFlag", DWORD()),
+        ("DatabaseCleanupInterval", DWORD()),
+        ("DebugFlag", _DHCP_DEBUG_FLAGS_()),
+        ("dwPingRetries", DWORD()),
+        ("cbBootTableString", DWORD()),
+        ("wszBootTableString", WCHAR_PTR()),
+        ("fAuditLog", BOOL()),
+    ]
+
+LPDHCP_SERVER_CONFIG_INFO_V4 = Ptr("<I", DHCP_SERVER_CONFIG_INFO_V4())
+LPDHCP_SERVER_CONFIG_INFO_V4_PTR = Ptr("<I", LPDHCP_SERVER_CONFIG_INFO_V4())
+DHCP_RESUME_IPV6_HANDLE = DHCP_IPV6_ADDRESS
+DHCP_RESUME_IPV6_HANDLE_PTR = Ptr("<I", DHCP_RESUME_IPV6_HANDLE())
+
+class DHCP_CLASS_INFO_V6(MemStruct):
+    fields = [
+        ("ClassName", LPWSTR()),
+        ("ClassComment", LPWSTR()),
+        ("ClassDataLength", DWORD()),
+        ("IsVendor", BOOL()),
+        ("EnterpriseNumber", DWORD()),
+        ("Flags", DWORD()),
+        ("ClassData", LPBYTE()),
+    ]
+
+LPDHCP_CLASS_INFO_V6 = Ptr("<I", DHCP_CLASS_INFO_V6())
+
+class DHCP_SUBNET_INFO_V6(MemStruct):
+    fields = [
+        ("SubnetAddress", DHCP_IPV6_ADDRESS()),
+        ("Prefix", ULONG()),
+        ("Preference", USHORT()),
+        ("SubnetName", LPWSTR()),
+        ("SubnetComment", LPWSTR()),
+        ("State", DWORD()),
+        ("ScopeId", DWORD()),
+    ]
+
+LPDHCP_SUBNET_INFO_V6 = Ptr("<I", DHCP_SUBNET_INFO_V6())
+LPDHCP_SUBNET_INFO_V6_PTR = Ptr("<I", LPDHCP_SUBNET_INFO_V6())
+
+class DHCP_CLASS_INFO_ARRAY_V6(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Classes", LPDHCP_CLASS_INFO_V6()),
+    ]
+
+LPDHCP_CLASS_INFO_ARRAY_V6 = Ptr("<I", DHCP_CLASS_INFO_ARRAY_V6())
+LPDHCP_CLASS_INFO_ARRAY_V6_PTR = Ptr("<I", LPDHCP_CLASS_INFO_ARRAY_V6())
+
+class DHCPV6_IP_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_IPV6_ADDRESS()),
+    ]
+
+LPDHCPV6_IP_ARRAY = Ptr("<I", DHCPV6_IP_ARRAY())
+LPDHCPV6_IP_ARRAY_PTR = Ptr("<I", LPDHCPV6_IP_ARRAY())
+
+class DHCP_HOST_INFO_V6(MemStruct):
+    fields = [
+        ("IpAddress", DHCP_IPV6_ADDRESS()),
+        ("NetBiosName", LPWSTR()),
+        ("HostName", LPWSTR()),
+    ]
+
+
+class DHCP_CLIENT_INFO_V6(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IPV6_ADDRESS()),
+        ("ClientDUID", DHCP_CLIENT_UID()),
+        ("AddressType", DWORD()),
+        ("IAID", DWORD()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientValidLeaseExpires", DATE_TIME()),
+        ("ClientPrefLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO_V6()),
+    ]
+
+LPDHCP_CLIENT_INFO_V6 = Ptr("<I", DHCP_CLIENT_INFO_V6())
+LPDHCP_CLIENT_INFO_V6_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_V6())
+DHCP_CONST_LPDHCP_CLIENT_INFO_V6 = Ptr("<I", DHCP_CLIENT_INFO_V6())
+
+class DHCP_CLIENT_INFO_ARRAY_V6(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_INFO_V6_PTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_ARRAY_V6 = Ptr("<I", DHCP_CLIENT_INFO_ARRAY_V6())
+LPDHCP_CLIENT_INFO_ARRAY_V6_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_ARRAY_V6())
+
+class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_SUBNET_ELEMENT_DATA_V6()),
+    ]
+
+LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_V6 = Ptr("<I", DHCP_SUBNET_ELEMENT_INFO_ARRAY_V6())
+LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_V6_PTR = Ptr("<I", LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_V6())
+
+class SCOPE_MIB_INFO_V6(MemStruct):
+    fields = [
+        ("Subnet", DHCP_IPV6_ADDRESS()),
+        ("NumAddressesInuse", ULONGLONG()),
+        ("NumAddressesFree", ULONGLONG()),
+        ("NumPendingAdvertises", ULONGLONG()),
+    ]
+
+LPSCOPE_MIB_INFO_V6 = Ptr("<I", SCOPE_MIB_INFO_V6())
+
+class DHCP_MIB_INFO_V6(MemStruct):
+    fields = [
+        ("Solicits", DWORD()),
+        ("Advertises", DWORD()),
+        ("Requests", DWORD()),
+        ("Renews", DWORD()),
+        ("Rebinds", DWORD()),
+        ("Replies", DWORD()),
+        ("Confirms", DWORD()),
+        ("Declines", DWORD()),
+        ("Releases", DWORD()),
+        ("Informs", DWORD()),
+        ("ServerStartTime", DATE_TIME()),
+        ("Scopes", DWORD()),
+        ("ScopeInfo", LPSCOPE_MIB_INFO_V6()),
+    ]
+
+LPDHCP_MIB_INFO_V6 = Ptr("<I", DHCP_MIB_INFO_V6())
+LPDHCP_MIB_INFO_V6_PTR = Ptr("<I", LPDHCP_MIB_INFO_V6())
+
+class DHCPV6_BIND_ELEMENT(MemStruct):
+    fields = [
+        ("Flags", ULONG()),
+        ("fBoundToDHCPServer", BOOL()),
+        ("AdapterPrimaryAddress", DHCP_IPV6_ADDRESS()),
+        ("AdapterSubnetAddress", DHCP_IPV6_ADDRESS()),
+        ("IfDescription", LPWSTR()),
+        ("IpV6IfIndex", DWORD()),
+        ("IfIdSize", ULONG()),
+        ("IfId", LPBYTE()),
+    ]
+
+LPDHCPV6_BIND_ELEMENT = Ptr("<I", DHCPV6_BIND_ELEMENT())
+
+class DHCPV6_BIND_ELEMENT_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCPV6_BIND_ELEMENT()),
+    ]
+
+LPDHCPV6_BIND_ELEMENT_ARRAY = Ptr("<I", DHCPV6_BIND_ELEMENT_ARRAY())
+LPDHCPV6_BIND_ELEMENT_ARRAY_PTR = Ptr("<I", LPDHCPV6_BIND_ELEMENT_ARRAY())
+
+class DHCP_SERVER_CONFIG_INFO_V6(MemStruct):
+    fields = [
+        ("UnicastFlag", BOOL()),
+        ("RapidCommitFlag", BOOL()),
+        ("PreferredLifetime", DWORD()),
+        ("ValidLifetime", DWORD()),
+        ("T1", DWORD()),
+        ("T2", DWORD()),
+        ("PreferredLifetimeIATA", DWORD()),
+        ("ValidLifetimeIATA", DWORD()),
+        ("fAuditLog", BOOL()),
+    ]
+
+LPDHCP_SERVER_CONFIG_INFO_V6 = Ptr("<I", DHCP_SERVER_CONFIG_INFO_V6())
+LPDHCP_SERVER_CONFIG_INFO_V6_PTR = Ptr("<I", LPDHCP_SERVER_CONFIG_INFO_V6())
+DHCP_POL_ATTR_TYPE = UINT
+DHCP_POL_COMPARATOR = UINT
+DHCP_POL_LOGIC_OPER = UINT
+
+class DHCP_POL_COND(MemStruct):
+    fields = [
+        ("ParentExpr", DWORD()),
+        ("Type", DHCP_POL_ATTR_TYPE()),
+        ("OptionID", DWORD()),
+        ("SubOptionID", DWORD()),
+        ("VendorName", LPWSTR()),
+        ("Operator", DHCP_POL_COMPARATOR()),
+        # Length is `ValueLength`
+        ("Value", LPBYTE()),
+        ("ValueLength", DWORD()),
+    ]
+
+LPDHCP_POL_COND = Ptr("<I", DHCP_POL_COND())
+
+class DHCP_POL_COND_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_POL_COND()),
+    ]
+
+LPDHCP_POL_COND_ARRAY = Ptr("<I", DHCP_POL_COND_ARRAY())
+
+class DHCP_POL_EXPR(MemStruct):
+    fields = [
+        ("ParentExpr", DWORD()),
+        ("Operator", DHCP_POL_LOGIC_OPER()),
+    ]
+
+LPDHCP_POL_EXPR = Ptr("<I", DHCP_POL_EXPR())
+
+class DHCP_POL_EXPR_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_POL_EXPR()),
+    ]
+
+LPDHCP_POL_EXPR_ARRAY = Ptr("<I", DHCP_POL_EXPR_ARRAY())
+
+class DHCP_IP_RANGE_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_IP_RANGE()),
+    ]
+
+LPDHCP_IP_RANGE_ARRAY = Ptr("<I", DHCP_IP_RANGE_ARRAY())
+
+class DHCP_POLICY(MemStruct):
+    fields = [
+        ("PolicyName", LPWSTR()),
+        ("IsGlobalPolicy", BOOL()),
+        ("Subnet", DHCP_IP_ADDRESS()),
+        ("ProcessingOrder", DWORD()),
+        ("Conditions", LPDHCP_POL_COND_ARRAY()),
+        ("Expressions", LPDHCP_POL_EXPR_ARRAY()),
+        ("Ranges", LPDHCP_IP_RANGE_ARRAY()),
+        ("Description", LPWSTR()),
+        ("Enabled", BOOL()),
+    ]
+
+LPDHCP_POLICY = Ptr("<I", DHCP_POLICY())
+LPDHCP_POLICY_PTR = Ptr("<I", LPDHCP_POLICY())
+DHCP_ATTRIB_ID = UINT
+DHCP_ATTRIB_ID___ = Ptr("<I", DHCP_ATTRIB_ID())
+
+class DHCP_SERVER_SPECIFIC_STRINGS(MemStruct):
+    fields = [
+        ("DefaultVendorClassName", LPWSTR()),
+        ("DefaultUserClassName", LPWSTR()),
+    ]
+
+LPDHCP_SERVER_SPECIFIC_STRINGS = Ptr("<I", DHCP_SERVER_SPECIFIC_STRINGS())
+LPDHCP_SERVER_SPECIFIC_STRINGS_PTR = Ptr("<I", LPDHCP_SERVER_SPECIFIC_STRINGS())
+DHCP_SCAN_FLAG = UINT
+
+class DHCP_SCAN_ITEM(MemStruct):
+    fields = [
+        ("IpAddress", DHCP_IP_ADDRESS()),
+        ("ScanFlag", DHCP_SCAN_FLAG()),
+    ]
+
+DHCP_SCAN_ITEM_PTR = Ptr("<I", DHCP_SCAN_ITEM())
+
+class DHCP_SCAN_LIST(MemStruct):
+    fields = [
+        ("NumScanItems", DWORD()),
+        ("ScanItems", DHCP_SCAN_ITEM_PTR()),
+    ]
+
+LPDHCP_SCAN_LIST = Ptr("<I", DHCP_SCAN_LIST())
+LPDHCP_SCAN_LIST_PTR = Ptr("<I", LPDHCP_SCAN_LIST())
+
+class DHCP_CLIENT_INFO_ARRAY_V4(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_INFO_V4_PTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_ARRAY_V4 = Ptr("<I", DHCP_CLIENT_INFO_ARRAY_V4())
+LPDHCP_CLIENT_INFO_ARRAY_V4_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_ARRAY_V4())
+DHCP_SUBNET_ELEMENT_UNION_V4 = Union([
+    ("IpRange", DHCP_IP_RANGE_PTR),
+    ("SecondaryHost", DHCP_HOST_INFO_PTR),
+    ("ReservedIp", DHCP_IP_RESERVATION_V4_PTR),
+    ("ExcludeIpRange", DHCP_IP_RANGE_PTR),
+    ("IpUsedCluster", DHCP_IP_CLUSTER_PTR),
+])
+
+class DHCP_SUBNET_ELEMENT_DATA_V4(MemStruct):
+    fields = [
+        ("ElementType", DHCP_SUBNET_ELEMENT_TYPE()),
+        ("Element", DHCP_SUBNET_ELEMENT_UNION_V4()),
+    ]
+
+LPDHCP_SUBNET_ELEMENT_DATA_V4 = Ptr("<I", DHCP_SUBNET_ELEMENT_DATA_V4())
+DHCP_CONST_DHCP_SUBNET_ELEMENT_DATA_V4_PTR = Ptr("<I", DHCP_SUBNET_ELEMENT_DATA_V4())
+
+class DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_SUBNET_ELEMENT_DATA_V4()),
+    ]
+
+LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_V4 = Ptr("<I", DHCP_SUBNET_ELEMENT_INFO_ARRAY_V4())
+LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_V4_PTR = Ptr("<I", LPDHCP_SUBNET_ELEMENT_INFO_ARRAY_V4())
+
+class DHCP_IP_RESERVATION_INFO(MemStruct):
+    fields = [
+        ("ReservedIpAddress", DHCP_IP_ADDRESS()),
+        ("ReservedForClient", DHCP_CLIENT_UID()),
+        ("ReservedClientName", LPWSTR()),
+        ("ReservedClientDesc", LPWSTR()),
+        ("bAllowedClientTypes", _CLIENT_TYPE_FLAGS_()),
+        ("fOptionsPresent", BYTE()),
+    ]
+
+LPDHCP_IP_RESERVATION_INFO = Ptr("<I", DHCP_IP_RESERVATION_INFO())
+LPDHCP_IP_RESERVATION_INFO_PTR = Ptr("<I", LPDHCP_IP_RESERVATION_INFO())
+
+class DHCP_RESERVATION_INFO_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_IP_RESERVATION_INFO_PTR()),
+    ]
+
+LPDHCP_RESERVATION_INFO_ARRAY = Ptr("<I", DHCP_RESERVATION_INFO_ARRAY())
+LPDHCP_RESERVATION_INFO_ARRAY_PTR = Ptr("<I", LPDHCP_RESERVATION_INFO_ARRAY())
+
+class DHCP_POLICY_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Elements", LPDHCP_POLICY()),
+    ]
+
+LPDHCP_POLICY_ARRAY = Ptr("<I", DHCP_POLICY_ARRAY())
+LPDHCP_POLICY_ARRAY_PTR = Ptr("<I", LPDHCP_POLICY_ARRAY())
+
+class DHCPV6_STATELESS_SCOPE_STATS(MemStruct):
+    fields = [
+        ("SubnetAddress", DHCP_IPV6_ADDRESS()),
+        ("NumStatelessClientsAdded", ULONGLONG()),
+        ("NumStatelessClientsRemoved", ULONGLONG()),
+    ]
+
+LPDHCPV6_STATELESS_SCOPE_STATS = Ptr("<I", DHCPV6_STATELESS_SCOPE_STATS())
+
+class DHCPV6_STATELESS_STATS(MemStruct):
+    fields = [
+        ("NumScopes", DWORD()),
+        ("ScopeStats", LPDHCPV6_STATELESS_SCOPE_STATS()),
+    ]
+
+LPDHCPV6_STATELESS_STATS = Ptr("<I", DHCPV6_STATELESS_STATS())
+LPDHCPV6_STATELESS_STATS_PTR = Ptr("<I", LPDHCPV6_STATELESS_STATS())
+
+class DHCPV6_STATELESS_PARAMS(MemStruct):
+    fields = [
+        ("Status", BOOL()),
+        ("PurgeInterval", DWORD()),
+    ]
+
+LPDHCPV6_STATELESS_PARAMS = Ptr("<I", DHCPV6_STATELESS_PARAMS())
+LPDHCPV6_STATELESS_PARAMS_PTR = Ptr("<I", LPDHCPV6_STATELESS_PARAMS())
+
+class DHCP_OPTION_LIST(MemStruct):
+    fields = [
+        ("NumOptions", DWORD()),
+        ("Options", DHCP_OPTION_VALUE_PTR()),
+    ]
+
+LPDHCP_OPTION_LIST = Ptr("<I", DHCP_OPTION_LIST())
+LPDHCP_OPTION_LIST_PTR = Ptr("<I", LPDHCP_OPTION_LIST())
+
+class DHCP_SERVER_CONFIG_INFO(MemStruct):
+    fields = [
+        ("APIProtocolSupport", _DHCP_SERVER_USE_RPC_FLAGS_()),
+        ("DatabaseName", LPWSTR()),
+        ("DatabasePath", LPWSTR()),
+        ("BackupPath", LPWSTR()),
+        ("BackupInterval", DWORD()),
+        ("DatabaseLoggingFlag", DWORD()),
+        ("RestoreFlag", DWORD()),
+        ("DatabaseCleanupInterval", DWORD()),
+        ("DebugFlag", _DHCP_DEBUG_FLAGS_()),
+    ]
+
+LPDHCP_SERVER_CONFIG_INFO = Ptr("<I", DHCP_SERVER_CONFIG_INFO())
+LPDHCP_SERVER_CONFIG_INFO_PTR = Ptr("<I", LPDHCP_SERVER_CONFIG_INFO())
+_DHCP_ATTRIB_TYPE_ = ULONG
+_DHCP_ATTRIB_u_ = Union([
+    ("DhcpAttribBool", BOOL),
+    ("DhcpAttribUlong", ULONG),
+])
+
+class DHCP_ATTRIB(MemStruct):
+    fields = [
+        ("DhcpAttribId", DHCP_ATTRIB_ID()),
+        ("DhcpAttribType", _DHCP_ATTRIB_TYPE_()),
+        (None, _DHCP_ATTRIB_u_()),
+    ]
+
+LPDHCP_ATTRIB = Ptr("<I", DHCP_ATTRIB())
+LPDHCP_ATTRIB_PTR = Ptr("<I", LPDHCP_ATTRIB())
+
+class DHCP_ATTRIB_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", ULONG()),
+        ("DhcpAttribs", LPDHCP_ATTRIB()),
+    ]
+
+LPDHCP_ATTRIB_ARRAY = Ptr("<I", DHCP_ATTRIB_ARRAY())
+LPDHCP_ATTRIB_ARRAY_PTR = Ptr("<I", LPDHCP_ATTRIB_ARRAY())
+FSM_STATE = UINT
+DHCP_FAILOVER_MODE = UINT
+DHCP_FAILOVER_SERVER = UINT
+
+class DHCP_FAILOVER_RELATIONSHIP(MemStruct):
+    fields = [
+        ("PrimaryServer", DHCP_IP_ADDRESS()),
+        ("SecondaryServer", DHCP_IP_ADDRESS()),
+        ("Mode", DHCP_FAILOVER_MODE()),
+        ("ServerType", DHCP_FAILOVER_SERVER()),
+        ("State", FSM_STATE()),
+        ("PrevState", FSM_STATE()),
+        ("Mclt", DWORD()),
+        ("SafePeriod", DWORD()),
+        ("RelationshipName", LPWSTR()),
+        ("PrimaryServerName", LPWSTR()),
+        ("SecondaryServerName", LPWSTR()),
+        ("pScopes", LPDHCP_IP_ARRAY()),
+        ("Percentage", BYTE()),
+        ("SharedSecret", LPWSTR()),
+    ]
+
+LPDHCP_FAILOVER_RELATIONSHIP = Ptr("<I", DHCP_FAILOVER_RELATIONSHIP())
+LPDHCP_FAILOVER_RELATIONSHIP_PTR = Ptr("<I", LPDHCP_FAILOVER_RELATIONSHIP())
+
+class DHCP_FAILOVER_RELATIONSHIP_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("pRelationships", LPDHCP_FAILOVER_RELATIONSHIP()),
+    ]
+
+LPDHCP_FAILOVER_RELATIONSHIP_ARRAY = Ptr("<I", DHCP_FAILOVER_RELATIONSHIP_ARRAY())
+LPDHCP_FAILOVER_RELATIONSHIP_ARRAY_PTR = Ptr("<I", LPDHCP_FAILOVER_RELATIONSHIP_ARRAY())
+
+class DHCPV4_FAILOVER_CLIENT_INFO(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+        ("bClientType", _CLIENT_TYPE_FLAGS_()),
+        ("AddressState", _V5_ADDRESS_STATE_()),
+        ("Status", QuarantineStatus()),
+        ("ProbationEnds", DATE_TIME()),
+        ("QuarantineCapable", BOOL()),
+        ("SentPotExpTime", DWORD()),
+        ("AckPotExpTime", DWORD()),
+        ("RecvPotExpTime", DWORD()),
+        ("StartTime", DWORD()),
+        ("CltLastTransTime", DWORD()),
+        ("LastBndUpdTime", DWORD()),
+        ("BndMsgStatus", DWORD()),
+        ("PolicyName", LPWSTR()),
+        ("Flags", BYTE()),
+    ]
+
+LPDHCPV4_FAILOVER_CLIENT_INFO = Ptr("<I", DHCPV4_FAILOVER_CLIENT_INFO())
+LPDHCPV4_FAILOVER_CLIENT_INFO_PTR = Ptr("<I", LPDHCPV4_FAILOVER_CLIENT_INFO())
+
+class DHCP_FAILOVER_STATISTICS(MemStruct):
+    fields = [
+        ("NumAddr", DWORD()),
+        ("AddrFree", DWORD()),
+        ("AddrInUse", DWORD()),
+        ("PartnerAddrFree", DWORD()),
+        ("ThisAddrFree", DWORD()),
+        ("PartnerAddrInUse", DWORD()),
+        ("ThisAddrInUse", DWORD()),
+    ]
+
+LPDHCP_FAILOVER_STATISTICS = Ptr("<I", DHCP_FAILOVER_STATISTICS())
+LPDHCP_FAILOVER_STATISTICS_PTR = Ptr("<I", LPDHCP_FAILOVER_STATISTICS())
+
+class DHCP_CLIENT_INFO_PB(MemStruct):
+    fields = [
+        ("ClientIpAddress", DHCP_IP_ADDRESS()),
+        ("SubnetMask", DHCP_IP_MASK()),
+        ("ClientHardwareAddress", DHCP_CLIENT_UID()),
+        ("ClientName", LPWSTR()),
+        ("ClientComment", LPWSTR()),
+        ("ClientLeaseExpires", DATE_TIME()),
+        ("OwnerHost", DHCP_HOST_INFO()),
+        ("bClientType", _CLIENT_TYPE_FLAGS_()),
+        ("AddressState", _V5_ADDRESS_STATE_()),
+        ("Status", QuarantineStatus()),
+        ("ProbationEnds", DATE_TIME()),
+        ("QuarantineCapable", BOOL()),
+        ("FilterStatus", _FILTER_STATUS_FLAGS_()),
+        ("PolicyName", LPWSTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_PB = Ptr("<I", DHCP_CLIENT_INFO_PB())
+LPDHCP_CLIENT_INFO_PB_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_PB())
+DHCP_CONST_LPDHCP_CLIENT_INFO_PB = Ptr("<I", DHCP_CLIENT_INFO_PB())
+
+class DHCP_CLIENT_INFO_PB_ARRAY(MemStruct):
+    fields = [
+        ("NumElements", DWORD()),
+        ("Clients", LPDHCP_CLIENT_INFO_PB_PTR()),
+    ]
+
+LPDHCP_CLIENT_INFO_PB_ARRAY = Ptr("<I", DHCP_CLIENT_INFO_PB_ARRAY())
+LPDHCP_CLIENT_INFO_PB_ARRAY_PTR = Ptr("<I", LPDHCP_CLIENT_INFO_PB_ARRAY())
+
+class _DHCP_ALL_OPTION_VALUES_PB_s_(MemStruct):
+    fields = [
+        ("PolicyName", LPWSTR()),
+        ("VendorName", LPWSTR()),
+        ("IsVendor", BOOL()),
+        ("OptionsArray", LPDHCP_OPTION_VALUE_ARRAY()),
+    ]
+
+_DHCP_ALL_OPTION_VALUES_PB_s_PTR_ = Ptr("<I", _DHCP_ALL_OPTION_VALUES_PB_s_())
+
+class DHCP_ALL_OPTION_VALUES_PB(MemStruct):
+    fields = [
+        ("Flags", DWORD()),
+        ("NumElements", DWORD()),
+        ("Options", _DHCP_ALL_OPTION_VALUES_PB_s_PTR_()),
+    ]
+
+LPDHCP_ALL_OPTION_VALUES_PB = Ptr("<I", DHCP_ALL_OPTION_VALUES_PB())
+LPDHCP_ALL_OPTION_VALUES_PB_PTR = Ptr("<I", LPDHCP_ALL_OPTION_VALUES_PB())
+
+###################
+
+###### Functions ######
 
 def dhcpsapi_DhcpAddFilterV4(jitter):
     """

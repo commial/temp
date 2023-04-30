@@ -1,3 +1,25 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+HCATINFO = HANDLE
+HCATINFO_PTR = Ptr("<I", HCATINFO())
+PFN_CDF_PARSE_ERROR_CALLBACK = LPVOID
+
+class CATALOG_INFO(MemStruct):
+    fields = [
+        ("cbStruct", DWORD()),
+        ("wszCatalogFile", WCHAR__MAX_PATH_()),
+    ]
+
+CATALOG_INFO_PTR = Ptr("<I", CATALOG_INFO())
+_WintrustPolicyFlags_ = DWORD
+_WintrustPolicyFlags_PTR_ = Ptr("<I", _WintrustPolicyFlags_())
+
+###################
+
+###### Functions ######
 
 def wintrust_OpenPersonalTrustDBDialog(jitter):
     """

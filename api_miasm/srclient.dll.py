@@ -1,3 +1,4 @@
+###### Enums ######
 _RESTOREPOINT_EVENT_ = {
     "BEGIN_SYSTEM_CHANGE": 100,
     "END_SYSTEM_CHANGE": 101,
@@ -42,6 +43,47 @@ _RESTOREPOINT_TYPE__INV = {
     17: "WINDOWS_UPDATE",
     18: "CRITICAL_UPDATE",
 }
+
+###################
+
+###### Types ######
+CHAR__MAX_DESC_ = Array(CHAR, 64)
+WCHAR__MAX_DESC_W_ = Array(WCHAR, 256)
+_RESTOREPOINT_EVENT_ = DWORD
+_RESTOREPOINT_TYPE_ = DWORD
+
+class RESTOREPOINTINFOA(MemStruct):
+    fields = [
+        ("dwEventType", _RESTOREPOINT_EVENT_()),
+        ("dwRestorePtType", _RESTOREPOINT_TYPE_()),
+        ("llSequenceNumber", INT64()),
+        ("szDescription", CHAR__MAX_DESC_()),
+    ]
+
+PRESTOREPOINTINFOA = Ptr("<I", RESTOREPOINTINFOA())
+
+class RESTOREPOINTINFOW(MemStruct):
+    fields = [
+        ("dwEventType", _RESTOREPOINT_EVENT_()),
+        ("dwRestorePtType", _RESTOREPOINT_TYPE_()),
+        ("llSequenceNumber", INT64()),
+        ("szDescription", WCHAR__MAX_DESC_W_()),
+    ]
+
+PRESTOREPOINTINFOW = Ptr("<I", RESTOREPOINTINFOW())
+_StateMgrStatus_ = _ERROR_CODE_
+
+class STATEMGRSTATUS(MemStruct):
+    fields = [
+        ("nStatus", _StateMgrStatus_()),
+        ("llSequenceNumber", INT64()),
+    ]
+
+PSTATEMGRSTATUS = Ptr("<I", STATEMGRSTATUS())
+
+###################
+
+###### Functions ######
 
 def srclient_SRRemoveRestorePoint(jitter):
     """

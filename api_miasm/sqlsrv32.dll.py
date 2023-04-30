@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def sqlsrv32_ConfigDriver(jitter, get_str, set_str):
     """

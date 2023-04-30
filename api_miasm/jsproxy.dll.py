@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def jsproxy_InternetDeInitializeAutoProxyDll(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 _InternetService_ = {
     "INTERNET_SERVICE_FTP": 1,
     "INTERNET_SERVICE_GOPHER": 2,
@@ -170,6 +171,280 @@ HTTP_WEB_SOCKET_CLOSE_STATUS_INV = {
     1011: "HTTP_WEB_SOCKET_SERVER_ERROR_CLOSE_STATUS",
     1015: "HTTP_WEB_SOCKET_SECURE_HANDSHAKE_ERROR_CLOSE_STATUS",
 }
+
+###################
+
+###### Types ######
+HTTP_PUSH_WAIT_HANDLE = HANDLE
+HTTP_PUSH_WAIT_HANDLE_PTR = Ptr("<I", HTTP_PUSH_WAIT_HANDLE())
+APP_CACHE_HANDLE = PVOID
+APP_CACHE_HANDLE_PTR = Ptr("<I", APP_CACHE_HANDLE())
+HTTP_DEPENDENCY_HANDLE = PVOID
+HTTP_DEPENDENCY_HANDLE_PTR = Ptr("<I", HTTP_DEPENDENCY_HANDLE())
+URLCACHE_HANDLE = PVOID
+URLCACHE_HANDLE_PTR = Ptr("<I", URLCACHE_HANDLE())
+CACHE_OPERATOR = LPVOID
+BSTR_PTR_PTR = Ptr("<I", BSTR_PTR())
+P3PURL = LPSTR
+P3PCURL = LPSTR
+P3PVERB = LPSTR
+P3PCXSL = BSTR
+P3PHANDLE = LPVOID
+WCHAR__SZ_ALG_MAX_SIZE_ = Array(WCHAR, 64)
+_InternetService_ = DWORD
+_CacheEntryType_ = DWORD
+_InternetGetConnectedStateFlags_ = DWORD
+_InternetGetConnectedStateFlags_PTR_ = Ptr("<I", _InternetGetConnectedStateFlags_())
+_InternetOpenType_ = DWORD
+_InternetOpenFlags_ = DWORD
+_InternetFlags_ = DWORD
+_InternetReadFileFlags_ = DWORD
+_HttpAddReqFlag_ = DWORD
+_InternetCookieFlags_ = DWORD
+_InternetErrorDlgFlags_ = DWORD
+_CacheEntryFieldControl_ = DWORD
+InternetCookieState = DWORD
+FORTCMD = UINT
+FORTSTAT = DWORD
+FORTSTAT_PTR = Ptr("<I", FORTSTAT())
+_INTERNET_CACHE_CONTAINER_FLAGS_ = DWORD
+_CACHE_FIND_CONTAINER_FLAGS_ = DWORD
+_CACHE_CONFIG_FC_ = DWORD
+_CACHE_NOTIFY_FILTER_OPTIONS_ = DWORD
+_APP_CACHE_LOOKUP_FLAGS_ = DWORD
+
+class SecPkgContext_ConnectionInfo(MemStruct):
+    fields = [
+        ("dwProtocol", DWORD()),
+        ("aiCipher", ALG_ID()),
+        ("dwCipherStrength", DWORD()),
+        ("aiHash", ALG_ID()),
+        ("dwHashStrength", DWORD()),
+        ("aiExch", ALG_ID()),
+        ("dwExchStrength", DWORD()),
+    ]
+
+
+class SecPkgContext_CipherInfo(MemStruct):
+    fields = [
+        ("dwVersion", DWORD()),
+        ("dwProtocol", DWORD()),
+        ("dwCipherSuite", DWORD()),
+        ("dwBaseCipherSuite", DWORD()),
+        ("szCipherSuite", WCHAR__SZ_ALG_MAX_SIZE_()),
+        ("szCipher", WCHAR__SZ_ALG_MAX_SIZE_()),
+        ("dwCipherLen", DWORD()),
+        ("dwCipherBlockLen", DWORD()),
+        ("szHash", WCHAR__SZ_ALG_MAX_SIZE_()),
+        ("dwHashLen", DWORD()),
+        ("szExchange", WCHAR__SZ_ALG_MAX_SIZE_()),
+        ("dwMinExchangeLen", DWORD()),
+        ("dwMaxExchangeLen", DWORD()),
+        ("szCertificate", WCHAR__SZ_ALG_MAX_SIZE_()),
+        ("dwKeyType", DWORD()),
+    ]
+
+
+class SEC_CHANNEL_BINDINGS(MemStruct):
+    fields = [
+        ("dwInitiatorAddrType", unsigned_long()),
+        ("cbInitiatorLength", unsigned_long()),
+        ("dwInitiatorOffset", unsigned_long()),
+        ("dwAcceptorAddrType", unsigned_long()),
+        ("cbAcceptorLength", unsigned_long()),
+        ("dwAcceptorOffset", unsigned_long()),
+        ("cbApplicationDataLength", unsigned_long()),
+        ("dwApplicationDataOffset", unsigned_long()),
+    ]
+
+SEC_CHANNEL_BINDINGS_PTR = Ptr("<I", SEC_CHANNEL_BINDINGS())
+
+class SecPkgContext_Bindings(MemStruct):
+    fields = [
+        ("BindingsLength", unsigned_long()),
+        ("Bindings", SEC_CHANNEL_BINDINGS_PTR()),
+    ]
+
+
+class INTERNET_SECURITY_INFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("pCertificate", PCCERT_CONTEXT()),
+        ("pcCertChain", PCCERT_CHAIN_CONTEXT()),
+        ("connectionInfo", SecPkgContext_ConnectionInfo()),
+        ("cipherInfo", SecPkgContext_CipherInfo()),
+        ("pcUnverifiedCertChain", PCCERT_CHAIN_CONTEXT()),
+        ("channelBindingToken", SecPkgContext_Bindings()),
+    ]
+
+LPINTERNET_SECURITY_INFO = Ptr("<I", INTERNET_SECURITY_INFO())
+APP_CACHE_STATE = UINT
+APP_CACHE_STATE_PTR = Ptr("<I", APP_CACHE_STATE())
+URL_CACHE_LIMIT_TYPE = UINT
+_APP_CACHE_ENTRY_TYPE_ = DWORD
+
+class APP_CACHE_DOWNLOAD_ENTRY(MemStruct):
+    fields = [
+        ("pwszUrl", PWSTR()),
+        ("dwEntryType", _APP_CACHE_ENTRY_TYPE_()),
+    ]
+
+APP_CACHE_DOWNLOAD_ENTRY_PTR = Ptr("<I", APP_CACHE_DOWNLOAD_ENTRY())
+
+class APP_CACHE_DOWNLOAD_LIST(MemStruct):
+    fields = [
+        ("dwEntryCount", DWORD()),
+        ("pEntries", APP_CACHE_DOWNLOAD_ENTRY_PTR()),
+    ]
+
+APP_CACHE_DOWNLOAD_LIST_PTR = Ptr("<I", APP_CACHE_DOWNLOAD_LIST())
+
+class HTTP_PUSH_TRANSPORT_SETTING(MemStruct):
+    fields = [
+        ("TransportSettingId", GUID()),
+        ("BrokerEventId", GUID()),
+    ]
+
+HTTP_PUSH_TRANSPORT_SETTING_PTR = Ptr("<I", HTTP_PUSH_TRANSPORT_SETTING())
+HTTP_PUSH_WAIT_TYPE = UINT
+
+class HTTP_PUSH_NOTIFICATION_STATUS(MemStruct):
+    fields = [
+        ("ChannelStatusValid", BOOL()),
+        ("ChannelStatus", DWORD()),
+    ]
+
+HTTP_PUSH_NOTIFICATION_STATUS_PTR = Ptr("<I", HTTP_PUSH_NOTIFICATION_STATUS())
+APP_CACHE_FINALIZE_STATE = UINT
+APP_CACHE_FINALIZE_STATE_PTR = Ptr("<I", APP_CACHE_FINALIZE_STATE())
+
+class APP_CACHE_GROUP_INFO(MemStruct):
+    fields = [
+        ("pwszManifestUrl", PWSTR()),
+        ("ftLastAccessTime", FILETIME()),
+        ("ullSize", ULONGLONG()),
+    ]
+
+APP_CACHE_GROUP_INFO_PTR = Ptr("<I", APP_CACHE_GROUP_INFO())
+
+class APP_CACHE_GROUP_LIST(MemStruct):
+    fields = [
+        ("dwAppCacheGroupCount", DWORD()),
+        ("pAppCacheGroups", APP_CACHE_GROUP_INFO_PTR()),
+    ]
+
+APP_CACHE_GROUP_LIST_PTR = Ptr("<I", APP_CACHE_GROUP_LIST())
+
+class URLCACHE_ENTRY_INFO(MemStruct):
+    fields = [
+        ("pwszSourceUrlName", PWSTR()),
+        ("pwszLocalFileName", PWSTR()),
+        ("dwCacheEntryType", DWORD()),
+        ("dwUseCount", DWORD()),
+        ("dwHitRate", DWORD()),
+        ("dwSizeLow", DWORD()),
+        ("dwSizeHigh", DWORD()),
+        ("ftLastModifiedTime", FILETIME()),
+        ("ftExpireTime", FILETIME()),
+        ("ftLastAccessTime", FILETIME()),
+        ("ftLastSyncTime", FILETIME()),
+        # Length is `cbHeaderInfoSize`
+        ("pbHeaderInfo", PBYTE()),
+        ("cbHeaderInfoSize", DWORD()),
+        # Length is `cbExtraDataSize`
+        ("pbExtraData", PBYTE()),
+        ("cbExtraDataSize", DWORD()),
+    ]
+
+PURLCACHE_ENTRY_INFO = Ptr("<I", URLCACHE_ENTRY_INFO())
+
+class WININET_PROXY_INFO(MemStruct):
+    fields = [
+        ("fProxy", BOOL()),
+        ("fBypass", BOOL()),
+        ("ProxyScheme", INTERNET_SCHEME()),
+        ("pwszProxy", PWSTR()),
+        ("ProxyPort", INTERNET_PORT()),
+    ]
+
+WININET_PROXY_INFO_PTR = Ptr("<I", WININET_PROXY_INFO())
+
+class WININET_PROXY_INFO_LIST(MemStruct):
+    fields = [
+        ("dwProxyInfoCount", DWORD()),
+        ("pProxyInfo", WININET_PROXY_INFO_PTR()),
+    ]
+
+WININET_PROXY_INFO_LIST_PTR = Ptr("<I", WININET_PROXY_INFO_LIST())
+
+class INTERNET_CACHE_CONTAINER_INFO(MemStruct):
+    fields = [
+        ("dwCacheVersion", DWORD()),
+        ("lpszName", LPTSTR()),
+        ("lpszCachePrefix", LPTSTR()),
+        ("lpszVolumeLabel", LPTSTR()),
+        ("lpszVolumeTitle", LPTSTR()),
+    ]
+
+LPINTERNET_CACHE_CONTAINER_INFO = Ptr("<I", INTERNET_CACHE_CONTAINER_INFO())
+
+class INTERNET_CACHE_CONFIG_PATH_ENTRY(MemStruct):
+    fields = [
+        ("CachePath", TCHAR__MAX_PATH_()),
+        ("dwCacheSize", DWORD()),
+    ]
+
+INTERNET_CACHE_CONFIG_PATH_ENTRY__ANYSIZE_ARRAY_ = Array(INTERNET_CACHE_CONFIG_PATH_ENTRY, 1)
+
+class INTERNET_CACHE_CONFIG_INFO(MemStruct):
+    fields = [
+        ("dwStructSize", DWORD()),
+        ("dwContainer", DWORD()),
+        ("dwQuota", DWORD()),
+        ("dwReserved4", DWORD()),
+        ("fPerUser", BOOL()),
+        ("dwSyncMode", DWORD()),
+        ("dwNumCachePaths", DWORD()),
+        ("CachePaths", INTERNET_CACHE_CONFIG_PATH_ENTRY__ANYSIZE_ARRAY_()),
+        ("dwNormalUsage", DWORD()),
+        ("dwExemptUsage", DWORD()),
+    ]
+
+LPINTERNET_CACHE_CONFIG_INFO = Ptr("<I", INTERNET_CACHE_CONFIG_INFO())
+_INTERNET_DIAL_FLAGS_ = DWORD
+_FTP_TRANSFER_FLAGS_ = DWORD
+WPAD_CACHE_DELETE = UINT
+
+class P3PResource(MemStruct):
+    fields = [
+        ("pszLocation", P3PCURL()),
+        ("pszVerb", P3PVERB()),
+        ("pszP3PHeaderRef", P3PCURL()),
+        ("pszLinkTagRef", P3PCURL()),
+        ("pContainer", LPVOID()),
+    ]
+
+P3PResource_PTR = Ptr("<I", P3PResource())
+
+class P3PSignal(MemStruct):
+    fields = [
+        ("hwnd", HWND()),
+        ("message", unsigned_int()),
+        ("hEvent", HANDLE()),
+        ("pContext", void_PTR()),
+        ("hRequest", P3PHANDLE()),
+    ]
+
+P3PSignal_PTR = Ptr("<I", P3PSignal())
+P3PStatus = int
+HTTP_WEB_SOCKET_BUFFER_TYPE = UINT
+HTTP_WEB_SOCKET_BUFFER_TYPE_PTR = Ptr("<I", HTTP_WEB_SOCKET_BUFFER_TYPE())
+HTTP_WEB_SOCKET_CLOSE_STATUS = USHORT
+HTTP_WEB_SOCKET_CLOSE_STATUS_PTR = Ptr("<I", HTTP_WEB_SOCKET_CLOSE_STATUS())
+
+###################
+
+###### Functions ######
 
 def wininet_CommitUrlCacheEntry(jitter, get_str, set_str):
     """

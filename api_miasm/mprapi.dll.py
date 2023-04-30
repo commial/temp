@@ -1,3 +1,26 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+RAS_SERVER_HANDLE = HANDLE
+MPR_SERVER_HANDLE = HANDLE
+MPR_SERVER_HANDLE_PTR = Ptr("<I", MPR_SERVER_HANDLE())
+MIB_SERVER_HANDLE = HANDLE
+MIB_SERVER_HANDLE_PTR = Ptr("<I", MIB_SERVER_HANDLE())
+WCHAR__MAX_INTERFACE_NAME_LEN_+_1_ = Array(WCHAR, 257)
+
+class MPR_IPINIP_INTERFACE_0(MemStruct):
+    fields = [
+        ("wszFriendlyName", WCHAR__MAX_INTERFACE_NAME_LEN_+_1_()),
+        ("Guid", GUID()),
+    ]
+
+PMPR_IPINIP_INTERFACE_0 = Ptr("<I", MPR_IPINIP_INTERFACE_0())
+
+###################
+
+###### Functions ######
 
 def mprapi_MprAdminPortEnum(jitter):
     """

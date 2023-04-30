@@ -1,3 +1,4 @@
+###### Enums ######
 GROUP_POLICY_OBJECT_TYPE = {
     "GPOTypeLocal": 0,
     "GPOTypeRemote": 1,
@@ -26,6 +27,33 @@ GROUP_POLICY_HINT_TYPE_INV = {
     3: "GPHintDomain",
     4: "GPHintOrganizationalUnit",
 }
+
+###################
+
+###### Types ######
+GROUP_POLICY_OBJECT_TYPE = UINT
+GROUP_POLICY_HINT_TYPE = UINT
+
+class GPOBROWSEINFO(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwFlags", DWORD()),
+        ("hwndOwner", HWND()),
+        ("lpTitle", LPOLESTR()),
+        ("lpInitialOU", LPOLESTR()),
+        ("lpDSPath", LPOLESTR()),
+        ("dwDSPathSize", DWORD()),
+        ("lpName", LPOLESTR()),
+        ("dwNameSize", DWORD()),
+        ("gpoType", GROUP_POLICY_OBJECT_TYPE()),
+        ("gpoHint", GROUP_POLICY_HINT_TYPE()),
+    ]
+
+LPGPOBROWSEINFO = Ptr("<I", GPOBROWSEINFO())
+
+###################
+
+###### Functions ######
 
 def gpedit_BrowseForGPO(jitter):
     """

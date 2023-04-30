@@ -1,3 +1,88 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+LPOCNCHKPROC = LPVOID
+LPOCNCONNPROC = LPVOID
+LPOCNDSCPROC = LPVOID
+_SC_DLG_FLAGS_ = DWORD
+
+class OPENCARDNAME(MemStruct):
+    fields = [
+        ("dwStructSize", DWORD()),
+        ("hwndOwner", HWND()),
+        ("hSCardContext", SCARDCONTEXT()),
+        ("lpstrGroupNames", LPTSTR()),
+        ("nMaxGroupNames", DWORD()),
+        ("lpstrCardNames", LPTSTR()),
+        ("nMaxCardNames", DWORD()),
+        ("rgguidInterfaces", LPCGUID()),
+        ("cguidInterfaces", DWORD()),
+        ("lpstrRdr", LPTSTR()),
+        ("nMaxRdr", DWORD()),
+        ("lpstrCard", LPTSTR()),
+        ("nMaxCard", DWORD()),
+        ("lpstrTitle", LPCTSTR()),
+        ("dwFlags", _SC_DLG_FLAGS_()),
+        ("pvUserData", LPVOID()),
+        ("dwShareMode", DWORD()),
+        ("dwPreferredProtocols", DWORD()),
+        ("dwActiveProtocol", DWORD()),
+        ("lpfnConnect", LPOCNCONNPROC()),
+        ("lpfnCheck", LPOCNCHKPROC()),
+        ("lpfnDisconnect", LPOCNDSCPROC()),
+        ("hCardHandle", SCARDHANDLE()),
+    ]
+
+LPOPENCARDNAME = Ptr("<I", OPENCARDNAME())
+
+class OPENCARD_SEARCH_CRITERIA(MemStruct):
+    fields = [
+        ("dwStructSize", DWORD()),
+        ("lpstrGroupNames", LPTSTR()),
+        ("nMaxGroupNames", DWORD()),
+        ("rgguidInterfaces", LPCGUID()),
+        ("cguidInterfaces", DWORD()),
+        ("lpstrCardNames", LPTSTR()),
+        ("nMaxCardNames", DWORD()),
+        ("lpfnCheck", LPOCNCHKPROC()),
+        ("lpfnConnect", LPOCNCONNPROC()),
+        ("lpfnDisconnect", LPOCNDSCPROC()),
+        ("pvUserData", LPVOID()),
+        ("dwShareMode", DWORD()),
+        ("dwPreferredProtocols", DWORD()),
+    ]
+
+POPENCARD_SEARCH_CRITERIA = Ptr("<I", OPENCARD_SEARCH_CRITERIA())
+
+class OPENCARDNAME_EX(MemStruct):
+    fields = [
+        ("dwStructSize", DWORD()),
+        ("hSCardContext", SCARDCONTEXT()),
+        ("hwndOwner", HWND()),
+        ("dwFlags", _SC_DLG_FLAGS_()),
+        ("lpstrTitle", LPCTSTR()),
+        ("lpstrSearchDesc", LPCTSTR()),
+        ("hIcon", HICON()),
+        ("pOpenCardSearchCriteria", POPENCARD_SEARCH_CRITERIA()),
+        ("lpfnConnect", LPOCNCONNPROC()),
+        ("pvUserData", LPVOID()),
+        ("dwShareMode", DWORD()),
+        ("dwPreferredProtocols", DWORD()),
+        ("lpstrRdr", LPTSTR()),
+        ("nMaxRdr", DWORD()),
+        ("lpstrCard", LPTSTR()),
+        ("nMaxCard", DWORD()),
+        ("dwActiveProtocol", DWORD()),
+        ("hCardHandle", SCARDHANDLE()),
+    ]
+
+LPOPENCARDNAME_EX = Ptr("<I", OPENCARDNAME_EX())
+
+###################
+
+###### Functions ######
 
 def scarddlg_GetOpenCardName(jitter, get_str, set_str):
     """

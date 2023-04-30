@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def rpcns4_RpcNsBindingExport(jitter, get_str, set_str):
     """

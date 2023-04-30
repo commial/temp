@@ -1,3 +1,4 @@
+###### Enums ######
 WER_DUMP_TYPE = {
     "WerDumpTypeMicroDump": 1,
     "WerDumpTypeMiniDump": 2,
@@ -96,6 +97,66 @@ WER_SUBMIT_RESULT_INV = {
     9: "WerCustomAction",
     10: "WerThrottled",
 }
+
+###################
+
+###### Types ######
+HREPORT = HANDLE
+HREPORT_PTR = Ptr("<I", HREPORT())
+WCHAR__WER_MAX_PREFERRED_MODULES_BUFFER_ = Array(WCHAR, 256)
+WCHAR__64_ = Array(WCHAR, 64)
+WCHAR__512_ = Array(WCHAR, 512)
+_WER_DUMP_MASK_ = DWORD
+
+class WER_DUMP_CUSTOM_OPTIONS(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("dwMask", _WER_DUMP_MASK_()),
+        ("dwDumpFlags", MINIDUMP_TYPE()),
+        ("bOnlyThisThread", BOOL()),
+        ("dwExceptionThreadFlags", THREAD_WRITE_FLAGS()),
+        ("dwOtherThreadFlags", THREAD_WRITE_FLAGS()),
+        ("dwExceptionThreadExFlags", THREAD_WRITE_FLAGS()),
+        ("dwOtherThreadExFlags", THREAD_WRITE_FLAGS()),
+        ("dwPreferredModuleFlags", MODULE_WRITE_FLAGS()),
+        ("dwOtherModuleFlags", MODULE_WRITE_FLAGS()),
+        ("wzPreferredModuleList", WCHAR__WER_MAX_PREFERRED_MODULES_BUFFER_()),
+    ]
+
+PWER_DUMP_CUSTOM_OPTIONS = Ptr("<I", WER_DUMP_CUSTOM_OPTIONS())
+
+class WER_REPORT_INFORMATION(MemStruct):
+    fields = [
+        ("dwSize", DWORD()),
+        ("hProcess", HANDLE()),
+        ("wzConsentKey", WCHAR__64_()),
+        ("wzFriendlyEventName", WCHAR__128_()),
+        ("wzApplicationName", WCHAR__128_()),
+        ("wzApplicationPath", WCHAR__MAX_PATH_()),
+        ("wzDescription", WCHAR__512_()),
+        ("hwndParent", HWND()),
+    ]
+
+PWER_REPORT_INFORMATION = Ptr("<I", WER_REPORT_INFORMATION())
+
+class WER_EXCEPTION_INFORMATION(MemStruct):
+    fields = [
+        ("pExceptionPointers", PEXCEPTION_POINTERS()),
+        ("bClientPointers", BOOL()),
+    ]
+
+PWER_EXCEPTION_INFORMATION = Ptr("<I", WER_EXCEPTION_INFORMATION())
+WER_DUMP_TYPE = UINT
+WER_FILE_TYPE = UINT
+WER_REPORT_TYPE = UINT
+WER_REPORT_UI = UINT
+WER_CONSENT = UINT
+WER_SUBMIT_RESULT = UINT
+PWER_SUBMIT_RESULT = Ptr("<I", WER_SUBMIT_RESULT())
+
+###################
+
+###### Functions ######
 
 def wer_WerAddExcludedApplication(jitter):
     """

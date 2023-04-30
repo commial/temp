@@ -1,3 +1,4 @@
+###### Enums ######
 WSManShellFlag = {
     "WSMAN_FLAG_NO_COMPRESSION": 0x1,
     "WSMAN_FLAG_DELETE_SERVER_SESSION": 0x2,
@@ -114,6 +115,163 @@ WSManProxyAccessType_INV = {
     4: "WSMAN_OPTION_PROXY_AUTO_DETECT",
     8: "WSMAN_OPTION_PROXY_NO_PROXY_SERVER",
 }
+
+###################
+
+###### Types ######
+WSMAN_SHELL_COMPLETION_FUNCTION = LPVOID
+WSMAN_SESSION_HANDLE = LPVOID
+WSMAN_SESSION_HANDLE_PTR = Ptr("<I", WSMAN_SESSION_HANDLE())
+WSMAN_SHELL_HANDLE = LPVOID
+WSMAN_SHELL_HANDLE_PTR = Ptr("<I", WSMAN_SHELL_HANDLE())
+WSMAN_COMMAND_HANDLE = LPVOID
+WSMAN_COMMAND_HANDLE_PTR = Ptr("<I", WSMAN_COMMAND_HANDLE())
+WSMAN_OPERATION_HANDLE = LPVOID
+WSMAN_OPERATION_HANDLE_PTR = Ptr("<I", WSMAN_OPERATION_HANDLE())
+WSMAN_API_HANDLE = LPVOID
+WSMAN_API_HANDLE_PTR = Ptr("<I", WSMAN_API_HANDLE())
+WSManShellFlag = DWORD
+_WSMAN_FLAG_REQUESTED_API_VERSION_ = DWORD
+
+class WSMAN_SHELL_ASYNC(MemStruct):
+    fields = [
+        ("operationContext", PVOID()),
+        ("completionFunction", WSMAN_SHELL_COMPLETION_FUNCTION()),
+    ]
+
+WSMAN_SHELL_ASYNC_PTR = Ptr("<I", WSMAN_SHELL_ASYNC())
+
+class WSMAN_USERNAME_PASSWORD_CREDS(MemStruct):
+    fields = [
+        ("username", PCWSTR()),
+        ("password", PCWSTR()),
+    ]
+
+WSManAuthenticationFlags = DWORD
+_WSMAN_AUTHENTICATION_CREDENTIALS_u_ = Union([
+    ("userAccount", WSMAN_USERNAME_PASSWORD_CREDS),
+    ("certificateThumbprint", PCWSTR),
+])
+
+class WSMAN_AUTHENTICATION_CREDENTIALS(MemStruct):
+    fields = [
+        ("authenticationMechanism", WSManAuthenticationFlags()),
+        (None, _WSMAN_AUTHENTICATION_CREDENTIALS_u_()),
+    ]
+
+WSMAN_AUTHENTICATION_CREDENTIALS_PTR = Ptr("<I", WSMAN_AUTHENTICATION_CREDENTIALS())
+WSManSessionOption = UINT
+
+class WSMAN_STREAM_ID_SET(MemStruct):
+    fields = [
+        ("streamIDsCount", DWORD()),
+        ("streamIDs", PCWSTR_PTR()),
+    ]
+
+WSMAN_STREAM_ID_SET_PTR = Ptr("<I", WSMAN_STREAM_ID_SET())
+
+class WSMAN_COMMAND_ARG_SET(MemStruct):
+    fields = [
+        ("argsCount", DWORD()),
+        ("args", PCWSTR_PTR()),
+    ]
+
+WSMAN_COMMAND_ARG_SET_PTR = Ptr("<I", WSMAN_COMMAND_ARG_SET())
+WSManDataType = UINT
+
+class WSMAN_DATA_TEXT(MemStruct):
+    fields = [
+        ("bufferLength", DWORD()),
+        ("buffer", PCWSTR()),
+    ]
+
+
+class WSMAN_DATA_BINARY(MemStruct):
+    fields = [
+        ("dataLength", DWORD()),
+        # Length is `dataLength`
+        ("data", BYTE_PTR()),
+    ]
+
+_WSMAN_DATA_u_ = Union([
+    ("text", WSMAN_DATA_TEXT),
+    ("binaryData", WSMAN_DATA_BINARY),
+    ("number", DWORD),
+])
+
+class WSMAN_DATA(MemStruct):
+    fields = [
+        ("type", WSManDataType()),
+        (None, _WSMAN_DATA_u_()),
+    ]
+
+WSMAN_DATA_PTR = Ptr("<I", WSMAN_DATA())
+
+class WSMAN_ENVIRONMENT_VARIABLE(MemStruct):
+    fields = [
+        ("name", PCWSTR()),
+        ("value", PCWSTR()),
+    ]
+
+WSMAN_ENVIRONMENT_VARIABLE_PTR = Ptr("<I", WSMAN_ENVIRONMENT_VARIABLE())
+
+class WSMAN_ENVIRONMENT_VARIABLE_SET(MemStruct):
+    fields = [
+        ("varsCount", DWORD()),
+        ("vars", WSMAN_ENVIRONMENT_VARIABLE_PTR()),
+    ]
+
+WSMAN_ENVIRONMENT_VARIABLE_SET_PTR = Ptr("<I", WSMAN_ENVIRONMENT_VARIABLE_SET())
+
+class WSMAN_SHELL_STARTUP_INFO(MemStruct):
+    fields = [
+        ("inputStreamSet", WSMAN_STREAM_ID_SET_PTR()),
+        ("outputStreamSet", WSMAN_STREAM_ID_SET_PTR()),
+        ("idleTimeoutMs", DWORD()),
+        ("workingDirectory", PCWSTR()),
+        ("variableSet", WSMAN_ENVIRONMENT_VARIABLE_SET_PTR()),
+        ("name", PCWSTR()),
+    ]
+
+WSMAN_SHELL_STARTUP_INFO_PTR = Ptr("<I", WSMAN_SHELL_STARTUP_INFO())
+
+class WSMAN_OPTION(MemStruct):
+    fields = [
+        ("name", PCWSTR()),
+        ("value", PCWSTR()),
+        ("mustComply", BOOL()),
+    ]
+
+WSMAN_OPTION_PTR = Ptr("<I", WSMAN_OPTION())
+
+class WSMAN_OPTION_SET(MemStruct):
+    fields = [
+        ("optionsCount", DWORD()),
+        ("options", WSMAN_OPTION_PTR()),
+        ("optionsMustUnderstand", BOOL()),
+    ]
+
+WSMAN_OPTION_SET_PTR = Ptr("<I", WSMAN_OPTION_SET())
+WSManProxyAccessType = DWORD
+
+class WSMAN_PROXY_INFO(MemStruct):
+    fields = [
+        ("accessType", WSManProxyAccessType()),
+        ("authenticationCredentials", WSMAN_AUTHENTICATION_CREDENTIALS()),
+    ]
+
+WSMAN_PROXY_INFO_PTR = Ptr("<I", WSMAN_PROXY_INFO())
+
+class WSMAN_SHELL_DISCONNECT_INFO(MemStruct):
+    fields = [
+        ("idleTimeoutMs", DWORD()),
+    ]
+
+WSMAN_SHELL_DISCONNECT_INFO_PTR = Ptr("<I", WSMAN_SHELL_DISCONNECT_INFO())
+
+###################
+
+###### Functions ######
 
 def wsmsvc_WSManCloseCommand(jitter):
     """

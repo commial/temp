@@ -1,3 +1,4 @@
+###### Enums ######
 ATTRIBUTE_TYPE = {
     "AT_INVALID": 0,
     "AT_BOOLEAN": 1,
@@ -32,6 +33,64 @@ ATTRIBUTE_TYPE_INV = {
     13: "AT_SOCKADDR",
     14: "AT_OCTET_STRING",
 }
+
+###################
+
+###### Types ######
+NDFHANDLE = PVOID
+NDFHANDLE_PTR = Ptr("<I", NDFHANDLE())
+CHAR__126_ = Array(CHAR, 126)
+ATTRIBUTE_TYPE = UINT
+
+class OCTET_STRING(MemStruct):
+    fields = [
+        ("dwLength", DWORD()),
+        ("lpValue", BYTE_PTR()),
+    ]
+
+
+class LIFE_TIME(MemStruct):
+    fields = [
+        ("startTime", FILETIME()),
+        ("endTime", FILETIME()),
+    ]
+
+
+class DIAG_SOCKADDR(MemStruct):
+    fields = [
+        ("family", USHORT()),
+        ("data", CHAR__126_()),
+    ]
+
+_HELPER_ATTRIBUTE_u_ = Union([
+    ("Boolean", BOOL),
+    ("Char", char),
+    ("Byte", byte),
+    ("Short", short),
+    ("Word", WORD),
+    ("Int", int),
+    ("DWord", DWORD),
+    ("Int64", LONGLONG),
+    ("UInt64", ULONGLONG),
+    ("PWStr", LPWSTR),
+    ("Guid", GUID),
+    ("LifeTime", LIFE_TIME),
+    ("Address", DIAG_SOCKADDR),
+    ("OctetString", OCTET_STRING),
+])
+
+class HELPER_ATTRIBUTE(MemStruct):
+    fields = [
+        ("pwszName", LPWSTR()),
+        ("type", ATTRIBUTE_TYPE()),
+        (None, _HELPER_ATTRIBUTE_u_()),
+    ]
+
+HELPER_ATTRIBUTE_PTR = Ptr("<I", HELPER_ATTRIBUTE())
+
+###################
+
+###### Functions ######
 
 def ndfapi_NdfCloseIncident(jitter):
     """

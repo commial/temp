@@ -1,3 +1,4 @@
+###### Enums ######
 RO_INIT_TYPE = {
     "RO_INIT_SINGLETHREADED": 0,
     "RO_INIT_MULTITHREADED": 1,
@@ -6,6 +7,38 @@ RO_INIT_TYPE_INV = {
     0: "RO_INIT_SINGLETHREADED",
     1: "RO_INIT_MULTITHREADED",
 }
+
+###################
+
+###### Types ######
+ROPARAMIIDHANDLE = HANDLE
+ROPARAMIIDHANDLE_PTR = Ptr("<I", ROPARAMIIDHANDLE())
+const_IRoMetaDataLocator& = IRoMetaDataLocator_PTR
+RO_REGISTRATION_COOKIE = LPVOID
+RO_REGISTRATION_COOKIE_PTR = Ptr("<I", RO_REGISTRATION_COOKIE())
+APARTMENT_SHUTDOWN_REGISTRATION_COOKIE = HANDLE
+APARTMENT_SHUTDOWN_REGISTRATION_COOKIE_PTR = Ptr("<I", APARTMENT_SHUTDOWN_REGISTRATION_COOKIE())
+PINSPECT_HSTRING_CALLBACK = LPVOID
+PFNGETACTIVATIONFACTORY = LPVOID
+PFNGETACTIVATIONFACTORY_PTR = Ptr("<I", PFNGETACTIVATIONFACTORY())
+PActivatableClassRegistration = LPVOID
+PActivatableClassRegistration_PTR = Ptr("<I", PActivatableClassRegistration())
+RO_ERROR_REPORTING_FLAGS = UINT32
+RO_ERROR_REPORTING_FLAGS_PTR = Ptr("<I", RO_ERROR_REPORTING_FLAGS())
+
+class ServerInformation(MemStruct):
+    fields = [
+        ("dwServerPid", DWORD()),
+        ("dwServerTid", DWORD()),
+        ("ui64ServerAddress", UINT64()),
+    ]
+
+PServerInformation = Ptr("<I", ServerInformation())
+RO_INIT_TYPE = UINT
+
+###################
+
+###### Functions ######
 
 def combase_CoEnterApplicationThreadLifetimeLoop(jitter):
     """

@@ -1,3 +1,4 @@
+###### Enums ######
 EFaultRepRetVal = {
     "frrvOk": 0,
     "frrvOkManifest": 1,
@@ -20,6 +21,15 @@ EFaultRepRetVal_INV = {
     7: "frrvOkHeadless",
     8: "frrvErrAnotherInstance",
 }
+
+###################
+
+###### Types ######
+EFaultRepRetVal = UINT
+
+###################
+
+###### Functions ######
 
 def faultrep_WerReportHang(jitter):
     """

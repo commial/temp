@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def msrating_RatingAccessDeniedDialog(jitter, get_str, set_str):
     """

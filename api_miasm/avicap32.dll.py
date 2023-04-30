@@ -1,3 +1,12 @@
+###### Enums ######
+
+###################
+
+###### Types ######
+
+###################
+
+###### Functions ######
 
 def avicap32_capCreateCaptureWindow(jitter, get_str, set_str):
     """

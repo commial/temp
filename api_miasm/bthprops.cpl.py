@@ -1,3 +1,4 @@
+###### Enums ######
 _BLUETOOTH_SERVICE_FLAGS_ = {
     "BLUETOOTH_SERVICE_DISABLE": 0x00,
     "BLUETOOTH_SERVICE_ENABLE": 0x01,
@@ -6,6 +7,15 @@ _BLUETOOTH_SERVICE_FLAGS__INV = {
     0x00: "BLUETOOTH_SERVICE_DISABLE",
     0x01: "BLUETOOTH_SERVICE_ENABLE",
 }
+
+###################
+
+###### Types ######
+_BLUETOOTH_SERVICE_FLAGS_ = DWORD
+
+###################
+
+###### Functions ######
 
 def bthprops_BluetoothAuthenticateDevice(jitter):
     """
