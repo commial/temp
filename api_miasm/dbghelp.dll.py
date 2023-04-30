@@ -32,6 +32,40 @@ IMAGEHLP_SYMBOL_TYPE_INFO = {
     "TI_GET_VIRTUALBASEDISPINDEX": 30,
     "TI_GET_IS_REFERENCE": 31,
 }
+IMAGEHLP_SYMBOL_TYPE_INFO_INV = {
+    0: "TI_GET_SYMTAG",
+    1: "TI_GET_SYMNAME",
+    2: "TI_GET_LENGTH",
+    3: "TI_GET_TYPE",
+    4: "TI_GET_TYPEID",
+    5: "TI_GET_BASETYPE",
+    6: "TI_GET_ARRAYINDEXTYPEID",
+    7: "TI_FINDCHILDREN",
+    8: "TI_GET_DATAKIND",
+    9: "TI_GET_ADDRESSOFFSET",
+    10: "TI_GET_OFFSET",
+    11: "TI_GET_VALUE",
+    12: "TI_GET_COUNT",
+    13: "TI_GET_CHILDRENCOUNT",
+    14: "TI_GET_BITPOSITION",
+    15: "TI_GET_VIRTUALBASECLASS",
+    16: "TI_GET_VIRTUALTABLESHAPEID",
+    17: "TI_GET_VIRTUALBASEPOINTEROFFSET",
+    18: "TI_GET_CLASSPARENTID",
+    19: "TI_GET_NESTED",
+    20: "TI_GET_SYMINDEX",
+    21: "TI_GET_LEXICALPARENT",
+    22: "TI_GET_ADDRESS",
+    23: "TI_GET_THISADJUST",
+    24: "TI_GET_UDTKIND",
+    25: "TI_IS_EQUIV_TO",
+    26: "TI_GET_CALLING_CONVENTION",
+    27: "TI_IS_CLOSE_EQUIV_TO",
+    28: "TI_GTIEX_REQS_VALID",
+    29: "TI_GET_VIRTUALBASEOFFSET",
+    30: "TI_GET_VIRTUALBASEDISPINDEX",
+    31: "TI_GET_IS_REFERENCE",
+}
 SYM_TYPE = {
     "SymNone": 0,
     "SymCoff": 1,
@@ -43,11 +77,28 @@ SYM_TYPE = {
     "SymDia": 7,
     "SymVirtual": 8,
 }
+SYM_TYPE_INV = {
+    0: "SymNone",
+    1: "SymCoff",
+    2: "SymCv",
+    3: "SymPdb",
+    4: "SymExport",
+    5: "SymDeferred",
+    6: "SymSym",
+    7: "SymDia",
+    8: "SymVirtual",
+}
 ADDRESS_MODE = {
     "AddrMode1616": 0,
     "AddrMode1632": 1,
     "AddrModeReal": 2,
     "AddrModeFlat": 3,
+}
+ADDRESS_MODE_INV = {
+    0: "AddrMode1616",
+    1: "AddrMode1632",
+    2: "AddrModeReal",
+    3: "AddrModeFlat",
 }
 _IMAGE_DEBUG_TYPE_ = {
     "IMAGE_DEBUG_TYPE_UNKNOWN": 0,
@@ -62,6 +113,20 @@ _IMAGE_DEBUG_TYPE_ = {
     "IMAGE_DEBUG_TYPE_BORLAND": 9,
     "IMAGE_DEBUG_TYPE_RESERVED10": 10,
     "IMAGE_DEBUG_TYPE_CLSID": 11,
+}
+_IMAGE_DEBUG_TYPE__INV = {
+    0: "IMAGE_DEBUG_TYPE_UNKNOWN",
+    1: "IMAGE_DEBUG_TYPE_COFF",
+    2: "IMAGE_DEBUG_TYPE_CODEVIEW",
+    3: "IMAGE_DEBUG_TYPE_FPO",
+    4: "IMAGE_DEBUG_TYPE_MISC",
+    5: "IMAGE_DEBUG_TYPE_EXCEPTION",
+    6: "IMAGE_DEBUG_TYPE_FIXUP",
+    7: "IMAGE_DEBUG_TYPE_OMAP_TO_SRC",
+    8: "IMAGE_DEBUG_TYPE_OMAP_FROM_SRC",
+    9: "IMAGE_DEBUG_TYPE_BORLAND",
+    10: "IMAGE_DEBUG_TYPE_RESERVED10",
+    11: "IMAGE_DEBUG_TYPE_CLSID",
 }
 
 def dbghelp_EnumDirTree(jitter, get_str, set_str):

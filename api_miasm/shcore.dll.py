@@ -2,13 +2,25 @@ BSOS_OPTIONS = {
     "BSOS_DEFAULT": 0,
     "BSOS_PREFERDESTINATIONSTREAM": 1,
 }
+BSOS_OPTIONS_INV = {
+    0: "BSOS_DEFAULT",
+    1: "BSOS_PREFERDESTINATIONSTREAM",
+}
 FileAccessMode = {
     "Read": 0,
     "ReadWrite": 1,
 }
+FileAccessMode_INV = {
+    0: "Read",
+    1: "ReadWrite",
+}
 DISPLAY_DEVICE_TYPE = {
     "DEVICE_PRIMARY": 0,
     "DEVICE_IMMERSIVE": 1,
+}
+DISPLAY_DEVICE_TYPE_INV = {
+    0: "DEVICE_PRIMARY",
+    1: "DEVICE_IMMERSIVE",
 }
 
 def shcore_CreateRandomAccessStreamOnFile(jitter):

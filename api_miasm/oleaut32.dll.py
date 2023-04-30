@@ -4,10 +4,21 @@ _OleLoadPictureExFlags_ = {
     "LP_VGACOLOR": 0x02,
     "LP_COLOR": 0x04,
 }
+_OleLoadPictureExFlags__INV = {
+    0x00: "LP_DEFAULT",
+    0x01: "LP_MONOCHROME",
+    0x02: "LP_VGACOLOR",
+    0x04: "LP_COLOR",
+}
 REGKIND = {
     "REGKIND_DEFAULT": 0,
     "REGKIND_REGISTER": 1,
     "REGKIND_NONE": 2,
+}
+REGKIND_INV = {
+    0: "REGKIND_DEFAULT",
+    1: "REGKIND_REGISTER",
+    2: "REGKIND_NONE",
 }
 
 def oleaut32_OleIconToCursor(jitter):

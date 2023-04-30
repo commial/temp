@@ -5,6 +5,13 @@ FILE_RISK_LEVEL = {
     "FRL_HIGH": 3,
     "FRL_BLOCK": 4,
 }
+FILE_RISK_LEVEL_INV = {
+    0: "FRL_NO_OPINION",
+    1: "FRL_LOW",
+    2: "FRL_MODERATE",
+    3: "FRL_HIGH",
+    4: "FRL_BLOCK",
+}
 
 def winshfhc_EstimateFileRiskLevel(jitter):
     """

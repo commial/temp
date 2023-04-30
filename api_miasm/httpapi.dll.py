@@ -4,13 +4,27 @@ HTTP_DATA_CHUNK_TYPE = {
     "HttpDataChunkFromFragmentCache": 2,
     "HttpDataChunkFromFragmentCacheEx": 3,
 }
+HTTP_DATA_CHUNK_TYPE_INV = {
+    0: "HttpDataChunkFromMemory",
+    1: "HttpDataChunkFromFileHandle",
+    2: "HttpDataChunkFromFragmentCache",
+    3: "HttpDataChunkFromFragmentCacheEx",
+}
 HTTP_CACHE_POLICY_TYPE = {
     "HttpCachePolicyNocache": 0,
     "HttpCachePolicyUserInvalidates": 1,
     "HttpCachePolicyTimeToLive": 2,
 }
+HTTP_CACHE_POLICY_TYPE_INV = {
+    0: "HttpCachePolicyNocache",
+    1: "HttpCachePolicyUserInvalidates",
+    2: "HttpCachePolicyTimeToLive",
+}
 HTTP_LOG_DATA_TYPE = {
     "HttpLogDataTypeFields": 0,
+}
+HTTP_LOG_DATA_TYPE_INV = {
+    0: "HttpLogDataTypeFields",
 }
 HTTP_SERVICE_CONFIG_ID = {
     "HttpServiceConfigIPListenList": 0,
@@ -18,6 +32,13 @@ HTTP_SERVICE_CONFIG_ID = {
     "HttpServiceConfigUrlAclInfo": 2,
     "HttpServiceConfigTimeout": 3,
     "HttpServiceConfigMax": 4,
+}
+HTTP_SERVICE_CONFIG_ID_INV = {
+    0: "HttpServiceConfigIPListenList",
+    1: "HttpServiceConfigSSLCertInfo",
+    2: "HttpServiceConfigUrlAclInfo",
+    3: "HttpServiceConfigTimeout",
+    4: "HttpServiceConfigMax",
 }
 HTTP_SERVER_PROPERTY = {
     "HttpServerAuthenticationProperty": 0,
@@ -30,6 +51,18 @@ HTTP_SERVER_PROPERTY = {
     "HttpServerBindingProperty": 7,
     "HttpServerExtendedAuthenticationProperty": 8,
     "HttpServerListenEndpointProperty": 9,
+}
+HTTP_SERVER_PROPERTY_INV = {
+    0: "HttpServerAuthenticationProperty",
+    1: "HttpServerLoggingProperty",
+    2: "HttpServerQosProperty",
+    3: "HttpServerTimeoutsProperty",
+    4: "HttpServerQueueLengthProperty",
+    5: "HttpServerStateProperty",
+    6: "HttpServer503VerbosityProperty",
+    7: "HttpServerBindingProperty",
+    8: "HttpServerExtendedAuthenticationProperty",
+    9: "HttpServerListenEndpointProperty",
 }
 HTTP_VERB = {
     "HttpVerbUnparsed": 0,
@@ -53,15 +86,47 @@ HTTP_VERB = {
     "HttpVerbUNLOCK": 18,
     "HttpVerbSEARCH": 19,
 }
+HTTP_VERB_INV = {
+    0: "HttpVerbUnparsed",
+    1: "HttpVerbUnknown",
+    2: "HttpVerbInvalid",
+    3: "HttpVerbOPTIONS",
+    4: "HttpVerbGET",
+    5: "HttpVerbHEAD",
+    6: "HttpVerbPOST",
+    7: "HttpVerbPUT",
+    8: "HttpVerbDELETE",
+    9: "HttpVerbTRACE",
+    10: "HttpVerbCONNECT",
+    11: "HttpVerbTRACK",
+    12: "HttpVerbMOVE",
+    13: "HttpVerbCOPY",
+    14: "HttpVerbPROPFIND",
+    15: "HttpVerbPROPPATCH",
+    16: "HttpVerbMKCOL",
+    17: "HttpVerbLOCK",
+    18: "HttpVerbUNLOCK",
+    19: "HttpVerbSEARCH",
+}
 HTTP_REQUEST_INFO_TYPE = {
     "HttpRequestInfoTypeAuth": 0,
     "HttpRequestInfoTypeChannelBind": 1,
+}
+HTTP_REQUEST_INFO_TYPE_INV = {
+    0: "HttpRequestInfoTypeAuth",
+    1: "HttpRequestInfoTypeChannelBind",
 }
 HTTP_RESPONSE_INFO_TYPE = {
     "HttpResponseInfoTypeMultipleKnownHeaders": 0,
     "HttpResponseInfoTypeAuthenticationProperty": 1,
     "HttpResponseInfoTypeQoSProperty": 2,
     "HttpResponseInfoTypeChannelBind": 3,
+}
+HTTP_RESPONSE_INFO_TYPE_INV = {
+    0: "HttpResponseInfoTypeMultipleKnownHeaders",
+    1: "HttpResponseInfoTypeAuthenticationProperty",
+    2: "HttpResponseInfoTypeQoSProperty",
+    3: "HttpResponseInfoTypeChannelBind",
 }
 
 def httpapi_HttpCreateHttpHandle(jitter):

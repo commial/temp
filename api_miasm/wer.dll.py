@@ -4,6 +4,12 @@ WER_DUMP_TYPE = {
     "WerDumpTypeHeapDump": 3,
     "WerDumpTypeMax": 4,
 }
+WER_DUMP_TYPE_INV = {
+    1: "WerDumpTypeMicroDump",
+    2: "WerDumpTypeMiniDump",
+    3: "WerDumpTypeHeapDump",
+    4: "WerDumpTypeMax",
+}
 WER_FILE_TYPE = {
     "WerFileTypeMicrodump": 1,
     "WerFileTypeMinidump": 2,
@@ -11,12 +17,26 @@ WER_FILE_TYPE = {
     "WerFileTypeUserDocument": 4,
     "WerFileTypeOther": 5,
 }
+WER_FILE_TYPE_INV = {
+    1: "WerFileTypeMicrodump",
+    2: "WerFileTypeMinidump",
+    3: "WerFileTypeHeapdump",
+    4: "WerFileTypeUserDocument",
+    5: "WerFileTypeOther",
+}
 WER_REPORT_TYPE = {
     "WerReportNonCritical": 0,
     "WerReportCritical": 1,
     "WerReportApplicationCrash": 2,
     "WerReportApplicationHang": 3,
     "WerReportKernel": 4,
+}
+WER_REPORT_TYPE_INV = {
+    0: "WerReportNonCritical",
+    1: "WerReportCritical",
+    2: "WerReportApplicationCrash",
+    3: "WerReportApplicationHang",
+    4: "WerReportKernel",
 }
 WER_REPORT_UI = {
     "WerUIAdditionalDataDlgHeader": 1,
@@ -30,10 +50,27 @@ WER_REPORT_UI = {
     "WerUICloseDlgBody": 9,
     "WerUICloseDlgButtonText": 10,
 }
+WER_REPORT_UI_INV = {
+    1: "WerUIAdditionalDataDlgHeader",
+    2: "WerUIIconFilePath",
+    3: "WerUIConsentDlgHeader",
+    4: "WerUIConsentDlgBody",
+    5: "WerUIOnlineSolutionCheckText",
+    6: "WerUIOfflineSolutionCheckText",
+    7: "WerUICloseText",
+    8: "WerUICloseDlgHeader",
+    9: "WerUICloseDlgBody",
+    10: "WerUICloseDlgButtonText",
+}
 WER_CONSENT = {
     "WerConsentNotAsked": 1,
     "WerConsentApproved": 2,
     "WerConsentDenied": 3,
+}
+WER_CONSENT_INV = {
+    1: "WerConsentNotAsked",
+    2: "WerConsentApproved",
+    3: "WerConsentDenied",
 }
 WER_SUBMIT_RESULT = {
     "WerReportQueued": 1,
@@ -46,6 +83,18 @@ WER_SUBMIT_RESULT = {
     "WerReportAsync": 8,
     "WerCustomAction": 9,
     "WerThrottled": 10,
+}
+WER_SUBMIT_RESULT_INV = {
+    1: "WerReportQueued",
+    2: "WerReportUploaded",
+    3: "WerReportDebug",
+    4: "WerReportFailed",
+    5: "WerDisabled",
+    6: "WerReportCancelled",
+    7: "WerDisabledQueue",
+    8: "WerReportAsync",
+    9: "WerCustomAction",
+    10: "WerThrottled",
 }
 
 def wer_WerAddExcludedApplication(jitter):

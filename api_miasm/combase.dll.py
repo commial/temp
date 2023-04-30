@@ -2,6 +2,10 @@ RO_INIT_TYPE = {
     "RO_INIT_SINGLETHREADED": 0,
     "RO_INIT_MULTITHREADED": 1,
 }
+RO_INIT_TYPE_INV = {
+    0: "RO_INIT_SINGLETHREADED",
+    1: "RO_INIT_MULTITHREADED",
+}
 
 def combase_CoEnterApplicationThreadLifetimeLoop(jitter):
     """

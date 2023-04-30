@@ -5,6 +5,13 @@ _HFILE = {
     "_CRTDBG_FILE_STDERR": -5,
     "_CRTDBG_REPORT_FILE": -6,
 }
+_HFILE_INV = {
+    -1: "_CRTDBG_INVALID_HFILE",
+    -2: "_CRTDBG_HFILE_ERROR",
+    -4: "_CRTDBG_FILE_STDOUT",
+    -5: "_CRTDBG_FILE_STDERR",
+    -6: "_CRTDBG_REPORT_FILE",
+}
 errno_t = {
     "EPERM": 1,
     "ENOENT": 2,
@@ -87,11 +94,99 @@ errno_t = {
     "ETXTBSY": 139,
     "EWOULDBLOCK": 140,
 }
+errno_t_INV = {
+    1: "EPERM",
+    2: "ENOENT",
+    3: "ESRCH",
+    4: "EINTR",
+    5: "EIO",
+    6: "ENXIO",
+    7: "E2BIG",
+    8: "ENOEXEC",
+    9: "EBADF",
+    10: "ECHILD",
+    11: "EAGAIN",
+    12: "ENOMEM",
+    13: "EACCES",
+    14: "EFAULT",
+    16: "EBUSY",
+    17: "EEXIST",
+    18: "EXDEV",
+    19: "ENODEV",
+    20: "ENOTDIR",
+    21: "EISDIR",
+    22: "EINVAL",
+    23: "ENFILE",
+    24: "EMFILE",
+    25: "ENOTTY",
+    27: "EFBIG",
+    28: "ENOSPC",
+    29: "ESPIPE",
+    30: "EROFS",
+    31: "EMLINK",
+    32: "EPIPE",
+    33: "EDOM",
+    34: "ERANGE",
+    36: "EDEADLK",
+    38: "ENAMETOOLONG",
+    39: "ENOLCK",
+    40: "ENOSYS",
+    41: "ENOTEMPTY",
+    42: "EILSEQ",
+    80: "STRUNCATE",
+    100: "EADDRINUSE",
+    101: "EADDRNOTAVAIL",
+    102: "EAFNOSUPPORT",
+    103: "EALREADY",
+    104: "EBADMSG",
+    105: "ECANCELED",
+    106: "ECONNABORTED",
+    107: "ECONNREFUSED",
+    108: "ECONNRESET",
+    109: "EDESTADDRREQ",
+    110: "EHOSTUNREACH",
+    111: "EIDRM",
+    112: "EINPROGRESS",
+    113: "EISCONN",
+    114: "ELOOP",
+    115: "EMSGSIZE",
+    116: "ENETDOWN",
+    117: "ENETRESET",
+    118: "ENETUNREACH",
+    119: "ENOBUFS",
+    120: "ENODATA",
+    121: "ENOLINK",
+    122: "ENOMSG",
+    123: "ENOPROTOOPT",
+    124: "ENOSR",
+    125: "ENOSTR",
+    126: "ENOTCONN",
+    127: "ENOTRECOVERABLE",
+    128: "ENOTSOCK",
+    129: "ENOTSUP",
+    130: "EOPNOTSUPP",
+    131: "EOTHER",
+    132: "EOVERFLOW",
+    133: "EOWNERDEAD",
+    134: "EPROTO",
+    135: "EPROTONOSUPPORT",
+    136: "EPROTOTYPE",
+    137: "ETIME",
+    138: "ETIMEDOUT",
+    139: "ETXTBSY",
+    140: "EWOULDBLOCK",
+}
 EXCEPTION_DISPOSITION = {
     "ExceptionContinueExecution": 0,
     "ExceptionContinueSearch": 1,
     "ExceptionNestedException": 2,
     "ExceptionCollidedUnwind": 3,
+}
+EXCEPTION_DISPOSITION_INV = {
+    0: "ExceptionContinueExecution",
+    1: "ExceptionContinueSearch",
+    2: "ExceptionNestedException",
+    3: "ExceptionCollidedUnwind",
 }
 _SIGNAL_ = {
     "SIGINT": 2,
@@ -103,6 +198,16 @@ _SIGNAL_ = {
     "SIGBREAK": 21,
     "SIGABRT": 22,
 }
+_SIGNAL__INV = {
+    2: "SIGINT",
+    4: "SIGILL",
+    6: "SIGABRT_COMPAT",
+    8: "SIGFPE",
+    11: "SIGSEGV",
+    15: "SIGTERM",
+    21: "SIGBREAK",
+    22: "SIGABRT",
+}
 _SIGNAL_FUNC_ = {
     "SIG_DFL": 0,
     "SIG_IGN": 1,
@@ -112,10 +217,24 @@ _SIGNAL_FUNC_ = {
     "SIG_DIE": 5,
     "SIG_ERR": -1,
 }
+_SIGNAL_FUNC__INV = {
+    0: "SIG_DFL",
+    1: "SIG_IGN",
+    2: "SIG_GET",
+    3: "SIG_SGE",
+    4: "SIG_ACK",
+    5: "SIG_DIE",
+    -1: "SIG_ERR",
+}
 _C_APP_TYPE_ = {
     "_UNKNOWN_APP": 0,
     "_CONSOLE_APP": 1,
     "_GUI_APP": 2,
+}
+_C_APP_TYPE__INV = {
+    0: "_UNKNOWN_APP",
+    1: "_CONSOLE_APP",
+    2: "_GUI_APP",
 }
 _HEAP_RESULT_ = {
     "_HEAPEMPTY": -1,
@@ -125,9 +244,21 @@ _HEAP_RESULT_ = {
     "_HEAPEND": -5,
     "_HEAPBADPTR": -6,
 }
+_HEAP_RESULT__INV = {
+    -1: "_HEAPEMPTY",
+    -2: "_HEAPOK",
+    -3: "_HEAPBADBEGIN",
+    -4: "_HEAPBADNODE",
+    -5: "_HEAPEND",
+    -6: "_HEAPBADPTR",
+}
 _HEAP_USE_FLAG_ = {
     "_FREEENTRY": 0,
     "_USEDENTRY": 1,
+}
+_HEAP_USE_FLAG__INV = {
+    0: "_FREEENTRY",
+    1: "_USEDENTRY",
 }
 _exception_type_ = {
     "_DOMAIN": 1,
@@ -137,8 +268,19 @@ _exception_type_ = {
     "_TLOSS": 5,
     "_PLOSS": 6,
 }
+_exception_type__INV = {
+    1: "_DOMAIN",
+    2: "_SING",
+    3: "_OVERFLOW",
+    4: "_UNDERFLOW",
+    5: "_TLOSS",
+    6: "_PLOSS",
+}
 _lconv_val_ = {
     "CHAR_MAX": 127,
+}
+_lconv_val__INV = {
+    127: "CHAR_MAX",
 }
 _LOCK_NUM_ = {
     "_SIGNAL_LOCK": 0,
@@ -159,8 +301,30 @@ _LOCK_NUM_ = {
     "_DEBUG_LOCK": 15,
     "_STREAM_LOCKS": 16,
 }
+_LOCK_NUM__INV = {
+    0: "_SIGNAL_LOCK",
+    1: "_IOB_SCAN_LOCK",
+    2: "_TMPNAM_LOCK",
+    3: "_CONIO_LOCK",
+    4: "_HEAP_LOCK",
+    5: "_UNDNAME_LOCK",
+    6: "_TIME_LOCK",
+    7: "_ENV_LOCK",
+    8: "_EXIT_LOCK1",
+    9: "_POPEN_LOCK",
+    10: "_LOCKTAB_LOCK",
+    11: "_OSFHND_LOCK",
+    12: "_SETLOCALE_LOCK",
+    13: "_MB_CP_LOCK",
+    14: "_TYPEINFO_LOCK",
+    15: "_DEBUG_LOCK",
+    16: "_STREAM_LOCKS",
+}
 _output_format_ = {
     "_TWO_DIGIT_EXPONENT": 0x1,
+}
+_output_format__INV = {
+    0x1: "_TWO_DIGIT_EXPONENT",
 }
 _byte_type_ = {
     "_MBC_SINGLE": 0,
@@ -168,15 +332,31 @@ _byte_type_ = {
     "_MBC_TRAIL": 2,
     "_MBC_ILLEGAL": -1,
 }
+_byte_type__INV = {
+    0: "_MBC_SINGLE",
+    1: "_MBC_LEAD",
+    2: "_MBC_TRAIL",
+    -1: "_MBC_ILLEGAL",
+}
 _CRT_REPORT_TYPE_ = {
     "_CRT_WARN": 0,
     "_CRT_ERROR": 1,
     "_CRT_ASSERT": 2,
     "_CRT_ERRCNT": 3,
 }
+_CRT_REPORT_TYPE__INV = {
+    0: "_CRT_WARN",
+    1: "_CRT_ERROR",
+    2: "_CRT_ASSERT",
+    3: "_CRT_ERRCNT",
+}
 _CRT_RPTHOOK_MODE_ = {
     "_CRT_RPTHOOK_INSTALL": 0,
     "_CRT_RPTHOOK_REMOVE": 1,
+}
+_CRT_RPTHOOK_MODE__INV = {
+    0: "_CRT_RPTHOOK_INSTALL",
+    1: "_CRT_RPTHOOK_REMOVE",
 }
 _DBG_BLOCK_TYPE_ = {
     "_FREE_BLOCK": 0,
@@ -186,17 +366,37 @@ _DBG_BLOCK_TYPE_ = {
     "_CLIENT_BLOCK": 4,
     "_MAX_BLOCKS": 5,
 }
+_DBG_BLOCK_TYPE__INV = {
+    0: "_FREE_BLOCK",
+    1: "_NORMAL_BLOCK",
+    2: "_CRT_BLOCK",
+    3: "_IGNORE_BLOCK",
+    4: "_CLIENT_BLOCK",
+    5: "_MAX_BLOCKS",
+}
 _set_error_mode_ = {
     "_OUT_TO_DEFAULT": 0,
     "_OUT_TO_STDERR": 1,
     "_OUT_TO_MSGBOX": 2,
     "_REPORT_ERRMODE": 3,
 }
+_set_error_mode__INV = {
+    0: "_OUT_TO_DEFAULT",
+    1: "_OUT_TO_STDERR",
+    2: "_OUT_TO_MSGBOX",
+    3: "_REPORT_ERRMODE",
+}
 _disposition_type_ = {
     "DISPOSITION_DISMISS": 0,
     "DISPOSITION_CONTINUE_SEARCH": 1,
     "DISPOSITION_NESTED_EXCEPTION": 2,
     "DISPOSITION_COLLIDED_UNWIND": 3,
+}
+_disposition_type__INV = {
+    0: "DISPOSITION_DISMISS",
+    1: "DISPOSITION_CONTINUE_SEARCH",
+    2: "DISPOSITION_NESTED_EXCEPTION",
+    3: "DISPOSITION_COLLIDED_UNWIND",
 }
 _xcpt_num_ = {
     "STATUS_ACCESS_VIOLATION": 0xC0000005,
@@ -210,10 +410,27 @@ _xcpt_num_ = {
     "STATUS_FLOAT_STACK_CHECK": 0xC0000092,
     "STATUS_FLOAT_UNDERFLOW": 0xC0000093,
 }
+_xcpt_num__INV = {
+    0xC0000005: "STATUS_ACCESS_VIOLATION",
+    0xC000001D: "STATUS_ILLEGAL_INSTRUCTION",
+    0xC0000096: "STATUS_PRIVILEGED_INSTRUCTION",
+    0xC000008D: "STATUS_FLOAT_DENORMAL_OPERAND",
+    0xC000008E: "STATUS_FLOAT_DIVIDE_BY_ZERO",
+    0xC000008F: "STATUS_FLOAT_INEXACT_RESULT",
+    0xC0000090: "STATUS_FLOAT_INVALID_OPERATION",
+    0xC0000091: "STATUS_FLOAT_OVERFLOW",
+    0xC0000092: "STATUS_FLOAT_STACK_CHECK",
+    0xC0000093: "STATUS_FLOAT_UNDERFLOW",
+}
 _xcpt_action_ = {
     "EXCEPTION_EXECUTE_HANDLER": 1,
     "EXCEPTION_CONTINUE_SEARCH": 0,
     "EXCEPTION_CONTINUE_EXECUTION": -1,
+}
+_xcpt_action__INV = {
+    1: "EXCEPTION_EXECUTE_HANDLER",
+    0: "EXCEPTION_CONTINUE_SEARCH",
+    -1: "EXCEPTION_CONTINUE_EXECUTION",
 }
 __LK_MODE_ = {
     "_LK_UNLCK": 0,
@@ -222,12 +439,26 @@ __LK_MODE_ = {
     "_LK_RLCK": 3,
     "_LK_NBRLCK": 4,
 }
+__LK_MODE__INV = {
+    0: "_LK_UNLCK",
+    1: "_LK_LOCK",
+    2: "_LK_NBLCK",
+    3: "_LK_RLCK",
+    4: "_LK_NBRLCK",
+}
 _control_mask_ = {
     "_MCW_DN": 0x03000000,
     "_MCW_EM": 0x0008001f,
     "_MCW_RC": 0x00000300,
     "_MCW_IC": 0x00040000,
     "_MCW_PC": 0x00030000,
+}
+_control_mask__INV = {
+    0x03000000: "_MCW_DN",
+    0x0008001f: "_MCW_EM",
+    0x00000300: "_MCW_RC",
+    0x00040000: "_MCW_IC",
+    0x00030000: "_MCW_PC",
 }
 _file_translation_mode_ = {
     "_O_TEXT": 0x4000,
@@ -236,19 +467,40 @@ _file_translation_mode_ = {
     "_O_U16TEXT": 0x20000,
     "_O_U8TEXT": 0x40000,
 }
+_file_translation_mode__INV = {
+    0x4000: "_O_TEXT",
+    0x8000: "_O_BINARY",
+    0x10000: "_O_WTEXT",
+    0x20000: "_O_U16TEXT",
+    0x40000: "_O_U8TEXT",
+}
 _RET_EOF_ = {
     "EOF": -1,
+}
+_RET_EOF__INV = {
+    -1: "EOF",
 }
 _RET_WEOF_ = {
     "WEOF": -1,
 }
+_RET_WEOF__INV = {
+    -1: "WEOF",
+}
 _RET_WEOF_INT_ = {
     "WEOF": -1,
+}
+_RET_WEOF_INT__INV = {
+    -1: "WEOF",
 }
 _buffer_mode_ = {
     "_IOFBF": 0x0000,
     "_IOLBF": 0x0040,
     "_IONBF": 0x0004,
+}
+_buffer_mode__INV = {
+    0x0000: "_IOFBF",
+    0x0040: "_IOLBF",
+    0x0004: "_IONBF",
 }
 _locale_category_ = {
     "LC_ALL": 0,
@@ -258,9 +510,21 @@ _locale_category_ = {
     "LC_NUMERIC": 4,
     "LC_TIME": 5,
 }
+_locale_category__INV = {
+    0: "LC_ALL",
+    1: "LC_COLLATE",
+    2: "LC_CTYPE",
+    3: "LC_MONETARY",
+    4: "LC_NUMERIC",
+    5: "LC_TIME",
+}
 _thread_locale_type_ = {
     "_ENABLE_PER_THREAD_LOCALE": 0x1,
     "_DISABLE_PER_THREAD_LOCALE": 0x2,
+}
+_thread_locale_type__INV = {
+    0x1: "_ENABLE_PER_THREAD_LOCALE",
+    0x2: "_DISABLE_PER_THREAD_LOCALE",
 }
 __MB_CP_TYPE_ = {
     "_MB_CP_SBCS": 0,
@@ -268,8 +532,17 @@ __MB_CP_TYPE_ = {
     "_MB_CP_ANSI": -3,
     "_MB_CP_LOCALE": -4,
 }
+__MB_CP_TYPE__INV = {
+    0: "_MB_CP_SBCS",
+    -2: "_MB_CP_OEM",
+    -3: "_MB_CP_ANSI",
+    -4: "_MB_CP_LOCALE",
+}
 _thread_initflag_ = {
     "CREATE_SUSPENDED": 0x00000004,
+}
+_thread_initflag__INV = {
+    0x00000004: "CREATE_SUSPENDED",
 }
 _spawn_mode_ = {
     "_P_WAIT": 0,
@@ -278,11 +551,24 @@ _spawn_mode_ = {
     "_P_NOWAITO": 3,
     "_P_DETACH": 4,
 }
+_spawn_mode__INV = {
+    0: "_P_WAIT",
+    1: "_P_NOWAIT",
+    2: "_P_OVERLAY",
+    3: "_P_NOWAITO",
+    4: "_P_DETACH",
+}
 __NLSCMPERROR_ = {
     "_NLSCMPERROR": 0x7FFFFFFF,
 }
+__NLSCMPERROR__INV = {
+    0x7FFFFFFF: "_NLSCMPERROR",
+}
 _size_t_INT_MAX_ = {
     "INT_MAX": 0x7FFFFFFF,
+}
+_size_t_INT_MAX__INV = {
+    0x7FFFFFFF: "INT_MAX",
 }
 
 def msvcrxx__memccpy(jitter):

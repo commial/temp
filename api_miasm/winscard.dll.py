@@ -3,9 +3,18 @@ _SCardScope_ = {
     "SCARD_SCOPE_TERMINAL": 1,
     "SCARD_SCOPE_SYSTEM": 2,
 }
+_SCardScope__INV = {
+    0: "SCARD_SCOPE_USER",
+    1: "SCARD_SCOPE_TERMINAL",
+    2: "SCARD_SCOPE_SYSTEM",
+}
 _SCARD_AUDIT_CHV_ = {
     "SCARD_AUDIT_CHV_FAILURE": 0x0,
     "SCARD_AUDIT_CHV_SUCCESS": 0x1,
+}
+_SCARD_AUDIT_CHV__INV = {
+    0x0: "SCARD_AUDIT_CHV_FAILURE",
+    0x1: "SCARD_AUDIT_CHV_SUCCESS",
 }
 
 def winscard_SCardAccessStartedEvent(jitter):

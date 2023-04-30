@@ -5,11 +5,24 @@ STGFMT = {
     "STGFMT_ANY": 4,
     "STGFMT_DOCFILE": 5,
 }
+STGFMT_INV = {
+    0: "STGFMT_STORAGE",
+    1: "STGFMT_NATIVE",
+    3: "STGFMT_FILE",
+    4: "STGFMT_ANY",
+    5: "STGFMT_DOCFILE",
+}
 OLERENDER = {
     "OLERENDER_NONE": 0,
     "OLERENDER_DRAW": 1,
     "OLERENDER_FORMAT": 2,
     "OLERENDER_ASIS": 3,
+}
+OLERENDER_INV = {
+    0: "OLERENDER_NONE",
+    1: "OLERENDER_DRAW",
+    2: "OLERENDER_FORMAT",
+    3: "OLERENDER_ASIS",
 }
 
 def ole32_BindMoniker(jitter):

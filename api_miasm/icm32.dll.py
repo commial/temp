@@ -12,9 +12,27 @@ COLORTYPE = {
     "COLOR_8_CHANNEL": 11,
     "COLOR_NAMED": 12,
 }
+COLORTYPE_INV = {
+    1: "COLOR_GRAY",
+    2: "COLOR_RGB",
+    3: "COLOR_XYZ",
+    4: "COLOR_Yxy",
+    5: "COLOR_Lab",
+    6: "COLOR_3_CHANNEL",
+    7: "COLOR_CMYK",
+    8: "COLOR_5_CHANNEL",
+    9: "COLOR_6_CHANNEL",
+    10: "COLOR_7_CHANNEL",
+    11: "COLOR_8_CHANNEL",
+    12: "COLOR_NAMED",
+}
 _CMS_DIRECTION_ = {
     "CMS_FORWARD": 0,
     "CMS_BACKWARD": 1,
+}
+_CMS_DIRECTION__INV = {
+    0: "CMS_FORWARD",
+    1: "CMS_BACKWARD",
 }
 
 def icm32_CMCheckColors(jitter):

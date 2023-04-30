@@ -4,6 +4,12 @@ AVRT_PRIORITY = {
     "AVRT_PRIORITY_HIGH": 1,
     "AVRT_PRIORITY_CRITICAL": 2,
 }
+AVRT_PRIORITY_INV = {
+    -1: "AVRT_PRIORITY_LOW",
+    0: "AVRT_PRIORITY_NORMAL",
+    1: "AVRT_PRIORITY_HIGH",
+    2: "AVRT_PRIORITY_CRITICAL",
+}
 
 def avrt_AvQuerySystemResponsiveness(jitter):
     """

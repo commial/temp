@@ -35,6 +35,43 @@ _DeviceCapability_ = {
     "DC_MEDIATYPENAMES": 34,
     "DC_MEDIATYPES": 35,
 }
+_DeviceCapability__INV = {
+    1: "DC_FIELDS",
+    2: "DC_PAPERS",
+    3: "DC_PAPERSIZE",
+    4: "DC_MINEXTENT",
+    5: "DC_MAXEXTENT",
+    6: "DC_BINS",
+    7: "DC_DUPLEX",
+    8: "DC_SIZE",
+    9: "DC_EXTRA",
+    10: "DC_VERSION",
+    11: "DC_DRIVER",
+    12: "DC_BINNAMES",
+    13: "DC_ENUMRESOLUTIONS",
+    14: "DC_FILEDEPENDENCIES",
+    15: "DC_TRUETYPE",
+    16: "DC_PAPERNAMES",
+    17: "DC_ORIENTATION",
+    18: "DC_COPIES",
+    19: "DC_BINADJUST",
+    20: "DC_EMF_COMPLIANT",
+    21: "DC_DATATYPE_PRODUCED",
+    22: "DC_COLLATE",
+    23: "DC_MANUFACTURER",
+    24: "DC_MODEL",
+    25: "DC_PERSONALITY",
+    26: "DC_PRINTRATE",
+    27: "DC_PRINTRATEUNIT",
+    28: "DC_PRINTERMEM",
+    29: "DC_MEDIAREADY",
+    30: "DC_STAPLE",
+    31: "DC_PRINTRATEPPM",
+    32: "DC_COLORDEVICE",
+    33: "DC_NUP",
+    34: "DC_MEDIATYPENAMES",
+    35: "DC_MEDIATYPES",
+}
 _JobControl_ = {
     "JOB_CONTROL_PAUSE": 1,
     "JOB_CONTROL_RESUME": 2,
@@ -46,15 +83,36 @@ _JobControl_ = {
     "JOB_CONTROL_RETAIN": 8,
     "JOB_CONTROL_RELEASE": 9,
 }
+_JobControl__INV = {
+    1: "JOB_CONTROL_PAUSE",
+    2: "JOB_CONTROL_RESUME",
+    3: "JOB_CONTROL_CANCEL",
+    4: "JOB_CONTROL_RESTART",
+    5: "JOB_CONTROL_DELETE",
+    6: "JOB_CONTROL_SENT_TO_PRINTER",
+    7: "JOB_CONTROL_LAST_PAGE_EJECTED",
+    8: "JOB_CONTROL_RETAIN",
+    9: "JOB_CONTROL_RELEASE",
+}
 _PrinterControl_ = {
     "PRINTER_CONTROL_PAUSE": 1,
     "PRINTER_CONTROL_RESUME": 2,
     "PRINTER_CONTROL_PURGE": 3,
     "PRINTER_CONTROL_SET_STATUS": 4,
 }
+_PrinterControl__INV = {
+    1: "PRINTER_CONTROL_PAUSE",
+    2: "PRINTER_CONTROL_RESUME",
+    3: "PRINTER_CONTROL_PURGE",
+    4: "PRINTER_CONTROL_SET_STATUS",
+}
 EPrintXPSJobOperation = {
     "kJobProduction": 1,
     "kJobConsumption": 2,
+}
+EPrintXPSJobOperation_INV = {
+    1: "kJobProduction",
+    2: "kJobConsumption",
 }
 EPrintXPSJobProgress = {
     "kAddingDocumentSequence": 0,
@@ -68,13 +126,33 @@ EPrintXPSJobProgress = {
     "kImageAdded": 8,
     "kXpsDocumentCommitted": 9,
 }
+EPrintXPSJobProgress_INV = {
+    0: "kAddingDocumentSequence",
+    1: "kDocumentSequenceAdded",
+    2: "kAddingFixedDocument",
+    3: "kFixedDocumentAdded",
+    4: "kAddingFixedPage",
+    5: "kFixedPageAdded",
+    6: "kResourceAdded",
+    7: "kFontAdded",
+    8: "kImageAdded",
+    9: "kXpsDocumentCommitted",
+}
 PrintAsyncNotifyUserFilter = {
     "kPerUser": 0,
     "kAllUsers": 1,
 }
+PrintAsyncNotifyUserFilter_INV = {
+    0: "kPerUser",
+    1: "kAllUsers",
+}
 PrintAsyncNotifyConversationStyle = {
     "kBiDirectional": 0,
     "kUniDirectional": 1,
+}
+PrintAsyncNotifyConversationStyle_INV = {
+    0: "kBiDirectional",
+    1: "kUniDirectional",
 }
 
 def winspool_AddJob(jitter, get_str, set_str):

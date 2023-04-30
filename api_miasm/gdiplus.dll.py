@@ -8,6 +8,16 @@ _PropertyTagType_ = {
     "PropertyTagTypeSLONG": 9,
     "PropertyTagTypeSRational": 10,
 }
+_PropertyTagType__INV = {
+    1: "PropertyTagTypeByte",
+    2: "PropertyTagTypeASCII",
+    3: "PropertyTagTypeShort",
+    4: "PropertyTagTypeLong",
+    5: "PropertyTagTypeRational",
+    7: "PropertyTagTypeUndefined",
+    9: "PropertyTagTypeSLONG",
+    10: "PropertyTagTypeSRational",
+}
 MetafileType = {
     "MetafileTypeInvalid": 0,
     "MetafileTypeWmf": 1,
@@ -15,6 +25,14 @@ MetafileType = {
     "MetafileTypeEmf": 3,
     "MetafileTypeEmfPlusOnly": 4,
     "MetafileTypeEmfPlusDual": 5,
+}
+MetafileType_INV = {
+    0: "MetafileTypeInvalid",
+    1: "MetafileTypeWmf",
+    2: "MetafileTypeWmfPlaceable",
+    3: "MetafileTypeEmf",
+    4: "MetafileTypeEmfPlusOnly",
+    5: "MetafileTypeEmfPlusDual",
 }
 DitherType = {
     "DitherTypeNone": 0,
@@ -29,9 +47,26 @@ DitherType = {
     "DitherTypeErrorDiffusion": 9,
     "DitherTypeMax": 10,
 }
+DitherType_INV = {
+    0: "DitherTypeNone",
+    1: "DitherTypeSolid",
+    2: "DitherTypeOrdered4x4",
+    3: "DitherTypeOrdered8x8",
+    4: "DitherTypeOrdered16x16",
+    5: "DitherTypeSpiral4x4",
+    6: "DitherTypeSpiral8x8",
+    7: "DitherTypeDualSpiral4x4",
+    8: "DitherTypeDualSpiral8x8",
+    9: "DitherTypeErrorDiffusion",
+    10: "DitherTypeMax",
+}
 GpFillMode = {
     "FillModeAlternate": 0,
     "FillModeWinding": 1,
+}
+GpFillMode_INV = {
+    0: "FillModeAlternate",
+    1: "FillModeWinding",
 }
 GpWrapMode = {
     "WrapModeTile": 0,
@@ -40,9 +75,20 @@ GpWrapMode = {
     "WrapModeTileFlipXY": 3,
     "WrapModeClamp": 4,
 }
+GpWrapMode_INV = {
+    0: "WrapModeTile",
+    1: "WrapModeTileFlipX",
+    2: "WrapModeTileFlipY",
+    3: "WrapModeTileFlipXY",
+    4: "WrapModeClamp",
+}
 GpPenAlignment = {
     "PenAlignmentCenter": 0,
     "PenAlignmentInset": 1,
+}
+GpPenAlignment_INV = {
+    0: "PenAlignmentCenter",
+    1: "PenAlignmentInset",
 }
 PaletteType = {
     "PaletteTypeCustom": 0,
@@ -56,6 +102,18 @@ PaletteType = {
     "PaletteTypeFixedHalftone252": 8,
     "PaletteTypeFixedHalftone256": 9,
 }
+PaletteType_INV = {
+    0: "PaletteTypeCustom",
+    1: "PaletteTypeOptimal",
+    2: "PaletteTypeFixedBW",
+    3: "PaletteTypeFixedHalftone8",
+    4: "PaletteTypeFixedHalftone27",
+    5: "PaletteTypeFixedHalftone64",
+    6: "PaletteTypeFixedHalftone125",
+    7: "PaletteTypeFixedHalftone216",
+    8: "PaletteTypeFixedHalftone252",
+    9: "PaletteTypeFixedHalftone256",
+}
 HistogramFormat = {
     "HistogramFormatARGB": 0,
     "HistogramFormatPARGB": 1,
@@ -66,10 +124,25 @@ HistogramFormat = {
     "HistogramFormatR": 6,
     "HistogramFormatA": 7,
 }
+HistogramFormat_INV = {
+    0: "HistogramFormatARGB",
+    1: "HistogramFormatPARGB",
+    2: "HistogramFormatRGB",
+    3: "HistogramFormatGray",
+    4: "HistogramFormatB",
+    5: "HistogramFormatG",
+    6: "HistogramFormatR",
+    7: "HistogramFormatA",
+}
 ColorMatrixFlags = {
     "ColorMatrixFlagsDefault": 0,
     "ColorMatrixFlagsSkipGrays": 1,
     "ColorMatrixFlagsAltGray": 2,
+}
+ColorMatrixFlags_INV = {
+    0: "ColorMatrixFlagsDefault",
+    1: "ColorMatrixFlagsSkipGrays",
+    2: "ColorMatrixFlagsAltGray",
 }
 ColorChannelFlags = {
     "ColorChannelFlagsC": 0,
@@ -77,6 +150,13 @@ ColorChannelFlags = {
     "ColorChannelFlagsY": 2,
     "ColorChannelFlagsK": 3,
     "ColorChannelFlagsLast": 4,
+}
+ColorChannelFlags_INV = {
+    0: "ColorChannelFlagsC",
+    1: "ColorChannelFlagsM",
+    2: "ColorChannelFlagsY",
+    3: "ColorChannelFlagsK",
+    4: "ColorChannelFlagsLast",
 }
 SmoothingMode = {
     "SmoothingModeInvalid": -1,
@@ -87,14 +167,32 @@ SmoothingMode = {
     "SmoothingModeAntiAlias8x4": 4,
     "SmoothingModeAntiAlias8x8": 5,
 }
+SmoothingMode_INV = {
+    -1: "SmoothingModeInvalid",
+    0: "SmoothingModeDefault",
+    1: "SmoothingModeHighSpeed",
+    2: "SmoothingModeHighQuality",
+    3: "SmoothingModeNone",
+    4: "SmoothingModeAntiAlias8x4",
+    5: "SmoothingModeAntiAlias8x8",
+}
 StringAlignment = {
     "StringAlignmentNear": 0,
     "StringAlignmentCenter": 1,
     "StringAlignmentFar": 2,
 }
+StringAlignment_INV = {
+    0: "StringAlignmentNear",
+    1: "StringAlignmentCenter",
+    2: "StringAlignmentFar",
+}
 WarpMode = {
     "WarpModePerspective": 0,
     "WarpModeBilinear": 1,
+}
+WarpMode_INV = {
+    0: "WarpModePerspective",
+    1: "WarpModeBilinear",
 }
 GpPenType = {
     "PenTypeUnknown": -1,
@@ -104,6 +202,14 @@ GpPenType = {
     "PenTypePathGradient": 3,
     "PenTypeLinearGradient": 4,
 }
+GpPenType_INV = {
+    -1: "PenTypeUnknown",
+    0: "PenTypeSolidColor",
+    1: "PenTypeHatchFill",
+    2: "PenTypeTextureFill",
+    3: "PenTypePathGradient",
+    4: "PenTypeLinearGradient",
+}
 GpDashStyle = {
     "DashStyleSolid": 0,
     "DashStyleDash": 1,
@@ -111,9 +217,20 @@ GpDashStyle = {
     "DashStyleDashDotDot": 3,
     "DashStyleCustom": 4,
 }
+GpDashStyle_INV = {
+    0: "DashStyleSolid",
+    1: "DashStyleDash",
+    2: "DashStyleDashDot",
+    3: "DashStyleDashDotDot",
+    4: "DashStyleCustom",
+}
 CustomLineCapType = {
     "CustomLineCapTypeDefault": 0,
     "CustomLineCapTypeAdjustableArrow": 1,
+}
+CustomLineCapType_INV = {
+    0: "CustomLineCapTypeDefault",
+    1: "CustomLineCapTypeAdjustableArrow",
 }
 RotateFlipType = {
     "RotateNoneFlipNone": 0,
@@ -125,9 +242,23 @@ RotateFlipType = {
     "Rotate180FlipX": 6,
     "Rotate270FlipX": 7,
 }
+RotateFlipType_INV = {
+    0: "RotateNoneFlipNone",
+    1: "Rotate90FlipNone",
+    2: "Rotate180FlipNone",
+    3: "Rotate270FlipNone",
+    4: "RotateNoneFlipX",
+    5: "Rotate90FlipX",
+    6: "Rotate180FlipX",
+    7: "Rotate270FlipX",
+}
 GpFlushIntention = {
     "FlushIntentionFlush": 0,
     "FlushIntentionSync": 1,
+}
+GpFlushIntention_INV = {
+    0: "FlushIntentionFlush",
+    1: "FlushIntentionSync",
 }
 PixelOffsetMode = {
     "PixelOffsetModeInvalid": -1,
@@ -137,15 +268,33 @@ PixelOffsetMode = {
     "PixelOffsetModeNone": 3,
     "PixelOffsetModeHalf": 4,
 }
+PixelOffsetMode_INV = {
+    -1: "PixelOffsetModeInvalid",
+    0: "PixelOffsetModeDefault",
+    1: "PixelOffsetModeHighSpeed",
+    2: "PixelOffsetModeHighQuality",
+    3: "PixelOffsetModeNone",
+    4: "PixelOffsetModeHalf",
+}
 GpCoordinateSpace = {
     "CoordinateSpaceWorld": 0,
     "CoordinateSpacePage": 1,
     "CoordinateSpaceDevice": 2,
 }
+GpCoordinateSpace_INV = {
+    0: "CoordinateSpaceWorld",
+    1: "CoordinateSpacePage",
+    2: "CoordinateSpaceDevice",
+}
 EmfType = {
     "EmfTypeEmfOnly": 3,
     "EmfTypeEmfPlusOnly": 4,
     "EmfTypeEmfPlusDual": 5,
+}
+EmfType_INV = {
+    3: "EmfTypeEmfOnly",
+    4: "EmfTypeEmfPlusOnly",
+    5: "EmfTypeEmfPlusDual",
 }
 MetafileFrameUnit = {
     "MetafileFrameUnitPixel": 2,
@@ -155,16 +304,35 @@ MetafileFrameUnit = {
     "MetafileFrameUnitMillimeter": 6,
     "MetafileFrameUnitGdi": 7,
 }
+MetafileFrameUnit_INV = {
+    2: "MetafileFrameUnitPixel",
+    3: "MetafileFrameUnitPoint",
+    4: "MetafileFrameUnitInch",
+    5: "MetafileFrameUnitDocument",
+    6: "MetafileFrameUnitMillimeter",
+    7: "MetafileFrameUnitGdi",
+}
 StringDigitSubstitute = {
     "StringDigitSubstituteUser": 0,
     "StringDigitSubstituteNone": 1,
     "StringDigitSubstituteNational": 2,
     "StringDigitSubstituteTraditional": 3,
 }
+StringDigitSubstitute_INV = {
+    0: "StringDigitSubstituteUser",
+    1: "StringDigitSubstituteNone",
+    2: "StringDigitSubstituteNational",
+    3: "StringDigitSubstituteTraditional",
+}
 GpTestControlEnum = {
     "TestControlForceBilinear": 0,
     "TestControlNoICM": 1,
     "TestControlGetBuildNumber": 2,
+}
+GpTestControlEnum_INV = {
+    0: "TestControlForceBilinear",
+    1: "TestControlNoICM",
+    2: "TestControlGetBuildNumber",
 }
 CombineMode = {
     "CombineModeReplace": 0,
@@ -174,12 +342,27 @@ CombineMode = {
     "CombineModeExclude": 4,
     "CombineModeComplement": 5,
 }
+CombineMode_INV = {
+    0: "CombineModeReplace",
+    1: "CombineModeIntersect",
+    2: "CombineModeUnion",
+    3: "CombineModeXor",
+    4: "CombineModeExclude",
+    5: "CombineModeComplement",
+}
 GpBrushType = {
     "BrushTypeSolidColor": 0,
     "BrushTypeHatchFill": 1,
     "BrushTypeTextureFill": 2,
     "BrushTypePathGradient": 3,
     "BrushTypeLinearGradient": 4,
+}
+GpBrushType_INV = {
+    0: "BrushTypeSolidColor",
+    1: "BrushTypeHatchFill",
+    2: "BrushTypeTextureFill",
+    3: "BrushTypePathGradient",
+    4: "BrushTypeLinearGradient",
 }
 GpHatchStyle = {
     "HatchStyleHorizontal": 0,
@@ -236,11 +419,72 @@ GpHatchStyle = {
     "HatchStyleOutlinedDiamond": 51,
     "HatchStyleSolidDiamond": 52,
 }
+GpHatchStyle_INV = {
+    0: "HatchStyleHorizontal",
+    1: "HatchStyleVertical",
+    2: "HatchStyleForwardDiagonal",
+    3: "HatchStyleBackwardDiagonal",
+    4: "HatchStyleCross",
+    5: "HatchStyleDiagonalCross",
+    6: "HatchStyle05Percent",
+    7: "HatchStyle10Percent",
+    8: "HatchStyle20Percent",
+    9: "HatchStyle25Percent",
+    10: "HatchStyle30Percent",
+    11: "HatchStyle40Percent",
+    12: "HatchStyle50Percent",
+    13: "HatchStyle60Percent",
+    14: "HatchStyle70Percent",
+    15: "HatchStyle75Percent",
+    16: "HatchStyle80Percent",
+    17: "HatchStyle90Percent",
+    18: "HatchStyleLightDownwardDiagonal",
+    19: "HatchStyleLightUpwardDiagonal",
+    20: "HatchStyleDarkDownwardDiagonal",
+    21: "HatchStyleDarkUpwardDiagonal",
+    22: "HatchStyleWideDownwardDiagonal",
+    23: "HatchStyleWideUpwardDiagonal",
+    24: "HatchStyleLightVertical",
+    25: "HatchStyleLightHorizontal",
+    26: "HatchStyleNarrowVertical",
+    27: "HatchStyleNarrowHorizontal",
+    28: "HatchStyleDarkVertical",
+    29: "HatchStyleDarkHorizontal",
+    30: "HatchStyleDashedDownwardDiagonal",
+    31: "HatchStyleDashedUpwardDiagonal",
+    32: "HatchStyleDashedHorizontal",
+    33: "HatchStyleDashedVertical",
+    34: "HatchStyleSmallConfetti",
+    35: "HatchStyleLargeConfetti",
+    36: "HatchStyleZigZag",
+    37: "HatchStyleWave",
+    38: "HatchStyleDiagonalBrick",
+    39: "HatchStyleHorizontalBrick",
+    40: "HatchStyleWeave",
+    41: "HatchStylePlaid",
+    42: "HatchStyleDivot",
+    43: "HatchStyleDottedGrid",
+    44: "HatchStyleDottedDiamond",
+    45: "HatchStyleShingle",
+    46: "HatchStyleTrellis",
+    47: "HatchStyleSphere",
+    48: "HatchStyleSmallGrid",
+    49: "HatchStyleSmallCheckerBoard",
+    50: "HatchStyleLargeCheckerBoard",
+    51: "HatchStyleOutlinedDiamond",
+    52: "HatchStyleSolidDiamond",
+}
 LinearGradientMode = {
     "LinearGradientModeHorizontal": 0,
     "LinearGradientModeVertical": 1,
     "LinearGradientModeForwardDiagonal": 2,
     "LinearGradientModeBackwardDiagonal": 3,
+}
+LinearGradientMode_INV = {
+    0: "LinearGradientModeHorizontal",
+    1: "LinearGradientModeVertical",
+    2: "LinearGradientModeForwardDiagonal",
+    3: "LinearGradientModeBackwardDiagonal",
 }
 Unit = {
     "UnitWorld": 0,
@@ -250,6 +494,15 @@ Unit = {
     "UnitInch": 4,
     "UnitDocument": 5,
     "UnitMillimeter": 6,
+}
+Unit_INV = {
+    0: "UnitWorld",
+    1: "UnitDisplay",
+    2: "UnitPixel",
+    3: "UnitPoint",
+    4: "UnitInch",
+    5: "UnitDocument",
+    6: "UnitMillimeter",
 }
 GpLineCap = {
     "LineCapFlat": 0,
@@ -263,10 +516,27 @@ GpLineCap = {
     "LineCapArrowAnchor": 0x14,
     "LineCapCustom": 0xff,
 }
+GpLineCap_INV = {
+    0: "LineCapFlat",
+    1: "LineCapSquare",
+    2: "LineCapRound",
+    3: "LineCapTriangle",
+    0x10: "LineCapNoAnchor",
+    0x11: "LineCapSquareAnchor",
+    0x12: "LineCapRoundAnchor",
+    0x13: "LineCapDiamondAnchor",
+    0x14: "LineCapArrowAnchor",
+    0xff: "LineCapCustom",
+}
 GpDashCap = {
     "DashCapFlat": 0,
     "DashCapRound": 1,
     "DashCapTriangle": 2,
+}
+GpDashCap_INV = {
+    0: "DashCapFlat",
+    1: "DashCapRound",
+    2: "DashCapTriangle",
 }
 GpLineJoin = {
     "LineJoinMiter": 0,
@@ -274,14 +544,29 @@ GpLineJoin = {
     "LineJoinRound": 2,
     "LineJoinMiterClipped": 3,
 }
+GpLineJoin_INV = {
+    0: "LineJoinMiter",
+    1: "LineJoinBevel",
+    2: "LineJoinRound",
+    3: "LineJoinMiterClipped",
+}
 GpMatrixOrder = {
     "MatrixOrderPrepend": 0,
     "MatrixOrderAppend": 1,
+}
+GpMatrixOrder_INV = {
+    0: "MatrixOrderPrepend",
+    1: "MatrixOrderAppend",
 }
 ImageType = {
     "ImageTypeUnknown": 0,
     "ImageTypeBitmap": 1,
     "ImageTypeMetafile": 2,
+}
+ImageType_INV = {
+    0: "ImageTypeUnknown",
+    1: "ImageTypeBitmap",
+    2: "ImageTypeMetafile",
 }
 ColorAdjustType = {
     "ColorAdjustTypeDefault": 0,
@@ -292,9 +577,22 @@ ColorAdjustType = {
     "ColorAdjustTypeCount": 5,
     "ColorAdjustTypeAny": 6,
 }
+ColorAdjustType_INV = {
+    0: "ColorAdjustTypeDefault",
+    1: "ColorAdjustTypeBitmap",
+    2: "ColorAdjustTypeBrush",
+    3: "ColorAdjustTypePen",
+    4: "ColorAdjustTypeText",
+    5: "ColorAdjustTypeCount",
+    6: "ColorAdjustTypeAny",
+}
 CompositingMode = {
     "CompositingModeSourceOver": 0,
     "CompositingModeSourceCopy": 1,
+}
+CompositingMode_INV = {
+    0: "CompositingModeSourceOver",
+    1: "CompositingModeSourceCopy",
 }
 CompositingQuality = {
     "CompositingQualityInvalid": -1,
@@ -304,6 +602,14 @@ CompositingQuality = {
     "CompositingQualityGammaCorrected": 3,
     "CompositingQualityAssumeLinear": 4,
 }
+CompositingQuality_INV = {
+    -1: "CompositingQualityInvalid",
+    0: "CompositingQualityDefault",
+    1: "CompositingQualityHighSpeed",
+    2: "CompositingQualityHighQuality",
+    3: "CompositingQualityGammaCorrected",
+    4: "CompositingQualityAssumeLinear",
+}
 TextRenderingHint = {
     "TextRenderingHintSystemDefault": 0,
     "TextRenderingHintSingleBitPerPixelGridFit": 1,
@@ -312,6 +618,14 @@ TextRenderingHint = {
     "TextRenderingHintAntiAlias": 4,
     "TextRenderingHintClearTypeGridFit": 5,
 }
+TextRenderingHint_INV = {
+    0: "TextRenderingHintSystemDefault",
+    1: "TextRenderingHintSingleBitPerPixelGridFit",
+    2: "TextRenderingHintSingleBitPerPixel",
+    3: "TextRenderingHintAntiAliasGridFit",
+    4: "TextRenderingHintAntiAlias",
+    5: "TextRenderingHintClearTypeGridFit",
+}
 StringTrimming = {
     "StringTrimmingNone": 0,
     "StringTrimmingCharacter": 1,
@@ -319,6 +633,14 @@ StringTrimming = {
     "StringTrimmingEllipsisCharacter": 3,
     "StringTrimmingEllipsisWord": 4,
     "StringTrimmingEllipsisPath": 5,
+}
+StringTrimming_INV = {
+    0: "StringTrimmingNone",
+    1: "StringTrimmingCharacter",
+    2: "StringTrimmingWord",
+    3: "StringTrimmingEllipsisCharacter",
+    4: "StringTrimmingEllipsisWord",
+    5: "StringTrimmingEllipsisPath",
 }
 GpStatus = {
     "Ok": 0,
@@ -344,6 +666,30 @@ GpStatus = {
     "PropertyNotSupported": 20,
     "ProfileNotFound": 21,
 }
+GpStatus_INV = {
+    0: "Ok",
+    1: "GenericError",
+    2: "InvalidParameter",
+    3: "OutOfMemory",
+    4: "ObjectBusy",
+    5: "InsufficientBuffer",
+    6: "NotImplemented",
+    7: "Win32Error",
+    8: "WrongState",
+    9: "Aborted",
+    10: "FileNotFound",
+    11: "ValueOverflow",
+    12: "AccessDenied",
+    13: "UnknownImageFormat",
+    14: "FontFamilyNotFound",
+    15: "FontStyleNotFound",
+    16: "NotTrueTypeFont",
+    17: "UnsupportedGdiplusVersion",
+    18: "GdiplusNotInitialized",
+    19: "PropertyNotFound",
+    20: "PropertyNotSupported",
+    21: "ProfileNotFound",
+}
 _FontStyle_ = {
     "FontStyleRegular": 0,
     "FontStyleBold": 1,
@@ -352,10 +698,23 @@ _FontStyle_ = {
     "FontStyleUnderline": 4,
     "FontStyleStrikeout": 8,
 }
+_FontStyle__INV = {
+    0: "FontStyleRegular",
+    1: "FontStyleBold",
+    2: "FontStyleItalic",
+    3: "FontStyleBoldItalic",
+    4: "FontStyleUnderline",
+    8: "FontStyleStrikeout",
+}
 _HotkeyPrefix_ = {
     "HotkeyPrefixNone": 0,
     "HotkeyPrefixShow": 1,
     "HotkeyPrefixHide": 2,
+}
+_HotkeyPrefix__INV = {
+    0: "HotkeyPrefixNone",
+    1: "HotkeyPrefixShow",
+    2: "HotkeyPrefixHide",
 }
 
 def gdiplus_GdiplusStartup(jitter):

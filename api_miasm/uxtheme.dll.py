@@ -4,15 +4,31 @@ BP_ANIMATIONSTYLE = {
     "BPAS_CUBIC": 2,
     "BPAS_SINE": 3,
 }
+BP_ANIMATIONSTYLE_INV = {
+    0: "BPAS_NONE",
+    1: "BPAS_LINEAR",
+    2: "BPAS_CUBIC",
+    3: "BPAS_SINE",
+}
 TEXTSHADOWTYPE = {
     "TST_NONE": 0,
     "TST_SINGLE": 1,
     "TST_CONTINUOUS": 2,
 }
+TEXTSHADOWTYPE_INV = {
+    0: "TST_NONE",
+    1: "TST_SINGLE",
+    2: "TST_CONTINUOUS",
+}
 THEMESIZE = {
     "TS_MIN": 0,
     "TS_TRUE": 1,
     "TS_DRAW": 2,
+}
+THEMESIZE_INV = {
+    0: "TS_MIN",
+    1: "TS_TRUE",
+    2: "TS_DRAW",
 }
 PROPERTYORIGIN = {
     "PO_STATE": 0,
@@ -20,6 +36,13 @@ PROPERTYORIGIN = {
     "PO_CLASS": 2,
     "PO_GLOBAL": 3,
     "PO_NOTFOUND": 4,
+}
+PROPERTYORIGIN_INV = {
+    0: "PO_STATE",
+    1: "PO_PART",
+    2: "PO_CLASS",
+    3: "PO_GLOBAL",
+    4: "PO_NOTFOUND",
 }
 _HitTestReturnCode_ = {
     "HTERROR": -2,
@@ -47,20 +70,61 @@ _HitTestReturnCode_ = {
     "HTCLOSE": 20,
     "HTHELP": 21,
 }
+_HitTestReturnCode__INV = {
+    -2: "HTERROR",
+    -1: "HTTRANSPARENT",
+    0: "HTNOWHERE",
+    1: "HTCLIENT",
+    2: "HTCAPTION",
+    3: "HTSYSMENU",
+    4: "HTGROWBOX",
+    5: "HTMENU",
+    6: "HTHSCROLL",
+    7: "HTVSCROLL",
+    8: "HTMINBUTTON",
+    9: "HTMAXBUTTON",
+    10: "HTLEFT",
+    11: "HTRIGHT",
+    12: "HTTOP",
+    13: "HTTOPLEFT",
+    14: "HTTOPRIGHT",
+    15: "HTBOTTOM",
+    16: "HTBOTTOMLEFT",
+    17: "HTBOTTOMRIGHT",
+    18: "HTBORDER",
+    19: "HTOBJECT",
+    20: "HTCLOSE",
+    21: "HTHELP",
+}
 BP_BUFFERFORMAT = {
     "BPBF_COMPATIBLEBITMAP": 0,
     "BPBF_DIB": 1,
     "BPBF_TOPDOWNDIB": 2,
     "BPBF_TOPDOWNMONODIB": 3,
 }
+BP_BUFFERFORMAT_INV = {
+    0: "BPBF_COMPATIBLEBITMAP",
+    1: "BPBF_DIB",
+    2: "BPBF_TOPDOWNDIB",
+    3: "BPBF_TOPDOWNMONODIB",
+}
 WINDOWTHEMEATTRIBUTETYPE = {
     "WTA_NONCLIENT": 1,
+}
+WINDOWTHEMEATTRIBUTETYPE_INV = {
+    1: "WTA_NONCLIENT",
 }
 TA_TRANSFORM_TYPE = {
     "TATT_TRANSLATE_2D": 0,
     "TATT_SCALE_2D": 1,
     "TATT_OPACITY": 2,
     "TATT_CLIP": 3,
+}
+TA_TRANSFORM_TYPE_INV = {
+    0: "TATT_TRANSLATE_2D",
+    1: "TATT_SCALE_2D",
+    2: "TATT_OPACITY",
+    3: "TATT_CLIP",
 }
 TA_PROPERTY = {
     "TAP_FLAGS": 0,
@@ -70,9 +134,21 @@ TA_PROPERTY = {
     "TAP_STAGGERDELAYFACTOR": 4,
     "TAP_ZORDER": 5,
 }
+TA_PROPERTY_INV = {
+    0: "TAP_FLAGS",
+    1: "TAP_TRANSFORMCOUNT",
+    2: "TAP_STAGGERDELAY",
+    3: "TAP_STAGGERDELAYCAP",
+    4: "TAP_STAGGERDELAYFACTOR",
+    5: "TAP_ZORDER",
+}
 TA_TIMINGFUNCTION_TYPE = {
     "TTFT_UNDEFINED": 0,
     "TTFT_CUBIC_BEZIER": 1,
+}
+TA_TIMINGFUNCTION_TYPE_INV = {
+    0: "TTFT_UNDEFINED",
+    1: "TTFT_CUBIC_BEZIER",
 }
 
 def uxtheme_BeginBufferedAnimation(jitter):

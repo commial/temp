@@ -24,6 +24,32 @@ KPROFILE_SOURCE = {
     "ProfileMemoryBarrierCycles": 22,
     "ProfileLoadLinkedIssues": 23,
 }
+KPROFILE_SOURCE_INV = {
+    0: "ProfileTime",
+    1: "ProfileAlignmentFixup",
+    2: "ProfileTotalIssues",
+    3: "ProfilePipelineDry",
+    4: "ProfileLoadInstructions",
+    5: "ProfilePipelineFrozen",
+    6: "ProfileBranchInstructions",
+    7: "ProfileTotalNonissues",
+    8: "ProfileDcacheMisses",
+    9: "ProfileIcacheMisses",
+    10: "ProfileCacheMisses",
+    11: "ProfileBranchMispredictions",
+    12: "ProfileStoreInstructions",
+    13: "ProfileFpInstructions",
+    14: "ProfileIntegerInstructions",
+    15: "Profile2Issue",
+    16: "Profile3Issue",
+    17: "Profile4Issue",
+    18: "ProfileSpecialInstructions",
+    19: "ProfileTotalCycles",
+    20: "ProfileIcacheIssues",
+    21: "ProfileDcacheAccesses",
+    22: "ProfileMemoryBarrierCycles",
+    23: "ProfileLoadLinkedIssues",
+}
 _RTL_USER_PROCESS_PARAMETERS_FLAGS_ = {
     "RTL_USER_PROCESS_PARAMETERS_NORMALIZED": 0x01,
     "RTL_USER_PROCESS_PARAMETERS_PROFILE_USER": 0x02,
@@ -38,6 +64,20 @@ _RTL_USER_PROCESS_PARAMETERS_FLAGS_ = {
     "RTL_USER_PROCESS_PARAMETERS_LOCAL_DLL_PATH": 0x2000,
     "RTL_USER_PROCESS_PARAMETERS_NX": 0x20000,
 }
+_RTL_USER_PROCESS_PARAMETERS_FLAGS__INV = {
+    0x01: "RTL_USER_PROCESS_PARAMETERS_NORMALIZED",
+    0x02: "RTL_USER_PROCESS_PARAMETERS_PROFILE_USER",
+    0x04: "RTL_USER_PROCESS_PARAMETERS_PROFILE_SERVER",
+    0x08: "RTL_USER_PROCESS_PARAMETERS_PROFILE_KERNEL",
+    0x10: "RTL_USER_PROCESS_PARAMETERS_UNKNOWN",
+    0x20: "RTL_USER_PROCESS_PARAMETERS_RESERVE_1MB",
+    0x100: "RTL_USER_PROCESS_PARAMETERS_DISABLE_HEAP_CHECKS",
+    0x200: "RTL_USER_PROCESS_PARAMETERS_PROCESS_OR_1",
+    0x400: "RTL_USER_PROCESS_PARAMETERS_PROCESS_OR_2",
+    0x1000: "RTL_USER_PROCESS_PARAMETERS_PRIVATE_DLL_PATH",
+    0x2000: "RTL_USER_PROCESS_PARAMETERS_LOCAL_DLL_PATH",
+    0x20000: "RTL_USER_PROCESS_PARAMETERS_NX",
+}
 RTL_PATH_TYPE = {
     "RtlPathTypeUnknown": 0,
     "RtlPathTypeUncAbsolute": 1,
@@ -48,16 +88,37 @@ RTL_PATH_TYPE = {
     "RtlPathTypeLocalDevice": 6,
     "RtlPathTypeRootLocalDevice": 7,
 }
+RTL_PATH_TYPE_INV = {
+    0: "RtlPathTypeUnknown",
+    1: "RtlPathTypeUncAbsolute",
+    2: "RtlPathTypeDriveAbsolute",
+    3: "RtlPathTypeDriveRelative",
+    4: "RtlPathTypeRooted",
+    5: "RtlPathTypeRelative",
+    6: "RtlPathTypeLocalDevice",
+    7: "RtlPathTypeRootLocalDevice",
+}
 TABLE_SEARCH_RESULT = {
     "TableEmptyTree": 0,
     "TableFoundNode": 1,
     "TableInsertAsLeft": 2,
     "TableInsertAsRight": 3,
 }
+TABLE_SEARCH_RESULT_INV = {
+    0: "TableEmptyTree",
+    1: "TableFoundNode",
+    2: "TableInsertAsLeft",
+    3: "TableInsertAsRight",
+}
 NT_PRODUCT_TYPE = {
     "NtProductWinNt": 1,
     "NtProductLanManNt": 2,
     "NtProductServer": 3,
+}
+NT_PRODUCT_TYPE_INV = {
+    1: "NtProductWinNt",
+    2: "NtProductLanManNt",
+    3: "NtProductServer",
 }
 KEY_INFORMATION_CLASS = {
     "KeyBasicInformation": 0,
@@ -69,12 +130,29 @@ KEY_INFORMATION_CLASS = {
     "KeyVirtualizationInformation": 6,
     "KeyHandleTagsInformation": 7,
 }
+KEY_INFORMATION_CLASS_INV = {
+    0: "KeyBasicInformation",
+    1: "KeyNodeInformation",
+    2: "KeyFullInformation",
+    3: "KeyNameInformation",
+    4: "KeyCachedInformation",
+    5: "KeyFlagsInformation",
+    6: "KeyVirtualizationInformation",
+    7: "KeyHandleTagsInformation",
+}
 KEY_VALUE_INFORMATION_CLASS = {
     "KeyValueBasicInformation": 0,
     "KeyValueFullInformation": 1,
     "KeyValuePartialInformation": 2,
     "KeyValueFullInformationAlign64": 3,
     "KeyValuePartialInformationAlign64": 4,
+}
+KEY_VALUE_INFORMATION_CLASS_INV = {
+    0: "KeyValueBasicInformation",
+    1: "KeyValueFullInformation",
+    2: "KeyValuePartialInformation",
+    3: "KeyValueFullInformationAlign64",
+    4: "KeyValuePartialInformationAlign64",
 }
 PLUGPLAY_CONTROL_CLASS = {
     "PlugPlayControlEnumerateDevice": 0,
@@ -101,6 +179,31 @@ PLUGPLAY_CONTROL_CLASS = {
     "PlugPlayControlHaltDevice": 21,
     "PlugPlayControlGetBlockedDriverList": 22,
 }
+PLUGPLAY_CONTROL_CLASS_INV = {
+    0: "PlugPlayControlEnumerateDevice",
+    1: "PlugPlayControlRegisterNewDevice",
+    2: "PlugPlayControlDeregisterDevice",
+    3: "PlugPlayControlInitializeDevice",
+    4: "PlugPlayControlStartDevice",
+    5: "PlugPlayControlUnlockDevice",
+    6: "PlugPlayControlQueryAndRemoveDevice",
+    7: "PlugPlayControlUserResponse",
+    8: "PlugPlayControlGenerateLegacyDevice",
+    9: "PlugPlayControlGetInterfaceDeviceList",
+    10: "PlugPlayControlProperty",
+    11: "PlugPlayControlDeviceClassAssociation",
+    12: "PlugPlayControlGetRelatedDevice",
+    13: "PlugPlayControlGetInterfaceDeviceAlias",
+    14: "PlugPlayControlDeviceStatus",
+    15: "PlugPlayControlGetDeviceDepth",
+    16: "PlugPlayControlQueryDeviceRelations",
+    17: "PlugPlayControlTargetDeviceRelation",
+    18: "PlugPlayControlQueryConflictList",
+    19: "PlugPlayControlRetrieveDock",
+    20: "PlugPlayControlResetDevice",
+    21: "PlugPlayControlHaltDevice",
+    22: "PlugPlayControlGetBlockedDriverList",
+}
 KEY_SET_INFORMATION_CLASS = {
     "KeyWriteTimeInformation": 0,
     "KeyWow64FlagsInformation": 1,
@@ -109,35 +212,73 @@ KEY_SET_INFORMATION_CLASS = {
     "KeySetDebugInformation": 4,
     "KeySetHandleTagsInformation": 5,
 }
+KEY_SET_INFORMATION_CLASS_INV = {
+    0: "KeyWriteTimeInformation",
+    1: "KeyWow64FlagsInformation",
+    2: "KeyControlFlagsInformation",
+    3: "KeySetVirtualizationInformation",
+    4: "KeySetDebugInformation",
+    5: "KeySetHandleTagsInformation",
+}
 DEBUGOBJECTINFOCLASS = {
     "DebugObjectUnusedInformation": 0,
     "DebugObjectKillProcessOnExitInformation": 1,
+}
+DEBUGOBJECTINFOCLASS_INV = {
+    0: "DebugObjectUnusedInformation",
+    1: "DebugObjectKillProcessOnExitInformation",
 }
 TIMER_TYPE = {
     "NotificationTimer": 0,
     "SynchronizationTimer": 1,
 }
+TIMER_TYPE_INV = {
+    0: "NotificationTimer",
+    1: "SynchronizationTimer",
+}
 EVENT_INFORMATION_CLASS = {
     "EventBasicInformation": 0,
+}
+EVENT_INFORMATION_CLASS_INV = {
+    0: "EventBasicInformation",
 }
 ATOM_INFORMATION_CLASS = {
     "AtomBasicInformation": 0,
     "AtomTableInformation": 1,
 }
+ATOM_INFORMATION_CLASS_INV = {
+    0: "AtomBasicInformation",
+    1: "AtomTableInformation",
+}
 MUTANT_INFORMATION_CLASS = {
     "MutantBasicInformation": 0,
     "MutantOwnerInformation": 1,
 }
+MUTANT_INFORMATION_CLASS_INV = {
+    0: "MutantBasicInformation",
+    1: "MutantOwnerInformation",
+}
 SEMAPHORE_INFORMATION_CLASS = {
     "SemaphoreBasicInformation": 0,
 }
+SEMAPHORE_INFORMATION_CLASS_INV = {
+    0: "SemaphoreBasicInformation",
+}
 TIMER_INFORMATION_CLASS = {
     "TimerBasicInformation": 0,
+}
+TIMER_INFORMATION_CLASS_INV = {
+    0: "TimerBasicInformation",
 }
 SHUTDOWN_ACTION = {
     "ShutdownNoReboot": 0,
     "ShutdownReboot": 1,
     "ShutdownPowerOff": 2,
+}
+SHUTDOWN_ACTION_INV = {
+    0: "ShutdownNoReboot",
+    1: "ShutdownReboot",
+    2: "ShutdownPowerOff",
 }
 FILE_INFORMATION_CLASS = {
     "FileDirectoryInformation": 1,
@@ -200,8 +341,72 @@ FILE_INFORMATION_CLASS = {
     "FileIntegrityStreamInformation": 58,
     "FileVolumeNameInformation": 59,
 }
+FILE_INFORMATION_CLASS_INV = {
+    1: "FileDirectoryInformation",
+    2: "FileFullDirectoryInformation",
+    3: "FileBothDirectoryInformation",
+    4: "FileBasicInformation",
+    5: "FileStandardInformation",
+    6: "FileInternalInformation",
+    7: "FileEaInformation",
+    8: "FileAccessInformation",
+    9: "FileNameInformation",
+    10: "FileRenameInformation",
+    11: "FileLinkInformation",
+    12: "FileNamesInformation",
+    13: "FileDispositionInformation",
+    14: "FilePositionInformation",
+    15: "FileFullEaInformation",
+    16: "FileModeInformation",
+    17: "FileAlignmentInformation",
+    18: "FileAllInformation",
+    19: "FileAllocationInformation",
+    20: "FileEndOfFileInformation",
+    21: "FileAlternateNameInformation",
+    22: "FileStreamInformation",
+    23: "FilePipeInformation",
+    24: "FilePipeLocalInformation",
+    25: "FilePipeRemoteInformation",
+    26: "FileMailslotQueryInformation",
+    27: "FileMailslotSetInformation",
+    28: "FileCompressionInformation",
+    29: "FileObjectIdInformation",
+    30: "FileCompletionInformation",
+    31: "FileMoveClusterInformation",
+    32: "FileQuotaInformation",
+    33: "FileReparsePointInformation",
+    34: "FileNetworkOpenInformation",
+    35: "FileAttributeTagInformation",
+    36: "FileTrackingInformation",
+    37: "FileIdBothDirectoryInformation",
+    38: "FileIdFullDirectoryInformation",
+    39: "FileValidDataLengthInformation",
+    40: "FileShortNameInformation",
+    41: "FileIoCompletionNotificationInformation",
+    42: "FileIoStatusBlockRangeInformation",
+    43: "FileIoPriorityHintInformation",
+    44: "FileSfioReserveInformation",
+    45: "FileSfioVolumeInformation",
+    46: "FileHardLinkInformation",
+    47: "FileProcessIdsUsingFileInformation",
+    48: "FileNormalizedNameInformation",
+    49: "FileNetworkPhysicalNameInformation",
+    50: "FileIdGlobalTxDirectoryInformation",
+    51: "FileIsRemoteDeviceInformation",
+    52: "FileAttributeCacheInformation",
+    53: "FileNumaNodeInformation",
+    54: "FileStandardLinkInformation",
+    55: "FileRemoteProtocolInformation",
+    56: "FileRenameInformationBypassAccessCheck",
+    57: "FileLinkInformationBypassAccessCheck",
+    58: "FileIntegrityStreamInformation",
+    59: "FileVolumeNameInformation",
+}
 IO_COMPLETION_INFORMATION_CLASS = {
     "IoCompletionBasicInformation": 0,
+}
+IO_COMPLETION_INFORMATION_CLASS_INV = {
+    0: "IoCompletionBasicInformation",
 }
 FS_INFORMATION_CLASS = {
     "FileFsVolumeInformation": 1,
@@ -215,6 +420,19 @@ FS_INFORMATION_CLASS = {
     "FileFsDriverPathInformation": 9,
     "FileFsVolumeFlagsInformation": 10,
     "FileFsSectorSizeInformation": 11,
+}
+FS_INFORMATION_CLASS_INV = {
+    1: "FileFsVolumeInformation",
+    2: "FileFsLabelInformation",
+    3: "FileFsSizeInformation",
+    4: "FileFsDeviceInformation",
+    5: "FileFsAttributeInformation",
+    6: "FileFsControlInformation",
+    7: "FileFsFullSizeInformation",
+    8: "FileFsObjectIdInformation",
+    9: "FileFsDriverPathInformation",
+    10: "FileFsVolumeFlagsInformation",
+    11: "FileFsSectorSizeInformation",
 }
 SYSDBG_COMMAND = {
     "SysDbgQueryModuleInformation": 0,
@@ -255,18 +473,70 @@ SYSDBG_COMMAND = {
     "SysDbgGetUmAttachPid": 35,
     "SysDbgClearUmAttachPid": 36,
 }
+SYSDBG_COMMAND_INV = {
+    0: "SysDbgQueryModuleInformation",
+    1: "SysDbgQueryTraceInformation",
+    2: "SysDbgSetTracepoint",
+    3: "SysDbgSetSpecialCall",
+    4: "SysDbgClearSpecialCalls",
+    5: "SysDbgQuerySpecialCalls",
+    6: "SysDbgBreakPoint",
+    7: "SysDbgQueryVersion",
+    8: "SysDbgReadVirtual",
+    9: "SysDbgWriteVirtual",
+    10: "SysDbgReadPhysical",
+    11: "SysDbgWritePhysical",
+    12: "SysDbgReadControlSpace",
+    13: "SysDbgWriteControlSpace",
+    14: "SysDbgReadIoSpace",
+    15: "SysDbgWriteIoSpace",
+    16: "SysDbgReadMsr",
+    17: "SysDbgWriteMsr",
+    18: "SysDbgReadBusData",
+    19: "SysDbgWriteBusData",
+    20: "SysDbgCheckLowMemory",
+    21: "SysDbgEnableKernelDebugger",
+    22: "SysDbgDisableKernelDebugger",
+    23: "SysDbgGetAutoKdEnable",
+    24: "SysDbgSetAutoKdEnable",
+    25: "SysDbgGetPrintBufferSize",
+    26: "SysDbgSetPrintBufferSize",
+    27: "SysDbgGetKdUmExceptionEnable",
+    28: "SysDbgSetKdUmExceptionEnable",
+    29: "SysDbgGetTriageDump",
+    30: "SysDbgGetKdBlockEnable",
+    31: "SysDbgSetKdBlockEnable",
+    32: "SysDbgRegisterForUmBreakInfo",
+    33: "SysDbgGetUmBreakPid",
+    34: "SysDbgClearUmBreakPid",
+    35: "SysDbgGetUmAttachPid",
+    36: "SysDbgClearUmAttachPid",
+}
 PORT_INFORMATION_CLASS = {
     "PortBasicInformation": 0,
     "PortDumpInformation": 1,
+}
+PORT_INFORMATION_CLASS_INV = {
+    0: "PortBasicInformation",
+    1: "PortDumpInformation",
 }
 SECTION_INHERIT = {
     "ViewShare": 1,
     "ViewUnmap": 2,
 }
+SECTION_INHERIT_INV = {
+    1: "ViewShare",
+    2: "ViewUnmap",
+}
 SECTION_INFORMATION_CLASS = {
     "SectionBasicInformation": 0,
     "SectionImageInformation": 1,
     "SectionRelocationInformation": 2,
+}
+SECTION_INFORMATION_CLASS_INV = {
+    0: "SectionBasicInformation",
+    1: "SectionImageInformation",
+    2: "SectionRelocationInformation",
 }
 MEMORY_INFORMATION_CLASS = {
     "MemoryBasicInformation": 0,
@@ -274,6 +544,13 @@ MEMORY_INFORMATION_CLASS = {
     "MemoryMappedFilenameInformation": 2,
     "MemoryRegionInformation": 3,
     "MemoryWorkingSetExInformation": 4,
+}
+MEMORY_INFORMATION_CLASS_INV = {
+    0: "MemoryBasicInformation",
+    1: "MemoryWorkingSetInformation",
+    2: "MemoryMappedFilenameInformation",
+    3: "MemoryRegionInformation",
+    4: "MemoryWorkingSetExInformation",
 }
 OBJECT_INFORMATION_CLASS = {
     "ObjectBasicInformation": 0,
@@ -283,9 +560,21 @@ OBJECT_INFORMATION_CLASS = {
     "ObjectHandleFlagInformation": 4,
     "ObjectSessionInformation": 5,
 }
+OBJECT_INFORMATION_CLASS_INV = {
+    0: "ObjectBasicInformation",
+    1: "ObjectNameInformation",
+    2: "ObjectTypeInformation",
+    3: "ObjectAllTypesInformation",
+    4: "ObjectHandleFlagInformation",
+    5: "ObjectSessionInformation",
+}
 WAIT_TYPE = {
     "WaitAll": 0,
     "WaitAny": 1,
+}
+WAIT_TYPE_INV = {
+    0: "WaitAll",
+    1: "WaitAny",
 }
 APPHELPCACHESERVICECLASS = {
     "ApphelpCacheServiceLookup": 0,
@@ -293,6 +582,13 @@ APPHELPCACHESERVICECLASS = {
     "ApphelpCacheServiceUpdate": 2,
     "ApphelpCacheServiceFlush": 3,
     "ApphelpCacheServiceDump": 4,
+}
+APPHELPCACHESERVICECLASS_INV = {
+    0: "ApphelpCacheServiceLookup",
+    1: "ApphelpCacheServiceRemove",
+    2: "ApphelpCacheServiceUpdate",
+    3: "ApphelpCacheServiceFlush",
+    4: "ApphelpCacheServiceDump",
 }
 SYSTEM_INFORMATION_CLASS = {
     "SystemBasicInformation": 0,
@@ -437,6 +733,149 @@ SYSTEM_INFORMATION_CLASS = {
     "SystemMemoryChannelInformation": 139,
     "SystemBootLogoInformation": 140,
 }
+SYSTEM_INFORMATION_CLASS_INV = {
+    0: "SystemBasicInformation",
+    1: "SystemProcessorInformation",
+    2: "SystemPerformanceInformation",
+    3: "SystemTimeOfDayInformation",
+    4: "SystemPathInformation",
+    5: "SystemProcessInformation",
+    6: "SystemCallCountInformation",
+    7: "SystemDeviceInformation",
+    8: "SystemProcessorPerformanceInformation",
+    9: "SystemFlagsInformation",
+    10: "SystemCallTimeInformation",
+    11: "SystemModuleInformation",
+    12: "SystemLocksInformation",
+    13: "SystemStackTraceInformation",
+    14: "SystemPagedPoolInformation",
+    15: "SystemNonPagedPoolInformation",
+    16: "SystemHandleInformation",
+    17: "SystemObjectInformation",
+    18: "SystemPageFileInformation",
+    19: "SystemVdmInstemulInformation",
+    20: "SystemVdmBopInformation",
+    21: "SystemFileCacheInformation",
+    22: "SystemPoolTagInformation",
+    23: "SystemInterruptInformation",
+    24: "SystemDpcBehaviorInformation",
+    25: "SystemFullMemoryInformation",
+    26: "SystemLoadGdiDriverInformation",
+    27: "SystemUnloadGdiDriverInformation",
+    28: "SystemTimeAdjustmentInformation",
+    29: "SystemSummaryMemoryInformation",
+    30: "SystemMirrorMemoryInformation",
+    31: "SystemPerformanceTraceInformation",
+    32: "SystemObsolete0",
+    33: "SystemExceptionInformation",
+    34: "SystemCrashDumpStateInformation",
+    35: "SystemKernelDebuggerInformation",
+    36: "SystemContextSwitchInformation",
+    37: "SystemRegistryQuotaInformation",
+    38: "SystemExtendServiceTableInformation",
+    39: "SystemPrioritySeperation",
+    40: "SystemVerifierAddDriverInformation",
+    41: "SystemVerifierRemoveDriverInformation",
+    42: "SystemProcessorIdleInformation",
+    43: "SystemLegacyDriverInformation",
+    44: "SystemCurrentTimeZoneInformation",
+    45: "SystemLookasideInformation",
+    46: "SystemTimeSlipNotification",
+    47: "SystemSessionCreate",
+    48: "SystemSessionDetach",
+    49: "SystemSessionInformation",
+    50: "SystemRangeStartInformation",
+    51: "SystemVerifierInformation",
+    52: "SystemVerifierThunkExtend",
+    53: "SystemSessionProcessInformation",
+    54: "SystemLoadGdiDriverInSystemSpace",
+    55: "SystemNumaProcessorMap",
+    56: "SystemPrefetcherInformation",
+    57: "SystemExtendedProcessInformation",
+    58: "SystemRecommendedSharedDataAlignment",
+    59: "SystemComPlusPackage",
+    60: "SystemNumaAvailableMemory",
+    61: "SystemProcessorPowerInformation",
+    62: "SystemEmulationBasicInformation",
+    63: "SystemEmulationProcessorInformation",
+    64: "SystemExtendedHandleInformation",
+    65: "SystemLostDelayedWriteInformation",
+    66: "SystemBigPoolInformation",
+    67: "SystemSessionPoolTagInformation",
+    68: "SystemSessionMappedViewInformation",
+    69: "SystemHotpatchInformation",
+    70: "SystemObjectSecurityMode",
+    71: "SystemWatchdogTimerHandler",
+    72: "SystemWatchdogTimerInformation",
+    73: "SystemLogicalProcessorInformation",
+    74: "SystemWow64SharedInformationObsolete",
+    75: "SystemRegisterFirmwareTableInformationHandler",
+    76: "SystemFirmwareTableInformation",
+    77: "SystemModuleInformationEx",
+    78: "SystemVerifierTriageInformation",
+    79: "SystemSuperfetchInformation",
+    80: "SystemMemoryListInformation",
+    81: "SystemFileCacheInformationEx",
+    82: "SystemThreadPriorityClientIdInformation",
+    83: "SystemProcessorIdleCycleTimeInformation",
+    84: "SystemVerifierCancellationInformation",
+    85: "SystemProcessorPowerInformationEx",
+    86: "SystemRefTraceInformation",
+    87: "SystemSpecialPoolInformation",
+    88: "SystemProcessIdInformation",
+    89: "SystemErrorPortInformation",
+    90: "SystemBootEnvironmentInformation",
+    91: "SystemHypervisorInformation",
+    92: "SystemVerifierInformationEx",
+    93: "SystemTimeZoneInformation",
+    94: "SystemImageFileExecutionOptionsInformation",
+    95: "SystemCoverageInformation",
+    96: "SystemPrefetchPatchInformation",
+    97: "SystemVerifierFaultsInformation",
+    98: "SystemSystemPartitionInformation",
+    99: "SystemSystemDiskInformation",
+    100: "SystemProcessorPerformanceDistribution",
+    101: "SystemNumaProximityNodeInformation",
+    102: "SystemDynamicTimeZoneInformation",
+    103: "SystemCodeIntegrityInformation",
+    104: "SystemProcessorMicrocodeUpdateInformation",
+    105: "SystemProcessorBrandString",
+    106: "SystemVirtualAddressInformation",
+    107: "SystemLogicalProcessorAndGroupInformation",
+    108: "SystemProcessorCycleTimeInformation",
+    109: "SystemStoreInformation",
+    110: "SystemRegistryAppendString",
+    111: "SystemAitSamplingValue",
+    112: "SystemVhdBootInformation",
+    113: "SystemCpuQuotaInformation",
+    114: "SystemNativeBasicInformation",
+    115: "SystemErrorPortTimeouts",
+    116: "SystemLowPriorityIoInformation",
+    117: "SystemBootEntropyInformation",
+    118: "SystemVerifierCountersInformation",
+    119: "SystemPagedPoolInformationEx",
+    120: "SystemSystemPtesInformationEx",
+    121: "SystemNodeDistanceInformation",
+    122: "SystemAcpiAuditInformation",
+    123: "SystemBasicPerformanceInformation",
+    124: "SystemQueryPerformanceCounterInformation",
+    125: "SystemSessionBigPoolInformation",
+    126: "SystemBootGraphicsInformation",
+    127: "SystemScrubPhysicalMemoryInformation",
+    128: "SystemBadPageInformation",
+    129: "SystemProcessorProfileControlArea",
+    130: "SystemCombinePhysicalMemoryInformation",
+    131: "SystemEntropyInterruptTimingCallback",
+    132: "SystemConsoleInformation",
+    133: "SystemPlatformBinaryInformation",
+    134: "SystemThrottleNotificationInformation",
+    135: "SystemHypervisorProcessorCountInformation",
+    136: "SystemDeviceDataInformation",
+    137: "SystemDeviceDataEnumerationInformation",
+    138: "SystemMemoryTopologyInformation",
+    139: "SystemMemoryChannelInformation",
+    140: "SystemBootLogoInformation",
+}
 _NtCreateDisposition_ = {
     "FILE_SUPERSEDE": 0x00000000,
     "FILE_OPEN": 0x00000001,
@@ -444,6 +883,14 @@ _NtCreateDisposition_ = {
     "FILE_OPEN_IF": 0x00000003,
     "FILE_OVERWRITE": 0x00000004,
     "FILE_OVERWRITE_IF": 0x00000005,
+}
+_NtCreateDisposition__INV = {
+    0x00000000: "FILE_SUPERSEDE",
+    0x00000001: "FILE_OPEN",
+    0x00000002: "FILE_CREATE",
+    0x00000003: "FILE_OPEN_IF",
+    0x00000004: "FILE_OVERWRITE",
+    0x00000005: "FILE_OVERWRITE_IF",
 }
 LPC_TYPE = {
     "LPC_NEW_MESSAGE": 0,
@@ -459,10 +906,29 @@ LPC_TYPE = {
     "LPC_CONNECTION_REQUEST": 10,
     "LPC_CONNECTION_REFUSED": 11,
 }
+LPC_TYPE_INV = {
+    0: "LPC_NEW_MESSAGE",
+    1: "LPC_REQUEST",
+    2: "LPC_REPLY",
+    3: "LPC_DATAGRAM",
+    4: "LPC_LOST_REPLY",
+    5: "LPC_PORT_CLOSED",
+    6: "LPC_CLIENT_DIED",
+    7: "LPC_EXCEPTION",
+    8: "LPC_DEBUG_EVENT",
+    9: "LPC_ERROR_EVENT",
+    10: "LPC_CONNECTION_REQUEST",
+    11: "LPC_CONNECTION_REFUSED",
+}
 _LDR_LOCK_LOADER_LOCK_DISPOSITION_ = {
     "LDR_LOCK_LOADER_LOCK_DISPOSITION_INVALID": 0,
     "LDR_LOCK_LOADER_LOCK_DISPOSITION_LOCK_ACQUIRED": 1,
     "LDR_LOCK_LOADER_LOCK_DISPOSITION_LOCK_NOT_ACQUIRED": 2,
+}
+_LDR_LOCK_LOADER_LOCK_DISPOSITION__INV = {
+    0: "LDR_LOCK_LOADER_LOCK_DISPOSITION_INVALID",
+    1: "LDR_LOCK_LOADER_LOCK_DISPOSITION_LOCK_ACQUIRED",
+    2: "LDR_LOCK_LOADER_LOCK_DISPOSITION_LOCK_NOT_ACQUIRED",
 }
 TRANSACTIONMANAGER_INFORMATION_CLASS = {
     "TransactionManagerBasicInformation": 0,
@@ -470,20 +936,41 @@ TRANSACTIONMANAGER_INFORMATION_CLASS = {
     "TransactionManagerLogPathInformation": 2,
     "TransactionManagerRecoveryInformation": 4,
 }
+TRANSACTIONMANAGER_INFORMATION_CLASS_INV = {
+    0: "TransactionManagerBasicInformation",
+    1: "TransactionManagerLogInformation",
+    2: "TransactionManagerLogPathInformation",
+    4: "TransactionManagerRecoveryInformation",
+}
 TRANSACTION_INFORMATION_CLASS = {
     "TransactionBasicInformation": 0,
     "TransactionPropertiesInformation": 1,
     "TransactionEnlistmentInformation": 2,
     "TransactionSuperiorEnlistmentInformation": 3,
 }
+TRANSACTION_INFORMATION_CLASS_INV = {
+    0: "TransactionBasicInformation",
+    1: "TransactionPropertiesInformation",
+    2: "TransactionEnlistmentInformation",
+    3: "TransactionSuperiorEnlistmentInformation",
+}
 ENLISTMENT_INFORMATION_CLASS = {
     "EnlistmentBasicInformation": 0,
     "EnlistmentRecoveryInformation": 1,
     "EnlistmentCrmInformation": 2,
 }
+ENLISTMENT_INFORMATION_CLASS_INV = {
+    0: "EnlistmentBasicInformation",
+    1: "EnlistmentRecoveryInformation",
+    2: "EnlistmentCrmInformation",
+}
 RESOURCEMANAGER_INFORMATION_CLASS = {
     "ResourceManagerBasicInformation": 0,
     "ResourceManagerCompletionInformation": 1,
+}
+RESOURCEMANAGER_INFORMATION_CLASS_INV = {
+    0: "ResourceManagerBasicInformation",
+    1: "ResourceManagerCompletionInformation",
 }
 KTMOBJECT_TYPE = {
     "KTMOBJECT_TRANSACTION": 0,
@@ -492,10 +979,22 @@ KTMOBJECT_TYPE = {
     "KTMOBJECT_ENLISTMENT": 3,
     "KTMOBJECT_INVALID": 4,
 }
+KTMOBJECT_TYPE_INV = {
+    0: "KTMOBJECT_TRANSACTION",
+    1: "KTMOBJECT_TRANSACTION_MANAGER",
+    2: "KTMOBJECT_RESOURCE_MANAGER",
+    3: "KTMOBJECT_ENLISTMENT",
+    4: "KTMOBJECT_INVALID",
+}
 _HASH_STRING_ALGORITHM_ = {
     "HASH_STRING_ALGORITHM_DEFAULT": 0,
     "HASH_STRING_ALGORITHM_X65599": 1,
     "HASH_STRING_ALGORITHM_INVALID": 0xffffffff,
+}
+_HASH_STRING_ALGORITHM__INV = {
+    0: "HASH_STRING_ALGORITHM_DEFAULT",
+    1: "HASH_STRING_ALGORITHM_X65599",
+    0xffffffff: "HASH_STRING_ALGORITHM_INVALID",
 }
 
 def ntdll_NtClearEvent(jitter):

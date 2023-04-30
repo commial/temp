@@ -4,10 +4,21 @@ RASAPIVERSION = {
     "RASAPIVERSION_600": 3,
     "RASAPIVERSION_601": 4,
 }
+RASAPIVERSION_INV = {
+    1: "RASAPIVERSION_500",
+    2: "RASAPIVERSION_501",
+    3: "RASAPIVERSION_600",
+    4: "RASAPIVERSION_601",
+}
 _RASTUNNELENDPOINT_TYPE_ = {
     "RASTUNNELENDPOINT_UNKNOWN": 0,
     "RASTUNNELENDPOINT_IPv4": 1,
     "RASTUNNELENDPOINT_IPv6": 2,
+}
+_RASTUNNELENDPOINT_TYPE__INV = {
+    0: "RASTUNNELENDPOINT_UNKNOWN",
+    1: "RASTUNNELENDPOINT_IPv4",
+    2: "RASTUNNELENDPOINT_IPv6",
 }
 RASCONNSTATE = {
     "RASCS_OpenPort": 0,
@@ -43,15 +54,59 @@ RASCONNSTATE = {
     "RASCS_Connected": 0x2000,
     "RASCS_Disconnected": 0x2001,
 }
+RASCONNSTATE_INV = {
+    0: "RASCS_OpenPort",
+    1: "RASCS_PortOpened",
+    2: "RASCS_ConnectDevice",
+    3: "RASCS_DeviceConnected",
+    4: "RASCS_AllDevicesConnected",
+    5: "RASCS_Authenticate",
+    6: "RASCS_AuthNotify",
+    7: "RASCS_AuthRetry",
+    8: "RASCS_AuthCallback",
+    9: "RASCS_AuthChangePassword",
+    10: "RASCS_AuthProject",
+    11: "RASCS_AuthLinkSpeed",
+    12: "RASCS_AuthAck",
+    13: "RASCS_ReAuthenticate",
+    14: "RASCS_Authenticated",
+    15: "RASCS_PrepareForCallback",
+    16: "RASCS_WaitForModemReset",
+    17: "RASCS_WaitForCallback",
+    18: "RASCS_Projected",
+    19: "RASCS_StartAuthentication",
+    20: "RASCS_CallbackComplete",
+    21: "RASCS_LogonNetwork",
+    22: "RASCS_SubEntryConnected",
+    23: "RASCS_SubEntryDisconnected",
+    24: "RASCS_ApplySettings",
+    0x1000: "RASCS_Interactive",
+    0x1001: "RASCS_RetryAuthentication",
+    0x1002: "RASCS_CallbackSetByCaller",
+    0x1003: "RASCS_PasswordExpired",
+    0x1004: "RASCS_InvokeEapUI",
+    0x2000: "RASCS_Connected",
+    0x2001: "RASCS_Disconnected",
+}
 RASCONNSUBSTATE = {
     "RASCSS_None": 0,
     "RASCSS_Dormant": 1,
     "RASCSS_Reconnecting": 2,
     "RASCSS_Reconnected": 0x2000,
 }
+RASCONNSUBSTATE_INV = {
+    0: "RASCSS_None",
+    1: "RASCSS_Dormant",
+    2: "RASCSS_Reconnecting",
+    0x2000: "RASCSS_Reconnected",
+}
 _RASEDM_ENUM_ = {
     "RASEDM_DialAll": 1,
     "RASEDM_DialAsNeeded": 2,
+}
+_RASEDM_ENUM__INV = {
+    1: "RASEDM_DialAll",
+    2: "RASEDM_DialAsNeeded",
 }
 _RASET_ENUM_ = {
     "RASET_Phone": 1,
@@ -60,11 +115,24 @@ _RASET_ENUM_ = {
     "RASET_Internet": 4,
     "RASET_Broadband": 5,
 }
+_RASET_ENUM__INV = {
+    1: "RASET_Phone",
+    2: "RASET_Vpn",
+    3: "RASET_Direct",
+    4: "RASET_Internet",
+    5: "RASET_Broadband",
+}
 _RAS_ENCRYPTION_TYPE_ = {
     "ET_None": 0,
     "ET_Require": 1,
     "ET_RequireMax": 2,
     "ET_Optional": 3,
+}
+_RAS_ENCRYPTION_TYPE__INV = {
+    0: "ET_None",
+    1: "ET_Require",
+    2: "ET_RequireMax",
+    3: "ET_Optional",
 }
 _RAS_VPN_STRATEGY_ = {
     "VS_Default": 0,
@@ -80,20 +148,49 @@ _RAS_VPN_STRATEGY_ = {
     "VS_L2tpSstp": 13,
     "VS_Ikev2Sstp": 14,
 }
+_RAS_VPN_STRATEGY__INV = {
+    0: "VS_Default",
+    1: "VS_PptpOnly",
+    2: "VS_PptpFirst",
+    3: "VS_L2tpOnly",
+    4: "VS_L2tpFirst",
+    5: "VS_SstpOnly",
+    6: "VS_SstpFirst",
+    7: "VS_Ikev2Only",
+    8: "VS_Ikev2First",
+    12: "VS_PptpSstp",
+    13: "VS_L2tpSstp",
+    14: "VS_Ikev2Sstp",
+}
 _RASLCPAP_ = {
     "RASLCPAP_PAP": 0xC023,
     "RASLCPAP_SPAP": 0xC027,
     "RASLCPAP_CHAP": 0xC223,
     "RASLCPAP_EAP": 0xC227,
 }
+_RASLCPAP__INV = {
+    0xC023: "RASLCPAP_PAP",
+    0xC027: "RASLCPAP_SPAP",
+    0xC223: "RASLCPAP_CHAP",
+    0xC227: "RASLCPAP_EAP",
+}
 _RASLCPAD_ = {
     "RASLCPAD_CHAP_MD5": 0x05,
     "RASLCPAD_CHAP_MS": 0x80,
     "RASLCPAD_CHAP_MSV2": 0x81,
 }
+_RASLCPAD__INV = {
+    0x05: "RASLCPAD_CHAP_MD5",
+    0x80: "RASLCPAD_CHAP_MS",
+    0x81: "RASLCPAD_CHAP_MSV2",
+}
 _RASCCPCA_ = {
     "RASCCPCA_MPPC": 0x00000006,
     "RASCCPCA_STAC": 0x00000005,
+}
+_RASCCPCA__INV = {
+    0x00000006: "RASCCPCA_MPPC",
+    0x00000005: "RASCCPCA_STAC",
 }
 IPSEC_CIPHER_TYPE = {
     "IPSEC_CIPHER_TYPE_DES": 1,
@@ -102,18 +199,38 @@ IPSEC_CIPHER_TYPE = {
     "IPSEC_CIPHER_TYPE_AES_192": 4,
     "IPSEC_CIPHER_TYPE_AES_256": 5,
 }
+IPSEC_CIPHER_TYPE_INV = {
+    1: "IPSEC_CIPHER_TYPE_DES",
+    2: "IPSEC_CIPHER_TYPE_3DES",
+    3: "IPSEC_CIPHER_TYPE_AES_128",
+    4: "IPSEC_CIPHER_TYPE_AES_192",
+    5: "IPSEC_CIPHER_TYPE_AES_256",
+}
 _RASIKEv2_AUTH_ = {
     "RASIKEv2_AUTH_MACHINECERTIFICATES": 1,
     "RASIKEv2_AUTH_EAP": 2,
+}
+_RASIKEv2_AUTH__INV = {
+    1: "RASIKEv2_AUTH_MACHINECERTIFICATES",
+    2: "RASIKEv2_AUTH_EAP",
 }
 RASPROJECTION_INFO_TYPE = {
     "PROJECTION_INFO_TYPE_PPP": 1,
     "PROJECTION_INFO_TYPE_IKEv2": 2,
 }
+RASPROJECTION_INFO_TYPE_INV = {
+    1: "PROJECTION_INFO_TYPE_PPP",
+    2: "PROJECTION_INFO_TYPE_IKEv2",
+}
 IsolationState = {
     "isolationStateNotRestricted": 1,
     "isolationStateInProbation": 2,
     "isolationStateRestrictedAccess": 3,
+}
+IsolationState_INV = {
+    1: "isolationStateNotRestricted",
+    2: "isolationStateInProbation",
+    3: "isolationStateRestrictedAccess",
 }
 
 def rasapi32_RasClearConnectionStatistics(jitter):

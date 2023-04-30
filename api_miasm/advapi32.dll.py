@@ -12,6 +12,20 @@ WCT_OBJECT_TYPE = {
     "WctSocketIoType": 11,
     "WctSmbIoType": 12,
 }
+WCT_OBJECT_TYPE_INV = {
+    1: "WctCriticalSectionType",
+    2: "WctSendMessageType",
+    3: "WctMutexType",
+    4: "WctAlpcType",
+    5: "WctComType",
+    6: "WctThreadWaitType",
+    7: "WctProcessWaitType",
+    8: "WctThreadType",
+    9: "WctComActivationType",
+    10: "WctUnknownType",
+    11: "WctSocketIoType",
+    12: "WctSmbIoType",
+}
 WCT_OBJECT_STATUS = {
     "WctStatusNoAccess": 1,
     "WctStatusRunning": 2,
@@ -24,8 +38,23 @@ WCT_OBJECT_STATUS = {
     "WctStatusUnknown": 9,
     "WctStatusError": 10,
 }
+WCT_OBJECT_STATUS_INV = {
+    1: "WctStatusNoAccess",
+    2: "WctStatusRunning",
+    3: "WctStatusBlocked",
+    4: "WctStatusPidOnly",
+    5: "WctStatusPidOnlyRpcss",
+    6: "WctStatusOwned",
+    7: "WctStatusNotOwned",
+    8: "WctStatusAbandoned",
+    9: "WctStatusUnknown",
+    10: "WctStatusError",
+}
 SC_ENUM_TYPE = {
     "SC_ENUM_PROCESS_INFO": 0,
+}
+SC_ENUM_TYPE_INV = {
+    0: "SC_ENUM_PROCESS_INFO",
 }
 TRACE_INFO_CLASS = {
     "TraceGuidQueryList": 0,
@@ -39,6 +68,18 @@ TRACE_INFO_CLASS = {
     "TracePmcEventListInfo": 8,
     "TracePmcCounterListInfo": 9,
 }
+TRACE_INFO_CLASS_INV = {
+    0: "TraceGuidQueryList",
+    1: "TraceGuidQueryInfo",
+    2: "TraceGuidQueryProcess",
+    3: "TraceStackTracingInfo",
+    4: "TraceSystemTraceEnableFlagsInfo",
+    5: "TraceSampledProfileIntervalInfo",
+    6: "TraceProfileSourceConfigInfo",
+    7: "TraceProfileSourceListInfo",
+    8: "TracePmcEventListInfo",
+    9: "TracePmcCounterListInfo",
+}
 PROG_INVOKE_SETTING = {
     "ProgressInvokeNever": 1,
     "ProgressInvokeEveryObject": 2,
@@ -46,6 +87,14 @@ PROG_INVOKE_SETTING = {
     "ProgressCancelOperation": 4,
     "ProgressRetryOperation": 5,
     "ProgressInvokePrePostError": 6,
+}
+PROG_INVOKE_SETTING_INV = {
+    1: "ProgressInvokeNever",
+    2: "ProgressInvokeEveryObject",
+    3: "ProgressInvokeOnError",
+    4: "ProgressCancelOperation",
+    5: "ProgressRetryOperation",
+    6: "ProgressInvokePrePostError",
 }
 TRUSTED_INFORMATION_CLASS = {
     "TrustedDomainNameInformation": 1,
@@ -62,9 +111,28 @@ TRUSTED_INFORMATION_CLASS = {
     "TrustedDomainFullInformation2Internal": 12,
     "TrustedDomainSupportedEncryptionTypes": 13,
 }
+TRUSTED_INFORMATION_CLASS_INV = {
+    1: "TrustedDomainNameInformation",
+    2: "TrustedControllersInformation",
+    3: "TrustedPosixOffsetInformation",
+    4: "TrustedPasswordInformation",
+    5: "TrustedDomainInformationBasic",
+    6: "TrustedDomainInformationEx",
+    7: "TrustedDomainAuthInformation",
+    8: "TrustedDomainFullInformation",
+    9: "TrustedDomainAuthInformationInternal",
+    10: "TrustedDomainFullInformationInternal",
+    11: "TrustedDomainInformationEx2Internal",
+    12: "TrustedDomainFullInformation2Internal",
+    13: "TrustedDomainSupportedEncryptionTypes",
+}
 _SaferScopeId_ = {
     "SAFER_SCOPEID_MACHINE": 1,
     "SAFER_SCOPEID_USER": 2,
+}
+_SaferScopeId__INV = {
+    1: "SAFER_SCOPEID_MACHINE",
+    2: "SAFER_SCOPEID_USER",
 }
 _LogonType_ = {
     "LOGON32_LOGON_INTERACTIVE": 2,
@@ -75,12 +143,28 @@ _LogonType_ = {
     "LOGON32_LOGON_NETWORK_CLEARTEXT": 8,
     "LOGON32_LOGON_NEW_CREDENTIALS": 9,
 }
+_LogonType__INV = {
+    2: "LOGON32_LOGON_INTERACTIVE",
+    3: "LOGON32_LOGON_NETWORK",
+    4: "LOGON32_LOGON_BATCH",
+    5: "LOGON32_LOGON_SERVICE",
+    7: "LOGON32_LOGON_UNLOCK",
+    8: "LOGON32_LOGON_NETWORK_CLEARTEXT",
+    9: "LOGON32_LOGON_NEW_CREDENTIALS",
+}
 _LogonProvider_ = {
     "LOGON32_PROVIDER_DEFAULT": 0,
     "LOGON32_PROVIDER_WINNT35": 1,
     "LOGON32_PROVIDER_WINNT40": 2,
     "LOGON32_PROVIDER_WINNT50": 3,
     "LOGON32_PROVIDER_VIRTUAL": 4,
+}
+_LogonProvider__INV = {
+    0: "LOGON32_PROVIDER_DEFAULT",
+    1: "LOGON32_PROVIDER_WINNT35",
+    2: "LOGON32_PROVIDER_WINNT40",
+    3: "LOGON32_PROVIDER_WINNT50",
+    4: "LOGON32_PROVIDER_VIRTUAL",
 }
 _CredType_ = {
     "CRED_TYPE_GENERIC": 1,
@@ -89,6 +173,14 @@ _CredType_ = {
     "CRED_TYPE_DOMAIN_VISIBLE_PASSWORD": 4,
     "CRED_TYPE_GENERIC_CERTIFICATE": 5,
     "CRED_TYPE_DOMAIN_EXTENDED": 6,
+}
+_CredType__INV = {
+    1: "CRED_TYPE_GENERIC",
+    2: "CRED_TYPE_DOMAIN_PASSWORD",
+    3: "CRED_TYPE_DOMAIN_CERTIFICATE",
+    4: "CRED_TYPE_DOMAIN_VISIBLE_PASSWORD",
+    5: "CRED_TYPE_GENERIC_CERTIFICATE",
+    6: "CRED_TYPE_DOMAIN_EXTENDED",
 }
 POLICY_INFORMATION_CLASS = {
     "PolicyAuditLogInformation": 1,
@@ -106,10 +198,31 @@ POLICY_INFORMATION_CLASS = {
     "PolicyDnsDomainInformationInt": 13,
     "PolicyLocalAccountDomainInformation": 14,
 }
+POLICY_INFORMATION_CLASS_INV = {
+    1: "PolicyAuditLogInformation",
+    2: "PolicyAuditEventsInformation",
+    3: "PolicyPrimaryDomainInformation",
+    4: "PolicyPdAccountInformation",
+    5: "PolicyAccountDomainInformation",
+    6: "PolicyLsaServerRoleInformation",
+    7: "PolicyReplicaSourceInformation",
+    8: "PolicyDefaultQuotaInformation",
+    9: "PolicyModificationInformation",
+    10: "PolicyAuditFullSetInformation",
+    11: "PolicyAuditFullQueryInformation",
+    12: "PolicyDnsDomainInformation",
+    13: "PolicyDnsDomainInformationInt",
+    14: "PolicyLocalAccountDomainInformation",
+}
 POLICY_DOMAIN_INFORMATION_CLASS = {
     "PolicyDomainQualityOfServiceInformation": 1,
     "PolicyDomainEfsInformation": 2,
     "PolicyDomainKerberosTicketInformation": 3,
+}
+POLICY_DOMAIN_INFORMATION_CLASS_INV = {
+    1: "PolicyDomainQualityOfServiceInformation",
+    2: "PolicyDomainEfsInformation",
+    3: "PolicyDomainKerberosTicketInformation",
 }
 INSTALLSPECTYPE = {
     "APPNAME": 1,
@@ -117,14 +230,29 @@ INSTALLSPECTYPE = {
     "PROGID": 3,
     "COMCLASS": 4,
 }
+INSTALLSPECTYPE_INV = {
+    1: "APPNAME",
+    2: "FILEEXT",
+    3: "PROGID",
+    4: "COMCLASS",
+}
 _LsaAuthType_ = {
     "TRUST_AUTH_TYPE_NONE": 0,
     "TRUST_AUTH_TYPE_NT4OWF": 1,
     "TRUST_AUTH_TYPE_CLEAR": 2,
     "TRUST_AUTH_TYPE_VERSION": 3,
 }
+_LsaAuthType__INV = {
+    0: "TRUST_AUTH_TYPE_NONE",
+    1: "TRUST_AUTH_TYPE_NT4OWF",
+    2: "TRUST_AUTH_TYPE_CLEAR",
+    3: "TRUST_AUTH_TYPE_VERSION",
+}
 EVENT_INFO_CLASS = {
     "EventProviderBinaryTrackInfo": 0,
+}
+EVENT_INFO_CLASS_INV = {
+    0: "EventProviderBinaryTrackInfo",
 }
 
 def advapi32_RegCloseKey(jitter):

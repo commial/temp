@@ -4,6 +4,12 @@ StatusCode = {
     "STATUS_NO_BINDING": 3,
     "STATUS_NOPREFIX_AVAIL": 6,
 }
+StatusCode_INV = {
+    0: "STATUS_NO_ERROR",
+    1: "STATUS_UNSPECIFIED_FAILURE",
+    3: "STATUS_NO_BINDING",
+    6: "STATUS_NOPREFIX_AVAIL",
+}
 
 def dhcpcsvc6_Dhcpv6CApiCleanup(jitter):
     """

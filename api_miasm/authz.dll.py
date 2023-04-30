@@ -13,9 +13,28 @@ AUDIT_PARAM_TYPE = {
     "APT_IpAddress": 12,
     "APT_LogonIdWithSid": 13,
 }
+AUDIT_PARAM_TYPE_INV = {
+    1: "APT_None",
+    2: "APT_String",
+    3: "APT_Ulong",
+    4: "APT_Pointer",
+    5: "APT_Sid",
+    6: "APT_LogonId",
+    7: "APT_ObjectTypeList",
+    8: "APT_Luid",
+    9: "APT_Guid",
+    10: "APT_Time",
+    11: "APT_Int64",
+    12: "APT_IpAddress",
+    13: "APT_LogonIdWithSid",
+}
 _APF_TYPE_ = {
     "APF_AuditFailure": 0x00000000,
     "APF_AuditSuccess": 0x00000001,
+}
+_APF_TYPE__INV = {
+    0x00000000: "APF_AuditFailure",
+    0x00000001: "APF_AuditSuccess",
 }
 AUTHZ_CONTEXT_INFORMATION_CLASS = {
     "AuthzContextInfoUserSid": 1,
@@ -29,6 +48,18 @@ AUTHZ_CONTEXT_INFORMATION_CLASS = {
     "AuthzContextInfoAll": 9,
     "AuthzContextInfoAuthenticationId": 0,
 }
+AUTHZ_CONTEXT_INFORMATION_CLASS_INV = {
+    1: "AuthzContextInfoUserSid",
+    2: "AuthzContextInfoGroupsSids",
+    3: "AuthzContextInfoRestrictedSids",
+    4: "AuthzContextInfoPrivileges",
+    5: "AuthzContextInfoExpirationTime",
+    6: "AuthzContextInfoServerContext",
+    7: "AuthzContextInfoIdentifier",
+    8: "AuthzContextInfoSource",
+    9: "AuthzContextInfoAll",
+    0: "AuthzContextInfoAuthenticationId",
+}
 AUTHZ_SECURITY_ATTRIBUTE_OPERATION = {
     "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_NONE": 0,
     "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_REPLACE_ALL": 1,
@@ -36,12 +67,26 @@ AUTHZ_SECURITY_ATTRIBUTE_OPERATION = {
     "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_DELETE": 3,
     "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_REPLACE": 4,
 }
+AUTHZ_SECURITY_ATTRIBUTE_OPERATION_INV = {
+    0: "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_NONE",
+    1: "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_REPLACE_ALL",
+    2: "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_ADD",
+    3: "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_DELETE",
+    4: "AUTHZ_SECURITY_ATTRIBUTE_OPERATION_REPLACE",
+}
 AUTHZ_SID_OPERATION = {
     "AUTHZ_SID_OPERATION_NONE": 0,
     "AUTHZ_SID_OPERATION_REPLACE_ALL": 1,
     "AUTHZ_SID_OPERATION_ADD": 2,
     "AUTHZ_SID_OPERATION_DELETE": 3,
     "AUTHZ_SID_OPERATION_REPLACE": 4,
+}
+AUTHZ_SID_OPERATION_INV = {
+    0: "AUTHZ_SID_OPERATION_NONE",
+    1: "AUTHZ_SID_OPERATION_REPLACE_ALL",
+    2: "AUTHZ_SID_OPERATION_ADD",
+    3: "AUTHZ_SID_OPERATION_DELETE",
+    4: "AUTHZ_SID_OPERATION_REPLACE",
 }
 
 def authz_AuthzAccessCheck(jitter):

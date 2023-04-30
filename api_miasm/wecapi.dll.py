@@ -27,6 +27,35 @@ EC_SUBSCRIPTION_PROPERTY_ID = {
     "EcSubscriptionReadExistingEvents": 25,
     "EcSubscriptionDialect": 26,
 }
+EC_SUBSCRIPTION_PROPERTY_ID_INV = {
+    0: "EcSubscriptionEnabled",
+    1: "EcSubscriptionEventSources",
+    2: "EcSubscriptionEventSourceAddress",
+    3: "EcSubscriptionEventSourceEnabled",
+    4: "EcSubscriptionEventSourceUserName",
+    5: "EcSubscriptionEventSourcePassword",
+    6: "EcSubscriptionDescription",
+    7: "EcSubscriptionURI",
+    8: "EcSubscriptionConfigurationMode",
+    9: "EcSubscriptionExpires",
+    10: "EcSubscriptionQuery",
+    11: "EcSubscriptionTransportName",
+    12: "EcSubscriptionTransportPort",
+    13: "EcSubscriptionDeliveryMode",
+    14: "EcSubscriptionDeliveryMaxItems",
+    15: "EcSubscriptionDeliveryMaxLatencyTime",
+    16: "EcSubscriptionHeartbeatInterval",
+    17: "EcSubscriptionLocale",
+    18: "EcSubscriptionContentFormat",
+    19: "EcSubscriptionLogFile",
+    20: "EcSubscriptionPublisherName",
+    21: "EcSubscriptionCredentialsType",
+    22: "EcSubscriptionCommonUserName",
+    23: "EcSubscriptionCommonPassword",
+    24: "EcSubscriptionHostName",
+    25: "EcSubscriptionReadExistingEvents",
+    26: "EcSubscriptionDialect",
+}
 EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID = {
     "EcSubscriptionRunTimeStatusActive": 0,
     "EcSubscriptionRunTimeStatusLastError": 1,
@@ -34,6 +63,14 @@ EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID = {
     "EcSubscriptionRunTimeStatusLastErrorTime": 3,
     "EcSubscriptionRunTimeStatusNextRetryTime": 4,
     "EcSubscriptionRunTimeStatusInfoIdEND": 5,
+}
+EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID_INV = {
+    0: "EcSubscriptionRunTimeStatusActive",
+    1: "EcSubscriptionRunTimeStatusLastError",
+    2: "EcSubscriptionRunTimeStatusLastErrorMessage",
+    3: "EcSubscriptionRunTimeStatusLastErrorTime",
+    4: "EcSubscriptionRunTimeStatusNextRetryTime",
+    5: "EcSubscriptionRunTimeStatusInfoIdEND",
 }
 
 def wecapi_EcClose(jitter):

@@ -3,6 +3,11 @@ RM_FILTER_ACTION = {
     "RmNoRestart": 1,
     "RmNoShutdown": 2,
 }
+RM_FILTER_ACTION_INV = {
+    0: "RmInvalidFilterAction",
+    1: "RmNoRestart",
+    2: "RmNoShutdown",
+}
 RM_APP_TYPE = {
     "RmUnknownApp": 0,
     "RmMainWindow": 1,
@@ -11,6 +16,15 @@ RM_APP_TYPE = {
     "RmExplorer": 4,
     "RmConsole": 5,
     "RmCritical": 1000,
+}
+RM_APP_TYPE_INV = {
+    0: "RmUnknownApp",
+    1: "RmMainWindow",
+    2: "RmOtherWindow",
+    3: "RmService",
+    4: "RmExplorer",
+    5: "RmConsole",
+    1000: "RmCritical",
 }
 
 def rstrtmgr_RmAddFilter(jitter):

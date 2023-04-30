@@ -5,12 +5,26 @@ GROUP_POLICY_OBJECT_TYPE = {
     "GPOTypeLocalUser": 3,
     "GPOTypeLocalGroup": 4,
 }
+GROUP_POLICY_OBJECT_TYPE_INV = {
+    0: "GPOTypeLocal",
+    1: "GPOTypeRemote",
+    2: "GPOTypeDS",
+    3: "GPOTypeLocalUser",
+    4: "GPOTypeLocalGroup",
+}
 GROUP_POLICY_HINT_TYPE = {
     "GPHintUnknown": 0,
     "GPHintMachine": 1,
     "GPHintSite": 2,
     "GPHintDomain": 3,
     "GPHintOrganizationalUnit": 4,
+}
+GROUP_POLICY_HINT_TYPE_INV = {
+    0: "GPHintUnknown",
+    1: "GPHintMachine",
+    2: "GPHintSite",
+    3: "GPHintDomain",
+    4: "GPHintOrganizationalUnit",
 }
 
 def gpedit_BrowseForGPO(jitter):

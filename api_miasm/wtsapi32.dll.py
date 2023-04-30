@@ -10,6 +10,18 @@ WTS_CONNECTSTATE_CLASS = {
     "WTSDown": 8,
     "WTSInit": 9,
 }
+WTS_CONNECTSTATE_CLASS_INV = {
+    0: "WTSActive",
+    1: "WTSConnected",
+    2: "WTSConnectQuery",
+    3: "WTSShadow",
+    4: "WTSDisconnected",
+    5: "WTSIdle",
+    6: "WTSListen",
+    7: "WTSReset",
+    8: "WTSDown",
+    9: "WTSInit",
+}
 WTS_INFO_CLASS = {
     "WTSInitialProgram": 0,
     "WTSApplicationName": 1,
@@ -35,6 +47,31 @@ WTS_INFO_CLASS = {
     "WTSIncomingFrames": 21,
     "WTSOutgoingFrames": 22,
 }
+WTS_INFO_CLASS_INV = {
+    0: "WTSInitialProgram",
+    1: "WTSApplicationName",
+    2: "WTSWorkingDirectory",
+    3: "WTSOEMId",
+    4: "WTSSessionId",
+    5: "WTSUserName",
+    6: "WTSWinStationName",
+    7: "WTSDomainName",
+    8: "WTSConnectState",
+    9: "WTSClientBuildNumber",
+    10: "WTSClientName",
+    11: "WTSClientDirectory",
+    12: "WTSClientProductId",
+    13: "WTSClientHardwareId",
+    14: "WTSClientAddress",
+    15: "WTSClientDisplay",
+    16: "WTSClientProtocolType",
+    17: "WTSIdleTime",
+    18: "WTSLogonTime",
+    19: "WTSIncomingBytes",
+    20: "WTSOutgoingBytes",
+    21: "WTSIncomingFrames",
+    22: "WTSOutgoingFrames",
+}
 WTS_CONFIG_CLASS = {
     "WTSUserConfigInitialProgram": 0,
     "WTSUserConfigWorkingDirectory": 1,
@@ -56,21 +93,58 @@ WTS_CONFIG_CLASS = {
     "WTSUserConfigTerminalServerHomeDirDrive": 17,
     "WTSUserConfigfTerminalServerRemoteHomeDir": 18,
 }
+WTS_CONFIG_CLASS_INV = {
+    0: "WTSUserConfigInitialProgram",
+    1: "WTSUserConfigWorkingDirectory",
+    2: "WTSUserConfigfInheritInitialProgram",
+    3: "WTSUserConfigfAllowLogonTerminalServer",
+    4: "WTSUserConfigTimeoutSettingsConnections",
+    5: "WTSUserConfigTimeoutSettingsDisconnections",
+    6: "WTSUserConfigTimeoutSettingsIdle",
+    7: "WTSUserConfigfDeviceClientDrives",
+    8: "WTSUserConfigfDeviceClientPrinters",
+    9: "WTSUserConfigfDeviceClientDefaultPrinter",
+    10: "WTSUserConfigBrokenTimeoutSettings",
+    11: "WTSUserConfigReconnectSettings",
+    12: "WTSUserConfigModemCallbackSettings",
+    13: "WTSUserConfigModemCallbackPhoneNumber",
+    14: "WTSUserConfigShadowingSettings",
+    15: "WTSUserConfigTerminalServerProfilePath",
+    16: "WTSUserConfigTerminalServerHomeDir",
+    17: "WTSUserConfigTerminalServerHomeDirDrive",
+    18: "WTSUserConfigfTerminalServerRemoteHomeDir",
+}
 WTS_VIRTUAL_CLASS = {
     "WTSVirtualClientData": 0,
     "WTSVirtualFileHandle": 1,
+}
+WTS_VIRTUAL_CLASS_INV = {
+    0: "WTSVirtualClientData",
+    1: "WTSVirtualFileHandle",
 }
 _ConsoleNotificationFlags_ = {
     "NOTIFY_FOR_ALL_SESSIONS": 1,
     "NOTIFY_FOR_THIS_SESSION": 0,
 }
+_ConsoleNotificationFlags__INV = {
+    1: "NOTIFY_FOR_ALL_SESSIONS",
+    0: "NOTIFY_FOR_THIS_SESSION",
+}
 _WtsServerHandle_ = {
     "WTS_CURRENT_SERVER_HANDLE": 0,
+}
+_WtsServerHandle__INV = {
+    0: "WTS_CURRENT_SERVER_HANDLE",
 }
 WTS_TYPE_CLASS = {
     "WTSTypeProcessInfoLevel0": 0,
     "WTSTypeProcessInfoLevel1": 1,
     "WTSTypeSessionInfoLevel1": 2,
+}
+WTS_TYPE_CLASS_INV = {
+    0: "WTSTypeProcessInfoLevel0",
+    1: "WTSTypeProcessInfoLevel1",
+    2: "WTSTypeSessionInfoLevel1",
 }
 
 def wtsapi32_WTSCloseServer(jitter):

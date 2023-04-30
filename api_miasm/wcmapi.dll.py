@@ -7,12 +7,28 @@ WCM_PROPERTY = {
     "wcm_intf_property_dataplan_status": 5,
     "wcm_intf_property_hotspot_profile": 6,
 }
+WCM_PROPERTY_INV = {
+    0: "wcm_global_property_domain_policy",
+    1: "wcm_global_property_minimize_policy",
+    2: "wcm_global_property_roaming_policy",
+    3: "wcm_global_property_powermanagement_policy",
+    4: "wcm_intf_property_connection_cost",
+    5: "wcm_intf_property_dataplan_status",
+    6: "wcm_intf_property_hotspot_profile",
+}
 WCM_MEDIA_TYPE = {
     "wcm_media_unknown": 0,
     "wcm_media_ethernet": 1,
     "wcm_media_wlan": 2,
     "wcm_media_mbn": 3,
     "wcm_media_invalid": 4,
+}
+WCM_MEDIA_TYPE_INV = {
+    0: "wcm_media_unknown",
+    1: "wcm_media_ethernet",
+    2: "wcm_media_wlan",
+    3: "wcm_media_mbn",
+    4: "wcm_media_invalid",
 }
 
 def wcmapi_WcmFreeMemory(jitter):

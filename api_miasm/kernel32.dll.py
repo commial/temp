@@ -260,11 +260,279 @@ GEOID = {
     "Midway Islands": 0x52FA,
     "Timor-Leste": 0x6F60E7,
 }
+GEOID_INV = {
+    0x2: "Antigua and Barbuda",
+    0x3: "Afghanistan",
+    0x4: "Algeria",
+    0x5: "Azerbaijan",
+    0x6: "Albania",
+    0x7: "Armenia",
+    0x8: "Andorra",
+    0x9: "Angola",
+    0xA: "American Samoa",
+    0xB: "Argentina",
+    0xC: "Australia",
+    0xE: "Austria",
+    0x11: "Bahrain",
+    0x12: "Barbados",
+    0x13: "Botswana",
+    0x14: "Bermuda",
+    0x15: "Belgium",
+    0x16: "Bahamas, The",
+    0x17: "Bangladesh",
+    0x18: "Belize",
+    0x19: "Bosnia and Herzegovina",
+    0x1A: "Bolivia",
+    0x1B: "Myanmar",
+    0x1C: "Benin",
+    0x1D: "Belarus",
+    0x1E: "Solomon Islands",
+    0x20: "Brazil",
+    0x22: "Bhutan",
+    0x23: "Bulgaria",
+    0x25: "Brunei",
+    0x26: "Burundi",
+    0x27: "Canada",
+    0x28: "Cambodia",
+    0x29: "Chad",
+    0x2A: "Sri Lanka",
+    0x2B: "Congo",
+    0x2C: "Congo (DRC)",
+    0x2D: "China",
+    0x2E: "Chile",
+    0x31: "Cameroon",
+    0x32: "Comoros",
+    0x33: "Colombia",
+    0x36: "Costa Rica",
+    0x37: "Central African Republic",
+    0x38: "Cuba",
+    0x39: "Cape Verde",
+    0x3B: "Cyprus",
+    0x3D: "Denmark",
+    0x3E: "Djibouti",
+    0x3F: "Dominica",
+    0x41: "Dominican Republic",
+    0x42: "Ecuador",
+    0x43: "Egypt",
+    0x44: "Ireland",
+    0x45: "Equatorial Guinea",
+    0x46: "Estonia",
+    0x47: "Eritrea",
+    0x48: "El Salvador",
+    0x49: "Ethiopia",
+    0x4B: "Czech Republic",
+    0x4D: "Finland",
+    0x4E: "Fiji Islands",
+    0x50: "Micronesia",
+    0x51: "Faroe Islands",
+    0x54: "France",
+    0x56: "Gambia, The",
+    0x57: "Gabon",
+    0x58: "Georgia",
+    0x59: "Ghana",
+    0x5A: "Gibraltar",
+    0x5B: "Grenada",
+    0x5D: "Greenland",
+    0x5E: "Germany",
+    0x62: "Greece",
+    0x63: "Guatemala",
+    0x64: "Guinea",
+    0x65: "Guyana",
+    0x67: "Haiti",
+    0x68: "Hong Kong SAR",
+    0x6A: "Honduras",
+    0x6C: "Croatia",
+    0x6D: "Hungary",
+    0x6E: "Iceland",
+    0x6F: "Indonesia",
+    0x71: "India",
+    0x72: "British Indian Ocean Territory",
+    0x74: "Iran",
+    0x75: "Israel",
+    0x76: "Italy",
+    0x77: "Côte d'Ivoire",
+    0x79: "Iraq",
+    0x7A: "Japan",
+    0x7C: "Jamaica",
+    0x7D: "Jan Mayen",
+    0x7E: "Jordan",
+    0x7F: "Johnston Atoll",
+    0x81: "Kenya",
+    0x82: "Kyrgyzstan",
+    0x83: "North Korea",
+    0x85: "Kiribati",
+    0x86: "Korea",
+    0x88: "Kuwait",
+    0x89: "Kazakhstan",
+    0x8A: "Laos",
+    0x8B: "Lebanon",
+    0x8C: "Latvia",
+    0x8D: "Lithuania",
+    0x8E: "Liberia",
+    0x8F: "Slovakia",
+    0x91: "Liechtenstein",
+    0x92: "Lesotho",
+    0x93: "Luxembourg",
+    0x94: "Libya",
+    0x95: "Madagascar",
+    0x97: "Macao SAR",
+    0x98: "Moldova",
+    0x9A: "Mongolia",
+    0x9C: "Malawi",
+    0x9D: "Mali",
+    0x9E: "Monaco",
+    0x9F: "Morocco",
+    0xA0: "Mauritius",
+    0xA2: "Mauritania",
+    0xA3: "Malta",
+    0xA4: "Oman",
+    0xA5: "Maldives",
+    0xA6: "Mexico",
+    0xA7: "Malaysia",
+    0xA8: "Mozambique",
+    0xAD: "Niger",
+    0xAE: "Vanuatu",
+    0xAF: "Nigeria",
+    0xB0: "Netherlands",
+    0xB1: "Norway",
+    0xB2: "Nepal",
+    0xB4: "Nauru",
+    0xB5: "Suriname",
+    0xB6: "Nicaragua",
+    0xB7: "New Zealand",
+    0xB8: "Palestinian Authority",
+    0xB9: "Paraguay",
+    0xBB: "Peru",
+    0xBE: "Pakistan",
+    0xBF: "Poland",
+    0xC0: "Panama",
+    0xC1: "Portugal",
+    0xC2: "Papua New Guinea",
+    0xC3: "Palau",
+    0xC4: "Guinea-Bissau",
+    0xC5: "Qatar",
+    0xC6: "Reunion",
+    0xC7: "Marshall Islands",
+    0xC8: "Romania",
+    0xC9: "Philippines",
+    0xCA: "Puerto Rico",
+    0xCB: "Russia",
+    0xCC: "Rwanda",
+    0xCD: "Saudi Arabia",
+    0xCE: "St. Pierre and Miquelon",
+    0xCF: "St. Kitts and Nevis",
+    0xD0: "Seychelles",
+    0xD1: "South Africa",
+    0xD2: "Senegal",
+    0xD4: "Slovenia",
+    0xD5: "Sierra Leone",
+    0xD6: "San Marino",
+    0xD7: "Singapore",
+    0xD8: "Somalia",
+    0xD9: "Spain",
+    0xDA: "St. Lucia",
+    0xDB: "Sudan",
+    0xDC: "Svalbard",
+    0xDD: "Sweden",
+    0xDE: "Syria",
+    0xDF: "Switzerland",
+    0xE0: "United Arab Emirates",
+    0xE1: "Trinidad and Tobago",
+    0xE3: "Thailand",
+    0xE4: "Tajikistan",
+    0xE7: "Tonga",
+    0xE8: "Togo",
+    0xE9: "São Tomé and Príncipe",
+    0xEA: "Tunisia",
+    0xEB: "Turkey",
+    0xEC: "Tuvalu",
+    0xED: "Taiwan",
+    0xEE: "Turkmenistan",
+    0xEF: "Tanzania",
+    0xF0: "Uganda",
+    0xF1: "Ukraine",
+    0xF2: "United Kingdom",
+    0xF4: "United States",
+    0xF5: "Burkina Faso",
+    0xF6: "Uruguay",
+    0xF7: "Uzbekistan",
+    0xF8: "St. Vincent and the Grenadines",
+    0xF9: "Venezuela",
+    0xFB: "Vietnam",
+    0xFC: "Virgin Islands",
+    0xFD: "Vatican City",
+    0xFE: "Namibia",
+    0x102: "Wake Island",
+    0x103: "Samoa",
+    0x104: "Swaziland",
+    0x105: "Yemen",
+    0x107: "Zambia",
+    0x108: "Zimbabwe",
+    0x10D: "Serbia",
+    0x12C: "Anguilla",
+    0x12D: "Antarctica",
+    0x12E: "Aruba",
+    0x12F: "Ascension Island",
+    0x130: "Ashmore and Cartier Islands",
+    0x131: "Baker Island",
+    0x132: "Bouvet Island",
+    0x133: "Cayman Islands",
+    0x134: "Channel Islands",
+    0x135: "Christmas Island",
+    0x136: "Clipperton Island",
+    0x137: "Cocos (Keeling) Islands",
+    0x138: "Cook Islands",
+    0x139: "Coral Sea Islands",
+    0x13A: "Diego Garcia",
+    0x13B: "Falkland Islands (Islas Malvinas)",
+    0x13D: "French Guiana",
+    0x13E: "French Polynesia",
+    0x13F: "French Southern and Antarctic Lands",
+    0x141: "Guadeloupe",
+    0x142: "Guam",
+    0x143: "Guantanamo Bay",
+    0x144: "Guernsey",
+    0x145: "Heard Island and McDonald Islands",
+    0x146: "Howland Island",
+    0x147: "Jarvis Island",
+    0x148: "Jersey",
+    0x149: "Kingman Reef",
+    0x14A: "Martinique",
+    0x14B: "Mayotte",
+    0x14C: "Montserrat",
+    0x14D: "Netherlands Antilles",
+    0x14E: "New Caledonia",
+    0x14F: "Niue",
+    0x150: "Norfolk Island",
+    0x151: "Northern Mariana Islands",
+    0x152: "Palmyra Atoll",
+    0x153: "Pitcairn Islands",
+    0x154: "Rota Island",
+    0x155: "Saipan",
+    0x156: "South Georgia and the South Sandwich Islands",
+    0x157: "St. Helena",
+    0x15A: "Tinian Island",
+    0x15B: "Tokelau",
+    0x15C: "Tristan da Cunha",
+    0x15D: "Turks and Caicos Islands",
+    0x15F: "Virgin Islands, British",
+    0x160: "Wallis and Futuna",
+    0x3B16: "Isle of Man",
+    0x4CA2: "Macedonia, FYROM",
+    0x52FA: "Midway Islands",
+    0x6F60E7: "Timor-Leste",
+}
 STREAM_INFO_LEVELS = {
     "FindStreamInfoStandard": 0,
 }
+STREAM_INFO_LEVELS_INV = {
+    0: "FindStreamInfoStandard",
+}
 HFILE = {
     "HFILE_ERROR": -1,
+}
+HFILE_INV = {
+    -1: "HFILE_ERROR",
 }
 DEP_SYSTEM_POLICY_TYPE = {
     "AlwaysOff": 0,
@@ -272,11 +540,23 @@ DEP_SYSTEM_POLICY_TYPE = {
     "OptIn": 2,
     "OptOut": 3,
 }
+DEP_SYSTEM_POLICY_TYPE_INV = {
+    0: "AlwaysOff",
+    1: "AlwaysOn",
+    2: "OptIn",
+    3: "OptOut",
+}
 TP_CALLBACK_PRIORITY = {
     "TP_CALLBACK_PRIORITY_HIGH": 0,
     "TP_CALLBACK_PRIORITY_LOW": 1,
     "TP_CALLBACK_PRIORITY_NORMAL": 2,
     "TP_CALLBACK_PRIORITY_INVALID": 3,
+}
+TP_CALLBACK_PRIORITY_INV = {
+    0: "TP_CALLBACK_PRIORITY_HIGH",
+    1: "TP_CALLBACK_PRIORITY_LOW",
+    2: "TP_CALLBACK_PRIORITY_NORMAL",
+    3: "TP_CALLBACK_PRIORITY_INVALID",
 }
 UMS_THREAD_INFO_CLASS = {
     "UmsThreadInvalidInfoClass": 0,
@@ -287,9 +567,22 @@ UMS_THREAD_INFO_CLASS = {
     "UmsThreadIsSuspended": 5,
     "UmsThreadIsTerminated": 6,
 }
+UMS_THREAD_INFO_CLASS_INV = {
+    0: "UmsThreadInvalidInfoClass",
+    1: "UmsThreadUserContext",
+    2: "UmsThreadPriority",
+    3: "UmsThreadAffinity",
+    4: "UmsThreadTeb",
+    5: "UmsThreadIsSuspended",
+    6: "UmsThreadIsTerminated",
+}
 GEOCLASS = {
     "GEOCLASS_NATION": 16,
     "GEOCLASS_REGION": 14,
+}
+GEOCLASS_INV = {
+    16: "GEOCLASS_NATION",
+    14: "GEOCLASS_REGION",
 }
 FILE_INFO_BY_HANDLE_CLASS = {
     "FileBasicInfo": 0,
@@ -311,15 +604,45 @@ FILE_INFO_BY_HANDLE_CLASS = {
     "FileStorageInfo": 16,
     "FileAlignmentInfo": 17,
 }
+FILE_INFO_BY_HANDLE_CLASS_INV = {
+    0: "FileBasicInfo",
+    1: "FileStandardInfo",
+    2: "FileNameInfo",
+    3: "FileRenameInfo",
+    4: "FileDispositionInfo",
+    5: "FileAllocationInfo",
+    6: "FileEndOfFileInfo",
+    7: "FileStreamInfo",
+    8: "FileCompressionInfo",
+    9: "FileAttributeTagInfo",
+    10: "FileIdBothDirectoryInfo",
+    11: "FileIdBothDirectoryRestartInfo",
+    12: "FileIoPriorityHintInfo",
+    13: "FileRemoteProtocolInfo",
+    14: "FileFullDirectoryInfo",
+    15: "FileFullDirectoryRestartInfo",
+    16: "FileStorageInfo",
+    17: "FileAlignmentInfo",
+}
 MEMORY_RESOURCE_NOTIFICATION_TYPE = {
     "LowMemoryResourceNotification": 0,
     "HighMemoryResourceNotification": 1,
     "PendingBadMemoryNotification": 2,
 }
+MEMORY_RESOURCE_NOTIFICATION_TYPE_INV = {
+    0: "LowMemoryResourceNotification",
+    1: "HighMemoryResourceNotification",
+    2: "PendingBadMemoryNotification",
+}
 HEAP_INFORMATION_CLASS = {
     "HeapCompatibilityInformation": 0,
     "HeapEnableTerminationOnCorruption": 1,
     "HeapExtendedInformation": 2,
+}
+HEAP_INFORMATION_CLASS_INV = {
+    0: "HeapCompatibilityInformation",
+    1: "HeapEnableTerminationOnCorruption",
+    2: "HeapExtendedInformation",
 }
 LOGICAL_PROCESSOR_RELATIONSHIP = {
     "RelationProcessorCore": 0,
@@ -328,6 +651,14 @@ LOGICAL_PROCESSOR_RELATIONSHIP = {
     "RelationProcessorPackage": 3,
     "RelationGroup": 4,
     "RelationAll": 0xffff,
+}
+LOGICAL_PROCESSOR_RELATIONSHIP_INV = {
+    0: "RelationProcessorCore",
+    1: "RelationNumaNode",
+    2: "RelationCache",
+    3: "RelationProcessorPackage",
+    4: "RelationGroup",
+    0xffff: "RelationAll",
 }
 CALDATETIME_DATEUNIT = {
     "EraUnit": 0,
@@ -339,6 +670,17 @@ CALDATETIME_DATEUNIT = {
     "MinuteUnit": 6,
     "SecondUnit": 7,
     "TickUnit": 8,
+}
+CALDATETIME_DATEUNIT_INV = {
+    0: "EraUnit",
+    1: "YearUnit",
+    2: "MonthUnit",
+    3: "WeekUnit",
+    4: "DayUnit",
+    5: "HourUnit",
+    6: "MinuteUnit",
+    7: "SecondUnit",
+    8: "TickUnit",
 }
 CALID = {
     "CAL_GREGORIAN": 1,
@@ -355,6 +697,22 @@ CALID = {
     "CAL_GREGORIAN_XLIT_FRENCH": 12,
     "CAL_UMALQURA": 23,
     "ENUM_ALL_CALENDARS": 0xffffffff,
+}
+CALID_INV = {
+    1: "CAL_GREGORIAN",
+    2: "CAL_GREGORIAN_US",
+    3: "CAL_JAPAN",
+    4: "CAL_TAIWAN",
+    5: "CAL_KOREA",
+    6: "CAL_HIJRI",
+    7: "CAL_THAI",
+    8: "CAL_HEBREW",
+    9: "CAL_GREGORIAN_ME_FRENCH",
+    10: "CAL_GREGORIAN_ARABIC",
+    11: "CAL_GREGORIAN_XLIT_ENGLISH",
+    12: "CAL_GREGORIAN_XLIT_FRENCH",
+    23: "CAL_UMALQURA",
+    0xffffffff: "ENUM_ALL_CALENDARS",
 }
 LGRPID = {
     "LGRPID_WESTERN_EUROPE": 0x0001,
@@ -376,6 +734,26 @@ LGRPID = {
     "LGRPID_GEORGIAN": 0x0010,
     "LGRPID_ARMENIAN": 0x0011,
 }
+LGRPID_INV = {
+    0x0001: "LGRPID_WESTERN_EUROPE",
+    0x0002: "LGRPID_CENTRAL_EUROPE",
+    0x0003: "LGRPID_BALTIC",
+    0x0004: "LGRPID_GREEK",
+    0x0005: "LGRPID_CYRILLIC",
+    0x0006: "LGRPID_TURKIC",
+    0x0006: "LGRPID_TURKISH",
+    0x0007: "LGRPID_JAPANESE",
+    0x0008: "LGRPID_KOREAN",
+    0x0009: "LGRPID_TRADITIONAL_CHINESE",
+    0x000a: "LGRPID_SIMPLIFIED_CHINESE",
+    0x000b: "LGRPID_THAI",
+    0x000c: "LGRPID_HEBREW",
+    0x000d: "LGRPID_ARABIC",
+    0x000e: "LGRPID_VIETNAMESE",
+    0x000f: "LGRPID_INDIC",
+    0x0010: "LGRPID_GEORGIAN",
+    0x0011: "LGRPID_ARMENIAN",
+}
 GEOTYPE = {
     "GEO_NATION": 0x0001,
     "GEO_LATITUDE": 0x0002,
@@ -391,12 +769,34 @@ GEOTYPE = {
     "GEO_ISO_UN_NUMBER": 0x000C,
     "GEO_PARENT": 0x000D,
 }
+GEOTYPE_INV = {
+    0x0001: "GEO_NATION",
+    0x0002: "GEO_LATITUDE",
+    0x0003: "GEO_LONGITUDE",
+    0x0004: "GEO_ISO2",
+    0x0005: "GEO_ISO3",
+    0x0006: "GEO_RFC1766",
+    0x0007: "GEO_LCID",
+    0x0008: "GEO_FRIENDLYNAME",
+    0x0009: "GEO_OFFICIALNAME",
+    0x000A: "GEO_TIMEZONES",
+    0x000B: "GEO_OFFICIALLANGUAGES",
+    0x000C: "GEO_ISO_UN_NUMBER",
+    0x000D: "GEO_PARENT",
+}
 NLS_FUNCTION = {
     "COMPARE_STRING": 0x0001,
+}
+NLS_FUNCTION_INV = {
+    0x0001: "COMPARE_STRING",
 }
 WER_REGISTER_FILE_TYPE = {
     "WerRegFileTypeUserDocument": 1,
     "WerRegFileTypeOther": 2,
+}
+WER_REGISTER_FILE_TYPE_INV = {
+    1: "WerRegFileTypeUserDocument",
+    2: "WerRegFileTypeOther",
 }
 _CreationDisposition_ = {
     "CREATE_NEW": 1,
@@ -404,6 +804,13 @@ _CreationDisposition_ = {
     "OPEN_EXISTING": 3,
     "OPEN_ALWAYS": 4,
     "TRUNCATE_EXISTING": 5,
+}
+_CreationDisposition__INV = {
+    1: "CREATE_NEW",
+    2: "CREATE_ALWAYS",
+    3: "OPEN_EXISTING",
+    4: "OPEN_ALWAYS",
+    5: "TRUNCATE_EXISTING",
 }
 _ProcessorFeatureEnum_ = {
     "PF_FLOATING_POINT_PRECISION_ERRATA": 0,
@@ -425,6 +832,26 @@ _ProcessorFeatureEnum_ = {
     "PF_CHANNELS_ENABLED": 16,
     "PF_XSAVE_ENABLED": 17,
 }
+_ProcessorFeatureEnum__INV = {
+    0: "PF_FLOATING_POINT_PRECISION_ERRATA",
+    1: "PF_FLOATING_POINT_EMULATED",
+    2: "PF_COMPARE_EXCHANGE_DOUBLE",
+    3: "PF_MMX_INSTRUCTIONS_AVAILABLE",
+    4: "PF_PPC_MOVEMEM_64BIT_OK",
+    5: "PF_ALPHA_BYTE_INSTRUCTIONS",
+    6: "PF_XMMI_INSTRUCTIONS_AVAILABLE",
+    7: "PF_3DNOW_INSTRUCTIONS_AVAILABLE",
+    8: "PF_RDTSC_INSTRUCTION_AVAILABLE",
+    9: "PF_PAE_ENABLED",
+    10: "PF_XMMI64_INSTRUCTIONS_AVAILABLE",
+    11: "PF_SSE_DAZ_MODE_AVAILABLE",
+    12: "PF_NX_ENABLED",
+    13: "PF_SSE3_INSTRUCTIONS_AVAILABLE",
+    14: "PF_COMPARE_EXCHANGE128",
+    15: "PF_COMPARE64_EXCHANGE128",
+    16: "PF_CHANNELS_ENABLED",
+    17: "PF_XSAVE_ENABLED",
+}
 _ActivationContextInfoClass_ = {
     "ActivationContextBasicInformation": 1,
     "ActivationContextDetailedInformation": 2,
@@ -433,6 +860,15 @@ _ActivationContextInfoClass_ = {
     "RunlevelInformationInActivationContext": 5,
     "CompatibilityInformationInActivationContext": 6,
     "ActivationContextManifestResourceName": 7,
+}
+_ActivationContextInfoClass__INV = {
+    1: "ActivationContextBasicInformation",
+    2: "ActivationContextDetailedInformation",
+    3: "AssemblyDetailedInformationInActivationContext",
+    4: "FileInformationInAssemblyOfAssemblyInActivationContext",
+    5: "RunlevelInformationInActivationContext",
+    6: "CompatibilityInformationInActivationContext",
+    7: "ActivationContextManifestResourceName",
 }
 _VerOperator_ = {
     "VER_EQUAL": 1,
@@ -443,10 +879,24 @@ _VerOperator_ = {
     "VER_AND": 6,
     "VER_OR": 7,
 }
+_VerOperator__INV = {
+    1: "VER_EQUAL",
+    2: "VER_GREATER",
+    3: "VER_GREATER_EQUAL",
+    4: "VER_LESS",
+    5: "VER_LESS_EQUAL",
+    6: "VER_AND",
+    7: "VER_OR",
+}
 _StdHandle_ = {
     "STD_INPUT_HANDLE": -10,
     "STD_OUTPUT_HANDLE": -11,
     "STD_ERROR_HANDLE": -12,
+}
+_StdHandle__INV = {
+    -10: "STD_INPUT_HANDLE",
+    -11: "STD_OUTPUT_HANDLE",
+    -12: "STD_ERROR_HANDLE",
 }
 _ProductType_ = {
     "PRODUCT_UNDEFINED": 0x00000000,
@@ -544,14 +994,119 @@ _ProductType_ = {
     "PRODUCT_PROFESSIONAL_WMC": 0x00000067,
     "PRODUCT_UNLICENSED": 0xABCDABCD,
 }
+_ProductType__INV = {
+    0x00000000: "PRODUCT_UNDEFINED",
+    0x00000001: "PRODUCT_ULTIMATE",
+    0x00000002: "PRODUCT_HOME_BASIC",
+    0x00000003: "PRODUCT_HOME_PREMIUM",
+    0x00000004: "PRODUCT_ENTERPRISE",
+    0x00000005: "PRODUCT_HOME_BASIC_N",
+    0x00000006: "PRODUCT_BUSINESS",
+    0x00000007: "PRODUCT_STANDARD_SERVER",
+    0x00000008: "PRODUCT_DATACENTER_SERVER",
+    0x00000009: "PRODUCT_SMALLBUSINESS_SERVER",
+    0x0000000A: "PRODUCT_ENTERPRISE_SERVER",
+    0x0000000B: "PRODUCT_STARTER",
+    0x0000000C: "PRODUCT_DATACENTER_SERVER_CORE",
+    0x0000000D: "PRODUCT_STANDARD_SERVER_CORE",
+    0x0000000E: "PRODUCT_ENTERPRISE_SERVER_CORE",
+    0x0000000F: "PRODUCT_ENTERPRISE_SERVER_IA64",
+    0x00000010: "PRODUCT_BUSINESS_N",
+    0x00000011: "PRODUCT_WEB_SERVER",
+    0x00000012: "PRODUCT_CLUSTER_SERVER",
+    0x00000013: "PRODUCT_HOME_SERVER",
+    0x00000014: "PRODUCT_STORAGE_EXPRESS_SERVER",
+    0x00000015: "PRODUCT_STORAGE_STANDARD_SERVER",
+    0x00000016: "PRODUCT_STORAGE_WORKGROUP_SERVER",
+    0x00000017: "PRODUCT_STORAGE_ENTERPRISE_SERVER",
+    0x00000018: "PRODUCT_SERVER_FOR_SMALLBUSINESS",
+    0x00000019: "PRODUCT_SMALLBUSINESS_SERVER_PREMIUM",
+    0x0000001A: "PRODUCT_HOME_PREMIUM_N",
+    0x0000001B: "PRODUCT_ENTERPRISE_N",
+    0x0000001C: "PRODUCT_ULTIMATE_N",
+    0x0000001D: "PRODUCT_WEB_SERVER_CORE",
+    0x0000001E: "PRODUCT_MEDIUMBUSINESS_SERVER_MANAGEMENT",
+    0x0000001F: "PRODUCT_MEDIUMBUSINESS_SERVER_SECURITY",
+    0x00000020: "PRODUCT_MEDIUMBUSINESS_SERVER_MESSAGING",
+    0x00000021: "PRODUCT_SERVER_FOUNDATION",
+    0x00000022: "PRODUCT_HOME_PREMIUM_SERVER",
+    0x00000023: "PRODUCT_SERVER_FOR_SMALLBUSINESS_V",
+    0x00000024: "PRODUCT_STANDARD_SERVER_V",
+    0x00000025: "PRODUCT_DATACENTER_SERVER_V",
+    0x00000026: "PRODUCT_ENTERPRISE_SERVER_V",
+    0x00000027: "PRODUCT_DATACENTER_SERVER_CORE_V",
+    0x00000028: "PRODUCT_STANDARD_SERVER_CORE_V",
+    0x00000029: "PRODUCT_ENTERPRISE_SERVER_CORE_V",
+    0x0000002A: "PRODUCT_HYPERV",
+    0x0000002B: "PRODUCT_STORAGE_EXPRESS_SERVER_CORE",
+    0x0000002C: "PRODUCT_STORAGE_STANDARD_SERVER_CORE",
+    0x0000002D: "PRODUCT_STORAGE_WORKGROUP_SERVER_CORE",
+    0x0000002E: "PRODUCT_STORAGE_ENTERPRISE_SERVER_CORE",
+    0x0000002F: "PRODUCT_STARTER_N",
+    0x00000030: "PRODUCT_PROFESSIONAL",
+    0x00000031: "PRODUCT_PROFESSIONAL_N",
+    0x00000032: "PRODUCT_SB_SOLUTION_SERVER",
+    0x00000033: "PRODUCT_SERVER_FOR_SB_SOLUTIONS",
+    0x00000034: "PRODUCT_STANDARD_SERVER_SOLUTIONS",
+    0x00000035: "PRODUCT_STANDARD_SERVER_SOLUTIONS_CORE",
+    0x00000036: "PRODUCT_SB_SOLUTION_SERVER_EM",
+    0x00000037: "PRODUCT_SERVER_FOR_SB_SOLUTIONS_EM",
+    0x00000038: "PRODUCT_SOLUTION_EMBEDDEDSERVER",
+    0x00000039: "PRODUCT_SOLUTION_EMBEDDEDSERVER_CORE",
+    0x0000003B: "PRODUCT_ESSENTIALBUSINESS_SERVER_MGMT",
+    0x0000003C: "PRODUCT_ESSENTIALBUSINESS_SERVER_ADDL",
+    0x0000003D: "PRODUCT_ESSENTIALBUSINESS_SERVER_MGMTSVC",
+    0x0000003E: "PRODUCT_ESSENTIALBUSINESS_SERVER_ADDLSVC",
+    0x0000003F: "PRODUCT_SMALLBUSINESS_SERVER_PREMIUM_CORE",
+    0x00000040: "PRODUCT_CLUSTER_SERVER_V",
+    0x00000041: "PRODUCT_EMBEDDED",
+    0x00000042: "PRODUCT_STARTER_E",
+    0x00000043: "PRODUCT_HOME_BASIC_E",
+    0x00000044: "PRODUCT_HOME_PREMIUM_E",
+    0x00000045: "PRODUCT_PROFESSIONAL_E",
+    0x00000046: "PRODUCT_ENTERPRISE_E",
+    0x00000047: "PRODUCT_ULTIMATE_E",
+    0x00000048: "PRODUCT_ENTERPRISE_EVALUATION",
+    0x0000004C: "PRODUCT_MULTIPOINT_STANDARD_SERVER",
+    0x0000004D: "PRODUCT_MULTIPOINT_PREMIUM_SERVER",
+    0x0000004F: "PRODUCT_STANDARD_EVALUATION_SERVER",
+    0x00000050: "PRODUCT_DATACENTER_EVALUATION_SERVER",
+    0x00000054: "PRODUCT_ENTERPRISE_N_EVALUATION",
+    0x00000055: "PRODUCT_EMBEDDED_AUTOMOTIVE",
+    0x00000056: "PRODUCT_EMBEDDED_INDUSTRY_A",
+    0x00000057: "PRODUCT_THINPC",
+    0x00000058: "PRODUCT_EMBEDDED_A",
+    0x00000059: "PRODUCT_EMBEDDED_INDUSTRY",
+    0x0000005A: "PRODUCT_EMBEDDED_E",
+    0x0000005B: "PRODUCT_EMBEDDED_INDUSTRY_E",
+    0x0000005C: "PRODUCT_EMBEDDED_INDUSTRY_A_E",
+    0x0000005F: "PRODUCT_STORAGE_WORKGROUP_EVALUATION_SERVER",
+    0x00000060: "PRODUCT_STORAGE_STANDARD_EVALUATION_SERVER",
+    0x00000061: "PRODUCT_CORE_ARM",
+    0x00000062: "PRODUCT_CORE_N",
+    0x00000063: "PRODUCT_CORE_COUNTRYSPECIFIC",
+    0x00000064: "PRODUCT_CORE_SINGLELANGUAGE",
+    0x00000065: "PRODUCT_CORE",
+    0x00000067: "PRODUCT_PROFESSIONAL_WMC",
+    0xABCDABCD: "PRODUCT_UNLICENSED",
+}
 FINDEX_INFO_LEVELS = {
     "FindExInfoStandard": 0,
     "FindExInfoBasic": 1,
+}
+FINDEX_INFO_LEVELS_INV = {
+    0: "FindExInfoStandard",
+    1: "FindExInfoBasic",
 }
 FINDEX_SEARCH_OPS = {
     "FindExSearchNameMatch": 0,
     "FindExSearchLimitToDirectories": 1,
     "FindExSearchLimitToDevices": 2,
+}
+FINDEX_SEARCH_OPS_INV = {
+    0: "FindExSearchNameMatch",
+    1: "FindExSearchLimitToDirectories",
+    2: "FindExSearchLimitToDevices",
 }
 _GetBinaryTypeResult_ = {
     "SCS_32BIT_BINARY": 0,
@@ -562,11 +1117,26 @@ _GetBinaryTypeResult_ = {
     "SCS_OS216_BINARY": 5,
     "SCS_64BIT_BINARY": 6,
 }
+_GetBinaryTypeResult__INV = {
+    0: "SCS_32BIT_BINARY",
+    1: "SCS_DOS_BINARY",
+    2: "SCS_WOW_BINARY",
+    3: "SCS_PIF_BINARY",
+    4: "SCS_POSIX_BINARY",
+    5: "SCS_OS216_BINARY",
+    6: "SCS_64BIT_BINARY",
+}
 _lcreatAttribute_ = {
     "Normal": 0,
     "Read-only": 1,
     "Hidden": 2,
     "System": 3,
+}
+_lcreatAttribute__INV = {
+    0: "Normal",
+    1: "Read-only",
+    2: "Hidden",
+    3: "System",
 }
 _FileType_ = {
     "FILE_TYPE_UNKNOWN": 0x0000,
@@ -575,15 +1145,32 @@ _FileType_ = {
     "FILE_TYPE_PIPE": 0x0003,
     "FILE_TYPE_REMOTE": 0x8000,
 }
+_FileType__INV = {
+    0x0000: "FILE_TYPE_UNKNOWN",
+    0x0001: "FILE_TYPE_DISK",
+    0x0002: "FILE_TYPE_CHAR",
+    0x0003: "FILE_TYPE_PIPE",
+    0x8000: "FILE_TYPE_REMOTE",
+}
 POWER_REQUEST_TYPE = {
     "PowerRequestDisplayRequired": 0,
     "PowerRequestSystemRequired": 1,
     "PowerRequestAwayModeRequired": 2,
     "PowerRequestExecutionRequired": 3,
 }
+POWER_REQUEST_TYPE_INV = {
+    0: "PowerRequestDisplayRequired",
+    1: "PowerRequestSystemRequired",
+    2: "PowerRequestAwayModeRequired",
+    3: "PowerRequestExecutionRequired",
+}
 LATENCY_TIME = {
     "LT_DONT_CARE": 0,
     "LT_LOWEST_LATENCY": 1,
+}
+LATENCY_TIME_INV = {
+    0: "LT_DONT_CARE",
+    1: "LT_LOWEST_LATENCY",
 }
 COMPUTER_NAME_FORMAT = {
     "ComputerNameNetBIOS": 0,
@@ -595,14 +1182,33 @@ COMPUTER_NAME_FORMAT = {
     "ComputerNamePhysicalDnsDomain": 6,
     "ComputerNamePhysicalDnsFullyQualified": 7,
 }
+COMPUTER_NAME_FORMAT_INV = {
+    0: "ComputerNameNetBIOS",
+    1: "ComputerNameDnsHostname",
+    2: "ComputerNameDnsDomain",
+    3: "ComputerNameDnsFullyQualified",
+    4: "ComputerNamePhysicalNetBIOS",
+    5: "ComputerNamePhysicalDnsHostname",
+    6: "ComputerNamePhysicalDnsDomain",
+    7: "ComputerNamePhysicalDnsFullyQualified",
+}
 _HeapEntryFlags_ = {
     "LF32_FIXED": 0x00000001,
     "LF32_FREE": 0x00000002,
     "LF32_MOVEABLE": 0x00000004,
 }
+_HeapEntryFlags__INV = {
+    0x00000001: "LF32_FIXED",
+    0x00000002: "LF32_FREE",
+    0x00000004: "LF32_MOVEABLE",
+}
 _HeapListFlags_ = {
     "HF32_DEFAULT": 1,
     "HF32_SHARED": 2,
+}
+_HeapListFlags__INV = {
+    1: "HF32_DEFAULT",
+    2: "HF32_SHARED",
 }
 _PROCESSOR_TYPE_ = {
     "PROCESSOR_INTEL_386": 386,
@@ -611,10 +1217,22 @@ _PROCESSOR_TYPE_ = {
     "PROCESSOR_INTEL_IA64": 2200,
     "PROCESSOR_AMD_X8664": 8664,
 }
+_PROCESSOR_TYPE__INV = {
+    386: "PROCESSOR_INTEL_386",
+    486: "PROCESSOR_INTEL_486",
+    586: "PROCESSOR_INTEL_PENTIUM",
+    2200: "PROCESSOR_INTEL_IA64",
+    8664: "PROCESSOR_AMD_X8664",
+}
 _SET_LAST_ERROR_EX_TYPE_ = {
     "SLE_ERROR": 0x00000001,
     "SLE_MINORERROR": 0x00000002,
     "SLE_WARNING": 0x00000003,
+}
+_SET_LAST_ERROR_EX_TYPE__INV = {
+    0x00000001: "SLE_ERROR",
+    0x00000002: "SLE_MINORERROR",
+    0x00000003: "SLE_WARNING",
 }
 _DEBUG_EVENT_CODE_ = {
     "EXCEPTION_DEBUG_EVENT": 1,
@@ -627,9 +1245,24 @@ _DEBUG_EVENT_CODE_ = {
     "OUTPUT_DEBUG_STRING_EVENT": 8,
     "RIP_EVENT": 9,
 }
+_DEBUG_EVENT_CODE__INV = {
+    1: "EXCEPTION_DEBUG_EVENT",
+    2: "CREATE_THREAD_DEBUG_EVENT",
+    3: "CREATE_PROCESS_DEBUG_EVENT",
+    4: "EXIT_THREAD_DEBUG_EVENT",
+    5: "EXIT_PROCESS_DEBUG_EVENT",
+    6: "LOAD_DLL_DEBUG_EVENT",
+    7: "UNLOAD_DLL_DEBUG_EVENT",
+    8: "OUTPUT_DEBUG_STRING_EVENT",
+    9: "RIP_EVENT",
+}
 FILE_ID_TYPE = {
     "FileIdType": 0,
     "ObjectIdType": 1,
+}
+FILE_ID_TYPE_INV = {
+    0: "FileIdType",
+    1: "ObjectIdType",
 }
 PROCESSOR_CACHE_TYPE = {
     "CacheUnified": 0,
@@ -637,8 +1270,17 @@ PROCESSOR_CACHE_TYPE = {
     "CacheData": 2,
     "CacheTrace": 3,
 }
+PROCESSOR_CACHE_TYPE_INV = {
+    0: "CacheUnified",
+    1: "CacheInstruction",
+    2: "CacheData",
+    3: "CacheTrace",
+}
 _PROCESSOR_RELATIONSHIP_FLAGS_ = {
     "LTP_PC_SMT": 0x1,
+}
+_PROCESSOR_RELATIONSHIP_FLAGS__INV = {
+    0x1: "LTP_PC_SMT",
 }
 _DCB_PARITY_ = {
     "NOPARITY": 0,
@@ -647,10 +1289,22 @@ _DCB_PARITY_ = {
     "MARKPARITY": 3,
     "SPACEPARITY": 4,
 }
+_DCB_PARITY__INV = {
+    0: "NOPARITY",
+    1: "ODDPARITY",
+    2: "EVENPARITY",
+    3: "MARKPARITY",
+    4: "SPACEPARITY",
+}
 _DCB_STOPBITS_ = {
     "ONESTOPBIT": 0,
     "ONE5STOPBITS": 1,
     "TWOSTOPBITS": 2,
+}
+_DCB_STOPBITS__INV = {
+    0: "ONESTOPBIT",
+    1: "ONE5STOPBITS",
+    2: "TWOSTOPBITS",
 }
 _PROVIDER_SUB_TYPE_ = {
     "PST_UNSPECIFIED": 0x00000000,
@@ -667,8 +1321,26 @@ _PROVIDER_SUB_TYPE_ = {
     "PST_TCPIP_TELNET": 0x00000102,
     "PST_X25": 0x00000103,
 }
+_PROVIDER_SUB_TYPE__INV = {
+    0x00000000: "PST_UNSPECIFIED",
+    0x00000001: "PST_RS232",
+    0x00000002: "PST_PARALLELPORT",
+    0x00000003: "PST_RS422",
+    0x00000004: "PST_RS423",
+    0x00000005: "PST_RS449",
+    0x00000006: "PST_MODEM",
+    0x00000021: "PST_FAX",
+    0x00000022: "PST_SCANNER",
+    0x00000100: "PST_NETWORK_BRIDGE",
+    0x00000101: "PST_LAT",
+    0x00000102: "PST_TCPIP_TELNET",
+    0x00000103: "PST_X25",
+}
 _COMMPROP_SPEC_ = {
     "COMMPROP_INITIALIZED": 0xE73CF52E,
+}
+_COMMPROP_SPEC__INV = {
+    0xE73CF52E: "COMMPROP_INITIALIZED",
 }
 _INPUT_RECORD_TYPE_ = {
     "KEY_EVENT": 0x0001,
@@ -677,12 +1349,26 @@ _INPUT_RECORD_TYPE_ = {
     "MENU_EVENT": 0x0008,
     "FOCUS_EVENT": 0x0010,
 }
+_INPUT_RECORD_TYPE__INV = {
+    0x0001: "KEY_EVENT",
+    0x0002: "MOUSE_EVENT",
+    0x0004: "WINDOW_BUFFER_SIZE_EVENT",
+    0x0008: "MENU_EVENT",
+    0x0010: "FOCUS_EVENT",
+}
 _POWER_REQUEST_CONTEXT_FLAGS_ = {
     "POWER_REQUEST_CONTEXT_SIMPLE_STRING": 0x00000001,
     "POWER_REQUEST_CONTEXT_DETAILED_STRING": 0x00000002,
 }
+_POWER_REQUEST_CONTEXT_FLAGS__INV = {
+    0x00000001: "POWER_REQUEST_CONTEXT_SIMPLE_STRING",
+    0x00000002: "POWER_REQUEST_CONTEXT_DETAILED_STRING",
+}
 HARDWARE_COUNTER_TYPE = {
     "PMCCounter": 0,
+}
+HARDWARE_COUNTER_TYPE_INV = {
+    0: "PMCCounter",
 }
 _DRIVE_TYPE_ = {
     "DRIVE_UNKNOWN": 0,
@@ -693,13 +1379,30 @@ _DRIVE_TYPE_ = {
     "DRIVE_CDROM": 5,
     "DRIVE_RAMDISK": 6,
 }
+_DRIVE_TYPE__INV = {
+    0: "DRIVE_UNKNOWN",
+    1: "DRIVE_NO_ROOT_DIR",
+    2: "DRIVE_REMOVABLE",
+    3: "DRIVE_FIXED",
+    4: "DRIVE_REMOTE",
+    5: "DRIVE_CDROM",
+    6: "DRIVE_RAMDISK",
+}
 _NMPWAIT_ = {
     "NMPWAIT_WAIT_FOREVER": 0xffffffff,
     "NMPWAIT_NOWAIT": 0x00000001,
     "NMPWAIT_USE_DEFAULT_WAIT": 0x00000000,
 }
+_NMPWAIT__INV = {
+    0xffffffff: "NMPWAIT_WAIT_FOREVER",
+    0x00000001: "NMPWAIT_NOWAIT",
+    0x00000000: "NMPWAIT_USE_DEFAULT_WAIT",
+}
 _PROCESS_THREAD_HANDLE_ = {
     "GetCurrentThread()": -2,
+}
+_PROCESS_THREAD_HANDLE__INV = {
+    -2: "GetCurrentThread()",
 }
 _COMM_FUNCTION_ = {
     "SETXOFF": 1,
@@ -712,10 +1415,26 @@ _COMM_FUNCTION_ = {
     "SETBREAK": 8,
     "CLRBREAK": 9,
 }
+_COMM_FUNCTION__INV = {
+    1: "SETXOFF",
+    2: "SETXON",
+    3: "SETRTS",
+    4: "CLRRTS",
+    5: "SETDTR",
+    6: "CLRDTR",
+    7: "RESETDEV",
+    8: "SETBREAK",
+    9: "CLRBREAK",
+}
 FIRMWARE_TYPE = {
     "FirmwareTypeUnknownParam": 0,
     "FirmwareTypeBiosParam": 1,
     "FirmwareTypeUefiParam": 2,
+}
+FIRMWARE_TYPE_INV = {
+    0: "FirmwareTypeUnknownParam",
+    1: "FirmwareTypeBiosParam",
+    2: "FirmwareTypeUefiParam",
 }
 PROCESS_MITIGATION_POLICY = {
     "ProcessDEPPolicyParam": 0,
@@ -726,12 +1445,28 @@ PROCESS_MITIGATION_POLICY = {
     "ProcessMitigationOptionsMaskParam": 5,
     "ProcessExtensionPointDisablePolicyParam": 6,
 }
+PROCESS_MITIGATION_POLICY_INV = {
+    0: "ProcessDEPPolicyParam",
+    1: "ProcessASLRPolicyParam",
+    2: "ProcessReserved1MitigationPolicyParam",
+    3: "ProcessStrictHandleCheckPolicyParam",
+    4: "ProcessSystemCallDisablePolicyParam",
+    5: "ProcessMitigationOptionsMaskParam",
+    6: "ProcessExtensionPointDisablePolicyParam",
+}
 THREAD_INFORMATION_CLASS = {
     "ThreadMemoryPriority": 0,
     "ThreadAbsoluteCpuPriority": 1,
 }
+THREAD_INFORMATION_CLASS_INV = {
+    0: "ThreadMemoryPriority",
+    1: "ThreadAbsoluteCpuPriority",
+}
 PROCESS_INFORMATION_CLASS = {
     "ProcessMemoryPriority": 0,
+}
+PROCESS_INFORMATION_CLASS_INV = {
+    0: "ProcessMemoryPriority",
 }
 _CLAIM_SECURITY_ATTRIBUTE_TYPE_ = {
     "CLAIM_SECURITY_ATTRIBUTE_TYPE_INVALID": 0x00,
@@ -743,18 +1478,41 @@ _CLAIM_SECURITY_ATTRIBUTE_TYPE_ = {
     "CLAIM_SECURITY_ATTRIBUTE_TYPE_BOOLEAN": 0x06,
     "CLAIM_SECURITY_ATTRIBUTE_TYPE_OCTET_STRING": 0x10,
 }
+_CLAIM_SECURITY_ATTRIBUTE_TYPE__INV = {
+    0x00: "CLAIM_SECURITY_ATTRIBUTE_TYPE_INVALID",
+    0x01: "CLAIM_SECURITY_ATTRIBUTE_TYPE_INT64",
+    0x02: "CLAIM_SECURITY_ATTRIBUTE_TYPE_UINT64",
+    0x03: "CLAIM_SECURITY_ATTRIBUTE_TYPE_STRING",
+    0x04: "CLAIM_SECURITY_ATTRIBUTE_TYPE_FQBN",
+    0x05: "CLAIM_SECURITY_ATTRIBUTE_TYPE_SID",
+    0x06: "CLAIM_SECURITY_ATTRIBUTE_TYPE_BOOLEAN",
+    0x10: "CLAIM_SECURITY_ATTRIBUTE_TYPE_OCTET_STRING",
+}
 _CONSOLE_DISPLAY_MODE_ = {
     "CONSOLE_FULLSCREEN_MODE": 1,
     "CONSOLE_WINDOWED_MODE": 2,
+}
+_CONSOLE_DISPLAY_MODE__INV = {
+    1: "CONSOLE_FULLSCREEN_MODE",
+    2: "CONSOLE_WINDOWED_MODE",
 }
 _CONSOLE_FULLSCREEN_MODE_ = {
     "CONSOLE_FULLSCREEN": 1,
     "CONSOLE_FULLSCREEN_HARDWARE": 2,
 }
+_CONSOLE_FULLSCREEN_MODE__INV = {
+    1: "CONSOLE_FULLSCREEN",
+    2: "CONSOLE_FULLSCREEN_HARDWARE",
+}
 _MUI_FILETYPE_ = {
     "MUI_FILETYPE_NOT_LANGUAGE_NEUTRAL": 0x001,
     "MUI_FILETYPE_LANGUAGE_NEUTRAL_MAIN": 0x002,
     "MUI_FILETYPE_LANGUAGE_NEUTRAL_MUI": 0x004,
+}
+_MUI_FILETYPE__INV = {
+    0x001: "MUI_FILETYPE_NOT_LANGUAGE_NEUTRAL",
+    0x002: "MUI_FILETYPE_LANGUAGE_NEUTRAL_MAIN",
+    0x004: "MUI_FILETYPE_LANGUAGE_NEUTRAL_MUI",
 }
 
 def kernel32_CheckRemoteDebuggerPresent(jitter):

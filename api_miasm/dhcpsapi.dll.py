@@ -9,6 +9,17 @@ DHCP_OPTION_DATA_TYPE = {
     "DhcpEncapsulatedDataOption": 7,
     "DhcpIpv6AddressOption": 8,
 }
+DHCP_OPTION_DATA_TYPE_INV = {
+    0: "DhcpByteOption",
+    1: "DhcpWordOption",
+    2: "DhcpDWordOption",
+    3: "DhcpDWordDWordOption",
+    4: "DhcpIpAddressOption",
+    5: "DhcpStringDataOption",
+    6: "DhcpBinaryDataOption",
+    7: "DhcpEncapsulatedDataOption",
+    8: "DhcpIpv6AddressOption",
+}
 DHCP_SUBNET_ELEMENT_TYPE = {
     "DhcpIpRanges": 0,
     "DhcpSecondaryHosts": 1,
@@ -19,10 +30,25 @@ DHCP_SUBNET_ELEMENT_TYPE = {
     "DhcpIpRangesDhcpBootp": 6,
     "DhcpIpRangesBootpOnly": 7,
 }
+DHCP_SUBNET_ELEMENT_TYPE_INV = {
+    0: "DhcpIpRanges",
+    1: "DhcpSecondaryHosts",
+    2: "DhcpReservedIps",
+    3: "DhcpExcludedIpRanges",
+    4: "DhcpIpUsedClusters",
+    5: "DhcpIpRangesDhcpOnly",
+    6: "DhcpIpRangesDhcpBootp",
+    7: "DhcpIpRangesBootpOnly",
+}
 DHCP_SEARCH_INFO_TYPE = {
     "DhcpClientIpAddress": 0,
     "DhcpClientHardwareAddress": 1,
     "DhcpClientName": 2,
+}
+DHCP_SEARCH_INFO_TYPE_INV = {
+    0: "DhcpClientIpAddress",
+    1: "DhcpClientHardwareAddress",
+    2: "DhcpClientName",
 }
 DHCP_OPTION_SCOPE_TYPE = {
     "DhcpDefaultOptions": 0,
@@ -31,15 +57,32 @@ DHCP_OPTION_SCOPE_TYPE = {
     "DhcpReservedOptions": 3,
     "DhcpMScopeOptions": 4,
 }
+DHCP_OPTION_SCOPE_TYPE_INV = {
+    0: "DhcpDefaultOptions",
+    1: "DhcpGlobalOptions",
+    2: "DhcpSubnetOptions",
+    3: "DhcpReservedOptions",
+    4: "DhcpMScopeOptions",
+}
 DHCP_SUBNET_ELEMENT_TYPE_V6 = {
     "Dhcpv6IpRanges": 0,
     "Dhcpv6ReservedIps": 1,
     "Dhcpv6ExcludedIpRanges": 2,
 }
+DHCP_SUBNET_ELEMENT_TYPE_V6_INV = {
+    0: "Dhcpv6IpRanges",
+    1: "Dhcpv6ReservedIps",
+    2: "Dhcpv6ExcludedIpRanges",
+}
 DHCP_SEARCH_INFO_TYPE_V6 = {
     "Dhcpv6ClientIpAddress": 0,
     "Dhcpv6ClientDUID": 1,
     "Dhcpv6ClientName": 2,
+}
+DHCP_SEARCH_INFO_TYPE_V6_INV = {
+    0: "Dhcpv6ClientIpAddress",
+    1: "Dhcpv6ClientDUID",
+    2: "Dhcpv6ClientName",
 }
 DHCP_OPTION_SCOPE_TYPE6 = {
     "DhcpDefaultOptions6": 0,
@@ -47,13 +90,27 @@ DHCP_OPTION_SCOPE_TYPE6 = {
     "DhcpReservedOptions6": 2,
     "DhcpGlobalOptions6": 3,
 }
+DHCP_OPTION_SCOPE_TYPE6_INV = {
+    0: "DhcpDefaultOptions6",
+    1: "DhcpScopeOptions6",
+    2: "DhcpReservedOptions6",
+    3: "DhcpGlobalOptions6",
+}
 DHCP_OPTION_TYPE = {
     "DhcpUnaryElementTypeOption": 0,
     "DhcpArrayTypeOption": 1,
 }
+DHCP_OPTION_TYPE_INV = {
+    0: "DhcpUnaryElementTypeOption",
+    1: "DhcpArrayTypeOption",
+}
 DHCP_FILTER_LIST_TYPE = {
     "Deny": 0,
     "Allow": 1,
+}
+DHCP_FILTER_LIST_TYPE_INV = {
+    0: "Deny",
+    1: "Allow",
 }
 QuarantineStatus = {
     "NOQUARANTINE": 0,
@@ -64,6 +121,15 @@ QuarantineStatus = {
     "DEFAULTQUARSETTING": 5,
     "NOQUARINFO": 6,
 }
+QuarantineStatus_INV = {
+    0: "NOQUARANTINE",
+    1: "RESTRICTEDACCESS",
+    2: "DROPPACKET",
+    3: "PROBATION",
+    4: "EXEMPT",
+    5: "DEFAULTQUARSETTING",
+    6: "NOQUARINFO",
+}
 DHCP_SUBNET_STATE = {
     "DhcpSubnetEnabled": 0,
     "DhcpSubnetDisabled": 1,
@@ -71,14 +137,30 @@ DHCP_SUBNET_STATE = {
     "DhcpSubnetDisabledSwitched": 3,
     "DhcpSubnetInvalidState": 4,
 }
+DHCP_SUBNET_STATE_INV = {
+    0: "DhcpSubnetEnabled",
+    1: "DhcpSubnetDisabled",
+    2: "DhcpSubnetEnabledSwitched",
+    3: "DhcpSubnetDisabledSwitched",
+    4: "DhcpSubnetInvalidState",
+}
 DHCP_FORCE_FLAG = {
     "DhcpFullForce": 0,
     "DhcpNoForce": 1,
+}
+DHCP_FORCE_FLAG_INV = {
+    0: "DhcpFullForce",
+    1: "DhcpNoForce",
 }
 DHCP_POL_ATTR_TYPE = {
     "DhcpAttrHWAddr": 0,
     "DhcpAttrOption": 1,
     "DhcpAttrSubOption": 2,
+}
+DHCP_POL_ATTR_TYPE_INV = {
+    0: "DhcpAttrHWAddr",
+    1: "DhcpAttrOption",
+    2: "DhcpAttrSubOption",
 }
 DHCP_POL_COMPARATOR = {
     "DhcpCompEqual": 0,
@@ -86,9 +168,19 @@ DHCP_POL_COMPARATOR = {
     "DhcpCompBeginsWith": 2,
     "DhcpCompNotBeginWith": 3,
 }
+DHCP_POL_COMPARATOR_INV = {
+    0: "DhcpCompEqual",
+    1: "DhcpCompNotEqual",
+    2: "DhcpCompBeginsWith",
+    3: "DhcpCompNotBeginWith",
+}
 DHCP_POL_LOGIC_OPER = {
     "DhcpLogicalOr": 0,
     "DhcpLogicalAnd": 1,
+}
+DHCP_POL_LOGIC_OPER_INV = {
+    0: "DhcpLogicalOr",
+    1: "DhcpLogicalAnd",
 }
 DHCP_ATTRIB_ID = {
     "DHCP_ATTRIB_BOOL_IS_ROGUE": 0x01,
@@ -98,9 +190,21 @@ DHCP_ATTRIB_ID = {
     "DHCP_ATTRIB_BOOL_IS_ADMIN": 0x05,
     "DHCP_ATTRIB_ULONG_RESTORE_STATUS": 0x06,
 }
+DHCP_ATTRIB_ID_INV = {
+    0x01: "DHCP_ATTRIB_BOOL_IS_ROGUE",
+    0x02: "DHCP_ATTRIB_BOOL_IS_DYNBOOTP",
+    0x03: "DHCP_ATTRIB_BOOL_IS_PART_OF_DSDC",
+    0x04: "DHCP_ATTRIB_BOOL_IS_BINDING_AWARE",
+    0x05: "DHCP_ATTRIB_BOOL_IS_ADMIN",
+    0x06: "DHCP_ATTRIB_ULONG_RESTORE_STATUS",
+}
 DHCP_SCAN_FLAG = {
     "DhcpRegistryFix": 0,
     "DhcpDatabaseFix": 1,
+}
+DHCP_SCAN_FLAG_INV = {
+    0: "DhcpRegistryFix",
+    1: "DhcpDatabaseFix",
 }
 FSM_STATE = {
     "NO_STATE": 0,
@@ -118,13 +222,37 @@ FSM_STATE = {
     "PAUSED": 12,
     "SHUTDOWN": 13,
 }
+FSM_STATE_INV = {
+    0: "NO_STATE",
+    1: "INIT",
+    2: "NORMAL",
+    3: "STARTUP",
+    4: "COMMUNICATION_INT",
+    5: "PARTNER_DOWN",
+    6: "POTENTIAL_CONFLICT",
+    7: "CONFLICT_DONE",
+    8: "RESOLUTION_INT",
+    9: "RECOVER",
+    10: "RECOVER_WAIT",
+    11: "RECOVER_DONE",
+    12: "PAUSED",
+    13: "SHUTDOWN",
+}
 DHCP_FAILOVER_MODE = {
     "LoadBalance": 0,
     "HotStandby": 1,
 }
+DHCP_FAILOVER_MODE_INV = {
+    0: "LoadBalance",
+    1: "HotStandby",
+}
 DHCP_FAILOVER_SERVER = {
     "PrimaryServer": 0,
     "SecondaryServer": 1,
+}
+DHCP_FAILOVER_SERVER_INV = {
+    0: "PrimaryServer",
+    1: "SecondaryServer",
 }
 
 def dhcpsapi_DhcpAddFilterV4(jitter):

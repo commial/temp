@@ -199,6 +199,207 @@ IFTYPE = {
     "IF_TYPE_WWANPP": 243,
     "IF_TYPE_WWANPP2": 244,
 }
+IFTYPE_INV = {
+    1: "IF_TYPE_OTHER",
+    2: "IF_TYPE_REGULAR_1822",
+    3: "IF_TYPE_HDH_1822",
+    4: "IF_TYPE_DDN_X25",
+    5: "IF_TYPE_RFC877_X25",
+    6: "IF_TYPE_ETHERNET_CSMACD",
+    7: "IF_TYPE_IS088023_CSMACD",
+    8: "IF_TYPE_ISO88024_TOKENBUS",
+    9: "IF_TYPE_ISO88025_TOKENRING",
+    10: "IF_TYPE_ISO88026_MAN",
+    11: "IF_TYPE_STARLAN",
+    12: "IF_TYPE_PROTEON_10MBIT",
+    13: "IF_TYPE_PROTEON_80MBIT",
+    14: "IF_TYPE_HYPERCHANNEL",
+    15: "IF_TYPE_FDDI",
+    16: "IF_TYPE_LAP_B",
+    17: "IF_TYPE_SDLC",
+    18: "IF_TYPE_DS1",
+    19: "IF_TYPE_E1",
+    20: "IF_TYPE_BASIC_ISDN",
+    21: "IF_TYPE_PRIMARY_ISDN",
+    22: "IF_TYPE_PROP_POINT2POINT_SERIAL",
+    23: "IF_TYPE_PPP",
+    24: "IF_TYPE_SOFTWARE_LOOPBACK",
+    25: "IF_TYPE_EON",
+    26: "IF_TYPE_ETHERNET_3MBIT",
+    27: "IF_TYPE_NSIP",
+    28: "IF_TYPE_SLIP",
+    29: "IF_TYPE_ULTRA",
+    30: "IF_TYPE_DS3",
+    31: "IF_TYPE_SIP",
+    32: "IF_TYPE_FRAMERELAY",
+    33: "IF_TYPE_RS232",
+    34: "IF_TYPE_PARA",
+    35: "IF_TYPE_ARCNET",
+    36: "IF_TYPE_ARCNET_PLUS",
+    37: "IF_TYPE_ATM",
+    38: "IF_TYPE_MIO_X25",
+    39: "IF_TYPE_SONET",
+    40: "IF_TYPE_X25_PLE",
+    41: "IF_TYPE_ISO88022_LLC",
+    42: "IF_TYPE_LOCALTALK",
+    43: "IF_TYPE_SMDS_DXI",
+    44: "IF_TYPE_FRAMERELAY_SERVICE",
+    45: "IF_TYPE_V35",
+    46: "IF_TYPE_HSSI",
+    47: "IF_TYPE_HIPPI",
+    48: "IF_TYPE_MODEM",
+    49: "IF_TYPE_AAL5",
+    50: "IF_TYPE_SONET_PATH",
+    51: "IF_TYPE_SONET_VT",
+    52: "IF_TYPE_SMDS_ICIP",
+    53: "IF_TYPE_PROP_VIRTUAL",
+    54: "IF_TYPE_PROP_MULTIPLEXOR",
+    55: "IF_TYPE_IEEE80212",
+    56: "IF_TYPE_FIBRECHANNEL",
+    57: "IF_TYPE_HIPPIINTERFACE",
+    58: "IF_TYPE_FRAMERELAY_INTERCONNECT",
+    59: "IF_TYPE_AFLANE_8023",
+    60: "IF_TYPE_AFLANE_8025",
+    61: "IF_TYPE_CCTEMUL",
+    62: "IF_TYPE_FASTETHER",
+    63: "IF_TYPE_ISDN",
+    64: "IF_TYPE_V11",
+    65: "IF_TYPE_V36",
+    66: "IF_TYPE_G703_64K",
+    67: "IF_TYPE_G703_2MB",
+    68: "IF_TYPE_QLLC",
+    69: "IF_TYPE_FASTETHER_FX",
+    70: "IF_TYPE_CHANNEL",
+    71: "IF_TYPE_IEEE80211",
+    72: "IF_TYPE_IBM370PARCHAN",
+    73: "IF_TYPE_ESCON",
+    74: "IF_TYPE_DLSW",
+    75: "IF_TYPE_ISDN_S",
+    76: "IF_TYPE_ISDN_U",
+    77: "IF_TYPE_LAP_D",
+    78: "IF_TYPE_IPSWITCH",
+    79: "IF_TYPE_RSRB",
+    80: "IF_TYPE_ATM_LOGICAL",
+    81: "IF_TYPE_DS0",
+    82: "IF_TYPE_DS0_BUNDLE",
+    83: "IF_TYPE_BSC",
+    84: "IF_TYPE_ASYNC",
+    85: "IF_TYPE_CNR",
+    86: "IF_TYPE_ISO88025R_DTR",
+    87: "IF_TYPE_EPLRS",
+    88: "IF_TYPE_ARAP",
+    89: "IF_TYPE_PROP_CNLS",
+    90: "IF_TYPE_HOSTPAD",
+    91: "IF_TYPE_TERMPAD",
+    92: "IF_TYPE_FRAMERELAY_MPI",
+    93: "IF_TYPE_X213",
+    94: "IF_TYPE_ADSL",
+    95: "IF_TYPE_RADSL",
+    96: "IF_TYPE_SDSL",
+    97: "IF_TYPE_VDSL",
+    98: "IF_TYPE_ISO88025_CRFPRINT",
+    99: "IF_TYPE_MYRINET",
+    100: "IF_TYPE_VOICE_EM",
+    101: "IF_TYPE_VOICE_FXO",
+    102: "IF_TYPE_VOICE_FXS",
+    103: "IF_TYPE_VOICE_ENCAP",
+    104: "IF_TYPE_VOICE_OVERIP",
+    105: "IF_TYPE_ATM_DXI",
+    106: "IF_TYPE_ATM_FUNI",
+    107: "IF_TYPE_ATM_IMA",
+    108: "IF_TYPE_PPPMULTILINKBUNDLE",
+    109: "IF_TYPE_IPOVER_CDLC",
+    110: "IF_TYPE_IPOVER_CLAW",
+    111: "IF_TYPE_STACKTOSTACK",
+    112: "IF_TYPE_VIRTUALIPADDRESS",
+    113: "IF_TYPE_MPC",
+    114: "IF_TYPE_IPOVER_ATM",
+    115: "IF_TYPE_ISO88025_FIBER",
+    116: "IF_TYPE_TDLC",
+    117: "IF_TYPE_GIGABITETHERNET",
+    118: "IF_TYPE_HDLC",
+    119: "IF_TYPE_LAP_F",
+    120: "IF_TYPE_V37",
+    121: "IF_TYPE_X25_MLP",
+    122: "IF_TYPE_X25_HUNTGROUP",
+    123: "IF_TYPE_TRANSPHDLC",
+    124: "IF_TYPE_INTERLEAVE",
+    125: "IF_TYPE_FAST",
+    126: "IF_TYPE_IP",
+    127: "IF_TYPE_DOCSCABLE_MACLAYER",
+    128: "IF_TYPE_DOCSCABLE_DOWNSTREAM",
+    129: "IF_TYPE_DOCSCABLE_UPSTREAM",
+    130: "IF_TYPE_A12MPPSWITCH",
+    131: "IF_TYPE_TUNNEL",
+    132: "IF_TYPE_COFFEE",
+    133: "IF_TYPE_CES",
+    134: "IF_TYPE_ATM_SUBINTERFACE",
+    135: "IF_TYPE_L2_VLAN",
+    136: "IF_TYPE_L3_IPVLAN",
+    137: "IF_TYPE_L3_IPXVLAN",
+    138: "IF_TYPE_DIGITALPOWERLINE",
+    139: "IF_TYPE_MEDIAMAILOVERIP",
+    140: "IF_TYPE_DTM",
+    141: "IF_TYPE_DCN",
+    142: "IF_TYPE_IPFORWARD",
+    143: "IF_TYPE_MSDSL",
+    144: "IF_TYPE_IEEE1394",
+    145: "IF_TYPE_IF_GSN",
+    146: "IF_TYPE_DVBRCC_MACLAYER",
+    147: "IF_TYPE_DVBRCC_DOWNSTREAM",
+    148: "IF_TYPE_DVBRCC_UPSTREAM",
+    149: "IF_TYPE_ATM_VIRTUAL",
+    150: "IF_TYPE_MPLS_TUNNEL",
+    151: "IF_TYPE_SRP",
+    152: "IF_TYPE_VOICEOVERATM",
+    153: "IF_TYPE_VOICEOVERFRAMERELAY",
+    154: "IF_TYPE_IDSL",
+    155: "IF_TYPE_COMPOSITELINK",
+    156: "IF_TYPE_SS7_SIGLINK",
+    157: "IF_TYPE_PROP_WIRELESS_P2P",
+    158: "IF_TYPE_FR_FORWARD",
+    159: "IF_TYPE_RFC1483",
+    160: "IF_TYPE_USB",
+    161: "IF_TYPE_IEEE8023AD_LAG",
+    162: "IF_TYPE_BGP_POLICY_ACCOUNTING",
+    163: "IF_TYPE_FRF16_MFR_BUNDLE",
+    164: "IF_TYPE_H323_GATEKEEPER",
+    165: "IF_TYPE_H323_PROXY",
+    166: "IF_TYPE_MPLS",
+    167: "IF_TYPE_MF_SIGLINK",
+    168: "IF_TYPE_HDSL2",
+    169: "IF_TYPE_SHDSL",
+    170: "IF_TYPE_DS1_FDL",
+    171: "IF_TYPE_POS",
+    172: "IF_TYPE_DVB_ASI_IN",
+    173: "IF_TYPE_DVB_ASI_OUT",
+    174: "IF_TYPE_PLC",
+    175: "IF_TYPE_NFAS",
+    176: "IF_TYPE_TR008",
+    177: "IF_TYPE_GR303_RDT",
+    178: "IF_TYPE_GR303_IDT",
+    179: "IF_TYPE_ISUP",
+    180: "IF_TYPE_PROP_DOCS_WIRELESS_MACLAYER",
+    181: "IF_TYPE_PROP_DOCS_WIRELESS_DOWNSTREAM",
+    182: "IF_TYPE_PROP_DOCS_WIRELESS_UPSTREAM",
+    183: "IF_TYPE_HIPERLAN2",
+    184: "IF_TYPE_PROP_BWA_P2MP",
+    185: "IF_TYPE_SONET_OVERHEAD_CHANNEL",
+    186: "IF_TYPE_DIGITAL_WRAPPER_OVERHEAD_CHANNEL",
+    187: "IF_TYPE_AAL2",
+    188: "IF_TYPE_RADIO_MAC",
+    189: "IF_TYPE_ATM_RADIO",
+    190: "IF_TYPE_IMT",
+    191: "IF_TYPE_MVL",
+    192: "IF_TYPE_REACH_DSL",
+    193: "IF_TYPE_FR_DLCI_ENDPT",
+    194: "IF_TYPE_ATM_VCI_ENDPT",
+    195: "IF_TYPE_OPTICAL_CHANNEL",
+    196: "IF_TYPE_OPTICAL_TRANSPORT",
+    237: "IF_TYPE_IEEE80216_WMAN",
+    243: "IF_TYPE_WWANPP",
+    244: "IF_TYPE_WWANPP2",
+}
 MIB_TCP_STATE = {
     "MIB_TCP_STATE_CLOSED": 1,
     "MIB_TCP_STATE_LISTEN": 2,
@@ -213,11 +414,31 @@ MIB_TCP_STATE = {
     "MIB_TCP_STATE_TIME_WAIT": 11,
     "MIB_TCP_STATE_DELETE_TCB": 12,
 }
+MIB_TCP_STATE_INV = {
+    1: "MIB_TCP_STATE_CLOSED",
+    2: "MIB_TCP_STATE_LISTEN",
+    3: "MIB_TCP_STATE_SYN_SENT",
+    4: "MIB_TCP_STATE_SYN_RCVD",
+    5: "MIB_TCP_STATE_ESTAB",
+    6: "MIB_TCP_STATE_FIN_WAIT1",
+    7: "MIB_TCP_STATE_FIN_WAIT2",
+    8: "MIB_TCP_STATE_CLOSE_WAIT",
+    9: "MIB_TCP_STATE_CLOSING",
+    10: "MIB_TCP_STATE_LAST_ACK",
+    11: "MIB_TCP_STATE_TIME_WAIT",
+    12: "MIB_TCP_STATE_DELETE_TCB",
+}
 TCP_CONNECTION_OFFLOAD_STATE = {
     "TcpConnectionOffloadStateInHost": 0,
     "TcpConnectionOffloadStateOffloading": 1,
     "TcpConnectionOffloadStateOffloaded": 2,
     "TcpConnectionOffloadStateUploading": 3,
+}
+TCP_CONNECTION_OFFLOAD_STATE_INV = {
+    0: "TcpConnectionOffloadStateInHost",
+    1: "TcpConnectionOffloadStateOffloading",
+    2: "TcpConnectionOffloadStateOffloaded",
+    3: "TcpConnectionOffloadStateUploading",
 }
 NL_ROUTE_PROTOCOL = {
     "MIB_IPPROTO_OTHER": 1,
@@ -238,6 +459,25 @@ NL_ROUTE_PROTOCOL = {
     "MIB_IPPROTO_NT_STATIC": 10006,
     "MIB_IPPROTO_NT_STATIC_NON_DOD": 10007,
 }
+NL_ROUTE_PROTOCOL_INV = {
+    1: "MIB_IPPROTO_OTHER",
+    2: "MIB_IPPROTO_LOCAL",
+    3: "MIB_IPPROTO_NETMGMT",
+    4: "MIB_IPPROTO_ICMP",
+    5: "MIB_IPPROTO_EGP",
+    6: "MIB_IPPROTO_GGP",
+    7: "MIB_IPPROTO_HELLO",
+    8: "MIB_IPPROTO_RIP",
+    9: "MIB_IPPROTO_IS_IS",
+    10: "MIB_IPPROTO_ES_IS",
+    11: "MIB_IPPROTO_CISCO",
+    12: "MIB_IPPROTO_BBN",
+    13: "MIB_IPPROTO_OSPF",
+    14: "MIB_IPPROTO_BGP",
+    10002: "MIB_IPPROTO_NT_AUTOSTATIC",
+    10006: "MIB_IPPROTO_NT_STATIC",
+    10007: "MIB_IPPROTO_NT_STATIC_NON_DOD",
+}
 NL_ROUTE_ORIGIN = {
     "NlroManual": 0,
     "NlroWellKnown": 1,
@@ -245,11 +485,24 @@ NL_ROUTE_ORIGIN = {
     "NlroRouterAdvertisement": 3,
     "Nlro6to4": 4,
 }
+NL_ROUTE_ORIGIN_INV = {
+    0: "NlroManual",
+    1: "NlroWellKnown",
+    2: "NlroDHCP",
+    3: "NlroRouterAdvertisement",
+    4: "Nlro6to4",
+}
 MIB_IPNET_TYPE = {
     "MIB_IPNET_TYPE_OTHER": 1,
     "MIB_IPNET_TYPE_INVALID": 2,
     "MIB_IPNET_TYPE_DYNAMIC": 3,
     "MIB_IPNET_TYPE_STATIC": 4,
+}
+MIB_IPNET_TYPE_INV = {
+    1: "MIB_IPNET_TYPE_OTHER",
+    2: "MIB_IPNET_TYPE_INVALID",
+    3: "MIB_IPNET_TYPE_DYNAMIC",
+    4: "MIB_IPNET_TYPE_STATIC",
 }
 INTERNAL_IF_OPER_STATUS = {
     "IF_OPER_STATUS_NON_OPERATIONAL": 0,
@@ -259,6 +512,14 @@ INTERNAL_IF_OPER_STATUS = {
     "IF_OPER_STATUS_CONNECTED": 4,
     "IF_OPER_STATUS_OPERATIONAL": 5,
 }
+INTERNAL_IF_OPER_STATUS_INV = {
+    0: "IF_OPER_STATUS_NON_OPERATIONAL",
+    1: "IF_OPER_STATUS_UNREACHABLE",
+    2: "IF_OPER_STATUS_DISCONNECTED",
+    3: "IF_OPER_STATUS_CONNECTING",
+    4: "IF_OPER_STATUS_CONNECTED",
+    5: "IF_OPER_STATUS_OPERATIONAL",
+}
 TUNNEL_TYPE = {
     "TUNNEL_TYPE_NONE": 0,
     "TUNNEL_TYPE_OTHER": 1,
@@ -267,6 +528,15 @@ TUNNEL_TYPE = {
     "TUNNEL_TYPE_ISATAP": 13,
     "TUNNEL_TYPE_TEREDO": 14,
     "TUNNEL_TYPE_IPHTTPS": 15,
+}
+TUNNEL_TYPE_INV = {
+    0: "TUNNEL_TYPE_NONE",
+    1: "TUNNEL_TYPE_OTHER",
+    2: "TUNNEL_TYPE_DIRECT",
+    11: "TUNNEL_TYPE_6TO4",
+    13: "TUNNEL_TYPE_ISATAP",
+    14: "TUNNEL_TYPE_TEREDO",
+    15: "TUNNEL_TYPE_IPHTTPS",
 }
 NDIS_MEDIUM = {
     "NdisMedium802_3": 0,
@@ -290,6 +560,28 @@ NDIS_MEDIUM = {
     "NdisMediumWiMAX": 18,
     "NdisMediumIP": 19,
 }
+NDIS_MEDIUM_INV = {
+    0: "NdisMedium802_3",
+    1: "NdisMedium802_5",
+    2: "NdisMediumFddi",
+    3: "NdisMediumWan",
+    4: "NdisMediumLocalTalk",
+    5: "NdisMediumDix",
+    6: "NdisMediumArcnetRaw",
+    7: "NdisMediumArcnet878_2",
+    8: "NdisMediumAtm",
+    9: "NdisMediumWirelessWan",
+    10: "NdisMediumIrda",
+    11: "NdisMediumBpc",
+    12: "NdisMediumCoWan",
+    13: "NdisMedium1394",
+    14: "NdisMediumInfiniBand",
+    15: "NdisMediumTunnel",
+    16: "NdisMediumNative802_11",
+    17: "NdisMediumLoopback",
+    18: "NdisMediumWiMAX",
+    19: "NdisMediumIP",
+}
 NDIS_PHYSICAL_MEDIUM = {
     "NdisPhysicalMediumUnspecified": 0,
     "NdisPhysicalMediumWirelessLan": 1,
@@ -312,6 +604,28 @@ NDIS_PHYSICAL_MEDIUM = {
     "NdisPhysicalMediumWiredCoWan": 18,
     "NdisPhysicalMediumOther": 19,
 }
+NDIS_PHYSICAL_MEDIUM_INV = {
+    0: "NdisPhysicalMediumUnspecified",
+    1: "NdisPhysicalMediumWirelessLan",
+    2: "NdisPhysicalMediumCableModem",
+    3: "NdisPhysicalMediumPhoneLine",
+    4: "NdisPhysicalMediumPowerLine",
+    5: "NdisPhysicalMediumDSL",
+    6: "NdisPhysicalMediumFibreChannel",
+    7: "NdisPhysicalMedium1394",
+    8: "NdisPhysicalMediumWirelessWan",
+    9: "NdisPhysicalMediumNative802_11",
+    10: "NdisPhysicalMediumBluetooth",
+    11: "NdisPhysicalMediumInfiniband",
+    12: "NdisPhysicalMediumWiMax",
+    13: "NdisPhysicalMediumUWB",
+    14: "NdisPhysicalMedium802_3",
+    15: "NdisPhysicalMedium802_5",
+    16: "NdisPhysicalMediumIrda",
+    17: "NdisPhysicalMediumWiredWAN",
+    18: "NdisPhysicalMediumWiredCoWan",
+    19: "NdisPhysicalMediumOther",
+}
 NET_IF_ACCESS_TYPE = {
     "NET_IF_ACCESS_LOOPBACK": 1,
     "NET_IF_ACCESS_BROADCAST": 2,
@@ -319,10 +633,22 @@ NET_IF_ACCESS_TYPE = {
     "NET_IF_ACCESS_POINT_TO_MULTI_POINT": 4,
     "NET_IF_ACCESS_MAXIMUM": 5,
 }
+NET_IF_ACCESS_TYPE_INV = {
+    1: "NET_IF_ACCESS_LOOPBACK",
+    2: "NET_IF_ACCESS_BROADCAST",
+    3: "NET_IF_ACCESS_POINT_TO_POINT",
+    4: "NET_IF_ACCESS_POINT_TO_MULTI_POINT",
+    5: "NET_IF_ACCESS_MAXIMUM",
+}
 NET_IF_DIRECTION_TYPE = {
     "NET_IF_DIRECTION_SENDRECEIVE": 0,
     "NET_IF_DIRECTION_SENDONLY": 1,
     "NET_IF_DIRECTION_RECEIVEONLY": 2,
+}
+NET_IF_DIRECTION_TYPE_INV = {
+    0: "NET_IF_DIRECTION_SENDRECEIVE",
+    1: "NET_IF_DIRECTION_SENDONLY",
+    2: "NET_IF_DIRECTION_RECEIVEONLY",
 }
 IF_OPER_STATUS = {
     "IfOperStatusUp": 1,
@@ -333,15 +659,34 @@ IF_OPER_STATUS = {
     "IfOperStatusNotPresent": 6,
     "IfOperStatusLowerLayerDown": 7,
 }
+IF_OPER_STATUS_INV = {
+    1: "IfOperStatusUp",
+    2: "IfOperStatusDown",
+    3: "IfOperStatusTesting",
+    4: "IfOperStatusUnknown",
+    5: "IfOperStatusDormant",
+    6: "IfOperStatusNotPresent",
+    7: "IfOperStatusLowerLayerDown",
+}
 NET_IF_ADMIN_STATUS = {
     "NET_IF_ADMIN_STATUS_UP": 1,
     "NET_IF_ADMIN_STATUS_DOWN": 2,
     "NET_IF_ADMIN_STATUS_TESTING": 3,
 }
+NET_IF_ADMIN_STATUS_INV = {
+    1: "NET_IF_ADMIN_STATUS_UP",
+    2: "NET_IF_ADMIN_STATUS_DOWN",
+    3: "NET_IF_ADMIN_STATUS_TESTING",
+}
 NET_IF_MEDIA_CONNECT_STATE = {
     "MediaConnectStateUnknown": 0,
     "MediaConnectStateConnected": 1,
     "MediaConnectStateDisconnected": 2,
+}
+NET_IF_MEDIA_CONNECT_STATE_INV = {
+    0: "MediaConnectStateUnknown",
+    1: "MediaConnectStateConnected",
+    2: "MediaConnectStateDisconnected",
 }
 NET_IF_CONNECTION_TYPE = {
     "NET_IF_CONNECTION_DEDICATED": 1,
@@ -349,11 +694,23 @@ NET_IF_CONNECTION_TYPE = {
     "NET_IF_CONNECTION_DEMAND": 3,
     "NET_IF_CONNECTION_MAXIMUM": 4,
 }
+NET_IF_CONNECTION_TYPE_INV = {
+    1: "NET_IF_CONNECTION_DEDICATED",
+    2: "NET_IF_CONNECTION_PASSIVE",
+    3: "NET_IF_CONNECTION_DEMAND",
+    4: "NET_IF_CONNECTION_MAXIMUM",
+}
 NL_ROUTER_DISCOVERY_BEHAVIOR = {
     "RouterDiscoveryDisabled": 0,
     "RouterDiscoveryEnabled": 1,
     "RouterDiscoveryDhcp": 2,
     "RouterDiscoveryUnchanged": -1,
+}
+NL_ROUTER_DISCOVERY_BEHAVIOR_INV = {
+    0: "RouterDiscoveryDisabled",
+    1: "RouterDiscoveryEnabled",
+    2: "RouterDiscoveryDhcp",
+    -1: "RouterDiscoveryUnchanged",
 }
 NL_LINK_LOCAL_ADDRESS_BEHAVIOR = {
     "LinkLocalAlwaysOff": 0,
@@ -361,9 +718,19 @@ NL_LINK_LOCAL_ADDRESS_BEHAVIOR = {
     "LinkLocalAlwaysOn": 2,
     "LinkLocalUnchanged": -1,
 }
+NL_LINK_LOCAL_ADDRESS_BEHAVIOR_INV = {
+    0: "LinkLocalAlwaysOff",
+    1: "LinkLocalDelayed",
+    2: "LinkLocalAlwaysOn",
+    -1: "LinkLocalUnchanged",
+}
 MIB_IPSTATS_FORWARDING = {
     "MIB_IP_FORWARDING": 1,
     "MIB_IP_NOT_FORWARDING": 2,
+}
+MIB_IPSTATS_FORWARDING_INV = {
+    1: "MIB_IP_FORWARDING",
+    2: "MIB_IP_NOT_FORWARDING",
 }
 NL_PREFIX_ORIGIN = {
     "IpPrefixOriginOther": 0,
@@ -372,6 +739,14 @@ NL_PREFIX_ORIGIN = {
     "IpPrefixOriginDhcp": 3,
     "IpPrefixOriginRouterAdvertisement": 4,
     "IpPrefixOriginUnchanged": 0x10,
+}
+NL_PREFIX_ORIGIN_INV = {
+    0: "IpPrefixOriginOther",
+    1: "IpPrefixOriginManual",
+    2: "IpPrefixOriginWellKnown",
+    3: "IpPrefixOriginDhcp",
+    4: "IpPrefixOriginRouterAdvertisement",
+    0x10: "IpPrefixOriginUnchanged",
 }
 NL_SUFFIX_ORIGIN = {
     "IpSuffixOriginOther": 0,
@@ -382,12 +757,28 @@ NL_SUFFIX_ORIGIN = {
     "IpSuffixOriginRandom": 5,
     "IpSuffixOriginUnchanged": 0x10,
 }
+NL_SUFFIX_ORIGIN_INV = {
+    0: "IpSuffixOriginOther",
+    1: "IpSuffixOriginManual",
+    2: "IpSuffixOriginWellKnown",
+    3: "IpSuffixOriginDhcp",
+    4: "IpSuffixOriginLinkLayerAddress",
+    5: "IpSuffixOriginRandom",
+    0x10: "IpSuffixOriginUnchanged",
+}
 NL_DAD_STATE = {
     "IpDadStateInvalid": 0,
     "IpDadStateTentative": 1,
     "IpDadStateDuplicate": 2,
     "IpDadStateDeprecated": 3,
     "IpDadStatePreferred": 4,
+}
+NL_DAD_STATE_INV = {
+    0: "IpDadStateInvalid",
+    1: "IpDadStateTentative",
+    2: "IpDadStateDuplicate",
+    3: "IpDadStateDeprecated",
+    4: "IpDadStatePreferred",
 }
 NL_NEIGHBOR_STATE = {
     "NlnsUnreachable": 0,
@@ -399,11 +790,27 @@ NL_NEIGHBOR_STATE = {
     "NlnsPermanent": 6,
     "NlnsMaximum": 7,
 }
+NL_NEIGHBOR_STATE_INV = {
+    0: "NlnsUnreachable",
+    1: "NlnsIncomplete",
+    2: "NlnsProbe",
+    3: "NlnsDelay",
+    4: "NlnsStale",
+    5: "NlnsReachable",
+    6: "NlnsPermanent",
+    7: "NlnsMaximum",
+}
 MIB_IPFORWARD_TYPE = {
     "MIB_IPROUTE_TYPE_OTHER": 1,
     "MIB_IPROUTE_TYPE_INVALID": 2,
     "MIB_IPROUTE_TYPE_DIRECT": 3,
     "MIB_IPROUTE_TYPE_INDIRECT": 4,
+}
+MIB_IPFORWARD_TYPE_INV = {
+    1: "MIB_IPROUTE_TYPE_OTHER",
+    2: "MIB_IPROUTE_TYPE_INVALID",
+    3: "MIB_IPROUTE_TYPE_DIRECT",
+    4: "MIB_IPROUTE_TYPE_INDIRECT",
 }
 NET_ADDRESS_FORMAT = {
     "NET_ADDRESS_FORMAT_UNSPECIFIED": 0,
@@ -411,11 +818,23 @@ NET_ADDRESS_FORMAT = {
     "NET_ADDRESS_IPV4": 2,
     "NET_ADDRESS_IPV6": 3,
 }
+NET_ADDRESS_FORMAT_INV = {
+    0: "NET_ADDRESS_FORMAT_UNSPECIFIED",
+    1: "NET_ADDRESS_DNS_NAME",
+    2: "NET_ADDRESS_IPV4",
+    3: "NET_ADDRESS_IPV6",
+}
 _FIXED_INFO_NODETYPE_ = {
     "BROADCAST_NODETYPE": 1,
     "PEER_TO_PEER_NODETYPE": 2,
     "MIXED_NODETYPE": 4,
     "HYBRID_NODETYPE": 8,
+}
+_FIXED_INFO_NODETYPE__INV = {
+    1: "BROADCAST_NODETYPE",
+    2: "PEER_TO_PEER_NODETYPE",
+    4: "MIXED_NODETYPE",
+    8: "HYBRID_NODETYPE",
 }
 TCP_RTO_ALGORITHM = {
     "MIB_TCP_RTO_OTHER": 1,
@@ -423,8 +842,17 @@ TCP_RTO_ALGORITHM = {
     "MIB_TCP_RTO_RSRE": 3,
     "MIB_TCP_RTO_VANJ": 4,
 }
+TCP_RTO_ALGORITHM_INV = {
+    1: "MIB_TCP_RTO_OTHER",
+    2: "MIB_TCP_RTO_CONSTANT",
+    3: "MIB_TCP_RTO_RSRE",
+    4: "MIB_TCP_RTO_VANJ",
+}
 TCPIP_OWNER_MODULE_INFO_CLASS = {
     "TCPIP_OWNER_MODULE_INFO_BASIC": 0,
+}
+TCPIP_OWNER_MODULE_INFO_CLASS_INV = {
+    0: "TCPIP_OWNER_MODULE_INFO_BASIC",
 }
 TCP_ESTATS_TYPE = {
     "TcpConnectionEstatsSynOpts": 0,
@@ -438,9 +866,25 @@ TCP_ESTATS_TYPE = {
     "TcpConnectionEstatsFineRtt": 8,
     "TcpConnectionEstatsMaximum": 9,
 }
+TCP_ESTATS_TYPE_INV = {
+    0: "TcpConnectionEstatsSynOpts",
+    1: "TcpConnectionEstatsData",
+    2: "TcpConnectionEstatsSndCong",
+    3: "TcpConnectionEstatsPath",
+    4: "TcpConnectionEstatsSendBuff",
+    5: "TcpConnectionEstatsRec",
+    6: "TcpConnectionEstatsObsRec",
+    7: "TcpConnectionEstatsBandwidth",
+    8: "TcpConnectionEstatsFineRtt",
+    9: "TcpConnectionEstatsMaximum",
+}
 MIB_IF_TABLE_LEVEL = {
     "MibIfTableNormal": 0,
     "MibIfTableRaw": 1,
+}
+MIB_IF_TABLE_LEVEL_INV = {
+    0: "MibIfTableNormal",
+    1: "MibIfTableRaw",
 }
 TCP_TABLE_CLASS = {
     "TCP_TABLE_BASIC_LISTENER": 0,
@@ -453,10 +897,26 @@ TCP_TABLE_CLASS = {
     "TCP_TABLE_OWNER_MODULE_CONNECTIONS": 7,
     "TCP_TABLE_OWNER_MODULE_ALL": 8,
 }
+TCP_TABLE_CLASS_INV = {
+    0: "TCP_TABLE_BASIC_LISTENER",
+    1: "TCP_TABLE_BASIC_CONNECTIONS",
+    2: "TCP_TABLE_BASIC_ALL",
+    3: "TCP_TABLE_OWNER_PID_LISTENER",
+    4: "TCP_TABLE_OWNER_PID_CONNECTIONS",
+    5: "TCP_TABLE_OWNER_PID_ALL",
+    6: "TCP_TABLE_OWNER_MODULE_LISTENER",
+    7: "TCP_TABLE_OWNER_MODULE_CONNECTIONS",
+    8: "TCP_TABLE_OWNER_MODULE_ALL",
+}
 UDP_TABLE_CLASS = {
     "UDP_TABLE_BASIC": 0,
     "UDP_TABLE_OWNER_PID": 1,
     "UDP_TABLE_OWNER_MODULE": 2,
+}
+UDP_TABLE_CLASS_INV = {
+    0: "UDP_TABLE_BASIC",
+    1: "UDP_TABLE_OWNER_PID",
+    2: "UDP_TABLE_OWNER_MODULE",
 }
 
 def iphlpapi_GetAdapterIndex(jitter):

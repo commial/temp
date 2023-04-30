@@ -3,8 +3,16 @@ CLFS_RECORD_TYPE = {
     "ClfsDataRecord": 0x01,
     "ClfsRestartRecord": 0x02,
 }
+CLFS_RECORD_TYPE_INV = {
+    0x00: "ClfsNullRecord",
+    0x01: "ClfsDataRecord",
+    0x02: "ClfsRestartRecord",
+}
 CLFS_IOSTATS_CLASS = {
     "ClfsIoStatsDefault": 0x0000,
+}
+CLFS_IOSTATS_CLASS_INV = {
+    0x0000: "ClfsIoStatsDefault",
 }
 CLFS_CONTEXT_MODE = {
     "ClfsContextNone": 0x00,
@@ -12,9 +20,19 @@ CLFS_CONTEXT_MODE = {
     "ClfsContextPrevious": 0x02,
     "ClfsContextForward": 0x03,
 }
+CLFS_CONTEXT_MODE_INV = {
+    0x00: "ClfsContextNone",
+    0x01: "ClfsContextUndoNext",
+    0x02: "ClfsContextPrevious",
+    0x03: "ClfsContextForward",
+}
 CLFS_LOG_ARCHIVE_MODE = {
     "ClfsLogArchiveEnabled": 0x01,
     "ClfsLogArchiveDisabled": 0x02,
+}
+CLFS_LOG_ARCHIVE_MODE_INV = {
+    0x01: "ClfsLogArchiveEnabled",
+    0x02: "ClfsLogArchiveDisabled",
 }
 CLFS_MGMT_POLICY_TYPE = {
     "ClfsMgmtPolicyMaximumSize": 0,
@@ -28,20 +46,47 @@ CLFS_MGMT_POLICY_TYPE = {
     "ClfsMgmtPolicyNewContainerSuffix": 8,
     "ClfsMgmtPolicyNewContainerExtension": 9,
 }
+CLFS_MGMT_POLICY_TYPE_INV = {
+    0: "ClfsMgmtPolicyMaximumSize",
+    1: "ClfsMgmtPolicyMinimumSize",
+    2: "ClfsMgmtPolicyNewContainerSize",
+    3: "ClfsMgmtPolicyGrowthRate",
+    4: "ClfsMgmtPolicyLogTail",
+    5: "ClfsMgmtPolicyAutoShrink",
+    6: "ClfsMgmtPolicyAutoGrow",
+    7: "ClfsMgmtPolicyNewContainerPrefix",
+    8: "ClfsMgmtPolicyNewContainerSuffix",
+    9: "ClfsMgmtPolicyNewContainerExtension",
+}
 CLFS_MGMT_NOTIFICATION_TYPE = {
     "ClfsMgmtAdvanceTailNotification": 0,
     "ClfsMgmtLogFullHandlerNotification": 1,
     "ClfsMgmtLogUnpinnedNotification": 2,
     "ClfsMgmtLogWriteNotification": 3,
 }
+CLFS_MGMT_NOTIFICATION_TYPE_INV = {
+    0: "ClfsMgmtAdvanceTailNotification",
+    1: "ClfsMgmtLogFullHandlerNotification",
+    2: "ClfsMgmtLogUnpinnedNotification",
+    3: "ClfsMgmtLogWriteNotification",
+}
 _CREATE_LOG_DISPOSITION_ = {
     "CREATE_NEW": 1,
     "OPEN_EXISTING": 3,
     "OPEN_ALWAYS": 4,
 }
+_CREATE_LOG_DISPOSITION__INV = {
+    1: "CREATE_NEW",
+    3: "OPEN_EXISTING",
+    4: "OPEN_ALWAYS",
+}
 _CREATE_LOG_FLAGS_ATTRIBUTES_ = {
     "FILE_ATTRIBUTE_ARCHIVE": 0x00000020,
     "FILE_FLAG_OVERLAPPED": 0x40000000,
+}
+_CREATE_LOG_FLAGS_ATTRIBUTES__INV = {
+    0x00000020: "FILE_ATTRIBUTE_ARCHIVE",
+    0x40000000: "FILE_FLAG_OVERLAPPED",
 }
 
 def clfsw32_AlignReservedLog(jitter):
