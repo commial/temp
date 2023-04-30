@@ -1,7 +1,9 @@
 
 def wecapi_EcClose(jitter):
     """
-    [Wecapi.dll] BOOL EcClose(EC_HANDLE Object)
+    BOOL EcClose(
+        EC_HANDLE Object
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Object"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,10 @@ def wecapi_EcClose(jitter):
 
 def wecapi_EcDeleteSubscription(jitter):
     """
-    [Wecapi.dll] BOOL EcDeleteSubscription(LPCWSTR SubscriptionName, DWORD Flags)
+    BOOL EcDeleteSubscription(
+        LPCWSTR SubscriptionName,
+        DWORD Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["SubscriptionName", "Flags"])
     raise RuntimeError('API not implemented')
@@ -17,7 +22,12 @@ def wecapi_EcDeleteSubscription(jitter):
 
 def wecapi_EcEnumNextSubscription(jitter):
     """
-    [Wecapi.dll] BOOL EcEnumNextSubscription(EC_HANDLE SubscriptionEnum, DWORD SubscriptionNameBufferSize, LPWSTR SubscriptionNameBuffer, PDWORD SubscriptionNameBufferUsed)
+    BOOL EcEnumNextSubscription(
+        EC_HANDLE SubscriptionEnum,
+        DWORD SubscriptionNameBufferSize,
+        LPWSTR SubscriptionNameBuffer,
+        PDWORD SubscriptionNameBufferUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["SubscriptionEnum", "SubscriptionNameBufferSize", "SubscriptionNameBuffer", "SubscriptionNameBufferUsed"])
     raise RuntimeError('API not implemented')
@@ -25,7 +35,15 @@ def wecapi_EcEnumNextSubscription(jitter):
 
 def wecapi_EcGetObjectArrayProperty(jitter):
     """
-    [Wecapi.dll] BOOL EcGetObjectArrayProperty(EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray, EC_SUBSCRIPTION_PROPERTY_ID PropertyId, DWORD ArrayIndex, DWORD Flags, DWORD PropertyValueBufferSize, PEC_VARIANT PropertyValueBuffer, PDWORD PropertyValueBufferUsed)
+    BOOL EcGetObjectArrayProperty(
+        EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray,
+        EC_SUBSCRIPTION_PROPERTY_ID PropertyId,
+        DWORD ArrayIndex,
+        DWORD Flags,
+        DWORD PropertyValueBufferSize,
+        PEC_VARIANT PropertyValueBuffer,
+        PDWORD PropertyValueBufferUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ObjectArray", "PropertyId", "ArrayIndex", "Flags", "PropertyValueBufferSize", "PropertyValueBuffer", "PropertyValueBufferUsed"])
     raise RuntimeError('API not implemented')
@@ -33,7 +51,10 @@ def wecapi_EcGetObjectArrayProperty(jitter):
 
 def wecapi_EcGetObjectArraySize(jitter):
     """
-    [Wecapi.dll] BOOL EcGetObjectArraySize(EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray, PDWORD ObjectArraySize)
+    BOOL EcGetObjectArraySize(
+        EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray,
+        PDWORD ObjectArraySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ObjectArray", "ObjectArraySize"])
     raise RuntimeError('API not implemented')
@@ -41,7 +62,14 @@ def wecapi_EcGetObjectArraySize(jitter):
 
 def wecapi_EcGetSubscriptionProperty(jitter):
     """
-    [Wecapi.dll] BOOL EcGetSubscriptionProperty(EC_HANDLE Subscription, EC_SUBSCRIPTION_PROPERTY_ID PropertyId, DWORD Flags, DWORD PropertyValueBufferSize, PEC_VARIANT PropertyValueBuffer, PDWORD PropertyValueBufferUsed)
+    BOOL EcGetSubscriptionProperty(
+        EC_HANDLE Subscription,
+        EC_SUBSCRIPTION_PROPERTY_ID PropertyId,
+        DWORD Flags,
+        DWORD PropertyValueBufferSize,
+        PEC_VARIANT PropertyValueBuffer,
+        PDWORD PropertyValueBufferUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Subscription", "PropertyId", "Flags", "PropertyValueBufferSize", "PropertyValueBuffer", "PropertyValueBufferUsed"])
     raise RuntimeError('API not implemented')
@@ -49,7 +77,15 @@ def wecapi_EcGetSubscriptionProperty(jitter):
 
 def wecapi_EcGetSubscriptionRunTimeStatus(jitter):
     """
-    [Wecapi.dll] BOOL EcGetSubscriptionRunTimeStatus(LPCWSTR SubscriptionName, EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID StatusInfoId, LPCWSTR EventSourceName, DWORD Flags, DWORD StatusValueBufferSize, PEC_VARIANT StatusValueBuffer, PDWORD StatusValueBufferUsed)
+    BOOL EcGetSubscriptionRunTimeStatus(
+        LPCWSTR SubscriptionName,
+        EC_SUBSCRIPTION_RUNTIME_STATUS_INFO_ID StatusInfoId,
+        LPCWSTR EventSourceName,
+        DWORD Flags,
+        DWORD StatusValueBufferSize,
+        PEC_VARIANT StatusValueBuffer,
+        PDWORD StatusValueBufferUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["SubscriptionName", "StatusInfoId", "EventSourceName", "Flags", "StatusValueBufferSize", "StatusValueBuffer", "StatusValueBufferUsed"])
     raise RuntimeError('API not implemented')
@@ -57,7 +93,10 @@ def wecapi_EcGetSubscriptionRunTimeStatus(jitter):
 
 def wecapi_EcInsertObjectArrayElement(jitter):
     """
-    [Wecapi.dll] BOOL EcInsertObjectArrayElement(EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray, DWORD ArrayIndex)
+    BOOL EcInsertObjectArrayElement(
+        EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray,
+        DWORD ArrayIndex
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ObjectArray", "ArrayIndex"])
     raise RuntimeError('API not implemented')
@@ -65,7 +104,9 @@ def wecapi_EcInsertObjectArrayElement(jitter):
 
 def wecapi_EcOpenSubscriptionEnum(jitter):
     """
-    [Wecapi.dll] EC_HANDLE EcOpenSubscriptionEnum(DWORD Flags)
+    EC_HANDLE EcOpenSubscriptionEnum(
+        DWORD Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Flags"])
     raise RuntimeError('API not implemented')
@@ -73,7 +114,11 @@ def wecapi_EcOpenSubscriptionEnum(jitter):
 
 def wecapi_EcOpenSubscription(jitter):
     """
-    [Wecapi.dll] EC_HANDLE EcOpenSubscription(LPCWSTR SubscriptionName, DWORD AccessMask, DWORD Flags)
+    EC_HANDLE EcOpenSubscription(
+        LPCWSTR SubscriptionName,
+        DWORD AccessMask,
+        DWORD Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["SubscriptionName", "AccessMask", "Flags"])
     raise RuntimeError('API not implemented')
@@ -81,7 +126,10 @@ def wecapi_EcOpenSubscription(jitter):
 
 def wecapi_EcSaveSubscription(jitter):
     """
-    [Wecapi.dll] BOOL EcSaveSubscription(EC_HANDLE Subscription, DWORD Flags)
+    BOOL EcSaveSubscription(
+        EC_HANDLE Subscription,
+        DWORD Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Subscription", "Flags"])
     raise RuntimeError('API not implemented')
@@ -89,7 +137,13 @@ def wecapi_EcSaveSubscription(jitter):
 
 def wecapi_EcSetObjectArrayProperty(jitter):
     """
-    [Wecapi.dll] BOOL EcSetObjectArrayProperty(EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray, EC_SUBSCRIPTION_PROPERTY_ID PropertyId, DWORD ArrayIndex, DWORD Flags, PEC_VARIANT PropertyValue)
+    BOOL EcSetObjectArrayProperty(
+        EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray,
+        EC_SUBSCRIPTION_PROPERTY_ID PropertyId,
+        DWORD ArrayIndex,
+        DWORD Flags,
+        PEC_VARIANT PropertyValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ObjectArray", "PropertyId", "ArrayIndex", "Flags", "PropertyValue"])
     raise RuntimeError('API not implemented')
@@ -97,7 +151,12 @@ def wecapi_EcSetObjectArrayProperty(jitter):
 
 def wecapi_EcSetSubscriptionProperty(jitter):
     """
-    [Wecapi.dll] BOOL EcSetSubscriptionProperty(EC_HANDLE Subscription, EC_SUBSCRIPTION_PROPERTY_ID PropertyId, DWORD Flags, PEC_VARIANT PropertyValue)
+    BOOL EcSetSubscriptionProperty(
+        EC_HANDLE Subscription,
+        EC_SUBSCRIPTION_PROPERTY_ID PropertyId,
+        DWORD Flags,
+        PEC_VARIANT PropertyValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Subscription", "PropertyId", "Flags", "PropertyValue"])
     raise RuntimeError('API not implemented')
@@ -105,7 +164,10 @@ def wecapi_EcSetSubscriptionProperty(jitter):
 
 def wecapi_EcRemoveObjectArrayElement(jitter):
     """
-    [Wecapi.dll] BOOL EcRemoveObjectArrayElement(EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray, DWORD ArrayIndex)
+    BOOL EcRemoveObjectArrayElement(
+        EC_OBJECT_ARRAY_PROPERTY_HANDLE ObjectArray,
+        DWORD ArrayIndex
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ObjectArray", "ArrayIndex"])
     raise RuntimeError('API not implemented')
@@ -113,7 +175,11 @@ def wecapi_EcRemoveObjectArrayElement(jitter):
 
 def wecapi_EcRetrySubscription(jitter):
     """
-    [Wecapi.dll] BOOL EcRetrySubscription(LPCWSTR SubscriptionName, LPCWSTR EventSourceName, DWORD Flags)
+    BOOL EcRetrySubscription(
+        LPCWSTR SubscriptionName,
+        LPCWSTR EventSourceName,
+        DWORD Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["SubscriptionName", "EventSourceName", "Flags"])
     raise RuntimeError('API not implemented')

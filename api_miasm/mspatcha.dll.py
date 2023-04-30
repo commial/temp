@@ -1,7 +1,12 @@
 
 def mspatcha_ApplyPatchToFile(jitter, get_str, set_str):
     """
-    [mspatcha.dll] BOOL ApplyPatchToFile(LPCTSTR PatchFileName, LPCTSTR OldFileName, LPCTSTR NewFileName, [ApplyOptionFlags] ApplyOptionFlags)
+    BOOL ApplyPatchToFile(
+        LPCTSTR PatchFileName,
+        LPCTSTR OldFileName,
+        LPCTSTR NewFileName,
+        [ApplyOptionFlags] ApplyOptionFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileName", "OldFileName", "NewFileName", "ApplyOptionFlags"])
     raise RuntimeError('API not implemented')
@@ -15,7 +20,19 @@ def mspatcha_ApplyPatchToFileW(jitter):
 
 def mspatcha_ApplyPatchToFileByBuffers(jitter):
     """
-    [mspatcha.dll] BOOL ApplyPatchToFileByBuffers(PBYTE PatchFileMapped, ULONG PatchFileSize, PBYTE OldFileMapped, ULONG OldFileSize, PBYTE* NewFileBuffer, ULONG NewFileBufferSize, ULONG* NewFileActualSize, FILETIME* NewFileTime, [ApplyOptionFlags] ApplyOptionFlags, PPATCH_PROGRESS_CALLBACK ProgressCallback, PVOID CallbackContext)
+    BOOL ApplyPatchToFileByBuffers(
+        PBYTE PatchFileMapped,
+        ULONG PatchFileSize,
+        PBYTE OldFileMapped,
+        ULONG OldFileSize,
+        PBYTE* NewFileBuffer,
+        ULONG NewFileBufferSize,
+        ULONG* NewFileActualSize,
+        FILETIME* NewFileTime,
+        [ApplyOptionFlags] ApplyOptionFlags,
+        PPATCH_PROGRESS_CALLBACK ProgressCallback,
+        PVOID CallbackContext
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileMapped", "PatchFileSize", "OldFileMapped", "OldFileSize", "NewFileBuffer", "NewFileBufferSize", "NewFileActualSize", "NewFileTime", "ApplyOptionFlags", "ProgressCallback", "CallbackContext"])
     raise RuntimeError('API not implemented')
@@ -23,7 +40,12 @@ def mspatcha_ApplyPatchToFileByBuffers(jitter):
 
 def mspatcha_ApplyPatchToFileByHandles(jitter):
     """
-    [mspatcha.dll] BOOL ApplyPatchToFileByHandles(HANDLE PatchFileHandle, HANDLE OldFileHandle, HANDLE NewFileHandle, [ApplyOptionFlags] ApplyOptionFlags)
+    BOOL ApplyPatchToFileByHandles(
+        HANDLE PatchFileHandle,
+        HANDLE OldFileHandle,
+        HANDLE NewFileHandle,
+        [ApplyOptionFlags] ApplyOptionFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileHandle", "OldFileHandle", "NewFileHandle", "ApplyOptionFlags"])
     raise RuntimeError('API not implemented')
@@ -31,7 +53,14 @@ def mspatcha_ApplyPatchToFileByHandles(jitter):
 
 def mspatcha_ApplyPatchToFileByHandlesEx(jitter):
     """
-    [mspatcha.dll] BOOL ApplyPatchToFileByHandlesEx(HANDLE PatchFileHandle, HANDLE OldFileHandle, HANDLE NewFileHandle, [ApplyOptionFlags] ApplyOptionFlags, PPATCH_PROGRESS_CALLBACK ProgressCallback, PVOID CallbackContext)
+    BOOL ApplyPatchToFileByHandlesEx(
+        HANDLE PatchFileHandle,
+        HANDLE OldFileHandle,
+        HANDLE NewFileHandle,
+        [ApplyOptionFlags] ApplyOptionFlags,
+        PPATCH_PROGRESS_CALLBACK ProgressCallback,
+        PVOID CallbackContext
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileHandle", "OldFileHandle", "NewFileHandle", "ApplyOptionFlags", "ProgressCallback", "CallbackContext"])
     raise RuntimeError('API not implemented')
@@ -39,7 +68,14 @@ def mspatcha_ApplyPatchToFileByHandlesEx(jitter):
 
 def mspatcha_ApplyPatchToFileEx(jitter, get_str, set_str):
     """
-    [mspatcha.dll] BOOL ApplyPatchToFileEx(LPCTSTR PatchFileName, LPCTSTR OldFileName, LPCTSTR NewFileName, [ApplyOptionFlags] ApplyOptionFlags, PPATCH_PROGRESS_CALLBACK ProgressCallback, PVOID CallbackContext)
+    BOOL ApplyPatchToFileEx(
+        LPCTSTR PatchFileName,
+        LPCTSTR OldFileName,
+        LPCTSTR NewFileName,
+        [ApplyOptionFlags] ApplyOptionFlags,
+        PPATCH_PROGRESS_CALLBACK ProgressCallback,
+        PVOID CallbackContext
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileName", "OldFileName", "NewFileName", "ApplyOptionFlags", "ProgressCallback", "CallbackContext"])
     raise RuntimeError('API not implemented')
@@ -53,7 +89,17 @@ def mspatcha_ApplyPatchToFileExW(jitter):
 
 def mspatcha_GetFilePatchSignature(jitter, get_str, set_str):
     """
-    [mspatcha.dll] BOOL GetFilePatchSignature(LPCTSTR FileName, [PatchOptionFlags] OptionFlags, PVOID OptionData, ULONG IgnoreRangeCount, PPATCH_IGNORE_RANGE IgnoreRangeArray, ULONG RetainRangeCount, PPATCH_RETAIN_RANGE RetainRangeArray, ULONG SignatureBufferSize, PVOID SignatureBuffer)
+    BOOL GetFilePatchSignature(
+        LPCTSTR FileName,
+        [PatchOptionFlags] OptionFlags,
+        PVOID OptionData,
+        ULONG IgnoreRangeCount,
+        PPATCH_IGNORE_RANGE IgnoreRangeArray,
+        ULONG RetainRangeCount,
+        PPATCH_RETAIN_RANGE RetainRangeArray,
+        ULONG SignatureBufferSize,
+        PVOID SignatureBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FileName", "OptionFlags", "OptionData", "IgnoreRangeCount", "IgnoreRangeArray", "RetainRangeCount", "RetainRangeArray", "SignatureBufferSize", "SignatureBuffer"])
     raise RuntimeError('API not implemented')
@@ -67,7 +113,17 @@ def mspatcha_GetFilePatchSignatureW(jitter):
 
 def mspatcha_GetFilePatchSignatureByBuffer(jitter):
     """
-    [mspatcha.dll] BOOL GetFilePatchSignatureByBuffer(PBYTE FileBufferWritable, ULONG FileSize, ULONG OptionFlags, PVOID OptionData, ULONG IgnoreRangeCount, PPATCH_IGNORE_RANGE IgnoreRangeArray, ULONG RetainRangeCount, PPATCH_RETAIN_RANGE RetainRangeArray, ULONG SignatureBufferSize)
+    BOOL GetFilePatchSignatureByBuffer(
+        PBYTE FileBufferWritable,
+        ULONG FileSize,
+        ULONG OptionFlags,
+        PVOID OptionData,
+        ULONG IgnoreRangeCount,
+        PPATCH_IGNORE_RANGE IgnoreRangeArray,
+        ULONG RetainRangeCount,
+        PPATCH_RETAIN_RANGE RetainRangeArray,
+        ULONG SignatureBufferSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FileBufferWritable", "FileSize", "OptionFlags", "OptionData", "IgnoreRangeCount", "IgnoreRangeArray", "RetainRangeCount", "RetainRangeArray", "SignatureBufferSize"])
     raise RuntimeError('API not implemented')
@@ -75,7 +131,17 @@ def mspatcha_GetFilePatchSignatureByBuffer(jitter):
 
 def mspatcha_GetFilePatchSignatureByHandle(jitter):
     """
-    [mspatcha.dll] BOOL GetFilePatchSignatureByHandle(HANDLE FileHandle, [PatchOptionFlags] OptionFlags, PVOID OptionData, ULONG IgnoreRangeCount, PPATCH_IGNORE_RANGE IgnoreRangeArray, ULONG RetainRangeCount, PPATCH_RETAIN_RANGE RetainRangeArray, ULONG SignatureBufferSize, PVOID SignatureBuffer)
+    BOOL GetFilePatchSignatureByHandle(
+        HANDLE FileHandle,
+        [PatchOptionFlags] OptionFlags,
+        PVOID OptionData,
+        ULONG IgnoreRangeCount,
+        PPATCH_IGNORE_RANGE IgnoreRangeArray,
+        ULONG RetainRangeCount,
+        PPATCH_RETAIN_RANGE RetainRangeArray,
+        ULONG SignatureBufferSize,
+        PVOID SignatureBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FileHandle", "OptionFlags", "OptionData", "IgnoreRangeCount", "IgnoreRangeArray", "RetainRangeCount", "RetainRangeArray", "SignatureBufferSize", "SignatureBuffer"])
     raise RuntimeError('API not implemented')
@@ -83,7 +149,18 @@ def mspatcha_GetFilePatchSignatureByHandle(jitter):
 
 def mspatcha_NormalizeFileForPatchSignature(jitter):
     """
-    [mspatcha.dll] BOOL NormalizeFileForPatchSignature(PVOID FileBuffer, ULONG FileSize, ULONG OptionFlags, PATCH_OPTION_DATA* OptionData, ULONG NewFileCoffBase, ULONG NewFileCoffTime, ULONG IgnoreRangeCount, PPATCH_IGNORE_RANGE IgnoreRangeArray, ULONG RetainRangeCount, PPATCH_RETAIN_RANGE RetainRangeArray)
+    BOOL NormalizeFileForPatchSignature(
+        PVOID FileBuffer,
+        ULONG FileSize,
+        ULONG OptionFlags,
+        PATCH_OPTION_DATA* OptionData,
+        ULONG NewFileCoffBase,
+        ULONG NewFileCoffTime,
+        ULONG IgnoreRangeCount,
+        PPATCH_IGNORE_RANGE IgnoreRangeArray,
+        ULONG RetainRangeCount,
+        PPATCH_RETAIN_RANGE RetainRangeArray
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FileBuffer", "FileSize", "OptionFlags", "OptionData", "NewFileCoffBase", "NewFileCoffTime", "IgnoreRangeCount", "IgnoreRangeArray", "RetainRangeCount", "RetainRangeArray"])
     raise RuntimeError('API not implemented')
@@ -91,7 +168,11 @@ def mspatcha_NormalizeFileForPatchSignature(jitter):
 
 def mspatcha_TestApplyPatchToFile(jitter, get_str, set_str):
     """
-    [mspatcha.dll] BOOL TestApplyPatchToFile(LPCTSTR PatchFileName, LPCTSTR OldFileName, [ApplyOptionFlags] ApplyOptionFlags)
+    BOOL TestApplyPatchToFile(
+        LPCTSTR PatchFileName,
+        LPCTSTR OldFileName,
+        [ApplyOptionFlags] ApplyOptionFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileName", "OldFileName", "ApplyOptionFlags"])
     raise RuntimeError('API not implemented')
@@ -105,7 +186,13 @@ def mspatcha_TestApplyPatchToFileW(jitter):
 
 def mspatcha_TestApplyPatchToFileByBuffers(jitter):
     """
-    [mspatcha.dll] BOOL TestApplyPatchToFileByBuffers(PBYTE PatchFileBuffer, ULONG PatchFileSize, PBYTE OldFileBuffer, ULONG OldFileSize, ULONG* NewFileSize)
+    BOOL TestApplyPatchToFileByBuffers(
+        PBYTE PatchFileBuffer,
+        ULONG PatchFileSize,
+        PBYTE OldFileBuffer,
+        ULONG OldFileSize,
+        ULONG* NewFileSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileBuffer", "PatchFileSize", "OldFileBuffer", "OldFileSize", "NewFileSize"])
     raise RuntimeError('API not implemented')
@@ -113,7 +200,11 @@ def mspatcha_TestApplyPatchToFileByBuffers(jitter):
 
 def mspatcha_TestApplyPatchToFileByHandles(jitter):
     """
-    [mspatcha.dll] BOOL TestApplyPatchToFileByHandles(HANDLE PatchFileHandle, HANDLE OldFileHandle, [ApplyOptionFlags] ApplyOptionFlags)
+    BOOL TestApplyPatchToFileByHandles(
+        HANDLE PatchFileHandle,
+        HANDLE OldFileHandle,
+        [ApplyOptionFlags] ApplyOptionFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["PatchFileHandle", "OldFileHandle", "ApplyOptionFlags"])
     raise RuntimeError('API not implemented')

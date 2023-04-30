@@ -1,7 +1,11 @@
 
 def *_DllMain(jitter):
     """
-    [*] BOOL DllMain(HINSTANCE hinstDLL, [DLLMAIN_REASON] fdwReason, LPVOID lpvReserved)
+    BOOL DllMain(
+        HINSTANCE hinstDLL,
+        [DLLMAIN_REASON] fdwReason,
+        LPVOID lpvReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hinstDLL", "fdwReason", "lpvReserved"])
     raise RuntimeError('API not implemented')
@@ -9,7 +13,11 @@ def *_DllMain(jitter):
 
 def *_DllGetClassObject(jitter):
     """
-    [*] HRESULT DllGetClassObject(REFCLSID rclsid, REFIID riid, LPVOID* ppv)
+    HRESULT DllGetClassObject(
+        REFCLSID rclsid,
+        REFIID riid,
+        LPVOID* ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["rclsid", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -17,7 +25,7 @@ def *_DllGetClassObject(jitter):
 
 def *_DllCanUnloadNow(jitter):
     """
-    [*] HRESULT DllCanUnloadNow()
+    HRESULT DllCanUnloadNow()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -25,7 +33,7 @@ def *_DllCanUnloadNow(jitter):
 
 def *_DllRegisterServer(jitter):
     """
-    [*] HRESULT DllRegisterServer()
+    HRESULT DllRegisterServer()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -33,7 +41,7 @@ def *_DllRegisterServer(jitter):
 
 def *_DllUnregisterServer(jitter):
     """
-    [*] HRESULT DllUnregisterServer()
+    HRESULT DllUnregisterServer()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -41,7 +49,10 @@ def *_DllUnregisterServer(jitter):
 
 def *_DllDebugObjectRPCHook(jitter):
     """
-    [*] BOOL DllDebugObjectRPCHook(BOOL fTrace, LPORPC_INIT_ARGS lpOrpcInitArgs)
+    BOOL DllDebugObjectRPCHook(
+        BOOL fTrace,
+        LPORPC_INIT_ARGS lpOrpcInitArgs
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["fTrace", "lpOrpcInitArgs"])
     raise RuntimeError('API not implemented')
@@ -49,7 +60,12 @@ def *_DllDebugObjectRPCHook(jitter):
 
 def *_CPlApplet(jitter):
     """
-    [*] LONG CPlApplet(HWND hwndCPl, [CPL_MSG] uMsg, LPARAM lParam1, LPARAM lParam2)
+    LONG CPlApplet(
+        HWND hwndCPl,
+        [CPL_MSG] uMsg,
+        LPARAM lParam1,
+        LPARAM lParam2
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndCPl", "uMsg", "lParam1", "lParam2"])
     raise RuntimeError('API not implemented')
@@ -57,7 +73,9 @@ def *_CPlApplet(jitter):
 
 def *_DllGetVersion(jitter):
     """
-    [*] HRESULT DllGetVersion(DLLVERSIONINFO* pdvi)
+    HRESULT DllGetVersion(
+        DLLVERSIONINFO* pdvi
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pdvi"])
     raise RuntimeError('API not implemented')
@@ -65,7 +83,10 @@ def *_DllGetVersion(jitter):
 
 def *_DllInstall(jitter):
     """
-    [*] HRESULT DllInstall(BOOL bInstall, PCWSTR pszCmdLine)
+    HRESULT DllInstall(
+        BOOL bInstall,
+        PCWSTR pszCmdLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["bInstall", "pszCmdLine"])
     raise RuntimeError('API not implemented')
@@ -73,7 +94,10 @@ def *_DllInstall(jitter):
 
 def *_DllGetActivationFactory(jitter):
     """
-    [*] HRESULT DllGetActivationFactory(HSTRING activatableClassId, IActivationFactory** factory)
+    HRESULT DllGetActivationFactory(
+        HSTRING activatableClassId,
+        IActivationFactory** factory
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["activatableClassId", "factory"])
     raise RuntimeError('API not implemented')
@@ -81,7 +105,11 @@ def *_DllGetActivationFactory(jitter):
 
 def *__CorDllMain(jitter):
     """
-    [*] BOOL _CorDllMain(HINSTANCE hInst, DWORD dwReason, LPVOID lpReserved)
+    BOOL _CorDllMain(
+        HINSTANCE hInst,
+        DWORD dwReason,
+        LPVOID lpReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInst", "dwReason", "lpReserved"])
     raise RuntimeError('API not implemented')
@@ -89,7 +117,7 @@ def *__CorDllMain(jitter):
 
 def *__CorExeMain(jitter):
     """
-    [*] __int32 _CorExeMain()
+    __int32 _CorExeMain()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -97,7 +125,13 @@ def *__CorExeMain(jitter):
 
 def *__CorExeMain2(jitter):
     """
-    [*] __int32 _CorExeMain2(PBYTE pUnmappedPE, DWORD cUnmappedPE, LPWSTR pImageNameIn, LPWSTR pLoadersFileName, LPWSTR pCmdLine)
+    __int32 _CorExeMain2(
+        PBYTE pUnmappedPE,
+        DWORD cUnmappedPE,
+        LPWSTR pImageNameIn,
+        LPWSTR pLoadersFileName,
+        LPWSTR pCmdLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pUnmappedPE", "cUnmappedPE", "pImageNameIn", "pLoadersFileName", "pCmdLine"])
     raise RuntimeError('API not implemented')
@@ -105,7 +139,9 @@ def *__CorExeMain2(jitter):
 
 def *__CorImageUnloading(jitter):
     """
-    [*] STDAPI_(VOID) _CorImageUnloading(PVOID* ImageBase)
+    STDAPI_(VOID) _CorImageUnloading(
+        PVOID* ImageBase
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ImageBase"])
     raise RuntimeError('API not implemented')
@@ -113,7 +149,10 @@ def *__CorImageUnloading(jitter):
 
 def *__CorValidateImage(jitter):
     """
-    [*] STDAPI _CorValidateImage(PVOID* ImageBase, LPCWSTR FileName)
+    STDAPI _CorValidateImage(
+        PVOID* ImageBase,
+        LPCWSTR FileName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ImageBase", "FileName"])
     raise RuntimeError('API not implemented')

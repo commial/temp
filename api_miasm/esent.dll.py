@@ -1,7 +1,15 @@
 
 def esent_JetAddColumn(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetAddColumn(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szColumnName, const JET_COLUMNDEF* pcolumndef, const void* pvDefault, unsigned long cbDefault, JET_COLUMNID* pcolumnid)
+    JET_ERR JetAddColumn(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szColumnName,
+        const JET_COLUMNDEF* pcolumndef,
+        const void* pvDefault,
+        unsigned long cbDefault,
+        JET_COLUMNID* pcolumnid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szColumnName", "pcolumndef", "pvDefault", "cbDefault", "pcolumnid"])
     raise RuntimeError('API not implemented')
@@ -15,7 +23,11 @@ def esent_JetAddColumnW(jitter):
 
 def esent_JetAttachDatabase(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetAttachDatabase(JET_SESID sesid, JET_PCSTR szFilename, [JetOpenDatabaseFlags] grbit)
+    JET_ERR JetAttachDatabase(
+        JET_SESID sesid,
+        JET_PCSTR szFilename,
+        [JetOpenDatabaseFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename", "grbit"])
     raise RuntimeError('API not implemented')
@@ -29,7 +41,12 @@ def esent_JetAttachDatabaseW(jitter):
 
 def esent_JetAttachDatabase2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetAttachDatabase2(JET_SESID sesid, JET_PCSTR szFilename, const unsigned long cpgDatabaseSizeMax, [JetOpenDatabaseFlags] grbit)
+    JET_ERR JetAttachDatabase2(
+        JET_SESID sesid,
+        JET_PCSTR szFilename,
+        const unsigned long cpgDatabaseSizeMax,
+        [JetOpenDatabaseFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename", "cpgDatabaseSizeMax", "grbit"])
     raise RuntimeError('API not implemented')
@@ -43,7 +60,11 @@ def esent_JetAttachDatabase2W(jitter):
 
 def esent_JetBackup(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetBackup(JET_PCSTR szBackupPath, [JetBackupFlags] grbit, JET_PFNSTATUS pfnStatus)
+    JET_ERR JetBackup(
+        JET_PCSTR szBackupPath,
+        [JetBackupFlags] grbit,
+        JET_PFNSTATUS pfnStatus
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szBackupPath", "grbit", "pfnStatus"])
     raise RuntimeError('API not implemented')
@@ -57,7 +78,12 @@ def esent_JetBackupW(jitter):
 
 def esent_JetBackupInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetBackupInstance(JET_INSTANCE instance, JET_PCSTR szBackupPath, [JetBackupFlags] grbit, JET_PFNSTATUS pfnStatus)
+    JET_ERR JetBackupInstance(
+        JET_INSTANCE instance,
+        JET_PCSTR szBackupPath,
+        [JetBackupFlags] grbit,
+        JET_PFNSTATUS pfnStatus
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "szBackupPath", "grbit", "pfnStatus"])
     raise RuntimeError('API not implemented')
@@ -71,7 +97,9 @@ def esent_JetBackupInstanceW(jitter):
 
 def esent_JetBeginExternalBackup(jitter):
     """
-    [esent.dll] JET_ERR JetBeginExternalBackup([JetBackupFlags] grbit)
+    JET_ERR JetBeginExternalBackup(
+        [JetBackupFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["grbit"])
     raise RuntimeError('API not implemented')
@@ -79,7 +107,10 @@ def esent_JetBeginExternalBackup(jitter):
 
 def esent_JetBeginExternalBackupInstance(jitter):
     """
-    [esent.dll] JET_ERR JetBeginExternalBackupInstance(JET_INSTANCE instance, [JetBackupFlags] grbit)
+    JET_ERR JetBeginExternalBackupInstance(
+        JET_INSTANCE instance,
+        [JetBackupFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "grbit"])
     raise RuntimeError('API not implemented')
@@ -87,7 +118,12 @@ def esent_JetBeginExternalBackupInstance(jitter):
 
 def esent_JetBeginSession(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetBeginSession(JET_INSTANCE instance, JET_SESID* psesid, JET_PCSTR szUserName, JET_PCSTR szPassword)
+    JET_ERR JetBeginSession(
+        JET_INSTANCE instance,
+        JET_SESID* psesid,
+        JET_PCSTR szUserName,
+        JET_PCSTR szPassword
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "psesid", "szUserName", "szPassword"])
     raise RuntimeError('API not implemented')
@@ -101,7 +137,9 @@ def esent_JetBeginSessionW(jitter):
 
 def esent_JetBeginTransaction(jitter):
     """
-    [esent.dll] JET_ERR JetBeginTransaction(JET_SESID sesid)
+    JET_ERR JetBeginTransaction(
+        JET_SESID sesid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid"])
     raise RuntimeError('API not implemented')
@@ -109,7 +147,10 @@ def esent_JetBeginTransaction(jitter):
 
 def esent_JetBeginTransaction2(jitter):
     """
-    [esent.dll] JET_ERR JetBeginTransaction2(JET_SESID sesid, [JetBeginTransaction2Flags] grbit)
+    JET_ERR JetBeginTransaction2(
+        JET_SESID sesid,
+        [JetBeginTransaction2Flags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -117,7 +158,11 @@ def esent_JetBeginTransaction2(jitter):
 
 def esent_JetCloseDatabase(jitter):
     """
-    [esent.dll] JET_ERR JetCloseDatabase(JET_SESID sesid, JET_DBID dbid, JET_GRBIT grbit)
+    JET_ERR JetCloseDatabase(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -125,7 +170,9 @@ def esent_JetCloseDatabase(jitter):
 
 def esent_JetCloseFile(jitter):
     """
-    [esent.dll] JET_ERR JetCloseFile(JET_HANDLE hfFile)
+    JET_ERR JetCloseFile(
+        JET_HANDLE hfFile
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hfFile"])
     raise RuntimeError('API not implemented')
@@ -133,7 +180,10 @@ def esent_JetCloseFile(jitter):
 
 def esent_JetCloseFileInstance(jitter):
     """
-    [esent.dll] JET_ERR JetCloseFileInstance(JET_INSTANCE instance, JET_HANDLE hfFile)
+    JET_ERR JetCloseFileInstance(
+        JET_INSTANCE instance,
+        JET_HANDLE hfFile
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "hfFile"])
     raise RuntimeError('API not implemented')
@@ -141,7 +191,10 @@ def esent_JetCloseFileInstance(jitter):
 
 def esent_JetCloseTable(jitter):
     """
-    [esent.dll] JET_ERR JetCloseTable(JET_SESID sesid, JET_TABLEID tableid)
+    JET_ERR JetCloseTable(
+        JET_SESID sesid,
+        JET_TABLEID tableid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid"])
     raise RuntimeError('API not implemented')
@@ -149,7 +202,10 @@ def esent_JetCloseTable(jitter):
 
 def esent_JetCommitTransaction(jitter):
     """
-    [esent.dll] JET_ERR JetCommitTransaction(JET_SESID sesid, [JetCommitTransactionFlags] grbit)
+    JET_ERR JetCommitTransaction(
+        JET_SESID sesid,
+        [JetCommitTransactionFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -157,7 +213,14 @@ def esent_JetCommitTransaction(jitter):
 
 def esent_JetCompact(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCompact(JET_SESID sesid, JET_PCSTR szDatabaseSrc, JET_PCSTR szDatabaseDest, JET_PFNSTATUS pfnStatus, JET_CONVERT* pconvert, [JetCompactFlags] grbit)
+    JET_ERR JetCompact(
+        JET_SESID sesid,
+        JET_PCSTR szDatabaseSrc,
+        JET_PCSTR szDatabaseDest,
+        JET_PFNSTATUS pfnStatus,
+        JET_CONVERT* pconvert,
+        [JetCompactFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szDatabaseSrc", "szDatabaseDest", "pfnStatus", "pconvert", "grbit"])
     raise RuntimeError('API not implemented')
@@ -171,7 +234,10 @@ def esent_JetCompactW(jitter):
 
 def esent_JetComputeStats(jitter):
     """
-    [esent.dll] JET_ERR JetComputeStats(JET_SESID sesid, JET_TABLEID tableid)
+    JET_ERR JetComputeStats(
+        JET_SESID sesid,
+        JET_TABLEID tableid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid"])
     raise RuntimeError('API not implemented')
@@ -179,7 +245,13 @@ def esent_JetComputeStats(jitter):
 
 def esent_JetCreateDatabase(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateDatabase(JET_SESID sesid, JET_PCSTR szFilename, JET_PCSTR szConnect, JET_DBID* pdbid, [JetCreateDatabaseFlags] grbit)
+    JET_ERR JetCreateDatabase(
+        JET_SESID sesid,
+        JET_PCSTR szFilename,
+        JET_PCSTR szConnect,
+        JET_DBID* pdbid,
+        [JetCreateDatabaseFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename", "szConnect", "pdbid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -193,7 +265,13 @@ def esent_JetCreateDatabaseW(jitter):
 
 def esent_JetCreateDatabase2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateDatabase2(JET_SESID sesid, JET_PCSTR szFilename, const unsigned long cpgDatabaseSizeMax, JET_DBID* pdbid, [JetCreateDatabaseFlags] grbit)
+    JET_ERR JetCreateDatabase2(
+        JET_SESID sesid,
+        JET_PCSTR szFilename,
+        const unsigned long cpgDatabaseSizeMax,
+        JET_DBID* pdbid,
+        [JetCreateDatabaseFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename", "cpgDatabaseSizeMax", "pdbid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -207,7 +285,15 @@ def esent_JetCreateDatabase2W(jitter):
 
 def esent_JetCreateIndex(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateIndex(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName, [JetCreateIndexFlags] grbit, JET_PCSTR szKey, unsigned long cbKey, unsigned long lDensity)
+    JET_ERR JetCreateIndex(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName,
+        [JetCreateIndexFlags] grbit,
+        JET_PCSTR szKey,
+        unsigned long cbKey,
+        unsigned long lDensity
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName", "grbit", "szKey", "cbKey", "lDensity"])
     raise RuntimeError('API not implemented')
@@ -221,7 +307,12 @@ def esent_JetCreateIndexW(jitter):
 
 def esent_JetCreateIndex2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateIndex2(JET_SESID sesid, JET_TABLEID tableid, JET_INDEXCREATE* pindexcreate, unsigned long cIndexCreate)
+    JET_ERR JetCreateIndex2(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_INDEXCREATE* pindexcreate,
+        unsigned long cIndexCreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pindexcreate", "cIndexCreate"])
     raise RuntimeError('API not implemented')
@@ -235,7 +326,10 @@ def esent_JetCreateIndex2W(jitter):
 
 def esent_JetCreateInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateInstance(JET_INSTANCE* pinstance, JET_PCSTR szInstanceName)
+    JET_ERR JetCreateInstance(
+        JET_INSTANCE* pinstance,
+        JET_PCSTR szInstanceName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pinstance", "szInstanceName"])
     raise RuntimeError('API not implemented')
@@ -249,7 +343,12 @@ def esent_JetCreateInstanceW(jitter):
 
 def esent_JetCreateInstance2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateInstance2(JET_INSTANCE* pinstance, JET_PCSTR szInstanceName, JET_PCSTR szDisplayName, JET_GRBIT grbit)
+    JET_ERR JetCreateInstance2(
+        JET_INSTANCE* pinstance,
+        JET_PCSTR szInstanceName,
+        JET_PCSTR szDisplayName,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pinstance", "szInstanceName", "szDisplayName", "grbit"])
     raise RuntimeError('API not implemented')
@@ -263,7 +362,14 @@ def esent_JetCreateInstance2W(jitter):
 
 def esent_JetCreateTable(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateTable(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, unsigned long lPages, unsigned long lDensity, JET_TABLEID* ptableid)
+    JET_ERR JetCreateTable(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        unsigned long lPages,
+        unsigned long lDensity,
+        JET_TABLEID* ptableid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "lPages", "lDensity", "ptableid"])
     raise RuntimeError('API not implemented')
@@ -277,7 +383,11 @@ def esent_JetCreateTableW(jitter):
 
 def esent_JetCreateTableColumnIndex(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateTableColumnIndex(JET_SESID sesid, JET_DBID dbid, JET_TABLECREATE* ptablecreate)
+    JET_ERR JetCreateTableColumnIndex(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_TABLECREATE* ptablecreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "ptablecreate"])
     raise RuntimeError('API not implemented')
@@ -291,7 +401,11 @@ def esent_JetCreateTableColumnIndexW(jitter):
 
 def esent_JetCreateTableColumnIndex2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateTableColumnIndex2(JET_SESID sesid, JET_DBID dbid, JET_TABLECREATE2* ptablecreate)
+    JET_ERR JetCreateTableColumnIndex2(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_TABLECREATE2* ptablecreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "ptablecreate"])
     raise RuntimeError('API not implemented')
@@ -305,7 +419,14 @@ def esent_JetCreateTableColumnIndex2W(jitter):
 
 def esent_JetDefragment(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDefragment(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, unsigned long* pcPasses, unsigned long* pcSeconds, [JetDefragmentFlags] grbit)
+    JET_ERR JetDefragment(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        unsigned long* pcPasses,
+        unsigned long* pcSeconds,
+        [JetDefragmentFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "pcPasses", "pcSeconds", "grbit"])
     raise RuntimeError('API not implemented')
@@ -319,7 +440,15 @@ def esent_JetDefragmentW(jitter):
 
 def esent_JetDefragment2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDefragment2(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, unsigned long* pcPasses, unsigned long* pcSeconds, JET_CALLBACK callback, [JetDefragmentFlags] grbit)
+    JET_ERR JetDefragment2(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        unsigned long* pcPasses,
+        unsigned long* pcSeconds,
+        JET_CALLBACK callback,
+        [JetDefragmentFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "pcPasses", "pcSeconds", "callback", "grbit"])
     raise RuntimeError('API not implemented')
@@ -333,7 +462,10 @@ def esent_JetDefragment2W(jitter):
 
 def esent_JetDelete(jitter):
     """
-    [esent.dll] JET_ERR JetDelete(JET_SESID sesid, JET_TABLEID tableid)
+    JET_ERR JetDelete(
+        JET_SESID sesid,
+        JET_TABLEID tableid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid"])
     raise RuntimeError('API not implemented')
@@ -341,7 +473,11 @@ def esent_JetDelete(jitter):
 
 def esent_JetDeleteColumn(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDeleteColumn(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szColumnName)
+    JET_ERR JetDeleteColumn(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szColumnName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szColumnName"])
     raise RuntimeError('API not implemented')
@@ -355,7 +491,12 @@ def esent_JetDeleteColumnW(jitter):
 
 def esent_JetDeleteColumn2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDeleteColumn2(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szColumnName, const JET_GRBIT grbit)
+    JET_ERR JetDeleteColumn2(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szColumnName,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szColumnName", "grbit"])
     raise RuntimeError('API not implemented')
@@ -369,7 +510,11 @@ def esent_JetDeleteColumn2W(jitter):
 
 def esent_JetDeleteIndex(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDeleteIndex(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName)
+    JET_ERR JetDeleteIndex(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName"])
     raise RuntimeError('API not implemented')
@@ -383,7 +528,11 @@ def esent_JetDeleteIndexW(jitter):
 
 def esent_JetDeleteTable(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDeleteTable(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName)
+    JET_ERR JetDeleteTable(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName"])
     raise RuntimeError('API not implemented')
@@ -397,7 +546,10 @@ def esent_JetDeleteTableW(jitter):
 
 def esent_JetDetachDatabase(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDetachDatabase(JET_SESID sesid, JET_PCSTR szFilename)
+    JET_ERR JetDetachDatabase(
+        JET_SESID sesid,
+        JET_PCSTR szFilename
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename"])
     raise RuntimeError('API not implemented')
@@ -411,7 +563,11 @@ def esent_JetDetachDatabaseW(jitter):
 
 def esent_JetDetachDatabase2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDetachDatabase2(JET_SESID sesid, JET_PCSTR szFilename, [JetDetachDatabase2Flags] grbit)
+    JET_ERR JetDetachDatabase2(
+        JET_SESID sesid,
+        JET_PCSTR szFilename,
+        [JetDetachDatabase2Flags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename", "grbit"])
     raise RuntimeError('API not implemented')
@@ -425,7 +581,12 @@ def esent_JetDetachDatabase2W(jitter):
 
 def esent_JetDupCursor(jitter):
     """
-    [esent.dll] JET_ERR JetDupCursor(JET_SESID sesid, JET_TABLEID tableid, JET_TABLEID* ptableid, JET_GRBIT grbit)
+    JET_ERR JetDupCursor(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_TABLEID* ptableid,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "ptableid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -433,7 +594,10 @@ def esent_JetDupCursor(jitter):
 
 def esent_JetDupSession(jitter):
     """
-    [esent.dll] JET_ERR JetDupSession(JET_SESID sesid, JET_SESID* psesid)
+    JET_ERR JetDupSession(
+        JET_SESID sesid,
+        JET_SESID* psesid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "psesid"])
     raise RuntimeError('API not implemented')
@@ -441,7 +605,11 @@ def esent_JetDupSession(jitter):
 
 def esent_JetEnableMultiInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetEnableMultiInstance(JET_SETSYSPARAM* psetsysparam, unsigned long csetsysparam, unsigned long* pcsetsucceed)
+    JET_ERR JetEnableMultiInstance(
+        JET_SETSYSPARAM* psetsysparam,
+        unsigned long csetsysparam,
+        unsigned long* pcsetsucceed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["psetsysparam", "csetsysparam", "pcsetsucceed"])
     raise RuntimeError('API not implemented')
@@ -455,7 +623,7 @@ def esent_JetEnableMultiInstanceW(jitter):
 
 def esent_JetEndExternalBackup(jitter):
     """
-    [esent.dll] JET_ERR JetEndExternalBackup()
+    JET_ERR JetEndExternalBackup()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -463,7 +631,9 @@ def esent_JetEndExternalBackup(jitter):
 
 def esent_JetEndExternalBackupInstance(jitter):
     """
-    [esent.dll] JET_ERR JetEndExternalBackupInstance(JET_INSTANCE instance)
+    JET_ERR JetEndExternalBackupInstance(
+        JET_INSTANCE instance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance"])
     raise RuntimeError('API not implemented')
@@ -471,7 +641,10 @@ def esent_JetEndExternalBackupInstance(jitter):
 
 def esent_JetEndExternalBackupInstance2(jitter):
     """
-    [esent.dll] JET_ERR JetEndExternalBackupInstance2(JET_INSTANCE instance, [JetEndExternalBackupInstance2Flags] grbit)
+    JET_ERR JetEndExternalBackupInstance2(
+        JET_INSTANCE instance,
+        [JetEndExternalBackupInstance2Flags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "grbit"])
     raise RuntimeError('API not implemented')
@@ -479,7 +652,10 @@ def esent_JetEndExternalBackupInstance2(jitter):
 
 def esent_JetEndSession(jitter):
     """
-    [esent.dll] JET_ERR JetEndSession(JET_SESID sesid, JET_GRBIT grbit)
+    JET_ERR JetEndSession(
+        JET_SESID sesid,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -487,7 +663,18 @@ def esent_JetEndSession(jitter):
 
 def esent_JetEnumerateColumns(jitter):
     """
-    [esent.dll] JET_ERR JetEnumerateColumns(JET_SESID sesid, JET_TABLEID tableid, unsigned long cEnumColumnId, JET_ENUMCOLUMNID* rgEnumColumnId, unsigned long* pcEnumColumn, JET_ENUMCOLUMN** prgEnumColumn, JET_PFNREALLOC pfnRealloc, void* pvReallocContext, unsigned long cbDataMost, [JetEnumerateColumnsFlags] grbit)
+    JET_ERR JetEnumerateColumns(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        unsigned long cEnumColumnId,
+        JET_ENUMCOLUMNID* rgEnumColumnId,
+        unsigned long* pcEnumColumn,
+        JET_ENUMCOLUMN** prgEnumColumn,
+        JET_PFNREALLOC pfnRealloc,
+        void* pvReallocContext,
+        unsigned long cbDataMost,
+        [JetEnumerateColumnsFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "cEnumColumnId", "rgEnumColumnId", "pcEnumColumn", "prgEnumColumn", "pfnRealloc", "pvReallocContext", "cbDataMost", "grbit"])
     raise RuntimeError('API not implemented')
@@ -495,7 +682,17 @@ def esent_JetEnumerateColumns(jitter):
 
 def esent_JetEscrowUpdate(jitter):
     """
-    [esent.dll] JET_ERR JetEscrowUpdate(JET_SESID sesid, JET_TABLEID tableid, JET_COLUMNID columnid, void* pv, unsigned long cbMax, void* pvOld, unsigned long cbOldMax, unsigned long* pcbOldActual, [JetEscrowUpdateFlags] grbit)
+    JET_ERR JetEscrowUpdate(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_COLUMNID columnid,
+        void* pv,
+        unsigned long cbMax,
+        void* pvOld,
+        unsigned long cbOldMax,
+        unsigned long* pcbOldActual,
+        [JetEscrowUpdateFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "columnid", "pv", "cbMax", "pvOld", "cbOldMax", "pcbOldActual", "grbit"])
     raise RuntimeError('API not implemented')
@@ -503,7 +700,16 @@ def esent_JetEscrowUpdate(jitter):
 
 def esent_JetExternalRestore(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetExternalRestore(JET_PSTR szCheckpointFilePath, JET_PSTR szLogPath, JET_RSTMAP* rgrstmap, long crstfilemap, JET_PSTR szBackupLogPath, long genLow, long genHigh, JET_PFNSTATUS pfn)
+    JET_ERR JetExternalRestore(
+        JET_PSTR szCheckpointFilePath,
+        JET_PSTR szLogPath,
+        JET_RSTMAP* rgrstmap,
+        long crstfilemap,
+        JET_PSTR szBackupLogPath,
+        long genLow,
+        long genHigh,
+        JET_PFNSTATUS pfn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szCheckpointFilePath", "szLogPath", "rgrstmap", "crstfilemap", "szBackupLogPath", "genLow", "genHigh", "pfn"])
     raise RuntimeError('API not implemented')
@@ -517,7 +723,18 @@ def esent_JetExternalRestoreW(jitter):
 
 def esent_JetExternalRestore2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetExternalRestore2(JET_PSTR szCheckpointFilePath, JET_PSTR szLogPath, JET_RSTMAP* rgrstmap, long crstfilemap, JET_PSTR szBackupLogPath, JET_LOGINFO* pLogInfo, JET_PSTR szTargetInstanceName, JET_PSTR szTargetInstanceLogPath, JET_PSTR szTargetInstanceCheckpointPath, JET_PFNSTATUS pfn)
+    JET_ERR JetExternalRestore2(
+        JET_PSTR szCheckpointFilePath,
+        JET_PSTR szLogPath,
+        JET_RSTMAP* rgrstmap,
+        long crstfilemap,
+        JET_PSTR szBackupLogPath,
+        JET_LOGINFO* pLogInfo,
+        JET_PSTR szTargetInstanceName,
+        JET_PSTR szTargetInstanceLogPath,
+        JET_PSTR szTargetInstanceCheckpointPath,
+        JET_PFNSTATUS pfn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szCheckpointFilePath", "szLogPath", "rgrstmap", "crstfilemap", "szBackupLogPath", "pLogInfo", "szTargetInstanceName", "szTargetInstanceLogPath", "szTargetInstanceCheckpointPath", "pfn"])
     raise RuntimeError('API not implemented')
@@ -531,7 +748,9 @@ def esent_JetExternalRestore2W(jitter):
 
 def esent_JetFreeBuffer(jitter):
     """
-    [esent.dll] JET_ERR JetFreeBuffer(char* pbBuf)
+    JET_ERR JetFreeBuffer(
+        char* pbBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pbBuf"])
     raise RuntimeError('API not implemented')
@@ -539,7 +758,11 @@ def esent_JetFreeBuffer(jitter):
 
 def esent_JetGetAttachInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetAttachInfo(tchar* szz, unsigned long cbMax, unsigned long* pcbActual)
+    JET_ERR JetGetAttachInfo(
+        tchar* szz,
+        unsigned long cbMax,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szz", "cbMax", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -553,7 +776,12 @@ def esent_JetGetAttachInfoW(jitter):
 
 def esent_JetGetAttachInfoInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetAttachInfoInstance(JET_INSTANCE instance, tchar* szz, unsigned long cbMax, unsigned long* pcbActual)
+    JET_ERR JetGetAttachInfoInstance(
+        JET_INSTANCE instance,
+        tchar* szz,
+        unsigned long cbMax,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "szz", "cbMax", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -567,7 +795,13 @@ def esent_JetGetAttachInfoInstanceW(jitter):
 
 def esent_JetGetBookmark(jitter):
     """
-    [esent.dll] JET_ERR JetGetBookmark(JET_SESID sesid, JET_TABLEID tableid, void* pvBookmark, unsigned long cbMax, unsigned long* pcbActual)
+    JET_ERR JetGetBookmark(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvBookmark,
+        unsigned long cbMax,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvBookmark", "cbMax", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -575,7 +809,15 @@ def esent_JetGetBookmark(jitter):
 
 def esent_JetGetColumnInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetColumnInfo(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, JET_PCSTR szColumnName, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetColumnInfo(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        JET_PCSTR szColumnName,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "szColumnName", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -589,7 +831,12 @@ def esent_JetGetColumnInfoW(jitter):
 
 def esent_JetGetCurrentIndex(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetCurrentIndex(JET_SESID sesid, JET_TABLEID tableid, JET_PSTR szIndexName, unsigned long cchIndexName)
+    JET_ERR JetGetCurrentIndex(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PSTR szIndexName,
+        unsigned long cchIndexName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName", "cchIndexName"])
     raise RuntimeError('API not implemented')
@@ -603,7 +850,13 @@ def esent_JetGetCurrentIndexW(jitter):
 
 def esent_JetGetCursorInfo(jitter):
     """
-    [esent.dll] JET_ERR JetGetCursorInfo(JET_SESID sesid, JET_TABLEID tableid, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetCursorInfo(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -611,7 +864,12 @@ def esent_JetGetCursorInfo(jitter):
 
 def esent_JetGetDatabaseFileInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetDatabaseFileInfo(JET_PCSTR szDatabaseName, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetDatabaseFileInfo(
+        JET_PCSTR szDatabaseName,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szDatabaseName", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -625,7 +883,13 @@ def esent_JetGetDatabaseFileInfoW(jitter):
 
 def esent_JetGetDatabaseInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetDatabaseInfo(JET_SESID sesid, JET_DBID dbid, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetDatabaseInfo(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -639,7 +903,15 @@ def esent_JetGetDatabaseInfoW(jitter):
 
 def esent_JetGetIndexInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetIndexInfo(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, JET_PCSTR szIndexName, void* pvResult, unsigned long cbResult, unsigned long InfoLevel)
+    JET_ERR JetGetIndexInfo(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        JET_PCSTR szIndexName,
+        void* pvResult,
+        unsigned long cbResult,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "szIndexName", "pvResult", "cbResult", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -653,7 +925,10 @@ def esent_JetGetIndexInfoW(jitter):
 
 def esent_JetGetInstanceInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetInstanceInfo(unsigned long* pcInstanceInfo, JET_INSTANCE_INFO** paInstanceInfo)
+    JET_ERR JetGetInstanceInfo(
+        unsigned long* pcInstanceInfo,
+        JET_INSTANCE_INFO** paInstanceInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pcInstanceInfo", "paInstanceInfo"])
     raise RuntimeError('API not implemented')
@@ -667,7 +942,12 @@ def esent_JetGetInstanceInfoW(jitter):
 
 def esent_JetGetInstanceMiscInfo(jitter):
     """
-    [esent.dll] JET_ERR JetGetInstanceMiscInfo(JET_INSTANCE instance, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetInstanceMiscInfo(
+        JET_INSTANCE instance,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -675,7 +955,11 @@ def esent_JetGetInstanceMiscInfo(jitter):
 
 def esent_JetGetLock(jitter):
     """
-    [esent.dll] JET_ERR JetGetLock(JET_SESID sesid, JET_TABLEID tableid, [JetGetLockFlags] grbit)
+    JET_ERR JetGetLock(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        [JetGetLockFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -683,7 +967,11 @@ def esent_JetGetLock(jitter):
 
 def esent_JetGetLogInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetLogInfo(tchar* szz, unsigned long cbMax, unsigned long* pcbActual)
+    JET_ERR JetGetLogInfo(
+        tchar* szz,
+        unsigned long cbMax,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szz", "cbMax", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -697,7 +985,12 @@ def esent_JetGetLogInfoW(jitter):
 
 def esent_JetGetLogInfoInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetLogInfoInstance(JET_INSTANCE instance, tchar* szz, unsigned long cbMax, unsigned long* pcbActual)
+    JET_ERR JetGetLogInfoInstance(
+        JET_INSTANCE instance,
+        tchar* szz,
+        unsigned long cbMax,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "szz", "cbMax", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -711,7 +1004,13 @@ def esent_JetGetLogInfoInstanceW(jitter):
 
 def esent_JetGetLogInfoInstance2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetLogInfoInstance2(JET_INSTANCE instance, tchar* szz, unsigned long cbMax, unsigned long* pcbActual, JET_LOGINFO* pLogInfo)
+    JET_ERR JetGetLogInfoInstance2(
+        JET_INSTANCE instance,
+        tchar* szz,
+        unsigned long cbMax,
+        unsigned long* pcbActual,
+        JET_LOGINFO* pLogInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "szz", "cbMax", "pcbActual", "pLogInfo"])
     raise RuntimeError('API not implemented')
@@ -725,7 +1024,12 @@ def esent_JetGetLogInfoInstance2W(jitter):
 
 def esent_JetGetLS(jitter):
     """
-    [esent.dll] JET_ERR JetGetLS(JET_SESID sesid, JET_TABLEID tableid, JET_LS* pls, [JetGetLSFlags] grbit)
+    JET_ERR JetGetLS(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_LS* pls,
+        [JetGetLSFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pls", "grbit"])
     raise RuntimeError('API not implemented')
@@ -733,7 +1037,16 @@ def esent_JetGetLS(jitter):
 
 def esent_JetGetObjectInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetObjectInfo(JET_SESID sesid, JET_DBID dbid, JET_OBJTYP objtyp, JET_PCSTR szContainerName, JET_PCSTR szObjectName, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetObjectInfo(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_OBJTYP objtyp,
+        JET_PCSTR szContainerName,
+        JET_PCSTR szObjectName,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "objtyp", "szContainerName", "szObjectName", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -747,7 +1060,12 @@ def esent_JetGetObjectInfoW(jitter):
 
 def esent_JetGetRecordPosition(jitter):
     """
-    [esent.dll] JET_ERR JetGetRecordPosition(JET_SESID sesid, JET_TABLEID tableid, JET_RECPOS* precpos, unsigned long cbRecpos)
+    JET_ERR JetGetRecordPosition(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_RECPOS* precpos,
+        unsigned long cbRecpos
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "precpos", "cbRecpos"])
     raise RuntimeError('API not implemented')
@@ -755,7 +1073,12 @@ def esent_JetGetRecordPosition(jitter):
 
 def esent_JetGetRecordSize(jitter):
     """
-    [esent.dll] JET_ERR JetGetRecordSize(JET_SESID sesid, JET_TABLEID tableid, JET_RECSIZE* precsize, const JET_GRBIT grbit)
+    JET_ERR JetGetRecordSize(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_RECSIZE* precsize,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "precsize", "grbit"])
     raise RuntimeError('API not implemented')
@@ -763,7 +1086,17 @@ def esent_JetGetRecordSize(jitter):
 
 def esent_JetGetSecondaryIndexBookmark(jitter):
     """
-    [esent.dll] JET_ERR JetGetSecondaryIndexBookmark(JET_SESID sesid, JET_TABLEID tableid, void* pvSecondaryKey, unsigned long cbSecondaryKeyMax, unsigned long* pcbSecondaryKeyActual, void* pvPrimaryBookmark, unsigned long cbPrimaryBookmarkMax, unsigned long* pcbPrimaryKeyActual, const JET_GRBIT grbit)
+    JET_ERR JetGetSecondaryIndexBookmark(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvSecondaryKey,
+        unsigned long cbSecondaryKeyMax,
+        unsigned long* pcbSecondaryKeyActual,
+        void* pvPrimaryBookmark,
+        unsigned long cbPrimaryBookmarkMax,
+        unsigned long* pcbPrimaryKeyActual,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvSecondaryKey", "cbSecondaryKeyMax", "pcbSecondaryKeyActual", "pvPrimaryBookmark", "cbPrimaryBookmarkMax", "pcbPrimaryKeyActual", "grbit"])
     raise RuntimeError('API not implemented')
@@ -771,7 +1104,14 @@ def esent_JetGetSecondaryIndexBookmark(jitter):
 
 def esent_JetGetSystemParameter(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetSystemParameter(JET_INSTANCE instance, JET_SESID sesid, [JET_param] paramid, JET_API_PTR* plParam, JET_PSTR szParam, unsigned long cbMax)
+    JET_ERR JetGetSystemParameter(
+        JET_INSTANCE instance,
+        JET_SESID sesid,
+        [JET_param] paramid,
+        JET_API_PTR* plParam,
+        JET_PSTR szParam,
+        unsigned long cbMax
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "sesid", "paramid", "plParam", "szParam", "cbMax"])
     raise RuntimeError('API not implemented')
@@ -785,7 +1125,14 @@ def esent_JetGetSystemParameterW(jitter):
 
 def esent_JetGetTableColumnInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetTableColumnInfo(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szColumnName, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetTableColumnInfo(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szColumnName,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szColumnName", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -799,7 +1146,14 @@ def esent_JetGetTableColumnInfoW(jitter):
 
 def esent_JetGetTableIndexInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetTableIndexInfo(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName, void* pvResult, unsigned long cbResult, unsigned long InfoLevel)
+    JET_ERR JetGetTableIndexInfo(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName,
+        void* pvResult,
+        unsigned long cbResult,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName", "pvResult", "cbResult", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -813,7 +1167,13 @@ def esent_JetGetTableIndexInfoW(jitter):
 
 def esent_JetGetTableInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetTableInfo(JET_SESID sesid, JET_TABLEID tableid, void* pvResult, unsigned long cbMax, unsigned long InfoLevel)
+    JET_ERR JetGetTableInfo(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvResult", "cbMax", "InfoLevel"])
     raise RuntimeError('API not implemented')
@@ -827,7 +1187,10 @@ def esent_JetGetTableInfoW(jitter):
 
 def esent_JetGetThreadStats(jitter):
     """
-    [esent.dll] JET_ERR JetGetThreadStats(void* pvResult, unsigned long cbMax)
+    JET_ERR JetGetThreadStats(
+        void* pvResult,
+        unsigned long cbMax
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pvResult", "cbMax"])
     raise RuntimeError('API not implemented')
@@ -835,7 +1198,12 @@ def esent_JetGetThreadStats(jitter):
 
 def esent_JetGetTruncateLogInfoInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetGetTruncateLogInfoInstance(JET_INSTANCE instance, tchar* szz, unsigned long cbMax, unsigned long* pcbActual)
+    JET_ERR JetGetTruncateLogInfoInstance(
+        JET_INSTANCE instance,
+        tchar* szz,
+        unsigned long cbMax,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "szz", "cbMax", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -849,7 +1217,10 @@ def esent_JetGetTruncateLogInfoInstanceW(jitter):
 
 def esent_JetGetVersion(jitter):
     """
-    [esent.dll] JET_ERR JetGetVersion(JET_SESID sesid, unsigned long* pwVersion)
+    JET_ERR JetGetVersion(
+        JET_SESID sesid,
+        unsigned long* pwVersion
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "pwVersion"])
     raise RuntimeError('API not implemented')
@@ -857,7 +1228,12 @@ def esent_JetGetVersion(jitter):
 
 def esent_JetGotoBookmark(jitter):
     """
-    [esent.dll] JET_ERR JetGotoBookmark(JET_SESID sesid, JET_TABLEID tableid, void* pvBookmark, unsigned long cbBookmark)
+    JET_ERR JetGotoBookmark(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvBookmark,
+        unsigned long cbBookmark
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvBookmark", "cbBookmark"])
     raise RuntimeError('API not implemented')
@@ -865,7 +1241,11 @@ def esent_JetGotoBookmark(jitter):
 
 def esent_JetGotoPosition(jitter):
     """
-    [esent.dll] JET_ERR JetGotoPosition(JET_SESID sesid, JET_TABLEID tableid, JET_RECPOS* precpos)
+    JET_ERR JetGotoPosition(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_RECPOS* precpos
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "precpos"])
     raise RuntimeError('API not implemented')
@@ -873,7 +1253,15 @@ def esent_JetGotoPosition(jitter):
 
 def esent_JetGotoSecondaryIndexBookmark(jitter):
     """
-    [esent.dll] JET_ERR JetGotoSecondaryIndexBookmark(JET_SESID sesid, JET_TABLEID tableid, void* pvSecondaryKey, unsigned long cbSecondaryKey, void* pvPrimaryBookmark, unsigned long cbPrimaryBookmark, [JetGotoSecondaryIndexBookmarkFlags] grbit)
+    JET_ERR JetGotoSecondaryIndexBookmark(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvSecondaryKey,
+        unsigned long cbSecondaryKey,
+        void* pvPrimaryBookmark,
+        unsigned long cbPrimaryBookmark,
+        [JetGotoSecondaryIndexBookmarkFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvSecondaryKey", "cbSecondaryKey", "pvPrimaryBookmark", "cbPrimaryBookmark", "grbit"])
     raise RuntimeError('API not implemented')
@@ -881,7 +1269,12 @@ def esent_JetGotoSecondaryIndexBookmark(jitter):
 
 def esent_JetGrowDatabase(jitter):
     """
-    [esent.dll] JET_ERR JetGrowDatabase(JET_SESID sesid, JET_DBID dbid, unsigned long cpg, unsigned long* pcpgReal)
+    JET_ERR JetGrowDatabase(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        unsigned long cpg,
+        unsigned long* pcpgReal
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "cpg", "pcpgReal"])
     raise RuntimeError('API not implemented')
@@ -889,7 +1282,10 @@ def esent_JetGrowDatabase(jitter):
 
 def esent_JetIdle(jitter):
     """
-    [esent.dll] JET_ERR JetIdle(JET_SESID sesid, [JetIdleFlags] grbit)
+    JET_ERR JetIdle(
+        JET_SESID sesid,
+        [JetIdleFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -897,7 +1293,12 @@ def esent_JetIdle(jitter):
 
 def esent_JetIndexRecordCount(jitter):
     """
-    [esent.dll] JET_ERR JetIndexRecordCount(JET_SESID sesid, JET_TABLEID tableid, unsigned long* pcrec, unsigned long crecMax)
+    JET_ERR JetIndexRecordCount(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        unsigned long* pcrec,
+        unsigned long crecMax
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pcrec", "crecMax"])
     raise RuntimeError('API not implemented')
@@ -905,7 +1306,9 @@ def esent_JetIndexRecordCount(jitter):
 
 def esent_JetInit(jitter):
     """
-    [esent.dll] JET_ERR JetInit(JET_INSTANCE* pinstance)
+    JET_ERR JetInit(
+        JET_INSTANCE* pinstance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pinstance"])
     raise RuntimeError('API not implemented')
@@ -913,7 +1316,10 @@ def esent_JetInit(jitter):
 
 def esent_JetInit2(jitter):
     """
-    [esent.dll] JET_ERR JetInit2(JET_INSTANCE* pinstance, [JetInitFlags] grbit)
+    JET_ERR JetInit2(
+        JET_INSTANCE* pinstance,
+        [JetInitFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pinstance", "grbit"])
     raise RuntimeError('API not implemented')
@@ -921,7 +1327,11 @@ def esent_JetInit2(jitter):
 
 def esent_JetInit3(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetInit3(JET_INSTANCE* pinstance, JET_RSTINFO* prstInfo, [JetInitFlags] grbit)
+    JET_ERR JetInit3(
+        JET_INSTANCE* pinstance,
+        JET_RSTINFO* prstInfo,
+        [JetInitFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pinstance", "prstInfo", "grbit"])
     raise RuntimeError('API not implemented')
@@ -935,7 +1345,13 @@ def esent_JetInit3W(jitter):
 
 def esent_JetIntersectIndexes(jitter):
     """
-    [esent.dll] JET_ERR JetIntersectIndexes(JET_SESID sesid, JET_INDEXRANGE* rgindexrange, unsigned long cindexrange, JET_RECORDLIST* precordlist, JET_GRBIT grbit)
+    JET_ERR JetIntersectIndexes(
+        JET_SESID sesid,
+        JET_INDEXRANGE* rgindexrange,
+        unsigned long cindexrange,
+        JET_RECORDLIST* precordlist,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "rgindexrange", "cindexrange", "precordlist", "grbit"])
     raise RuntimeError('API not implemented')
@@ -943,7 +1359,13 @@ def esent_JetIntersectIndexes(jitter):
 
 def esent_JetMakeKey(jitter):
     """
-    [esent.dll] JET_ERR JetMakeKey(JET_SESID sesid, JET_TABLEID tableid, const void* pvData, unsigned long cbData, [JetMakeKeyFlags] grbit)
+    JET_ERR JetMakeKey(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        const void* pvData,
+        unsigned long cbData,
+        [JetMakeKeyFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvData", "cbData", "grbit"])
     raise RuntimeError('API not implemented')
@@ -951,7 +1373,12 @@ def esent_JetMakeKey(jitter):
 
 def esent_JetMove(jitter):
     """
-    [esent.dll] JET_ERR JetMove(JET_SESID sesid, JET_TABLEID tableid, [JetMoveRow] cRow, [JetMoveFlags] grbit)
+    JET_ERR JetMove(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        [JetMoveRow] cRow,
+        [JetMoveFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "cRow", "grbit"])
     raise RuntimeError('API not implemented')
@@ -959,7 +1386,13 @@ def esent_JetMove(jitter):
 
 def esent_JetOpenDatabase(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetOpenDatabase(JET_SESID sesid, JET_PCSTR szFilename, JET_PCSTR szConnect, JET_DBID* pdbid, [JetOpenDatabaseFlags] grbit)
+    JET_ERR JetOpenDatabase(
+        JET_SESID sesid,
+        JET_PCSTR szFilename,
+        JET_PCSTR szConnect,
+        JET_DBID* pdbid,
+        [JetOpenDatabaseFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szFilename", "szConnect", "pdbid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -973,7 +1406,12 @@ def esent_JetOpenDatabaseW(jitter):
 
 def esent_JetOpenFile(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetOpenFile(JET_PCSTR szFileName, JET_HANDLE* phfFile, unsigned long* pulFileSizeLow, unsigned long* pulFileSizeHigh)
+    JET_ERR JetOpenFile(
+        JET_PCSTR szFileName,
+        JET_HANDLE* phfFile,
+        unsigned long* pulFileSizeLow,
+        unsigned long* pulFileSizeHigh
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szFileName", "phfFile", "pulFileSizeLow", "pulFileSizeHigh"])
     raise RuntimeError('API not implemented')
@@ -987,7 +1425,13 @@ def esent_JetOpenFileW(jitter):
 
 def esent_JetOpenFileInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetOpenFileInstance(JET_INSTANCE instance, JET_PCSTR szFileName, JET_HANDLE* phfFile, unsigned long* pulFileSizeLow, unsigned long* pulFileSizeHigh)
+    JET_ERR JetOpenFileInstance(
+        JET_INSTANCE instance,
+        JET_PCSTR szFileName,
+        JET_HANDLE* phfFile,
+        unsigned long* pulFileSizeLow,
+        unsigned long* pulFileSizeHigh
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "szFileName", "phfFile", "pulFileSizeLow", "pulFileSizeHigh"])
     raise RuntimeError('API not implemented')
@@ -1001,7 +1445,15 @@ def esent_JetOpenFileInstanceW(jitter):
 
 def esent_JetOpenTable(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetOpenTable(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, const void* pvParameters, unsigned long cbParameters, [JetOpenTableFlags] grbit, JET_TABLEID* ptableid)
+    JET_ERR JetOpenTable(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        const void* pvParameters,
+        unsigned long cbParameters,
+        [JetOpenTableFlags] grbit,
+        JET_TABLEID* ptableid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "pvParameters", "cbParameters", "grbit", "ptableid"])
     raise RuntimeError('API not implemented')
@@ -1015,7 +1467,10 @@ def esent_JetOpenTableW(jitter):
 
 def esent_JetOpenTemporaryTable(jitter):
     """
-    [esent.dll] JET_ERR JetOpenTemporaryTable(JET_SESID sesid, JET_OPENTEMPORARYTABLE* popentemporarytable)
+    JET_ERR JetOpenTemporaryTable(
+        JET_SESID sesid,
+        JET_OPENTEMPORARYTABLE* popentemporarytable
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "popentemporarytable"])
     raise RuntimeError('API not implemented')
@@ -1023,7 +1478,14 @@ def esent_JetOpenTemporaryTable(jitter):
 
 def esent_JetOpenTempTable(jitter):
     """
-    [esent.dll] JET_ERR JetOpenTempTable(JET_SESID sesid, const JET_COLUMNDEF* prgcolumndef, unsigned long ccolumn, [JetOpenTempTableFlags] grbit, JET_TABLEID* ptableid, JET_COLUMNID* prgcolumnid)
+    JET_ERR JetOpenTempTable(
+        JET_SESID sesid,
+        const JET_COLUMNDEF* prgcolumndef,
+        unsigned long ccolumn,
+        [JetOpenTempTableFlags] grbit,
+        JET_TABLEID* ptableid,
+        JET_COLUMNID* prgcolumnid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "prgcolumndef", "ccolumn", "grbit", "ptableid", "prgcolumnid"])
     raise RuntimeError('API not implemented')
@@ -1031,7 +1493,15 @@ def esent_JetOpenTempTable(jitter):
 
 def esent_JetOpenTempTable2(jitter):
     """
-    [esent.dll] JET_ERR JetOpenTempTable2(JET_SESID sesid, const JET_COLUMNDEF* prgcolumndef, unsigned long ccolumn, unsigned long lcid, [JetOpenTempTableFlags] grbit, JET_TABLEID* ptableid, JET_COLUMNID* prgcolumnid)
+    JET_ERR JetOpenTempTable2(
+        JET_SESID sesid,
+        const JET_COLUMNDEF* prgcolumndef,
+        unsigned long ccolumn,
+        unsigned long lcid,
+        [JetOpenTempTableFlags] grbit,
+        JET_TABLEID* ptableid,
+        JET_COLUMNID* prgcolumnid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "prgcolumndef", "ccolumn", "lcid", "grbit", "ptableid", "prgcolumnid"])
     raise RuntimeError('API not implemented')
@@ -1039,7 +1509,15 @@ def esent_JetOpenTempTable2(jitter):
 
 def esent_JetOpenTempTable3(jitter):
     """
-    [esent.dll] JET_ERR JetOpenTempTable3(JET_SESID sesid, const JET_COLUMNDEF* prgcolumndef, unsigned long ccolumn, JET_UNICODEINDEX* pidxunicode, [JetOpenTempTableFlags] grbit, JET_TABLEID* ptableid, JET_COLUMNID* prgcolumnid)
+    JET_ERR JetOpenTempTable3(
+        JET_SESID sesid,
+        const JET_COLUMNDEF* prgcolumndef,
+        unsigned long ccolumn,
+        JET_UNICODEINDEX* pidxunicode,
+        [JetOpenTempTableFlags] grbit,
+        JET_TABLEID* ptableid,
+        JET_COLUMNID* prgcolumnid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "prgcolumndef", "ccolumn", "pidxunicode", "grbit", "ptableid", "prgcolumnid"])
     raise RuntimeError('API not implemented')
@@ -1047,7 +1525,10 @@ def esent_JetOpenTempTable3(jitter):
 
 def esent_JetOSSnapshotAbort(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotAbort(const JET_OSSNAPID snapId, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotAbort(
+        const JET_OSSNAPID snapId,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1055,7 +1536,10 @@ def esent_JetOSSnapshotAbort(jitter):
 
 def esent_JetOSSnapshotEnd(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotEnd(const JET_OSSNAPID snapId, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotEnd(
+        const JET_OSSNAPID snapId,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1063,7 +1547,12 @@ def esent_JetOSSnapshotEnd(jitter):
 
 def esent_JetOSSnapshotFreeze(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetOSSnapshotFreeze(const JET_OSSNAPID snapId, unsigned long* pcInstanceInfo, JET_INSTANCE_INFO** paInstanceInfo, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotFreeze(
+        const JET_OSSNAPID snapId,
+        unsigned long* pcInstanceInfo,
+        JET_INSTANCE_INFO** paInstanceInfo,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "pcInstanceInfo", "paInstanceInfo", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1077,7 +1566,12 @@ def esent_JetOSSnapshotFreezeW(jitter):
 
 def esent_JetOSSnapshotGetFreezeInfo(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetOSSnapshotGetFreezeInfo(const JET_OSSNAPID snapId, unsigned long* pcInstanceInfo, JET_INSTANCE_INFO** paInstanceInfo, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotGetFreezeInfo(
+        const JET_OSSNAPID snapId,
+        unsigned long* pcInstanceInfo,
+        JET_INSTANCE_INFO** paInstanceInfo,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "pcInstanceInfo", "paInstanceInfo", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1091,7 +1585,10 @@ def esent_JetOSSnapshotGetFreezeInfoW(jitter):
 
 def esent_JetOSSnapshotPrepare(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotPrepare(JET_OSSNAPID* psnapId, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotPrepare(
+        JET_OSSNAPID* psnapId,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["psnapId", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1099,7 +1596,11 @@ def esent_JetOSSnapshotPrepare(jitter):
 
 def esent_JetOSSnapshotPrepareInstance(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotPrepareInstance(JET_OSSNAPID snapId, JET_INSTANCE instance, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotPrepareInstance(
+        JET_OSSNAPID snapId,
+        JET_INSTANCE instance,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "instance", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1107,7 +1608,10 @@ def esent_JetOSSnapshotPrepareInstance(jitter):
 
 def esent_JetOSSnapshotThaw(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotThaw(const JET_OSSNAPID snapId, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotThaw(
+        const JET_OSSNAPID snapId,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1115,7 +1619,10 @@ def esent_JetOSSnapshotThaw(jitter):
 
 def esent_JetOSSnapshotTruncateLog(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotTruncateLog(const JET_OSSNAPID snapId, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotTruncateLog(
+        const JET_OSSNAPID snapId,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1123,7 +1630,11 @@ def esent_JetOSSnapshotTruncateLog(jitter):
 
 def esent_JetOSSnapshotTruncateLogInstance(jitter):
     """
-    [esent.dll] JET_ERR JetOSSnapshotTruncateLogInstance(const JET_OSSNAPID snapId, JET_INSTANCE instance, const JET_GRBIT grbit)
+    JET_ERR JetOSSnapshotTruncateLogInstance(
+        const JET_OSSNAPID snapId,
+        JET_INSTANCE instance,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["snapId", "instance", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1131,7 +1642,11 @@ def esent_JetOSSnapshotTruncateLogInstance(jitter):
 
 def esent_JetPrepareUpdate(jitter):
     """
-    [esent.dll] JET_ERR JetPrepareUpdate(JET_SESID sesid, JET_TABLEID tableid, [JetPrepareUpdateOption] prep)
+    JET_ERR JetPrepareUpdate(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        [JetPrepareUpdateOption] prep
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "prep"])
     raise RuntimeError('API not implemented')
@@ -1139,7 +1654,12 @@ def esent_JetPrepareUpdate(jitter):
 
 def esent_JetReadFile(jitter):
     """
-    [esent.dll] JET_ERR JetReadFile(JET_HANDLE hfFile, void* pv, unsigned long cb, unsigned long* pcbActual)
+    JET_ERR JetReadFile(
+        JET_HANDLE hfFile,
+        void* pv,
+        unsigned long cb,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hfFile", "pv", "cb", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -1147,7 +1667,13 @@ def esent_JetReadFile(jitter):
 
 def esent_JetReadFileInstance(jitter):
     """
-    [esent.dll] JET_ERR JetReadFileInstance(JET_INSTANCE instance, JET_HANDLE hfFile, void* pv, unsigned long cb, unsigned long* pcb)
+    JET_ERR JetReadFileInstance(
+        JET_INSTANCE instance,
+        JET_HANDLE hfFile,
+        void* pv,
+        unsigned long cb,
+        unsigned long* pcb
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "hfFile", "pv", "cb", "pcb"])
     raise RuntimeError('API not implemented')
@@ -1155,7 +1681,14 @@ def esent_JetReadFileInstance(jitter):
 
 def esent_JetRegisterCallback(jitter):
     """
-    [esent.dll] JET_ERR JetRegisterCallback(JET_SESID sesid, JET_TABLEID tableid, JET_CBTYP cbtyp, JET_CALLBACK pCallback, void* pvContext, JET_HANDLE* phCallbackId)
+    JET_ERR JetRegisterCallback(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_CBTYP cbtyp,
+        JET_CALLBACK pCallback,
+        void* pvContext,
+        JET_HANDLE* phCallbackId
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "cbtyp", "pCallback", "pvContext", "phCallbackId"])
     raise RuntimeError('API not implemented')
@@ -1163,7 +1696,13 @@ def esent_JetRegisterCallback(jitter):
 
 def esent_JetRenameColumn(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetRenameColumn(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szName, JET_PCSTR szNameNew, JET_GRBIT grbit)
+    JET_ERR JetRenameColumn(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szName,
+        JET_PCSTR szNameNew,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szName", "szNameNew", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1177,7 +1716,12 @@ def esent_JetRenameColumnW(jitter):
 
 def esent_JetRenameTable(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetRenameTable(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szName, JET_PCSTR szNameNew)
+    JET_ERR JetRenameTable(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szName,
+        JET_PCSTR szNameNew
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szName", "szNameNew"])
     raise RuntimeError('API not implemented')
@@ -1191,7 +1735,9 @@ def esent_JetRenameTableW(jitter):
 
 def esent_JetResetSessionContext(jitter):
     """
-    [esent.dll] JET_ERR JetResetSessionContext(JET_SESID sesid)
+    JET_ERR JetResetSessionContext(
+        JET_SESID sesid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid"])
     raise RuntimeError('API not implemented')
@@ -1199,7 +1745,11 @@ def esent_JetResetSessionContext(jitter):
 
 def esent_JetResetTableSequential(jitter):
     """
-    [esent.dll] JET_ERR JetResetTableSequential(JET_SESID sesid, JET_TABLEID tableid, JET_GRBIT grbit)
+    JET_ERR JetResetTableSequential(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1207,7 +1757,10 @@ def esent_JetResetTableSequential(jitter):
 
 def esent_JetRestore(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetRestore(JET_PCSTR sz, JET_PFNSTATUS pfn)
+    JET_ERR JetRestore(
+        JET_PCSTR sz,
+        JET_PFNSTATUS pfn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sz", "pfn"])
     raise RuntimeError('API not implemented')
@@ -1221,7 +1774,11 @@ def esent_JetRestoreW(jitter):
 
 def esent_JetRestore2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetRestore2(JET_PCSTR sz, JET_PCSTR szDest, JET_PFNSTATUS pfn)
+    JET_ERR JetRestore2(
+        JET_PCSTR sz,
+        JET_PCSTR szDest,
+        JET_PFNSTATUS pfn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sz", "szDest", "pfn"])
     raise RuntimeError('API not implemented')
@@ -1235,7 +1792,12 @@ def esent_JetRestore2W(jitter):
 
 def esent_JetRestoreInstance(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetRestoreInstance(JET_INSTANCE instance, JET_PCSTR sz, JET_PCSTR szDest, JET_PFNSTATUS pfn)
+    JET_ERR JetRestoreInstance(
+        JET_INSTANCE instance,
+        JET_PCSTR sz,
+        JET_PCSTR szDest,
+        JET_PFNSTATUS pfn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "sz", "szDest", "pfn"])
     raise RuntimeError('API not implemented')
@@ -1249,7 +1811,16 @@ def esent_JetRestoreInstanceW(jitter):
 
 def esent_JetRetrieveColumn(jitter):
     """
-    [esent.dll] JET_ERR JetRetrieveColumn(JET_SESID sesid, JET_TABLEID tableid, JET_COLUMNID columnid, void* pvData, unsigned long cbData, unsigned long* pcbActual, [JetRetrieveColumnFlags] grbit, JET_RETINFO* pretinfo)
+    JET_ERR JetRetrieveColumn(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_COLUMNID columnid,
+        void* pvData,
+        unsigned long cbData,
+        unsigned long* pcbActual,
+        [JetRetrieveColumnFlags] grbit,
+        JET_RETINFO* pretinfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "columnid", "pvData", "cbData", "pcbActual", "grbit", "pretinfo"])
     raise RuntimeError('API not implemented')
@@ -1257,7 +1828,12 @@ def esent_JetRetrieveColumn(jitter):
 
 def esent_JetRetrieveColumns(jitter):
     """
-    [esent.dll] JET_ERR JetRetrieveColumns(JET_SESID sesid, JET_TABLEID tableid, JET_RETRIEVECOLUMN* pretrievecolumn, unsigned long cretrievecolumn)
+    JET_ERR JetRetrieveColumns(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_RETRIEVECOLUMN* pretrievecolumn,
+        unsigned long cretrievecolumn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pretrievecolumn", "cretrievecolumn"])
     raise RuntimeError('API not implemented')
@@ -1265,7 +1841,14 @@ def esent_JetRetrieveColumns(jitter):
 
 def esent_JetRetrieveKey(jitter):
     """
-    [esent.dll] JET_ERR JetRetrieveKey(JET_SESID sesid, JET_TABLEID tableid, void* pvData, unsigned long cbMax, unsigned long* pcbActual, JET_GRBIT grbit)
+    JET_ERR JetRetrieveKey(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvData,
+        unsigned long cbMax,
+        unsigned long* pcbActual,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvData", "cbMax", "pcbActual", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1273,7 +1856,10 @@ def esent_JetRetrieveKey(jitter):
 
 def esent_JetRollback(jitter):
     """
-    [esent.dll] JET_ERR JetRollback(JET_SESID sesid, [JetRollbackFlags] grbit)
+    JET_ERR JetRollback(
+        JET_SESID sesid,
+        [JetRollbackFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1281,7 +1867,11 @@ def esent_JetRollback(jitter):
 
 def esent_JetSeek(jitter):
     """
-    [esent.dll] JET_ERR JetSeek(JET_SESID sesid, JET_TABLEID tableid, [JetSeekFlags] grbit)
+    JET_ERR JetSeek(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        [JetSeekFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1289,7 +1879,15 @@ def esent_JetSeek(jitter):
 
 def esent_JetSetColumn(jitter):
     """
-    [esent.dll] JET_ERR JetSetColumn(JET_SESID sesid, JET_TABLEID tableid, JET_COLUMNID columnid, const void* pvData, unsigned long cbData, [JetSetColumnFlags] grbit, JET_SETINFO* psetinfo)
+    JET_ERR JetSetColumn(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_COLUMNID columnid,
+        const void* pvData,
+        unsigned long cbData,
+        [JetSetColumnFlags] grbit,
+        JET_SETINFO* psetinfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "columnid", "pvData", "cbData", "grbit", "psetinfo"])
     raise RuntimeError('API not implemented')
@@ -1297,7 +1895,15 @@ def esent_JetSetColumn(jitter):
 
 def esent_JetSetColumnDefaultValue(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetColumnDefaultValue(JET_SESID sesid, JET_DBID dbid, JET_PCSTR szTableName, JET_PCSTR szColumnName, const void* pvData, const unsigned long cbData, const JET_GRBIT grbit)
+    JET_ERR JetSetColumnDefaultValue(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_PCSTR szTableName,
+        JET_PCSTR szColumnName,
+        const void* pvData,
+        const unsigned long cbData,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "szTableName", "szColumnName", "pvData", "cbData", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1311,7 +1917,12 @@ def esent_JetSetColumnDefaultValueW(jitter):
 
 def esent_JetSetColumns(jitter):
     """
-    [esent.dll] JET_ERR JetSetColumns(JET_SESID sesid, JET_TABLEID tableid, JET_SETCOLUMN* psetcolumn, unsigned long csetcolumn)
+    JET_ERR JetSetColumns(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_SETCOLUMN* psetcolumn,
+        unsigned long csetcolumn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "psetcolumn", "csetcolumn"])
     raise RuntimeError('API not implemented')
@@ -1319,7 +1930,11 @@ def esent_JetSetColumns(jitter):
 
 def esent_JetSetCurrentIndex(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetCurrentIndex(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName)
+    JET_ERR JetSetCurrentIndex(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName"])
     raise RuntimeError('API not implemented')
@@ -1333,7 +1948,12 @@ def esent_JetSetCurrentIndexW(jitter):
 
 def esent_JetSetCurrentIndex2(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetCurrentIndex2(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName, [JetSetCurrentIndexFlags] grbit)
+    JET_ERR JetSetCurrentIndex2(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName,
+        [JetSetCurrentIndexFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1347,7 +1967,13 @@ def esent_JetSetCurrentIndex2W(jitter):
 
 def esent_JetSetCurrentIndex3(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetCurrentIndex3(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName, [JetSetCurrentIndexFlags] grbit, unsigned long itagSequence)
+    JET_ERR JetSetCurrentIndex3(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName,
+        [JetSetCurrentIndexFlags] grbit,
+        unsigned long itagSequence
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName", "grbit", "itagSequence"])
     raise RuntimeError('API not implemented')
@@ -1361,7 +1987,14 @@ def esent_JetSetCurrentIndex3W(jitter):
 
 def esent_JetSetCurrentIndex4(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetCurrentIndex4(JET_SESID sesid, JET_TABLEID tableid, JET_PCSTR szIndexName, JET_INDEXID* pindexid, [JetSetCurrentIndexFlags] grbit, unsigned long itagSequence)
+    JET_ERR JetSetCurrentIndex4(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_PCSTR szIndexName,
+        JET_INDEXID* pindexid,
+        [JetSetCurrentIndexFlags] grbit,
+        unsigned long itagSequence
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "szIndexName", "pindexid", "grbit", "itagSequence"])
     raise RuntimeError('API not implemented')
@@ -1375,7 +2008,12 @@ def esent_JetSetCurrentIndex4W(jitter):
 
 def esent_JetSetDatabaseSize(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetDatabaseSize(JET_SESID sesid, JET_PCSTR szDatabaseName, unsigned long cpg, unsigned long* pcpgReal)
+    JET_ERR JetSetDatabaseSize(
+        JET_SESID sesid,
+        JET_PCSTR szDatabaseName,
+        unsigned long cpg,
+        unsigned long* pcpgReal
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szDatabaseName", "cpg", "pcpgReal"])
     raise RuntimeError('API not implemented')
@@ -1389,7 +2027,11 @@ def esent_JetSetDatabaseSizeW(jitter):
 
 def esent_JetSetIndexRange(jitter):
     """
-    [esent.dll] JET_ERR JetSetIndexRange(JET_SESID sesid, JET_TABLEID tableidSrc, [JetSetIndexRangeFlags] grbit)
+    JET_ERR JetSetIndexRange(
+        JET_SESID sesid,
+        JET_TABLEID tableidSrc,
+        [JetSetIndexRangeFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableidSrc", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1397,7 +2039,12 @@ def esent_JetSetIndexRange(jitter):
 
 def esent_JetSetLS(jitter):
     """
-    [esent.dll] JET_ERR JetSetLS(JET_SESID sesid, JET_TABLEID tableid, JET_LS ls, JET_GRBIT grbit)
+    JET_ERR JetSetLS(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_LS ls,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "ls", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1405,7 +2052,10 @@ def esent_JetSetLS(jitter):
 
 def esent_JetSetSessionContext(jitter):
     """
-    [esent.dll] JET_ERR JetSetSessionContext(JET_SESID sesid, JET_API_PTR ulContext)
+    JET_ERR JetSetSessionContext(
+        JET_SESID sesid,
+        JET_API_PTR ulContext
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "ulContext"])
     raise RuntimeError('API not implemented')
@@ -1413,7 +2063,13 @@ def esent_JetSetSessionContext(jitter):
 
 def esent_JetSetSystemParameter(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetSetSystemParameter(JET_INSTANCE* pinstance, JET_SESID sesid, [JET_param] paramid, JET_API_PTR lParam, JET_PCSTR szParam)
+    JET_ERR JetSetSystemParameter(
+        JET_INSTANCE* pinstance,
+        JET_SESID sesid,
+        [JET_param] paramid,
+        JET_API_PTR lParam,
+        JET_PCSTR szParam
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pinstance", "sesid", "paramid", "lParam", "szParam"])
     raise RuntimeError('API not implemented')
@@ -1427,7 +2083,11 @@ def esent_JetSetSystemParameterW(jitter):
 
 def esent_JetSetTableSequential(jitter):
     """
-    [esent.dll] JET_ERR JetSetTableSequential(JET_SESID sesid, JET_TABLEID tableid, JET_GRBIT grbit)
+    JET_ERR JetSetTableSequential(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1435,7 +2095,7 @@ def esent_JetSetTableSequential(jitter):
 
 def esent_JetStopBackup(jitter):
     """
-    [esent.dll] JET_ERR JetStopBackup()
+    JET_ERR JetStopBackup()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -1443,7 +2103,9 @@ def esent_JetStopBackup(jitter):
 
 def esent_JetStopBackupInstance(jitter):
     """
-    [esent.dll] JET_ERR JetStopBackupInstance(JET_INSTANCE instance)
+    JET_ERR JetStopBackupInstance(
+        JET_INSTANCE instance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance"])
     raise RuntimeError('API not implemented')
@@ -1451,7 +2113,7 @@ def esent_JetStopBackupInstance(jitter):
 
 def esent_JetStopService(jitter):
     """
-    [esent.dll] JET_ERR JetStopService()
+    JET_ERR JetStopService()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -1459,7 +2121,9 @@ def esent_JetStopService(jitter):
 
 def esent_JetStopServiceInstance(jitter):
     """
-    [esent.dll] JET_ERR JetStopServiceInstance(JET_INSTANCE instance)
+    JET_ERR JetStopServiceInstance(
+        JET_INSTANCE instance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance"])
     raise RuntimeError('API not implemented')
@@ -1467,7 +2131,9 @@ def esent_JetStopServiceInstance(jitter):
 
 def esent_JetTerm(jitter):
     """
-    [esent.dll] JET_ERR JetTerm(JET_INSTANCE instance)
+    JET_ERR JetTerm(
+        JET_INSTANCE instance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance"])
     raise RuntimeError('API not implemented')
@@ -1475,7 +2141,10 @@ def esent_JetTerm(jitter):
 
 def esent_JetTerm2(jitter):
     """
-    [esent.dll] JET_ERR JetTerm2(JET_INSTANCE instance, [JetTerm2Flags] grbit)
+    JET_ERR JetTerm2(
+        JET_INSTANCE instance,
+        [JetTerm2Flags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1483,7 +2152,7 @@ def esent_JetTerm2(jitter):
 
 def esent_JetTruncateLog(jitter):
     """
-    [esent.dll] JET_ERR JetTruncateLog()
+    JET_ERR JetTruncateLog()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -1491,7 +2160,9 @@ def esent_JetTruncateLog(jitter):
 
 def esent_JetTruncateLogInstance(jitter):
     """
-    [esent.dll] JET_ERR JetTruncateLogInstance(JET_INSTANCE instance)
+    JET_ERR JetTruncateLogInstance(
+        JET_INSTANCE instance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance"])
     raise RuntimeError('API not implemented')
@@ -1499,7 +2170,12 @@ def esent_JetTruncateLogInstance(jitter):
 
 def esent_JetUnregisterCallback(jitter):
     """
-    [esent.dll] JET_ERR JetUnregisterCallback(JET_SESID sesid, JET_TABLEID tableid, JET_CBTYP cbtyp, JET_HANDLE hCallbackId)
+    JET_ERR JetUnregisterCallback(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_CBTYP cbtyp,
+        JET_HANDLE hCallbackId
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "cbtyp", "hCallbackId"])
     raise RuntimeError('API not implemented')
@@ -1507,7 +2183,13 @@ def esent_JetUnregisterCallback(jitter):
 
 def esent_JetUpdate(jitter):
     """
-    [esent.dll] JET_ERR JetUpdate(JET_SESID sesid, JET_TABLEID tableid, void* pvBookmark, unsigned long cbBookmark, unsigned long* pcbActual)
+    JET_ERR JetUpdate(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvBookmark,
+        unsigned long cbBookmark,
+        unsigned long* pcbActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvBookmark", "cbBookmark", "pcbActual"])
     raise RuntimeError('API not implemented')
@@ -1515,7 +2197,14 @@ def esent_JetUpdate(jitter):
 
 def esent_JetUpdate2(jitter):
     """
-    [esent.dll] JET_ERR JetUpdate2(JET_SESID sesid, JET_TABLEID tableid, void* pvBookmark, unsigned long cbBookmark, unsigned long* pcbActual, [JetUpdateFlags] grbit)
+    JET_ERR JetUpdate2(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        void* pvBookmark,
+        unsigned long cbBookmark,
+        unsigned long* pcbActual,
+        [JetUpdateFlags] grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pvBookmark", "cbBookmark", "pcbActual", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1523,7 +2212,11 @@ def esent_JetUpdate2(jitter):
 
 def esent_JetBeginTransaction3(jitter):
     """
-    [esent.dll] JET_ERR JetBeginTransaction3(JET_SESID sesid, __int64 trxid, JET_GRBIT grbit)
+    JET_ERR JetBeginTransaction3(
+        JET_SESID sesid,
+        __int64 trxid,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "trxid", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1531,7 +2224,12 @@ def esent_JetBeginTransaction3(jitter):
 
 def esent_JetCommitTransaction2(jitter):
     """
-    [esent.dll] JET_ERR JetCommitTransaction2(JET_SESID sesid, JET_GRBIT grbit, DWORD cmsecDurableCommit, JET_COMMIT_ID* pCommitID)
+    JET_ERR JetCommitTransaction2(
+        JET_SESID sesid,
+        JET_GRBIT grbit,
+        DWORD cmsecDurableCommit,
+        JET_COMMIT_ID* pCommitID
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "grbit", "cmsecDurableCommit", "pCommitID"])
     raise RuntimeError('API not implemented')
@@ -1539,7 +2237,12 @@ def esent_JetCommitTransaction2(jitter):
 
 def esent_JetCreateIndex3(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateIndex3(JET_SESID sesid, JET_TABLEID tableid, JET_INDEXCREATE2* pindexcreate, unsigned long cIndexCreate)
+    JET_ERR JetCreateIndex3(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_INDEXCREATE2* pindexcreate,
+        unsigned long cIndexCreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pindexcreate", "cIndexCreate"])
     raise RuntimeError('API not implemented')
@@ -1553,7 +2256,12 @@ def esent_JetCreateIndex3W(jitter):
 
 def esent_JetCreateIndex4(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateIndex4(JET_SESID sesid, JET_TABLEID tableid, JET_INDEXCREATE2* pindexcreate, unsigned long cIndexCreate)
+    JET_ERR JetCreateIndex4(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_INDEXCREATE2* pindexcreate,
+        unsigned long cIndexCreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "pindexcreate", "cIndexCreate"])
     raise RuntimeError('API not implemented')
@@ -1567,7 +2275,11 @@ def esent_JetCreateIndex4W(jitter):
 
 def esent_JetCreateTableColumnIndex3(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateTableColumnIndex3(JET_SESID sesid, JET_DBID dbid, JET_TABLECREATE3* ptablecreate)
+    JET_ERR JetCreateTableColumnIndex3(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_TABLECREATE3* ptablecreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "ptablecreate"])
     raise RuntimeError('API not implemented')
@@ -1581,7 +2293,11 @@ def esent_JetCreateTableColumnIndex3W(jitter):
 
 def esent_JetCreateTableColumnIndex4(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetCreateTableColumnIndex4(JET_SESID sesid, JET_DBID dbid, JET_TABLECREATE3* ptablecreate)
+    JET_ERR JetCreateTableColumnIndex4(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        JET_TABLECREATE3* ptablecreate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "ptablecreate"])
     raise RuntimeError('API not implemented')
@@ -1595,7 +2311,13 @@ def esent_JetCreateTableColumnIndex4W(jitter):
 
 def esent_JetGetErrorInfoW(jitter):
     """
-    [esent.dll] JET_ERR JetGetErrorInfoW(void* pvContext, void* pvResult, unsigned long cbMax, unsigned long InfoLevel, JET_GRBIT grbit)
+    JET_ERR JetGetErrorInfoW(
+        void* pvContext,
+        void* pvResult,
+        unsigned long cbMax,
+        unsigned long InfoLevel,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pvContext", "pvResult", "cbMax", "InfoLevel", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1603,7 +2325,12 @@ def esent_JetGetErrorInfoW(jitter):
 
 def esent_JetGetRecordSize2(jitter):
     """
-    [esent.dll] JET_ERR JetGetRecordSize2(JET_SESID sesid, JET_TABLEID tableid, JET_RECSIZE2* precsize, const JET_GRBIT grbit)
+    JET_ERR JetGetRecordSize2(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_RECSIZE2* precsize,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "precsize", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1611,7 +2338,13 @@ def esent_JetGetRecordSize2(jitter):
 
 def esent_JetGetSessionParameter(jitter):
     """
-    [esent.dll] JET_ERR JetGetSessionParameter(JET_SESID sesid, unsigned long sesparamid, void* pvParam, unsigned long cbParamMax, unsigned long pcbParamActual)
+    JET_ERR JetGetSessionParameter(
+        JET_SESID sesid,
+        unsigned long sesparamid,
+        void* pvParam,
+        unsigned long cbParamMax,
+        unsigned long pcbParamActual
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "sesparamid", "pvParam", "cbParamMax", "pcbParamActual"])
     raise RuntimeError('API not implemented')
@@ -1619,7 +2352,16 @@ def esent_JetGetSessionParameter(jitter):
 
 def esent_JetPrereadIndexRanges(jitter):
     """
-    [esent.dll] JET_ERR JetPrereadIndexRanges(JET_SESID sesid, JET_TABLEID tableid, const JET_INDEX_RANGE* const rgIndexRanges, const unsigned long cIndexRanges, unsigned long* const pcRangesPreread, const JET_COLUMNID* const rgcolumnidPreread, const unsigned long ccolumnidPreread, JET_GRBIT grbit)
+    JET_ERR JetPrereadIndexRanges(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        const JET_INDEX_RANGE* const rgIndexRanges,
+        const unsigned long cIndexRanges,
+        unsigned long* const pcRangesPreread,
+        const JET_COLUMNID* const rgcolumnidPreread,
+        const unsigned long ccolumnidPreread,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "rgIndexRanges", "cIndexRanges", "pcRangesPreread", "rgcolumnidPreread", "ccolumnidPreread", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1627,7 +2369,15 @@ def esent_JetPrereadIndexRanges(jitter):
 
 def esent_JetPrereadKeys(jitter):
     """
-    [esent.dll] JET_ERR JetPrereadKeys(JET_SESID sesid, JET_TABLEID tableid, const void** rgpvKeys, const unsigned long* rgcbKeys, long ckeys, long* pckeysPreread, JET_GRBIT grbit)
+    JET_ERR JetPrereadKeys(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        const void** rgpvKeys,
+        const unsigned long* rgcbKeys,
+        long ckeys,
+        long* pckeysPreread,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "rgpvKeys", "rgcbKeys", "ckeys", "pckeysPreread", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1635,7 +2385,13 @@ def esent_JetPrereadKeys(jitter):
 
 def esent_JetResizeDatabase(jitter):
     """
-    [esent.dll] JET_ERR JetResizeDatabase(JET_SESID sesid, JET_DBID dbid, unsigned long cpg, unsigned long* pcpgActual, const JET_GRBIT grbit)
+    JET_ERR JetResizeDatabase(
+        JET_SESID sesid,
+        JET_DBID dbid,
+        unsigned long cpg,
+        unsigned long* pcpgActual,
+        const JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "dbid", "cpg", "pcpgActual", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1643,7 +2399,13 @@ def esent_JetResizeDatabase(jitter):
 
 def esent_JetSetCursorFilter(jitter):
     """
-    [esent.dll] JET_ERR JetSetCursorFilter(JET_SESID sesid, JET_TABLEID tableid, JET_INDEX_COLUMN* rgFilters, DWORD cFilters, JET_GRBIT grbit)
+    JET_ERR JetSetCursorFilter(
+        JET_SESID sesid,
+        JET_TABLEID tableid,
+        JET_INDEX_COLUMN* rgFilters,
+        DWORD cFilters,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "tableid", "rgFilters", "cFilters", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1651,7 +2413,12 @@ def esent_JetSetCursorFilter(jitter):
 
 def esent_JetSetSessionParameter(jitter):
     """
-    [esent.dll] JET_ERR JetSetSessionParameter(JET_SESID sesid, unsigned long sesparamid, void* pvParam, unsigned long cbParam)
+    JET_ERR JetSetSessionParameter(
+        JET_SESID sesid,
+        unsigned long sesparamid,
+        void* pvParam,
+        unsigned long cbParam
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "sesparamid", "pvParam", "cbParam"])
     raise RuntimeError('API not implemented')
@@ -1659,7 +2426,9 @@ def esent_JetSetSessionParameter(jitter):
 
 def esent_JetStopServiceInstance2(jitter):
     """
-    [esent.dll] JET_ERR JetStopServiceInstance2(JET_INSTANCE instance)
+    JET_ERR JetStopServiceInstance2(
+        JET_INSTANCE instance
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["instance"])
     raise RuntimeError('API not implemented')
@@ -1667,7 +2436,16 @@ def esent_JetStopServiceInstance2(jitter):
 
 def esent_JetDefragment3(jitter, get_str, set_str):
     """
-    [esent.dll] JET_ERR JetDefragment3(JET_SESID sesid, JET_PCSTR szDatabaseName, JET_PCSTR szTableName, unsigned long* pcPasses, unsigned long* pcSeconds, JET_CALLBACK callback, void* pvContext, JET_GRBIT grbit)
+    JET_ERR JetDefragment3(
+        JET_SESID sesid,
+        JET_PCSTR szDatabaseName,
+        JET_PCSTR szTableName,
+        unsigned long* pcPasses,
+        unsigned long* pcSeconds,
+        JET_CALLBACK callback,
+        void* pvContext,
+        JET_GRBIT grbit
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "szDatabaseName", "szTableName", "pcPasses", "pcSeconds", "callback", "pvContext", "grbit"])
     raise RuntimeError('API not implemented')
@@ -1681,7 +2459,10 @@ def esent_JetDefragment3W(jitter):
 
 def esent_JetOpenTemporaryTable2(jitter):
     """
-    [esent.dll] JET_ERR JetOpenTemporaryTable2(JET_SESID sesid, JET_OPENTEMPORARYTABLE2* popentemporarytable)
+    JET_ERR JetOpenTemporaryTable2(
+        JET_SESID sesid,
+        JET_OPENTEMPORARYTABLE2* popentemporarytable
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sesid", "popentemporarytable"])
     raise RuntimeError('API not implemented')

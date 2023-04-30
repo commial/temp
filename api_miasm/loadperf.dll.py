@@ -1,7 +1,10 @@
 
 def loadperf_LoadPerfCounterTextStrings(jitter, get_str, set_str):
     """
-    [Loadperf.dll] [ERROR_CODE] LoadPerfCounterTextStrings(LPCTSTR commandLine, BOOL bQuietModeArg)
+    [ERROR_CODE] LoadPerfCounterTextStrings(
+        LPCTSTR commandLine,
+        BOOL bQuietModeArg
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["commandLine", "bQuietModeArg"])
     raise RuntimeError('API not implemented')
@@ -15,7 +18,10 @@ def loadperf_LoadPerfCounterTextStringsW(jitter):
 
 def loadperf_UnloadPerfCounterTextStrings(jitter, get_str, set_str):
     """
-    [Loadperf.dll] [ERROR_CODE] UnloadPerfCounterTextStrings(LPCTSTR commandLine, BOOL bQuietModeArg)
+    [ERROR_CODE] UnloadPerfCounterTextStrings(
+        LPCTSTR commandLine,
+        BOOL bQuietModeArg
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["commandLine", "bQuietModeArg"])
     raise RuntimeError('API not implemented')

@@ -1,7 +1,11 @@
 
 def msidle_BeginIdleDetection(jitter):
     """
-    [Msidle.dll] [ERROR_CODE] BeginIdleDetection(_IDLECALLBACK pfnCallback, DWORD dwIdleMin, DWORD dwReserved)
+    [ERROR_CODE] BeginIdleDetection(
+        _IDLECALLBACK pfnCallback,
+        DWORD dwIdleMin,
+        DWORD dwReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pfnCallback", "dwIdleMin", "dwReserved"])
     raise RuntimeError('API not implemented')
@@ -9,7 +13,9 @@ def msidle_BeginIdleDetection(jitter):
 
 def msidle_EndIdleDetection(jitter):
     """
-    [Msidle.dll] BOOL EndIdleDetection(DWORD dwReserved)
+    BOOL EndIdleDetection(
+        DWORD dwReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwReserved"])
     raise RuntimeError('API not implemented')
@@ -17,7 +23,9 @@ def msidle_EndIdleDetection(jitter):
 
 def msidle_GetIdleMinutes(jitter):
     """
-    [Msidle.dll] DWORD GetIdleMinutes(DWORD dwReserved)
+    DWORD GetIdleMinutes(
+        DWORD dwReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwReserved"])
     raise RuntimeError('API not implemented')

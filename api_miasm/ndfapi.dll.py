@@ -1,7 +1,9 @@
 
 def ndfapi_NdfCloseIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCloseIncident(NDFHANDLE handle)
+    HRESULT NdfCloseIncident(
+        NDFHANDLE handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["handle"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,9 @@ def ndfapi_NdfCloseIncident(jitter):
 
 def ndfapi_NdfCreateConnectivityIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateConnectivityIncident(NDFHANDLE* handle)
+    HRESULT NdfCreateConnectivityIncident(
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["handle"])
     raise RuntimeError('API not implemented')
@@ -17,7 +21,11 @@ def ndfapi_NdfCreateConnectivityIncident(jitter):
 
 def ndfapi_NdfCreateDNSIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateDNSIncident(LPCWSTR hostname, WORD querytype, NDFHANDLE* handle)
+    HRESULT NdfCreateDNSIncident(
+        LPCWSTR hostname,
+        WORD querytype,
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hostname", "querytype", "handle"])
     raise RuntimeError('API not implemented')
@@ -25,7 +33,12 @@ def ndfapi_NdfCreateDNSIncident(jitter):
 
 def ndfapi_NdfCreateIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateIncident(LPCWSTR helperClassName, ULONG celt, HELPER_ATTRIBUTE* attributes, NDFHANDLE* handle)
+    HRESULT NdfCreateIncident(
+        LPCWSTR helperClassName,
+        ULONG celt,
+        HELPER_ATTRIBUTE* attributes,
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["helperClassName", "celt", "attributes", "handle"])
     raise RuntimeError('API not implemented')
@@ -33,7 +46,10 @@ def ndfapi_NdfCreateIncident(jitter):
 
 def ndfapi_NdfCreateSharingIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateSharingIncident(LPCWSTR sharename, NDFHANDLE* handle)
+    HRESULT NdfCreateSharingIncident(
+        LPCWSTR sharename,
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sharename", "handle"])
     raise RuntimeError('API not implemented')
@@ -41,7 +57,10 @@ def ndfapi_NdfCreateSharingIncident(jitter):
 
 def ndfapi_NdfCreateWebIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateWebIncident(LPCWSTR url, NDFHANDLE* handle)
+    HRESULT NdfCreateWebIncident(
+        LPCWSTR url,
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["url", "handle"])
     raise RuntimeError('API not implemented')
@@ -49,7 +68,12 @@ def ndfapi_NdfCreateWebIncident(jitter):
 
 def ndfapi_NdfCreateWebIncidentEx(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateWebIncidentEx(LPCWSTR url, BOOL useWinHTTP, LPWSTR moduleName, NDFHANDLE* handle)
+    HRESULT NdfCreateWebIncidentEx(
+        LPCWSTR url,
+        BOOL useWinHTTP,
+        LPWSTR moduleName,
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["url", "useWinHTTP", "moduleName", "handle"])
     raise RuntimeError('API not implemented')
@@ -57,7 +81,14 @@ def ndfapi_NdfCreateWebIncidentEx(jitter):
 
 def ndfapi_NdfCreateWinSockIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateWinSockIncident(SOCKET sock, LPCWSTR host, USHORT port, LPCWSTR appID, SID* userId, NDFHANDLE* handle)
+    HRESULT NdfCreateWinSockIncident(
+        SOCKET sock,
+        LPCWSTR host,
+        USHORT port,
+        LPCWSTR appID,
+        SID* userId,
+        NDFHANDLE* handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["sock", "host", "port", "appID", "userId", "handle"])
     raise RuntimeError('API not implemented')
@@ -65,7 +96,10 @@ def ndfapi_NdfCreateWinSockIncident(jitter):
 
 def ndfapi_NdfExecuteDiagnosis(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfExecuteDiagnosis(NDFHANDLE handle, HWND hwnd)
+    HRESULT NdfExecuteDiagnosis(
+        NDFHANDLE handle,
+        HWND hwnd
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["handle", "hwnd"])
     raise RuntimeError('API not implemented')
@@ -73,7 +107,10 @@ def ndfapi_NdfExecuteDiagnosis(jitter):
 
 def ndfapi_NdfCreateNetConnectionIncident(jitter):
     """
-    [Ndfapi.dll] HRESULT NdfCreateNetConnectionIncident(NDFHANDLE* handle, GUID id)
+    HRESULT NdfCreateNetConnectionIncident(
+        NDFHANDLE* handle,
+        GUID id
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["handle", "id"])
     raise RuntimeError('API not implemented')

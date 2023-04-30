@@ -1,7 +1,9 @@
 
 def scarddlg_GetOpenCardName(jitter, get_str, set_str):
     """
-    [SCardDlg.dll] [SCARD_ERROR] GetOpenCardName(LPOPENCARDNAME pDlgStruc)
+    [SCARD_ERROR] GetOpenCardName(
+        LPOPENCARDNAME pDlgStruc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pDlgStruc"])
     raise RuntimeError('API not implemented')
@@ -15,7 +17,7 @@ def scarddlg_GetOpenCardNameW(jitter):
 
 def scarddlg_SCardDlgExtendedError(jitter):
     """
-    [SCardDlg.dll] [SCARD_ERROR] SCardDlgExtendedError()
+    [SCARD_ERROR] SCardDlgExtendedError()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -23,7 +25,9 @@ def scarddlg_SCardDlgExtendedError(jitter):
 
 def scarddlg_SCardUIDlgSelectCard(jitter, get_str, set_str):
     """
-    [SCardDlg.dll] [SCARD_ERROR] SCardUIDlgSelectCard(LPOPENCARDNAME_EX pDlgStruc)
+    [SCARD_ERROR] SCardUIDlgSelectCard(
+        LPOPENCARDNAME_EX pDlgStruc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pDlgStruc"])
     raise RuntimeError('API not implemented')

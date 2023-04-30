@@ -1,7 +1,9 @@
 
 def comdlg32_ChooseColor(jitter, get_str, set_str):
     """
-    [comdlg32.dll] BOOL ChooseColor(LPCHOOSECOLOR lpcc)
+    BOOL ChooseColor(
+        LPCHOOSECOLOR lpcc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpcc"])
     raise RuntimeError('API not implemented')
@@ -15,7 +17,9 @@ def comdlg32_ChooseColorW(jitter):
 
 def comdlg32_ChooseFont(jitter, get_str, set_str):
     """
-    [comdlg32.dll] BOOL ChooseFont(LPCHOOSEFONT lpcf)
+    BOOL ChooseFont(
+        LPCHOOSEFONT lpcf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpcf"])
     raise RuntimeError('API not implemented')
@@ -29,7 +33,7 @@ def comdlg32_ChooseFontW(jitter):
 
 def comdlg32_CommDlgExtendedError(jitter):
     """
-    [comdlg32.dll] DWORD CommDlgExtendedError()
+    DWORD CommDlgExtendedError()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -37,7 +41,9 @@ def comdlg32_CommDlgExtendedError(jitter):
 
 def comdlg32_FindText(jitter, get_str, set_str):
     """
-    [comdlg32.dll] HWND FindText(LPFINDREPLACE lpfr)
+    HWND FindText(
+        LPFINDREPLACE lpfr
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpfr"])
     raise RuntimeError('API not implemented')
@@ -51,7 +57,11 @@ def comdlg32_FindTextW(jitter):
 
 def comdlg32_GetFileTitle(jitter, get_str, set_str):
     """
-    [comdlg32.dll] short GetFileTitle(LPCTSTR lpszFile, LPTSTR lpszTitle, WORD cbBuf)
+    short GetFileTitle(
+        LPCTSTR lpszFile,
+        LPTSTR lpszTitle,
+        WORD cbBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszFile", "lpszTitle", "cbBuf"])
     raise RuntimeError('API not implemented')
@@ -65,7 +75,9 @@ def comdlg32_GetFileTitleW(jitter):
 
 def comdlg32_GetOpenFileName(jitter, get_str, set_str):
     """
-    [comdlg32.dll] BOOL GetOpenFileName(LPOPENFILENAME lpofn)
+    BOOL GetOpenFileName(
+        LPOPENFILENAME lpofn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpofn"])
     raise RuntimeError('API not implemented')
@@ -79,7 +91,9 @@ def comdlg32_GetOpenFileNameW(jitter):
 
 def comdlg32_GetSaveFileName(jitter, get_str, set_str):
     """
-    [comdlg32.dll] BOOL GetSaveFileName(LPOPENFILENAME lpofn)
+    BOOL GetSaveFileName(
+        LPOPENFILENAME lpofn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpofn"])
     raise RuntimeError('API not implemented')
@@ -93,7 +107,9 @@ def comdlg32_GetSaveFileNameW(jitter):
 
 def comdlg32_PageSetupDlg(jitter, get_str, set_str):
     """
-    [comdlg32.dll] BOOL PageSetupDlg(LPPAGESETUPDLG lppsd)
+    BOOL PageSetupDlg(
+        LPPAGESETUPDLG lppsd
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lppsd"])
     raise RuntimeError('API not implemented')
@@ -107,7 +123,9 @@ def comdlg32_PageSetupDlgW(jitter):
 
 def comdlg32_PrintDlg(jitter, get_str, set_str):
     """
-    [comdlg32.dll] BOOL PrintDlg(LPPRINTDLG lppd)
+    BOOL PrintDlg(
+        LPPRINTDLG lppd
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lppd"])
     raise RuntimeError('API not implemented')
@@ -121,7 +139,9 @@ def comdlg32_PrintDlgW(jitter):
 
 def comdlg32_PrintDlgEx(jitter, get_str, set_str):
     """
-    [comdlg32.dll] HRESULT PrintDlgEx(LPPRINTDLGEX lppd)
+    HRESULT PrintDlgEx(
+        LPPRINTDLGEX lppd
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lppd"])
     raise RuntimeError('API not implemented')
@@ -135,7 +155,9 @@ def comdlg32_PrintDlgExW(jitter):
 
 def comdlg32_ReplaceText(jitter, get_str, set_str):
     """
-    [comdlg32.dll] HWND ReplaceText(LPFINDREPLACE lpfr)
+    HWND ReplaceText(
+        LPFINDREPLACE lpfr
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpfr"])
     raise RuntimeError('API not implemented')

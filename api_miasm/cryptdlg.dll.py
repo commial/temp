@@ -1,7 +1,9 @@
 
 def cryptdlg_CertSelectCertificate(jitter, get_str, set_str):
     """
-    [CryptDlg.dll] BOOL CertSelectCertificate(PCERT_SELECT_STRUCT pCertSelectInfo)
+    BOOL CertSelectCertificate(
+        PCERT_SELECT_STRUCT pCertSelectInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pCertSelectInfo"])
     raise RuntimeError('API not implemented')
@@ -15,7 +17,11 @@ def cryptdlg_CertSelectCertificateW(jitter):
 
 def cryptdlg_GetFriendlyNameOfCert(jitter, get_str, set_str):
     """
-    [CryptDlg.dll] DWORD GetFriendlyNameOfCert(PCCERT_CONTEXT pccert, LPTSTR pchBuffer, DWORD cchBuffer)
+    DWORD GetFriendlyNameOfCert(
+        PCCERT_CONTEXT pccert,
+        LPTSTR pchBuffer,
+        DWORD cchBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pccert", "pchBuffer", "cchBuffer"])
     raise RuntimeError('API not implemented')
@@ -29,7 +35,14 @@ def cryptdlg_GetFriendlyNameOfCertW(jitter):
 
 def cryptdlg_CertModifyCertificatesToTrust(jitter):
     """
-    [CryptDlg.dll] HRESULT CertModifyCertificatesToTrust(int cCerts, PCTL_MODIFY_REQUEST rgCerts, LPCSTR szPurpose, HWND hwnd, HCERTSTORE hcertstoreTrust, PCCERT_CONTEXT pccertSigner)
+    HRESULT CertModifyCertificatesToTrust(
+        int cCerts,
+        PCTL_MODIFY_REQUEST rgCerts,
+        LPCSTR szPurpose,
+        HWND hwnd,
+        HCERTSTORE hcertstoreTrust,
+        PCCERT_CONTEXT pccertSigner
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["cCerts", "rgCerts", "szPurpose", "hwnd", "hcertstoreTrust", "pccertSigner"])
     raise RuntimeError('API not implemented')

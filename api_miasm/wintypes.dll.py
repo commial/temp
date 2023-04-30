@@ -1,7 +1,9 @@
 
 def wintypes_RoGetBufferMarshaler(jitter):
     """
-    [WinTypes.dll] HRESULT RoGetBufferMarshaler(IMarshal** bufferMarshaler)
+    HRESULT RoGetBufferMarshaler(
+        IMarshal** bufferMarshaler
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["bufferMarshaler"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,13 @@ def wintypes_RoGetBufferMarshaler(jitter):
 
 def wintypes_RoGetMetaDataFile(jitter):
     """
-    [WinTypes.dll] HRESULT RoGetMetaDataFile(const HSTRING name, IMetaDataDispenserEx* metaDataDispenser, HSTRING* metaDataFilePath, IMetaDataImport2** metaDataImport, mdTypeDef* typeDefToken)
+    HRESULT RoGetMetaDataFile(
+        const HSTRING name,
+        IMetaDataDispenserEx* metaDataDispenser,
+        HSTRING* metaDataFilePath,
+        IMetaDataImport2** metaDataImport,
+        mdTypeDef* typeDefToken
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["name", "metaDataDispenser", "metaDataFilePath", "metaDataImport", "typeDefToken"])
     raise RuntimeError('API not implemented')
@@ -17,7 +25,11 @@ def wintypes_RoGetMetaDataFile(jitter):
 
 def wintypes_RoParseTypeName(jitter):
     """
-    [WinTypes.dll] HRESULT RoParseTypeName(HSTRING typename, DWORD* partsCount, HSTRING** typeNameParts)
+    HRESULT RoParseTypeName(
+        HSTRING typename,
+        DWORD* partsCount,
+        HSTRING** typeNameParts
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["typename", "partsCount", "typeNameParts"])
     raise RuntimeError('API not implemented')
@@ -25,7 +37,16 @@ def wintypes_RoParseTypeName(jitter):
 
 def wintypes_RoResolveNamespace(jitter):
     """
-    [WinTypes.dll] HRESULT RoResolveNamespace(const HSTRING name, const HSTRING windowsMetaDataDir, const DWORD packageGraphDirsCount, const HSTRING* packageGraphDirs, DWORD* metaDataFilePathsCount, HSTRING** metaDataFilePaths, DWORD* subNamespacesCount, HSTRING** subNamespaces)
+    HRESULT RoResolveNamespace(
+        const HSTRING name,
+        const HSTRING windowsMetaDataDir,
+        const DWORD packageGraphDirsCount,
+        const HSTRING* packageGraphDirs,
+        DWORD* metaDataFilePathsCount,
+        HSTRING** metaDataFilePaths,
+        DWORD* subNamespacesCount,
+        HSTRING** subNamespaces
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["name", "windowsMetaDataDir", "packageGraphDirsCount", "packageGraphDirs", "metaDataFilePathsCount", "metaDataFilePaths", "subNamespacesCount", "subNamespaces"])
     raise RuntimeError('API not implemented')

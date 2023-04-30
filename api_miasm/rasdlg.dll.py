@@ -1,7 +1,12 @@
 
 def rasdlg_RasDialDlg(jitter, get_str, set_str):
     """
-    [Rasdlg.dll] BOOL RasDialDlg(LPTSTR lpszPhonebook, LPTSTR lpszEntry, LPTSTR lpszPhoneNumber, LPRASDIALDLG lpInfo)
+    BOOL RasDialDlg(
+        LPTSTR lpszPhonebook,
+        LPTSTR lpszEntry,
+        LPTSTR lpszPhoneNumber,
+        LPRASDIALDLG lpInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszPhonebook", "lpszEntry", "lpszPhoneNumber", "lpInfo"])
     raise RuntimeError('API not implemented')
@@ -15,7 +20,11 @@ def rasdlg_RasDialDlgW(jitter):
 
 def rasdlg_RasEntryDlg(jitter, get_str, set_str):
     """
-    [Rasdlg.dll] BOOL RasEntryDlg(LPTSTR lpszPhonebook, LPTSTR lpszEntry, LPRASENTRYDLG lpInfo)
+    BOOL RasEntryDlg(
+        LPTSTR lpszPhonebook,
+        LPTSTR lpszEntry,
+        LPRASENTRYDLG lpInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszPhonebook", "lpszEntry", "lpInfo"])
     raise RuntimeError('API not implemented')
@@ -29,7 +38,10 @@ def rasdlg_RasEntryDlgW(jitter):
 
 def rasdlg_RasMonitorDlg(jitter, get_str, set_str):
     """
-    [Rasdlg.dll] BOOL RasMonitorDlg(LPTSTR lpszDeviceName, LPRASMONITORDLG lpInfo)
+    BOOL RasMonitorDlg(
+        LPTSTR lpszDeviceName,
+        LPRASMONITORDLG lpInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszDeviceName", "lpInfo"])
     raise RuntimeError('API not implemented')
@@ -43,7 +55,11 @@ def rasdlg_RasMonitorDlgW(jitter):
 
 def rasdlg_RasPhonebookDlg(jitter, get_str, set_str):
     """
-    [Rasdlg.dll] BOOL RasPhonebookDlg(LPTSTR lpszPhonebook, LPTSTR lpszEntry, LPRASPBDLG lpInfo)
+    BOOL RasPhonebookDlg(
+        LPTSTR lpszPhonebook,
+        LPTSTR lpszEntry,
+        LPRASPBDLG lpInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszPhonebook", "lpszEntry", "lpInfo"])
     raise RuntimeError('API not implemented')

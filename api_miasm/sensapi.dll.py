@@ -1,7 +1,10 @@
 
 def sensapi_IsDestinationReachable(jitter, get_str, set_str):
     """
-    [SensAPI.dll] BOOL IsDestinationReachable(LPCSTR lpszDestination, LPQOCINFO lpQOCInfo)
+    BOOL IsDestinationReachable(
+        LPCSTR lpszDestination,
+        LPQOCINFO lpQOCInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszDestination", "lpQOCInfo"])
     raise RuntimeError('API not implemented')
@@ -15,7 +18,9 @@ def sensapi_IsDestinationReachableW(jitter):
 
 def sensapi_IsNetworkAlive(jitter):
     """
-    [SensAPI.dll] BOOL IsNetworkAlive([NetworkAliveFlags*] lpdwFlags)
+    BOOL IsNetworkAlive(
+        [NetworkAliveFlags*] lpdwFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpdwFlags"])
     raise RuntimeError('API not implemented')

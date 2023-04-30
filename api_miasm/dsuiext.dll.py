@@ -1,7 +1,9 @@
 
 def dsuiext_DsBrowseForContainer(jitter, get_str, set_str):
     """
-    [Dsuiext.dll] int DsBrowseForContainer(PDSBROWSEINFO pInfo)
+    int DsBrowseForContainer(
+        PDSBROWSEINFO pInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pInfo"])
     raise RuntimeError('API not implemented')
@@ -15,7 +17,11 @@ def dsuiext_DsBrowseForContainerW(jitter):
 
 def dsuiext_DsGetFriendlyClassName(jitter):
     """
-    [Dsuiext.dll] HRESULT DsGetFriendlyClassName(LPWSTR pszObjectClass, LPWSTR pszBuffer, INT cchBuffer)
+    HRESULT DsGetFriendlyClassName(
+        LPWSTR pszObjectClass,
+        LPWSTR pszBuffer,
+        INT cchBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszObjectClass", "pszBuffer", "cchBuffer"])
     raise RuntimeError('API not implemented')
@@ -23,7 +29,12 @@ def dsuiext_DsGetFriendlyClassName(jitter):
 
 def dsuiext_DsGetIcon(jitter):
     """
-    [Dsuiext.dll] HICON DsGetIcon(DWORD dwFlags, LPWSTR pszObjectClass, INT cxImage, INT cyImage)
+    HICON DsGetIcon(
+        DWORD dwFlags,
+        LPWSTR pszObjectClass,
+        INT cxImage,
+        INT cyImage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "pszObjectClass", "cxImage", "cyImage"])
     raise RuntimeError('API not implemented')

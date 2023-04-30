@@ -1,7 +1,11 @@
 
 def traffic_TcAddFilter(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcAddFilter(HANDLE FlowHandle, PTC_GEN_FILTER pGenericFilter, PHANDLE pFilterHandle)
+    [ERROR_CODE_ULONG] TcAddFilter(
+        HANDLE FlowHandle,
+        PTC_GEN_FILTER pGenericFilter,
+        PHANDLE pFilterHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FlowHandle", "pGenericFilter", "pFilterHandle"])
     raise RuntimeError('API not implemented')
@@ -9,7 +13,13 @@ def traffic_TcAddFilter(jitter):
 
 def traffic_TcAddFlow(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcAddFlow(HANDLE IfcHandle, HANDLE ClFlowCtx, ULONG Flags, PTC_GEN_FLOW pGenericFlow, PHANDLE pFlowHandle)
+    [ERROR_CODE_ULONG] TcAddFlow(
+        HANDLE IfcHandle,
+        HANDLE ClFlowCtx,
+        ULONG Flags,
+        PTC_GEN_FLOW pGenericFlow,
+        PHANDLE pFlowHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["IfcHandle", "ClFlowCtx", "Flags", "pGenericFlow", "pFlowHandle"])
     raise RuntimeError('API not implemented')
@@ -17,7 +27,9 @@ def traffic_TcAddFlow(jitter):
 
 def traffic_TcCloseInterface(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcCloseInterface(HANDLE IfcHandle)
+    [ERROR_CODE_ULONG] TcCloseInterface(
+        HANDLE IfcHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["IfcHandle"])
     raise RuntimeError('API not implemented')
@@ -25,7 +37,9 @@ def traffic_TcCloseInterface(jitter):
 
 def traffic_TcDeleteFilter(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcDeleteFilter(HANDLE FilterHandle)
+    [ERROR_CODE_ULONG] TcDeleteFilter(
+        HANDLE FilterHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FilterHandle"])
     raise RuntimeError('API not implemented')
@@ -33,7 +47,9 @@ def traffic_TcDeleteFilter(jitter):
 
 def traffic_TcDeleteFlow(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcDeleteFlow(HANDLE FlowHandle)
+    [ERROR_CODE_ULONG] TcDeleteFlow(
+        HANDLE FlowHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FlowHandle"])
     raise RuntimeError('API not implemented')
@@ -41,7 +57,9 @@ def traffic_TcDeleteFlow(jitter):
 
 def traffic_TcDeregisterClient(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcDeregisterClient(HANDLE ClientHandle)
+    [ERROR_CODE_ULONG] TcDeregisterClient(
+        HANDLE ClientHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ClientHandle"])
     raise RuntimeError('API not implemented')
@@ -49,7 +67,13 @@ def traffic_TcDeregisterClient(jitter):
 
 def traffic_TcEnumerateFlows(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcEnumerateFlows(HANDLE IfcHandle, PHANDLE pEnumToken, PULONG pFlowCount, PULONG pBufSize, PENUMERATION_BUFFER Buffer)
+    [ERROR_CODE_ULONG] TcEnumerateFlows(
+        HANDLE IfcHandle,
+        PHANDLE pEnumToken,
+        PULONG pFlowCount,
+        PULONG pBufSize,
+        PENUMERATION_BUFFER Buffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["IfcHandle", "pEnumToken", "pFlowCount", "pBufSize", "Buffer"])
     raise RuntimeError('API not implemented')
@@ -57,7 +81,11 @@ def traffic_TcEnumerateFlows(jitter):
 
 def traffic_TcEnumerateInterfaces(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcEnumerateInterfaces(HANDLE ClientHandle, PULONG pBufferSize, PTC_IFC_DESCRIPTOR InterfaceBuffer)
+    [ERROR_CODE_ULONG] TcEnumerateInterfaces(
+        HANDLE ClientHandle,
+        PULONG pBufferSize,
+        PTC_IFC_DESCRIPTOR InterfaceBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ClientHandle", "pBufferSize", "InterfaceBuffer"])
     raise RuntimeError('API not implemented')
@@ -65,7 +93,11 @@ def traffic_TcEnumerateInterfaces(jitter):
 
 def traffic_TcGetFlowName(jitter, get_str, set_str):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcGetFlowName(HANDLE FlowHandle, ULONG StrSize, LPTSTR pFlowName)
+    [ERROR_CODE_ULONG] TcGetFlowName(
+        HANDLE FlowHandle,
+        ULONG StrSize,
+        LPTSTR pFlowName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FlowHandle", "StrSize", "pFlowName"])
     raise RuntimeError('API not implemented')
@@ -79,7 +111,10 @@ def traffic_TcGetFlowNameW(jitter):
 
 def traffic_TcModifyFlow(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcModifyFlow(HANDLE FlowHandle, PTC_GEN_FLOW pGenericFlow)
+    [ERROR_CODE_ULONG] TcModifyFlow(
+        HANDLE FlowHandle,
+        PTC_GEN_FLOW pGenericFlow
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FlowHandle", "pGenericFlow"])
     raise RuntimeError('API not implemented')
@@ -87,7 +122,12 @@ def traffic_TcModifyFlow(jitter):
 
 def traffic_TcOpenInterface(jitter, get_str, set_str):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcOpenInterface(LPTSTR pInterfaceName, HANDLE ClientHandle, HANDLE ClIfcCtx, PHANDLE pIfcHandle)
+    [ERROR_CODE_ULONG] TcOpenInterface(
+        LPTSTR pInterfaceName,
+        HANDLE ClientHandle,
+        HANDLE ClIfcCtx,
+        PHANDLE pIfcHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pInterfaceName", "ClientHandle", "ClIfcCtx", "pIfcHandle"])
     raise RuntimeError('API not implemented')
@@ -101,7 +141,12 @@ def traffic_TcOpenInterfaceW(jitter):
 
 def traffic_TcQueryFlow(jitter, get_str, set_str):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcQueryFlow(LPTSTR FlowName, LPGUID pGuidParam, PULONG pBufferSize, PVOID Buffer)
+    [ERROR_CODE_ULONG] TcQueryFlow(
+        LPTSTR FlowName,
+        LPGUID pGuidParam,
+        PULONG pBufferSize,
+        PVOID Buffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FlowName", "pGuidParam", "pBufferSize", "Buffer"])
     raise RuntimeError('API not implemented')
@@ -115,7 +160,13 @@ def traffic_TcQueryFlowW(jitter):
 
 def traffic_TcQueryInterface(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcQueryInterface(HANDLE IfcHandle, LPGUID pGuidParam, BOOLEAN NotifyChange, PULONG BufferSize, PVOID Buffer)
+    [ERROR_CODE_ULONG] TcQueryInterface(
+        HANDLE IfcHandle,
+        LPGUID pGuidParam,
+        BOOLEAN NotifyChange,
+        PULONG BufferSize,
+        PVOID Buffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["IfcHandle", "pGuidParam", "NotifyChange", "BufferSize", "Buffer"])
     raise RuntimeError('API not implemented')
@@ -123,7 +174,12 @@ def traffic_TcQueryInterface(jitter):
 
 def traffic_TcRegisterClient(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcRegisterClient(ULONG TciVersion, HANDLE ClRegCtx, PTCI_CLIENT_FUNC_LIST pClientHandlerList, PHANDLE pClientHandle)
+    [ERROR_CODE_ULONG] TcRegisterClient(
+        ULONG TciVersion,
+        HANDLE ClRegCtx,
+        PTCI_CLIENT_FUNC_LIST pClientHandlerList,
+        PHANDLE pClientHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["TciVersion", "ClRegCtx", "pClientHandlerList", "pClientHandle"])
     raise RuntimeError('API not implemented')
@@ -131,7 +187,12 @@ def traffic_TcRegisterClient(jitter):
 
 def traffic_TcSetFlow(jitter, get_str, set_str):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcSetFlow(LPTSTR pFlowName, LPGUID pGuidParam, ULONG BufferSize, PVOID Buffer)
+    [ERROR_CODE_ULONG] TcSetFlow(
+        LPTSTR pFlowName,
+        LPGUID pGuidParam,
+        ULONG BufferSize,
+        PVOID Buffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pFlowName", "pGuidParam", "BufferSize", "Buffer"])
     raise RuntimeError('API not implemented')
@@ -145,7 +206,12 @@ def traffic_TcSetFlowW(jitter):
 
 def traffic_TcSetInterface(jitter):
     """
-    [Traffic.dll] [ERROR_CODE_ULONG] TcSetInterface(HANDLE IfcHandle, LPGUID pGuidParam, ULONG BufferSize, PVOID Buffer)
+    [ERROR_CODE_ULONG] TcSetInterface(
+        HANDLE IfcHandle,
+        LPGUID pGuidParam,
+        ULONG BufferSize,
+        PVOID Buffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["IfcHandle", "pGuidParam", "BufferSize", "Buffer"])
     raise RuntimeError('API not implemented')

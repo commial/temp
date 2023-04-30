@@ -1,7 +1,16 @@
 
 def avicap32_capCreateCaptureWindow(jitter, get_str, set_str):
     """
-    [avicap32.dll] HWND capCreateCaptureWindow(LPCTSTR lpszWindowName, DWORD dwStyle, int x, int y, int nWidth, int nHeight, HWND hWnd, int nID)
+    HWND capCreateCaptureWindow(
+        LPCTSTR lpszWindowName,
+        DWORD dwStyle,
+        int x,
+        int y,
+        int nWidth,
+        int nHeight,
+        HWND hWnd,
+        int nID
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszWindowName", "dwStyle", "x", "y", "nWidth", "nHeight", "hWnd", "nID"])
     raise RuntimeError('API not implemented')
@@ -15,7 +24,13 @@ def avicap32_capCreateCaptureWindowW(jitter):
 
 def avicap32_capGetDriverDescription(jitter, get_str, set_str):
     """
-    [avicap32.dll] BOOL capGetDriverDescription(WORD wDriverIndex, LPTSTR lpszName, INT cbName, LPTSTR lpszVer, INT cbVer)
+    BOOL capGetDriverDescription(
+        WORD wDriverIndex,
+        LPTSTR lpszName,
+        INT cbName,
+        LPTSTR lpszVer,
+        INT cbVer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["wDriverIndex", "lpszName", "cbName", "lpszVer", "cbVer"])
     raise RuntimeError('API not implemented')

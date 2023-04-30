@@ -1,7 +1,9 @@
 
 def cmutil_CmFree(jitter):
     """
-    [CmUtil.dll] void* CmFree(void* pvPtr)
+    void* CmFree(
+        void* pvPtr
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pvPtr"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,9 @@ def cmutil_CmFree(jitter):
 
 def cmutil_CmMalloc(jitter):
     """
-    [CmUtil.dll] void* CmMalloc(size_t nBytes)
+    void* CmMalloc(
+        size_t nBytes
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["nBytes"])
     raise RuntimeError('API not implemented')

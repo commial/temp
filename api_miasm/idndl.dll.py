@@ -1,7 +1,11 @@
 
 def idndl_DownlevelGetLocaleScripts(jitter):
     """
-    [Idndl.dll] int DownlevelGetLocaleScripts(LPCWSTR lpLocaleName, LPWSTR lpScripts, int cchScripts)
+    int DownlevelGetLocaleScripts(
+        LPCWSTR lpLocaleName,
+        LPWSTR lpScripts,
+        int cchScripts
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpLocaleName", "lpScripts", "cchScripts"])
     raise RuntimeError('API not implemented')
@@ -9,7 +13,13 @@ def idndl_DownlevelGetLocaleScripts(jitter):
 
 def idndl_DownlevelGetStringScripts(jitter):
     """
-    [Idndl.dll] int DownlevelGetStringScripts(DWORD dwFlags, LPCWSTR lpString, int cchString, LPWSTR lpScripts, int cchScripts)
+    int DownlevelGetStringScripts(
+        DWORD dwFlags,
+        LPCWSTR lpString,
+        int cchString,
+        LPWSTR lpScripts,
+        int cchScripts
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "lpString", "cchString", "lpScripts", "cchScripts"])
     raise RuntimeError('API not implemented')
@@ -17,7 +27,13 @@ def idndl_DownlevelGetStringScripts(jitter):
 
 def idndl_DownlevelVerifyScripts(jitter):
     """
-    [Idndl.dll] BOOL DownlevelVerifyScripts(DWORD dwFlags, LPCWSTR lpLocaleScripts, int cchLocaleScripts, LPCWSTR lpTestScripts, int cchTestScripts)
+    BOOL DownlevelVerifyScripts(
+        DWORD dwFlags,
+        LPCWSTR lpLocaleScripts,
+        int cchLocaleScripts,
+        LPCWSTR lpTestScripts,
+        int cchTestScripts
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwFlags", "lpLocaleScripts", "cchLocaleScripts", "lpTestScripts", "cchTestScripts"])
     raise RuntimeError('API not implemented')

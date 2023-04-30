@@ -1,7 +1,14 @@
 
 def connect_CreateVPNConnection(jitter):
     """
-    [Connect.dll] HRESULT CreateVPNConnection(HWND hwndParent, DWORD dwWizardType, DWORD dwContextFlags, DWORD dwUserFlags, HANDLE hUserContext, LPWSTR pszCommandLine)
+    HRESULT CreateVPNConnection(
+        HWND hwndParent,
+        DWORD dwWizardType,
+        DWORD dwContextFlags,
+        DWORD dwUserFlags,
+        HANDLE hUserContext,
+        LPWSTR pszCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "dwWizardType", "dwContextFlags", "dwUserFlags", "hUserContext", "pszCommandLine"])
     raise RuntimeError('API not implemented')
@@ -9,7 +16,14 @@ def connect_CreateVPNConnection(jitter):
 
 def connect_GetInternetConnected(jitter):
     """
-    [Connect.dll] HRESULT GetInternetConnected(HWND hwndParent, DWORD dwWizardType, DWORD dwContextFlags, DWORD dwUserFlags, HANDLE hUserContext, LPWSTR pszCommandLine)
+    HRESULT GetInternetConnected(
+        HWND hwndParent,
+        DWORD dwWizardType,
+        DWORD dwContextFlags,
+        DWORD dwUserFlags,
+        HANDLE hUserContext,
+        LPWSTR pszCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "dwWizardType", "dwContextFlags", "dwUserFlags", "hUserContext", "pszCommandLine"])
     raise RuntimeError('API not implemented')
@@ -17,7 +31,14 @@ def connect_GetInternetConnected(jitter):
 
 def connect_GetNetworkConnected(jitter):
     """
-    [Connect.dll] HRESULT GetNetworkConnected(HWND hwndParent, DWORD dwWizardType, DWORD dwContextFlags, DWORD dwUserFlags, HANDLE hUserContext, LPWSTR pszCommandLine)
+    HRESULT GetNetworkConnected(
+        HWND hwndParent,
+        DWORD dwWizardType,
+        DWORD dwContextFlags,
+        DWORD dwUserFlags,
+        HANDLE hUserContext,
+        LPWSTR pszCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "dwWizardType", "dwContextFlags", "dwUserFlags", "hUserContext", "pszCommandLine"])
     raise RuntimeError('API not implemented')
@@ -25,7 +46,14 @@ def connect_GetNetworkConnected(jitter):
 
 def connect_GetVPNConnected(jitter):
     """
-    [Connect.dll] HRESULT GetVPNConnected(HWND hwndParent, DWORD dwWizardType, DWORD dwContextFlags, DWORD dwUserFlags, HANDLE hUserContext, LPWSTR pszCommandLine)
+    HRESULT GetVPNConnected(
+        HWND hwndParent,
+        DWORD dwWizardType,
+        DWORD dwContextFlags,
+        DWORD dwUserFlags,
+        HANDLE hUserContext,
+        LPWSTR pszCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "dwWizardType", "dwContextFlags", "dwUserFlags", "hUserContext", "pszCommandLine"])
     raise RuntimeError('API not implemented')
@@ -33,7 +61,7 @@ def connect_GetVPNConnected(jitter):
 
 def connect_IsInternetConnected(jitter):
     """
-    [Connect.dll] HRESULT IsInternetConnected()
+    HRESULT IsInternetConnected()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -41,7 +69,15 @@ def connect_IsInternetConnected(jitter):
 
 def connect_RegisterPageWithPage(jitter):
     """
-    [Connect.dll] HRESULT RegisterPageWithPage(GUID* pguidParentPage, GUID* pguidChildPage, LPWSTR pszChildModuleFileName, LPWSTR pszFriendlyName, DWORD dwBehaviorFlags, DWORD dwUserFlags, LPWSTR pszCommandLine)
+    HRESULT RegisterPageWithPage(
+        GUID* pguidParentPage,
+        GUID* pguidChildPage,
+        LPWSTR pszChildModuleFileName,
+        LPWSTR pszFriendlyName,
+        DWORD dwBehaviorFlags,
+        DWORD dwUserFlags,
+        LPWSTR pszCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pguidParentPage", "pguidChildPage", "pszChildModuleFileName", "pszFriendlyName", "dwBehaviorFlags", "dwUserFlags", "pszCommandLine"])
     raise RuntimeError('API not implemented')
@@ -49,7 +85,10 @@ def connect_RegisterPageWithPage(jitter):
 
 def connect_UnregisterPage(jitter):
     """
-    [Connect.dll] HRESULT UnregisterPage(GUID* pguidPage, BOOL fUnregisterFromCOM)
+    HRESULT UnregisterPage(
+        GUID* pguidPage,
+        BOOL fUnregisterFromCOM
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pguidPage", "fUnregisterFromCOM"])
     raise RuntimeError('API not implemented')
@@ -57,7 +96,10 @@ def connect_UnregisterPage(jitter):
 
 def connect_UnregisterPagesLink(jitter):
     """
-    [Connect.dll] HRESULT UnregisterPagesLink(GUID* pguidParentPage, GUID* pguidChildPage)
+    HRESULT UnregisterPagesLink(
+        GUID* pguidParentPage,
+        GUID* pguidChildPage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pguidParentPage", "pguidChildPage"])
     raise RuntimeError('API not implemented')

@@ -1,7 +1,9 @@
 
 def srclient_SRRemoveRestorePoint(jitter):
     """
-    [SrClient.dll] [ERROR_CODE] SRRemoveRestorePoint(DWORD dwRPNum)
+    [ERROR_CODE] SRRemoveRestorePoint(
+        DWORD dwRPNum
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwRPNum"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,10 @@ def srclient_SRRemoveRestorePoint(jitter):
 
 def srclient_SRSetRestorePointA(jitter):
     """
-    [SrClient.dll] BOOL SRSetRestorePointA(PRESTOREPOINTINFOA pRestorePtSpec, PSTATEMGRSTATUS pSMgrStatus)
+    BOOL SRSetRestorePointA(
+        PRESTOREPOINTINFOA pRestorePtSpec,
+        PSTATEMGRSTATUS pSMgrStatus
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pRestorePtSpec", "pSMgrStatus"])
     raise RuntimeError('API not implemented')
@@ -17,7 +22,10 @@ def srclient_SRSetRestorePointA(jitter):
 
 def srclient_SRSetRestorePointW(jitter):
     """
-    [SrClient.dll] BOOL SRSetRestorePointW(PRESTOREPOINTINFOW pRestorePtSpec, PSTATEMGRSTATUS pSMgrStatus)
+    BOOL SRSetRestorePointW(
+        PRESTOREPOINTINFOW pRestorePtSpec,
+        PSTATEMGRSTATUS pSMgrStatus
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pRestorePtSpec", "pSMgrStatus"])
     raise RuntimeError('API not implemented')
@@ -25,7 +33,11 @@ def srclient_SRSetRestorePointW(jitter):
 
 def srclient_SRSetRestorePointInternal(jitter):
     """
-    [SrClient.dll] BOOL SRSetRestorePointInternal(PRESTOREPOINTINFOW pRestorePtSpec, PSTATEMGRSTATUS pSMgrStatus, BOOL fForceSurrogate)
+    BOOL SRSetRestorePointInternal(
+        PRESTOREPOINTINFOW pRestorePtSpec,
+        PSTATEMGRSTATUS pSMgrStatus,
+        BOOL fForceSurrogate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pRestorePtSpec", "pSMgrStatus", "fForceSurrogate"])
     raise RuntimeError('API not implemented')

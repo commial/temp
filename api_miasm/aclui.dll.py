@@ -1,7 +1,9 @@
 
 def aclui_CreateSecurityPage(jitter):
     """
-    [Aclui.dll] HPROPSHEETPAGE CreateSecurityPage(LPSECURITYINFO psi)
+    HPROPSHEETPAGE CreateSecurityPage(
+        LPSECURITYINFO psi
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["psi"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,10 @@ def aclui_CreateSecurityPage(jitter):
 
 def aclui_EditSecurity(jitter):
     """
-    [Aclui.dll] BOOL EditSecurity(HWND hwndOwner, LPSECURITYINFO psi)
+    BOOL EditSecurity(
+        HWND hwndOwner,
+        LPSECURITYINFO psi
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndOwner", "psi"])
     raise RuntimeError('API not implemented')
@@ -17,7 +22,11 @@ def aclui_EditSecurity(jitter):
 
 def aclui_EditSecurityAdvanced(jitter):
     """
-    [Aclui.dll] HRESULT EditSecurityAdvanced(HWND hwndOwner, LPSECURITYINFO psi, SI_PAGE_TYPE uSIPage)
+    HRESULT EditSecurityAdvanced(
+        HWND hwndOwner,
+        LPSECURITYINFO psi,
+        SI_PAGE_TYPE uSIPage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndOwner", "psi", "uSIPage"])
     raise RuntimeError('API not implemented')

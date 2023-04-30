@@ -1,7 +1,12 @@
 
 def msrating_RatingAccessDeniedDialog(jitter, get_str, set_str):
     """
-    [msrating.dll] HRESULT RatingAccessDeniedDialog(HWND hDlg, LPCTSTR pszUsername, LPCTSTR pszContentDescription, VOID* pRatingDetails)
+    HRESULT RatingAccessDeniedDialog(
+        HWND hDlg,
+        LPCTSTR pszUsername,
+        LPCTSTR pszContentDescription,
+        VOID* pRatingDetails
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "pszUsername", "pszContentDescription", "pRatingDetails"])
     raise RuntimeError('API not implemented')
@@ -15,7 +20,11 @@ def msrating_RatingAccessDeniedDialogW(jitter):
 
 def msrating_RatingAccessDeniedDialog2(jitter, get_str, set_str):
     """
-    [msrating.dll] HRESULT RatingAccessDeniedDialog2(HWND hDlg, LPCSTR pszUsername, VOID* pRatingDetails)
+    HRESULT RatingAccessDeniedDialog2(
+        HWND hDlg,
+        LPCSTR pszUsername,
+        VOID* pRatingDetails
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "pszUsername", "pRatingDetails"])
     raise RuntimeError('API not implemented')
@@ -29,7 +38,14 @@ def msrating_RatingAccessDeniedDialog2W(jitter):
 
 def msrating_RatingCheckUserAccess(jitter, get_str, set_str):
     """
-    [msrating.dll] HRESULT RatingCheckUserAccess(LPCTSTR pszUsername, LPCTSTR pszURL, LPCTSTR pszRatingInfo, LPBYTE pData, DWORD cbData, VOID** ppRatingDetails)
+    HRESULT RatingCheckUserAccess(
+        LPCTSTR pszUsername,
+        LPCTSTR pszURL,
+        LPCTSTR pszRatingInfo,
+        LPBYTE pData,
+        DWORD cbData,
+        VOID** ppRatingDetails
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszUsername", "pszURL", "pszRatingInfo", "pData", "cbData", "ppRatingDetails"])
     raise RuntimeError('API not implemented')
@@ -43,7 +59,11 @@ def msrating_RatingCheckUserAccessW(jitter):
 
 def msrating_RatingEnable(jitter, get_str, set_str):
     """
-    [msrating.dll] HRESULT RatingEnable(HWND hwndParent, LPCSTR pszUsername, BOOL fEnable)
+    HRESULT RatingEnable(
+        HWND hwndParent,
+        LPCSTR pszUsername,
+        BOOL fEnable
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "pszUsername", "fEnable"])
     raise RuntimeError('API not implemented')
@@ -57,7 +77,7 @@ def msrating_RatingEnableW(jitter):
 
 def msrating_RatingEnabledQuery(jitter):
     """
-    [msrating.dll] HRESULT RatingEnabledQuery()
+    HRESULT RatingEnabledQuery()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -65,7 +85,9 @@ def msrating_RatingEnabledQuery(jitter):
 
 def msrating_RatingFreeDetails(jitter):
     """
-    [msrating.dll] HRESULT RatingFreeDetails(VOID* pRatingDetails)
+    HRESULT RatingFreeDetails(
+        VOID* pRatingDetails
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pRatingDetails"])
     raise RuntimeError('API not implemented')
@@ -73,7 +95,9 @@ def msrating_RatingFreeDetails(jitter):
 
 def msrating_RatingObtainCancel(jitter):
     """
-    [msrating.dll] HRESULT RatingObtainCancel(HANDLE hRatingObtainQuery)
+    HRESULT RatingObtainCancel(
+        HANDLE hRatingObtainQuery
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRatingObtainQuery"])
     raise RuntimeError('API not implemented')
@@ -81,7 +105,14 @@ def msrating_RatingObtainCancel(jitter):
 
 def msrating_RatingObtainQuery(jitter, get_str, set_str):
     """
-    [msrating.dll] HRESULT RatingObtainQuery(LPCTSTR pszTargetUrl, DWORD dwUserData, DWORD dwUserData, HRESULT hr, LPCTSTR pszRating, HANDLE* phRatingObtainQuery)
+    HRESULT RatingObtainQuery(
+        LPCTSTR pszTargetUrl,
+        DWORD dwUserData,
+        DWORD dwUserData,
+        HRESULT hr,
+        LPCTSTR pszRating,
+        HANDLE* phRatingObtainQuery
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszTargetUrl", "dwUserData", "dwUserData", "hr", "pszRating", "phRatingObtainQuery"])
     raise RuntimeError('API not implemented')
@@ -95,7 +126,10 @@ def msrating_RatingObtainQueryW(jitter):
 
 def msrating_RatingSetupUI(jitter, get_str, set_str):
     """
-    [msrating.dll] HRESULT RatingSetupUI(HWND hDlg, LPCSTR pszUsername)
+    HRESULT RatingSetupUI(
+        HWND hDlg,
+        LPCSTR pszUsername
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDlg", "pszUsername"])
     raise RuntimeError('API not implemented')

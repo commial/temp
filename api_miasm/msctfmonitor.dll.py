@@ -1,7 +1,9 @@
 
 def msctfmonitor_InitLocalMsCtfMonitor(jitter):
     """
-    [MsCtfMonitor.dll] HRESULT InitLocalMsCtfMonitor(DWORD dwFlags)
+    HRESULT InitLocalMsCtfMonitor(
+        DWORD dwFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwFlags"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,7 @@ def msctfmonitor_InitLocalMsCtfMonitor(jitter):
 
 def msctfmonitor_UninitLocalMsCtfMonitor(jitter):
     """
-    [MsCtfMonitor.dll] HRESULT UninitLocalMsCtfMonitor()
+    HRESULT UninitLocalMsCtfMonitor()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')

@@ -1,7 +1,10 @@
 
 def avrt_AvQuerySystemResponsiveness(jitter):
     """
-    [Avrt.dll] BOOL AvQuerySystemResponsiveness(HANDLE AvrtHandle, PULONG SystemResponsivenessValue)
+    BOOL AvQuerySystemResponsiveness(
+        HANDLE AvrtHandle,
+        PULONG SystemResponsivenessValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AvrtHandle", "SystemResponsivenessValue"])
     raise RuntimeError('API not implemented')
@@ -9,7 +12,12 @@ def avrt_AvQuerySystemResponsiveness(jitter):
 
 def avrt_AvRtCreateThreadOrderingGroup(jitter):
     """
-    [Avrt.dll] BOOL AvRtCreateThreadOrderingGroup(PHANDLE Context, PLARGE_INTEGER Period, GUID* ThreadOrderingGuid, PLARGE_INTEGER Timeout)
+    BOOL AvRtCreateThreadOrderingGroup(
+        PHANDLE Context,
+        PLARGE_INTEGER Period,
+        GUID* ThreadOrderingGuid,
+        PLARGE_INTEGER Timeout
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Context", "Period", "ThreadOrderingGuid", "Timeout"])
     raise RuntimeError('API not implemented')
@@ -17,7 +25,13 @@ def avrt_AvRtCreateThreadOrderingGroup(jitter):
 
 def avrt_AvRtCreateThreadOrderingGroupEx(jitter, get_str, set_str):
     """
-    [Avrt.dll] BOOL AvRtCreateThreadOrderingGroupEx(PHANDLE Context, PLARGE_INTEGER Period, GUID* ThreadOrderingGuid, PLARGE_INTEGER Timeout, LPCTSTR TaskName)
+    BOOL AvRtCreateThreadOrderingGroupEx(
+        PHANDLE Context,
+        PLARGE_INTEGER Period,
+        GUID* ThreadOrderingGuid,
+        PLARGE_INTEGER Timeout,
+        LPCTSTR TaskName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Context", "Period", "ThreadOrderingGuid", "Timeout", "TaskName"])
     raise RuntimeError('API not implemented')
@@ -31,7 +45,9 @@ def avrt_AvRtCreateThreadOrderingGroupExW(jitter):
 
 def avrt_AvRtDeleteThreadOrderingGroup(jitter):
     """
-    [Avrt.dll] BOOL AvRtDeleteThreadOrderingGroup(HANDLE Context)
+    BOOL AvRtDeleteThreadOrderingGroup(
+        HANDLE Context
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Context"])
     raise RuntimeError('API not implemented')
@@ -39,7 +55,11 @@ def avrt_AvRtDeleteThreadOrderingGroup(jitter):
 
 def avrt_AvRtJoinThreadOrderingGroup(jitter):
     """
-    [Avrt.dll] BOOL AvRtJoinThreadOrderingGroup(PHANDLE Context, GUID* ThreadOrderingGuid, BOOL Before)
+    BOOL AvRtJoinThreadOrderingGroup(
+        PHANDLE Context,
+        GUID* ThreadOrderingGuid,
+        BOOL Before
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Context", "ThreadOrderingGuid", "Before"])
     raise RuntimeError('API not implemented')
@@ -47,7 +67,9 @@ def avrt_AvRtJoinThreadOrderingGroup(jitter):
 
 def avrt_AvRtLeaveThreadOrderingGroup(jitter):
     """
-    [Avrt.dll] BOOL AvRtLeaveThreadOrderingGroup(HANDLE Context)
+    BOOL AvRtLeaveThreadOrderingGroup(
+        HANDLE Context
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Context"])
     raise RuntimeError('API not implemented')
@@ -55,7 +77,9 @@ def avrt_AvRtLeaveThreadOrderingGroup(jitter):
 
 def avrt_AvRtWaitOnThreadOrderingGroup(jitter):
     """
-    [Avrt.dll] BOOL AvRtWaitOnThreadOrderingGroup(HANDLE Context)
+    BOOL AvRtWaitOnThreadOrderingGroup(
+        HANDLE Context
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Context"])
     raise RuntimeError('API not implemented')
@@ -63,7 +87,9 @@ def avrt_AvRtWaitOnThreadOrderingGroup(jitter):
 
 def avrt_AvRevertMmThreadCharacteristics(jitter):
     """
-    [Avrt.dll] BOOL AvRevertMmThreadCharacteristics(HANDLE AvrtHandle)
+    BOOL AvRevertMmThreadCharacteristics(
+        HANDLE AvrtHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AvrtHandle"])
     raise RuntimeError('API not implemented')
@@ -71,7 +97,11 @@ def avrt_AvRevertMmThreadCharacteristics(jitter):
 
 def avrt_AvSetMmMaxThreadCharacteristics(jitter, get_str, set_str):
     """
-    [Avrt.dll] HANDLE AvSetMmMaxThreadCharacteristics(LPCTSTR FirstTask, LPCTSTR SecondTask, LPDWORD TaskIndex)
+    HANDLE AvSetMmMaxThreadCharacteristics(
+        LPCTSTR FirstTask,
+        LPCTSTR SecondTask,
+        LPDWORD TaskIndex
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FirstTask", "SecondTask", "TaskIndex"])
     raise RuntimeError('API not implemented')
@@ -85,7 +115,10 @@ def avrt_AvSetMmMaxThreadCharacteristicsW(jitter):
 
 def avrt_AvSetMmThreadCharacteristics(jitter, get_str, set_str):
     """
-    [Avrt.dll] HANDLE AvSetMmThreadCharacteristics(LPCTSTR TaskName, LPDWORD TaskIndex)
+    HANDLE AvSetMmThreadCharacteristics(
+        LPCTSTR TaskName,
+        LPDWORD TaskIndex
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["TaskName", "TaskIndex"])
     raise RuntimeError('API not implemented')
@@ -99,7 +132,10 @@ def avrt_AvSetMmThreadCharacteristicsW(jitter):
 
 def avrt_AvSetMmThreadPriority(jitter):
     """
-    [Avrt.dll] BOOL AvSetMmThreadPriority(HANDLE AvrtHandle, AVRT_PRIORITY Priority)
+    BOOL AvSetMmThreadPriority(
+        HANDLE AvrtHandle,
+        AVRT_PRIORITY Priority
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AvrtHandle", "Priority"])
     raise RuntimeError('API not implemented')

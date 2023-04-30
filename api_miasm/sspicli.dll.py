@@ -1,7 +1,12 @@
 
 def sspicli_SspiCompareAuthIdentities(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiCompareAuthIdentities(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity1, PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity2, PBOOLEAN SameSuppliedUser, PBOOLEAN SameSuppliedIdentity)
+    SECURITY_STATUS SspiCompareAuthIdentities(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity1,
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity2,
+        PBOOLEAN SameSuppliedUser,
+        PBOOLEAN SameSuppliedIdentity
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthIdentity1", "AuthIdentity2", "SameSuppliedUser", "SameSuppliedIdentity"])
     raise RuntimeError('API not implemented')
@@ -9,7 +14,10 @@ def sspicli_SspiCompareAuthIdentities(jitter):
 
 def sspicli_SspiCopyAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiCopyAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData, PSEC_WINNT_AUTH_IDENTITY_OPAQUE* AuthDataCopy)
+    SECURITY_STATUS SspiCopyAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData,
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE* AuthDataCopy
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthData", "AuthDataCopy"])
     raise RuntimeError('API not implemented')
@@ -17,7 +25,9 @@ def sspicli_SspiCopyAuthIdentity(jitter):
 
 def sspicli_SspiDecryptAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiDecryptAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE EncryptedAuthData)
+    SECURITY_STATUS SspiDecryptAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE EncryptedAuthData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["EncryptedAuthData"])
     raise RuntimeError('API not implemented')
@@ -25,7 +35,12 @@ def sspicli_SspiDecryptAuthIdentity(jitter):
 
 def sspicli_SspiEncodeAuthIdentityAsStrings(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiEncodeAuthIdentityAsStrings(PSEC_WINNT_AUTH_IDENTITY_OPAQUE pAuthIdentity, PCWSTR* ppszUserName, PCWSTR* ppszDomainName, PCWSTR* ppszPackedCredentialsString)
+    SECURITY_STATUS SspiEncodeAuthIdentityAsStrings(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE pAuthIdentity,
+        PCWSTR* ppszUserName,
+        PCWSTR* ppszDomainName,
+        PCWSTR* ppszPackedCredentialsString
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pAuthIdentity", "ppszUserName", "ppszDomainName", "ppszPackedCredentialsString"])
     raise RuntimeError('API not implemented')
@@ -33,7 +48,12 @@ def sspicli_SspiEncodeAuthIdentityAsStrings(jitter):
 
 def sspicli_SspiEncodeStringsAsAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiEncodeStringsAsAuthIdentity(PCWSTR pszUserName, PCWSTR pszDomainName, PCWSTR pszPackedCredentialsString, PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity)
+    SECURITY_STATUS SspiEncodeStringsAsAuthIdentity(
+        PCWSTR pszUserName,
+        PCWSTR pszDomainName,
+        PCWSTR pszPackedCredentialsString,
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszUserName", "pszDomainName", "pszPackedCredentialsString", "ppAuthIdentity"])
     raise RuntimeError('API not implemented')
@@ -41,7 +61,9 @@ def sspicli_SspiEncodeStringsAsAuthIdentity(jitter):
 
 def sspicli_SspiEncryptAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiEncryptAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData)
+    SECURITY_STATUS SspiEncryptAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthData"])
     raise RuntimeError('API not implemented')
@@ -49,7 +71,11 @@ def sspicli_SspiEncryptAuthIdentity(jitter):
 
 def sspicli_SspiExcludePackage(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiExcludePackage(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity, PCWSTR pszPackageName, PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppNewAuthIdentity)
+    SECURITY_STATUS SspiExcludePackage(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity,
+        PCWSTR pszPackageName,
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppNewAuthIdentity
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthIdentity", "pszPackageName", "ppNewAuthIdentity"])
     raise RuntimeError('API not implemented')
@@ -57,7 +83,9 @@ def sspicli_SspiExcludePackage(jitter):
 
 def sspicli_SspiFreeAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiFreeAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData)
+    SECURITY_STATUS SspiFreeAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthData"])
     raise RuntimeError('API not implemented')
@@ -65,7 +93,10 @@ def sspicli_SspiFreeAuthIdentity(jitter):
 
 def sspicli_SspiGetTargetHostName(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiGetTargetHostName(PCWSTR pszTargetName, PWSTR* pszHostName)
+    SECURITY_STATUS SspiGetTargetHostName(
+        PCWSTR pszTargetName,
+        PWSTR* pszHostName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszTargetName", "pszHostName"])
     raise RuntimeError('API not implemented')
@@ -73,7 +104,9 @@ def sspicli_SspiGetTargetHostName(jitter):
 
 def sspicli_SspiIsAuthIdentityEncrypted(jitter):
     """
-    [SspiCli.dll] BOOLEAN SspiIsAuthIdentityEncrypted(PSEC_WINNT_AUTH_IDENTITY_OPAQUE EncryptedAuthData)
+    BOOLEAN SspiIsAuthIdentityEncrypted(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE EncryptedAuthData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["EncryptedAuthData"])
     raise RuntimeError('API not implemented')
@@ -81,7 +114,9 @@ def sspicli_SspiIsAuthIdentityEncrypted(jitter):
 
 def sspicli_SspiLocalFree(jitter):
     """
-    [SspiCli.dll] VOID SspiLocalFree(PVOID DataBuffer)
+    VOID SspiLocalFree(
+        PVOID DataBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["DataBuffer"])
     raise RuntimeError('API not implemented')
@@ -89,7 +124,11 @@ def sspicli_SspiLocalFree(jitter):
 
 def sspicli_SspiMarshalAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiMarshalAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity, unsigned long* AuthIdentityLength, unsigned long* AuthIdentityByteArray)
+    SECURITY_STATUS SspiMarshalAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity,
+        unsigned long* AuthIdentityLength,
+        unsigned long* AuthIdentityByteArray
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthIdentity", "AuthIdentityLength", "AuthIdentityByteArray"])
     raise RuntimeError('API not implemented')
@@ -97,7 +136,12 @@ def sspicli_SspiMarshalAuthIdentity(jitter):
 
 def sspicli_SspiPrepareForCredRead(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiPrepareForCredRead(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity, PCWSTR pszTargetName, PULONG pCredmanCredentialType, PCWSTR* ppszCredmanTargetName)
+    SECURITY_STATUS SspiPrepareForCredRead(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity,
+        PCWSTR pszTargetName,
+        PULONG pCredmanCredentialType,
+        PCWSTR* ppszCredmanTargetName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthIdentity", "pszTargetName", "pCredmanCredentialType", "ppszCredmanTargetName"])
     raise RuntimeError('API not implemented')
@@ -105,7 +149,15 @@ def sspicli_SspiPrepareForCredRead(jitter):
 
 def sspicli_SspiPrepareForCredWrite(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiPrepareForCredWrite(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity, PCWSTR pszTargetName, PULONG pCredmanCredentialType, PCWSTR* ppszCredmanTargetName, PCWSTR* ppszCredmanUserName, PUCHAR* ppCredentialBlob, PULONG pCredentialBlobSize)
+    SECURITY_STATUS SspiPrepareForCredWrite(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthIdentity,
+        PCWSTR pszTargetName,
+        PULONG pCredmanCredentialType,
+        PCWSTR* ppszCredmanTargetName,
+        PCWSTR* ppszCredmanUserName,
+        PUCHAR* ppCredentialBlob,
+        PULONG pCredentialBlobSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthIdentity", "pszTargetName", "pCredmanCredentialType", "ppszCredmanTargetName", "ppszCredmanUserName", "ppCredentialBlob", "pCredentialBlobSize"])
     raise RuntimeError('API not implemented')
@@ -113,7 +165,11 @@ def sspicli_SspiPrepareForCredWrite(jitter):
 
 def sspicli_SspiUnmarshalAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiUnmarshalAuthIdentity(unsigned long AuthIdentityLength, char* AuthIdentityByteArray, PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity)
+    SECURITY_STATUS SspiUnmarshalAuthIdentity(
+        unsigned long AuthIdentityLength,
+        char* AuthIdentityByteArray,
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE* ppAuthIdentity
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthIdentityLength", "AuthIdentityByteArray", "ppAuthIdentity"])
     raise RuntimeError('API not implemented')
@@ -121,7 +177,9 @@ def sspicli_SspiUnmarshalAuthIdentity(jitter):
 
 def sspicli_SspiValidateAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiValidateAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData)
+    SECURITY_STATUS SspiValidateAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthData"])
     raise RuntimeError('API not implemented')
@@ -129,7 +187,9 @@ def sspicli_SspiValidateAuthIdentity(jitter):
 
 def sspicli_SspiZeroAuthIdentity(jitter):
     """
-    [SspiCli.dll] SECURITY_STATUS SspiZeroAuthIdentity(PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData)
+    SECURITY_STATUS SspiZeroAuthIdentity(
+        PSEC_WINNT_AUTH_IDENTITY_OPAQUE AuthData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["AuthData"])
     raise RuntimeError('API not implemented')

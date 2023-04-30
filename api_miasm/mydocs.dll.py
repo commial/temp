@@ -1,7 +1,7 @@
 
 def mydocs_PerUserInit(jitter):
     """
-    [mydocs.dll] void PerUserInit()
+    void PerUserInit()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')

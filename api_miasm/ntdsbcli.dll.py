@@ -1,7 +1,9 @@
 
 def ntdsbcli_DsBackupClose(jitter):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupClose(HBC hbc)
+    HRESULT DsBackupClose(
+        HBC hbc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,9 @@ def ntdsbcli_DsBackupClose(jitter):
 
 def ntdsbcli_DsBackupEnd(jitter):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupEnd(HBC hbc)
+    HRESULT DsBackupEnd(
+        HBC hbc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc"])
     raise RuntimeError('API not implemented')
@@ -17,7 +21,9 @@ def ntdsbcli_DsBackupEnd(jitter):
 
 def ntdsbcli_DsBackupFree(jitter):
     """
-    [Ntdsbcli.dll] void DsBackupFree(PVOID pvBuffer)
+    void DsBackupFree(
+        PVOID pvBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pvBuffer"])
     raise RuntimeError('API not implemented')
@@ -25,7 +31,11 @@ def ntdsbcli_DsBackupFree(jitter):
 
 def ntdsbcli_DsBackupGetBackupLogs(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupGetBackupLogs(HBC hbc, LPTSTR* pszBackupLogFiles, LPDWORD pcbSize)
+    HRESULT DsBackupGetBackupLogs(
+        HBC hbc,
+        LPTSTR* pszBackupLogFiles,
+        LPDWORD pcbSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "pszBackupLogFiles", "pcbSize"])
     raise RuntimeError('API not implemented')
@@ -39,7 +49,11 @@ def ntdsbcli_DsBackupGetBackupLogsW(jitter):
 
 def ntdsbcli_DsBackupGetDatabaseNames(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupGetDatabaseNames(HBC hbc, LPTSTR* pszAttachmentInfo, LPDWORD pcbSize)
+    HRESULT DsBackupGetDatabaseNames(
+        HBC hbc,
+        LPTSTR* pszAttachmentInfo,
+        LPDWORD pcbSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "pszAttachmentInfo", "pcbSize"])
     raise RuntimeError('API not implemented')
@@ -53,7 +67,12 @@ def ntdsbcli_DsBackupGetDatabaseNamesW(jitter):
 
 def ntdsbcli_DsBackupOpenFile(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupOpenFile(HBC hbc, LPCTSTR szAttachmentName, DWORD cbReadHintSize, LARGE_INTEGER* pliFileSize)
+    HRESULT DsBackupOpenFile(
+        HBC hbc,
+        LPCTSTR szAttachmentName,
+        DWORD cbReadHintSize,
+        LARGE_INTEGER* pliFileSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "szAttachmentName", "cbReadHintSize", "pliFileSize"])
     raise RuntimeError('API not implemented')
@@ -67,7 +86,14 @@ def ntdsbcli_DsBackupOpenFileW(jitter):
 
 def ntdsbcli_DsBackupPrepare(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupPrepare(LPCTSTR szBackupServer, ULONG grbit, [NtdsBackupType] btBackupType, PVOID* ppvExpiryToken, LPDWORD pcbExpiryTokenSize, HBC* phbc)
+    HRESULT DsBackupPrepare(
+        LPCTSTR szBackupServer,
+        ULONG grbit,
+        [NtdsBackupType] btBackupType,
+        PVOID* ppvExpiryToken,
+        LPDWORD pcbExpiryTokenSize,
+        HBC* phbc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szBackupServer", "grbit", "btBackupType", "ppvExpiryToken", "pcbExpiryTokenSize", "phbc"])
     raise RuntimeError('API not implemented')
@@ -81,7 +107,12 @@ def ntdsbcli_DsBackupPrepareW(jitter):
 
 def ntdsbcli_DsBackupRead(jitter):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupRead(HBC hbc, PVOID pvBuffer, DWORD cbBuffer, PDWORD pcbRead)
+    HRESULT DsBackupRead(
+        HBC hbc,
+        PVOID pvBuffer,
+        DWORD cbBuffer,
+        PDWORD pcbRead
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "pvBuffer", "cbBuffer", "pcbRead"])
     raise RuntimeError('API not implemented')
@@ -89,7 +120,9 @@ def ntdsbcli_DsBackupRead(jitter):
 
 def ntdsbcli_DsBackupTruncateLogs(jitter):
     """
-    [Ntdsbcli.dll] HRESULT DsBackupTruncateLogs(HBC hbc)
+    HRESULT DsBackupTruncateLogs(
+        HBC hbc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc"])
     raise RuntimeError('API not implemented')
@@ -97,7 +130,10 @@ def ntdsbcli_DsBackupTruncateLogs(jitter):
 
 def ntdsbcli_DsIsNTDSOnline(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsIsNTDSOnline(LPCTSTR szServerName, BOOL* pfNTDSOnline)
+    HRESULT DsIsNTDSOnline(
+        LPCTSTR szServerName,
+        BOOL* pfNTDSOnline
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szServerName", "pfNTDSOnline"])
     raise RuntimeError('API not implemented')
@@ -111,7 +147,9 @@ def ntdsbcli_DsIsNTDSOnlineW(jitter):
 
 def ntdsbcli_DsRestoreEnd(jitter):
     """
-    [Ntdsbcli.dll] HRESULT DsRestoreEnd(HBC hbc)
+    HRESULT DsRestoreEnd(
+        HBC hbc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc"])
     raise RuntimeError('API not implemented')
@@ -119,7 +157,11 @@ def ntdsbcli_DsRestoreEnd(jitter):
 
 def ntdsbcli_DsRestoreGetDatabaseLocations(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsRestoreGetDatabaseLocations(HBC hbc, LPWSTR* pszDatabaseLocationList, LPDWORD pcbSize)
+    HRESULT DsRestoreGetDatabaseLocations(
+        HBC hbc,
+        LPWSTR* pszDatabaseLocationList,
+        LPDWORD pcbSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "pszDatabaseLocationList", "pcbSize"])
     raise RuntimeError('API not implemented')
@@ -133,7 +175,13 @@ def ntdsbcli_DsRestoreGetDatabaseLocationsW(jitter):
 
 def ntdsbcli_DsRestorePrepare(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsRestorePrepare(LPCWSTR szServerName, [NtdsRestoreType] rtFlag, PVOID pvExpiryToken, DWORD cbExpiryTokenSize, HBC* phbc)
+    HRESULT DsRestorePrepare(
+        LPCWSTR szServerName,
+        [NtdsRestoreType] rtFlag,
+        PVOID pvExpiryToken,
+        DWORD cbExpiryTokenSize,
+        HBC* phbc
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szServerName", "rtFlag", "pvExpiryToken", "cbExpiryTokenSize", "phbc"])
     raise RuntimeError('API not implemented')
@@ -147,7 +195,15 @@ def ntdsbcli_DsRestorePrepareW(jitter):
 
 def ntdsbcli_DsRestoreRegister(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsRestoreRegister(HBC hbc, LPCTSTR szCheckPointFilePath, LPCTSTR szLogPath, LONG crstmap, LPCTSTR szBackupLogPath, ULONG genLow, ULONG genHigh)
+    HRESULT DsRestoreRegister(
+        HBC hbc,
+        LPCTSTR szCheckPointFilePath,
+        LPCTSTR szLogPath,
+        LONG crstmap,
+        LPCTSTR szBackupLogPath,
+        ULONG genLow,
+        ULONG genHigh
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "szCheckPointFilePath", "szLogPath", "crstmap", "szBackupLogPath", "genLow", "genHigh"])
     raise RuntimeError('API not implemented')
@@ -161,7 +217,10 @@ def ntdsbcli_DsRestoreRegisterW(jitter):
 
 def ntdsbcli_DsRestoreRegisterComplete(jitter):
     """
-    [Ntdsbcli.dll] HRESULT DsRestoreRegisterComplete(HBC hbc, HRESULT hrRestoreState)
+    HRESULT DsRestoreRegisterComplete(
+        HBC hbc,
+        HRESULT hrRestoreState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hbc", "hrRestoreState"])
     raise RuntimeError('API not implemented')
@@ -169,7 +228,11 @@ def ntdsbcli_DsRestoreRegisterComplete(jitter):
 
 def ntdsbcli_DsSetAuthIdentity(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsSetAuthIdentity(LPCTSTR szUserName, LPCTSTR szDomainName, LPCTSTR szPassword)
+    HRESULT DsSetAuthIdentity(
+        LPCTSTR szUserName,
+        LPCTSTR szDomainName,
+        LPCTSTR szPassword
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szUserName", "szDomainName", "szPassword"])
     raise RuntimeError('API not implemented')
@@ -183,7 +246,10 @@ def ntdsbcli_DsSetAuthIdentityW(jitter):
 
 def ntdsbcli_DsSetCurrentBackupLog(jitter, get_str, set_str):
     """
-    [Ntdsbcli.dll] HRESULT DsSetCurrentBackupLog(LPCWSTR szServerName, DWORD dwCurrentLog)
+    HRESULT DsSetCurrentBackupLog(
+        LPCWSTR szServerName,
+        DWORD dwCurrentLog
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szServerName", "dwCurrentLog"])
     raise RuntimeError('API not implemented')

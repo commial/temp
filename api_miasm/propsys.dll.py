@@ -1,7 +1,11 @@
 
 def propsys_StgDeserializePropVariant(jitter):
     """
-    [propsys.dll] WINOLEAPI StgDeserializePropVariant(SERIALIZEDPROPERTYVALUE* pprop, SERIALIZEDPROPERTYVALUE* cbMax, PROPVARIANT* pvar)
+    WINOLEAPI StgDeserializePropVariant(
+        SERIALIZEDPROPERTYVALUE* pprop,
+        SERIALIZEDPROPERTYVALUE* cbMax,
+        PROPVARIANT* pvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pprop", "cbMax", "pvar"])
     raise RuntimeError('API not implemented')
@@ -9,7 +13,11 @@ def propsys_StgDeserializePropVariant(jitter):
 
 def propsys_StgSerializePropVariant(jitter):
     """
-    [propsys.dll] WINOLEAPI StgSerializePropVariant(PROPVARIANT* pVar, SERIALIZEDPROPERTYVALUE** ppProp, SERIALIZEDPROPERTYVALUE* pcb)
+    WINOLEAPI StgSerializePropVariant(
+        PROPVARIANT* pVar,
+        SERIALIZEDPROPERTYVALUE** ppProp,
+        SERIALIZEDPROPERTYVALUE* pcb
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pVar", "ppProp", "pcb"])
     raise RuntimeError('API not implemented')
@@ -17,7 +25,10 @@ def propsys_StgSerializePropVariant(jitter):
 
 def propsys_PSCoerceToCanonicalValue(jitter):
     """
-    [propsys.dll] HRESULT PSCoerceToCanonicalValue(REFPROPERTYKEY key, PROPVARIANT* ppropvar)
+    HRESULT PSCoerceToCanonicalValue(
+        REFPROPERTYKEY key,
+        PROPVARIANT* ppropvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["key", "ppropvar"])
     raise RuntimeError('API not implemented')
@@ -25,7 +36,11 @@ def propsys_PSCoerceToCanonicalValue(jitter):
 
 def propsys_PSCreateAdapterFromPropertyStore(jitter):
     """
-    [propsys.dll] HRESULT PSCreateAdapterFromPropertyStore(IPropertyStore* pps, REFIID riid, void** ppv)
+    HRESULT PSCreateAdapterFromPropertyStore(
+        IPropertyStore* pps,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pps", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -33,7 +48,14 @@ def propsys_PSCreateAdapterFromPropertyStore(jitter):
 
 def propsys_PSCreateDelayedMultiplexPropertyStore(jitter):
     """
-    [propsys.dll] HRESULT PSCreateDelayedMultiplexPropertyStore(GETPROPERTYSTOREFLAGS flags, IDelayedPropertyStoreFactory* pdpsf, const DWORD* rgStoreIds, DWORD cStores, REFIID riid, void** ppv)
+    HRESULT PSCreateDelayedMultiplexPropertyStore(
+        GETPROPERTYSTOREFLAGS flags,
+        IDelayedPropertyStoreFactory* pdpsf,
+        const DWORD* rgStoreIds,
+        DWORD cStores,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["flags", "pdpsf", "rgStoreIds", "cStores", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -41,7 +63,10 @@ def propsys_PSCreateDelayedMultiplexPropertyStore(jitter):
 
 def propsys_PSCreateMemoryPropertyStore(jitter):
     """
-    [propsys.dll] HRESULT PSCreateMemoryPropertyStore(REFIID riid, void** ppv)
+    HRESULT PSCreateMemoryPropertyStore(
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -49,7 +74,12 @@ def propsys_PSCreateMemoryPropertyStore(jitter):
 
 def propsys_PSCreateMultiplexPropertyStore(jitter):
     """
-    [propsys.dll] HRESULT PSCreateMultiplexPropertyStore(IUnknown** prgpunkStores, DWORD cStores, REFIID riid, void** ppv)
+    HRESULT PSCreateMultiplexPropertyStore(
+        IUnknown** prgpunkStores,
+        DWORD cStores,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["prgpunkStores", "cStores", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -57,7 +87,14 @@ def propsys_PSCreateMultiplexPropertyStore(jitter):
 
 def propsys_PSCreatePropertyChangeArray(jitter):
     """
-    [propsys.dll] HRESULT PSCreatePropertyChangeArray(const PROPERTYKEY* rgpropkey, const PKA_FLAGS* rgflags, const PROPVARIANT* rgpropvar, UINT cChanges, REFIID riid, void** ppv)
+    HRESULT PSCreatePropertyChangeArray(
+        const PROPERTYKEY* rgpropkey,
+        const PKA_FLAGS* rgflags,
+        const PROPVARIANT* rgpropvar,
+        UINT cChanges,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["rgpropkey", "rgflags", "rgpropvar", "cChanges", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -65,7 +102,12 @@ def propsys_PSCreatePropertyChangeArray(jitter):
 
 def propsys_PSCreatePropertyStoreFromObject(jitter):
     """
-    [propsys.dll] HRESULT PSCreatePropertyStoreFromObject(IUnknown* punk, [STGM_FLAGS] grfMode, REFIID riid, void** ppv)
+    HRESULT PSCreatePropertyStoreFromObject(
+        IUnknown* punk,
+        [STGM_FLAGS] grfMode,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["punk", "grfMode", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -73,7 +115,12 @@ def propsys_PSCreatePropertyStoreFromObject(jitter):
 
 def propsys_PSCreatePropertyStoreFromPropertySetStorage(jitter):
     """
-    [propsys.dll] HRESULT PSCreatePropertyStoreFromPropertySetStorage(IPropertySetStorage* ppss, [STGM_FLAGS] grfMode, REFIID riid, void** ppv)
+    HRESULT PSCreatePropertyStoreFromPropertySetStorage(
+        IPropertySetStorage* ppss,
+        [STGM_FLAGS] grfMode,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ppss", "grfMode", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -81,7 +128,13 @@ def propsys_PSCreatePropertyStoreFromPropertySetStorage(jitter):
 
 def propsys_PSCreateSimplePropertyChange(jitter):
     """
-    [propsys.dll] HRESULT PSCreateSimplePropertyChange(PKA_FLAGS flags, REFPROPERTYKEY key, REFPROPVARIANT propvar, REFIID riid, void** ppv)
+    HRESULT PSCreateSimplePropertyChange(
+        PKA_FLAGS flags,
+        REFPROPERTYKEY key,
+        REFPROPVARIANT propvar,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["flags", "key", "propvar", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -89,7 +142,11 @@ def propsys_PSCreateSimplePropertyChange(jitter):
 
 def propsys_PSEnumeratePropertyDescriptions(jitter):
     """
-    [propsys.dll] PSSTDAPI PSEnumeratePropertyDescriptions(PROPDESC_ENUMFILTER filterOn, REFIID riid, void** ppv)
+    PSSTDAPI PSEnumeratePropertyDescriptions(
+        PROPDESC_ENUMFILTER filterOn,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["filterOn", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -97,7 +154,13 @@ def propsys_PSEnumeratePropertyDescriptions(jitter):
 
 def propsys_PSFormatForDisplay(jitter):
     """
-    [propsys.dll] HRESULT PSFormatForDisplay(REFPROPERTYKEY propkey, REFPROPVARIANT propvar, PROPDESC_FORMAT_FLAGS pdfFlags, LPWSTR pwszText, DWORD cchText)
+    HRESULT PSFormatForDisplay(
+        REFPROPERTYKEY propkey,
+        REFPROPVARIANT propvar,
+        PROPDESC_FORMAT_FLAGS pdfFlags,
+        LPWSTR pwszText,
+        DWORD cchText
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["propkey", "propvar", "pdfFlags", "pwszText", "cchText"])
     raise RuntimeError('API not implemented')
@@ -105,7 +168,12 @@ def propsys_PSFormatForDisplay(jitter):
 
 def propsys_PSFormatForDisplayAlloc(jitter):
     """
-    [propsys.dll] HRESULT PSFormatForDisplayAlloc(REFPROPERTYKEY key, REFPROPVARIANT propvar, PROPDESC_FORMAT_FLAGS pdfFlags, PWSTR* ppszDisplay)
+    HRESULT PSFormatForDisplayAlloc(
+        REFPROPERTYKEY key,
+        REFPROPVARIANT propvar,
+        PROPDESC_FORMAT_FLAGS pdfFlags,
+        PWSTR* ppszDisplay
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["key", "propvar", "pdfFlags", "ppszDisplay"])
     raise RuntimeError('API not implemented')
@@ -113,7 +181,12 @@ def propsys_PSFormatForDisplayAlloc(jitter):
 
 def propsys_PSFormatPropertyValue(jitter):
     """
-    [propsys.dll] HRESULT PSFormatPropertyValue(IPropertyStore* pps, IPropertyDescription* ppd, PROPDESC_FORMAT_FLAGS pdff, LPWSTR* ppszDisplay)
+    HRESULT PSFormatPropertyValue(
+        IPropertyStore* pps,
+        IPropertyDescription* ppd,
+        PROPDESC_FORMAT_FLAGS pdff,
+        LPWSTR* ppszDisplay
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pps", "ppd", "pdff", "ppszDisplay"])
     raise RuntimeError('API not implemented')
@@ -121,7 +194,12 @@ def propsys_PSFormatPropertyValue(jitter):
 
 def propsys_PSGetItemPropertyHandler(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetItemPropertyHandler(IUnknown* punkItem, BOOL fReadWrite, REFIID riid, void** ppv)
+    PSSTDAPI PSGetItemPropertyHandler(
+        IUnknown* punkItem,
+        BOOL fReadWrite,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["punkItem", "fReadWrite", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -129,7 +207,13 @@ def propsys_PSGetItemPropertyHandler(jitter):
 
 def propsys_PSGetItemPropertyHandlerWithCreateObject(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetItemPropertyHandlerWithCreateObject(IUnknown* punkItem, BOOL fReadWrite, IUnknown* punkCreateObject, REFIID riid, void** ppv)
+    PSSTDAPI PSGetItemPropertyHandlerWithCreateObject(
+        IUnknown* punkItem,
+        BOOL fReadWrite,
+        IUnknown* punkCreateObject,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["punkItem", "fReadWrite", "punkCreateObject", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -137,7 +221,12 @@ def propsys_PSGetItemPropertyHandlerWithCreateObject(jitter):
 
 def propsys_PSGetNamedPropertyFromPropertyStorage(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetNamedPropertyFromPropertyStorage(PCUSERIALIZEDPROPSTORAGE psps, DWORD cb, LPCWSTR pszName, PROPVARIANT* ppropvar)
+    PSSTDAPI PSGetNamedPropertyFromPropertyStorage(
+        PCUSERIALIZEDPROPSTORAGE psps,
+        DWORD cb,
+        LPCWSTR pszName,
+        PROPVARIANT* ppropvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["psps", "cb", "pszName", "ppropvar"])
     raise RuntimeError('API not implemented')
@@ -145,7 +234,10 @@ def propsys_PSGetNamedPropertyFromPropertyStorage(jitter):
 
 def propsys_PSGetNameFromPropertyKey(jitter):
     """
-    [propsys.dll] HRESULT PSGetNameFromPropertyKey(REFPROPERTYKEY propkey, PWSTR* ppszCanonicalName)
+    HRESULT PSGetNameFromPropertyKey(
+        REFPROPERTYKEY propkey,
+        PWSTR* ppszCanonicalName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["propkey", "ppszCanonicalName"])
     raise RuntimeError('API not implemented')
@@ -153,7 +245,11 @@ def propsys_PSGetNameFromPropertyKey(jitter):
 
 def propsys_PSGetPropertyDescription(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetPropertyDescription(REFPROPERTYKEY propkey, REFIID riid, void** ppv)
+    PSSTDAPI PSGetPropertyDescription(
+        REFPROPERTYKEY propkey,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["propkey", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -161,7 +257,11 @@ def propsys_PSGetPropertyDescription(jitter):
 
 def propsys_PSGetPropertyDescriptionByName(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetPropertyDescriptionByName(LPCWSTR pszCanonicalName, REFIID riid, void** ppv)
+    PSSTDAPI PSGetPropertyDescriptionByName(
+        LPCWSTR pszCanonicalName,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszCanonicalName", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -169,7 +269,11 @@ def propsys_PSGetPropertyDescriptionByName(jitter):
 
 def propsys_PSGetPropertyDescriptionListFromString(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetPropertyDescriptionListFromString(LPCWSTR pszPropList, REFIID riid, void** ppv)
+    PSSTDAPI PSGetPropertyDescriptionListFromString(
+        LPCWSTR pszPropList,
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPropList", "riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -177,7 +281,12 @@ def propsys_PSGetPropertyDescriptionListFromString(jitter):
 
 def propsys_PSGetPropertyFromPropertyStorage(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetPropertyFromPropertyStorage(PCUSERIALIZEDPROPSTORAGE psps, DWORD cb, REFPROPERTYKEY rpkey, PROPVARIANT** ppropvar)
+    PSSTDAPI PSGetPropertyFromPropertyStorage(
+        PCUSERIALIZEDPROPSTORAGE psps,
+        DWORD cb,
+        REFPROPERTYKEY rpkey,
+        PROPVARIANT** ppropvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["psps", "cb", "rpkey", "ppropvar"])
     raise RuntimeError('API not implemented')
@@ -185,7 +294,10 @@ def propsys_PSGetPropertyFromPropertyStorage(jitter):
 
 def propsys_PSGetPropertyKeyFromName(jitter):
     """
-    [propsys.dll] HRESULT PSGetPropertyKeyFromName(PCWSTR pszName, PROPERTYKEY* ppropkey)
+    HRESULT PSGetPropertyKeyFromName(
+        PCWSTR pszName,
+        PROPERTYKEY* ppropkey
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszName", "ppropkey"])
     raise RuntimeError('API not implemented')
@@ -193,7 +305,10 @@ def propsys_PSGetPropertyKeyFromName(jitter):
 
 def propsys_PSGetPropertySystem(jitter):
     """
-    [propsys.dll] PSSTDAPI PSGetPropertySystem(REFIID riid, void** ppv)
+    PSSTDAPI PSGetPropertySystem(
+        REFIID riid,
+        void** ppv
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["riid", "ppv"])
     raise RuntimeError('API not implemented')
@@ -201,7 +316,11 @@ def propsys_PSGetPropertySystem(jitter):
 
 def propsys_PSGetPropertyValue(jitter):
     """
-    [propsys.dll] HRESULT PSGetPropertyValue(IPropertyStore* pps, IPropertyDescription* ppd, PROPVARIANT* ppropvar)
+    HRESULT PSGetPropertyValue(
+        IPropertyStore* pps,
+        IPropertyDescription* ppd,
+        PROPVARIANT* ppropvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pps", "ppd", "ppropvar"])
     raise RuntimeError('API not implemented')
@@ -209,7 +328,10 @@ def propsys_PSGetPropertyValue(jitter):
 
 def propsys_PSLookupPropertyHandlerCLSID(jitter):
     """
-    [propsys.dll] PSSTDAPI PSLookupPropertyHandlerCLSID(PCWSTR pszFilePath, CLSID* pclsid)
+    PSSTDAPI PSLookupPropertyHandlerCLSID(
+        PCWSTR pszFilePath,
+        CLSID* pclsid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszFilePath", "pclsid"])
     raise RuntimeError('API not implemented')
@@ -217,7 +339,10 @@ def propsys_PSLookupPropertyHandlerCLSID(jitter):
 
 def propsys_PSPropertyKeyFromString(jitter):
     """
-    [propsys.dll] HRESULT PSPropertyKeyFromString(LPCWSTR pszString, PROPERTYKEY* pkey)
+    HRESULT PSPropertyKeyFromString(
+        LPCWSTR pszString,
+        PROPERTYKEY* pkey
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszString", "pkey"])
     raise RuntimeError('API not implemented')
@@ -225,7 +350,9 @@ def propsys_PSPropertyKeyFromString(jitter):
 
 def propsys_PSRegisterPropertySchema(jitter):
     """
-    [propsys.dll] HRESULT PSRegisterPropertySchema(PCWSTR pszPath)
+    HRESULT PSRegisterPropertySchema(
+        PCWSTR pszPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPath"])
     raise RuntimeError('API not implemented')
@@ -233,7 +360,11 @@ def propsys_PSRegisterPropertySchema(jitter):
 
 def propsys_PSSetPropertyValue(jitter):
     """
-    [propsys.dll] HRESULT PSSetPropertyValue(IPropertyStore* pps, IPropertyDescription* ppd, REFPROPVARIANT propvar)
+    HRESULT PSSetPropertyValue(
+        IPropertyStore* pps,
+        IPropertyDescription* ppd,
+        REFPROPVARIANT propvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pps", "ppd", "propvar"])
     raise RuntimeError('API not implemented')
@@ -241,7 +372,11 @@ def propsys_PSSetPropertyValue(jitter):
 
 def propsys_PSStringFromPropertyKey(jitter):
     """
-    [propsys.dll] HRESULT PSStringFromPropertyKey(REFPROPERTYKEY pkey, LPWSTR psz, UINT cch)
+    HRESULT PSStringFromPropertyKey(
+        REFPROPERTYKEY pkey,
+        LPWSTR psz,
+        UINT cch
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pkey", "psz", "cch"])
     raise RuntimeError('API not implemented')
@@ -249,7 +384,9 @@ def propsys_PSStringFromPropertyKey(jitter):
 
 def propsys_PSUnregisterPropertySchema(jitter):
     """
-    [propsys.dll] HRESULT PSUnregisterPropertySchema(PCWSTR pszPath)
+    HRESULT PSUnregisterPropertySchema(
+        PCWSTR pszPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPath"])
     raise RuntimeError('API not implemented')
@@ -257,7 +394,10 @@ def propsys_PSUnregisterPropertySchema(jitter):
 
 def propsys_InitPropVariantFromGUIDAsBuffer(jitter):
     """
-    [propsys.dll] HRESULT InitPropVariantFromGUIDAsBuffer(REFGUID guid, PROPVARIANT* ppropvar)
+    HRESULT InitPropVariantFromGUIDAsBuffer(
+        REFGUID guid,
+        PROPVARIANT* ppropvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["guid", "ppropvar"])
     raise RuntimeError('API not implemented')
@@ -265,7 +405,10 @@ def propsys_InitPropVariantFromGUIDAsBuffer(jitter):
 
 def propsys_InitPropVariantFromGUIDAsString(jitter):
     """
-    [propsys.dll] HRESULT InitPropVariantFromGUIDAsString(REFGUID guid, PROPVARIANT* ppropvar)
+    HRESULT InitPropVariantFromGUIDAsString(
+        REFGUID guid,
+        PROPVARIANT* ppropvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["guid", "ppropvar"])
     raise RuntimeError('API not implemented')
@@ -273,7 +416,10 @@ def propsys_InitPropVariantFromGUIDAsString(jitter):
 
 def propsys_InitVariantFromGUIDAsBuffer(jitter):
     """
-    [propsys.dll] HRESULT InitVariantFromGUIDAsBuffer(REFGUID guid, VARIANT* pvar)
+    HRESULT InitVariantFromGUIDAsBuffer(
+        REFGUID guid,
+        VARIANT* pvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["guid", "pvar"])
     raise RuntimeError('API not implemented')
@@ -281,7 +427,10 @@ def propsys_InitVariantFromGUIDAsBuffer(jitter):
 
 def propsys_InitVariantFromGUIDAsString(jitter):
     """
-    [propsys.dll] HRESULT InitVariantFromGUIDAsString(REFGUID guid, VARIANT* pvar)
+    HRESULT InitVariantFromGUIDAsString(
+        REFGUID guid,
+        VARIANT* pvar
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["guid", "pvar"])
     raise RuntimeError('API not implemented')

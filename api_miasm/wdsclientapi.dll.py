@@ -1,7 +1,10 @@
 
 def wdsclientapi_WdsCliAuthorizeSession(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliAuthorizeSession(HANDLE hSession, PWDS_CLI_CRED pCred)
+    HRESULT WdsCliAuthorizeSession(
+        HANDLE hSession,
+        PWDS_CLI_CRED pCred
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSession", "pCred"])
     raise RuntimeError('API not implemented')
@@ -9,7 +12,9 @@ def wdsclientapi_WdsCliAuthorizeSession(jitter):
 
 def wdsclientapi_WdsCliCancelTransfer(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliCancelTransfer(HANDLE hTransfer)
+    HRESULT WdsCliCancelTransfer(
+        HANDLE hTransfer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hTransfer"])
     raise RuntimeError('API not implemented')
@@ -17,7 +22,9 @@ def wdsclientapi_WdsCliCancelTransfer(jitter):
 
 def wdsclientapi_WdsCliClose(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliClose(HANDLE Handle)
+    HRESULT WdsCliClose(
+        HANDLE Handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Handle"])
     raise RuntimeError('API not implemented')
@@ -25,7 +32,11 @@ def wdsclientapi_WdsCliClose(jitter):
 
 def wdsclientapi_WdsCliCreateSession(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliCreateSession(PWSTR pwszServer, PWDS_CLI_CRED pCred, PHANDLE phSession)
+    HRESULT WdsCliCreateSession(
+        PWSTR pwszServer,
+        PWDS_CLI_CRED pCred,
+        PHANDLE phSession
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pwszServer", "pCred", "phSession"])
     raise RuntimeError('API not implemented')
@@ -33,7 +44,10 @@ def wdsclientapi_WdsCliCreateSession(jitter):
 
 def wdsclientapi_WdsCliFindFirstImage(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliFindFirstImage(HANDLE hSession, PHANDLE phFindHandle)
+    HRESULT WdsCliFindFirstImage(
+        HANDLE hSession,
+        PHANDLE phFindHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSession", "phFindHandle"])
     raise RuntimeError('API not implemented')
@@ -41,7 +55,9 @@ def wdsclientapi_WdsCliFindFirstImage(jitter):
 
 def wdsclientapi_WdsCliFindNextImage(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliFindNextImage(HANDLE Handle)
+    HRESULT WdsCliFindNextImage(
+        HANDLE Handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Handle"])
     raise RuntimeError('API not implemented')
@@ -49,7 +65,10 @@ def wdsclientapi_WdsCliFindNextImage(jitter):
 
 def wdsclientapi_WdsCliFreeStringArray(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliFreeStringArray(PWSTR* ppwszArray, ULONG ulCount)
+    HRESULT WdsCliFreeStringArray(
+        PWSTR* ppwszArray,
+        ULONG ulCount
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ppwszArray", "ulCount"])
     raise RuntimeError('API not implemented')
@@ -57,7 +76,12 @@ def wdsclientapi_WdsCliFreeStringArray(jitter):
 
 def wdsclientapi_WdsCliObtainDriverPackages(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliObtainDriverPackages(HANDLE hImage, PWSTR* ppwszServerName, PWSTR** pppwszDriverPackages, ULONG* pulCount)
+    HRESULT WdsCliObtainDriverPackages(
+        HANDLE hImage,
+        PWSTR* ppwszServerName,
+        PWSTR** pppwszDriverPackages,
+        ULONG* pulCount
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hImage", "ppwszServerName", "pppwszDriverPackages", "pulCount"])
     raise RuntimeError('API not implemented')
@@ -65,7 +89,10 @@ def wdsclientapi_WdsCliObtainDriverPackages(jitter):
 
 def wdsclientapi_WdsCliGetEnumerationFlags(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetEnumerationFlags(HANDLE Handle, PDWORD pdwFlags)
+    HRESULT WdsCliGetEnumerationFlags(
+        HANDLE Handle,
+        PDWORD pdwFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Handle", "pdwFlags"])
     raise RuntimeError('API not implemented')
@@ -73,7 +100,10 @@ def wdsclientapi_WdsCliGetEnumerationFlags(jitter):
 
 def wdsclientapi_WdsCliGetImageArchitecture(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageArchitecture(HANDLE hIfh, PDWORD pdwValue)
+    HRESULT WdsCliGetImageArchitecture(
+        HANDLE hIfh,
+        PDWORD pdwValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "pdwValue"])
     raise RuntimeError('API not implemented')
@@ -81,7 +111,10 @@ def wdsclientapi_WdsCliGetImageArchitecture(jitter):
 
 def wdsclientapi_WdsCliGetImageDescription(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageDescription(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageDescription(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -89,7 +122,10 @@ def wdsclientapi_WdsCliGetImageDescription(jitter):
 
 def wdsclientapi_WdsCliGetImageGroup(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageGroup(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageGroup(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -97,7 +133,10 @@ def wdsclientapi_WdsCliGetImageGroup(jitter):
 
 def wdsclientapi_WdsCliGetImageHalName(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageHalName(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageHalName(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -105,7 +144,10 @@ def wdsclientapi_WdsCliGetImageHalName(jitter):
 
 def wdsclientapi_WdsCliGetImageHandleFromFindHandle(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageHandleFromFindHandle(HANDLE FindHandle, PHANDLE phImageHandle)
+    HRESULT WdsCliGetImageHandleFromFindHandle(
+        HANDLE FindHandle,
+        PHANDLE phImageHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["FindHandle", "phImageHandle"])
     raise RuntimeError('API not implemented')
@@ -113,7 +155,10 @@ def wdsclientapi_WdsCliGetImageHandleFromFindHandle(jitter):
 
 def wdsclientapi_WdsCliGetImageHandleFromTransferHandle(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageHandleFromTransferHandle(HANDLE hTransfer, PHANDLE phImageHandle)
+    HRESULT WdsCliGetImageHandleFromTransferHandle(
+        HANDLE hTransfer,
+        PHANDLE phImageHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hTransfer", "phImageHandle"])
     raise RuntimeError('API not implemented')
@@ -121,7 +166,10 @@ def wdsclientapi_WdsCliGetImageHandleFromTransferHandle(jitter):
 
 def wdsclientapi_WdsCliGetImageIndex(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageIndex(HANDLE hIfh, PDWORD pdwValue)
+    HRESULT WdsCliGetImageIndex(
+        HANDLE hIfh,
+        PDWORD pdwValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "pdwValue"])
     raise RuntimeError('API not implemented')
@@ -129,7 +177,10 @@ def wdsclientapi_WdsCliGetImageIndex(jitter):
 
 def wdsclientapi_WdsCliGetImageLanguage(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageLanguage(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageLanguage(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -137,7 +188,11 @@ def wdsclientapi_WdsCliGetImageLanguage(jitter):
 
 def wdsclientapi_WdsCliGetImageLanguages(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageLanguages(HANDLE hIfh, PTSTR** pppszValues, PDWORD pdwNumValues)
+    HRESULT WdsCliGetImageLanguages(
+        HANDLE hIfh,
+        PTSTR** pppszValues,
+        PDWORD pdwNumValues
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "pppszValues", "pdwNumValues"])
     raise RuntimeError('API not implemented')
@@ -145,7 +200,10 @@ def wdsclientapi_WdsCliGetImageLanguages(jitter):
 
 def wdsclientapi_WdsCliGetImageLastModifiedTime(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageLastModifiedTime(HANDLE hIfh, PSYSTEMTIME* ppSysTimeValue)
+    HRESULT WdsCliGetImageLastModifiedTime(
+        HANDLE hIfh,
+        PSYSTEMTIME* ppSysTimeValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppSysTimeValue"])
     raise RuntimeError('API not implemented')
@@ -153,7 +211,10 @@ def wdsclientapi_WdsCliGetImageLastModifiedTime(jitter):
 
 def wdsclientapi_WdsCliGetImageName(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageName(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageName(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -161,7 +222,10 @@ def wdsclientapi_WdsCliGetImageName(jitter):
 
 def wdsclientapi_WdsCliGetImageNamespace(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageNamespace(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageNamespace(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -169,7 +233,10 @@ def wdsclientapi_WdsCliGetImageNamespace(jitter):
 
 def wdsclientapi_WdsCliGetImagePath(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImagePath(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImagePath(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -177,7 +244,10 @@ def wdsclientapi_WdsCliGetImagePath(jitter):
 
 def wdsclientapi_WdsCliGetImageSize(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageSize(HANDLE hIfh, PULONGLONG pullValue)
+    HRESULT WdsCliGetImageSize(
+        HANDLE hIfh,
+        PULONGLONG pullValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "pullValue"])
     raise RuntimeError('API not implemented')
@@ -185,7 +255,10 @@ def wdsclientapi_WdsCliGetImageSize(jitter):
 
 def wdsclientapi_WdsCliGetImageVersion(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetImageVersion(HANDLE hIfh, PWSTR* ppwszValue)
+    HRESULT WdsCliGetImageVersion(
+        HANDLE hIfh,
+        PWSTR* ppwszValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "ppwszValue"])
     raise RuntimeError('API not implemented')
@@ -193,7 +266,10 @@ def wdsclientapi_WdsCliGetImageVersion(jitter):
 
 def wdsclientapi_WdsCliGetTransferSize(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetTransferSize(HANDLE hIfh, PULONGLONG pullValue)
+    HRESULT WdsCliGetTransferSize(
+        HANDLE hIfh,
+        PULONGLONG pullValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hIfh", "pullValue"])
     raise RuntimeError('API not implemented')
@@ -201,7 +277,12 @@ def wdsclientapi_WdsCliGetTransferSize(jitter):
 
 def wdsclientapi_WdsCliInitializeLog(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliInitializeLog(HANDLE hSession, ULONG ulClientArchitecture, PWSTR pwszClientId, PWSTR pwszClientAddress)
+    HRESULT WdsCliInitializeLog(
+        HANDLE hSession,
+        ULONG ulClientArchitecture,
+        PWSTR pwszClientId,
+        PWSTR pwszClientAddress
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSession", "ulClientArchitecture", "pwszClientId", "pwszClientAddress"])
     raise RuntimeError('API not implemented')
@@ -209,7 +290,12 @@ def wdsclientapi_WdsCliInitializeLog(jitter):
 
 def wdsclientapi_WdsCliLog(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliLog(HANDLE hSession, ULONG ulLogLevel, ULONG ulMessageCode)
+    HRESULT WdsCliLog(
+        HANDLE hSession,
+        ULONG ulLogLevel,
+        ULONG ulMessageCode,
+        ...
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSession", "ulLogLevel", "ulMessageCode"])
     raise RuntimeError('API not implemented')
@@ -217,7 +303,9 @@ def wdsclientapi_WdsCliLog(jitter):
 
 def wdsclientapi_WdsCliRegisterTrace(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliRegisterTrace(PFN_WdsCliTraceFunction pfn)
+    HRESULT WdsCliRegisterTrace(
+        PFN_WdsCliTraceFunction pfn
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pfn"])
     raise RuntimeError('API not implemented')
@@ -225,7 +313,17 @@ def wdsclientapi_WdsCliRegisterTrace(jitter):
 
 def wdsclientapi_WdsCliTransferFile(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliTransferFile(PCWSTR pwszServer, PCWSTR pwszNamespace, PCWSTR pwszRemoteFilePath, PCWSTR pwszLocalFilePath, DWORD dwFlags, DWORD dwReserved, PFN_WdsCliCallback pfnWdsCliCallback, PVOID pvUserData, PHANDLE phTransfer)
+    HRESULT WdsCliTransferFile(
+        PCWSTR pwszServer,
+        PCWSTR pwszNamespace,
+        PCWSTR pwszRemoteFilePath,
+        PCWSTR pwszLocalFilePath,
+        DWORD dwFlags,
+        DWORD dwReserved,
+        PFN_WdsCliCallback pfnWdsCliCallback,
+        PVOID pvUserData,
+        PHANDLE phTransfer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pwszServer", "pwszNamespace", "pwszRemoteFilePath", "pwszLocalFilePath", "dwFlags", "dwReserved", "pfnWdsCliCallback", "pvUserData", "phTransfer"])
     raise RuntimeError('API not implemented')
@@ -233,7 +331,15 @@ def wdsclientapi_WdsCliTransferFile(jitter):
 
 def wdsclientapi_WdsCliTransferImage(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliTransferImage(HANDLE hImage, PWSTR pwszLocalPath, DWORD dwFlags, DWORD dwReserved, PFN_WdsCliCallback pfnWdsCliCallback, PVOID pvUserData, PHANDLE phTransfer)
+    HRESULT WdsCliTransferImage(
+        HANDLE hImage,
+        PWSTR pwszLocalPath,
+        DWORD dwFlags,
+        DWORD dwReserved,
+        PFN_WdsCliCallback pfnWdsCliCallback,
+        PVOID pvUserData,
+        PHANDLE phTransfer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hImage", "pwszLocalPath", "dwFlags", "dwReserved", "pfnWdsCliCallback", "pvUserData", "phTransfer"])
     raise RuntimeError('API not implemented')
@@ -241,7 +347,9 @@ def wdsclientapi_WdsCliTransferImage(jitter):
 
 def wdsclientapi_WdsCliWaitForTransfer(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliWaitForTransfer(HANDLE hTransfer)
+    HRESULT WdsCliWaitForTransfer(
+        HANDLE hTransfer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hTransfer"])
     raise RuntimeError('API not implemented')
@@ -249,7 +357,10 @@ def wdsclientapi_WdsCliWaitForTransfer(jitter):
 
 def wdsclientapi_WdsCliGetDriverQueryXml(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliGetDriverQueryXml(PWSTR pwszWinDirPath, PWSTR* ppwszDriverQuery)
+    HRESULT WdsCliGetDriverQueryXml(
+        PWSTR pwszWinDirPath,
+        PWSTR* ppwszDriverQuery
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pwszWinDirPath", "ppwszDriverQuery"])
     raise RuntimeError('API not implemented')
@@ -257,7 +368,13 @@ def wdsclientapi_WdsCliGetDriverQueryXml(jitter):
 
 def wdsclientapi_WdsCliObtainDriverPackagesEx(jitter):
     """
-    [WdsClientAPI.dll] HRESULT WdsCliObtainDriverPackagesEx(HANDLE hSession, PWSTR pwszDriverQuery, PWSTR* ppwszServerName, PWSTR** pppwszDriverPackages, ULONG* pulCount)
+    HRESULT WdsCliObtainDriverPackagesEx(
+        HANDLE hSession,
+        PWSTR pwszDriverQuery,
+        PWSTR* ppwszServerName,
+        PWSTR** pppwszDriverPackages,
+        ULONG* pulCount
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSession", "pwszDriverQuery", "ppwszServerName", "pppwszDriverPackages", "pulCount"])
     raise RuntimeError('API not implemented')

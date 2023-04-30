@@ -1,7 +1,9 @@
 
 def ntshrui_CanShareFolderW(jitter):
     """
-    [Ntshrui.dll] STDAPI CanShareFolderW(LPCWSTR pszPath)
+    STDAPI CanShareFolderW(
+        LPCWSTR pszPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPath"])
     raise RuntimeError('API not implemented')
@@ -9,7 +11,10 @@ def ntshrui_CanShareFolderW(jitter):
 
 def ntshrui_ShowShareFolderUI(jitter):
     """
-    [Ntshrui.dll] HRESULT ShowShareFolderUI(HWND hwndParent, LPCWSTR pszPath)
+    HRESULT ShowShareFolderUI(
+        HWND hwndParent,
+        LPCWSTR pszPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwndParent", "pszPath"])
     raise RuntimeError('API not implemented')

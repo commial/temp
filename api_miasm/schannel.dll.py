@@ -1,7 +1,12 @@
 
 def schannel_SslCrackCertificate(jitter):
     """
-    [Schannel.dll] BOOL SslCrackCertificate(PUCHAR pbCertificate, DWORD dwCertificate, DWORD dwFlags, PX509Certificate* ppCertificate)
+    BOOL SslCrackCertificate(
+        PUCHAR pbCertificate,
+        DWORD dwCertificate,
+        DWORD dwFlags,
+        PX509Certificate* ppCertificate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pbCertificate", "dwCertificate", "dwFlags", "ppCertificate"])
     raise RuntimeError('API not implemented')
@@ -9,7 +14,10 @@ def schannel_SslCrackCertificate(jitter):
 
 def schannel_SslEmptyCache(jitter, get_str, set_str):
     """
-    [Schannel.dll] BOOL SslEmptyCache(LPSTR pszTargetName, DWORD dwFlags)
+    BOOL SslEmptyCache(
+        LPSTR pszTargetName,
+        DWORD dwFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszTargetName", "dwFlags"])
     raise RuntimeError('API not implemented')
@@ -23,7 +31,9 @@ def schannel_SslEmptyCacheW(jitter):
 
 def schannel_SslFreeCertificate(jitter):
     """
-    [Schannel.dll] void SslFreeCertificate(PX509Certificate pCertificate)
+    void SslFreeCertificate(
+        PX509Certificate pCertificate
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pCertificate"])
     raise RuntimeError('API not implemented')
@@ -31,7 +41,13 @@ def schannel_SslFreeCertificate(jitter):
 
 def schannel_SslGetServerIdentity(jitter):
     """
-    [Schannel.dll] SECURITY_STATUS SslGetServerIdentity(PBYTE ClientHello, DWORD ClientHelloSize, PBYTE* ServerIdentity, PDWORD ServerIdentitySize, DWORD Flags)
+    SECURITY_STATUS SslGetServerIdentity(
+        PBYTE ClientHello,
+        DWORD ClientHelloSize,
+        PBYTE* ServerIdentity,
+        PDWORD ServerIdentitySize,
+        DWORD Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ClientHello", "ClientHelloSize", "ServerIdentity", "ServerIdentitySize", "Flags"])
     raise RuntimeError('API not implemented')

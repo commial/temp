@@ -1,7 +1,10 @@
 
 def msi_MsiSetInternalUI(jitter):
     """
-    [Msi.dll] INSTALLUILEVEL MsiSetInternalUI(INSTALLUILEVEL dwUILevel, HWND* phWnd)
+    INSTALLUILEVEL MsiSetInternalUI(
+        INSTALLUILEVEL dwUILevel,
+        HWND* phWnd
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwUILevel", "phWnd"])
     raise RuntimeError('API not implemented')
@@ -9,7 +12,11 @@ def msi_MsiSetInternalUI(jitter):
 
 def msi_MsiSetExternalUI(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLUI_HANDLER MsiSetExternalUI(INSTALLUI_HANDLER puiHandler, [MsiInstallLogMode] dwMessageFilter, LPVOID pvContext)
+    INSTALLUI_HANDLER MsiSetExternalUI(
+        INSTALLUI_HANDLER puiHandler,
+        [MsiInstallLogMode] dwMessageFilter,
+        LPVOID pvContext
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["puiHandler", "dwMessageFilter", "pvContext"])
     raise RuntimeError('API not implemented')
@@ -23,7 +30,12 @@ def msi_MsiSetExternalUIW(jitter):
 
 def msi_MsiSetExternalUIRecord(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetExternalUIRecord(PINSTALLUI_HANDLER_RECORD puiHandler, [MsiInstallLogMode] dwMessageFilter, LPVOID pvContext, PINSTALLUI_HANDLER_RECORD ppuiPrevHandler)
+    [MSI_ERROR] MsiSetExternalUIRecord(
+        PINSTALLUI_HANDLER_RECORD puiHandler,
+        [MsiInstallLogMode] dwMessageFilter,
+        LPVOID pvContext,
+        PINSTALLUI_HANDLER_RECORD ppuiPrevHandler
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["puiHandler", "dwMessageFilter", "pvContext", "ppuiPrevHandler"])
     raise RuntimeError('API not implemented')
@@ -31,7 +43,11 @@ def msi_MsiSetExternalUIRecord(jitter):
 
 def msi_MsiEnableLog(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnableLog([MsiInstallLogMode] dwLogMode, LPCTSTR szLogFile, [MsiInstallLogAttributes] dwLogAttributes)
+    [MSI_ERROR] MsiEnableLog(
+        [MsiInstallLogMode] dwLogMode,
+        LPCTSTR szLogFile,
+        [MsiInstallLogAttributes] dwLogAttributes
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwLogMode", "szLogFile", "dwLogAttributes"])
     raise RuntimeError('API not implemented')
@@ -45,7 +61,9 @@ def msi_MsiEnableLogW(jitter):
 
 def msi_MsiCloseHandle(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiCloseHandle(MSIHANDLE hAny)
+    [MSI_ERROR] MsiCloseHandle(
+        MSIHANDLE hAny
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hAny"])
     raise RuntimeError('API not implemented')
@@ -53,7 +71,7 @@ def msi_MsiCloseHandle(jitter):
 
 def msi_MsiCloseAllHandles(jitter):
     """
-    [Msi.dll] UINT MsiCloseAllHandles()
+    UINT MsiCloseAllHandles()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -61,7 +79,12 @@ def msi_MsiCloseAllHandles(jitter):
 
 def msi_MsiAdvertiseProduct(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiAdvertiseProduct(LPCTSTR szPackagePath, LPCTSTR szScriptfilePath, LPCTSTR szTransforms, LANGID lgidLanguage)
+    [MSI_ERROR] MsiAdvertiseProduct(
+        LPCTSTR szPackagePath,
+        LPCTSTR szScriptfilePath,
+        LPCTSTR szTransforms,
+        LANGID lgidLanguage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPackagePath", "szScriptfilePath", "szTransforms", "lgidLanguage"])
     raise RuntimeError('API not implemented')
@@ -75,7 +98,14 @@ def msi_MsiAdvertiseProductW(jitter):
 
 def msi_MsiAdvertiseProductEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiAdvertiseProductEx(LPCTSTR szPackagePath, LPCTSTR szScriptfilePath, LPCTSTR szTransforms, LANGID lgidLanguage, [MsiArchFlags] dwPlatform, [MsiAdOptions] dwOptions)
+    [MSI_ERROR] MsiAdvertiseProductEx(
+        LPCTSTR szPackagePath,
+        LPCTSTR szScriptfilePath,
+        LPCTSTR szTransforms,
+        LANGID lgidLanguage,
+        [MsiArchFlags] dwPlatform,
+        [MsiAdOptions] dwOptions
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPackagePath", "szScriptfilePath", "szTransforms", "lgidLanguage", "dwPlatform", "dwOptions"])
     raise RuntimeError('API not implemented')
@@ -89,7 +119,12 @@ def msi_MsiAdvertiseProductExW(jitter):
 
 def msi_MsiAdvertiseScript(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiAdvertiseScript(LPCTSTR szScriptFile, [MsiScriptFlags] dwFlags, PHKEY phRegData, BOOL fRemoveItems)
+    [MSI_ERROR] MsiAdvertiseScript(
+        LPCTSTR szScriptFile,
+        [MsiScriptFlags] dwFlags,
+        PHKEY phRegData,
+        BOOL fRemoveItems
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szScriptFile", "dwFlags", "phRegData", "fRemoveItems"])
     raise RuntimeError('API not implemented')
@@ -103,7 +138,10 @@ def msi_MsiAdvertiseScriptW(jitter):
 
 def msi_MsiInstallProduct(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiInstallProduct(LPCTSTR szPackagePath, LPCTSTR szCommandLine)
+    [MSI_ERROR] MsiInstallProduct(
+        LPCTSTR szPackagePath,
+        LPCTSTR szCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPackagePath", "szCommandLine"])
     raise RuntimeError('API not implemented')
@@ -117,7 +155,11 @@ def msi_MsiInstallProductW(jitter):
 
 def msi_MsiConfigureProduct(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiConfigureProduct(LPCTSTR szProduct, [MsiInstallLevel] iInstallLevel, INSTALLSTATE eInstallState)
+    [MSI_ERROR] MsiConfigureProduct(
+        LPCTSTR szProduct,
+        [MsiInstallLevel] iInstallLevel,
+        INSTALLSTATE eInstallState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "iInstallLevel", "eInstallState"])
     raise RuntimeError('API not implemented')
@@ -131,7 +173,12 @@ def msi_MsiConfigureProductW(jitter):
 
 def msi_MsiConfigureProductEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiConfigureProductEx(LPCTSTR szProduct, [MsiInstallLevel] iInstallLevel, INSTALLSTATE eInstallState, LPCTSTR szCommandLine)
+    [MSI_ERROR] MsiConfigureProductEx(
+        LPCTSTR szProduct,
+        [MsiInstallLevel] iInstallLevel,
+        INSTALLSTATE eInstallState,
+        LPCTSTR szCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "iInstallLevel", "eInstallState", "szCommandLine"])
     raise RuntimeError('API not implemented')
@@ -145,7 +192,10 @@ def msi_MsiConfigureProductExW(jitter):
 
 def msi_MsiReinstallProduct(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiReinstallProduct(LPCTSTR szProduct, [MsiReinstallMode] dwReinstallMode)
+    [MSI_ERROR] MsiReinstallProduct(
+        LPCTSTR szProduct,
+        [MsiReinstallMode] dwReinstallMode
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "dwReinstallMode"])
     raise RuntimeError('API not implemented')
@@ -159,7 +209,11 @@ def msi_MsiReinstallProductW(jitter):
 
 def msi_MsiConfigureFeature(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiConfigureFeature(LPCTSTR szProduct, LPCTSTR szFeature, INSTALLSTATE eInstallState)
+    [MSI_ERROR] MsiConfigureFeature(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature,
+        INSTALLSTATE eInstallState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature", "eInstallState"])
     raise RuntimeError('API not implemented')
@@ -173,7 +227,11 @@ def msi_MsiConfigureFeatureW(jitter):
 
 def msi_MsiReinstallFeature(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiReinstallFeature(LPCTSTR szProduct, LPCTSTR szFeature, [MsiReinstallMode] dwReinstallMode)
+    [MSI_ERROR] MsiReinstallFeature(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature,
+        [MsiReinstallMode] dwReinstallMode
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature", "dwReinstallMode"])
     raise RuntimeError('API not implemented')
@@ -187,7 +245,11 @@ def msi_MsiReinstallFeatureW(jitter):
 
 def msi_MsiInstallMissingComponent(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiInstallMissingComponent(LPCTSTR szProduct, LPCTSTR szComponent, INSTALLSTATE eInstallState)
+    [MSI_ERROR] MsiInstallMissingComponent(
+        LPCTSTR szProduct,
+        LPCTSTR szComponent,
+        INSTALLSTATE eInstallState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szComponent", "eInstallState"])
     raise RuntimeError('API not implemented')
@@ -201,7 +263,10 @@ def msi_MsiInstallMissingComponentW(jitter):
 
 def msi_MsiInstallMissingFile(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiInstallMissingFile(LPCTSTR szProduct, LPCTSTR szFile)
+    [MSI_ERROR] MsiInstallMissingFile(
+        LPCTSTR szProduct,
+        LPCTSTR szFile
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFile"])
     raise RuntimeError('API not implemented')
@@ -215,7 +280,10 @@ def msi_MsiInstallMissingFileW(jitter):
 
 def msi_MsiNotifySidChange(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiNotifySidChange(LPCTSTR szOldSid, LPCTSTR szNewSid)
+    [MSI_ERROR] MsiNotifySidChange(
+        LPCTSTR szOldSid,
+        LPCTSTR szNewSid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szOldSid", "szNewSid"])
     raise RuntimeError('API not implemented')
@@ -229,7 +297,13 @@ def msi_MsiNotifySidChangeW(jitter):
 
 def msi_MsiProcessAdvertiseScript(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiProcessAdvertiseScript(LPCTSTR szScriptFile, LPCTSTR szIconFolder, HKEY hRegData, BOOL fShortcuts, BOOL fRemoveItems)
+    [MSI_ERROR] MsiProcessAdvertiseScript(
+        LPCTSTR szScriptFile,
+        LPCTSTR szIconFolder,
+        HKEY hRegData,
+        BOOL fShortcuts,
+        BOOL fRemoveItems
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szScriptFile", "szIconFolder", "hRegData", "fShortcuts", "fRemoveItems"])
     raise RuntimeError('API not implemented')
@@ -243,7 +317,12 @@ def msi_MsiProcessAdvertiseScriptW(jitter):
 
 def msi_MsiSourceListAddSource(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListAddSource(LPCTSTR szProduct, LPCTSTR szUserName, DWORD dwReserved, LPCTSTR szSource)
+    [MSI_ERROR] MsiSourceListAddSource(
+        LPCTSTR szProduct,
+        LPCTSTR szUserName,
+        DWORD dwReserved,
+        LPCTSTR szSource
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szUserName", "dwReserved", "szSource"])
     raise RuntimeError('API not implemented')
@@ -257,7 +336,14 @@ def msi_MsiSourceListAddSourceW(jitter):
 
 def msi_MsiSourceListAddSourceEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListAddSourceEx(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiSourceType] dwOptions, LPCTSTR szSource, DWORD dwIndex)
+    [MSI_ERROR] MsiSourceListAddSourceEx(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiSourceType] dwOptions,
+        LPCTSTR szSource,
+        DWORD dwIndex
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "szSource", "dwIndex"])
     raise RuntimeError('API not implemented')
@@ -271,7 +357,13 @@ def msi_MsiSourceListAddSourceExW(jitter):
 
 def msi_MsiSourceListClearSource(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListClearSource(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiSourceType] dwOptions, LPCTSTR szSource)
+    [MSI_ERROR] MsiSourceListClearSource(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiSourceType] dwOptions,
+        LPCTSTR szSource
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "szSource"])
     raise RuntimeError('API not implemented')
@@ -285,7 +377,11 @@ def msi_MsiSourceListClearSourceW(jitter):
 
 def msi_MsiSourceListClearAll(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListClearAll(LPCTSTR szProduct, LPCTSTR szUserName, DWORD dwReserved)
+    [MSI_ERROR] MsiSourceListClearAll(
+        LPCTSTR szProduct,
+        LPCTSTR szUserName,
+        DWORD dwReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szUserName", "dwReserved"])
     raise RuntimeError('API not implemented')
@@ -299,7 +395,12 @@ def msi_MsiSourceListClearAllW(jitter):
 
 def msi_MsiSourceListClearAllEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListClearAllEx(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiSourceType] dwOptions)
+    [MSI_ERROR] MsiSourceListClearAllEx(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiSourceType] dwOptions
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions"])
     raise RuntimeError('API not implemented')
@@ -313,7 +414,11 @@ def msi_MsiSourceListClearAllExW(jitter):
 
 def msi_MsiSourceListForceResolution(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListForceResolution(LPCTSTR szProduct, LPCTSTR szUserName, DWORD dwReserved)
+    [MSI_ERROR] MsiSourceListForceResolution(
+        LPCTSTR szProduct,
+        LPCTSTR szUserName,
+        DWORD dwReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szUserName", "dwReserved"])
     raise RuntimeError('API not implemented')
@@ -327,7 +432,12 @@ def msi_MsiSourceListForceResolutionW(jitter):
 
 def msi_MsiSourceListForceResolutionEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListForceResolutionEx(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiCode] dwOptions)
+    [MSI_ERROR] MsiSourceListForceResolutionEx(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiCode] dwOptions
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions"])
     raise RuntimeError('API not implemented')
@@ -341,7 +451,15 @@ def msi_MsiSourceListForceResolutionExW(jitter):
 
 def msi_MsiSourceListGetInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListGetInfo(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiCode] dwOptions, LPCTSTR szProperty, LPTSTR szValue, LPDWORD pcchValue)
+    [MSI_ERROR] MsiSourceListGetInfo(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiCode] dwOptions,
+        LPCTSTR szProperty,
+        LPTSTR szValue,
+        LPDWORD pcchValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "szProperty", "szValue", "pcchValue"])
     raise RuntimeError('API not implemented')
@@ -355,7 +473,14 @@ def msi_MsiSourceListGetInfoW(jitter):
 
 def msi_MsiSourceListSetInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListSetInfo(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiSourceType] dwOptions, LPCTSTR szProperty, LPCTSTR szValue)
+    [MSI_ERROR] MsiSourceListSetInfo(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiSourceType] dwOptions,
+        LPCTSTR szProperty,
+        LPCTSTR szValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "szProperty", "szValue"])
     raise RuntimeError('API not implemented')
@@ -369,7 +494,18 @@ def msi_MsiSourceListSetInfoW(jitter):
 
 def msi_MsiSourceListEnumMediaDisks(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListEnumMediaDisks(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSID, MSIINSTALLCONTEXT dwContext, [MsiCode] dwOptions, DWORD dwIndex, LPWORD pdwDiskId, LPTSTR szVolumeLabel, LPDWORD pcchVolumeLabel, LPTSTR szDiskPrompt, LPDWORD pcchDiskPrompt)
+    [MSI_ERROR] MsiSourceListEnumMediaDisks(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSID,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiCode] dwOptions,
+        DWORD dwIndex,
+        LPWORD pdwDiskId,
+        LPTSTR szVolumeLabel,
+        LPDWORD pcchVolumeLabel,
+        LPTSTR szDiskPrompt,
+        LPDWORD pcchDiskPrompt
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSID", "dwContext", "dwOptions", "dwIndex", "pdwDiskId", "szVolumeLabel", "pcchVolumeLabel", "szDiskPrompt", "pcchDiskPrompt"])
     raise RuntimeError('API not implemented')
@@ -383,7 +519,15 @@ def msi_MsiSourceListEnumMediaDisksW(jitter):
 
 def msi_MsiSourceListAddMediaDisk(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListAddMediaDisk(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiCode] dwOptions, DWORD dwDiskId, LPCTSTR szVolumeLabel, LPCTSTR szDiskPrompt)
+    [MSI_ERROR] MsiSourceListAddMediaDisk(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiCode] dwOptions,
+        DWORD dwDiskId,
+        LPCTSTR szVolumeLabel,
+        LPCTSTR szDiskPrompt
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "dwDiskId", "szVolumeLabel", "szDiskPrompt"])
     raise RuntimeError('API not implemented')
@@ -397,7 +541,13 @@ def msi_MsiSourceListAddMediaDiskW(jitter):
 
 def msi_MsiSourceListClearMediaDisk(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListClearMediaDisk(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiCode] dwOptions, DWORD dwDiskID)
+    [MSI_ERROR] MsiSourceListClearMediaDisk(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiCode] dwOptions,
+        DWORD dwDiskID
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "dwDiskID"])
     raise RuntimeError('API not implemented')
@@ -411,7 +561,15 @@ def msi_MsiSourceListClearMediaDiskW(jitter):
 
 def msi_MsiSourceListEnumSources(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSourceListEnumSources(LPCTSTR szProductCodeOrPatchCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiSourceType] dwOptions, DWORD dwIndex, LPTSTR szSource, LPDWORD pcchSource)
+    [MSI_ERROR] MsiSourceListEnumSources(
+        LPCTSTR szProductCodeOrPatchCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiSourceType] dwOptions,
+        DWORD dwIndex,
+        LPTSTR szSource,
+        LPDWORD pcchSource
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCodeOrPatchCode", "szUserSid", "dwContext", "dwOptions", "dwIndex", "szSource", "pcchSource"])
     raise RuntimeError('API not implemented')
@@ -425,7 +583,14 @@ def msi_MsiSourceListEnumSourcesW(jitter):
 
 def msi_MsiProvideAssembly(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiProvideAssembly(LPCTSTR szAssemblyName, LPCTSTR szAppContext, [MsiInstallMode] dwInstallMode, [MsiAssemblyInfo] dwAssemblyInfo, LPTSTR lpPathBuf, DWORD* pcchPathBuf)
+    [MSI_ERROR] MsiProvideAssembly(
+        LPCTSTR szAssemblyName,
+        LPCTSTR szAppContext,
+        [MsiInstallMode] dwInstallMode,
+        [MsiAssemblyInfo] dwAssemblyInfo,
+        LPTSTR lpPathBuf,
+        DWORD* pcchPathBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szAssemblyName", "szAppContext", "dwInstallMode", "dwAssemblyInfo", "lpPathBuf", "pcchPathBuf"])
     raise RuntimeError('API not implemented')
@@ -439,7 +604,14 @@ def msi_MsiProvideAssemblyW(jitter):
 
 def msi_MsiProvideComponent(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiProvideComponent(LPCTSTR szProduct, LPCTSTR szFeature, LPCTSTR szComponent, [MsiInstallMode] dwInstallMode, LPTSTR lpPathBuf, DWORD* pcchPathBuf)
+    [MSI_ERROR] MsiProvideComponent(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature,
+        LPCTSTR szComponent,
+        [MsiInstallMode] dwInstallMode,
+        LPTSTR lpPathBuf,
+        DWORD* pcchPathBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature", "szComponent", "dwInstallMode", "lpPathBuf", "pcchPathBuf"])
     raise RuntimeError('API not implemented')
@@ -453,7 +625,13 @@ def msi_MsiProvideComponentW(jitter):
 
 def msi_MsiProvideQualifiedComponent(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiProvideQualifiedComponent(LPCTSTR szComponent, LPCTSTR szQualifier, [MsiInstallMode] dwInstallMode, LPTSTR lpPathBuf, DWORD* pcchPathBuf)
+    [MSI_ERROR] MsiProvideQualifiedComponent(
+        LPCTSTR szComponent,
+        LPCTSTR szQualifier,
+        [MsiInstallMode] dwInstallMode,
+        LPTSTR lpPathBuf,
+        DWORD* pcchPathBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "szQualifier", "dwInstallMode", "lpPathBuf", "pcchPathBuf"])
     raise RuntimeError('API not implemented')
@@ -467,7 +645,16 @@ def msi_MsiProvideQualifiedComponentW(jitter):
 
 def msi_MsiProvideQualifiedComponentEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiProvideQualifiedComponentEx(LPCTSTR szComponent, LPCTSTR szQualifier, [MsiInstallMode] dwInstallMode, LPTSTR szProduct, DWORD dwUnused1, DWORD dwUnused2, LPTSTR lpPathBuf, DWORD* pcchPathBuf)
+    [MSI_ERROR] MsiProvideQualifiedComponentEx(
+        LPCTSTR szComponent,
+        LPCTSTR szQualifier,
+        [MsiInstallMode] dwInstallMode,
+        LPTSTR szProduct,
+        DWORD dwUnused1,
+        DWORD dwUnused2,
+        LPTSTR lpPathBuf,
+        DWORD* pcchPathBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "szQualifier", "dwInstallMode", "szProduct", "dwUnused1", "dwUnused2", "lpPathBuf", "pcchPathBuf"])
     raise RuntimeError('API not implemented')
@@ -481,7 +668,12 @@ def msi_MsiProvideQualifiedComponentExW(jitter):
 
 def msi_MsiGetComponentPath(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiGetComponentPath(LPCTSTR szProduct, LPCTSTR szComponent, LPTSTR lpPathBuf, DWORD* pcchBuf)
+    INSTALLSTATE MsiGetComponentPath(
+        LPCTSTR szProduct,
+        LPCTSTR szComponent,
+        LPTSTR lpPathBuf,
+        DWORD* pcchBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szComponent", "lpPathBuf", "pcchBuf"])
     raise RuntimeError('API not implemented')
@@ -495,7 +687,14 @@ def msi_MsiGetComponentPathW(jitter):
 
 def msi_MsiGetComponentPathEx(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiGetComponentPathEx(LPCTSTR szProductCode, LPCTSTR szComponentCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, LPTSTR szPathBuf, LPDWORD pcchBuf)
+    INSTALLSTATE MsiGetComponentPathEx(
+        LPCTSTR szProductCode,
+        LPCTSTR szComponentCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        LPTSTR szPathBuf,
+        LPDWORD pcchBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szComponentCode", "szUserSid", "dwContext", "szPathBuf", "pcchBuf"])
     raise RuntimeError('API not implemented')
@@ -509,7 +708,11 @@ def msi_MsiGetComponentPathExW(jitter):
 
 def msi_MsiLocateComponent(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiLocateComponent(LPCTSTR szComponent, LPTSTR lpPathBuf, DWORD* pcchBuf)
+    INSTALLSTATE MsiLocateComponent(
+        LPCTSTR szComponent,
+        LPTSTR lpPathBuf,
+        DWORD* pcchBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "lpPathBuf", "pcchBuf"])
     raise RuntimeError('API not implemented')
@@ -523,7 +726,13 @@ def msi_MsiLocateComponentW(jitter):
 
 def msi_MsiQueryComponentState(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiQueryComponentState(LPTSTR szProductCode, LPTSTR szUserSid, MSIINSTALLCONTEXT dwContext, LPCTSTR szComponent, INSTALLSTATE* pdwState)
+    [MSI_ERROR] MsiQueryComponentState(
+        LPTSTR szProductCode,
+        LPTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        LPCTSTR szComponent,
+        INSTALLSTATE* pdwState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szUserSid", "dwContext", "szComponent", "pdwState"])
     raise RuntimeError('API not implemented')
@@ -537,7 +746,9 @@ def msi_MsiQueryComponentStateW(jitter):
 
 def msi_MsiCollectUserInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiCollectUserInfo(LPCTSTR szProduct)
+    [MSI_ERROR] MsiCollectUserInfo(
+        LPCTSTR szProduct
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct"])
     raise RuntimeError('API not implemented')
@@ -551,7 +762,10 @@ def msi_MsiCollectUserInfoW(jitter):
 
 def msi_MsiUseFeature(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiUseFeature(LPCTSTR szProduct, LPCTSTR szFeature)
+    INSTALLSTATE MsiUseFeature(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature"])
     raise RuntimeError('API not implemented')
@@ -565,7 +779,12 @@ def msi_MsiUseFeatureW(jitter):
 
 def msi_MsiUseFeatureEx(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiUseFeatureEx(LPCTSTR szProduct, LPCTSTR szFeature, [MsiInstallMode] dwInstallMode, DWORD dwReserved)
+    INSTALLSTATE MsiUseFeatureEx(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature,
+        [MsiInstallMode] dwInstallMode,
+        DWORD dwReserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature", "dwInstallMode", "dwReserved"])
     raise RuntimeError('API not implemented')
@@ -579,7 +798,10 @@ def msi_MsiUseFeatureExW(jitter):
 
 def msi_MsiGetProductCode(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetProductCode(LPCTSTR szComponent, LPTSTR lpProductBuf)
+    [MSI_ERROR] MsiGetProductCode(
+        LPCTSTR szComponent,
+        LPTSTR lpProductBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "lpProductBuf"])
     raise RuntimeError('API not implemented')
@@ -593,7 +815,10 @@ def msi_MsiGetProductCodeW(jitter):
 
 def msi_MsiEnumProducts(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumProducts(DWORD iProductIndex, LPTSTR lpProductBuf)
+    [MSI_ERROR] MsiEnumProducts(
+        DWORD iProductIndex,
+        LPTSTR lpProductBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["iProductIndex", "lpProductBuf"])
     raise RuntimeError('API not implemented')
@@ -607,7 +832,16 @@ def msi_MsiEnumProductsW(jitter):
 
 def msi_MsiEnumProductsEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumProductsEx(LPCTSTR szProductCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, DWORD dwIndex, TCHAR [39] szInstalledProductCode, MSIINSTALLCONTEXT* pdwInstalledContext, LPTSTR szSid, LPDWORD pcchSid)
+    [MSI_ERROR] MsiEnumProductsEx(
+        LPCTSTR szProductCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        DWORD dwIndex,
+        TCHAR [39] szInstalledProductCode,
+        MSIINSTALLCONTEXT* pdwInstalledContext,
+        LPTSTR szSid,
+        LPDWORD pcchSid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szUserSid", "dwContext", "dwIndex", "szInstalledProductCode", "pdwInstalledContext", "szSid", "pcchSid"])
     raise RuntimeError('API not implemented')
@@ -621,7 +855,12 @@ def msi_MsiEnumProductsExW(jitter):
 
 def msi_MsiEnumRelatedProducts(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumRelatedProducts(LPCTSTR lpUpgradeCode, DWORD dwReserved, DWORD iProductIndex, LPTSTR lpProductBuf)
+    [MSI_ERROR] MsiEnumRelatedProducts(
+        LPCTSTR lpUpgradeCode,
+        DWORD dwReserved,
+        DWORD iProductIndex,
+        LPTSTR lpProductBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpUpgradeCode", "dwReserved", "iProductIndex", "lpProductBuf"])
     raise RuntimeError('API not implemented')
@@ -635,7 +874,12 @@ def msi_MsiEnumRelatedProductsW(jitter):
 
 def msi_MsiEnumFeatures(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumFeatures(LPCTSTR szProduct, DWORD iFeatureIndex, LPTSTR lpFeatureBuf, LPTSTR lpParentBuf)
+    [MSI_ERROR] MsiEnumFeatures(
+        LPCTSTR szProduct,
+        DWORD iFeatureIndex,
+        LPTSTR lpFeatureBuf,
+        LPTSTR lpParentBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "iFeatureIndex", "lpFeatureBuf", "lpParentBuf"])
     raise RuntimeError('API not implemented')
@@ -649,7 +893,10 @@ def msi_MsiEnumFeaturesW(jitter):
 
 def msi_MsiEnumComponents(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumComponents(DWORD iComponentIndex, LPTSTR lpComponentBuf)
+    [MSI_ERROR] MsiEnumComponents(
+        DWORD iComponentIndex,
+        LPTSTR lpComponentBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["iComponentIndex", "lpComponentBuf"])
     raise RuntimeError('API not implemented')
@@ -663,7 +910,15 @@ def msi_MsiEnumComponentsW(jitter):
 
 def msi_MsiEnumComponentsEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumComponentsEx(LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, DWORD dwIndex, TCHAR [39] szInstalledComponentCode, MSIINSTALLCONTEXT* pdwInstalledContext, LPTSTR szSid, LPDWORD pcchSid)
+    [MSI_ERROR] MsiEnumComponentsEx(
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        DWORD dwIndex,
+        TCHAR [39] szInstalledComponentCode,
+        MSIINSTALLCONTEXT* pdwInstalledContext,
+        LPTSTR szSid,
+        LPDWORD pcchSid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szUserSid", "dwContext", "dwIndex", "szInstalledComponentCode", "pdwInstalledContext", "szSid", "pcchSid"])
     raise RuntimeError('API not implemented')
@@ -677,7 +932,11 @@ def msi_MsiEnumComponentsExW(jitter):
 
 def msi_MsiEnumClients(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumClients(LPCTSTR szComponent, DWORD iProductIndex, LPTSTR lpProductBuf)
+    [MSI_ERROR] MsiEnumClients(
+        LPCTSTR szComponent,
+        DWORD iProductIndex,
+        LPTSTR lpProductBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "iProductIndex", "lpProductBuf"])
     raise RuntimeError('API not implemented')
@@ -691,7 +950,16 @@ def msi_MsiEnumClientsW(jitter):
 
 def msi_MsiEnumClientsEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumClientsEx(LPCTSTR szComponent, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, DWORD dwProductIndex, TCHAR [39] szProductBuf, MSIINSTALLCONTEXT* pdwInstalledContext, LPTSTR szSid, LPDWORD pcchSid)
+    [MSI_ERROR] MsiEnumClientsEx(
+        LPCTSTR szComponent,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        DWORD dwProductIndex,
+        TCHAR [39] szProductBuf,
+        MSIINSTALLCONTEXT* pdwInstalledContext,
+        LPTSTR szSid,
+        LPDWORD pcchSid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "szUserSid", "dwContext", "dwProductIndex", "szProductBuf", "pdwInstalledContext", "szSid", "pcchSid"])
     raise RuntimeError('API not implemented')
@@ -705,7 +973,14 @@ def msi_MsiEnumClientsExW(jitter):
 
 def msi_MsiEnumComponentQualifiers(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumComponentQualifiers(LPTSTR szComponent, DWORD iIndex, LPTSTR lpQualifierBuf, DWORD* pcchQualifierBuf, LPTSTR lpApplicationDataBuf, DWORD* pcchApplicationDataBuf)
+    [MSI_ERROR] MsiEnumComponentQualifiers(
+        LPTSTR szComponent,
+        DWORD iIndex,
+        LPTSTR lpQualifierBuf,
+        DWORD* pcchQualifierBuf,
+        LPTSTR lpApplicationDataBuf,
+        DWORD* pcchApplicationDataBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szComponent", "iIndex", "lpQualifierBuf", "pcchQualifierBuf", "lpApplicationDataBuf", "pcchApplicationDataBuf"])
     raise RuntimeError('API not implemented')
@@ -719,7 +994,10 @@ def msi_MsiEnumComponentQualifiersW(jitter):
 
 def msi_MsiQueryFeatureState(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiQueryFeatureState(LPCTSTR szProduct, LPCTSTR szFeature)
+    INSTALLSTATE MsiQueryFeatureState(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature"])
     raise RuntimeError('API not implemented')
@@ -733,7 +1011,13 @@ def msi_MsiQueryFeatureStateW(jitter):
 
 def msi_MsiQueryFeatureStateEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiQueryFeatureStateEx(LPTSTR szProductCode, LPTSTR szUserSid, MSIINSTALLCONTEXT dwContext, LPCTSTR szFeature, INSTALLSTATE* pdwState)
+    [MSI_ERROR] MsiQueryFeatureStateEx(
+        LPTSTR szProductCode,
+        LPTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        LPCTSTR szFeature,
+        INSTALLSTATE* pdwState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szUserSid", "dwContext", "szFeature", "pdwState"])
     raise RuntimeError('API not implemented')
@@ -747,7 +1031,9 @@ def msi_MsiQueryFeatureStateExW(jitter):
 
 def msi_MsiQueryProductState(jitter, get_str, set_str):
     """
-    [Msi.dll] INSTALLSTATE MsiQueryProductState(LPCTSTR szProduct)
+    INSTALLSTATE MsiQueryProductState(
+        LPCTSTR szProduct
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct"])
     raise RuntimeError('API not implemented')
@@ -761,7 +1047,12 @@ def msi_MsiQueryProductStateW(jitter):
 
 def msi_MsiGetFeatureUsage(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFeatureUsage(LPCTSTR szProduct, LPCTSTR szFeature, DWORD* pdwUseCount, WORD* pwDateUsed)
+    [MSI_ERROR] MsiGetFeatureUsage(
+        LPCTSTR szProduct,
+        LPCTSTR szFeature,
+        DWORD* pdwUseCount,
+        WORD* pwDateUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szFeature", "pdwUseCount", "pwDateUsed"])
     raise RuntimeError('API not implemented')
@@ -775,7 +1066,12 @@ def msi_MsiGetFeatureUsageW(jitter):
 
 def msi_MsiGetProductInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetProductInfo(LPCTSTR szProduct, LPCTSTR szProperty, LPTSTR lpValueBuf, DWORD* pcchValueBuf)
+    [MSI_ERROR] MsiGetProductInfo(
+        LPCTSTR szProduct,
+        LPCTSTR szProperty,
+        LPTSTR lpValueBuf,
+        DWORD* pcchValueBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "szProperty", "lpValueBuf", "pcchValueBuf"])
     raise RuntimeError('API not implemented')
@@ -789,7 +1085,14 @@ def msi_MsiGetProductInfoW(jitter):
 
 def msi_MsiGetProductInfoEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetProductInfoEx(LPCTSTR szProductCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, LPCTSTR szProperty, LPTSTR lpValue, LPDWORD pcchValue)
+    [MSI_ERROR] MsiGetProductInfoEx(
+        LPCTSTR szProductCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        LPCTSTR szProperty,
+        LPTSTR lpValue,
+        LPDWORD pcchValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szUserSid", "dwContext", "szProperty", "lpValue", "pcchValue"])
     raise RuntimeError('API not implemented')
@@ -803,7 +1106,15 @@ def msi_MsiGetProductInfoExW(jitter):
 
 def msi_MsiGetUserInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] USERINFOSTATE MsiGetUserInfo(LPCTSTR szProduct, LPTSTR lpUserNameBuf, DWORD* pcchUserNameBuf, LPTSTR lpOrgNameBuf, DWORD* pcchOrgNameBuf, LPTSTR lpSerialBuf, DWORD* pcchSerialBuf)
+    USERINFOSTATE MsiGetUserInfo(
+        LPCTSTR szProduct,
+        LPTSTR lpUserNameBuf,
+        DWORD* pcchUserNameBuf,
+        LPTSTR lpOrgNameBuf,
+        DWORD* pcchOrgNameBuf,
+        LPTSTR lpSerialBuf,
+        DWORD* pcchSerialBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "lpUserNameBuf", "pcchUserNameBuf", "lpOrgNameBuf", "pcchOrgNameBuf", "lpSerialBuf", "pcchSerialBuf"])
     raise RuntimeError('API not implemented')
@@ -817,7 +1128,10 @@ def msi_MsiGetUserInfoW(jitter):
 
 def msi_MsiOpenProduct(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiOpenProduct(LPCTSTR szProduct, MSIHANDLE* hProduct)
+    [MSI_ERROR] MsiOpenProduct(
+        LPCTSTR szProduct,
+        MSIHANDLE* hProduct
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "hProduct"])
     raise RuntimeError('API not implemented')
@@ -831,7 +1145,10 @@ def msi_MsiOpenProductW(jitter):
 
 def msi_MsiOpenPackage(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiOpenPackage(LPCTSTR szPackagePath, MSIHANDLE* hProduct)
+    [MSI_ERROR] MsiOpenPackage(
+        LPCTSTR szPackagePath,
+        MSIHANDLE* hProduct
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPackagePath", "hProduct"])
     raise RuntimeError('API not implemented')
@@ -845,7 +1162,11 @@ def msi_MsiOpenPackageW(jitter):
 
 def msi_MsiOpenPackageEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiOpenPackageEx(LPCTSTR szPackagePath, [MsiOpenPackageFlags] dwOptions, MSIHANDLE* hProduct)
+    [MSI_ERROR] MsiOpenPackageEx(
+        LPCTSTR szPackagePath,
+        [MsiOpenPackageFlags] dwOptions,
+        MSIHANDLE* hProduct
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPackagePath", "dwOptions", "hProduct"])
     raise RuntimeError('API not implemented')
@@ -859,7 +1180,10 @@ def msi_MsiOpenPackageExW(jitter):
 
 def msi_MsiIsProductElevated(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiIsProductElevated(LPCTSTR szProductCode, BOOL* pfElevated)
+    [MSI_ERROR] MsiIsProductElevated(
+        LPCTSTR szProductCode,
+        BOOL* pfElevated
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "pfElevated"])
     raise RuntimeError('API not implemented')
@@ -873,7 +1197,16 @@ def msi_MsiIsProductElevatedW(jitter):
 
 def msi_MsiGetProductInfoFromScript(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetProductInfoFromScript(LPCTSTR szScriptFile, LPTSTR lpProductBuf39, LANGID* plgidLanguage, DWORD* pdwVersion, LPTSTR lpNameBuf, DWORD* pcchNameBuf, LPTSTR lpPackageBuf, DWORD* pcchPackageBuf)
+    [MSI_ERROR] MsiGetProductInfoFromScript(
+        LPCTSTR szScriptFile,
+        LPTSTR lpProductBuf39,
+        LANGID* plgidLanguage,
+        DWORD* pdwVersion,
+        LPTSTR lpNameBuf,
+        DWORD* pcchNameBuf,
+        LPTSTR lpPackageBuf,
+        DWORD* pcchPackageBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szScriptFile", "lpProductBuf39", "plgidLanguage", "pdwVersion", "lpNameBuf", "pcchNameBuf", "lpPackageBuf", "pcchPackageBuf"])
     raise RuntimeError('API not implemented')
@@ -887,7 +1220,12 @@ def msi_MsiGetProductInfoFromScriptW(jitter):
 
 def msi_MsiGetProductProperty(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetProductProperty(MSIHANDLE hProduct, LPCTSTR szProperty, LPTSTR lpValueBuf, DWORD* pcchValueBuf)
+    [MSI_ERROR] MsiGetProductProperty(
+        MSIHANDLE hProduct,
+        LPCTSTR szProperty,
+        LPTSTR lpValueBuf,
+        DWORD* pcchValueBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProduct", "szProperty", "lpValueBuf", "pcchValueBuf"])
     raise RuntimeError('API not implemented')
@@ -901,7 +1239,12 @@ def msi_MsiGetProductPropertyW(jitter):
 
 def msi_MsiGetShortcutTarget(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetShortcutTarget(LPCTSTR szShortcutTarget, LPTSTR szProductCode, LPTSTR szFeatureId, LPTSTR szComponentCode)
+    [MSI_ERROR] MsiGetShortcutTarget(
+        LPCTSTR szShortcutTarget,
+        LPTSTR szProductCode,
+        LPTSTR szFeatureId,
+        LPTSTR szComponentCode
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szShortcutTarget", "szProductCode", "szFeatureId", "szComponentCode"])
     raise RuntimeError('API not implemented')
@@ -915,7 +1258,15 @@ def msi_MsiGetShortcutTargetW(jitter):
 
 def msi_MsiGetFeatureInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFeatureInfo(MSIHANDLE hProduct, LPCTSTR szFeature, [MsiInstallFeatureAttr*] lpAttributes, LPTSTR lpTitleBuf, LPDWORD pcchTitleBuf, LPTSTR lpHelpBuf, LPDWORD pcchHelpBuf)
+    [MSI_ERROR] MsiGetFeatureInfo(
+        MSIHANDLE hProduct,
+        LPCTSTR szFeature,
+        [MsiInstallFeatureAttr*] lpAttributes,
+        LPTSTR lpTitleBuf,
+        LPDWORD pcchTitleBuf,
+        LPTSTR lpHelpBuf,
+        LPDWORD pcchHelpBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProduct", "szFeature", "lpAttributes", "lpTitleBuf", "pcchTitleBuf", "lpHelpBuf", "pcchHelpBuf"])
     raise RuntimeError('API not implemented')
@@ -929,7 +1280,9 @@ def msi_MsiGetFeatureInfoW(jitter):
 
 def msi_MsiVerifyPackage(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiVerifyPackage(LPCTSTR szPackagePath)
+    [MSI_ERROR] MsiVerifyPackage(
+        LPCTSTR szPackagePath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPackagePath"])
     raise RuntimeError('API not implemented')
@@ -943,7 +1296,12 @@ def msi_MsiVerifyPackageW(jitter):
 
 def msi_MsiApplyPatch(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiApplyPatch(LPCTSTR szPatchPackage, LPCTSTR szInstallPackage, INSTALLTYPE eInstallType, LPCTSTR szCommandLine)
+    [MSI_ERROR] MsiApplyPatch(
+        LPCTSTR szPatchPackage,
+        LPCTSTR szInstallPackage,
+        INSTALLTYPE eInstallType,
+        LPCTSTR szCommandLine
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPatchPackage", "szInstallPackage", "eInstallType", "szCommandLine"])
     raise RuntimeError('API not implemented')
@@ -957,7 +1315,13 @@ def msi_MsiApplyPatchW(jitter):
 
 def msi_MsiEnumPatches(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumPatches(LPCTSTR szProduct, DWORD iPatchIndex, LPTSTR lpPatchBuf, LPTSTR lpTransformsBuf, DWORD* pcchTransformsBuf)
+    [MSI_ERROR] MsiEnumPatches(
+        LPCTSTR szProduct,
+        DWORD iPatchIndex,
+        LPTSTR lpPatchBuf,
+        LPTSTR lpTransformsBuf,
+        DWORD* pcchTransformsBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProduct", "iPatchIndex", "lpPatchBuf", "lpTransformsBuf", "pcchTransformsBuf"])
     raise RuntimeError('API not implemented')
@@ -971,7 +1335,12 @@ def msi_MsiEnumPatchesW(jitter):
 
 def msi_MsiGetPatchInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetPatchInfo(LPCTSTR szPatch, LPCTSTR szAttribute, LPTSTR lpValueBuf, DWORD* pcchValueBuf)
+    [MSI_ERROR] MsiGetPatchInfo(
+        LPCTSTR szPatch,
+        LPCTSTR szAttribute,
+        LPTSTR lpValueBuf,
+        DWORD* pcchValueBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPatch", "szAttribute", "lpValueBuf", "pcchValueBuf"])
     raise RuntimeError('API not implemented')
@@ -985,7 +1354,12 @@ def msi_MsiGetPatchInfoW(jitter):
 
 def msi_MsiRemovePatches(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiRemovePatches(LPCTSTR szPatchList, LPCTSTR szProductCode, INSTALLTYPE eUninstallType, LPCTSTR szPropertyList)
+    [MSI_ERROR] MsiRemovePatches(
+        LPCTSTR szPatchList,
+        LPCTSTR szProductCode,
+        INSTALLTYPE eUninstallType,
+        LPCTSTR szPropertyList
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPatchList", "szProductCode", "eUninstallType", "szPropertyList"])
     raise RuntimeError('API not implemented')
@@ -999,7 +1373,13 @@ def msi_MsiRemovePatchesW(jitter):
 
 def msi_MsiDeterminePatchSequence(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDeterminePatchSequence(LPCTSTR szProductCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, DWORD cPatchInfo, PMSIPATCHSEQUENCEINFO pPatchInfo)
+    [MSI_ERROR] MsiDeterminePatchSequence(
+        LPCTSTR szProductCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        DWORD cPatchInfo,
+        PMSIPATCHSEQUENCEINFO pPatchInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szUserSid", "dwContext", "cPatchInfo", "pPatchInfo"])
     raise RuntimeError('API not implemented')
@@ -1013,7 +1393,11 @@ def msi_MsiDeterminePatchSequenceW(jitter):
 
 def msi_MsiApplyMultiplePatches(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiApplyMultiplePatches(LPCTSTR szPatchPackages, LPCTSTR szProductCode, LPCTSTR szPropertiesList)
+    [MSI_ERROR] MsiApplyMultiplePatches(
+        LPCTSTR szPatchPackages,
+        LPCTSTR szProductCode,
+        LPCTSTR szPropertiesList
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPatchPackages", "szProductCode", "szPropertiesList"])
     raise RuntimeError('API not implemented')
@@ -1027,7 +1411,18 @@ def msi_MsiApplyMultiplePatchesW(jitter):
 
 def msi_MsiEnumPatchesEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumPatchesEx(LPCTSTR szProductCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, [MsiPatchState] dwFilter, DWORD dwIndex, TCHAR [39] szPatchCode, TCHAR [39] szTargetProductCode, MSIINSTALLCONTEXT* pdwTargetProductContext, LPTSTR szTargetUserSid, LPDWORD pcchTargetUserSid)
+    [MSI_ERROR] MsiEnumPatchesEx(
+        LPCTSTR szProductCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        [MsiPatchState] dwFilter,
+        DWORD dwIndex,
+        TCHAR [39] szPatchCode,
+        TCHAR [39] szTargetProductCode,
+        MSIINSTALLCONTEXT* pdwTargetProductContext,
+        LPTSTR szTargetUserSid,
+        LPDWORD pcchTargetUserSid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szUserSid", "dwContext", "dwFilter", "dwIndex", "szPatchCode", "szTargetProductCode", "pdwTargetProductContext", "szTargetUserSid", "pcchTargetUserSid"])
     raise RuntimeError('API not implemented')
@@ -1041,7 +1436,12 @@ def msi_MsiEnumPatchesExW(jitter):
 
 def msi_MsiGetPatchFileList(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetPatchFileList(LPCTSTR szProductCode, LPCTSTR szPatchList, LPDWORD pcFiles, MSIHANDLE** pphFileRecords)
+    [MSI_ERROR] MsiGetPatchFileList(
+        LPCTSTR szProductCode,
+        LPCTSTR szPatchList,
+        LPDWORD pcFiles,
+        MSIHANDLE** pphFileRecords
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductCode", "szPatchList", "pcFiles", "pphFileRecords"])
     raise RuntimeError('API not implemented')
@@ -1055,7 +1455,15 @@ def msi_MsiGetPatchFileListW(jitter):
 
 def msi_MsiGetPatchInfoEx(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetPatchInfoEx(LPCTSTR szPatchCode, LPCTSTR szProductCode, LPCTSTR szUserSid, MSIINSTALLCONTEXT dwContext, LPCTSTR szProperty, LPTSTR lpValue, DWORD* pcchValue)
+    [MSI_ERROR] MsiGetPatchInfoEx(
+        LPCTSTR szPatchCode,
+        LPCTSTR szProductCode,
+        LPCTSTR szUserSid,
+        MSIINSTALLCONTEXT dwContext,
+        LPCTSTR szProperty,
+        LPTSTR lpValue,
+        DWORD* pcchValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPatchCode", "szProductCode", "szUserSid", "dwContext", "szProperty", "lpValue", "pcchValue"])
     raise RuntimeError('API not implemented')
@@ -1069,7 +1477,12 @@ def msi_MsiGetPatchInfoExW(jitter):
 
 def msi_MsiExtractPatchXMLData(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiExtractPatchXMLData(LPCTSTR szPatchPath, DWORD dwReserved, LPTSTR szXMLData, DWORD* pcchXMLData)
+    [MSI_ERROR] MsiExtractPatchXMLData(
+        LPCTSTR szPatchPath,
+        DWORD dwReserved,
+        LPTSTR szXMLData,
+        DWORD* pcchXMLData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szPatchPath", "dwReserved", "szXMLData", "pcchXMLData"])
     raise RuntimeError('API not implemented')
@@ -1083,7 +1496,11 @@ def msi_MsiExtractPatchXMLDataW(jitter):
 
 def msi_MsiDetermineApplicablePatches(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDetermineApplicablePatches(LPCTSTR szProductPackagePath, DWORD cPatchInfo, PMSIPATCHSEQUENCEINFO pPatchInfo)
+    [MSI_ERROR] MsiDetermineApplicablePatches(
+        LPCTSTR szProductPackagePath,
+        DWORD cPatchInfo,
+        PMSIPATCHSEQUENCEINFO pPatchInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szProductPackagePath", "cPatchInfo", "pPatchInfo"])
     raise RuntimeError('API not implemented')
@@ -1097,7 +1514,11 @@ def msi_MsiDetermineApplicablePatchesW(jitter):
 
 def msi_MsiGetFileHash(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFileHash(LPCTSTR szFilePath, DWORD dwOptions, PMSIFILEHASHINFO pHash)
+    [MSI_ERROR] MsiGetFileHash(
+        LPCTSTR szFilePath,
+        DWORD dwOptions,
+        PMSIFILEHASHINFO pHash
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szFilePath", "dwOptions", "pHash"])
     raise RuntimeError('API not implemented')
@@ -1111,7 +1532,13 @@ def msi_MsiGetFileHashW(jitter):
 
 def msi_MsiGetFileSignatureInformation(jitter, get_str, set_str):
     """
-    [Msi.dll] HRESULT MsiGetFileSignatureInformation(LPCTSTR szSignedObjectPath, [MsiHashFlags] dwFlags, PCCERT_CONTEXT* ppcCertContext, BYTE* pbHashData, DWORD* pcbHashData)
+    HRESULT MsiGetFileSignatureInformation(
+        LPCTSTR szSignedObjectPath,
+        [MsiHashFlags] dwFlags,
+        PCCERT_CONTEXT* ppcCertContext,
+        BYTE* pbHashData,
+        DWORD* pcbHashData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szSignedObjectPath", "dwFlags", "ppcCertContext", "pbHashData", "pcbHashData"])
     raise RuntimeError('API not implemented')
@@ -1125,7 +1552,13 @@ def msi_MsiGetFileSignatureInformationW(jitter):
 
 def msi_MsiGetFileVersion(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFileVersion(LPCTSTR szFilePath, LPTSTR lpVersionBuf, DWORD* pcchVersionBuf, LPTSTR lpLangBuf, DWORD* pcchLangBuf)
+    [MSI_ERROR] MsiGetFileVersion(
+        LPCTSTR szFilePath,
+        LPTSTR lpVersionBuf,
+        DWORD* pcchVersionBuf,
+        LPTSTR lpLangBuf,
+        DWORD* pcchLangBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szFilePath", "lpVersionBuf", "pcchVersionBuf", "lpLangBuf", "pcchLangBuf"])
     raise RuntimeError('API not implemented')
@@ -1139,7 +1572,12 @@ def msi_MsiGetFileVersionW(jitter):
 
 def msi_MsiBeginTransaction(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiBeginTransaction(LPCWSTR szTransactionName, [MsiTransactionAttributes] dwTransactionAttributes, MSIHANDLE* hTransactionID, HANDLE* phChangeOfOwnerEvent)
+    [MSI_ERROR] MsiBeginTransaction(
+        LPCWSTR szTransactionName,
+        [MsiTransactionAttributes] dwTransactionAttributes,
+        MSIHANDLE* hTransactionID,
+        HANDLE* phChangeOfOwnerEvent
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szTransactionName", "dwTransactionAttributes", "hTransactionID", "phChangeOfOwnerEvent"])
     raise RuntimeError('API not implemented')
@@ -1153,7 +1591,11 @@ def msi_MsiBeginTransactionW(jitter):
 
 def msi_MsiJoinTransaction(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiJoinTransaction(MSIHANDLE hTransactionID, [MsiTransactionAttributes] dwTransactionAttributes, HANDLE* phChangeOfOwnerEvent)
+    [MSI_ERROR] MsiJoinTransaction(
+        MSIHANDLE hTransactionID,
+        [MsiTransactionAttributes] dwTransactionAttributes,
+        HANDLE* phChangeOfOwnerEvent
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hTransactionID", "dwTransactionAttributes", "phChangeOfOwnerEvent"])
     raise RuntimeError('API not implemented')
@@ -1161,7 +1603,9 @@ def msi_MsiJoinTransaction(jitter):
 
 def msi_MsiEndTransaction(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiEndTransaction([MsiTransactionState] dwTransactionState)
+    [MSI_ERROR] MsiEndTransaction(
+        [MsiTransactionState] dwTransactionState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwTransactionState"])
     raise RuntimeError('API not implemented')
@@ -1169,7 +1613,9 @@ def msi_MsiEndTransaction(jitter):
 
 def msi_MsiDatabaseCommit(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseCommit(MSIHANDLE hDatabase)
+    [MSI_ERROR] MsiDatabaseCommit(
+        MSIHANDLE hDatabase
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase"])
     raise RuntimeError('API not implemented')
@@ -1177,7 +1623,11 @@ def msi_MsiDatabaseCommit(jitter):
 
 def msi_MsiDatabaseGetPrimaryKeys(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseGetPrimaryKeys(MSIHANDLE hDatabase, LPCTSTR szTableName, MSIHANDLE* phRecord)
+    [MSI_ERROR] MsiDatabaseGetPrimaryKeys(
+        MSIHANDLE hDatabase,
+        LPCTSTR szTableName,
+        MSIHANDLE* phRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szTableName", "phRecord"])
     raise RuntimeError('API not implemented')
@@ -1191,7 +1641,10 @@ def msi_MsiDatabaseGetPrimaryKeysW(jitter):
 
 def msi_MsiDatabaseIsTablePersistent(jitter, get_str, set_str):
     """
-    [Msi.dll] MSICONDITION MsiDatabaseIsTablePersistent(MSIHANDLE hDatabase, LPCTSTR szTableName)
+    MSICONDITION MsiDatabaseIsTablePersistent(
+        MSIHANDLE hDatabase,
+        LPCTSTR szTableName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szTableName"])
     raise RuntimeError('API not implemented')
@@ -1205,7 +1658,11 @@ def msi_MsiDatabaseIsTablePersistentW(jitter):
 
 def msi_MsiDatabaseOpenView(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseOpenView(MSIHANDLE hDatabase, LPCTSTR szQuery, MSIHANDLE* phView)
+    [MSI_ERROR] MsiDatabaseOpenView(
+        MSIHANDLE hDatabase,
+        LPCTSTR szQuery,
+        MSIHANDLE* phView
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szQuery", "phView"])
     raise RuntimeError('API not implemented')
@@ -1219,7 +1676,9 @@ def msi_MsiDatabaseOpenViewW(jitter):
 
 def msi_MsiGetActiveDatabase(jitter):
     """
-    [Msi.dll] MSIHANDLE MsiGetActiveDatabase(MSIHANDLE hInstall)
+    MSIHANDLE MsiGetActiveDatabase(
+        MSIHANDLE hInstall
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall"])
     raise RuntimeError('API not implemented')
@@ -1227,7 +1686,11 @@ def msi_MsiGetActiveDatabase(jitter):
 
 def msi_MsiViewGetColumnInfo(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiViewGetColumnInfo(MSIHANDLE hView, MSICOLINFO eColumnInfo, MSIHANDLE* phRecord)
+    [MSI_ERROR] MsiViewGetColumnInfo(
+        MSIHANDLE hView,
+        MSICOLINFO eColumnInfo,
+        MSIHANDLE* phRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hView", "eColumnInfo", "phRecord"])
     raise RuntimeError('API not implemented')
@@ -1235,7 +1698,11 @@ def msi_MsiViewGetColumnInfo(jitter):
 
 def msi_MsiOpenDatabase(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiOpenDatabase(LPCTSTR szDatabasePath, LPCTSTR szPersist, MSIHANDLE* phDatabase)
+    [MSI_ERROR] MsiOpenDatabase(
+        LPCTSTR szDatabasePath,
+        LPCTSTR szPersist,
+        MSIHANDLE* phDatabase
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["szDatabasePath", "szPersist", "phDatabase"])
     raise RuntimeError('API not implemented')
@@ -1249,7 +1716,9 @@ def msi_MsiOpenDatabaseW(jitter):
 
 def msi_MsiViewClose(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiViewClose(MSIHANDLE hView)
+    [MSI_ERROR] MsiViewClose(
+        MSIHANDLE hView
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hView"])
     raise RuntimeError('API not implemented')
@@ -1257,7 +1726,10 @@ def msi_MsiViewClose(jitter):
 
 def msi_MsiViewExecute(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiViewExecute(MSIHANDLE hView, MSIHANDLE hRecord)
+    [MSI_ERROR] MsiViewExecute(
+        MSIHANDLE hView,
+        MSIHANDLE hRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hView", "hRecord"])
     raise RuntimeError('API not implemented')
@@ -1265,7 +1737,10 @@ def msi_MsiViewExecute(jitter):
 
 def msi_MsiViewFetch(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiViewFetch(MSIHANDLE hView, MSIHANDLE* phRecord)
+    [MSI_ERROR] MsiViewFetch(
+        MSIHANDLE hView,
+        MSIHANDLE* phRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hView", "phRecord"])
     raise RuntimeError('API not implemented')
@@ -1273,7 +1748,11 @@ def msi_MsiViewFetch(jitter):
 
 def msi_MsiViewGetError(jitter, get_str, set_str):
     """
-    [Msi.dll] MSIDBERROR MsiViewGetError(MSIHANDLE hView, LPTSTR szColumnNameBuffer, DWORD* pcchBuf)
+    MSIDBERROR MsiViewGetError(
+        MSIHANDLE hView,
+        LPTSTR szColumnNameBuffer,
+        DWORD* pcchBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hView", "szColumnNameBuffer", "pcchBuf"])
     raise RuntimeError('API not implemented')
@@ -1287,7 +1766,11 @@ def msi_MsiViewGetErrorW(jitter):
 
 def msi_MsiViewModify(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiViewModify(MSIHANDLE hView, MSIMODIFY eModifyMode, MSIHANDLE hRecord)
+    [MSI_ERROR] MsiViewModify(
+        MSIHANDLE hView,
+        MSIMODIFY eModifyMode,
+        MSIHANDLE hRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hView", "eModifyMode", "hRecord"])
     raise RuntimeError('API not implemented')
@@ -1295,7 +1778,13 @@ def msi_MsiViewModify(jitter):
 
 def msi_MsiCreateTransformSummaryInfo(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiCreateTransformSummaryInfo(MSIHANDLE hDatabase, MSIHANDLE hDatabaseReference, LPCTSTR szTransformFile, MSITRANSFORM_ERROR iErrorConditions, MSITRANSFORM_VALIDATE iValidation)
+    [MSI_ERROR] MsiCreateTransformSummaryInfo(
+        MSIHANDLE hDatabase,
+        MSIHANDLE hDatabaseReference,
+        LPCTSTR szTransformFile,
+        MSITRANSFORM_ERROR iErrorConditions,
+        MSITRANSFORM_VALIDATE iValidation
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "hDatabaseReference", "szTransformFile", "iErrorConditions", "iValidation"])
     raise RuntimeError('API not implemented')
@@ -1309,7 +1798,11 @@ def msi_MsiCreateTransformSummaryInfoW(jitter):
 
 def msi_MsiDatabaseApplyTransform(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseApplyTransform(MSIHANDLE hDatabase, LPCTSTR szTransformFile, MSITRANSFORM_ERROR iErrorConditions)
+    [MSI_ERROR] MsiDatabaseApplyTransform(
+        MSIHANDLE hDatabase,
+        LPCTSTR szTransformFile,
+        MSITRANSFORM_ERROR iErrorConditions
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szTransformFile", "iErrorConditions"])
     raise RuntimeError('API not implemented')
@@ -1323,7 +1816,12 @@ def msi_MsiDatabaseApplyTransformW(jitter):
 
 def msi_MsiDatabaseExport(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseExport(MSIHANDLE hDatabase, LPCTSTR szTableName, LPCTSTR szFolderPath, LPCTSTR szFileName)
+    [MSI_ERROR] MsiDatabaseExport(
+        MSIHANDLE hDatabase,
+        LPCTSTR szTableName,
+        LPCTSTR szFolderPath,
+        LPCTSTR szFileName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szTableName", "szFolderPath", "szFileName"])
     raise RuntimeError('API not implemented')
@@ -1337,7 +1835,13 @@ def msi_MsiDatabaseExportW(jitter):
 
 def msi_MsiDatabaseGenerateTransform(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseGenerateTransform(MSIHANDLE hDatabase, MSIHANDLE hDatabaseReference, LPCTSTR szTransformFile, int iReserved1, int iReserved2)
+    [MSI_ERROR] MsiDatabaseGenerateTransform(
+        MSIHANDLE hDatabase,
+        MSIHANDLE hDatabaseReference,
+        LPCTSTR szTransformFile,
+        int iReserved1,
+        int iReserved2
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "hDatabaseReference", "szTransformFile", "iReserved1", "iReserved2"])
     raise RuntimeError('API not implemented')
@@ -1351,7 +1855,11 @@ def msi_MsiDatabaseGenerateTransformW(jitter):
 
 def msi_MsiDatabaseImport(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseImport(MSIHANDLE hDatabase, LPCTSTR szFolderPath, LPCTSTR szFileName)
+    [MSI_ERROR] MsiDatabaseImport(
+        MSIHANDLE hDatabase,
+        LPCTSTR szFolderPath,
+        LPCTSTR szFileName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szFolderPath", "szFileName"])
     raise RuntimeError('API not implemented')
@@ -1365,7 +1873,11 @@ def msi_MsiDatabaseImportW(jitter):
 
 def msi_MsiDatabaseMerge(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDatabaseMerge(MSIHANDLE hDatabase, MSIHANDLE hDatabaseMerge, LPCTSTR szTableName)
+    [MSI_ERROR] MsiDatabaseMerge(
+        MSIHANDLE hDatabase,
+        MSIHANDLE hDatabaseMerge,
+        LPCTSTR szTableName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "hDatabaseMerge", "szTableName"])
     raise RuntimeError('API not implemented')
@@ -1379,7 +1891,9 @@ def msi_MsiDatabaseMergeW(jitter):
 
 def msi_MsiGetDatabaseState(jitter):
     """
-    [Msi.dll] MSIDBSTATE MsiGetDatabaseState(MSIHANDLE hDatabase)
+    MSIDBSTATE MsiGetDatabaseState(
+        MSIHANDLE hDatabase
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase"])
     raise RuntimeError('API not implemented')
@@ -1387,7 +1901,9 @@ def msi_MsiGetDatabaseState(jitter):
 
 def msi_MsiCreateRecord(jitter):
     """
-    [Msi.dll] MSIHANDLE MsiCreateRecord(unsigned int cParams)
+    MSIHANDLE MsiCreateRecord(
+        unsigned int cParams
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["cParams"])
     raise RuntimeError('API not implemented')
@@ -1395,7 +1911,12 @@ def msi_MsiCreateRecord(jitter):
 
 def msi_MsiFormatRecord(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiFormatRecord(MSIHANDLE hInstall, MSIHANDLE hRecord, LPTSTR szResultBuf, DWORD* pcchResultBuf)
+    [MSI_ERROR] MsiFormatRecord(
+        MSIHANDLE hInstall,
+        MSIHANDLE hRecord,
+        LPTSTR szResultBuf,
+        DWORD* pcchResultBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "hRecord", "szResultBuf", "pcchResultBuf"])
     raise RuntimeError('API not implemented')
@@ -1409,7 +1930,9 @@ def msi_MsiFormatRecordW(jitter):
 
 def msi_MsiRecordClearData(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordClearData(MSIHANDLE hRecord)
+    [MSI_ERROR] MsiRecordClearData(
+        MSIHANDLE hRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord"])
     raise RuntimeError('API not implemented')
@@ -1417,7 +1940,10 @@ def msi_MsiRecordClearData(jitter):
 
 def msi_MsiRecordDataSize(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordDataSize(MSIHANDLE hRecord, unsigned int iField)
+    [MSI_ERROR] MsiRecordDataSize(
+        MSIHANDLE hRecord,
+        unsigned int iField
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField"])
     raise RuntimeError('API not implemented')
@@ -1425,7 +1951,9 @@ def msi_MsiRecordDataSize(jitter):
 
 def msi_MsiRecordGetFieldCount(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordGetFieldCount(MSIHANDLE hRecord)
+    [MSI_ERROR] MsiRecordGetFieldCount(
+        MSIHANDLE hRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord"])
     raise RuntimeError('API not implemented')
@@ -1433,7 +1961,10 @@ def msi_MsiRecordGetFieldCount(jitter):
 
 def msi_MsiRecordGetInteger(jitter):
     """
-    [Msi.dll] int MsiRecordGetInteger(MSIHANDLE hRecord, unsigned int iField)
+    int MsiRecordGetInteger(
+        MSIHANDLE hRecord,
+        unsigned int iField
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField"])
     raise RuntimeError('API not implemented')
@@ -1441,7 +1972,12 @@ def msi_MsiRecordGetInteger(jitter):
 
 def msi_MsiRecordGetString(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordGetString(MSIHANDLE hRecord, unsigned int iField, LPTSTR szValueBuf, DWORD* pcchValueBuf)
+    [MSI_ERROR] MsiRecordGetString(
+        MSIHANDLE hRecord,
+        unsigned int iField,
+        LPTSTR szValueBuf,
+        DWORD* pcchValueBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField", "szValueBuf", "pcchValueBuf"])
     raise RuntimeError('API not implemented')
@@ -1455,7 +1991,10 @@ def msi_MsiRecordGetStringW(jitter):
 
 def msi_MsiRecordIsNull(jitter):
     """
-    [Msi.dll] BOOL MsiRecordIsNull(MSIHANDLE hRecord, unsigned int iField)
+    BOOL MsiRecordIsNull(
+        MSIHANDLE hRecord,
+        unsigned int iField
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField"])
     raise RuntimeError('API not implemented')
@@ -1463,7 +2002,12 @@ def msi_MsiRecordIsNull(jitter):
 
 def msi_MsiRecordReadStream(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordReadStream(MSIHANDLE hRecord, UINT iField, char* szDataBuf, DWORD* pcbDataBuf)
+    [MSI_ERROR] MsiRecordReadStream(
+        MSIHANDLE hRecord,
+        UINT iField,
+        char* szDataBuf,
+        DWORD* pcbDataBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField", "szDataBuf", "pcbDataBuf"])
     raise RuntimeError('API not implemented')
@@ -1471,7 +2015,11 @@ def msi_MsiRecordReadStream(jitter):
 
 def msi_MsiRecordSetInteger(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordSetInteger(MSIHANDLE hRecord, unsigned int iField, int iValue)
+    [MSI_ERROR] MsiRecordSetInteger(
+        MSIHANDLE hRecord,
+        unsigned int iField,
+        int iValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField", "iValue"])
     raise RuntimeError('API not implemented')
@@ -1479,7 +2027,11 @@ def msi_MsiRecordSetInteger(jitter):
 
 def msi_MsiRecordSetStream(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordSetStream(MSIHANDLE hRecord, UINT iField, LPCTSTR szFilePath)
+    [MSI_ERROR] MsiRecordSetStream(
+        MSIHANDLE hRecord,
+        UINT iField,
+        LPCTSTR szFilePath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField", "szFilePath"])
     raise RuntimeError('API not implemented')
@@ -1493,7 +2045,11 @@ def msi_MsiRecordSetStreamW(jitter):
 
 def msi_MsiRecordSetString(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiRecordSetString(MSIHANDLE hRecord, unsigned int iField, LPCTSTR szValue)
+    [MSI_ERROR] MsiRecordSetString(
+        MSIHANDLE hRecord,
+        unsigned int iField,
+        LPCTSTR szValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRecord", "iField", "szValue"])
     raise RuntimeError('API not implemented')
@@ -1507,7 +2063,12 @@ def msi_MsiRecordSetStringW(jitter):
 
 def msi_MsiGetSummaryInformation(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetSummaryInformation(MSIHANDLE hDatabase, LPCTSTR szDatabasePath, UINT uiUpdateCount, MSIHANDLE* phSummaryInfo)
+    [MSI_ERROR] MsiGetSummaryInformation(
+        MSIHANDLE hDatabase,
+        LPCTSTR szDatabasePath,
+        UINT uiUpdateCount,
+        MSIHANDLE* phSummaryInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "szDatabasePath", "uiUpdateCount", "phSummaryInfo"])
     raise RuntimeError('API not implemented')
@@ -1521,7 +2082,15 @@ def msi_MsiGetSummaryInformationW(jitter):
 
 def msi_MsiSummaryInfoGetProperty(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSummaryInfoGetProperty(MSIHANDLE hSummaryInfo, [MSI_PID] uiProperty, [MSI_DATA_TYPE*] puiDataType, INT* piValue, FILETIME* pftValue, LPTSTR szValueBuf, DWORD* pcchValueBuf)
+    [MSI_ERROR] MsiSummaryInfoGetProperty(
+        MSIHANDLE hSummaryInfo,
+        [MSI_PID] uiProperty,
+        [MSI_DATA_TYPE*] puiDataType,
+        INT* piValue,
+        FILETIME* pftValue,
+        LPTSTR szValueBuf,
+        DWORD* pcchValueBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSummaryInfo", "uiProperty", "puiDataType", "piValue", "pftValue", "szValueBuf", "pcchValueBuf"])
     raise RuntimeError('API not implemented')
@@ -1535,7 +2104,10 @@ def msi_MsiSummaryInfoGetPropertyW(jitter):
 
 def msi_MsiSummaryInfoGetPropertyCount(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiSummaryInfoGetPropertyCount(MSIHANDLE hSummaryInfo, UINT* puiPropertyCount)
+    [MSI_ERROR] MsiSummaryInfoGetPropertyCount(
+        MSIHANDLE hSummaryInfo,
+        UINT* puiPropertyCount
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSummaryInfo", "puiPropertyCount"])
     raise RuntimeError('API not implemented')
@@ -1543,7 +2115,9 @@ def msi_MsiSummaryInfoGetPropertyCount(jitter):
 
 def msi_MsiSummaryInfoPersist(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiSummaryInfoPersist(MSIHANDLE hSummaryInfo)
+    [MSI_ERROR] MsiSummaryInfoPersist(
+        MSIHANDLE hSummaryInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSummaryInfo"])
     raise RuntimeError('API not implemented')
@@ -1551,7 +2125,14 @@ def msi_MsiSummaryInfoPersist(jitter):
 
 def msi_MsiSummaryInfoSetProperty(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSummaryInfoSetProperty(MSIHANDLE hSummaryInfo, [MSI_PID] uiProperty, [MSI_DATA_TYPE] uiDataType, INT iValue, FILETIME* pftValue, LPTSTR szValue)
+    [MSI_ERROR] MsiSummaryInfoSetProperty(
+        MSIHANDLE hSummaryInfo,
+        [MSI_PID] uiProperty,
+        [MSI_DATA_TYPE] uiDataType,
+        INT iValue,
+        FILETIME* pftValue,
+        LPTSTR szValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hSummaryInfo", "uiProperty", "uiDataType", "iValue", "pftValue", "szValue"])
     raise RuntimeError('API not implemented')
@@ -1565,7 +2146,9 @@ def msi_MsiSummaryInfoSetPropertyW(jitter):
 
 def msi_MsiGetLanguage(jitter):
     """
-    [Msi.dll] LANGID MsiGetLanguage(MSIHANDLE hInstall)
+    LANGID MsiGetLanguage(
+        MSIHANDLE hInstall
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall"])
     raise RuntimeError('API not implemented')
@@ -1573,7 +2156,7 @@ def msi_MsiGetLanguage(jitter):
 
 def msi_MsiGetLastErrorRecord(jitter):
     """
-    [Msi.dll] MSIHANDLE MsiGetLastErrorRecord()
+    MSIHANDLE MsiGetLastErrorRecord()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -1581,7 +2164,10 @@ def msi_MsiGetLastErrorRecord(jitter):
 
 def msi_MsiGetMode(jitter):
     """
-    [Msi.dll] BOOL MsiGetMode(MSIHANDLE hInstall, MSIRUNMODE iRunMode)
+    BOOL MsiGetMode(
+        MSIHANDLE hInstall,
+        MSIRUNMODE iRunMode
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "iRunMode"])
     raise RuntimeError('API not implemented')
@@ -1589,7 +2175,12 @@ def msi_MsiGetMode(jitter):
 
 def msi_MsiGetProperty(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetProperty(MSIHANDLE hInstall, LPCTSTR szName, LPTSTR szValueBuf, DWORD* pchValueBuf)
+    [MSI_ERROR] MsiGetProperty(
+        MSIHANDLE hInstall,
+        LPCTSTR szName,
+        LPTSTR szValueBuf,
+        DWORD* pchValueBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szName", "szValueBuf", "pchValueBuf"])
     raise RuntimeError('API not implemented')
@@ -1603,7 +2194,11 @@ def msi_MsiGetPropertyW(jitter):
 
 def msi_MsiSetProperty(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetProperty(MSIHANDLE hInstall, LPCTSTR szName, LPCTSTR szValue)
+    [MSI_ERROR] MsiSetProperty(
+        MSIHANDLE hInstall,
+        LPCTSTR szName,
+        LPCTSTR szValue
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szName", "szValue"])
     raise RuntimeError('API not implemented')
@@ -1617,7 +2212,11 @@ def msi_MsiSetPropertyW(jitter):
 
 def msi_MsiSetMode(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetMode(MSIHANDLE hInstall, unsigned int iRunMode, BOOL fState)
+    [MSI_ERROR] MsiSetMode(
+        MSIHANDLE hInstall,
+        unsigned int iRunMode,
+        BOOL fState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "iRunMode", "fState"])
     raise RuntimeError('API not implemented')
@@ -1625,7 +2224,10 @@ def msi_MsiSetMode(jitter):
 
 def msi_MsiDoAction(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiDoAction(MSIHANDLE hInstall, LPCTSTR szAction)
+    [MSI_ERROR] MsiDoAction(
+        MSIHANDLE hInstall,
+        LPCTSTR szAction
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szAction"])
     raise RuntimeError('API not implemented')
@@ -1639,7 +2241,10 @@ def msi_MsiDoActionW(jitter):
 
 def msi_MsiEvaluateCondition(jitter, get_str, set_str):
     """
-    [Msi.dll] MSICONDITION MsiEvaluateCondition(MSIHANDLE hInstall, LPCTSTR szCondition)
+    MSICONDITION MsiEvaluateCondition(
+        MSIHANDLE hInstall,
+        LPCTSTR szCondition
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szCondition"])
     raise RuntimeError('API not implemented')
@@ -1653,7 +2258,11 @@ def msi_MsiEvaluateConditionW(jitter):
 
 def msi_MsiProcessMessage(jitter):
     """
-    [Msi.dll] int MsiProcessMessage(MSIHANDLE hInstall, INSTALLMESSAGE eMessageType, MSIHANDLE hRecord)
+    int MsiProcessMessage(
+        MSIHANDLE hInstall,
+        INSTALLMESSAGE eMessageType,
+        MSIHANDLE hRecord
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "eMessageType", "hRecord"])
     raise RuntimeError('API not implemented')
@@ -1661,7 +2270,11 @@ def msi_MsiProcessMessage(jitter):
 
 def msi_MsiSequence(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSequence(MSIHANDLE hInstall, LPCTSTR szTable, INT iSequenceMode)
+    [MSI_ERROR] MsiSequence(
+        MSIHANDLE hInstall,
+        LPCTSTR szTable,
+        INT iSequenceMode
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szTable", "iSequenceMode"])
     raise RuntimeError('API not implemented')
@@ -1675,7 +2288,12 @@ def msi_MsiSequenceW(jitter):
 
 def msi_MsiGetSourcePath(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetSourcePath(MSIHANDLE hInstall, LPCTSTR szFolder, LPTSTR szPathBuf, DWORD* pcchPathBuf)
+    [MSI_ERROR] MsiGetSourcePath(
+        MSIHANDLE hInstall,
+        LPCTSTR szFolder,
+        LPTSTR szPathBuf,
+        DWORD* pcchPathBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFolder", "szPathBuf", "pcchPathBuf"])
     raise RuntimeError('API not implemented')
@@ -1689,7 +2307,12 @@ def msi_MsiGetSourcePathW(jitter):
 
 def msi_MsiGetTargetPath(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetTargetPath(MSIHANDLE hInstall, LPCTSTR szFolder, LPTSTR szPathBuf, DWORD* pcchPathBuf)
+    [MSI_ERROR] MsiGetTargetPath(
+        MSIHANDLE hInstall,
+        LPCTSTR szFolder,
+        LPTSTR szPathBuf,
+        DWORD* pcchPathBuf
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFolder", "szPathBuf", "pcchPathBuf"])
     raise RuntimeError('API not implemented')
@@ -1703,7 +2326,11 @@ def msi_MsiGetTargetPathW(jitter):
 
 def msi_MsiSetTargetPath(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetTargetPath(MSIHANDLE hInstall, LPCTSTR szFolder, LPCTSTR szFolderPath)
+    [MSI_ERROR] MsiSetTargetPath(
+        MSIHANDLE hInstall,
+        LPCTSTR szFolder,
+        LPCTSTR szFolderPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFolder", "szFolderPath"])
     raise RuntimeError('API not implemented')
@@ -1717,7 +2344,16 @@ def msi_MsiSetTargetPathW(jitter):
 
 def msi_MsiEnumComponentCosts(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnumComponentCosts(MSIHANDLE hInstall, LPCTSTR szComponent, DWORD dwIndex, INSTALLSTATE iState, LPTSTR lpDriveBuf, DWORD* pcchDriveBuf, int* piCost, int* pTempCost)
+    [MSI_ERROR] MsiEnumComponentCosts(
+        MSIHANDLE hInstall,
+        LPCTSTR szComponent,
+        DWORD dwIndex,
+        INSTALLSTATE iState,
+        LPTSTR lpDriveBuf,
+        DWORD* pcchDriveBuf,
+        int* piCost,
+        int* pTempCost
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szComponent", "dwIndex", "iState", "lpDriveBuf", "pcchDriveBuf", "piCost", "pTempCost"])
     raise RuntimeError('API not implemented')
@@ -1731,7 +2367,12 @@ def msi_MsiEnumComponentCostsW(jitter):
 
 def msi_MsiGetComponentState(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetComponentState(MSIHANDLE hInstall, LPCTSTR szComponent, INSTALLSTATE* piInstalled, INSTALLSTATE* piAction)
+    [MSI_ERROR] MsiGetComponentState(
+        MSIHANDLE hInstall,
+        LPCTSTR szComponent,
+        INSTALLSTATE* piInstalled,
+        INSTALLSTATE* piAction
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szComponent", "piInstalled", "piAction"])
     raise RuntimeError('API not implemented')
@@ -1745,7 +2386,13 @@ def msi_MsiGetComponentStateW(jitter):
 
 def msi_MsiGetFeatureCost(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFeatureCost(MSIHANDLE hInstall, LPCTSTR szFeature, MSICOSTTREE iCostTree, INSTALLSTATE iState, INT* piCost)
+    [MSI_ERROR] MsiGetFeatureCost(
+        MSIHANDLE hInstall,
+        LPCTSTR szFeature,
+        MSICOSTTREE iCostTree,
+        INSTALLSTATE iState,
+        INT* piCost
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFeature", "iCostTree", "iState", "piCost"])
     raise RuntimeError('API not implemented')
@@ -1759,7 +2406,12 @@ def msi_MsiGetFeatureCostW(jitter):
 
 def msi_MsiGetFeatureState(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFeatureState(MSIHANDLE hInstall, LPCTSTR szFeature, INSTALLSTATE* piInstalled, INSTALLSTATE* piAction)
+    [MSI_ERROR] MsiGetFeatureState(
+        MSIHANDLE hInstall,
+        LPCTSTR szFeature,
+        INSTALLSTATE* piInstalled,
+        INSTALLSTATE* piAction
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFeature", "piInstalled", "piAction"])
     raise RuntimeError('API not implemented')
@@ -1773,7 +2425,11 @@ def msi_MsiGetFeatureStateW(jitter):
 
 def msi_MsiGetFeatureValidStates(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiGetFeatureValidStates(MSIHANDLE hInstall, LPCTSTR szFeature, [INSTALLSTATE-DWORD*] pInstallState)
+    [MSI_ERROR] MsiGetFeatureValidStates(
+        MSIHANDLE hInstall,
+        LPCTSTR szFeature,
+        [INSTALLSTATE-DWORD*] pInstallState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFeature", "pInstallState"])
     raise RuntimeError('API not implemented')
@@ -1787,7 +2443,11 @@ def msi_MsiGetFeatureValidStatesW(jitter):
 
 def msi_MsiSetComponentState(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetComponentState(MSIHANDLE hInstall, LPCTSTR szComponent, INSTALLSTATE iState)
+    [MSI_ERROR] MsiSetComponentState(
+        MSIHANDLE hInstall,
+        LPCTSTR szComponent,
+        INSTALLSTATE iState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szComponent", "iState"])
     raise RuntimeError('API not implemented')
@@ -1801,7 +2461,11 @@ def msi_MsiSetComponentStateW(jitter):
 
 def msi_MsiSetFeatureAttributes(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetFeatureAttributes(MSIHANDLE hInstall, LPCTSTR szFeature, [MsiInstallFeatureAttr] dwAttributes)
+    [MSI_ERROR] MsiSetFeatureAttributes(
+        MSIHANDLE hInstall,
+        LPCTSTR szFeature,
+        [MsiInstallFeatureAttr] dwAttributes
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFeature", "dwAttributes"])
     raise RuntimeError('API not implemented')
@@ -1815,7 +2479,11 @@ def msi_MsiSetFeatureAttributesW(jitter):
 
 def msi_MsiSetFeatureState(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetFeatureState(MSIHANDLE hInstall, LPCTSTR szFeature, INSTALLSTATE iState)
+    [MSI_ERROR] MsiSetFeatureState(
+        MSIHANDLE hInstall,
+        LPCTSTR szFeature,
+        INSTALLSTATE iState
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "szFeature", "iState"])
     raise RuntimeError('API not implemented')
@@ -1829,7 +2497,10 @@ def msi_MsiSetFeatureStateW(jitter):
 
 def msi_MsiSetInstallLevel(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiSetInstallLevel(MSIHANDLE hInstall, int iInstallLevel)
+    [MSI_ERROR] MsiSetInstallLevel(
+        MSIHANDLE hInstall,
+        int iInstallLevel
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall", "iInstallLevel"])
     raise RuntimeError('API not implemented')
@@ -1837,7 +2508,9 @@ def msi_MsiSetInstallLevel(jitter):
 
 def msi_MsiVerifyDiskSpace(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiVerifyDiskSpace(MSIHANDLE hInstall)
+    [MSI_ERROR] MsiVerifyDiskSpace(
+        MSIHANDLE hInstall
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hInstall"])
     raise RuntimeError('API not implemented')
@@ -1845,7 +2518,10 @@ def msi_MsiVerifyDiskSpace(jitter):
 
 def msi_MsiEnableUIPreview(jitter):
     """
-    [Msi.dll] [MSI_ERROR] MsiEnableUIPreview(MSIHANDLE hDatabase, MSIHANDLE* phPreview)
+    [MSI_ERROR] MsiEnableUIPreview(
+        MSIHANDLE hDatabase,
+        MSIHANDLE* phPreview
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hDatabase", "phPreview"])
     raise RuntimeError('API not implemented')
@@ -1853,7 +2529,11 @@ def msi_MsiEnableUIPreview(jitter):
 
 def msi_MsiPreviewBillboard(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiPreviewBillboard(MSIHANDLE hPreview, LPCTSTR szControlName, LPCTSTR szBillboard)
+    [MSI_ERROR] MsiPreviewBillboard(
+        MSIHANDLE hPreview,
+        LPCTSTR szControlName,
+        LPCTSTR szBillboard
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hPreview", "szControlName", "szBillboard"])
     raise RuntimeError('API not implemented')
@@ -1867,7 +2547,10 @@ def msi_MsiPreviewBillboardW(jitter):
 
 def msi_MsiPreviewDialog(jitter, get_str, set_str):
     """
-    [Msi.dll] [MSI_ERROR] MsiPreviewDialog(MSIHANDLE hPreview, LPCTSTR szDialogName)
+    [MSI_ERROR] MsiPreviewDialog(
+        MSIHANDLE hPreview,
+        LPCTSTR szDialogName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hPreview", "szDialogName"])
     raise RuntimeError('API not implemented')

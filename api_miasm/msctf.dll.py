@@ -1,7 +1,10 @@
 
 def msctf_SetInputScope(jitter):
     """
-    [msctf.dll] HRESULT SetInputScope(HWND hwnd, InputScope inputscope)
+    HRESULT SetInputScope(
+        HWND hwnd,
+        InputScope inputscope
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "inputscope"])
     raise RuntimeError('API not implemented')
@@ -9,7 +12,15 @@ def msctf_SetInputScope(jitter):
 
 def msctf_SetInputScopes(jitter):
     """
-    [msctf.dll] HRESULT SetInputScopes(HWND hwnd, const InputScope* pInputScopes, UINT cInputScopes, WCHAR** ppszPhraseList, UINT cPhrases, WCHAR* pszRegExp, WCHAR* pszSRGS)
+    HRESULT SetInputScopes(
+        HWND hwnd,
+        const InputScope* pInputScopes,
+        UINT cInputScopes,
+        WCHAR** ppszPhraseList,
+        UINT cPhrases,
+        WCHAR* pszRegExp,
+        WCHAR* pszSRGS
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "pInputScopes", "cInputScopes", "ppszPhraseList", "cPhrases", "pszRegExp", "pszSRGS"])
     raise RuntimeError('API not implemented')
@@ -17,7 +28,14 @@ def msctf_SetInputScopes(jitter):
 
 def msctf_SetInputScopes2(jitter):
     """
-    [msctf.dll] HRESULT SetInputScopes2(HWND hwnd, const InputScope* pInputScopes, UINT cInputScopes, IEnumString* pEnumString, WCHAR* pszRegExp, WCHAR* pszSRGS)
+    HRESULT SetInputScopes2(
+        HWND hwnd,
+        const InputScope* pInputScopes,
+        UINT cInputScopes,
+        IEnumString* pEnumString,
+        WCHAR* pszRegExp,
+        WCHAR* pszSRGS
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwnd", "pInputScopes", "cInputScopes", "pEnumString", "pszRegExp", "pszSRGS"])
     raise RuntimeError('API not implemented')
@@ -25,7 +43,7 @@ def msctf_SetInputScopes2(jitter):
 
 def msctf_SetInputScopeXML(jitter):
     """
-    [msctf.dll] void SetInputScopeXML()
+    void SetInputScopeXML()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -33,7 +51,9 @@ def msctf_SetInputScopeXML(jitter):
 
 def msctf_TF_CreateCategoryMgr(jitter):
     """
-    [msctf.dll] HRESULT TF_CreateCategoryMgr(ITfCategoryMgr** ppcat)
+    HRESULT TF_CreateCategoryMgr(
+        ITfCategoryMgr** ppcat
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ppcat"])
     raise RuntimeError('API not implemented')
@@ -41,7 +61,9 @@ def msctf_TF_CreateCategoryMgr(jitter):
 
 def msctf_TF_CreateDisplayAttributeMgr(jitter):
     """
-    [msctf.dll] HRESULT TF_CreateDisplayAttributeMgr(ITfDisplayAttributeMgr** ppdam)
+    HRESULT TF_CreateDisplayAttributeMgr(
+        ITfDisplayAttributeMgr** ppdam
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ppdam"])
     raise RuntimeError('API not implemented')
@@ -49,7 +71,9 @@ def msctf_TF_CreateDisplayAttributeMgr(jitter):
 
 def msctf_TF_CreateInputProcessorProfiles(jitter):
     """
-    [msctf.dll] HRESULT TF_CreateInputProcessorProfiles(ITfInputProcessorProfiles** ppipr)
+    HRESULT TF_CreateInputProcessorProfiles(
+        ITfInputProcessorProfiles** ppipr
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ppipr"])
     raise RuntimeError('API not implemented')
@@ -57,7 +81,9 @@ def msctf_TF_CreateInputProcessorProfiles(jitter):
 
 def msctf_TF_CreateLangBarItemMgr(jitter):
     """
-    [msctf.dll] HRESULT TF_CreateLangBarItemMgr(ITfLangBarItemMgr** pplbim)
+    HRESULT TF_CreateLangBarItemMgr(
+        ITfLangBarItemMgr** pplbim
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pplbim"])
     raise RuntimeError('API not implemented')
@@ -65,7 +91,9 @@ def msctf_TF_CreateLangBarItemMgr(jitter):
 
 def msctf_TF_CreateLangBarMgr(jitter):
     """
-    [msctf.dll] HRESULT TF_CreateLangBarMgr(ITfLangBarMgr** pppbm)
+    HRESULT TF_CreateLangBarMgr(
+        ITfLangBarMgr** pppbm
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pppbm"])
     raise RuntimeError('API not implemented')
@@ -73,7 +101,9 @@ def msctf_TF_CreateLangBarMgr(jitter):
 
 def msctf_TF_CreateThreadMgr(jitter):
     """
-    [msctf.dll] HRESULT TF_CreateThreadMgr(ITfThreadMgr** pptim)
+    HRESULT TF_CreateThreadMgr(
+        ITfThreadMgr** pptim
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pptim"])
     raise RuntimeError('API not implemented')
@@ -81,7 +111,9 @@ def msctf_TF_CreateThreadMgr(jitter):
 
 def msctf_TF_GetThreadMgr(jitter):
     """
-    [msctf.dll] HRESULT TF_GetThreadMgr(ITfThreadMgr** pptim)
+    HRESULT TF_GetThreadMgr(
+        ITfThreadMgr** pptim
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pptim"])
     raise RuntimeError('API not implemented')
@@ -89,7 +121,7 @@ def msctf_TF_GetThreadMgr(jitter):
 
 def msctf_TF_InvalidAssemblyListCacheIfExist(jitter):
     """
-    [msctf.dll] HRESULT TF_InvalidAssemblyListCacheIfExist()
+    HRESULT TF_InvalidAssemblyListCacheIfExist()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -97,7 +129,9 @@ def msctf_TF_InvalidAssemblyListCacheIfExist(jitter):
 
 def msctf_MsimtfIsWindowFiltered(jitter):
     """
-    [msctf.dll] BOOL MsimtfIsWindowFiltered(HWND hwnd)
+    BOOL MsimtfIsWindowFiltered(
+        HWND hwnd
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hwnd"])
     raise RuntimeError('API not implemented')

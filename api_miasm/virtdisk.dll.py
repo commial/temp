@@ -1,7 +1,10 @@
 
 def virtdisk_AddVirtualDiskParent(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] AddVirtualDiskParent(HANDLE VirtualDiskHandle, PCWSTR ParentPath)
+    [ERROR_CODE] AddVirtualDiskParent(
+        HANDLE VirtualDiskHandle,
+        PCWSTR ParentPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "ParentPath"])
     raise RuntimeError('API not implemented')
@@ -9,7 +12,14 @@ def virtdisk_AddVirtualDiskParent(jitter):
 
 def virtdisk_AttachVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] AttachVirtualDisk(HANDLE VirtualDiskHandle, PSECURITY_DESCRIPTOR SecurityDescriptor, ATTACH_VIRTUAL_DISK_FLAG Flags, ULONG ProviderSpecificFlags, PATTACH_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped)
+    [ERROR_CODE] AttachVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        PSECURITY_DESCRIPTOR SecurityDescriptor,
+        ATTACH_VIRTUAL_DISK_FLAG Flags,
+        ULONG ProviderSpecificFlags,
+        PATTACH_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "SecurityDescriptor", "Flags", "ProviderSpecificFlags", "Parameters", "Overlapped"])
     raise RuntimeError('API not implemented')
@@ -17,7 +27,9 @@ def virtdisk_AttachVirtualDisk(jitter):
 
 def virtdisk_BreakMirrorVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] BreakMirrorVirtualDisk(HANDLE VirtualDiskHandle)
+    [ERROR_CODE] BreakMirrorVirtualDisk(
+        HANDLE VirtualDiskHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle"])
     raise RuntimeError('API not implemented')
@@ -25,7 +37,12 @@ def virtdisk_BreakMirrorVirtualDisk(jitter):
 
 def virtdisk_CompactVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] CompactVirtualDisk(HANDLE VirtualDiskHandle, COMPACT_VIRTUAL_DISK_FLAG Flags, PCOMPACT_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped)
+    [ERROR_CODE] CompactVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        COMPACT_VIRTUAL_DISK_FLAG Flags,
+        PCOMPACT_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Flags", "Parameters", "Overlapped"])
     raise RuntimeError('API not implemented')
@@ -33,7 +50,17 @@ def virtdisk_CompactVirtualDisk(jitter):
 
 def virtdisk_CreateVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] CreateVirtualDisk(PVIRTUAL_STORAGE_TYPE VirtualStorageType, PCWSTR Path, VIRTUAL_DISK_ACCESS_MASK VirtualDiskAccessMask, PSECURITY_DESCRIPTOR SecurityDescriptor, CREATE_VIRTUAL_DISK_FLAG Flags, ULONG ProviderSpecificFlags, PCREATE_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped, PHANDLE Handle)
+    [ERROR_CODE] CreateVirtualDisk(
+        PVIRTUAL_STORAGE_TYPE VirtualStorageType,
+        PCWSTR Path,
+        VIRTUAL_DISK_ACCESS_MASK VirtualDiskAccessMask,
+        PSECURITY_DESCRIPTOR SecurityDescriptor,
+        CREATE_VIRTUAL_DISK_FLAG Flags,
+        ULONG ProviderSpecificFlags,
+        PCREATE_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped,
+        PHANDLE Handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualStorageType", "Path", "VirtualDiskAccessMask", "SecurityDescriptor", "Flags", "ProviderSpecificFlags", "Parameters", "Overlapped", "Handle"])
     raise RuntimeError('API not implemented')
@@ -41,7 +68,10 @@ def virtdisk_CreateVirtualDisk(jitter):
 
 def virtdisk_DeleteVirtualDiskMetadata(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] DeleteVirtualDiskMetadata(HANDLE VirtualDiskHandle, LPGUID Item)
+    [ERROR_CODE] DeleteVirtualDiskMetadata(
+        HANDLE VirtualDiskHandle,
+        LPGUID Item
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Item"])
     raise RuntimeError('API not implemented')
@@ -49,7 +79,11 @@ def virtdisk_DeleteVirtualDiskMetadata(jitter):
 
 def virtdisk_DetachVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] DetachVirtualDisk(HANDLE VirtualDiskHandle, DETACH_VIRTUAL_DISK_FLAG Flags, ULONG ProviderSpecificFlags)
+    [ERROR_CODE] DetachVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        DETACH_VIRTUAL_DISK_FLAG Flags,
+        ULONG ProviderSpecificFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Flags", "ProviderSpecificFlags"])
     raise RuntimeError('API not implemented')
@@ -57,7 +91,11 @@ def virtdisk_DetachVirtualDisk(jitter):
 
 def virtdisk_EnumerateVirtualDiskMetadata(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] EnumerateVirtualDiskMetadata(HANDLE VirtualDiskHandle, PULONG NumberOfItems, GUID* Items)
+    [ERROR_CODE] EnumerateVirtualDiskMetadata(
+        HANDLE VirtualDiskHandle,
+        PULONG NumberOfItems,
+        GUID* Items
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "NumberOfItems", "Items"])
     raise RuntimeError('API not implemented')
@@ -65,7 +103,12 @@ def virtdisk_EnumerateVirtualDiskMetadata(jitter):
 
 def virtdisk_ExpandVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] ExpandVirtualDisk(HANDLE VirtualDiskHandle, EXPAND_VIRTUAL_DISK_FLAG Flags, PEXPAND_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped)
+    [ERROR_CODE] ExpandVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        EXPAND_VIRTUAL_DISK_FLAG Flags,
+        PEXPAND_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Flags", "Parameters", "Overlapped"])
     raise RuntimeError('API not implemented')
@@ -73,7 +116,13 @@ def virtdisk_ExpandVirtualDisk(jitter):
 
 def virtdisk_GetStorageDependencyInformation(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] GetStorageDependencyInformation(HANDLE ObjectHandle, GET_STORAGE_DEPENDENCY_FLAG Flags, ULONG StorageDependencyInfoSize, PSTORAGE_DEPENDENCY_INFO StorageDependencyInfo, PULONG SizeUsed)
+    [ERROR_CODE] GetStorageDependencyInformation(
+        HANDLE ObjectHandle,
+        GET_STORAGE_DEPENDENCY_FLAG Flags,
+        ULONG StorageDependencyInfoSize,
+        PSTORAGE_DEPENDENCY_INFO StorageDependencyInfo,
+        PULONG SizeUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ObjectHandle", "Flags", "StorageDependencyInfoSize", "StorageDependencyInfo", "SizeUsed"])
     raise RuntimeError('API not implemented')
@@ -81,7 +130,12 @@ def virtdisk_GetStorageDependencyInformation(jitter):
 
 def virtdisk_GetVirtualDiskInformation(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] GetVirtualDiskInformation(HANDLE VirtualDiskHandle, PULONG VirtualDiskInfoSize, PGET_VIRTUAL_DISK_INFO VirtualDiskInfo, PULONG SizeUsed)
+    [ERROR_CODE] GetVirtualDiskInformation(
+        HANDLE VirtualDiskHandle,
+        PULONG VirtualDiskInfoSize,
+        PGET_VIRTUAL_DISK_INFO VirtualDiskInfo,
+        PULONG SizeUsed
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "VirtualDiskInfoSize", "VirtualDiskInfo", "SizeUsed"])
     raise RuntimeError('API not implemented')
@@ -89,7 +143,12 @@ def virtdisk_GetVirtualDiskInformation(jitter):
 
 def virtdisk_GetVirtualDiskMetadata(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] GetVirtualDiskMetadata(HANDLE VirtualDiskHandle, LPGUID Item, PULONG MetaDataSize, PVOID MetaData)
+    [ERROR_CODE] GetVirtualDiskMetadata(
+        HANDLE VirtualDiskHandle,
+        LPGUID Item,
+        PULONG MetaDataSize,
+        PVOID MetaData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Item", "MetaDataSize", "MetaData"])
     raise RuntimeError('API not implemented')
@@ -97,7 +156,11 @@ def virtdisk_GetVirtualDiskMetadata(jitter):
 
 def virtdisk_GetVirtualDiskOperationProgress(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] GetVirtualDiskOperationProgress(HANDLE VirtualDiskHandle, LPOVERLAPPED Overlapped, PVIRTUAL_DISK_PROGRESS Progress)
+    [ERROR_CODE] GetVirtualDiskOperationProgress(
+        HANDLE VirtualDiskHandle,
+        LPOVERLAPPED Overlapped,
+        PVIRTUAL_DISK_PROGRESS Progress
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Overlapped", "Progress"])
     raise RuntimeError('API not implemented')
@@ -105,7 +168,11 @@ def virtdisk_GetVirtualDiskOperationProgress(jitter):
 
 def virtdisk_GetVirtualDiskPhysicalPath(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] GetVirtualDiskPhysicalPath(HANDLE VirtualDiskHandle, PULONG DiskPathSizeInBytes, PWSTR DiskPath)
+    [ERROR_CODE] GetVirtualDiskPhysicalPath(
+        HANDLE VirtualDiskHandle,
+        PULONG DiskPathSizeInBytes,
+        PWSTR DiskPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "DiskPathSizeInBytes", "DiskPath"])
     raise RuntimeError('API not implemented')
@@ -113,7 +180,12 @@ def virtdisk_GetVirtualDiskPhysicalPath(jitter):
 
 def virtdisk_MergeVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] MergeVirtualDisk(HANDLE VirtualDiskHandle, MERGE_VIRTUAL_DISK_FLAG Flags, PMERGE_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped)
+    [ERROR_CODE] MergeVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        MERGE_VIRTUAL_DISK_FLAG Flags,
+        PMERGE_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Flags", "Parameters", "Overlapped"])
     raise RuntimeError('API not implemented')
@@ -121,7 +193,12 @@ def virtdisk_MergeVirtualDisk(jitter):
 
 def virtdisk_MirrorVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] MirrorVirtualDisk(HANDLE VirtualDiskHandle, MIRROR_VIRTUAL_DISK_FLAG Flags, PMIRROR_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped)
+    [ERROR_CODE] MirrorVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        MIRROR_VIRTUAL_DISK_FLAG Flags,
+        PMIRROR_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Flags", "Parameters", "Overlapped"])
     raise RuntimeError('API not implemented')
@@ -129,7 +206,14 @@ def virtdisk_MirrorVirtualDisk(jitter):
 
 def virtdisk_OpenVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] OpenVirtualDisk(PVIRTUAL_STORAGE_TYPE VirtualStorageType, PCWSTR Path, VIRTUAL_DISK_ACCESS_MASK VirtualDiskAccessMask, OPEN_VIRTUAL_DISK_FLAG Flags, POPEN_VIRTUAL_DISK_PARAMETERS Parameters, PHANDLE Handle)
+    [ERROR_CODE] OpenVirtualDisk(
+        PVIRTUAL_STORAGE_TYPE VirtualStorageType,
+        PCWSTR Path,
+        VIRTUAL_DISK_ACCESS_MASK VirtualDiskAccessMask,
+        OPEN_VIRTUAL_DISK_FLAG Flags,
+        POPEN_VIRTUAL_DISK_PARAMETERS Parameters,
+        PHANDLE Handle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualStorageType", "Path", "VirtualDiskAccessMask", "Flags", "Parameters", "Handle"])
     raise RuntimeError('API not implemented')
@@ -137,7 +221,12 @@ def virtdisk_OpenVirtualDisk(jitter):
 
 def virtdisk_ResizeVirtualDisk(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] ResizeVirtualDisk(HANDLE VirtualDiskHandle, RESIZE_VIRTUAL_DISK_FLAG Flags, PRESIZE_VIRTUAL_DISK_PARAMETERS Parameters, LPOVERLAPPED Overlapped)
+    [ERROR_CODE] ResizeVirtualDisk(
+        HANDLE VirtualDiskHandle,
+        RESIZE_VIRTUAL_DISK_FLAG Flags,
+        PRESIZE_VIRTUAL_DISK_PARAMETERS Parameters,
+        LPOVERLAPPED Overlapped
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Flags", "Parameters", "Overlapped"])
     raise RuntimeError('API not implemented')
@@ -145,7 +234,10 @@ def virtdisk_ResizeVirtualDisk(jitter):
 
 def virtdisk_SetVirtualDiskInformation(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] SetVirtualDiskInformation(HANDLE VirtualDiskHandle, PSET_VIRTUAL_DISK_INFO VirtualDiskInfo)
+    [ERROR_CODE] SetVirtualDiskInformation(
+        HANDLE VirtualDiskHandle,
+        PSET_VIRTUAL_DISK_INFO VirtualDiskInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "VirtualDiskInfo"])
     raise RuntimeError('API not implemented')
@@ -153,7 +245,12 @@ def virtdisk_SetVirtualDiskInformation(jitter):
 
 def virtdisk_SetVirtualDiskMetadata(jitter):
     """
-    [VirtDisk.dll] [ERROR_CODE] SetVirtualDiskMetadata(HANDLE VirtualDiskHandle, LPGUID Item, ULONG MetaDataSize, PVOID MetaData)
+    [ERROR_CODE] SetVirtualDiskMetadata(
+        HANDLE VirtualDiskHandle,
+        LPGUID Item,
+        ULONG MetaDataSize,
+        PVOID MetaData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["VirtualDiskHandle", "Item", "MetaDataSize", "MetaData"])
     raise RuntimeError('API not implemented')

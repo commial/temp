@@ -1,7 +1,16 @@
 
 def mprapi_MprAdminPortEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminPortEnum(RAS_SERVER_HANDLE hRasServer, DWORD dwLevel, HANDLE hConnection, LPBYTE* lplpbBuffer, DWORD dwPrefMaxLen, LPDWORD lpdwEntriesRead, LPDWORD lpdwTotalEntries, LPDWORD lpdwResumeHandle)
+    [ERROR_CODE] MprAdminPortEnum(
+        RAS_SERVER_HANDLE hRasServer,
+        DWORD dwLevel,
+        HANDLE hConnection,
+        LPBYTE* lplpbBuffer,
+        DWORD dwPrefMaxLen,
+        LPDWORD lpdwEntriesRead,
+        LPDWORD lpdwTotalEntries,
+        LPDWORD lpdwResumeHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "dwLevel", "hConnection", "lplpbBuffer", "dwPrefMaxLen", "lpdwEntriesRead", "lpdwTotalEntries", "lpdwResumeHandle"])
     raise RuntimeError('API not implemented')
@@ -9,7 +18,12 @@ def mprapi_MprAdminPortEnum(jitter):
 
 def mprapi_MprAdminConnectionGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminConnectionGetInfo(RAS_SERVER_HANDLE hRasServer, DWORD dwLevel, HANDLE hConnection, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprAdminConnectionGetInfo(
+        RAS_SERVER_HANDLE hRasServer,
+        DWORD dwLevel,
+        HANDLE hConnection,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "dwLevel", "hConnection", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -17,7 +31,12 @@ def mprapi_MprAdminConnectionGetInfo(jitter):
 
 def mprapi_MprAdminPortGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminPortGetInfo(RAS_SERVER_HANDLE hRasServer, DWORD dwLevel, HANDLE hPort, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprAdminPortGetInfo(
+        RAS_SERVER_HANDLE hRasServer,
+        DWORD dwLevel,
+        HANDLE hPort,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "dwLevel", "hPort", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -25,7 +44,10 @@ def mprapi_MprAdminPortGetInfo(jitter):
 
 def mprapi_MprAdminConnectionClearStats(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminConnectionClearStats(RAS_SERVER_HANDLE hRasServer, HANDLE hConnection)
+    [ERROR_CODE] MprAdminConnectionClearStats(
+        RAS_SERVER_HANDLE hRasServer,
+        HANDLE hConnection
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "hConnection"])
     raise RuntimeError('API not implemented')
@@ -33,7 +55,10 @@ def mprapi_MprAdminConnectionClearStats(jitter):
 
 def mprapi_MprAdminPortClearStats(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminPortClearStats(RAS_SERVER_HANDLE hRasServer, HANDLE hPort)
+    [ERROR_CODE] MprAdminPortClearStats(
+        RAS_SERVER_HANDLE hRasServer,
+        HANDLE hPort
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "hPort"])
     raise RuntimeError('API not implemented')
@@ -41,7 +66,10 @@ def mprapi_MprAdminPortClearStats(jitter):
 
 def mprapi_MprAdminPortReset(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminPortReset(RAS_SERVER_HANDLE hRasServer, HANDLE hPort)
+    [ERROR_CODE] MprAdminPortReset(
+        RAS_SERVER_HANDLE hRasServer,
+        HANDLE hPort
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "hPort"])
     raise RuntimeError('API not implemented')
@@ -49,7 +77,10 @@ def mprapi_MprAdminPortReset(jitter):
 
 def mprapi_MprAdminPortDisconnect(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminPortDisconnect(RAS_SERVER_HANDLE hRasServer, HANDLE hPort)
+    [ERROR_CODE] MprAdminPortDisconnect(
+        RAS_SERVER_HANDLE hRasServer,
+        HANDLE hPort
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "hPort"])
     raise RuntimeError('API not implemented')
@@ -57,7 +88,11 @@ def mprapi_MprAdminPortDisconnect(jitter):
 
 def mprapi_MprAdminConnectionRemoveQuarantine(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminConnectionRemoveQuarantine(HANDLE hRasServer, HANDLE hRasConnection, BOOL fIsIpAddress)
+    [ERROR_CODE] MprAdminConnectionRemoveQuarantine(
+        HANDLE hRasServer,
+        HANDLE hRasConnection,
+        BOOL fIsIpAddress
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hRasServer", "hRasConnection", "fIsIpAddress"])
     raise RuntimeError('API not implemented')
@@ -65,7 +100,12 @@ def mprapi_MprAdminConnectionRemoveQuarantine(jitter):
 
 def mprapi_MprAdminUserGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminUserGetInfo(const WCHAR* lpszServer, const WCHAR* lpszUser, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprAdminUserGetInfo(
+        const WCHAR* lpszServer,
+        const WCHAR* lpszUser,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszServer", "lpszUser", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -73,7 +113,12 @@ def mprapi_MprAdminUserGetInfo(jitter):
 
 def mprapi_MprAdminUserSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminUserSetInfo(const WCHAR* lpszServer, const WCHAR* lpszUser, DWORD dwLevel, const LPBYTE lpbBuffer)
+    [ERROR_CODE] MprAdminUserSetInfo(
+        const WCHAR* lpszServer,
+        const WCHAR* lpszUser,
+        DWORD dwLevel,
+        const LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszServer", "lpszUser", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -81,7 +126,11 @@ def mprapi_MprAdminUserSetInfo(jitter):
 
 def mprapi_MprAdminSendUserMessage(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminSendUserMessage(MPR_SERVER_HANDLE hMprServer, HANDLE hConnection, LPWSTR lpwszMessage)
+    [ERROR_CODE] MprAdminSendUserMessage(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hConnection,
+        LPWSTR lpwszMessage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hConnection", "lpwszMessage"])
     raise RuntimeError('API not implemented')
@@ -89,7 +138,11 @@ def mprapi_MprAdminSendUserMessage(jitter):
 
 def mprapi_MprAdminGetPDCServer(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminGetPDCServer(const WCHAR* lpszDomain, const WCHAR* lpszServer, LPWSTR lpszPDCServer)
+    [ERROR_CODE] MprAdminGetPDCServer(
+        const WCHAR* lpszDomain,
+        const WCHAR* lpszServer,
+        LPWSTR lpszPDCServer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpszDomain", "lpszServer", "lpszPDCServer"])
     raise RuntimeError('API not implemented')
@@ -97,7 +150,9 @@ def mprapi_MprAdminGetPDCServer(jitter):
 
 def mprapi_MprAdminIsServiceRunning(jitter):
     """
-    [Mprapi.dll] BOOL MprAdminIsServiceRunning(LPWSTR lpwsServerName)
+    BOOL MprAdminIsServiceRunning(
+        LPWSTR lpwsServerName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpwsServerName"])
     raise RuntimeError('API not implemented')
@@ -105,7 +160,10 @@ def mprapi_MprAdminIsServiceRunning(jitter):
 
 def mprapi_MprAdminServerConnect(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminServerConnect(LPWSTR lpwsServerName, MPR_SERVER_HANDLE* phMprServer)
+    [ERROR_CODE] MprAdminServerConnect(
+        LPWSTR lpwsServerName,
+        MPR_SERVER_HANDLE* phMprServer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpwsServerName", "phMprServer"])
     raise RuntimeError('API not implemented')
@@ -113,7 +171,9 @@ def mprapi_MprAdminServerConnect(jitter):
 
 def mprapi_MprAdminServerDisconnect(jitter):
     """
-    [Mprapi.dll] VOID MprAdminServerDisconnect(MPR_SERVER_HANDLE hMprServer)
+    VOID MprAdminServerDisconnect(
+        MPR_SERVER_HANDLE hMprServer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer"])
     raise RuntimeError('API not implemented')
@@ -121,7 +181,11 @@ def mprapi_MprAdminServerDisconnect(jitter):
 
 def mprapi_MprAdminServerGetCredentials(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminServerGetCredentials(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprAdminServerGetCredentials(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -129,7 +193,11 @@ def mprapi_MprAdminServerGetCredentials(jitter):
 
 def mprapi_MprAdminServerSetCredentials(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminServerSetCredentials(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprAdminServerSetCredentials(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -137,7 +205,9 @@ def mprapi_MprAdminServerSetCredentials(jitter):
 
 def mprapi_MprAdminBufferFree(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminBufferFree(LPVOID pBuffer)
+    [ERROR_CODE] MprAdminBufferFree(
+        LPVOID pBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pBuffer"])
     raise RuntimeError('API not implemented')
@@ -145,7 +215,10 @@ def mprapi_MprAdminBufferFree(jitter):
 
 def mprapi_MprAdminGetErrorString(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminGetErrorString(DWORD dwError, LPWSTR* lpwsErrorString)
+    [ERROR_CODE] MprAdminGetErrorString(
+        DWORD dwError,
+        LPWSTR* lpwsErrorString
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwError", "lpwsErrorString"])
     raise RuntimeError('API not implemented')
@@ -153,7 +226,11 @@ def mprapi_MprAdminGetErrorString(jitter):
 
 def mprapi_MprAdminServerGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminServerGetInfo(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprAdminServerGetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -161,7 +238,11 @@ def mprapi_MprAdminServerGetInfo(jitter):
 
 def mprapi_MprAdminServerSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminServerSetInfo(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprAdminServerSetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -169,7 +250,11 @@ def mprapi_MprAdminServerSetInfo(jitter):
 
 def mprapi_MprAdminEstablishDomainRasServer(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminEstablishDomainRasServer(PWCHAR pszDomain, PWCHAR pszMachine, BOOL bEnable)
+    [ERROR_CODE] MprAdminEstablishDomainRasServer(
+        PWCHAR pszDomain,
+        PWCHAR pszMachine,
+        BOOL bEnable
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszDomain", "pszMachine", "bEnable"])
     raise RuntimeError('API not implemented')
@@ -177,7 +262,11 @@ def mprapi_MprAdminEstablishDomainRasServer(jitter):
 
 def mprapi_MprAdminIsDomainRasServer(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminIsDomainRasServer(PWCHAR pszDomain, PWCHAR pszMachine, PBOOL pbIsRasServer)
+    [ERROR_CODE] MprAdminIsDomainRasServer(
+        PWCHAR pszDomain,
+        PWCHAR pszMachine,
+        PBOOL pbIsRasServer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszDomain", "pszMachine", "pbIsRasServer"])
     raise RuntimeError('API not implemented')
@@ -185,7 +274,16 @@ def mprapi_MprAdminIsDomainRasServer(jitter):
 
 def mprapi_MprAdminTransportCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminTransportCreate(MPR_SERVER_HANDLE hMprServer, DWORD dwTransportId, LPWSTR lpwsTransportName, LPBYTE pGlobalInfo, DWORD dwGlobalInfoSize, LPBYTE pClientInterfaceInfo, DWORD dwClientInterfaceInfoSize, LPWSTR lpwsDLLPath)
+    [ERROR_CODE] MprAdminTransportCreate(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwTransportId,
+        LPWSTR lpwsTransportName,
+        LPBYTE pGlobalInfo,
+        DWORD dwGlobalInfoSize,
+        LPBYTE pClientInterfaceInfo,
+        DWORD dwClientInterfaceInfoSize,
+        LPWSTR lpwsDLLPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwTransportId", "lpwsTransportName", "pGlobalInfo", "dwGlobalInfoSize", "pClientInterfaceInfo", "dwClientInterfaceInfoSize", "lpwsDLLPath"])
     raise RuntimeError('API not implemented')
@@ -193,7 +291,14 @@ def mprapi_MprAdminTransportCreate(jitter):
 
 def mprapi_MprAdminTransportSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminTransportSetInfo(MPR_SERVER_HANDLE hMprServer, DWORD dwTransportId, LPBYTE pGlobalInfo, DWORD dwGlobalInfoSize, LPBYTE pClientInterfaceInfo, DWORD dwClientInterfaceInfoSize)
+    [ERROR_CODE] MprAdminTransportSetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwTransportId,
+        LPBYTE pGlobalInfo,
+        DWORD dwGlobalInfoSize,
+        LPBYTE pClientInterfaceInfo,
+        DWORD dwClientInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwTransportId", "pGlobalInfo", "dwGlobalInfoSize", "pClientInterfaceInfo", "dwClientInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -201,7 +306,14 @@ def mprapi_MprAdminTransportSetInfo(jitter):
 
 def mprapi_MprAdminTransportGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminTransportGetInfo(MPR_SERVER_HANDLE hMprServer, DWORD dwTransportId, LPBYTE* ppGlobalInfo, LPDWORD lpdwGlobalInfoSize, LPBYTE* ppClientInterfaceInfo, LPDWORD lpdwClientInterfaceInfoSize)
+    [ERROR_CODE] MprAdminTransportGetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwTransportId,
+        LPBYTE* ppGlobalInfo,
+        LPDWORD lpdwGlobalInfoSize,
+        LPBYTE* ppClientInterfaceInfo,
+        LPDWORD lpdwClientInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwTransportId", "ppGlobalInfo", "lpdwGlobalInfoSize", "ppClientInterfaceInfo", "lpdwClientInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -209,7 +321,12 @@ def mprapi_MprAdminTransportGetInfo(jitter):
 
 def mprapi_MprAdminDeviceEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminDeviceEnum(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE* lplpbBuffer, LPDWORD lpdwTotalEntries)
+    [ERROR_CODE] MprAdminDeviceEnum(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer,
+        LPDWORD lpdwTotalEntries
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lplpbBuffer", "lpdwTotalEntries"])
     raise RuntimeError('API not implemented')
@@ -217,7 +334,12 @@ def mprapi_MprAdminDeviceEnum(jitter):
 
 def mprapi_MprAdminInterfaceGetHandle(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceGetHandle(MPR_SERVER_HANDLE hMprServer, LPWSTR lpwsInterfaceName, HANDLE* phInterface, BOOL fIncludeClientInterfaces)
+    [ERROR_CODE] MprAdminInterfaceGetHandle(
+        MPR_SERVER_HANDLE hMprServer,
+        LPWSTR lpwsInterfaceName,
+        HANDLE* phInterface,
+        BOOL fIncludeClientInterfaces
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "lpwsInterfaceName", "phInterface", "fIncludeClientInterfaces"])
     raise RuntimeError('API not implemented')
@@ -225,7 +347,12 @@ def mprapi_MprAdminInterfaceGetHandle(jitter):
 
 def mprapi_MprAdminInterfaceCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceCreate(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE lpbBuffer, HANDLE* phInterface)
+    [ERROR_CODE] MprAdminInterfaceCreate(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer,
+        HANDLE* phInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lpbBuffer", "phInterface"])
     raise RuntimeError('API not implemented')
@@ -233,7 +360,12 @@ def mprapi_MprAdminInterfaceCreate(jitter):
 
 def mprapi_MprAdminInterfaceGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceGetInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwLevel, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprAdminInterfaceGetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwLevel", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -241,7 +373,12 @@ def mprapi_MprAdminInterfaceGetInfo(jitter):
 
 def mprapi_MprAdminInterfaceSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceSetInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprAdminInterfaceSetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -249,7 +386,10 @@ def mprapi_MprAdminInterfaceSetInfo(jitter):
 
 def mprapi_MprAdminInterfaceDelete(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceDelete(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface)
+    [ERROR_CODE] MprAdminInterfaceDelete(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface"])
     raise RuntimeError('API not implemented')
@@ -257,7 +397,13 @@ def mprapi_MprAdminInterfaceDelete(jitter):
 
 def mprapi_MprAdminInterfaceDeviceGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceDeviceGetInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwIndex, DWORD dwLevel, LPBYTE* lplpBuffer)
+    [ERROR_CODE] MprAdminInterfaceDeviceGetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwIndex,
+        DWORD dwLevel,
+        LPBYTE* lplpBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwIndex", "dwLevel", "lplpBuffer"])
     raise RuntimeError('API not implemented')
@@ -265,7 +411,13 @@ def mprapi_MprAdminInterfaceDeviceGetInfo(jitter):
 
 def mprapi_MprAdminInterfaceDeviceSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceDeviceSetInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwIndex, DWORD dwLevel, LPBYTE lplpBuffer)
+    [ERROR_CODE] MprAdminInterfaceDeviceSetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwIndex,
+        DWORD dwLevel,
+        LPBYTE lplpBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwIndex", "dwLevel", "lplpBuffer"])
     raise RuntimeError('API not implemented')
@@ -273,7 +425,11 @@ def mprapi_MprAdminInterfaceDeviceSetInfo(jitter):
 
 def mprapi_MprAdminInterfaceTransportRemove(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceTransportRemove(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwTransportId)
+    [ERROR_CODE] MprAdminInterfaceTransportRemove(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwTransportId
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwTransportId"])
     raise RuntimeError('API not implemented')
@@ -281,7 +437,13 @@ def mprapi_MprAdminInterfaceTransportRemove(jitter):
 
 def mprapi_MprAdminInterfaceTransportAdd(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceTransportAdd(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwTransportId, LPBYTE pInterfaceInfo, DWORD dwInterfaceInfoSize)
+    [ERROR_CODE] MprAdminInterfaceTransportAdd(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwTransportId,
+        LPBYTE pInterfaceInfo,
+        DWORD dwInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwTransportId", "pInterfaceInfo", "dwInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -289,7 +451,13 @@ def mprapi_MprAdminInterfaceTransportAdd(jitter):
 
 def mprapi_MprAdminInterfaceTransportGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceTransportGetInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwTransportId, LPBYTE* ppInterfaceInfo, LPDWORD lpdwpInterfaceInfoSize)
+    [ERROR_CODE] MprAdminInterfaceTransportGetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwTransportId,
+        LPBYTE* ppInterfaceInfo,
+        LPDWORD lpdwpInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwTransportId", "ppInterfaceInfo", "lpdwpInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -297,7 +465,13 @@ def mprapi_MprAdminInterfaceTransportGetInfo(jitter):
 
 def mprapi_MprAdminInterfaceTransportSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceTransportSetInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwTransportId, LPBYTE pInterfaceInfo, DWORD dwInterfaceInfoSize)
+    [ERROR_CODE] MprAdminInterfaceTransportSetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwTransportId,
+        LPBYTE pInterfaceInfo,
+        DWORD dwInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwTransportId", "pInterfaceInfo", "dwInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -305,7 +479,15 @@ def mprapi_MprAdminInterfaceTransportSetInfo(jitter):
 
 def mprapi_MprAdminInterfaceEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceEnum(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE* lplpbBuffer, DWORD dwPrefMaxLen, LPDWORD lpdwEntriesRead, LPDWORD lpdwTotalEntries, LPDWORD lpdwResumeHandle)
+    [ERROR_CODE] MprAdminInterfaceEnum(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer,
+        DWORD dwPrefMaxLen,
+        LPDWORD lpdwEntriesRead,
+        LPDWORD lpdwTotalEntries,
+        LPDWORD lpdwResumeHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lplpbBuffer", "dwPrefMaxLen", "lpdwEntriesRead", "lpdwTotalEntries", "lpdwResumeHandle"])
     raise RuntimeError('API not implemented')
@@ -313,7 +495,11 @@ def mprapi_MprAdminInterfaceEnum(jitter):
 
 def mprapi_MprSetupIpInIpInterfaceFriendlyNameEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameEnum(PWCHAR pwszMachineName, LPBYTE* lplpBuffer, LPDWORD lpdwEntriesRead)
+    [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameEnum(
+        PWCHAR pwszMachineName,
+        LPBYTE* lplpBuffer,
+        LPDWORD lpdwEntriesRead
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pwszMachineName", "lplpBuffer", "lpdwEntriesRead"])
     raise RuntimeError('API not implemented')
@@ -321,7 +507,9 @@ def mprapi_MprSetupIpInIpInterfaceFriendlyNameEnum(jitter):
 
 def mprapi_MprSetupIpInIpInterfaceFriendlyNameFree(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameFree(LPVOID lpBuffer)
+    [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameFree(
+        LPVOID lpBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpBuffer"])
     raise RuntimeError('API not implemented')
@@ -329,7 +517,10 @@ def mprapi_MprSetupIpInIpInterfaceFriendlyNameFree(jitter):
 
 def mprapi_MprSetupIpInIpInterfaceFriendlyNameCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameCreate(PWCHAR pwszMachineName, PMPR_IPINIP_INTERFACE_0 pNameInformation)
+    [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameCreate(
+        PWCHAR pwszMachineName,
+        PMPR_IPINIP_INTERFACE_0 pNameInformation
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pwszMachineName", "pNameInformation"])
     raise RuntimeError('API not implemented')
@@ -337,7 +528,10 @@ def mprapi_MprSetupIpInIpInterfaceFriendlyNameCreate(jitter):
 
 def mprapi_MprSetupIpInIpInterfaceFriendlyNameDelete(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameDelete(PWCHAR pwszMachineName, GUID* pGuid)
+    [ERROR_CODE] MprSetupIpInIpInterfaceFriendlyNameDelete(
+        PWCHAR pwszMachineName,
+        GUID* pGuid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pwszMachineName", "pGuid"])
     raise RuntimeError('API not implemented')
@@ -345,7 +539,13 @@ def mprapi_MprSetupIpInIpInterfaceFriendlyNameDelete(jitter):
 
 def mprapi_MprAdminInterfaceSetCredentials(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceSetCredentials(LPWSTR lpwsServer, LPWSTR lpwsInterfaceName, LPWSTR lpwsUserName, LPWSTR lpwsDomainName, LPWSTR lpwsPassword)
+    [ERROR_CODE] MprAdminInterfaceSetCredentials(
+        LPWSTR lpwsServer,
+        LPWSTR lpwsInterfaceName,
+        LPWSTR lpwsUserName,
+        LPWSTR lpwsDomainName,
+        LPWSTR lpwsPassword
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpwsServer", "lpwsInterfaceName", "lpwsUserName", "lpwsDomainName", "lpwsPassword"])
     raise RuntimeError('API not implemented')
@@ -353,7 +553,13 @@ def mprapi_MprAdminInterfaceSetCredentials(jitter):
 
 def mprapi_MprAdminInterfaceGetCredentials(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceGetCredentials(LPWSTR lpwsServer, LPWSTR lpwsInterfaceName, LPWSTR lpwsUserName, LPWSTR lpwsPassword, LPWSTR lpwsDomainName)
+    [ERROR_CODE] MprAdminInterfaceGetCredentials(
+        LPWSTR lpwsServer,
+        LPWSTR lpwsInterfaceName,
+        LPWSTR lpwsUserName,
+        LPWSTR lpwsPassword,
+        LPWSTR lpwsDomainName
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpwsServer", "lpwsInterfaceName", "lpwsUserName", "lpwsPassword", "lpwsDomainName"])
     raise RuntimeError('API not implemented')
@@ -361,7 +567,12 @@ def mprapi_MprAdminInterfaceGetCredentials(jitter):
 
 def mprapi_MprAdminInterfaceSetCredentialsEx(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceSetCredentialsEx(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprAdminInterfaceSetCredentialsEx(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -369,7 +580,12 @@ def mprapi_MprAdminInterfaceSetCredentialsEx(jitter):
 
 def mprapi_MprAdminInterfaceGetCredentialsEx(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceGetCredentialsEx(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwLevel, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprAdminInterfaceGetCredentialsEx(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwLevel", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -377,7 +593,12 @@ def mprapi_MprAdminInterfaceGetCredentialsEx(jitter):
 
 def mprapi_MprAdminInterfaceConnect(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceConnect(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, HANDLE hEvent, BOOL fSynchronous)
+    [ERROR_CODE] MprAdminInterfaceConnect(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        HANDLE hEvent,
+        BOOL fSynchronous
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "hEvent", "fSynchronous"])
     raise RuntimeError('API not implemented')
@@ -385,7 +606,10 @@ def mprapi_MprAdminInterfaceConnect(jitter):
 
 def mprapi_MprAdminInterfaceDisconnect(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceDisconnect(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface)
+    [ERROR_CODE] MprAdminInterfaceDisconnect(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface"])
     raise RuntimeError('API not implemented')
@@ -393,7 +617,12 @@ def mprapi_MprAdminInterfaceDisconnect(jitter):
 
 def mprapi_MprAdminInterfaceUpdateRoutes(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceUpdateRoutes(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwProtocolId, HANDLE hEvent)
+    [ERROR_CODE] MprAdminInterfaceUpdateRoutes(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwProtocolId,
+        HANDLE hEvent
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwProtocolId", "hEvent"])
     raise RuntimeError('API not implemented')
@@ -401,7 +630,12 @@ def mprapi_MprAdminInterfaceUpdateRoutes(jitter):
 
 def mprapi_MprAdminInterfaceQueryUpdateResult(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceQueryUpdateResult(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface, DWORD dwProtocolId, LPDWORD lpdwUpdateResult)
+    [ERROR_CODE] MprAdminInterfaceQueryUpdateResult(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface,
+        DWORD dwProtocolId,
+        LPDWORD lpdwUpdateResult
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface", "dwProtocolId", "lpdwUpdateResult"])
     raise RuntimeError('API not implemented')
@@ -409,7 +643,10 @@ def mprapi_MprAdminInterfaceQueryUpdateResult(jitter):
 
 def mprapi_MprAdminInterfaceUpdatePhonebookInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminInterfaceUpdatePhonebookInfo(MPR_SERVER_HANDLE hMprServer, HANDLE hInterface)
+    [ERROR_CODE] MprAdminInterfaceUpdatePhonebookInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hInterface"])
     raise RuntimeError('API not implemented')
@@ -417,7 +654,10 @@ def mprapi_MprAdminInterfaceUpdatePhonebookInfo(jitter):
 
 def mprapi_MprAdminRegisterConnectionNotification(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminRegisterConnectionNotification(MPR_SERVER_HANDLE hMprServer, HANDLE hEventNotification)
+    [ERROR_CODE] MprAdminRegisterConnectionNotification(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hEventNotification
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hEventNotification"])
     raise RuntimeError('API not implemented')
@@ -425,7 +665,10 @@ def mprapi_MprAdminRegisterConnectionNotification(jitter):
 
 def mprapi_MprAdminDeregisterConnectionNotification(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminDeregisterConnectionNotification(MPR_SERVER_HANDLE hMprServer, HANDLE hEventNotification)
+    [ERROR_CODE] MprAdminDeregisterConnectionNotification(
+        MPR_SERVER_HANDLE hMprServer,
+        HANDLE hEventNotification
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "hEventNotification"])
     raise RuntimeError('API not implemented')
@@ -433,7 +676,10 @@ def mprapi_MprAdminDeregisterConnectionNotification(jitter):
 
 def mprapi_MprAdminMIBServerConnect(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBServerConnect(LPWSTR lpwsServerName, MIB_SERVER_HANDLE* phMibServer)
+    [ERROR_CODE] MprAdminMIBServerConnect(
+        LPWSTR lpwsServerName,
+        MIB_SERVER_HANDLE* phMibServer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpwsServerName", "phMibServer"])
     raise RuntimeError('API not implemented')
@@ -441,7 +687,9 @@ def mprapi_MprAdminMIBServerConnect(jitter):
 
 def mprapi_MprAdminMIBServerDisconnect(jitter):
     """
-    [Mprapi.dll] VOID MprAdminMIBServerDisconnect(MIB_SERVER_HANDLE hMibServer)
+    VOID MprAdminMIBServerDisconnect(
+        MIB_SERVER_HANDLE hMibServer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer"])
     raise RuntimeError('API not implemented')
@@ -449,7 +697,13 @@ def mprapi_MprAdminMIBServerDisconnect(jitter):
 
 def mprapi_MprAdminMIBEntryCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBEntryCreate(MIB_SERVER_HANDLE hMibServer, DWORD dwPid, DWORD dwRoutingPid, LPVOID lpEntry, DWORD dwEntrySize)
+    [ERROR_CODE] MprAdminMIBEntryCreate(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwPid,
+        DWORD dwRoutingPid,
+        LPVOID lpEntry,
+        DWORD dwEntrySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwPid", "dwRoutingPid", "lpEntry", "dwEntrySize"])
     raise RuntimeError('API not implemented')
@@ -457,7 +711,13 @@ def mprapi_MprAdminMIBEntryCreate(jitter):
 
 def mprapi_MprAdminMIBEntryDelete(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBEntryDelete(MIB_SERVER_HANDLE hMibServer, DWORD dwProtocolId, DWORD dwRoutingPid, LPVOID lpEntry, DWORD dwEntrySize)
+    [ERROR_CODE] MprAdminMIBEntryDelete(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        LPVOID lpEntry,
+        DWORD dwEntrySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwProtocolId", "dwRoutingPid", "lpEntry", "dwEntrySize"])
     raise RuntimeError('API not implemented')
@@ -465,7 +725,13 @@ def mprapi_MprAdminMIBEntryDelete(jitter):
 
 def mprapi_MprAdminMIBEntrySet(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBEntrySet(MIB_SERVER_HANDLE hMibServer, DWORD dwProtocolId, DWORD dwRoutingPid, LPVOID lpEntry, DWORD dwEntrySize)
+    [ERROR_CODE] MprAdminMIBEntrySet(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        LPVOID lpEntry,
+        DWORD dwEntrySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwProtocolId", "dwRoutingPid", "lpEntry", "dwEntrySize"])
     raise RuntimeError('API not implemented')
@@ -473,7 +739,15 @@ def mprapi_MprAdminMIBEntrySet(jitter):
 
 def mprapi_MprAdminMIBEntryGet(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBEntryGet(MIB_SERVER_HANDLE hMibServer, DWORD dwProtocolId, DWORD dwRoutingPid, LPVOID lpInEntry, DWORD dwInEntrySize, LPVOID* lplpOutEntry, LPDWORD lpOutEntrySize)
+    [ERROR_CODE] MprAdminMIBEntryGet(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        LPVOID lpInEntry,
+        DWORD dwInEntrySize,
+        LPVOID* lplpOutEntry,
+        LPDWORD lpOutEntrySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwProtocolId", "dwRoutingPid", "lpInEntry", "dwInEntrySize", "lplpOutEntry", "lpOutEntrySize"])
     raise RuntimeError('API not implemented')
@@ -481,7 +755,15 @@ def mprapi_MprAdminMIBEntryGet(jitter):
 
 def mprapi_MprAdminMIBEntryGetFirst(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBEntryGetFirst(MIB_SERVER_HANDLE hMibServer, DWORD dwProtocolId, DWORD dwRoutingPid, LPVOID lpInEntry, DWORD dwInEntrySize, LPVOID* lplpOutEntry, LPDWORD lpOutEntrySize)
+    [ERROR_CODE] MprAdminMIBEntryGetFirst(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        LPVOID lpInEntry,
+        DWORD dwInEntrySize,
+        LPVOID* lplpOutEntry,
+        LPDWORD lpOutEntrySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwProtocolId", "dwRoutingPid", "lpInEntry", "dwInEntrySize", "lplpOutEntry", "lpOutEntrySize"])
     raise RuntimeError('API not implemented')
@@ -489,7 +771,15 @@ def mprapi_MprAdminMIBEntryGetFirst(jitter):
 
 def mprapi_MprAdminMIBEntryGetNext(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBEntryGetNext(MIB_SERVER_HANDLE hMibServer, DWORD dwProtocolId, DWORD dwRoutingPid, LPVOID lpInEntry, DWORD dwInEntrySize, LPVOID* lplpOutEntry, LPDWORD lpOutEntrySize)
+    [ERROR_CODE] MprAdminMIBEntryGetNext(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        LPVOID lpInEntry,
+        DWORD dwInEntrySize,
+        LPVOID* lplpOutEntry,
+        LPDWORD lpOutEntrySize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwProtocolId", "dwRoutingPid", "lpInEntry", "dwInEntrySize", "lplpOutEntry", "lpOutEntrySize"])
     raise RuntimeError('API not implemented')
@@ -497,7 +787,15 @@ def mprapi_MprAdminMIBEntryGetNext(jitter):
 
 def mprapi_MprAdminMIBGetTrapInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBGetTrapInfo(MIB_SERVER_HANDLE hMibServer, DWORD dwProtocolId, DWORD dwRoutingPid, LPVOID lpInData, DWORD dwInDataSize, LPVOID* lplpOutData, LPDWORD lpOutDataSize)
+    [ERROR_CODE] MprAdminMIBGetTrapInfo(
+        MIB_SERVER_HANDLE hMibServer,
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        LPVOID lpInData,
+        DWORD dwInDataSize,
+        LPVOID* lplpOutData,
+        LPDWORD lpOutDataSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMibServer", "dwProtocolId", "dwRoutingPid", "lpInData", "dwInDataSize", "lplpOutData", "lpOutDataSize"])
     raise RuntimeError('API not implemented')
@@ -505,7 +803,15 @@ def mprapi_MprAdminMIBGetTrapInfo(jitter):
 
 def mprapi_MprAdminMIBSetTrapInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBSetTrapInfo(DWORD dwProtocolId, DWORD dwRoutingPid, HANDLE hEvent, LPVOID lpInData, DWORD dwInDataSize, LPVOID* lplpOutData, LPDWORD lpOutDataSize)
+    [ERROR_CODE] MprAdminMIBSetTrapInfo(
+        DWORD dwProtocolId,
+        DWORD dwRoutingPid,
+        HANDLE hEvent,
+        LPVOID lpInData,
+        DWORD dwInDataSize,
+        LPVOID* lplpOutData,
+        LPDWORD lpOutDataSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwProtocolId", "dwRoutingPid", "hEvent", "lpInData", "dwInDataSize", "lplpOutData", "lpOutDataSize"])
     raise RuntimeError('API not implemented')
@@ -513,7 +819,9 @@ def mprapi_MprAdminMIBSetTrapInfo(jitter):
 
 def mprapi_MprAdminMIBBufferFree(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprAdminMIBBufferFree(LPVOID pBuffer)
+    [ERROR_CODE] MprAdminMIBBufferFree(
+        LPVOID pBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pBuffer"])
     raise RuntimeError('API not implemented')
@@ -521,7 +829,10 @@ def mprapi_MprAdminMIBBufferFree(jitter):
 
 def mprapi_MprConfigServerInstall(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerInstall(DWORD dwLevel, PVOID pBuffer)
+    [ERROR_CODE] MprConfigServerInstall(
+        DWORD dwLevel,
+        PVOID pBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwLevel", "pBuffer"])
     raise RuntimeError('API not implemented')
@@ -529,7 +840,10 @@ def mprapi_MprConfigServerInstall(jitter):
 
 def mprapi_MprConfigServerConnect(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerConnect(LPWSTR lpwsServerName, HANDLE* phMprConfig)
+    [ERROR_CODE] MprConfigServerConnect(
+        LPWSTR lpwsServerName,
+        HANDLE* phMprConfig
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpwsServerName", "phMprConfig"])
     raise RuntimeError('API not implemented')
@@ -537,7 +851,9 @@ def mprapi_MprConfigServerConnect(jitter):
 
 def mprapi_MprConfigServerDisconnect(jitter):
     """
-    [Mprapi.dll] VOID MprConfigServerDisconnect(HANDLE hMprConfig)
+    VOID MprConfigServerDisconnect(
+        HANDLE hMprConfig
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig"])
     raise RuntimeError('API not implemented')
@@ -545,7 +861,9 @@ def mprapi_MprConfigServerDisconnect(jitter):
 
 def mprapi_MprConfigServerRefresh(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerRefresh(HANDLE hMprConfig)
+    [ERROR_CODE] MprConfigServerRefresh(
+        HANDLE hMprConfig
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig"])
     raise RuntimeError('API not implemented')
@@ -553,7 +871,9 @@ def mprapi_MprConfigServerRefresh(jitter):
 
 def mprapi_MprConfigBufferFree(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigBufferFree(LPVOID pBuffer)
+    [ERROR_CODE] MprConfigBufferFree(
+        LPVOID pBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pBuffer"])
     raise RuntimeError('API not implemented')
@@ -561,7 +881,11 @@ def mprapi_MprConfigBufferFree(jitter):
 
 def mprapi_MprConfigServerGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerGetInfo(HANDLE hMprConfig, DWORD dwLevel, LPBYTE* lplpbBuffer)
+    [ERROR_CODE] MprConfigServerGetInfo(
+        HANDLE hMprConfig,
+        DWORD dwLevel,
+        LPBYTE* lplpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwLevel", "lplpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -569,7 +893,11 @@ def mprapi_MprConfigServerGetInfo(jitter):
 
 def mprapi_MprConfigServerSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerSetInfo(MPR_SERVER_HANDLE hMprServer, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprConfigServerSetInfo(
+        MPR_SERVER_HANDLE hMprServer,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprServer", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -577,7 +905,10 @@ def mprapi_MprConfigServerSetInfo(jitter):
 
 def mprapi_MprConfigServerBackup(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerBackup(HANDLE hMprConfig, LPWSTR lpwsPath)
+    [ERROR_CODE] MprConfigServerBackup(
+        HANDLE hMprConfig,
+        LPWSTR lpwsPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "lpwsPath"])
     raise RuntimeError('API not implemented')
@@ -585,7 +916,10 @@ def mprapi_MprConfigServerBackup(jitter):
 
 def mprapi_MprConfigServerRestore(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigServerRestore(HANDLE hMprConfig, LPWSTR lpwsPath)
+    [ERROR_CODE] MprConfigServerRestore(
+        HANDLE hMprConfig,
+        LPWSTR lpwsPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "lpwsPath"])
     raise RuntimeError('API not implemented')
@@ -593,7 +927,17 @@ def mprapi_MprConfigServerRestore(jitter):
 
 def mprapi_MprConfigTransportCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigTransportCreate(HANDLE hMprConfig, DWORD dwTransportId, LPWSTR lpwsTransportName, LPBYTE pGlobalInfo, DWORD dwGlobalInfoSize, LPBYTE pClientInterfaceInfo, DWORD dwClientInterfaceInfoSize, LPWSTR lpwsDLLPath, HANDLE* phRouterTransport)
+    [ERROR_CODE] MprConfigTransportCreate(
+        HANDLE hMprConfig,
+        DWORD dwTransportId,
+        LPWSTR lpwsTransportName,
+        LPBYTE pGlobalInfo,
+        DWORD dwGlobalInfoSize,
+        LPBYTE pClientInterfaceInfo,
+        DWORD dwClientInterfaceInfoSize,
+        LPWSTR lpwsDLLPath,
+        HANDLE* phRouterTransport
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwTransportId", "lpwsTransportName", "pGlobalInfo", "dwGlobalInfoSize", "pClientInterfaceInfo", "dwClientInterfaceInfoSize", "lpwsDLLPath", "phRouterTransport"])
     raise RuntimeError('API not implemented')
@@ -601,7 +945,10 @@ def mprapi_MprConfigTransportCreate(jitter):
 
 def mprapi_MprConfigTransportDelete(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigTransportDelete(HANDLE hMprConfig, HANDLE hRouterTransport)
+    [ERROR_CODE] MprConfigTransportDelete(
+        HANDLE hMprConfig,
+        HANDLE hRouterTransport
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterTransport"])
     raise RuntimeError('API not implemented')
@@ -609,7 +956,11 @@ def mprapi_MprConfigTransportDelete(jitter):
 
 def mprapi_MprConfigTransportGetHandle(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigTransportGetHandle(HANDLE hMprConfig, DWORD dwTransportId, HANDLE* phRouterTransport)
+    [ERROR_CODE] MprConfigTransportGetHandle(
+        HANDLE hMprConfig,
+        DWORD dwTransportId,
+        HANDLE* phRouterTransport
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwTransportId", "phRouterTransport"])
     raise RuntimeError('API not implemented')
@@ -617,7 +968,15 @@ def mprapi_MprConfigTransportGetHandle(jitter):
 
 def mprapi_MprConfigTransportSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigTransportSetInfo(HANDLE hMprConfig, HANDLE hRouterTransport, LPBYTE pGlobalInfo, DWORD dwGlobalInfoSize, LPBYTE pClientInterfaceInfo, DWORD dwClientInterfaceInfoSize, LPWSTR lpwsDLLPath)
+    [ERROR_CODE] MprConfigTransportSetInfo(
+        HANDLE hMprConfig,
+        HANDLE hRouterTransport,
+        LPBYTE pGlobalInfo,
+        DWORD dwGlobalInfoSize,
+        LPBYTE pClientInterfaceInfo,
+        DWORD dwClientInterfaceInfoSize,
+        LPWSTR lpwsDLLPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterTransport", "pGlobalInfo", "dwGlobalInfoSize", "pClientInterfaceInfo", "dwClientInterfaceInfoSize", "lpwsDLLPath"])
     raise RuntimeError('API not implemented')
@@ -625,7 +984,15 @@ def mprapi_MprConfigTransportSetInfo(jitter):
 
 def mprapi_MprConfigTransportGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigTransportGetInfo(HANDLE hMprConfig, HANDLE hRouterTransport, LPBYTE* ppGlobalInfo, LPDWORD lpdwGlobalInfoSize, LPBYTE* ppClientInterfaceInfo, LPDWORD lpdwClientInterfaceInfoSize, LPWSTR* lplpwsDLLPath)
+    [ERROR_CODE] MprConfigTransportGetInfo(
+        HANDLE hMprConfig,
+        HANDLE hRouterTransport,
+        LPBYTE* ppGlobalInfo,
+        LPDWORD lpdwGlobalInfoSize,
+        LPBYTE* ppClientInterfaceInfo,
+        LPDWORD lpdwClientInterfaceInfoSize,
+        LPWSTR* lplpwsDLLPath
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterTransport", "ppGlobalInfo", "lpdwGlobalInfoSize", "ppClientInterfaceInfo", "lpdwClientInterfaceInfoSize", "lplpwsDLLPath"])
     raise RuntimeError('API not implemented')
@@ -633,7 +1000,15 @@ def mprapi_MprConfigTransportGetInfo(jitter):
 
 def mprapi_MprConfigTransportEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigTransportEnum(HANDLE hMprConfig, DWORD dwLevel, LPBYTE* lplpBuffer, DWORD dwPrefMaxLen, LPDWORD lpdwEntriesRead, LPDWORD lpdwTotalEntries, LPDWORD lpdwResumeHandle)
+    [ERROR_CODE] MprConfigTransportEnum(
+        HANDLE hMprConfig,
+        DWORD dwLevel,
+        LPBYTE* lplpBuffer,
+        DWORD dwPrefMaxLen,
+        LPDWORD lpdwEntriesRead,
+        LPDWORD lpdwTotalEntries,
+        LPDWORD lpdwResumeHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwLevel", "lplpBuffer", "dwPrefMaxLen", "lpdwEntriesRead", "lpdwTotalEntries", "lpdwResumeHandle"])
     raise RuntimeError('API not implemented')
@@ -641,7 +1016,12 @@ def mprapi_MprConfigTransportEnum(jitter):
 
 def mprapi_MprConfigInterfaceCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceCreate(HANDLE hMprConfig, DWORD dwLevel, LPBYTE lpbBuffer, HANDLE* phRouterInterface)
+    [ERROR_CODE] MprConfigInterfaceCreate(
+        HANDLE hMprConfig,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer,
+        HANDLE* phRouterInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwLevel", "lpbBuffer", "phRouterInterface"])
     raise RuntimeError('API not implemented')
@@ -649,7 +1029,10 @@ def mprapi_MprConfigInterfaceCreate(jitter):
 
 def mprapi_MprConfigInterfaceDelete(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceDelete(HANDLE hMprConfig, HANDLE hRouterInterface)
+    [ERROR_CODE] MprConfigInterfaceDelete(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface"])
     raise RuntimeError('API not implemented')
@@ -657,7 +1040,11 @@ def mprapi_MprConfigInterfaceDelete(jitter):
 
 def mprapi_MprConfigInterfaceGetHandle(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceGetHandle(HANDLE hMprConfig, LPWSTR lpwsInterfaceName, HANDLE* phRouterInterface)
+    [ERROR_CODE] MprConfigInterfaceGetHandle(
+        HANDLE hMprConfig,
+        LPWSTR lpwsInterfaceName,
+        HANDLE* phRouterInterface
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "lpwsInterfaceName", "phRouterInterface"])
     raise RuntimeError('API not implemented')
@@ -665,7 +1052,13 @@ def mprapi_MprConfigInterfaceGetHandle(jitter):
 
 def mprapi_MprConfigInterfaceGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceGetInfo(HANDLE hMprConfig, HANDLE hRouterInterface, DWORD dwLevel, LPBYTE* lplpBuffer, LPDWORD lpdwBufferSize)
+    [ERROR_CODE] MprConfigInterfaceGetInfo(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        DWORD dwLevel,
+        LPBYTE* lplpBuffer,
+        LPDWORD lpdwBufferSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "dwLevel", "lplpBuffer", "lpdwBufferSize"])
     raise RuntimeError('API not implemented')
@@ -673,7 +1066,12 @@ def mprapi_MprConfigInterfaceGetInfo(jitter):
 
 def mprapi_MprConfigInterfaceSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceSetInfo(HANDLE hMprConfig, HANDLE hRouterInterface, DWORD dwLevel, LPBYTE lpbBuffer)
+    [ERROR_CODE] MprConfigInterfaceSetInfo(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        DWORD dwLevel,
+        LPBYTE lpbBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "dwLevel", "lpbBuffer"])
     raise RuntimeError('API not implemented')
@@ -681,7 +1079,15 @@ def mprapi_MprConfigInterfaceSetInfo(jitter):
 
 def mprapi_MprConfigInterfaceEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceEnum(HANDLE hMprConfig, DWORD dwLevel, LPBYTE* lplpBuffer, DWORD dwPrefMaxLen, LPDWORD lpdwEntriesRead, LPDWORD lpdwTotalEntries, LPDWORD lpdwResumeHandle)
+    [ERROR_CODE] MprConfigInterfaceEnum(
+        HANDLE hMprConfig,
+        DWORD dwLevel,
+        LPBYTE* lplpBuffer,
+        DWORD dwPrefMaxLen,
+        LPDWORD lpdwEntriesRead,
+        LPDWORD lpdwTotalEntries,
+        LPDWORD lpdwResumeHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwLevel", "lplpBuffer", "dwPrefMaxLen", "lpdwEntriesRead", "lpdwTotalEntries", "lpdwResumeHandle"])
     raise RuntimeError('API not implemented')
@@ -689,7 +1095,15 @@ def mprapi_MprConfigInterfaceEnum(jitter):
 
 def mprapi_MprConfigInterfaceTransportAdd(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceTransportAdd(HANDLE hMprConfig, HANDLE hRouterInterface, DWORD dwTransportId, LPWSTR lpwsTransportName, LPBYTE pInterfaceInfo, DWORD dwInterfaceInfoSize, HANDLE* phRouterIfTransport)
+    [ERROR_CODE] MprConfigInterfaceTransportAdd(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        DWORD dwTransportId,
+        LPWSTR lpwsTransportName,
+        LPBYTE pInterfaceInfo,
+        DWORD dwInterfaceInfoSize,
+        HANDLE* phRouterIfTransport
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "dwTransportId", "lpwsTransportName", "pInterfaceInfo", "dwInterfaceInfoSize", "phRouterIfTransport"])
     raise RuntimeError('API not implemented')
@@ -697,7 +1111,11 @@ def mprapi_MprConfigInterfaceTransportAdd(jitter):
 
 def mprapi_MprConfigInterfaceTransportRemove(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceTransportRemove(HANDLE hMprConfig, HANDLE hRouterInterface, HANDLE hRouterIfTransport)
+    [ERROR_CODE] MprConfigInterfaceTransportRemove(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        HANDLE hRouterIfTransport
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "hRouterIfTransport"])
     raise RuntimeError('API not implemented')
@@ -705,7 +1123,12 @@ def mprapi_MprConfigInterfaceTransportRemove(jitter):
 
 def mprapi_MprConfigInterfaceTransportGetHandle(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceTransportGetHandle(HANDLE hMprConfig, HANDLE hRouterInterface, DWORD dwTransportId, HANDLE* phRouterIfTransport)
+    [ERROR_CODE] MprConfigInterfaceTransportGetHandle(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        DWORD dwTransportId,
+        HANDLE* phRouterIfTransport
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "dwTransportId", "phRouterIfTransport"])
     raise RuntimeError('API not implemented')
@@ -713,7 +1136,13 @@ def mprapi_MprConfigInterfaceTransportGetHandle(jitter):
 
 def mprapi_MprConfigInterfaceTransportGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceTransportGetInfo(HANDLE hMprConfig, HANDLE hRouterInterface, HANDLE hRouterIfTransport, LPBYTE* ppInterfaceInfo, LPDWORD lpdwInterfaceInfoSize)
+    [ERROR_CODE] MprConfigInterfaceTransportGetInfo(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        HANDLE hRouterIfTransport,
+        LPBYTE* ppInterfaceInfo,
+        LPDWORD lpdwInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "hRouterIfTransport", "ppInterfaceInfo", "lpdwInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -721,7 +1150,13 @@ def mprapi_MprConfigInterfaceTransportGetInfo(jitter):
 
 def mprapi_MprConfigInterfaceTransportSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceTransportSetInfo(HANDLE hMprConfig, HANDLE hRouterInterface, HANDLE hRouterIfTransport, LPBYTE pInterfaceInfo, DWORD dwInterfaceInfoSize)
+    [ERROR_CODE] MprConfigInterfaceTransportSetInfo(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        HANDLE hRouterIfTransport,
+        LPBYTE pInterfaceInfo,
+        DWORD dwInterfaceInfoSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "hRouterIfTransport", "pInterfaceInfo", "dwInterfaceInfoSize"])
     raise RuntimeError('API not implemented')
@@ -729,7 +1164,16 @@ def mprapi_MprConfigInterfaceTransportSetInfo(jitter):
 
 def mprapi_MprConfigInterfaceTransportEnum(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigInterfaceTransportEnum(HANDLE hMprConfig, HANDLE hRouterInterface, DWORD dwLevel, LPBYTE* lplpBuffer, DWORD dwPrefMaxLen, LPDWORD lpdwEntriesRead, LPDWORD lpdwTotalEntries, LPDWORD lpdwResumeHandle)
+    [ERROR_CODE] MprConfigInterfaceTransportEnum(
+        HANDLE hMprConfig,
+        HANDLE hRouterInterface,
+        DWORD dwLevel,
+        LPBYTE* lplpBuffer,
+        DWORD dwPrefMaxLen,
+        LPDWORD lpdwEntriesRead,
+        LPDWORD lpdwTotalEntries,
+        LPDWORD lpdwResumeHandle
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "hRouterInterface", "dwLevel", "lplpBuffer", "dwPrefMaxLen", "lpdwEntriesRead", "lpdwTotalEntries", "lpdwResumeHandle"])
     raise RuntimeError('API not implemented')
@@ -737,7 +1181,12 @@ def mprapi_MprConfigInterfaceTransportEnum(jitter):
 
 def mprapi_MprConfigGetFriendlyName(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigGetFriendlyName(HANDLE hMprConfig, PWCHAR pszGuidName, PWCHAR pszBuffer, DWORD dwBufferSize)
+    [ERROR_CODE] MprConfigGetFriendlyName(
+        HANDLE hMprConfig,
+        PWCHAR pszGuidName,
+        PWCHAR pszBuffer,
+        DWORD dwBufferSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "pszGuidName", "pszBuffer", "dwBufferSize"])
     raise RuntimeError('API not implemented')
@@ -745,7 +1194,12 @@ def mprapi_MprConfigGetFriendlyName(jitter):
 
 def mprapi_MprConfigGetGuidName(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigGetGuidName(HANDLE hMprConfig, PWCHAR pszFriendlyName, PWCHAR pszBuffer, DWORD dwBufferSize)
+    [ERROR_CODE] MprConfigGetGuidName(
+        HANDLE hMprConfig,
+        PWCHAR pszFriendlyName,
+        PWCHAR pszBuffer,
+        DWORD dwBufferSize
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "pszFriendlyName", "pszBuffer", "dwBufferSize"])
     raise RuntimeError('API not implemented')
@@ -753,7 +1207,11 @@ def mprapi_MprConfigGetGuidName(jitter):
 
 def mprapi_MprConfigFilterGetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigFilterGetInfo(HANDLE hMprConfig, DWORD dwLevel, LPBYTE lpBuffer)
+    [ERROR_CODE] MprConfigFilterGetInfo(
+        HANDLE hMprConfig,
+        DWORD dwLevel,
+        LPBYTE lpBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwLevel", "lpBuffer"])
     raise RuntimeError('API not implemented')
@@ -761,7 +1219,11 @@ def mprapi_MprConfigFilterGetInfo(jitter):
 
 def mprapi_MprConfigFilterSetInfo(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprConfigFilterSetInfo(HANDLE hMprConfig, DWORD dwLevel, LPBYTE lpBuffer)
+    [ERROR_CODE] MprConfigFilterSetInfo(
+        HANDLE hMprConfig,
+        DWORD dwLevel,
+        LPBYTE lpBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hMprConfig", "dwLevel", "lpBuffer"])
     raise RuntimeError('API not implemented')
@@ -769,7 +1231,10 @@ def mprapi_MprConfigFilterSetInfo(jitter):
 
 def mprapi_MprInfoCreate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoCreate(DWORD dwVersion, LPVOID* lplpNewHeader)
+    [ERROR_CODE] MprInfoCreate(
+        DWORD dwVersion,
+        LPVOID* lplpNewHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["dwVersion", "lplpNewHeader"])
     raise RuntimeError('API not implemented')
@@ -777,7 +1242,9 @@ def mprapi_MprInfoCreate(jitter):
 
 def mprapi_MprInfoDelete(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoDelete(LPVOID lpHeader)
+    [ERROR_CODE] MprInfoDelete(
+        LPVOID lpHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader"])
     raise RuntimeError('API not implemented')
@@ -785,7 +1252,10 @@ def mprapi_MprInfoDelete(jitter):
 
 def mprapi_MprInfoRemoveAll(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoRemoveAll(LPVOID lpHeader, LPVOID* lplpNewHeader)
+    [ERROR_CODE] MprInfoRemoveAll(
+        LPVOID lpHeader,
+        LPVOID* lplpNewHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader", "lplpNewHeader"])
     raise RuntimeError('API not implemented')
@@ -793,7 +1263,10 @@ def mprapi_MprInfoRemoveAll(jitter):
 
 def mprapi_MprInfoDuplicate(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoDuplicate(LPVOID lpHeader, LPVOID* lplpNewHeader)
+    [ERROR_CODE] MprInfoDuplicate(
+        LPVOID lpHeader,
+        LPVOID* lplpNewHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader", "lplpNewHeader"])
     raise RuntimeError('API not implemented')
@@ -801,7 +1274,14 @@ def mprapi_MprInfoDuplicate(jitter):
 
 def mprapi_MprInfoBlockAdd(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoBlockAdd(LPVOID lpHeader, DWORD dwInfoType, DWORD dwItemSize, DWORD dwItemCount, LPBYTE lpItemData, LPVOID* lplpNewHeader)
+    [ERROR_CODE] MprInfoBlockAdd(
+        LPVOID lpHeader,
+        DWORD dwInfoType,
+        DWORD dwItemSize,
+        DWORD dwItemCount,
+        LPBYTE lpItemData,
+        LPVOID* lplpNewHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader", "dwInfoType", "dwItemSize", "dwItemCount", "lpItemData", "lplpNewHeader"])
     raise RuntimeError('API not implemented')
@@ -809,7 +1289,11 @@ def mprapi_MprInfoBlockAdd(jitter):
 
 def mprapi_MprInfoBlockRemove(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoBlockRemove(LPVOID lpHeader, DWORD dwInfoType, LPVOID* lplpNewHeader)
+    [ERROR_CODE] MprInfoBlockRemove(
+        LPVOID lpHeader,
+        DWORD dwInfoType,
+        LPVOID* lplpNewHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader", "dwInfoType", "lplpNewHeader"])
     raise RuntimeError('API not implemented')
@@ -817,7 +1301,14 @@ def mprapi_MprInfoBlockRemove(jitter):
 
 def mprapi_MprInfoBlockSet(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoBlockSet(LPVOID lpHeader, DWORD dwInfoType, DWORD dwItemSize, DWORD dwItemCount, LPBYTE lpItemData, LPVOID* lplpNewHeader)
+    [ERROR_CODE] MprInfoBlockSet(
+        LPVOID lpHeader,
+        DWORD dwInfoType,
+        DWORD dwItemSize,
+        DWORD dwItemCount,
+        LPBYTE lpItemData,
+        LPVOID* lplpNewHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader", "dwInfoType", "dwItemSize", "dwItemCount", "lpItemData", "lplpNewHeader"])
     raise RuntimeError('API not implemented')
@@ -825,7 +1316,13 @@ def mprapi_MprInfoBlockSet(jitter):
 
 def mprapi_MprInfoBlockFind(jitter):
     """
-    [Mprapi.dll] [ERROR_CODE] MprInfoBlockFind(LPVOID lpHeader, DWORD dwInfoType, LPDWORD lpdwItemSize, LPDWORD lpdwItemCount, LPBYTE* lplpItemData)
+    [ERROR_CODE] MprInfoBlockFind(
+        LPVOID lpHeader,
+        DWORD dwInfoType,
+        LPDWORD lpdwItemSize,
+        LPDWORD lpdwItemCount,
+        LPBYTE* lplpItemData
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader", "dwInfoType", "lpdwItemSize", "lpdwItemCount", "lplpItemData"])
     raise RuntimeError('API not implemented')
@@ -833,7 +1330,9 @@ def mprapi_MprInfoBlockFind(jitter):
 
 def mprapi_MprInfoBlockQuerySize(jitter):
     """
-    [Mprapi.dll] DWORD MprInfoBlockQuerySize(LPVOID lpHeader)
+    DWORD MprInfoBlockQuerySize(
+        LPVOID lpHeader
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["lpHeader"])
     raise RuntimeError('API not implemented')

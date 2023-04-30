@@ -1,7 +1,15 @@
 
 def prntvpt_PTConvertPrintTicketToDevMode(jitter):
     """
-    [Prntvpt.dll] HRESULT PTConvertPrintTicketToDevMode(HPTPROVIDER hProvider, IStream* pPrintTicket, EDefaultDevmodeType baseDevmodeType, EPrintTicketScope scope, ULONG* pcbDevmode, PDEVMODE* ppDevmode, BSTR* pbstrErrorMessage)
+    HRESULT PTConvertPrintTicketToDevMode(
+        HPTPROVIDER hProvider,
+        IStream* pPrintTicket,
+        EDefaultDevmodeType baseDevmodeType,
+        EPrintTicketScope scope,
+        ULONG* pcbDevmode,
+        PDEVMODE* ppDevmode,
+        BSTR* pbstrErrorMessage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProvider", "pPrintTicket", "baseDevmodeType", "scope", "pcbDevmode", "ppDevmode", "pbstrErrorMessage"])
     raise RuntimeError('API not implemented')
@@ -9,7 +17,13 @@ def prntvpt_PTConvertPrintTicketToDevMode(jitter):
 
 def prntvpt_PTConvertDevModeToPrintTicket(jitter):
     """
-    [Prntvpt.dll] HRESULT PTConvertDevModeToPrintTicket(HPTPROVIDER hProvider, ULONG cbDevmode, PDEVMODE pDevmode, EPrintTicketScope scope, IStream* pPrintTicket)
+    HRESULT PTConvertDevModeToPrintTicket(
+        HPTPROVIDER hProvider,
+        ULONG cbDevmode,
+        PDEVMODE pDevmode,
+        EPrintTicketScope scope,
+        IStream* pPrintTicket
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProvider", "cbDevmode", "pDevmode", "scope", "pPrintTicket"])
     raise RuntimeError('API not implemented')
@@ -17,7 +31,9 @@ def prntvpt_PTConvertDevModeToPrintTicket(jitter):
 
 def prntvpt_PTReleaseMemory(jitter):
     """
-    [Prntvpt.dll] HRESULT PTReleaseMemory(PVOID pBuffer)
+    HRESULT PTReleaseMemory(
+        PVOID pBuffer
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pBuffer"])
     raise RuntimeError('API not implemented')
@@ -25,7 +41,14 @@ def prntvpt_PTReleaseMemory(jitter):
 
 def prntvpt_PTMergeAndValidatePrintTicket(jitter):
     """
-    [Prntvpt.dll] HRESULT PTMergeAndValidatePrintTicket(HPTPROVIDER hProvider, IStream* pBaseTicket, IStream* pDeltaTicket, EPrintTicketScope scope, IStream* pResultTicket, BSTR* pbstrErrorMessage)
+    HRESULT PTMergeAndValidatePrintTicket(
+        HPTPROVIDER hProvider,
+        IStream* pBaseTicket,
+        IStream* pDeltaTicket,
+        EPrintTicketScope scope,
+        IStream* pResultTicket,
+        BSTR* pbstrErrorMessage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProvider", "pBaseTicket", "pDeltaTicket", "scope", "pResultTicket", "pbstrErrorMessage"])
     raise RuntimeError('API not implemented')
@@ -33,7 +56,12 @@ def prntvpt_PTMergeAndValidatePrintTicket(jitter):
 
 def prntvpt_PTGetPrintCapabilities(jitter):
     """
-    [Prntvpt.dll] HRESULT PTGetPrintCapabilities(HPTPROVIDER hProvider, IStream* pPrintTicket, IStream* pCapabilities, BSTR* pbstrErrorMessage)
+    HRESULT PTGetPrintCapabilities(
+        HPTPROVIDER hProvider,
+        IStream* pPrintTicket,
+        IStream* pCapabilities,
+        BSTR* pbstrErrorMessage
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProvider", "pPrintTicket", "pCapabilities", "pbstrErrorMessage"])
     raise RuntimeError('API not implemented')
@@ -41,7 +69,11 @@ def prntvpt_PTGetPrintCapabilities(jitter):
 
 def prntvpt_PTOpenProvider(jitter):
     """
-    [Prntvpt.dll] HRESULT PTOpenProvider(PCWSTR pszPrinterName, DWORD version, HPTPROVIDER* phProvider)
+    HRESULT PTOpenProvider(
+        PCWSTR pszPrinterName,
+        DWORD version,
+        HPTPROVIDER* phProvider
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPrinterName", "version", "phProvider"])
     raise RuntimeError('API not implemented')
@@ -49,7 +81,13 @@ def prntvpt_PTOpenProvider(jitter):
 
 def prntvpt_PTOpenProviderEx(jitter):
     """
-    [Prntvpt.dll] HRESULT PTOpenProviderEx(PCWSTR pszPrinterName, DWORD maxVersion, DWORD prefVersion, HPTPROVIDER* phProvider, DWORD* usedVersion)
+    HRESULT PTOpenProviderEx(
+        PCWSTR pszPrinterName,
+        DWORD maxVersion,
+        DWORD prefVersion,
+        HPTPROVIDER* phProvider,
+        DWORD* usedVersion
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPrinterName", "maxVersion", "prefVersion", "phProvider", "usedVersion"])
     raise RuntimeError('API not implemented')
@@ -57,7 +95,9 @@ def prntvpt_PTOpenProviderEx(jitter):
 
 def prntvpt_PTCloseProvider(jitter):
     """
-    [Prntvpt.dll] HRESULT PTCloseProvider(HPTPROVIDER hProvider)
+    HRESULT PTCloseProvider(
+        HPTPROVIDER hProvider
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProvider"])
     raise RuntimeError('API not implemented')
@@ -65,7 +105,10 @@ def prntvpt_PTCloseProvider(jitter):
 
 def prntvpt_PTQuerySchemaVersionSupport(jitter):
     """
-    [Prntvpt.dll] HRESULT PTQuerySchemaVersionSupport(PCWSTR pszPrinterName, DWORD* pMaxVersion)
+    HRESULT PTQuerySchemaVersionSupport(
+        PCWSTR pszPrinterName,
+        DWORD* pMaxVersion
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["pszPrinterName", "pMaxVersion"])
     raise RuntimeError('API not implemented')

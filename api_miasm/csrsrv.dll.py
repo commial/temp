@@ -1,7 +1,11 @@
 
 def csrsrv_CsrAddStaticServerThread(jitter):
     """
-    [CsrSrv.dll] PCSR_THREAD CsrAddStaticServerThread(HANDLE hThread, PCLIENT_ID ClientId, ULONG ThreadFlags)
+    PCSR_THREAD CsrAddStaticServerThread(
+        HANDLE hThread,
+        PCLIENT_ID ClientId,
+        ULONG ThreadFlags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hThread", "ClientId", "ThreadFlags"])
     raise RuntimeError('API not implemented')
@@ -9,7 +13,10 @@ def csrsrv_CsrAddStaticServerThread(jitter):
 
 def csrsrv_CsrCallServerFromServer(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrCallServerFromServer(PCSR_API_MESSAGE ReceiveMsg, PCSR_API_MESSAGE ReplyMsg)
+    NTSTATUS CsrCallServerFromServer(
+        PCSR_API_MESSAGE ReceiveMsg,
+        PCSR_API_MESSAGE ReplyMsg
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ReceiveMsg", "ReplyMsg"])
     raise RuntimeError('API not implemented')
@@ -17,7 +24,7 @@ def csrsrv_CsrCallServerFromServer(jitter):
 
 def csrsrv_CsrConnectToUser(jitter):
     """
-    [CsrSrv.dll] PCSR_THREAD CsrConnectToUser()
+    PCSR_THREAD CsrConnectToUser()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -25,7 +32,14 @@ def csrsrv_CsrConnectToUser(jitter):
 
 def csrsrv_CsrCreateProcess(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrCreateProcess(HANDLE hProcess, HANDLE hThread, PCLIENT_ID ClientId, PCSR_NT_SESSION NtSession, ULONG Flags, PCLIENT_ID DebugCid)
+    NTSTATUS CsrCreateProcess(
+        HANDLE hProcess,
+        HANDLE hThread,
+        PCLIENT_ID ClientId,
+        PCSR_NT_SESSION NtSession,
+        ULONG Flags,
+        PCLIENT_ID DebugCid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "hThread", "ClientId", "NtSession", "Flags", "DebugCid"])
     raise RuntimeError('API not implemented')
@@ -33,7 +47,10 @@ def csrsrv_CsrCreateProcess(jitter):
 
 def csrsrv_CsrCreateRemoteThread(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrCreateRemoteThread(HANDLE hThread, PCLIENT_ID ClientId)
+    NTSTATUS CsrCreateRemoteThread(
+        HANDLE hThread,
+        PCLIENT_ID ClientId
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hThread", "ClientId"])
     raise RuntimeError('API not implemented')
@@ -41,7 +58,14 @@ def csrsrv_CsrCreateRemoteThread(jitter):
 
 def csrsrv_CsrCreateWait(jitter):
     """
-    [CsrSrv.dll] BOOLEAN CsrCreateWait(PLIST_ENTRY WaitList, CSR_WAIT_FUNCTION WaitFunction, PCSR_THREAD CsrWaitThread, PCSR_API_MESSAGE WaitApiMessage, PVOID WaitContext, PLIST_ENTRY UserWaitList)
+    BOOLEAN CsrCreateWait(
+        PLIST_ENTRY WaitList,
+        CSR_WAIT_FUNCTION WaitFunction,
+        PCSR_THREAD CsrWaitThread,
+        PCSR_API_MESSAGE WaitApiMessage,
+        PVOID WaitContext,
+        PLIST_ENTRY UserWaitList
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["WaitList", "WaitFunction", "CsrWaitThread", "WaitApiMessage", "WaitContext", "UserWaitList"])
     raise RuntimeError('API not implemented')
@@ -49,7 +73,9 @@ def csrsrv_CsrCreateWait(jitter):
 
 def csrsrv_CsrDebugProcess(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrDebugProcess(PCSR_PROCESS CsrProcess)
+    NTSTATUS CsrDebugProcess(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -57,7 +83,9 @@ def csrsrv_CsrDebugProcess(jitter):
 
 def csrsrv_CsrDebugProcessStop(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrDebugProcessStop(PCSR_PROCESS CsrProcess)
+    NTSTATUS CsrDebugProcessStop(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -65,7 +93,9 @@ def csrsrv_CsrDebugProcessStop(jitter):
 
 def csrsrv_CsrDereferenceProcess(jitter):
     """
-    [CsrSrv.dll] VOID CsrDereferenceProcess(PCSR_PROCESS CsrProcess)
+    VOID CsrDereferenceProcess(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -73,7 +103,9 @@ def csrsrv_CsrDereferenceProcess(jitter):
 
 def csrsrv_CsrDereferenceThread(jitter):
     """
-    [CsrSrv.dll] VOID CsrDereferenceThread(PCSR_THREAD CsrThread)
+    VOID CsrDereferenceThread(
+        PCSR_THREAD CsrThread
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrThread"])
     raise RuntimeError('API not implemented')
@@ -81,7 +113,9 @@ def csrsrv_CsrDereferenceThread(jitter):
 
 def csrsrv_CsrDereferenceWait(jitter):
     """
-    [CsrSrv.dll] VOID CsrDereferenceWait(PLIST_ENTRY WaitList)
+    VOID CsrDereferenceWait(
+        PLIST_ENTRY WaitList
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["WaitList"])
     raise RuntimeError('API not implemented')
@@ -89,7 +123,10 @@ def csrsrv_CsrDereferenceWait(jitter):
 
 def csrsrv_CsrDestroyProcess(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrDestroyProcess(PCLIENT_ID Cid, NTSTATUS ExitStatus)
+    NTSTATUS CsrDestroyProcess(
+        PCLIENT_ID Cid,
+        NTSTATUS ExitStatus
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Cid", "ExitStatus"])
     raise RuntimeError('API not implemented')
@@ -97,7 +134,9 @@ def csrsrv_CsrDestroyProcess(jitter):
 
 def csrsrv_CsrDestroyThread(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrDestroyThread(PCLIENT_ID Cid)
+    NTSTATUS CsrDestroyThread(
+        PCLIENT_ID Cid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Cid"])
     raise RuntimeError('API not implemented')
@@ -105,7 +144,10 @@ def csrsrv_CsrDestroyThread(jitter):
 
 def csrsrv_CsrExecServerThread(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrExecServerThread(PVOID ThreadHandler, ULONG Flags)
+    NTSTATUS CsrExecServerThread(
+        PVOID ThreadHandler,
+        ULONG Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ThreadHandler", "Flags"])
     raise RuntimeError('API not implemented')
@@ -113,7 +155,10 @@ def csrsrv_CsrExecServerThread(jitter):
 
 def csrsrv_CsrGetProcessLuid(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrGetProcessLuid(HANDLE hProcess, PLUID Luid)
+    NTSTATUS CsrGetProcessLuid(
+        HANDLE hProcess,
+        PLUID Luid
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["hProcess", "Luid"])
     raise RuntimeError('API not implemented')
@@ -121,7 +166,9 @@ def csrsrv_CsrGetProcessLuid(jitter):
 
 def csrsrv_CsrImpersonateClient(jitter):
     """
-    [CsrSrv.dll] BOOLEAN CsrImpersonateClient(PCSR_THREAD CsrThread)
+    BOOLEAN CsrImpersonateClient(
+        PCSR_THREAD CsrThread
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrThread"])
     raise RuntimeError('API not implemented')
@@ -129,7 +176,10 @@ def csrsrv_CsrImpersonateClient(jitter):
 
 def csrsrv_CsrLockProcessByClientId(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrLockProcessByClientId(HANDLE Pid, PCSR_PROCESS* CsrProcess)
+    NTSTATUS CsrLockProcessByClientId(
+        HANDLE Pid,
+        PCSR_PROCESS* CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Pid", "CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -137,7 +187,10 @@ def csrsrv_CsrLockProcessByClientId(jitter):
 
 def csrsrv_CsrLockThreadByClientId(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrLockThreadByClientId(HANDLE Tid, PCSR_THREAD* CsrThread)
+    NTSTATUS CsrLockThreadByClientId(
+        HANDLE Tid,
+        PCSR_THREAD* CsrThread
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Tid", "CsrThread"])
     raise RuntimeError('API not implemented')
@@ -145,7 +198,10 @@ def csrsrv_CsrLockThreadByClientId(jitter):
 
 def csrsrv_CsrMoveSatisfiedWait(jitter):
     """
-    [CsrSrv.dll] VOID CsrMoveSatisfiedWait(PLIST_ENTRY NewEntry, PLIST_ENTRY WaitList)
+    VOID CsrMoveSatisfiedWait(
+        PLIST_ENTRY NewEntry,
+        PLIST_ENTRY WaitList
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["NewEntry", "WaitList"])
     raise RuntimeError('API not implemented')
@@ -153,7 +209,12 @@ def csrsrv_CsrMoveSatisfiedWait(jitter):
 
 def csrsrv_CsrNotifyWait(jitter):
     """
-    [CsrSrv.dll] BOOLEAN CsrNotifyWait(PLIST_ENTRY WaitList, ULONG WaitType, PVOID WaitArgument1, PVOID WaitArgument2)
+    BOOLEAN CsrNotifyWait(
+        PLIST_ENTRY WaitList,
+        ULONG WaitType,
+        PVOID WaitArgument1,
+        PVOID WaitArgument2
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["WaitList", "WaitType", "WaitArgument1", "WaitArgument2"])
     raise RuntimeError('API not implemented')
@@ -161,7 +222,7 @@ def csrsrv_CsrNotifyWait(jitter):
 
 def csrsrv_CsrPopulateDosDevices(jitter):
     """
-    [CsrSrv.dll] VOID CsrPopulateDosDevices()
+    VOID CsrPopulateDosDevices()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -169,7 +230,9 @@ def csrsrv_CsrPopulateDosDevices(jitter):
 
 def csrsrv_CsrLockedReferenceProcess(jitter):
     """
-    [CsrSrv.dll] VOID CsrLockedReferenceProcess(PCSR_PROCESS CsrProcess)
+    VOID CsrLockedReferenceProcess(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -177,7 +240,7 @@ def csrsrv_CsrLockedReferenceProcess(jitter):
 
 def csrsrv_CsrQueryApiPort(jitter):
     """
-    [CsrSrv.dll] HANDLE CsrQueryApiPort()
+    HANDLE CsrQueryApiPort()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -185,7 +248,9 @@ def csrsrv_CsrQueryApiPort(jitter):
 
 def csrsrv_CsrReferenceThread(jitter):
     """
-    [CsrSrv.dll] VOID CsrReferenceThread(PCSR_THREAD CsrThread)
+    VOID CsrReferenceThread(
+        PCSR_THREAD CsrThread
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrThread"])
     raise RuntimeError('API not implemented')
@@ -193,7 +258,7 @@ def csrsrv_CsrReferenceThread(jitter):
 
 def csrsrv_CsrRevertToSelf(jitter):
     """
-    [CsrSrv.dll] BOOLEAN CsrRevertToSelf()
+    BOOLEAN CsrRevertToSelf()
     """
     ret_ad, args = jitter.func_args_stdcall([])
     raise RuntimeError('API not implemented')
@@ -201,7 +266,10 @@ def csrsrv_CsrRevertToSelf(jitter):
 
 def csrsrv_CsrServerInitialization(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrServerInitialization(ULONG ArgumentCount, LPVOID Arguments)
+    NTSTATUS CsrServerInitialization(
+        ULONG ArgumentCount,
+        LPVOID Arguments
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ArgumentCount", "Arguments"])
     raise RuntimeError('API not implemented')
@@ -209,7 +277,9 @@ def csrsrv_CsrServerInitialization(jitter):
 
 def csrsrv_CsrSetBackgroundPriority(jitter):
     """
-    [CsrSrv.dll] VOID CsrSetBackgroundPriority(PCSR_PROCESS CsrProcess)
+    VOID CsrSetBackgroundPriority(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -217,7 +287,9 @@ def csrsrv_CsrSetBackgroundPriority(jitter):
 
 def csrsrv_CsrSetCallingSpooler(jitter):
     """
-    [CsrSrv.dll] VOID CsrSetCallingSpooler(ULONG Reserved)
+    VOID CsrSetCallingSpooler(
+        ULONG Reserved
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["Reserved"])
     raise RuntimeError('API not implemented')
@@ -225,7 +297,9 @@ def csrsrv_CsrSetCallingSpooler(jitter):
 
 def csrsrv_CsrSetForegroundPriority(jitter):
     """
-    [CsrSrv.dll] VOID CsrSetForegroundPriority(PCSR_PROCESS CsrProcess)
+    VOID CsrSetForegroundPriority(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -233,7 +307,10 @@ def csrsrv_CsrSetForegroundPriority(jitter):
 
 def csrsrv_CsrShutdownProcesses(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrShutdownProcesses(PLUID CallerLuid, ULONG Flags)
+    NTSTATUS CsrShutdownProcesses(
+        PLUID CallerLuid,
+        ULONG Flags
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CallerLuid", "Flags"])
     raise RuntimeError('API not implemented')
@@ -241,7 +318,9 @@ def csrsrv_CsrShutdownProcesses(jitter):
 
 def csrsrv_CsrUnhandledExceptionFilter(jitter):
     """
-    [CsrSrv.dll] LONG CsrUnhandledExceptionFilter(PEXCEPTION_POINTERS ExceptionInfo)
+    LONG CsrUnhandledExceptionFilter(
+        PEXCEPTION_POINTERS ExceptionInfo
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ExceptionInfo"])
     raise RuntimeError('API not implemented')
@@ -249,7 +328,9 @@ def csrsrv_CsrUnhandledExceptionFilter(jitter):
 
 def csrsrv_CsrUnlockProcess(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrUnlockProcess(PCSR_PROCESS CsrProcess)
+    NTSTATUS CsrUnlockProcess(
+        PCSR_PROCESS CsrProcess
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrProcess"])
     raise RuntimeError('API not implemented')
@@ -257,7 +338,9 @@ def csrsrv_CsrUnlockProcess(jitter):
 
 def csrsrv_CsrUnlockThread(jitter):
     """
-    [CsrSrv.dll] NTSTATUS CsrUnlockThread(PCSR_THREAD CsrThread)
+    NTSTATUS CsrUnlockThread(
+        PCSR_THREAD CsrThread
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["CsrThread"])
     raise RuntimeError('API not implemented')
@@ -265,7 +348,12 @@ def csrsrv_CsrUnlockThread(jitter):
 
 def csrsrv_CsrValidateMessageBuffer(jitter):
     """
-    [CsrSrv.dll] BOOLEAN CsrValidateMessageBuffer(PCSR_API_MESSAGE ApiMessage, PVOID* Buffer, ULONG ArgumentSize, ULONG ArgumentCount)
+    BOOLEAN CsrValidateMessageBuffer(
+        PCSR_API_MESSAGE ApiMessage,
+        PVOID* Buffer,
+        ULONG ArgumentSize,
+        ULONG ArgumentCount
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ApiMessage", "Buffer", "ArgumentSize", "ArgumentCount"])
     raise RuntimeError('API not implemented')
@@ -273,7 +361,10 @@ def csrsrv_CsrValidateMessageBuffer(jitter):
 
 def csrsrv_CsrValidateMessageString(jitter):
     """
-    [CsrSrv.dll] BOOLEAN CsrValidateMessageString(PCSR_API_MESSAGE ApiMessage, LPWSTR* MessageString)
+    BOOLEAN CsrValidateMessageString(
+        PCSR_API_MESSAGE ApiMessage,
+        LPWSTR* MessageString
+    )
     """
     ret_ad, args = jitter.func_args_stdcall(["ApiMessage", "MessageString"])
     raise RuntimeError('API not implemented')
